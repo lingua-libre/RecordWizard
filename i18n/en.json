@@ -1,0 +1,12 @@
+{
+    "@metadata": {
+        "authors": [
+            "Antoine Lamielle"
+        ]
+    },
+    "recordWizard": "RecordWizard",
+    "recordwizard": "Record Wizard",
+    "recordWizard-desc": "A user-friendly and automated tool to record audio pronunciation files.",
+    "special-recordWizard-title": "Record Wizard",
+    "special-recordWizard-intro": "Record some audio pronunciation files."
+}

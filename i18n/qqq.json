@@ -1,0 +1,12 @@
+{
+    "@metadata": {
+        "authors": [
+            "Antoine Lamielle"
+        ]
+    },
+    "recordWizard": "The name of the extension",
+    "recordwizard": "The name of the extension display on Special:SpecialPages",
+    "recordWizard-desc": "{{desc|name=RecordWizard|url=https://www.mediawiki.org/wiki/Extension:RecorderWizard}}",
+    "special-recordWizard-intro": "Description appearing on top of <tvar|1>Special:{{ll|RecordWizard}}</>.",
+    "special-recordWizard-title": "Title of the special page Special:RecordWizard"
+}

@@ -1,0 +1,53 @@
+{
+    "name": "RecordWizard",
+    "version": "0.1.0",
+    "author": [
+        "Antoine Lamielle"
+    ],
+    "url": "https://www.mediawiki.org/wiki/Extension:RecorderWizard",
+    "namemsg": "recordWizard",
+    "descriptionmsg": "recordWizard-desc",
+    "license-name": "GPL-2.0+",
+    "type": "other",
+    "manifest_version": 1,
+    "MessagesDirs": {
+        "RecordWizard": [
+            "i18n"
+        ]
+    },
+    "AutoloadClasses": {
+        "SpecialRecordWizard": "specials/SpecialRecordWizard.php",
+        "RecordWizardHooks": "Hooks.php"
+    },
+    "ResourceModules": {
+        "ext.recordWizard": {
+            "scripts": [
+                "ext.recordWizard.js"
+            ],
+            "styles": [
+                "ext.recordWizard.css"
+            ],
+            "messages": [
+
+            ],
+            "dependencies": [
+
+            ]
+        }
+    },
+    "ResourceFileModulePaths": {
+        "localBasePath": "modules",
+        "remoteExtPath": "RecordWizard/modules"
+    },
+    "SpecialPages": {
+        "RecordWizard": "SpecialRecordWizard"
+    },
+    "ExtensionMessagesFiles": {
+        "RecordWizardAlias": "RecordWizard.alias.php"
+    },
+    "Hooks": {
+        "ResourceLoaderTestModules": [
+            "RecordWizardHooks::onResourceLoaderTestModules"
+        ]
+    }
+}
