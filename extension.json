@@ -20,24 +20,31 @@
         "RecordWizardHooks": "Hooks.php"
     },
     "ResourceModules": {
-        "ext.recordWizard": {
+        "ext.recwiz": {
             "scripts": [
                 "ext.recordWizard.js"
             ],
             "styles": [
                 "ext.recordWizard.css"
             ],
+			"dependencies": [
+				"ext.recwiz.recorder"
+			],
             "messages": [
 
-            ],
-            "dependencies": [
-
             ]
+        },
+        "ext.recwiz.recorder": {
+            "scripts": [
+                "lingua-recorder/AudioRecord.js",
+                "lingua-recorder/LinguaRecorder.js"
+            ],
+            "localBasePath": "lib"
         }
     },
     "ResourceFileModulePaths": {
         "localBasePath": "modules",
-        "remoteExtPath": "RecordWizard/modules"
+        "remoteExtPath": "RecordWizard"
     },
     "SpecialPages": {
         "RecordWizard": "SpecialRecordWizard"
