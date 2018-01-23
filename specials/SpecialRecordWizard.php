@@ -7,7 +7,7 @@
  */
 class SpecialRecordWizard extends SpecialPage {
 	public function __construct() {
-		parent::__construct( 'recordWizard' );
+		parent::__construct( 'RecordWizard', 'upload' );
 	}
 
 	/**
@@ -17,8 +17,14 @@ class SpecialRecordWizard extends SpecialPage {
 	 */
 	public function execute( $sub ) {
 		$out = $this->getOutput();
+		if ( !$this->userCanExecute( $this->getUser() ) or $this->getUser()->isBlocked() ) {
+			$this->displayRestrictionError();
+			return;
+		}
+
+		$out->addModules( 'ext.recwiz' );
 		$out->setPageTitle( $this->msg( 'special-recordWizard-title' ) );
-		$out->addHelpLink( 'How to become a MediaWiki hacker' );
+		$out->addHelpLink( 'Yolo' );
 		$out->addWikiMsg( 'special-recordWizard-intro' );
 	}
 
