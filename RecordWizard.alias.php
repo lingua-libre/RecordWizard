@@ -8,5 +8,10 @@ $specialPageAliases = array();
 
 /** English (English) */
 $specialPageAliases['en'] = array(
-	'recordWizard' => array( 'recordWizard' ),
+	'RecordWizard' => array( 'RecordWizard', 'Record Wizard', 'Studio', 'Recording Studio' ),
+);
+
+/** French (Français) */
+$specialPageAliases['fr'] = array(
+	'RecordWizard' => array( 'Studio', 'Studio d\'enregistrement', 'Enregistreur' ),
 );
