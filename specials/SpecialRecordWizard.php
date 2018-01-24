@@ -17,8 +17,7 @@ class SpecialRecordWizard extends SpecialPage {
 	 */
 	public function execute( $sub ) {
 		$out = $this->getOutput();
-		if ( !$this->userCanExecute( $this->getUser() ) or $this->getUser()->isBlocked() ) {
-			$this->displayRestrictionError();
+		if ( !( $this->isUploadAllowed() && $this->isUserUploadAllowed( $this->getUser() ) ) ) {
 			return;
 		}
 
@@ -30,5 +29,53 @@ class SpecialRecordWizard extends SpecialPage {
 
 	protected function getGroupName() {
 		return 'media';
+	}
+
+	/**
+	 * Check if anyone can upload (or if other sitewide config prevents this)
+	 * Side effect: will print error page to wgOut if cannot upload.
+	 * @return boolean -- true if can upload
+	 */
+	private function isUploadAllowed() {
+		// Check uploading enabled
+		if ( !UploadBase::isEnabled() ) {
+			$this->getOutput()->showErrorPage( 'uploaddisabled', 'uploaddisabledtext' );
+			return false;
+		}
+		// XXX does wgEnableAPI affect all uploads too?
+		// Check whether we actually want to allow changing stuff
+		if ( wfReadOnly() ) {
+			$this->getOutput()->readOnlyPage();
+			return false;
+		}
+		// we got all the way here, so it must be okay to upload
+		return true;
+	}
+
+	/**
+	 * Check if the user can upload
+	 * Side effect: will print error page to wgOut if cannot upload.
+	 * @param User $user
+	 * @throws PermissionsError
+	 * @throws UserBlockedError
+	 * @return boolean -- true if can upload
+	 */
+	private function isUserUploadAllowed( User $user ) {
+		// Check permissions
+		$permissionRequired = UploadBase::isAllowed( $user );
+		if ( $permissionRequired !== true ) {
+			throw new PermissionsError( $permissionRequired );
+		}
+		// Check blocks
+		if ( $user->isBlocked() ) {
+			throw new UserBlockedError( $user->getBlock() );
+		}
+		// Global blocks
+		if ( $user->isBlockedGlobally() ) {
+			throw new UserBlockedError( $user->getGlobalBlock() );
+		}
+
+		// we got all the way here, so it must be okay to upload
+		return true;
 	}
 }
