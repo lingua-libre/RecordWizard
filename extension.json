@@ -20,25 +20,37 @@
         "RecordWizardHooks": "Hooks.php"
     },
     "ResourceModules": {
-        "ext.recwiz": {
+        "ext.recordWizard": {
             "scripts": [
-                "ext.recordWizard.js"
-            ],
-            "styles": [
-                "ext.recordWizard.css"
+                "modules/mw.recordWizard.RecordWizard.js"
             ],
 			"dependencies": [
-				"ext.recwiz.recorder"
-			],
-            "messages": [
-
+			    "ext.recordWizard.base",
+			    "ext.recordWizard.styles",
+				"ext.recordWizard.recorder"
+			]
+        },
+        "ext.recordWizard.base": {
+            "scripts": [
+                "modules/mw.recordWizard.js"
             ]
         },
-        "ext.recwiz.recorder": {
+        "ext.recordWizard.styles": {
+            "styles": [
+                "ext.recordWizard.css"
+            ]
+        },
+        "ext.recordWizard.recorder": {
             "scripts": [
-                "lingua-recorder/AudioRecord.js",
-                "lingua-recorder/LinguaRecorder.js"
+                "modules/mw.recordWizard.libs.js",
+                "lib/lingua-recorder/AudioRecord.js",
+                "lib/lingua-recorder/LinguaRecorder.js",
+                "lib/lingua-recorder/Studio.js",
+                "lib/lingua-recorder/WordListStudio.js"
             ],
+			"dependencies": [
+			    "ext.recordWizard.base"
+			],
             "localBasePath": "lib"
         }
     },
