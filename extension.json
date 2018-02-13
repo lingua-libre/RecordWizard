@@ -22,11 +22,13 @@
     "ResourceModules": {
         "ext.recordWizard": {
             "scripts": [
+                "modules/mw.recordWizard.Record.js",
                 "modules/mw.recordWizard.RecordWizard.js"
             ],
 			"dependencies": [
 			    "ext.recordWizard.base",
 			    "ext.recordWizard.styles",
+			    "ext.recordWizard.upload",
 				"ext.recordWizard.recorder"
 			]
         },
@@ -40,6 +42,15 @@
                 "ext.recordWizard.css"
             ]
         },
+        "ext.recordWizard.upload":{
+            "scripts": [
+                "modules/mw.recordWizard.UploadManager.js"
+            ],
+			"dependencies": [
+			    "mediawiki.api.upload",
+			    "ext.recordWizard.base"
+			]
+        },
         "ext.recordWizard.recorder": {
             "scripts": [
                 "modules/mw.recordWizard.libs.js",
@@ -48,9 +59,6 @@
                 "lib/lingua-recorder/Studio.js",
                 "lib/lingua-recorder/WordListStudio.js"
             ],
-			"dependencies": [
-			    "ext.recordWizard.base"
-			],
             "localBasePath": "lib"
         }
     },
