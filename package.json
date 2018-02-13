@@ -2,7 +2,7 @@
   "name": "RecordWizard",
   "version": "0.1.0",
   "scripts": {
-    "build-lib": ". ./bin/build.sh"
+    "postinstall": ". ./bin/build.sh"
   },
   "devDependencies": {
     "grunt": "0.4.5",
