@@ -28,8 +28,7 @@
 			"dependencies": [
 			    "ext.recordWizard.base",
 			    "ext.recordWizard.styles",
-			    "ext.recordWizard.upload",
-				"ext.recordWizard.recorder"
+				"ext.recordWizard.controller"
 			]
         },
         "ext.recordWizard.base": {
@@ -39,7 +38,7 @@
         },
         "ext.recordWizard.styles": {
             "styles": [
-                "ext.recordWizard.css"
+                "modules/ext.recordWizard.css"
             ]
         },
         "ext.recordWizard.upload":{
@@ -58,12 +57,35 @@
                 "lib/lingua-recorder/LinguaRecorder.js",
                 "lib/lingua-recorder/Studio.js",
                 "lib/lingua-recorder/WordListStudio.js"
+            ]
+        },
+        "ext.recordWizard.ui": {
+            "scripts": [
+                "modules/ui/mw.recordWizard.ui.js",
+                "modules/ui/mw.recordWizard.ui.Step.js",
+                "modules/ui/mw.recordWizard.ui.Tutorial.js",
+                "modules/ui/mw.recordWizard.ui.Studio.js"
             ],
-            "localBasePath": "lib"
+			"dependencies": [
+			    "oojs"
+			]
+        },
+        "ext.recordWizard.controller": {
+            "scripts": [
+                "modules/controller/mw.recordWizard.controller.js",
+                "modules/controller/mw.recordWizard.controller.Step.js",
+                "modules/controller/mw.recordWizard.controller.Tutorial.js",
+                "modules/controller/mw.recordWizard.controller.Studio.js"
+            ],
+			"dependencies": [
+			    "mediawiki.confirmCloseWindow",
+			    "oojs",
+			    "ext.recordWizard.ui"
+			]
         }
     },
     "ResourceFileModulePaths": {
-        "localBasePath": "modules",
+        "localBasePath": ".",
         "remoteExtPath": "RecordWizard"
     },
     "SpecialPages": {
