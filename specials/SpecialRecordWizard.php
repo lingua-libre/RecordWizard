@@ -84,39 +84,14 @@ class SpecialRecordWizard extends SpecialPage {
 	protected function getWizardHtml() {
 		global $wgExtensionAssetsPath;
 
-		return '<div id="wordliststudio" class="studio">
-	        <div class="studio-head">
-	            <div class="studio-rbutton">
-	                <button class="studio-rbutton-inner">
-	                </button>
-	            </div>
-	            <canvas class="studio-canvas" height="150"></canvas>
-	        </div>
-	        <ul class="studio-wordlist">
-	            <li>carotte</li>
-	            <li>patate</li>
-	            <li>groseille</li>
-	            <li>ananas</li>
-	            <li>chou rouge</li>
-	            <li>clémentine</li>
-	            <li>potiron</li>
-	            <li>poire</li>
-	            <li>framboise</li>
-	            <li>melon</li>
-	            <li>abricot</li>
-	            <li>poivron</li>
-	            <li>cerise</li>
-	            <li>rhubarbe</li>
-	            <li>artichaut</li>
-	            <li>mûre</li>
-	            <li>betterave</li>
-	            <li>mirabelle</li>
-	            <li>champignon</li>
-	            <li>fenouil</li>
-	            <li>myrtille</li>
-                <input placeholder="Ajouter un mot">
-	        </ul>
-            <canvas class="studio-wordcanvas hidden"></canvas>
-	    </div>';
+		return '<div id="mwe-recwiz">
+
+		            <ul class="mwe-recwiz-steps">
+                    </ul>
+
+                    <div id="mwe-recwiz-content">
+                    </div>
+
+		        </div>';
 	}
 }

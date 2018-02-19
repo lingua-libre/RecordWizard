@@ -152,3 +152,82 @@
     background-color: rgba(51, 153, 255, 0.5);
     border: 0;
 }
+
+
+/***********************************
+  Steps
+***********************************/
+
+/* wizard with arrows */
+
+.mwe-recwiz-steps {
+    background-color: white;
+    padding: 0.2em 0em 0.2em 0.2em;
+    margin-bottom: 15px;
+    display: flex;
+}
+
+.mwe-recwiz-steps li {
+    padding: 5px 12px 5px;
+    position: relative;
+    display: inline-block;
+    min-width: 75px;
+    margin-left: 7px;
+    text-align: center;
+    font-size: 14px;
+    color: #FFFFFF;
+    background: #8BBFE6;
+    flex: 1;
+}
+
+.mwe-recwiz-steps li:before {
+    width: 0;
+    height: 0;
+    border-top: 15px inset transparent;
+    border-bottom: 15px inset transparent;
+    border-left: 15px solid #FFFFFF;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+}
+
+
+.mwe-recwiz-steps li:after {
+    width: 0;
+    height: 0;
+    border-top: 15px inset transparent;
+    border-bottom: 15px inset transparent;
+    border-left: 15px solid #8BBFE6;
+    position: absolute;
+    content: "";
+    top: 0;
+    right: -15px;
+    z-index: 2;
+}
+
+.mwe-recwiz-steps li:first-child:before,
+.mwe-recwiz-steps li:last-child:after {
+    border: none;
+}
+
+.mwe-recwiz-steps li:first-child {
+    border-radius: 4px 0 0 4px;
+    margin-left: 0;
+}
+
+.mwe-recwiz-steps li:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.mwe-recwiz-steps li.mwe-recwiz-current {
+    background: #3E95D6;
+}
+
+.mwe-recwiz-steps li.mwe-recwiz-current:after {
+    border-left-color: #3E95D6 !important;
+}
+
+
+
+
