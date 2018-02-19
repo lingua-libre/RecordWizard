@@ -39,7 +39,7 @@
 	    this.steps.confirm.setPreviousStep( this.steps.studio );
 	    this.steps.confirm.setNextStep( this.steps.thanks );
 
-	    this.steps.thanks.setPreviousStep( this.steps.confirm );
+	    this.steps.thanks.setNextStep( this.steps.details );
 	};
 
 

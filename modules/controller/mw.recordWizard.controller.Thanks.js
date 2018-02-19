@@ -38,5 +38,17 @@
 		rw.controller.Step.prototype.movePrevious.call( this );
 	};
 
+	/**
+	 * Move to the next step. As the process is completely finished here, we let
+	 * the user restart the wizard with no data, as if he had just started.
+	 */
+	rw.controller.Thanks.prototype.moveNext = function () {
+		this.unload();
+
+		if ( this.nextStep ) {
+			this.nextStep.load( null, null );
+		}
+	};
+
 }( mediaWiki, mediaWiki.recordWizard, jQuery, OO ) );
 
