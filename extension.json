@@ -64,10 +64,24 @@
                 "modules/ui/mw.recordWizard.ui.js",
                 "modules/ui/mw.recordWizard.ui.Step.js",
                 "modules/ui/mw.recordWizard.ui.Tutorial.js",
-                "modules/ui/mw.recordWizard.ui.Studio.js"
+                "modules/ui/mw.recordWizard.ui.Details.js",
+                "modules/ui/mw.recordWizard.ui.License.js",
+                "modules/ui/mw.recordWizard.ui.Studio.js",
+                "modules/ui/mw.recordWizard.ui.Confirm.js",
+                "modules/ui/mw.recordWizard.ui.Thanks.js"
             ],
 			"dependencies": [
 			    "oojs"
+			],
+			"messages": [
+		        "mwe-recwiz-step-tutorial",
+                "mwe-recwiz-step-details",
+                "mwe-recwiz-step-license",
+                "mwe-recwiz-step-studio",
+                "mwe-recwiz-step-confirm",
+                "mwe-recwiz-step-thanks",
+                "mwe-recwiz-next",
+                "mwe-recwiz-previous"
 			]
         },
         "ext.recordWizard.controller": {
@@ -75,7 +89,11 @@
                 "modules/controller/mw.recordWizard.controller.js",
                 "modules/controller/mw.recordWizard.controller.Step.js",
                 "modules/controller/mw.recordWizard.controller.Tutorial.js",
-                "modules/controller/mw.recordWizard.controller.Studio.js"
+                "modules/controller/mw.recordWizard.controller.Details.js",
+                "modules/controller/mw.recordWizard.controller.License.js",
+                "modules/controller/mw.recordWizard.controller.Studio.js",
+                "modules/controller/mw.recordWizard.controller.Confirm.js",
+                "modules/controller/mw.recordWizard.controller.Thanks.js"
             ],
 			"dependencies": [
 			    "mediawiki.confirmCloseWindow",

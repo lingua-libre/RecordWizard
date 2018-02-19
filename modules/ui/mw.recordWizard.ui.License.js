@@ -1,32 +1,32 @@
 ( function ( mw, $, rw, OO ) {
 
 	/**
-	 * Represents the UI for the wizard's Studio step.
+	 * Represents the UI for the wizard's License step.
 	 *
-	 * @class rw.ui.Studio
+	 * @class rw.ui.License
 	 * @extends rw.ui.Step
 	 * @constructor
 	 */
-	rw.ui.Studio = function() {
+	rw.ui.License = function() {
 		var ui = this;
 
 		rw.ui.Step.call(
 			this,
-			'studio'
+			'license'
 		);
 
 		this.addPreviousButton();
 		this.addNextButton();
 	};
 
-	OO.inheritClass( rw.ui.Studio, rw.ui.Step );
+	OO.inheritClass( rw.ui.License, rw.ui.Step );
 
-	rw.ui.Studio.prototype.load = function ( metadatas, records ) {
+	rw.ui.License.prototype.load = function ( metadatas, records ) {
 		rw.ui.Step.prototype.load.call( this, metadatas, records );
 
 		this.$container.prepend(
 			$( '<div>' )
-				.attr( 'id', 'mwe-recwiz-studio' )
+				.attr( 'id', 'mwe-recwiz-license' )
 				.append(
 					$( '<div>' ).text( '' )
 				)

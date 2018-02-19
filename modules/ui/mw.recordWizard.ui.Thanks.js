@@ -1,32 +1,32 @@
 ( function ( mw, $, rw, OO ) {
 
 	/**
-	 * Represents the UI for the wizard's Studio step.
+	 * Represents the UI for the wizard's Thanks step.
 	 *
-	 * @class rw.ui.Studio
+	 * @class rw.ui.Thanks
 	 * @extends rw.ui.Step
 	 * @constructor
 	 */
-	rw.ui.Studio = function() {
+	rw.ui.Thanks = function() {
 		var ui = this;
 
 		rw.ui.Step.call(
 			this,
-			'studio'
+			'thanks'
 		);
 
 		this.addPreviousButton();
 		this.addNextButton();
 	};
 
-	OO.inheritClass( rw.ui.Studio, rw.ui.Step );
+	OO.inheritClass( rw.ui.Thanks, rw.ui.Step );
 
-	rw.ui.Studio.prototype.load = function ( metadatas, records ) {
+	rw.ui.Thanks.prototype.load = function ( metadatas, records ) {
 		rw.ui.Step.prototype.load.call( this, metadatas, records );
 
 		this.$container.prepend(
 			$( '<div>' )
-				.attr( 'id', 'mwe-recwiz-studio' )
+				.attr( 'id', 'mwe-recwiz-thanks' )
 				.append(
 					$( '<div>' ).text( '' )
 				)

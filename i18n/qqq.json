@@ -8,5 +8,14 @@
     "recordwizard": "The name of the extension display on Special:SpecialPages",
     "recordWizard-desc": "{{desc|name=RecordWizard|url=https://www.mediawiki.org/wiki/Extension:RecorderWizard}}",
     "special-recordWizard-intro": "Description appearing on top of <tvar|1>Special:{{ll|RecordWizard}}</>.",
-    "special-recordWizard-title": "Title of the special page Special:RecordWizard"
+    "special-recordWizard-title": "Title of the special page Special:RecordWizard",
+
+    "mwe-recwiz-step-tutorial": "Name of a step displayed in the arrow line.",
+    "mwe-recwiz-step-details": "Name of a step displayed in the arrow line.",
+    "mwe-recwiz-step-license": "Name of a step displayed in the arrow line.",
+    "mwe-recwiz-step-studio": "Name of a step displayed in the arrow line.",
+    "mwe-recwiz-step-confirm": "Name of a step displayed in the arrow line.",
+    "mwe-recwiz-step-thanks": "Name of a step displayed in the arrow line.",
+    "mwe-recwiz-next": "Text on the button to go to the next step.",
+    "mwe-recwiz-previous": "Text on the button to go to the previous step."
 }

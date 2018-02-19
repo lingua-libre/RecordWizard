@@ -8,5 +8,14 @@
     "recordwizard": "Record Wizard",
     "recordWizard-desc": "A user-friendly and automated tool to record audio pronunciation files.",
     "special-recordWizard-title": "Record Wizard",
-    "special-recordWizard-intro": "Record some audio pronunciation files."
+    "special-recordWizard-intro": "Record some audio pronunciation files.",
+
+    "mwe-recwiz-step-tutorial": "Tutorial",
+    "mwe-recwiz-step-details": "Details",
+    "mwe-recwiz-step-license": "License",
+    "mwe-recwiz-step-studio": "Studio",
+    "mwe-recwiz-step-confirm": "Confirm",
+    "mwe-recwiz-step-thanks": "Thanks",
+    "mwe-recwiz-next": "Next",
+    "mwe-recwiz-previous": "Previous"
 }

@@ -20,7 +20,7 @@
 			.hide();
 
 	    this.$arrow = $( '<li>' )
-	        .text( name )
+	        .text( mw.message( 'mwe-recwiz-step-' + name ).text() )
 	        .appendTo( '.mwe-recwiz-steps' );
 
 		$( '#mwe-recwiz-content' ).append( this.$container );
@@ -81,8 +81,8 @@
 		var ui = this;
 
 		this.nextButton = new OO.ui.ButtonWidget( {
-			classes: [ 'mwe-upwiz-button-next' ],
-			label: mw.message( 'mwe-upwiz-next' ).text(),
+			classes: [ 'mwe-recwiz-button-next' ],
+			label: mw.message( 'mwe-recwiz-next' ).text(),
 			flags: [ 'progressive', 'primary' ]
 		} ).on( 'click', function () {
 			ui.emit( 'next-step' );
@@ -100,8 +100,8 @@
 		var ui = this;
 
 		this.previousButton = new OO.ui.ButtonWidget( {
-			classes: [ 'mwe-upwiz-button-previous' ],
-			label: mw.message( 'mwe-upwiz-previous' ).text()
+			classes: [ 'mwe-recwiz-button-previous' ],
+			label: mw.message( 'mwe-recwiz-previous' ).text()
 		} ).on( 'click', function () {
 			ui.emit( 'previous-step' );
 		} );
