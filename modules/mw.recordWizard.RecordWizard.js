@@ -45,7 +45,8 @@
 
 	$( function () {
 	    // show page.
-	    new rw.RecordWizard( mw.config.get( 'RecordWizardConfig' ) );
+	    rw.uploadManager = new rw.UploadManager();
+	    rw.recordWizard = new rw.RecordWizard( mw.config.get( 'RecordWizardConfig' ) );
     } );
 
 

@@ -11,7 +11,6 @@
 	};
 
 	rw.UploadManager.prototype.uploadToStash = function( record ) {
-	    console.log( 'push' )
 	    var deferred = $.Deferred();
 
         this.uploadQueue.push( { 'type': '_doUploadToStash', 'record': record, 'deferred': deferred } );
@@ -24,7 +23,6 @@
 	};
 
 	rw.UploadManager.prototype.finishUpload = function( record ) {
-	    console.log( 'push' )
 	    var deferred = $.Deferred();
 
         this.uploadQueue.push( { 'type': '_doFinishUpload', 'record': record, 'deferred': deferred } );
@@ -52,8 +50,6 @@
 
 	    this.api.upload( record.getBlob(), { stash: true, filename: record.getFilename() } )
 	        .then( function( result ) {
-	            console.log( 'success' );
-	            console.log( result );
 	            record.setFilekey( result.upload.filekey );
 	            deferred.notify( 1 );
 	            deferred.resolve( result );
@@ -61,8 +57,6 @@
 	            uploadManager.next();
 
 	        } ).fail( function( errorCode, result ) {
-	            console.log( 'fail' );
-	            console.log( result );
 	            deferred.notify( 1 );
 	            deferred.reject( errorCode, result );
 

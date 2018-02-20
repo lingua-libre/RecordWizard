@@ -28,6 +28,7 @@
 			"dependencies": [
 			    "ext.recordWizard.base",
 			    "ext.recordWizard.styles",
+			    "ext.recordWizard.upload",
 				"ext.recordWizard.controller"
 			]
         },
@@ -98,6 +99,7 @@
 			"dependencies": [
 			    "mediawiki.confirmCloseWindow",
 			    "oojs",
+			    "ext.recordWizard.recorder",
 			    "ext.recordWizard.ui"
 			]
         }

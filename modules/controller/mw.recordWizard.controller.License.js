@@ -23,7 +23,7 @@
 	rw.controller.License.prototype.load = function ( metadatas, records ) {
 		rw.controller.Step.prototype.load.call( this, metadatas, records );
 
-        // XXX do stuff
+        this.metadatas[ 'license' ] = '{{cc-by-sa-4.0}}';
 	};
 
 	rw.controller.License.prototype.moveNext = function () {

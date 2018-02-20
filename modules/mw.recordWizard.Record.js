@@ -1,15 +1,17 @@
-/**
- * Object that represents the entire multi-step Record Wizard
- */
+// TODO: cleaner state managment
 ( function ( mw, rw, $ ) {
 
-	rw.Record = function ( audioBlob, textualElement ) {
-		this.file = audioBlob;
+	rw.Record = function ( textualElement ) {
+		this.file = null;
 		this.filename = null;
 		this.filekey = null;
 		this.textualElement = textualElement;
 
-		this.state = 'waiting';
+		this.state = 'null';
+	};
+
+	rw.Record.prototype.getTextualElement = function() {
+	    return this.textualElement;
 	};
 
 	rw.Record.prototype.getBlob = function() {
@@ -42,6 +44,18 @@
 	    this.file = null;
 	    this.state = 'uploaded';
 	};
+
+	rw.Record.prototype.setBlob = function( audioBlob ) {
+	    // Only allow re-recording an audio when it's not already uploaded
+	    if ( this.state !== 'uploaded' ) {
+	        this.state = 'waiting';
+	        this.file = audioBlob;
+	        return true;
+	    }
+	    return false;
+	};
+
+	rw.Record.prototype.remove = function () {};
 
 }( mediaWiki, mediaWiki.recordWizard, jQuery ) );
 

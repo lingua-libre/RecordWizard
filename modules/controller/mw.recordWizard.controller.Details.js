@@ -23,6 +23,19 @@
 	rw.controller.Details.prototype.load = function ( metadatas, records ) {
 		rw.controller.Step.prototype.load.call( this, metadatas, records );
 
+		this.metadatas = {
+		    recordType: 'words',
+		    words: [
+		        'patate',
+		        'chou',
+		        'carotte',
+		        'haricot vert',
+		        'poireau',
+		        'navet',
+		        'bétrave',
+		    ],
+		};
+
         // XXX do stuff
 	};
 
