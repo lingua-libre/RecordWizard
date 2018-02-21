@@ -91,7 +91,7 @@
         }
         record.setBlob( audioRecord.getBlob() );
 
-	    rw.uploadManager.uploadToStash( record )
+	    rw.requestQueue.push( record, 'uploadToStash' )
 	        .then( function() {
 	            controller.ui.setItemState( currentElement, 'stashed' );
 	        } )

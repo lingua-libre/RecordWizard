@@ -30,10 +30,10 @@
 		var controller = this;
 
 		for( var word in this.records ) {
-		    rw.uploadManager.finishUpload( this.records[ word ] )
+		    rw.requestQueue.push( this.records[ word ], 'finishUpload' )
 	        .then( function() {
 	            controller.ui.setItemState( word, 'success' );
-	            if ( rw.uploadManager.currentUploads === 0 ) {
+	            if ( rw.requestQueue.currentRequests === 0 ) {
 		            rw.controller.Step.prototype.moveNext.call( controller );
 	            }
 	        } )

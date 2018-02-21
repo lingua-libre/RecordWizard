@@ -45,9 +45,10 @@
         },
         "ext.recordWizard.upload":{
             "scripts": [
-                "modules/mw.recordWizard.UploadManager.js"
+                "modules/mw.recordWizard.RequestQueue.js"
             ],
 			"dependencies": [
+			    "mediawiki.api",
 			    "mediawiki.api.upload",
 			    "ext.recordWizard.base"
 			]

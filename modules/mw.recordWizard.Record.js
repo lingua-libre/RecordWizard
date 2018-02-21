@@ -58,10 +58,6 @@
 	    this.state = 'uploaded';
 	};
 
-	rw.Record.prototype.setState = function( state ) {
-	    this.state = state;
-	};
-
 	rw.Record.prototype.setError = function( error ) {
 	    this.error = error;
 	    this.state = 'error';
@@ -82,6 +78,47 @@
 	};
 
 	rw.Record.prototype.remove = function () {};
+
+    rw.Record.prototype.uploadToStash = function( api, deferred ) {
+        var record = this;
+        this.state = 'uploading';
+
+	    api.upload( this.file, {
+	        stash: true,
+	        filename: this.getFilename()
+	    } ).then( function( result ) {
+            record.setFilekey( result.upload.filekey );
+            deferred.notify( 1 );
+            deferred.resolve( result );
+        } ).fail( function( errorCode, result ) {
+            deferred.notify( 1 );
+            deferred.reject( errorCode, result );
+        } );
+	};
+
+	rw.Record.prototype.finishUpload = function( api, deferred ) {
+        var record = this;
+        this.state = 'finalizing';
+
+        // TODO: switch from upload to upload-to-commons, if available
+        // use the config to detect it
+        api.postWithToken( 'csrf', {
+            action: 'upload-to-commons',
+            format: 'json',
+            filekey: this.getFilekey(),
+            filename: this.getFilename(),
+            text: this.getText(),
+            removeafterupload: true,
+            ignorewarnings: true, //TODO: manage warnings
+        } ).then( function( result ) {
+            record.finished( result['upload-to-commons'].oauth.upload.imageinfo );
+            deferred.notify( 1 );
+            deferred.resolve( result );
+        } ).fail( function( errorCode, result ) {
+            deferred.notify( 1 );
+            deferred.reject( errorCode, result );
+        } );
+	};
 
 }( mediaWiki, mediaWiki.recordWizard, jQuery ) );
 
