@@ -18,6 +18,13 @@
 	    return this.file;
 	};
 
+	rw.Record.prototype.getStashedFileUrl = function() {
+	    if ( this.filekey !== null && ( this.state === 'stashed' || this.state === 'uploaded' ) ) {
+	        return mw.util.getUrl( 'Special:UploadStash/file/' + this.filekey );
+	    }
+	    return null;
+	};
+
 	rw.Record.prototype.getFilename = function() {
 	    if ( this.filename === null ) {
 	        // TODO: add language name/code

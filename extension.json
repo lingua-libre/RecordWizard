@@ -29,7 +29,8 @@
 			    "ext.recordWizard.base",
 			    "ext.recordWizard.styles",
 			    "ext.recordWizard.upload",
-				"ext.recordWizard.controller"
+				"ext.recordWizard.controller",
+				"mediawiki.util"
 			]
         },
         "ext.recordWizard.base": {

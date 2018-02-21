@@ -123,6 +123,7 @@
 
 	rw.controller.Studio.prototype.moveNext = function () {
 		// TODO: ask for confirmation if all words are not recorded
+		this.recorder.cancel();
 
 		rw.controller.Step.prototype.moveNext.call( this );
 	};

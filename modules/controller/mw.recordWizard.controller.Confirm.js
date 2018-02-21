@@ -23,13 +23,25 @@
 	rw.controller.Confirm.prototype.load = function ( metadatas, records ) {
 		rw.controller.Step.prototype.load.call( this, metadatas, records );
 
-        // XXX do stuff
+
 	};
 
 	rw.controller.Confirm.prototype.moveNext = function () {
-		// XXX do stuff
+		var controller = this;
 
-		rw.controller.Step.prototype.moveNext.call( this );
+		for( var i=0; i < this.records.length; i++ ) {
+		    rw.uploadManager.finishUpload( this.records[ i ] )
+	        .then( function() {
+	            controller.ui.setItemState( i, 'success' );
+	            if ( rw.uploadManager.currentUploads === 0 ) {
+		            rw.controller.Step.prototype.moveNext.call( controller );
+	            }
+	        } )
+	        .fail( function() {
+	            controller.ui.setItemState( i, 'error' );
+	        } );
+		}
+
 	};
 
 	rw.controller.Confirm.prototype.movePrevious = function () {

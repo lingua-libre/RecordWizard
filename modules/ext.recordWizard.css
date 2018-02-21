@@ -1,3 +1,7 @@
+.mwe-recwiz-button-next {
+    float: right;
+}
+
 .recordWizard-title {
 	font-size: 1.1em;
 }
@@ -107,15 +111,15 @@
     border: 1px dashed black;
 }
 
-.studio-wordlist li.studio-wordlist-success {
+.studio-wordlist li.studio-wordlist-success, li.mwe-recwiz-success {
     background-color: olivedrab;
 }
 
-.studio-wordlist li.studio-wordlist-waiting {
+.studio-wordlist li.studio-wordlist-waiting, li.mwe-recwiz-waiting {
     background-color: #FF3399;
 }
 
-.studio-wordlist li.studio-wordlist-error {
+.studio-wordlist li.studio-wordlist-error, li.mwe-recwiz-error {
     background-color: tomato;
 }
 
