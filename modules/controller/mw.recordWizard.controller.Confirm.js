@@ -22,8 +22,6 @@
 
 	rw.controller.Confirm.prototype.load = function ( metadatas, records ) {
 		rw.controller.Step.prototype.load.call( this, metadatas, records );
-
-
 	};
 
 	rw.controller.Confirm.prototype.moveNext = function () {

@@ -69,6 +69,26 @@
                 controller.ui.setSelectedItem( word );
             }
         } );
+
+        this.ui.on( 'wordinput-validate', function( word ) {
+            if ( controller.metadatas.words.indexOf( word ) !== -1 ) {
+                return;
+            }
+
+            controller.metadatas.words.push( word );
+            controller.ui.addWord( word );
+
+            // Move the cursor to the new item only if all the items (except the
+            // last one, the one we've just added) have already been recorded
+            for ( var i=0; i < controller.metadatas.words.length-1; i++ ) {
+                if ( controller.records[ controller.metadatas.words[ i ] ] === undefined ) {
+                    return;
+                }
+            }
+            controller.currentWord = word;
+            controller.ui.setSelectedItem( word );
+
+        } );
 	};
 
 	rw.controller.Studio.prototype.unload = function () {

@@ -20,6 +20,7 @@
 	OO.inheritClass( rw.ui.Studio, rw.ui.Step );
 
 	rw.ui.Studio.prototype.load = function ( metadatas, records ) {
+	    var ui = this;
 		rw.ui.Step.prototype.load.call( this, metadatas, records );
 
         this.generateUI();
@@ -27,6 +28,13 @@
         for ( word in this.records ) {
             this.setItemState( word, this.records[ word ].getState() );
         }
+
+        this.$wordInput.keypress( function( e ) {
+            if ( e.which === 13 && ui.$wordInput.val().trim() !== '' ) {
+                ui.emit( 'wordinput-validate', ui.$wordInput.val().trim() );
+                ui.$wordInput.val( '' );
+            }
+        } );
 	};
 
 	rw.ui.Studio.prototype.generateUI = function() {
@@ -43,8 +51,9 @@
 		    this.recordItems[ this.metadatas.words[ i ] ] = $( '<li>' ).text( this.metadatas.words[ i ] );
 		    this.$list.append( this.recordItems[ this.metadatas.words[ i ] ] );
 		}
+		this.$wordInput = $( '<input>' ).attr( 'placeholder', mw.message( 'mwe-recwiz-studio-input-placeholder' ).text() );
 
-        this.$studio.append( this.$head ).append( this.$list );
+        this.$studio.append( this.$head ).append( this.$list.append( this.$wordInput ) );
         this.$container.prepend( this.$studio );
 	};
 
@@ -55,9 +64,11 @@
             ui.emit( 'studiobutton-click' );
         } );
 
-		this.$list.children().click( function() {
-		    var word = $( this ).text();
-		    ui.emit( 'item-click', word );
+		this.$list.click( function( event ) {
+		    if ( event.target.nodeName === 'LI' ) {
+		        var word = $( event.target ).text();
+		        ui.emit( 'item-click', word );
+		    }
 		} );
 
         this.$head.addClass( 'studio-ready' );
@@ -96,6 +107,10 @@
 	        this.recordItems[ word ].removeClass();
 	        this.recordItems[ word ].addClass( 'mwe-recwiz-word-'+state );
 	    }
+	};
+	rw.ui.Studio.prototype.addWord = function( word ) {
+        this.recordItems[ word ] = $( '<li>' ).text( word );
+        this.$wordInput.before( this.recordItems[ word ] );
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );
