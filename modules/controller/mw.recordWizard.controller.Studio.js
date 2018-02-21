@@ -71,6 +71,12 @@
         } );
 	};
 
+	rw.controller.Studio.prototype.unload = function () {
+		this.ui.off( 'studiobutton-click' );
+		this.ui.off( 'element-click' );
+		rw.controller.Step.prototype.unload.call( this );
+	};
+
 	rw.controller.Studio.prototype.onStop = function( audioRecord ) {
 	    var record,
 	        currentElement = this.metadatas.words[ this.currentIndex ],
