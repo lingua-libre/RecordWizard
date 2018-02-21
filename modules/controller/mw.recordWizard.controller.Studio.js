@@ -56,7 +56,7 @@
 
         } );
 
-        this.ui.on( 'element-click', function( word ) {
+        this.ui.on( 'item-click', function( word ) {
             controller.recorder.cancel();
 
             controller.currentWord = word;
@@ -73,32 +73,32 @@
 
 	rw.controller.Studio.prototype.unload = function () {
 		this.ui.off( 'studiobutton-click' );
-		this.ui.off( 'element-click' );
+		this.ui.off( 'item-click' );
 		rw.controller.Step.prototype.unload.call( this );
 	};
 
 	rw.controller.Studio.prototype.onStop = function( audioRecord ) {
 	    var record,
-	        currentElement = this.currentWord,
+	        currentWord = this.currentWord,
 	        controller = this;
 
-        if ( this.records[ currentElement ] !== undefined ) {
-            record = this.records[ currentElement ];
+        if ( this.records[ currentWord ] !== undefined ) {
+            record = this.records[ currentWord ];
         }
         else {
-            record = new rw.Record( currentElement );
-	        this.records[ currentElement ] = record;
+            record = new rw.Record( currentWord );
+	        this.records[ currentWord ] = record;
         }
         record.setBlob( audioRecord.getBlob() );
 
 	    rw.requestQueue.push( record, 'uploadToStash' )
 	        .then( function() {
-	            controller.ui.setItemState( currentElement, 'stashed' );
+	            controller.ui.setItemState( currentWord, 'stashed' );
 	        } )
 	        .fail( function() {
-	            controller.ui.setItemState( currentElement, 'error' );
+	            controller.ui.setItemState( currentWord, 'error' );
 	        } );
-	    this.ui.setItemState( currentElement, 'uploading' );
+	    this.ui.setItemState( currentWord, 'uploading' );
 
         if ( ! this.startNextRecord() ) {
             this.isRecording = false;

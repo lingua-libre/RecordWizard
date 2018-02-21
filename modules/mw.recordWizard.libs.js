@@ -1,8 +1,5 @@
-( function () {
-	/**
-	 * @class mw.recordWizard
-	 * @singleton
-	 */
-	mw.recordWizard.libs = {
+( function ( rw ) {
+	// create RecordWizard libs namespace
+	rw.libs = {
 	};
-}() );
+}( mediaWiki.recordWizard ) );

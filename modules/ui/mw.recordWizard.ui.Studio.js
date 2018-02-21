@@ -57,7 +57,7 @@
 
 		this.$list.children().click( function() {
 		    var word = $( this ).text();
-		    ui.emit( 'element-click', word );
+		    ui.emit( 'item-click', word );
 		} );
 
         this.$head.addClass( 'studio-ready' );
@@ -83,18 +83,18 @@
 
 	};
 
-	rw.ui.Studio.prototype.setSelectedItem = function( element ) {
+	rw.ui.Studio.prototype.setSelectedItem = function( word ) {
 	    $( '.studio-wordlist-selected' ).removeClass( 'studio-wordlist-selected' );
-	    if ( this.recordItems[ element ] !== undefined ) {
-	        this.recordItems[ element ].addClass( 'studio-wordlist-selected' );
+	    if ( this.recordItems[ word ] !== undefined ) {
+	        this.recordItems[ word ].addClass( 'studio-wordlist-selected' );
 	    }
 	};
 
-	rw.ui.Studio.prototype.setItemState = function( element, state ) {
+	rw.ui.Studio.prototype.setItemState = function( word, state ) {
 	    // TODO: use a correlation table to asociate state and HTML class
-	    if ( this.recordItems[ element ] !== undefined ) {
-	        this.recordItems[ element ].removeClass();
-	        this.recordItems[ element ].addClass( 'mwe-recwiz-word-'+state );
+	    if ( this.recordItems[ word ] !== undefined ) {
+	        this.recordItems[ word ].removeClass();
+	        this.recordItems[ word ].addClass( 'mwe-recwiz-word-'+state );
 	    }
 	};
 
