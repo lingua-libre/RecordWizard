@@ -87,12 +87,12 @@
 
 	    rw.uploadManager.uploadToStash( record )
 	        .then( function() {
-	            controller.ui.setItemState( currentElement, 'success' );
+	            controller.ui.setItemState( currentElement, 'stashed' );
 	        } )
 	        .fail( function() {
 	            controller.ui.setItemState( currentElement, 'error' );
 	        } );
-	    this.ui.setItemState( currentElement, 'waiting' );
+	    this.ui.setItemState( currentElement, 'uploading' );
 
         if ( ! this.startNextRecord() ) {
             this.isRecording = false;

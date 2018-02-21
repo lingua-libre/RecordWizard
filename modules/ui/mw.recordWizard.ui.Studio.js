@@ -94,7 +94,7 @@
 	    // TODO: use a correlation table to asociate state and HTML class
 	    if ( this.recordItems[ element ] !== undefined ) {
 	        this.recordItems[ element ].removeClass();
-	        this.recordItems[ element ].addClass( 'studio-wordlist-'+state );
+	        this.recordItems[ element ].addClass( 'mwe-recwiz-word-'+state );
 	    }
 	};
 

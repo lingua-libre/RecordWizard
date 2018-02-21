@@ -111,15 +111,15 @@
     border: 1px dashed black;
 }
 
-.studio-wordlist li.studio-wordlist-success, li.mwe-recwiz-success {
+.studio-wordlist li.mwe-recwiz-word-stashed {
     background-color: olivedrab;
 }
 
-.studio-wordlist li.studio-wordlist-waiting, li.mwe-recwiz-waiting {
+.studio-wordlist li.mwe-recwiz-word-uploading {
     background-color: #FF3399;
 }
 
-.studio-wordlist li.studio-wordlist-error, li.mwe-recwiz-error {
+.studio-wordlist li.mwe-recwiz-word-error {
     background-color: tomato;
 }
 
