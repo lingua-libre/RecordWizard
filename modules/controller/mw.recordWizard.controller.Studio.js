@@ -56,38 +56,32 @@
 
         } );
 
-        this.ui.on( 'element-click', function( index ) {
-            console.log( index );
+        this.ui.on( 'element-click', function( word ) {
             controller.recorder.cancel();
 
-            controller.currentIndex = index;
+            controller.currentIndex = controller.metadatas.words.indexOf( word );
 
-            this.currentIndex = index;
             if ( controller.isRecording ) {
                 controller.isRecording = false;
                 controller.startNextRecord();
             }
             else {
-                controller.ui.setSelectedItem( index );
+                controller.ui.setSelectedItem( word );
             }
         } );
 	};
 
 	rw.controller.Studio.prototype.onStop = function( audioRecord ) {
-	    var currentElement = this.metadatas.words[ this.currentIndex ],
-	        record = null,
+	    var record,
+	        currentElement = this.metadatas.words[ this.currentIndex ],
 	        controller = this;
 
-        // TODO: store Records in an associative table to be able to find
-        // duplicate without having to search through the whole records list
-        for ( var i=0; i < this.records.length; i++ ) {
-            if ( this.records[ i ].getTextualElement() === currentElement ) {
-                record = this.records[ i ];
-            }
+        if ( this.records[ currentElement ] !== undefined ) {
+            record = this.records[ currentElement ];
         }
-        if ( record === null ) {
+        else {
             record = new rw.Record( currentElement );
-	        this.addRecord( record );
+	        this.records[ currentElement ] = record;
         }
         record.setBlob( audioRecord.getBlob() );
 
@@ -117,7 +111,7 @@
 	    this.recorder.start();
 	    this.isRecording = true;
 
-	    this.ui.setSelectedItem( this.currentIndex );
+	    this.ui.setSelectedItem( this.metadatas.words[ this.currentIndex ] );
 	    return true;
 	};
 

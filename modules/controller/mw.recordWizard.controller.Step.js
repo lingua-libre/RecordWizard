@@ -77,8 +77,8 @@
 
 		this.emit( 'load' );
 
-		this.records = records || [];
-		this.metadatas = metadatas || [];
+		this.records = records || {};
+		this.metadatas = metadatas || {};
 
 		// prevent the window from being closed as long as we have data
 		this.allowCloseWindow = mw.confirmCloseWindow( {
@@ -140,15 +140,6 @@
 	 */
 	rw.controller.Step.prototype.hasData = function () {
 		return this.records.length !== 0;
-	};
-
-	/**
-	 * Add an upload.
-	 *
-	 * @param {mw.UploadWizardUpload} upload
-	 */
-	rw.controller.Step.prototype.addRecord = function ( record ) {
-		this.records.push( record );
 	};
 
 	/**

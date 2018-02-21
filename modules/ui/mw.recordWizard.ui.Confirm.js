@@ -25,11 +25,11 @@
 		rw.ui.Step.prototype.load.call( this, metadatas, records );
 
 		this.$list = $( '<ul>' );
-		for( var i=0; i < this.records.length; i++ ) {
+		for( var word in this.records ) {
 		    var $audio = $( '<audio>' )
-		        .attr( 'src', this.records[ i ].getStashedFileUrl() )
+		        .attr( 'src', this.records[ word ].getStashedFileUrl() )
 		        .attr( 'controls', true );
-		    var $li = $( '<li>' ).text( this.records[ i ].getTextualElement() )
+		    var $li = $( '<li>' ).text( word )
 		    this.$list.append( $li.prepend( $audio ) );
 		}
 

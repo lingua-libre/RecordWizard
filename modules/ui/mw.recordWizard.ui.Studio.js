@@ -34,8 +34,10 @@
             .append( $( '<canvas>' ).addClass( 'studio-canvas' ).attr( 'height', '150' ) );
 
 		this.$list = $( '<ul>' ).addClass( 'studio-wordlist' );
+		this.recordItems = {};
 		for( var i=0; i < this.metadatas.words.length; i++ ) {
-		    this.$list.append( $( '<li>' ).text( this.metadatas.words[ i ] ) );
+		    this.recordItems[ this.metadatas.words[ i ] ] = $( '<li>' ).text( this.metadatas.words[ i ] );
+		    this.$list.append( this.recordItems[ this.metadatas.words[ i ] ] );
 		}
 
         this.$studio.append( this.$head ).append( this.$list );
@@ -50,9 +52,10 @@
         } );
 
 		this.$list.children().click( function() {
-		    var index = ui.$list.children().index( $( this ) );
-		    ui.emit( 'element-click', index );
+		    var word = $( this ).text();
+		    ui.emit( 'element-click', word );
 		} );
+
         this.$head.addClass( 'studio-ready' );
 	};
 
@@ -76,24 +79,19 @@
 
 	};
 
-	rw.ui.Studio.prototype.setSelectedItem = function( currentIndex ) {
+	rw.ui.Studio.prototype.setSelectedItem = function( element ) {
 	    $( '.studio-wordlist-selected' ).removeClass( 'studio-wordlist-selected' );
-	    this.$list.children().eq( currentIndex ).addClass( 'studio-wordlist-selected' );
+	    if ( this.recordItems[ element ] !== undefined ) {
+	        this.recordItems[ element ].addClass( 'studio-wordlist-selected' );
+	    }
 	};
 
 	rw.ui.Studio.prototype.setItemState = function( element, state ) {
-	    // We use here the text as reference instead of the index, as this callback
-	    // can be called after a long time, some changes in the words order
-	    // could have taken place in between
-	    // TODO: use the metadatas.words instead to get the item index
 	    // TODO: use a correlation table to asociate state and HTML class
-	    this.$list.children().each( function() {
-	        if ( $( this ).text() === element ) {
-	            $( this ).removeClass();
-	            $( this ).addClass( 'studio-wordlist-'+state );
-	            return false;
-	        }
-	    } );
+	    if ( this.recordItems[ element ] !== undefined ) {
+	        this.recordItems[ element ].removeClass();
+	        this.recordItems[ element ].addClass( 'studio-wordlist-'+state );
+	    }
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

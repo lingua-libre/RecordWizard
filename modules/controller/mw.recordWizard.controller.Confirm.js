@@ -29,16 +29,16 @@
 	rw.controller.Confirm.prototype.moveNext = function () {
 		var controller = this;
 
-		for( var i=0; i < this.records.length; i++ ) {
-		    rw.uploadManager.finishUpload( this.records[ i ] )
+		for( var word in this.records ) {
+		    rw.uploadManager.finishUpload( this.records[ word ] )
 	        .then( function() {
-	            controller.ui.setItemState( i, 'success' );
+	            controller.ui.setItemState( word, 'success' );
 	            if ( rw.uploadManager.currentUploads === 0 ) {
 		            rw.controller.Step.prototype.moveNext.call( controller );
 	            }
 	        } )
 	        .fail( function() {
-	            controller.ui.setItemState( i, 'error' );
+	            controller.ui.setItemState( word, 'error' );
 	        } );
 		}
 
