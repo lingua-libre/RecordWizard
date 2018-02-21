@@ -18,6 +18,10 @@
 	    return this.file;
 	};
 
+	rw.Record.prototype.getState = function() {
+	    return this.state;
+	};
+
 	rw.Record.prototype.getStashedFileUrl = function() {
 	    if ( this.filekey !== null && ( this.state === 'stashed' || this.state === 'uploaded' ) ) {
 	        return mw.util.getUrl( 'Special:UploadStash/file/' + this.filekey );

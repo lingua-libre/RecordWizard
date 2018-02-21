@@ -23,6 +23,10 @@
 		rw.ui.Step.prototype.load.call( this, metadatas, records );
 
         this.generateUI();
+
+        for ( word in this.records ) {
+            this.setItemState = function( word, this.records.getState() )
+        }
 	};
 
 	rw.ui.Studio.prototype.generateUI = function() {
