@@ -25,7 +25,7 @@
         this.generateUI();
 
         for ( word in this.records ) {
-            this.setItemState = function( word, this.records.getState() )
+            this.setItemState( word, this.records[ word ].getState() );
         }
 	};
 

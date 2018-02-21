@@ -47,6 +47,7 @@
 
 	rw.UploadManager.prototype._doUploadToStash = function( deferred, record ) {
         var uploadManager = this;
+        record.setState( 'uploading' );
 
 	    this.api.upload( record.getBlob(), { stash: true, filename: record.getFilename() } )
 	        .then( function( result ) {
@@ -66,8 +67,10 @@
 
 	rw.UploadManager.prototype._doFinishUpload = function( deferred, record ) {
         var uploadManager = this;
+        record.setState( 'finalizing' );
 
         // TODO: switch from upload to upload-to-commons, if available
+        // use the config to detect it
         this.api.postWithToken( 'csrf', {
             action: 'upload-to-commons',
             format: 'json',
@@ -80,7 +83,7 @@
             .then( function( result ) {
 	            console.log( 'success' );
 	            console.log( result );
-	            record.finished();
+	            record.finished( result['upload-to-commons'].oauth.upload.imageinfo );
 	            deferred.notify( 1 );
 	            deferred.resolve( result );
 
