@@ -32,7 +32,7 @@
         } );
         console.log( this.recorder );
         this.isRecording = false;
-        this.currentIndex = 0;
+        this.currentWord = this.metadatas.words[ 0 ];
 
         this.recorder.on( 'ready', this.ui.onReady.bind( this.ui ) );
         this.recorder.on( 'started', this.ui.onStart.bind( this.ui ) );
@@ -59,7 +59,7 @@
         this.ui.on( 'element-click', function( word ) {
             controller.recorder.cancel();
 
-            controller.currentIndex = controller.metadatas.words.indexOf( word );
+            controller.currentWord = word;
 
             if ( controller.isRecording ) {
                 controller.isRecording = false;
@@ -79,7 +79,7 @@
 
 	rw.controller.Studio.prototype.onStop = function( audioRecord ) {
 	    var record,
-	        currentElement = this.metadatas.words[ this.currentIndex ],
+	        currentElement = this.currentWord,
 	        controller = this;
 
         if ( this.records[ currentElement ] !== undefined ) {
@@ -107,17 +107,29 @@
 	};
 
 	rw.controller.Studio.prototype.startNextRecord = function () {
-	    if ( this.isRecording ) {
-	        this.currentIndex++;
-	    }
-	    if ( this.metadatas.words.length === 0 || this.currentIndex > this.metadatas.words.length-1 ) {
+	    var index = this.metadatas.words.indexOf( this.currentWord );
+	    if ( index < 0 ) {
 	        return false;
+	    }
+
+	    if ( this.isRecording ) {
+	        var newWordAvailable = false;
+	        for( var i=index+1; i < this.metadatas.words.length; i++ ) {
+	            if ( this.records[ this.metadatas.words[ i ] ] === undefined ) {
+	                newWordAvailable = true;
+	                this.currentWord = this.metadatas.words[ i ];
+	                break;
+	            }
+	        }
+	        if ( !newWordAvailable ) {
+	            return false;
+	        }
 	    }
 
 	    this.recorder.start();
 	    this.isRecording = true;
 
-	    this.ui.setSelectedItem( this.metadatas.words[ this.currentIndex ] );
+	    this.ui.setSelectedItem( this.currentWord );
 	    return true;
 	};
 
