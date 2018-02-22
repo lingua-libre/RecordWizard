@@ -128,30 +128,31 @@
 
         this.continueLabel.toggle( true );
         if ( this.metadatas.statesCount.stashed > 0 ) {
+	        // all ok
+	        this.retryButton.toggle( false );
 	        this.continueButton.toggle( true );
+	        this.continueLabel.setLabel( mw.message( 'mwe-recwiz-allsucceeded' ).text() );
+	        this.continueButton.setLabel( mw.message( 'mwe-recwiz-continue' ).text() );
 	    }
-	    if( this.metadatas.statesCount.error > 0 ) {
+        if ( this.metadatas.statesCount.error > 0 ) {
 	        this.retryButton.toggle( true );
+
+	        if ( this.metadatas.statesCount.stashed > 0 ) {
+	            // some ok
+                this.continueLabel.setLabel( mw.message( 'mwe-recwiz-somefailed' ).text() );
+	            this.continueButton.setLabel( mw.message( 'mwe-recwiz-continueanyway' ).text() );
+	        }
+	        else {
+	            // none ok
+	            this.continueButton.toggle( false );
+                this.continueLabel.setLabel( mw.message( 'mwe-recwiz-allfailed' ).text() );
+	        }
 	    }
 
 	    if ( this.metadatas.statesCount.uploading > 0 ) {
 	        this.continueLabel.setLabel( mw.message( 'mwe-recwiz-pendinguplads' ).text() );
-		    return;
 	    }
 
-	    if ( this.metadatas.statesCount.error === 0 ) {
-	        this.retryButton.toggle( false );
-	        this.continueLabel.setLabel( mw.message( 'mwe-recwiz-allsucceeded' ).text() );
-	        this.continueButton.setLabel( mw.message( 'mwe-recwiz-continue' ).text() );
-	    }
-	    else if ( this.metadatas.statesCount.stashed === 0 ) {
-	        this.continueButton.toggle( false );
-	        this.continueLabel.setLabel( mw.message( 'mwe-recwiz-allfailed' ).text() );
-	    }
-	    else {
-	        this.continueLabel.setLabel( mw.message( 'mwe-recwiz-somefailed' ).text() );
-	        this.continueButton.setLabel( mw.message( 'mwe-recwiz-continueanyway' ).text() );
-	    }
 	};
 
 	rw.ui.Studio.prototype.updateCounter = function() {

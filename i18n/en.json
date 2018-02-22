@@ -25,7 +25,7 @@
     "mwe-recwiz-continueanyway": "Continue anyway",
     "mwe-recwiz-retry": "retry failed upload",
 
-    "mwe-recwiz-pendinguplads": "",
+    "mwe-recwiz-pendinguplads": "...Uploading...",
     "mwe-recwiz-allsucceeded": "All uploads were successful!",
     "mwe-recwiz-somefailed": "Some upload failed.",
     "mwe-recwiz-allfailed": "None of the uploads were successful."

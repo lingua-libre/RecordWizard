@@ -63,6 +63,13 @@
 	    this.state = 'error';
 	};
 
+	rw.Record.prototype.hasFailed = function() {
+	    if ( this.state === 'error' ) {
+	        return true;
+	    }
+	    return false;
+	};
+
 	rw.Record.prototype.setBlob = function( audioBlob ) {
 	    // Only allow re-recording an audio when it's not already uploaded
 	    if ( this.state !== 'uploaded' && this.state !== 'finalizing' ) {

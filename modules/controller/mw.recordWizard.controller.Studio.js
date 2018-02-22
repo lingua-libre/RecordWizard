@@ -38,7 +38,6 @@
             'autoStop': true,
             'onSaturate': 'discard'
         } );
-        console.log( this.recorder );
         this.isRecording = false;
         this.currentWord = this.metadatas.words[ 0 ];
 
@@ -97,6 +96,14 @@
             controller.ui.setSelectedItem( word );
 
         } );
+
+        this.ui.on( 'retry', function( word ) {
+            for ( word in controller.records ) {
+                if ( controller.records[ word ].hasFailed() ) {
+                    controller.upload( word );
+                }
+            }
+        } );
 	};
 
 	rw.controller.Studio.prototype.unload = function () {
@@ -106,32 +113,35 @@
 	};
 
 	rw.controller.Studio.prototype.onStop = function( audioRecord ) {
-	    var record,
-	        currentWord = this.currentWord,
-	        controller = this;
+	    var currentWord = this.currentWord;
 
-	    this.switchState( currentWord, 'uploading' );
-        if ( this.records[ currentWord ] !== undefined ) {
-            record = this.records[ currentWord ];
+        if ( this.records[ currentWord ] === undefined ) {
+	        this.records[ currentWord ] = new rw.Record( currentWord );
         }
-        else {
-            record = new rw.Record( currentWord );
-	        this.records[ currentWord ] = record;
-        }
-        record.setBlob( audioRecord.getBlob() );
 
-	    rw.requestQueue.push( record, 'uploadToStash' )
-	        .then( function() {
-	            controller.switchState( currentWord, 'stashed' );
-	        } )
-	        .fail( function() {
-	            controller.switchState( currentWord, 'error' );
-	        } );
+	    this.upload( currentWord, audioRecord.getBlob() );
 
         if ( ! this.startNextRecord() ) {
             this.isRecording = false;
 	        this.ui.onStop();
 	    }
+	};
+
+	rw.controller.Studio.prototype.upload = function( word, blob ) {
+	    var controller = this;
+
+        this.switchState( word, 'uploading' );
+
+        if ( blob !== undefined ) {
+            this.records[ word ].setBlob( blob );
+        }
+        rw.requestQueue.push( this.records[ word ], 'uploadToStash' )
+            .then( function() {
+                controller.switchState( word, 'stashed' );
+            } )
+            .fail( function() {
+                controller.switchState( word, 'error' );
+            } );
 	};
 
 	rw.controller.Studio.prototype.startNextRecord = function () {
@@ -166,7 +176,6 @@
             this.metadatas.statesCount.uploading--;
         }
         else {
-            console.log( state )
             if( this.records[ word ] !== undefined ) {
                 this.metadatas.statesCount[ this.records[ word ].getState() ]--;
             }
