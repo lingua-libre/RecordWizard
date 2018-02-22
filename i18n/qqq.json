@@ -28,5 +28,9 @@
     "mwe-recwiz-pendinguplads": "",
     "mwe-recwiz-allsucceeded": "",
     "mwe-recwiz-somefailed": "",
-    "mwe-recwiz-allfailed": ""
+    "mwe-recwiz-allfailed": "",
+
+    "mwe-recwiz-warning-wordsleft": "",
+    "mwe-recwiz-warning-pendinguploads": "",
+    "mwe-recwiz-warning-faileduploads": ""
 }

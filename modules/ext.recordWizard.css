@@ -32,7 +32,7 @@
 
 .studio-rbutton {
     position: relative;
-    z-index: 1000;
+    z-index: 4;
     margin: auto;
     border: 10px solid #404040;
     border-radius: 50%;

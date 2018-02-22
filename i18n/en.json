@@ -28,5 +28,9 @@
     "mwe-recwiz-pendinguplads": "...Uploading...",
     "mwe-recwiz-allsucceeded": "All uploads were successful!",
     "mwe-recwiz-somefailed": "Some upload failed.",
-    "mwe-recwiz-allfailed": "None of the uploads were successful."
+    "mwe-recwiz-allfailed": "None of the uploads were successful.",
+
+    "mwe-recwiz-warning-wordsleft": "There are some words left, are you sure you want to stop there?",
+    "mwe-recwiz-warning-pendinguploads": "All your records have not been uploaded yet, do you want to abort them?",
+    "mwe-recwiz-warning-faileduploads": "Some of your records have not been uploaded due to a network error, do you want to remove them?"
 }

@@ -84,7 +84,10 @@
 	    return false;
 	};
 
-	rw.Record.prototype.remove = function () {};
+	rw.Record.prototype.remove = function () {
+	    // TODO: abort request if uploading
+        this.file = null;
+	};
 
     rw.Record.prototype.uploadToStash = function( api, deferred ) {
         var record = this;

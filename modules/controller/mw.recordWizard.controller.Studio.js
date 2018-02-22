@@ -186,13 +186,65 @@
         this.ui.updateCounter();
     };
 
-	rw.controller.Studio.prototype.removeFailedRecords = function() {
-	    //TODO:
+	rw.controller.Studio.prototype.removePendingRecords = function() {
+	    for ( word in this.records ) {
+	        if ( this.records[ word ].getState() === 'uploading' ) {
+	            this.records[ word ].remove();
+	            delete this.records[ word ];
+	        }
+	    }
+
+	    this.metadatas.statesCount.uploading = 0;
+        this.ui.updateCounter();
 	};
 
-	rw.controller.Studio.prototype.moveNext = function () {
-		// TODO: ask for confirmation if all words are not recorded
+	rw.controller.Studio.prototype.removeFailedRecords = function() {
+	    for ( word in this.records ) {
+	        if ( this.records[ word ].hasFailed() ) {
+	            this.records[ word ].remove();
+	            delete this.records[ word ];
+	        }
+	    }
+
+	    this.metadatas.statesCount.error = 0;
+        this.ui.updateCounter();
+	};
+
+	rw.controller.Studio.prototype.moveNext = function ( skipFirstWarning ) {
+	    var controller = this,
+	        total = this.metadatas.statesCount.error + this.metadatas.statesCount.stashed + this.metadatas.statesCount.uploading;
+	    skipFirstWarning = skipFirstWarning || false;
+
 		this.recorder.cancel();
+        console.log( this.metadatas.statesCount );
+		if ( total < this.metadatas.words.length && ! skipFirstWarning ) {
+		    OO.ui.confirm( mw.message( 'mwe-recwiz-warning-wordsleft' ).text() ).done( function( confirmed ) {
+		        if ( confirmed ) {
+		            controller.moveNext( true );
+		        }
+		    } );
+		    return;
+		}
+
+		if ( this.metadatas.statesCount.uploading > 0 ) {
+		    OO.ui.confirm( mw.message( 'mwe-recwiz-warning-pendinguploads' ).text() ).done( function( confirmed ) {
+		        if ( confirmed ) {
+		            controller.removePendingRecords();
+		            controller.moveNext( true );
+		        }
+		    } );
+		    return;
+		}
+
+		if ( this.metadatas.statesCount.error > 0 ) {
+		    OO.ui.confirm( mw.message( 'mwe-recwiz-warning-faileduploads' ).text() ).done( function( confirmed ) {
+		        if ( confirmed ) {
+		            controller.removeFailedRecords();
+		            controller.moveNext( true );
+		        }
+		    } );
+		    return;
+		}
 
 		rw.controller.Step.prototype.moveNext.call( this );
 	};
