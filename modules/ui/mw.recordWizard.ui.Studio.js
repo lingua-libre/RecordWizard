@@ -35,6 +35,8 @@
                 ui.$wordInput.val( '' );
             }
         } );
+        this.showNextButton();
+        this.updateCounter();
 	};
 
 	rw.ui.Studio.prototype.generateUI = function() {
@@ -55,6 +57,9 @@
 
         this.$studio.append( this.$head ).append( this.$list.append( this.$wordInput ) );
         this.$container.prepend( this.$studio );
+
+        this.$recordCounter = $( '<div>' ).addClass( 'mwe-recwiz-record-count' ).hide();
+        this.$container.append( this.$recordCounter );
 	};
 
 	rw.ui.Studio.prototype.onReady = function() {
@@ -84,6 +89,7 @@
 
 	rw.ui.Studio.prototype.onStop = function() {
 	    this.$head.removeClass( 'studio-rec' );
+	    this.showNextButton();
 	};
 
 	rw.ui.Studio.prototype.onCancel = function() {
@@ -101,16 +107,96 @@
 	    }
 	};
 
-	rw.ui.Studio.prototype.setItemState = function( word, state ) {
+	rw.ui.Studio.prototype.setItemState = function( word, state, prevState ) {
 	    // TODO: use a correlation table to asociate state and HTML class
 	    if ( this.recordItems[ word ] !== undefined ) {
 	        this.recordItems[ word ].removeClass();
 	        this.recordItems[ word ].addClass( 'mwe-recwiz-word-'+state );
 	    }
+	    this.showNextButton();
 	};
+
 	rw.ui.Studio.prototype.addWord = function( word ) {
         this.recordItems[ word ] = $( '<li>' ).text( word );
         this.$wordInput.before( this.recordItems[ word ] );
+	};
+
+	rw.ui.Studio.prototype.showNextButton = function() {
+	    if ( Object.keys( this.records ).length === 0 ) {
+			return;
+	    }
+
+        this.continueLabel.toggle( true );
+        if ( this.metadatas.statesCount.stashed > 0 ) {
+	        this.continueButton.toggle( true );
+	    }
+	    if( this.metadatas.statesCount.error > 0 ) {
+	        this.retryButton.toggle( true );
+	    }
+
+	    if ( this.metadatas.statesCount.uploading > 0 ) {
+	        this.continueLabel.setLabel( mw.message( 'mwe-recwiz-pendinguplads' ).text() );
+		    return;
+	    }
+
+	    if ( this.metadatas.statesCount.error === 0 ) {
+	        this.retryButton.toggle( false );
+	        this.continueLabel.setLabel( mw.message( 'mwe-recwiz-allsucceeded' ).text() );
+	        this.continueButton.setLabel( mw.message( 'mwe-recwiz-continue' ).text() );
+	    }
+	    else if ( this.metadatas.statesCount.stashed === 0 ) {
+	        this.continueButton.toggle( false );
+	        this.continueLabel.setLabel( mw.message( 'mwe-recwiz-allfailed' ).text() );
+	    }
+	    else {
+	        this.continueLabel.setLabel( mw.message( 'mwe-recwiz-somefailed' ).text() );
+	        this.continueButton.setLabel( mw.message( 'mwe-recwiz-continueanyway' ).text() );
+	    }
+	};
+
+	rw.ui.Studio.prototype.updateCounter = function() {
+	    var count = this.metadatas.statesCount;
+	    var total = count.stashed + count.uploading + count.error;
+        if ( total > 0 ) {
+	        this.$recordCounter.text( mw.message( 'mwe-recwiz-upload-count', count.stashed, total ).text() );
+	        this.$recordCounter.show();
+	    }
+	};
+
+
+	/**
+	 * Add a 'next' button to the step's button container
+	 */
+	rw.ui.Studio.prototype.addNextButton = function () {
+		var ui = this;
+
+		this.continueLabel = new OO.ui.LabelWidget( {label:'tty'} ).toggle();
+
+		this.retryButton = new OO.ui.ButtonWidget( {
+			label: mw.message( 'mwe-recwiz-retry' ).text(),
+			flags: [ 'progressive' ]
+		} ).on( 'click', function () {
+			ui.emit( 'retry' );
+		} ).toggle();
+
+		this.continueButton = new OO.ui.ButtonWidget( {
+			flags: [ 'progressive', 'primary' ]
+		} ).on( 'click', function () {
+			ui.emit( 'next-step' );
+		} ).toggle();
+
+		this.continueLayout = new OO.ui.HorizontalLayout( {
+			classes: [ 'mwe-recwiz-button-next' ],
+		    items: [
+		        this.continueLabel,
+		        this.retryButton,
+		        this.continueButton,
+		    ]
+		} );
+
+		this.nextButtonPromise.done( function () {
+			ui.$buttons.append( ui.continueLayout.$element );
+		} );
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

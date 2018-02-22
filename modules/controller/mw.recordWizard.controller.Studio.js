@@ -23,6 +23,14 @@
 	rw.controller.Studio.prototype.load = function ( metadatas, records ) {
 	    var controller = this;
 
+        if ( metadatas.statesCount === undefined ) {
+            metadatas.statesCount = {
+                'uploading': 0,
+                'stashed': 0,
+                'error': 0,
+            };
+        }
+
 		rw.controller.Step.prototype.load.call( this, metadatas, records );
 
         this.recorder = new rw.libs.LinguaRecorder( {
@@ -102,6 +110,7 @@
 	        currentWord = this.currentWord,
 	        controller = this;
 
+	    this.switchState( currentWord, 'uploading' );
         if ( this.records[ currentWord ] !== undefined ) {
             record = this.records[ currentWord ];
         }
@@ -113,12 +122,11 @@
 
 	    rw.requestQueue.push( record, 'uploadToStash' )
 	        .then( function() {
-	            controller.ui.setItemState( currentWord, 'stashed' );
+	            controller.switchState( currentWord, 'stashed' );
 	        } )
 	        .fail( function() {
-	            controller.ui.setItemState( currentWord, 'error' );
+	            controller.switchState( currentWord, 'error' );
 	        } );
-	    this.ui.setItemState( currentWord, 'uploading' );
 
         if ( ! this.startNextRecord() ) {
             this.isRecording = false;
@@ -151,6 +159,26 @@
 
 	    this.ui.setSelectedItem( this.currentWord );
 	    return true;
+	};
+
+    rw.controller.Studio.prototype.switchState = function( word, state ) {
+        if ( state !== 'uploading' ) {
+            this.metadatas.statesCount.uploading--;
+        }
+        else {
+            console.log( state )
+            if( this.records[ word ] !== undefined ) {
+                this.metadatas.statesCount[ this.records[ word ].getState() ]--;
+            }
+        }
+        this.metadatas.statesCount[ state ]++;
+        this.ui.setItemState( word, state );
+
+        this.ui.updateCounter();
+    };
+
+	rw.controller.Studio.prototype.removeFailedRecords = function() {
+	    //TODO:
 	};
 
 	rw.controller.Studio.prototype.moveNext = function () {

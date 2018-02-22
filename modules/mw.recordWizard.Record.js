@@ -93,6 +93,7 @@
         } ).fail( function( errorCode, result ) {
             deferred.notify( 1 );
             deferred.reject( errorCode, result );
+            record.setError( errorCode );
         } );
 	};
 
@@ -117,6 +118,7 @@
         } ).fail( function( errorCode, result ) {
             deferred.notify( 1 );
             deferred.reject( errorCode, result );
+            record.setError( errorCode );
         } );
 	};
 

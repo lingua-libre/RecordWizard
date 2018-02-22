@@ -1,5 +1,9 @@
-.mwe-recwiz-button-next {
+.mwe-recwiz-button-next, .mwe-recwiz-record-count {
     float: right;
+}
+
+.mwe-recwiz-buttons {
+    margin-top:1em;
 }
 
 .recordWizard-title {

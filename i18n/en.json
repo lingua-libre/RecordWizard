@@ -16,6 +16,17 @@
     "mwe-recwiz-step-studio": "Studio",
     "mwe-recwiz-step-confirm": "Confirm",
     "mwe-recwiz-step-thanks": "Thanks",
+
+    "mwe-recwiz-upload-count": "$1 of $2 {{PLURAL:$2|sound|sounds}} uploaded",
+
     "mwe-recwiz-next": "Next",
-    "mwe-recwiz-previous": "Previous"
+    "mwe-recwiz-previous": "Previous",
+    "mwe-recwiz-continue": "Continue",
+    "mwe-recwiz-continueanyway": "Continue anyway",
+    "mwe-recwiz-retry": "retry failed upload",
+
+    "mwe-recwiz-pendinguplads": "",
+    "mwe-recwiz-allsucceeded": "All uploads were successful!",
+    "mwe-recwiz-somefailed": "Some upload failed.",
+    "mwe-recwiz-allfailed": "None of the uploads were successful."
 }

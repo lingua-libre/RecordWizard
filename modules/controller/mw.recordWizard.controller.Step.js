@@ -142,20 +142,4 @@
 		return this.records.length !== 0;
 	};
 
-	/**
-	 * Remove a record.
-	 *
-	 * @param {mw.recordWizard.Record} record
-	 */
-	rw.controller.Step.prototype.removeUpload = function ( record ) {
-		// remove the record from the records array
-		var index = this.records.indexOf( record );
-		if ( index !== -1 ) {
-			this.uploads.splice( index, 1 );
-		}
-
-		// let the record object cleanup itself!
-		record.remove();
-	};
-
 }( mediaWiki, mediaWiki.recordWizard, OO, jQuery ) );

@@ -83,8 +83,16 @@
                 "mwe-recwiz-step-studio",
                 "mwe-recwiz-step-confirm",
                 "mwe-recwiz-step-thanks",
+                "mwe-recwiz-upload-count",
                 "mwe-recwiz-next",
-                "mwe-recwiz-previous"
+                "mwe-recwiz-previous",
+                "mwe-recwiz-continue",
+                "mwe-recwiz-continueanyway",
+                "mwe-recwiz-retry",
+                "mwe-recwiz-pendinguplads",
+                "mwe-recwiz-allsucceeded",
+                "mwe-recwiz-somefailed",
+                "mwe-recwiz-allfailed"
 			]
         },
         "ext.recordWizard.controller": {

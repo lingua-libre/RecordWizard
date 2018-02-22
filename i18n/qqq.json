@@ -16,6 +16,17 @@
     "mwe-recwiz-step-studio": "Name of a step displayed in the arrow line.",
     "mwe-recwiz-step-confirm": "Name of a step displayed in the arrow line.",
     "mwe-recwiz-step-thanks": "Name of a step displayed in the arrow line.",
+
+    "mwe-recwiz-upload-count": "",
+
     "mwe-recwiz-next": "Text on the button to go to the next step.",
-    "mwe-recwiz-previous": "Text on the button to go to the previous step."
+    "mwe-recwiz-previous": "Text on the button to go to the previous step.",
+    "mwe-recwiz-continue": "",
+    "mwe-recwiz-continueanyway": "",
+    "mwe-recwiz-retry": "",
+
+    "mwe-recwiz-pendinguplads": "",
+    "mwe-recwiz-allsucceeded": "",
+    "mwe-recwiz-somefailed": "",
+    "mwe-recwiz-allfailed": ""
 }
