@@ -21,31 +21,54 @@
 	OO.inheritClass( rw.controller.Confirm, rw.controller.Step );
 
 	rw.controller.Confirm.prototype.load = function ( metadatas, records ) {
+		var controller = this;
+
 		rw.controller.Step.prototype.load.call( this, metadatas, records );
+
+        this.ui.on( 'retry', function( word ) {
+            for ( word in controller.records ) {
+                if ( controller.records[ word ].hasFailed() ) {
+                    controller.upload( word );
+                }
+            }
+        } );
 	};
 
 	rw.controller.Confirm.prototype.upload = function( word ) {
 		var controller = this;
 
-        this.ui.setItemState( word, 'finalizing' );
+        this.switchState( word, 'finalizing' );
 	    rw.requestQueue.push( this.records[ word ], 'finishUpload' )
         .then( function() {
-            controller.ui.setItemState( word, 'uploaded' );
+            controller.switchState( word, 'uploaded' );
             if ( rw.requestQueue.currentRequests === 0 ) {
-                // TODO: change this
-	            rw.controller.Step.prototype.moveNext.call( controller );
+                if ( controller.metadatas.statesCount.error === 0 ) {
+	                rw.controller.Step.prototype.moveNext.call( controller );
+	            }
             }
         } )
         .fail( function() {
-            controller.ui.setItemState( word, 'error' );
+            controller.switchState( word, 'error' );
         } );
 	};
+
+    rw.controller.Confirm.prototype.switchState = function( word, state ) {
+        if ( state !== 'finalizing' ) {
+            this.metadatas.statesCount.finalizing--;
+        }
+        else {
+            if( this.records[ word ] !== undefined ) {
+                this.metadatas.statesCount[ this.records[ word ].getState() ]--;
+            }
+        }
+        this.metadatas.statesCount[ state ]++;
+        this.ui.setItemState( word, state );
+    };
 
 	rw.controller.Confirm.prototype.moveNext = function () {
 		for( var word in this.records ) {
 		    this.upload( word );
 		}
-
 	};
 
 	rw.controller.Confirm.prototype.movePrevious = function () {

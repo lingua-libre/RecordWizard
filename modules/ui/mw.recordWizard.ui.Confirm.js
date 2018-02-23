@@ -47,6 +47,35 @@
 	    }
 	    this.recordItems[ word ].removeClass();
 	    this.recordItems[ word ].addClass( 'mwe-recwiz-' + state );
+	    this.showNextButton();
+	};
+
+	rw.ui.Confirm.prototype.showNextButton = function() {
+        console.log( this.metadatas.statesCount );
+	    if ( this.metadatas.statesCount.finalizing > 0 ) {
+	        this.retryButton.toggle( false );
+            this.nextButton.setDisabled( true );
+            this.stateLabel.toggle( true );
+	        this.stateLabel.setLabel( mw.message( 'mwe-recwiz-pendinguplads' ).text() );
+	    }
+        else if ( this.metadatas.statesCount.error > 0 ) {
+	        this.retryButton.toggle( true );
+
+	        if ( this.metadatas.statesCount.uploaded > 0 ) {
+                this.stateLabel.setLabel( mw.message( 'mwe-recwiz-somefailed' ).text() );
+	        }
+	        else {
+                this.stateLabel.setLabel( mw.message( 'mwe-recwiz-allfailed' ).text() );
+	        }
+	    }
+        else if ( this.metadatas.statesCount.stashed > 0 ) {
+	        this.stateLabel.setLabel( mw.message( 'mwe-recwiz-allsucceeded' ).text() );
+	    }
+	    else {
+            this.nextButton.setDisabled( false );
+            this.stateLabel.toggle( false );
+	    }
+
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

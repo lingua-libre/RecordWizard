@@ -89,7 +89,6 @@
 
 	rw.ui.Studio.prototype.onStop = function() {
 	    this.$head.removeClass( 'studio-rec' );
-	    this.showNextButton();
 	};
 
 	rw.ui.Studio.prototype.onCancel = function() {
@@ -122,8 +121,11 @@
 	};
 
 	rw.ui.Studio.prototype.showNextButton = function() {
+	    console.log( this.metadatas.statesCount );
 	    if ( Object.keys( this.records ).length === 0 ) {
 	        this.nextButton.toggle( false );
+	        this.stateLabel.toggle( false );
+	        this.retryButton.toggle( false );
 			return;
 	    }
 

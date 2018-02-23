@@ -27,7 +27,7 @@
             metadatas.statesCount = {
                 'uploading': 0,
                 'stashed': 0,
-                'finilizing': 0,
+                'finalizing': 0,
                 'uploaded': 0,
                 'error': 0,
             };
