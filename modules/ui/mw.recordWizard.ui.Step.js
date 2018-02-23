@@ -80,16 +80,33 @@
 	rw.ui.Step.prototype.addNextButton = function () {
 		var ui = this;
 
+		this.stateLabel = new OO.ui.LabelWidget( {label:''} ).toggle();
+
+		this.retryButton = new OO.ui.ButtonWidget( {
+			label: mw.message( 'mwe-recwiz-retry' ).text(),
+			flags: [ 'progressive' ]
+		} ).on( 'click', function () {
+			ui.emit( 'retry' );
+		} ).toggle();
+
 		this.nextButton = new OO.ui.ButtonWidget( {
-			classes: [ 'mwe-recwiz-button-next' ],
 			label: mw.message( 'mwe-recwiz-next' ).text(),
 			flags: [ 'progressive', 'primary' ]
 		} ).on( 'click', function () {
 			ui.emit( 'next-step' );
 		} );
 
+		this.nextLayout = new OO.ui.HorizontalLayout( {
+			classes: [ 'mwe-recwiz-button-next' ],
+		    items: [
+		        this.stateLabel,
+		        this.retryButton,
+		        this.nextButton,
+		    ]
+		} );
+
 		this.nextButtonPromise.done( function () {
-			ui.$buttons.append( ui.nextButton.$element );
+			ui.$buttons.append( ui.nextLayout.$element );
 		} );
 	};
 

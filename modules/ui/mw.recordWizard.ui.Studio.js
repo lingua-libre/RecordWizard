@@ -123,34 +123,35 @@
 
 	rw.ui.Studio.prototype.showNextButton = function() {
 	    if ( Object.keys( this.records ).length === 0 ) {
+	        this.nextButton.toggle( false );
 			return;
 	    }
 
-        this.continueLabel.toggle( true );
+        this.stateLabel.toggle( true );
         if ( this.metadatas.statesCount.stashed > 0 ) {
 	        // all ok
 	        this.retryButton.toggle( false );
-	        this.continueButton.toggle( true );
-	        this.continueLabel.setLabel( mw.message( 'mwe-recwiz-allsucceeded' ).text() );
-	        this.continueButton.setLabel( mw.message( 'mwe-recwiz-continue' ).text() );
+	        this.nextButton.toggle( true );
+	        this.stateLabel.setLabel( mw.message( 'mwe-recwiz-allsucceeded' ).text() );
+	        this.nextButton.setLabel( mw.message( 'mwe-recwiz-continue' ).text() );
 	    }
         if ( this.metadatas.statesCount.error > 0 ) {
 	        this.retryButton.toggle( true );
 
 	        if ( this.metadatas.statesCount.stashed > 0 ) {
 	            // some ok
-                this.continueLabel.setLabel( mw.message( 'mwe-recwiz-somefailed' ).text() );
-	            this.continueButton.setLabel( mw.message( 'mwe-recwiz-continueanyway' ).text() );
+                this.stateLabel.setLabel( mw.message( 'mwe-recwiz-somefailed' ).text() );
+	            this.nextButton.setLabel( mw.message( 'mwe-recwiz-continueanyway' ).text() );
 	        }
 	        else {
 	            // none ok
-	            this.continueButton.toggle( false );
-                this.continueLabel.setLabel( mw.message( 'mwe-recwiz-allfailed' ).text() );
+	            this.nextButton.toggle( false );
+                this.stateLabel.setLabel( mw.message( 'mwe-recwiz-allfailed' ).text() );
 	        }
 	    }
 
 	    if ( this.metadatas.statesCount.uploading > 0 ) {
-	        this.continueLabel.setLabel( mw.message( 'mwe-recwiz-pendinguplads' ).text() );
+	        this.stateLabel.setLabel( mw.message( 'mwe-recwiz-pendinguplads' ).text() );
 	    }
 
 	};
@@ -162,42 +163,6 @@
 	        this.$recordCounter.text( mw.message( 'mwe-recwiz-upload-count', count.stashed, total ).text() );
 	        this.$recordCounter.show();
 	    }
-	};
-
-
-	/**
-	 * Add a 'next' button to the step's button container
-	 */
-	rw.ui.Studio.prototype.addNextButton = function () {
-		var ui = this;
-
-		this.continueLabel = new OO.ui.LabelWidget( {label:'tty'} ).toggle();
-
-		this.retryButton = new OO.ui.ButtonWidget( {
-			label: mw.message( 'mwe-recwiz-retry' ).text(),
-			flags: [ 'progressive' ]
-		} ).on( 'click', function () {
-			ui.emit( 'retry' );
-		} ).toggle();
-
-		this.continueButton = new OO.ui.ButtonWidget( {
-			flags: [ 'progressive', 'primary' ]
-		} ).on( 'click', function () {
-			ui.emit( 'next-step' );
-		} ).toggle();
-
-		this.continueLayout = new OO.ui.HorizontalLayout( {
-			classes: [ 'mwe-recwiz-button-next' ],
-		    items: [
-		        this.continueLabel,
-		        this.retryButton,
-		        this.continueButton,
-		    ]
-		} );
-
-		this.nextButtonPromise.done( function () {
-			ui.$buttons.append( ui.continueLayout.$element );
-		} );
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

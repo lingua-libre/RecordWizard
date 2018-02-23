@@ -27,6 +27,8 @@
             metadatas.statesCount = {
                 'uploading': 0,
                 'stashed': 0,
+                'finilizing': 0,
+                'uploaded': 0,
                 'error': 0,
             };
         }
@@ -186,36 +188,13 @@
         this.ui.updateCounter();
     };
 
-	rw.controller.Studio.prototype.removePendingRecords = function() {
-	    for ( word in this.records ) {
-	        if ( this.records[ word ].getState() === 'uploading' ) {
-	            this.records[ word ].remove();
-	            delete this.records[ word ];
-	        }
-	    }
-
-	    this.metadatas.statesCount.uploading = 0;
-        this.ui.updateCounter();
-	};
-
-	rw.controller.Studio.prototype.removeFailedRecords = function() {
-	    for ( word in this.records ) {
-	        if ( this.records[ word ].hasFailed() ) {
-	            this.records[ word ].remove();
-	            delete this.records[ word ];
-	        }
-	    }
-
-	    this.metadatas.statesCount.error = 0;
-        this.ui.updateCounter();
-	};
-
 	rw.controller.Studio.prototype.moveNext = function ( skipFirstWarning ) {
 	    var controller = this,
 	        total = this.metadatas.statesCount.error + this.metadatas.statesCount.stashed + this.metadatas.statesCount.uploading;
 	    skipFirstWarning = skipFirstWarning || false;
 
 		this.recorder.cancel();
+		this.ui.onStop();
         console.log( this.metadatas.statesCount );
 		if ( total < this.metadatas.words.length && ! skipFirstWarning ) {
 		    OO.ui.confirm( mw.message( 'mwe-recwiz-warning-wordsleft' ).text() ).done( function( confirmed ) {
@@ -230,6 +209,8 @@
 		    OO.ui.confirm( mw.message( 'mwe-recwiz-warning-pendinguploads' ).text() ).done( function( confirmed ) {
 		        if ( confirmed ) {
 		            controller.removePendingRecords();
+		            controller.metadatas.statesCount.uploading = 0;
+                    controller.ui.updateCounter();
 		            controller.moveNext( true );
 		        }
 		    } );
@@ -240,6 +221,8 @@
 		    OO.ui.confirm( mw.message( 'mwe-recwiz-warning-faileduploads' ).text() ).done( function( confirmed ) {
 		        if ( confirmed ) {
 		            controller.removeFailedRecords();
+		            controller.metadatas.statesCount.error = 0;
+                    controller.ui.updateCounter();
 		            controller.moveNext( true );
 		        }
 		    } );
