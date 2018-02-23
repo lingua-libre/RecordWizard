@@ -6,6 +6,53 @@
     margin-top:1em;
 }
 
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+#mwe-recwiz-stepdiv-confirm li {
+    position: relative;
+}
+
+#mwe-recwiz-stepdiv-confirm li:after {
+  position: absolute;
+  right: 0;
+  width: 40px;
+  height: 40px;
+}
+
+#mwe-recwiz-stepdiv-confirm li.mwe-recwiz-finalizing:after {
+  content: url( images/Spinner_font_awesome.svg );
+  animation: spinner 1.5s linear infinite;
+}
+
+#mwe-recwiz-stepdiv-confirm li.mwe-recwiz-uploaded:after {
+  content: url( images/Ok_sign_font_awesome_green.svg );
+}
+
+#mwe-recwiz-stepdiv-confirm li.mwe-recwiz-error:after {
+  content: url( images/Exclamation_sign_font_awesome_red.svg );
+}
+
+/*
+.mwe-recwiz-finalizing:after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #333;
+  animation: spinner .6s linear infinite;
+}
+
+*/
+
 .recordWizard-title {
 	font-size: 1.1em;
 }

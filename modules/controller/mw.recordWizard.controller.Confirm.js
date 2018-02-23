@@ -24,20 +24,26 @@
 		rw.controller.Step.prototype.load.call( this, metadatas, records );
 	};
 
-	rw.controller.Confirm.prototype.moveNext = function () {
+	rw.controller.Confirm.prototype.upload = function( word ) {
 		var controller = this;
 
+        this.ui.setItemState( word, 'finalizing' );
+	    rw.requestQueue.push( this.records[ word ], 'finishUpload' )
+        .then( function() {
+            controller.ui.setItemState( word, 'uploaded' );
+            if ( rw.requestQueue.currentRequests === 0 ) {
+                // TODO: change this
+	            rw.controller.Step.prototype.moveNext.call( controller );
+            }
+        } )
+        .fail( function() {
+            controller.ui.setItemState( word, 'error' );
+        } );
+	};
+
+	rw.controller.Confirm.prototype.moveNext = function () {
 		for( var word in this.records ) {
-		    rw.requestQueue.push( this.records[ word ], 'finishUpload' )
-	        .then( function() {
-	            controller.ui.setItemState( word, 'success' );
-	            if ( rw.requestQueue.currentRequests === 0 ) {
-		            rw.controller.Step.prototype.moveNext.call( controller );
-	            }
-	        } )
-	        .fail( function() {
-	            controller.ui.setItemState( word, 'error' );
-	        } );
+		    this.upload( word );
 		}
 
 	};

@@ -25,24 +25,28 @@
 		rw.ui.Step.prototype.load.call( this, metadatas, records );
 
 		this.$list = $( '<ul>' );
+
+		this.recordItems = {};
 		for( var word in this.records ) {
 		    var $audio = $( '<audio>' )
 		        .attr( 'src', this.records[ word ].getStashedFileUrl() )
 		        .attr( 'controls', true );
-		    var $li = $( '<li>' ).text( word )
-		    this.$list.append( $li.prepend( $audio ) );
+		    this.recordItems[ word ] = $( '<li>' ).text( word ).prepend( $audio );
+		    this.$list.append( this.recordItems[ word ] );
 		}
 
         this.$container.prepend( this.$list );
 	};
 
-	rw.ui.Confirm.prototype.setItemState = function( index, state ) {
-	    // We use here the text as reference instead of the index, as this callback
-	    // can be called after a long time, some changes in the words order
-	    // could have taken place in between
+	rw.ui.Confirm.prototype.setItemState = function( word, state ) {
 	    // TODO: use a correlation table to asociate state and HTML class
-	    this.$list.children().eq( index ).removeClass();
-	    this.$list.children().eq( index ).addClass( 'mwe-recwiz-' + state );
+	    if ( state !== 'finalizing' ) {
+	        $('html, body').animate( {
+                scrollTop: this.recordItems[ word ].offset().top
+            }, 400 );
+	    }
+	    this.recordItems[ word ].removeClass();
+	    this.recordItems[ word ].addClass( 'mwe-recwiz-' + state );
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );
