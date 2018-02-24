@@ -133,6 +133,10 @@
 	    if ( this.recordItems[ word ] !== undefined ) {
 	        this.recordItems[ word ].addClass( 'studio-wordlist-selected' );
 	    }
+
+	    this.$list.animate( {
+	        scrollTop: this.$list.scrollTop() + this.recordItems[ word ].position().top - ( this.recordItems[ word ].innerHeight() - this.recordItems[ word ].height() )
+	    } ) ;
 	};
 
 	rw.ui.Studio.prototype.setItemState = function( word, state, prevState ) {

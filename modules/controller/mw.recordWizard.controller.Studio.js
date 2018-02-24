@@ -126,9 +126,7 @@
 		for ( word in this.records ) {
 		    this.records[ word ].off( 'state-change' );
 		}
-        console.log( 'tty' );
 		rw.controller.Step.prototype.unload.call( this );
-        console.log( 'uiop' );
 	};
 
 	rw.controller.Studio.prototype.onStop = function( audioRecord ) {
