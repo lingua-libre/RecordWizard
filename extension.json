@@ -30,7 +30,8 @@
 			    "ext.recordWizard.styles",
 			    "ext.recordWizard.upload",
 				"ext.recordWizard.controller",
-				"mediawiki.util"
+				"mediawiki.util",
+				"oojs"
 			]
         },
         "ext.recordWizard.base": {

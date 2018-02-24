@@ -11,24 +11,29 @@
 	};
 
 	rw.RequestQueue.prototype.push = function( record, type ) {
-	    var deferred = $.Deferred();
-	    deferred.then( this.next.bind(this) ).fail( this.next.bind(this) );
+	    if ( record.isInQueue() ) {
+	        return false;
+	    }
+	    record.isInQueue( true );
 
-        this.queue.push( { 'type': type, 'record': record, 'deferred': deferred } );
+        this.queue.push( { 'type': type, 'record': record } );
 
         if ( this.currentRequests < this.maxConcurentRequests ) {
             this.currentRequests++;
             this.next();
         }
 
-        return deferred.promise();
+        return true;
 	};
 
     rw.RequestQueue.prototype.next = function() {
         if ( this.queue.length > 0 ) {
-            var param = this.queue.shift();
+            var param = this.queue.shift(),
+	            deferred = $.Deferred();
+	        deferred.then( this.next.bind(this) ).fail( this.next.bind(this) );
 
-            param.record[param.type]( this.api, param.deferred );
+            param.record[param.type]( this.api, deferred );
+	        param.record.isInQueue( false );
         }
         else {
             this.currentRequests--;

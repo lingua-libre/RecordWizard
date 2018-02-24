@@ -25,6 +25,10 @@
 
 		rw.controller.Step.prototype.load.call( this, metadatas, records );
 
+		for( var word in this.records ) {
+	        this.records[ word ].on( 'state-change', this.switchState.bind( this ) );
+		}
+
         this.ui.on( 'retry', function( word ) {
             for ( word in controller.records ) {
                 if ( controller.records[ word ].hasFailed() ) {
@@ -34,36 +38,16 @@
         } );
 	};
 
-	rw.controller.Confirm.prototype.upload = function( word ) {
-		var controller = this;
-
-        this.switchState( word, 'finalizing' );
-	    rw.requestQueue.push( this.records[ word ], 'finishUpload' )
-        .then( function() {
-            controller.switchState( word, 'uploaded' );
-            if ( rw.requestQueue.currentRequests === 0 ) {
-                if ( controller.metadatas.statesCount.error === 0 ) {
-	                rw.controller.Step.prototype.moveNext.call( controller );
-	            }
-            }
-        } )
-        .fail( function() {
-            controller.switchState( word, 'error' );
-        } );
+	rw.controller.Confirm.prototype.unload = function ( metadatas, records ) {
+		rw.controller.Step.prototype.unload.call( this );
+		for ( word in this.records ) {
+		    this.records[ word ].off( 'state-change' );
+		}
 	};
 
-    rw.controller.Confirm.prototype.switchState = function( word, state ) {
-        if ( state !== 'finalizing' ) {
-            this.metadatas.statesCount.finalizing--;
-        }
-        else {
-            if( this.records[ word ] !== undefined ) {
-                this.metadatas.statesCount[ this.records[ word ].getState() ]--;
-            }
-        }
-        this.metadatas.statesCount[ state ]++;
-        this.ui.setItemState( word, state );
-    };
+	rw.controller.Confirm.prototype.upload = function( word ) {
+	    rw.requestQueue.push( this.records[ word ], 'finishUpload' );
+	};
 
 	rw.controller.Confirm.prototype.moveNext = function () {
 		for( var word in this.records ) {

@@ -161,4 +161,13 @@
 	    }
 	};
 
+    rw.controller.Step.prototype.switchState = function( word, state, prevState ) {
+        console.log( prevState + '-' + state );
+        if ( prevState !== 'up' ) {
+            this.metadatas.statesCount[ prevState ]--;
+        }
+        this.metadatas.statesCount[ state ]++;
+        this.ui.setItemState( word, state );
+    };
+
 }( mediaWiki, mediaWiki.recordWizard, OO, jQuery ) );

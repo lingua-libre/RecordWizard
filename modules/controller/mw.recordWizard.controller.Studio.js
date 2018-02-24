@@ -25,6 +25,7 @@
 
         if ( metadatas.statesCount === undefined ) {
             metadatas.statesCount = {
+                'ready': 0,
                 'uploading': 0,
                 'stashed': 0,
                 'finalizing': 0,
@@ -32,6 +33,11 @@
                 'error': 0,
             };
         }
+        else {
+		    for( var word in this.records ) {
+	            this.records[ word ].on( 'state-change', this.switchState.bind( this ) );
+		    }
+		}
 
 		rw.controller.Step.prototype.load.call( this, metadatas, records );
 
@@ -111,6 +117,10 @@
 	rw.controller.Studio.prototype.unload = function () {
 		this.ui.off( 'studiobutton-click' );
 		this.ui.off( 'item-click' );
+		for ( word in this.records ) {
+		    this.records[ word ].off( 'state-change' );
+		}
+
 		rw.controller.Step.prototype.unload.call( this );
 	};
 
@@ -119,6 +129,7 @@
 
         if ( this.records[ currentWord ] === undefined ) {
 	        this.records[ currentWord ] = new rw.Record( currentWord );
+	        this.records[ currentWord ].on( 'state-change', this.switchState.bind( this ) );
         }
 
 	    this.upload( currentWord, audioRecord.getBlob() );
@@ -130,20 +141,11 @@
 	};
 
 	rw.controller.Studio.prototype.upload = function( word, blob ) {
-	    var controller = this;
-
-        this.switchState( word, 'uploading' );
-
         if ( blob !== undefined ) {
             this.records[ word ].setBlob( blob );
         }
-        rw.requestQueue.push( this.records[ word ], 'uploadToStash' )
-            .then( function() {
-                controller.switchState( word, 'stashed' );
-            } )
-            .fail( function() {
-                controller.switchState( word, 'error' );
-            } );
+
+        rw.requestQueue.push( this.records[ word ], 'uploadToStash' );
 	};
 
 	rw.controller.Studio.prototype.startNextRecord = function () {
@@ -172,21 +174,6 @@
 	    this.ui.setSelectedItem( this.currentWord );
 	    return true;
 	};
-
-    rw.controller.Studio.prototype.switchState = function( word, state ) {
-        if ( state !== 'uploading' ) {
-            this.metadatas.statesCount.uploading--;
-        }
-        else {
-            if( this.records[ word ] !== undefined ) {
-                this.metadatas.statesCount[ this.records[ word ].getState() ]--;
-            }
-        }
-        this.metadatas.statesCount[ state ]++;
-        this.ui.setItemState( word, state );
-
-        this.ui.updateCounter();
-    };
 
 	rw.controller.Studio.prototype.moveNext = function ( skipFirstWarning ) {
 	    var controller = this,

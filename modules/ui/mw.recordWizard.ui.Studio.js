@@ -113,6 +113,7 @@
 	        this.recordItems[ word ].addClass( 'mwe-recwiz-word-'+state );
 	    }
 	    this.showNextButton();
+	    this.updateCounter()
 	};
 
 	rw.ui.Studio.prototype.addWord = function( word ) {

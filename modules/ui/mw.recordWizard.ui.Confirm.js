@@ -42,7 +42,7 @@
 	    // TODO: use a correlation table to asociate state and HTML class
 	    if ( state !== 'finalizing' ) {
 	        $('html, body').animate( {
-                scrollTop: this.recordItems[ word ].offset().top
+                scrollTop: this.recordItems[ word ].offset().top - 50
             }, 400 );
 	    }
 	    this.recordItems[ word ].removeClass();
@@ -53,6 +53,7 @@
 	rw.ui.Confirm.prototype.showNextButton = function() {
         console.log( this.metadatas.statesCount );
 	    if ( this.metadatas.statesCount.finalizing > 0 ) {
+	        this.previousButton.setDisabled( true );
 	        this.retryButton.toggle( false );
             this.nextButton.setDisabled( true );
             this.stateLabel.toggle( true );
