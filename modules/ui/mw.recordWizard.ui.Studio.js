@@ -85,7 +85,7 @@
         $( document ).keydown( function( event ) {
             switch( event.which ) {
                 case 32: // space
-                    if ( event.target.nodeName === 'INPUT' ) {
+                    if ( event.target.nodeName === 'INPUT' || event.target.nodeName === 'BUTTON' ) {
                         return;
                     }
                     ui.emit( 'studiobutton-click' );
@@ -153,7 +153,9 @@
 	rw.ui.Studio.prototype.setItemState = function( word, state, prevState ) {
 	    // TODO: use a correlation table to asociate state and HTML class
 	    if ( this.recordItems[ word ] !== undefined ) {
-	        this.recordItems[ word ].removeClass();
+	        this.recordItems[ word ].removeClass( 'mwe-recwiz-word-uploading' );
+	        this.recordItems[ word ].removeClass( 'mwe-recwiz-word-stashed' );
+	        this.recordItems[ word ].removeClass( 'mwe-recwiz-word-error' );
 	        this.recordItems[ word ].addClass( 'mwe-recwiz-word-'+state );
 	    }
 	    this.showNextButton();
