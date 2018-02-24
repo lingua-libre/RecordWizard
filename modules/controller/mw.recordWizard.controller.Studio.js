@@ -71,17 +71,19 @@
 
         } );
 
-        this.ui.on( 'item-click', function( word ) {
-            controller.recorder.cancel();
+        this.ui.on( 'item-click', this.selectWord.bind( this ) );
 
-            controller.currentWord = word;
-
-            if ( controller.isRecording ) {
-                controller.isRecording = false;
-                controller.startNextRecord();
+        this.ui.on( 'previous-item-click', function() {
+            var index = controller.metadatas.words.indexOf( controller.currentWord );
+            if ( index > 0 ) {
+                controller.selectWord( controller.metadatas.words[ index - 1 ] );
             }
-            else {
-                controller.ui.setSelectedItem( word );
+        } );
+
+        this.ui.on( 'next-item-click', function() {
+            var index = controller.metadatas.words.indexOf( controller.currentWord );
+            if ( index > -1 && index < controller.metadatas.words.length - 1 ) {
+                controller.selectWord( controller.metadatas.words[ index + 1 ] );
             }
         } );
 
@@ -105,7 +107,7 @@
 
         } );
 
-        this.ui.on( 'retry', function( word ) {
+        this.ui.on( 'retry-click', function( word ) {
             for ( word in controller.records ) {
                 if ( controller.records[ word ].hasFailed() ) {
                     controller.upload( word );
@@ -117,11 +119,16 @@
 	rw.controller.Studio.prototype.unload = function () {
 		this.ui.off( 'studiobutton-click' );
 		this.ui.off( 'item-click' );
+		this.ui.off( 'previous-item-click' );
+		this.ui.off( 'next-item-click' );
+		this.ui.off( 'wordinput-validate' );
+		this.ui.off( 'retry-click' );
 		for ( word in this.records ) {
 		    this.records[ word ].off( 'state-change' );
 		}
-
+        console.log( 'tty' );
 		rw.controller.Step.prototype.unload.call( this );
+        console.log( 'uiop' );
 	};
 
 	rw.controller.Studio.prototype.onStop = function( audioRecord ) {
@@ -173,6 +180,20 @@
 
 	    this.ui.setSelectedItem( this.currentWord );
 	    return true;
+	};
+
+	rw.controller.Studio.prototype.selectWord = function( word ) {
+        this.recorder.cancel();
+
+        this.currentWord = word;
+
+        if ( this.isRecording ) {
+            this.isRecording = false;
+            this.startNextRecord();
+        }
+        else {
+            this.ui.setSelectedItem( word );
+        }
 	};
 
 	rw.controller.Studio.prototype.moveNext = function ( skipFirstWarning ) {

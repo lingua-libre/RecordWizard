@@ -35,8 +35,14 @@
                 ui.$wordInput.val( '' );
             }
         } );
+
         this.showNextButton();
         this.updateCounter();
+	};
+
+	rw.ui.Studio.prototype.unload = function() {
+	    $( document ).off( 'keydown' );
+	    rw.ui.Step.prototype.unload.call( this );
 	};
 
 	rw.ui.Studio.prototype.generateUI = function() {
@@ -75,6 +81,29 @@
 		        ui.emit( 'item-click', word );
 		    }
 		} );
+
+        $( document ).keydown( function( event ) {
+
+            switch( event.which ) {
+                case 32: // space
+                    if ( event.target.nodeName === 'INPUT' ) {
+                        return;
+                    }
+                    ui.emit( 'studiobutton-click' );
+                    break;
+
+                case 37: // left
+                    ui.emit( 'previous-item-click' );
+                    break;
+
+                case 39: // right
+                    ui.emit( 'next-item-click' );
+                    break;
+
+                default: return;
+            }
+            event.preventDefault();
+        } );
 
         this.$head.addClass( 'studio-ready' );
 	};

@@ -86,7 +86,7 @@
 			label: mw.message( 'mwe-recwiz-retry' ).text(),
 			flags: [ 'progressive' ]
 		} ).on( 'click', function () {
-			ui.emit( 'retry' );
+			ui.emit( 'retry-click' );
 		} ).toggle();
 
 		this.nextButton = new OO.ui.ButtonWidget( {

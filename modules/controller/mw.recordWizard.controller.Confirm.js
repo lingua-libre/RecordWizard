@@ -29,7 +29,7 @@
 	        this.records[ word ].on( 'state-change', this.switchState.bind( this ) );
 		}
 
-        this.ui.on( 'retry', function( word ) {
+        this.ui.on( 'retry-click', function( word ) {
             for ( word in controller.records ) {
                 if ( controller.records[ word ].hasFailed() ) {
                     controller.upload( word );
@@ -39,10 +39,12 @@
 	};
 
 	rw.controller.Confirm.prototype.unload = function ( metadatas, records ) {
-		rw.controller.Step.prototype.unload.call( this );
+		this.ui.off( 'retry-click' );
 		for ( word in this.records ) {
 		    this.records[ word ].off( 'state-change' );
 		}
+
+		rw.controller.Step.prototype.unload.call( this );
 	};
 
 	rw.controller.Confirm.prototype.upload = function( word ) {
