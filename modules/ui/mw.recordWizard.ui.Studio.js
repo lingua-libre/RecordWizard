@@ -15,6 +15,7 @@
 
 		this.addPreviousButton();
 		this.addNextButton();
+
 	};
 
 	OO.inheritClass( rw.ui.Studio, rw.ui.Step );
@@ -23,7 +24,11 @@
 	    var ui = this;
 		rw.ui.Step.prototype.load.call( this, metadatas, records );
 
+	    this.isRecording = false;
         this.generateUI();
+        this.showNextButton();
+        this.updateCounter();
+        this.amplitudeGraph = new rw.ui.AmplitudeGraph();
 
         for ( word in this.records ) {
             this.setItemState( word, this.records[ word ].getState() );
@@ -35,9 +40,6 @@
                 ui.$wordInput.val( '' );
             }
         } );
-
-        this.showNextButton();
-        this.updateCounter();
 	};
 
 	rw.ui.Studio.prototype.unload = function() {
@@ -50,8 +52,7 @@
 
         this.$studioButton = $( '<button>' ).addClass( 'studio-rbutton-inner' );
         this.$head = $( '<div>' ).addClass( 'studio-head' )
-            .append( $( '<div>' ).addClass( 'studio-rbutton' ).append( this.$studioButton ) )
-            .append( $( '<canvas>' ).addClass( 'studio-canvas' ).attr( 'height', '150' ) );
+            .append( $( '<div>' ).addClass( 'studio-rbutton' ).append( this.$studioButton ) );
 
 		this.$list = $( '<ul>' ).addClass( 'studio-wordlist' );
 		this.recordItems = {};
@@ -81,9 +82,7 @@
 		        ui.emit( 'item-click', word );
 		    }
 		} );
-
         $( document ).keydown( function( event ) {
-
             switch( event.which ) {
                 case 32: // space
                     if ( event.target.nodeName === 'INPUT' ) {
@@ -110,14 +109,24 @@
 
 	rw.ui.Studio.prototype.onStart = function() {
 	    this.$head.addClass( 'studio-rec' );
+	    this.amplitudeGraph.start();
 	};
 
-	rw.ui.Studio.prototype.onRecord = function() {
+	rw.ui.Studio.prototype.onRecord = function( samples ) {
+        var amplitudeMax = 0;
+        for ( var i=0; i < samples.length; i++ ) {
+            var amplitude = Math.abs( samples[ i ] );
+            if ( amplitude > amplitudeMax ) {
+                amplitudeMax = amplitude;
+            }
+        }
 
-	};
+        this.amplitudeGraph.push( amplitudeMax );
+    };
 
 	rw.ui.Studio.prototype.onStop = function() {
 	    this.$head.removeClass( 'studio-rec' );
+	    this.amplitudeGraph.stop();
 	};
 
 	rw.ui.Studio.prototype.onCancel = function() {
@@ -134,8 +143,10 @@
 	        this.recordItems[ word ].addClass( 'studio-wordlist-selected' );
 	    }
 
+        this.amplitudeGraph.setContainer( this.recordItems[ word ] );
+
 	    this.$list.animate( {
-	        scrollTop: this.$list.scrollTop() + this.recordItems[ word ].position().top - ( this.recordItems[ word ].innerHeight() - this.recordItems[ word ].height() )
+	        scrollTop: this.recordItems[ word ].offset().top - this.$list.offset().top + this.$list.scrollTop() - ( this.recordItems[ word ].innerHeight() - this.recordItems[ word ].height() )
 	    } ) ;
 	};
 
@@ -200,6 +211,82 @@
 	        this.$recordCounter.show();
 	    }
 	};
+
+
+
+
+
+    rw.ui.AmplitudeGraph = function() {
+        this.$container = null;
+        this.amplitudes = [];
+        this.nbMaxAmplitudeBars = 0;
+	    this.isRecording = false;
+        this.$canvas = $( '<canvas>' ).addClass( 'mwe-recwiz-wordcanvas' )[ 0 ];
+        this.ctx = this.$canvas.getContext('2d');
+        this.ctx.save();
+	};
+
+    rw.ui.AmplitudeGraph.prototype.stop = function() {
+	    this.isRecording = false;
+
+	    this.amplitudes = [];
+        this.ctx.clearRect( 0, 0, this.$canvas.width, this.$canvas.height );
+    };
+
+    rw.ui.AmplitudeGraph.prototype.start = function() {
+	    this.isRecording = true;
+
+        requestAnimationFrame( this.draw.bind( this ) );
+    };
+
+    rw.ui.AmplitudeGraph.prototype.draw = function() {
+        if ( ! this.isRecording ) {
+            return;
+        }
+
+        // Flip the graph if we're using a rtl language
+        if ( this.$container.css( 'direction' ) === 'rtl' ) {
+            this.ctx.resetTransform();
+            this.ctx.transform(-1, 0, 0, 1, this.$canvas.width, 0);
+        }
+
+        // Clear the current content of the canvas
+        this.ctx.clearRect(0, 0, this.$canvas.width, this.$canvas.height);
+
+        // Draw the amplitude chart
+        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+        for (var i = 0; i < this.amplitudes.length; i++){
+            var height = Math.ceil( this.amplitudes[ i ] * this.$canvas.height )
+            this.ctx.fillRect(i * 5, this.$canvas.height - height, 5, height );
+	    }
+
+        // Ask the browser to callback this function at its next refresh
+        requestAnimationFrame( this.draw.bind( this ) );
+    };
+
+    rw.ui.AmplitudeGraph.prototype.setContainer = function( container ) {
+	    this.amplitudes = [];
+        this.ctx.clearRect( 0, 0, this.$canvas.width, this.$canvas.height );
+
+        this.$container = container;
+
+        this.$canvas.width = this.$container.outerWidth();
+        this.$canvas.height = this.$container.outerHeight();
+        this.$container.prepend( this.$canvas );
+        this.nbMaxAmplitudeBars = Math.floor( this.$canvas.width / 5 );
+
+	    this.amplitudes = [];
+        this.ctx.clearRect( 0, 0, this.$canvas.width, this.$canvas.height );
+    };
+
+    rw.ui.AmplitudeGraph.prototype.push = function( amplitude ) {
+        this.amplitudes.push( amplitude );
+
+        if ( this.amplitudes.length > this.nbMaxAmplitudeBars ) {
+            this.amplitudes.shift();
+        }
+    };
+
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );
 

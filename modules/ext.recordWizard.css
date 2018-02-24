@@ -157,7 +157,7 @@
     background-color: tomato;
 }
 
-.studio-wordcanvas {
+canvas.mwe-recwiz-wordcanvas {
     position: absolute;
     top: 0px;
     left: 0px;
