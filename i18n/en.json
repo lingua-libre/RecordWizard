@@ -24,6 +24,21 @@
     "mwe-recwiz-continueanyway": "Continue anyway",
     "mwe-recwiz-retry": "retry failed upload",
 
+    "mwe-recwiz-locutor": "Locutor",
+    "mwe-recwiz-locutor-gender": "Gender",
+    "mwe-recwiz-gender-male": "Male",
+    "mwe-recwiz-gender-female": "Female",
+    "mwe-recwiz-gender-other": "Other",
+    "mwe-recwiz-locutor-languages": "Spoken languages",
+    "mwe-recwiz-locutor-location": "Dwelling place",
+
+    "mwe-recwiz-param": "Record parameters",
+    "mwe-recwiz-param-lang": "Record language",
+
+    "mwe-recwiz-generator": "Generators",
+    "mwe-recwiz-generator-manual": "Manual",
+    "mwe-recwiz-generator-nearby": "Nearby items",
+
     "mwe-recwiz-pendinguplads": "...Uploading...",
     "mwe-recwiz-allsucceeded": "All uploads were successful!",
     "mwe-recwiz-somefailed": "Some upload failed.",

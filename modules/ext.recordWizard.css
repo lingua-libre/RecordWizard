@@ -10,6 +10,10 @@
   to {transform: rotate(360deg);}
 }
 
+.mwe-recwiz-increment {
+    margin-left: 5em;
+}
+
 #mwe-recwiz-stepdiv-publish li {
     position: relative;
 }

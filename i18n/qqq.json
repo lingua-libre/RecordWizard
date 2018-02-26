@@ -24,6 +24,21 @@
     "mwe-recwiz-continueanyway": "",
     "mwe-recwiz-retry": "",
 
+    "mwe-recwiz-locutor": "",
+    "mwe-recwiz-label-gender": "",
+    "mwe-recwiz-gender-male": "",
+    "mwe-recwiz-gender-female": "",
+    "mwe-recwiz-gender-other": "",
+    "mwe-recwiz-label-languages": "",
+    "mwe-recwiz-label-location": "",
+
+    "mwe-recwiz-param": "Record parameters",
+    "mwe-recwiz-param-lang": "Record language",
+
+    "mwe-recwiz-generator": "",
+    "mwe-recwiz-generator-manual": "",
+    "mwe-recwiz-generator-nearby": "",
+
     "mwe-recwiz-pendinguplads": "",
     "mwe-recwiz-allsucceeded": "",
     "mwe-recwiz-somefailed": "",

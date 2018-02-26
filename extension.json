@@ -26,12 +26,12 @@
                 "modules/mw.recordWizard.RecordWizard.js"
             ],
 			"dependencies": [
+				"mediawiki.util",
+				"oojs",
 			    "ext.recordWizard.base",
 			    "ext.recordWizard.styles",
 			    "ext.recordWizard.upload",
-				"ext.recordWizard.controller",
-				"mediawiki.util",
-				"oojs"
+				"ext.recordWizard.controller"
 			]
         },
         "ext.recordWizard.base": {
@@ -63,6 +63,16 @@
                 "lib/lingua-recorder/WordListStudio.js"
             ]
         },
+        "ext.recordWizard.layout":{
+            "scripts": [
+                "modules/layout/mw.recordWizard.layout.js",
+                "modules/layout/mw.recordWizard.layout.DropdownLayout.js"
+            ],
+			"dependencies": [
+			    "oojs-ui",
+			    "jquery.makeCollapsible"
+			]
+        },
         "ext.recordWizard.ui": {
             "scripts": [
                 "modules/ui/mw.recordWizard.ui.js",
@@ -74,7 +84,8 @@
                 "modules/ui/mw.recordWizard.ui.Publish.js"
             ],
 			"dependencies": [
-			    "oojs"
+			    "oojs",
+			    "ext.recordWizard.layout"
 			],
 			"messages": [
 		        "mwe-recwiz-step-tutorial",
@@ -88,6 +99,18 @@
                 "mwe-recwiz-continue",
                 "mwe-recwiz-continueanyway",
                 "mwe-recwiz-retry",
+                "mwe-recwiz-locutor",
+                "mwe-recwiz-locutor-gender",
+                "mwe-recwiz-gender-male",
+                "mwe-recwiz-gender-female",
+                "mwe-recwiz-gender-other",
+                "mwe-recwiz-locutor-languages",
+                "mwe-recwiz-locutor-location",
+                "mwe-recwiz-param",
+                "mwe-recwiz-param-lang",
+                "mwe-recwiz-generator",
+                "mwe-recwiz-generator-manual",
+                "mwe-recwiz-generator-nearby",
                 "mwe-recwiz-pendinguplads",
                 "mwe-recwiz-allsucceeded",
                 "mwe-recwiz-somefailed",
