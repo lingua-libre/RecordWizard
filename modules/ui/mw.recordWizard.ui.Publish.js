@@ -3,25 +3,25 @@
 	/**
 	 * Represents the UI for the wizard's Confirm step.
 	 *
-	 * @class rw.ui.Confirm
+	 * @class rw.ui.Publish
 	 * @extends rw.ui.Step
 	 * @constructor
 	 */
-	rw.ui.Confirm = function() {
+	rw.ui.Publish = function() {
 		var ui = this;
 
 		rw.ui.Step.call(
 			this,
-			'confirm'
+			'publish'
 		);
 
 		this.addPreviousButton();
 		this.addNextButton();
 	};
 
-	OO.inheritClass( rw.ui.Confirm, rw.ui.Step );
+	OO.inheritClass( rw.ui.Publish, rw.ui.Step );
 
-	rw.ui.Confirm.prototype.load = function ( metadatas, records ) {
+	rw.ui.Publish.prototype.load = function ( metadatas, records ) {
 		rw.ui.Step.prototype.load.call( this, metadatas, records );
 
 		this.$list = $( '<ul>' );
@@ -38,7 +38,7 @@
         this.$container.prepend( this.$list );
 	};
 
-	rw.ui.Confirm.prototype.setItemState = function( word, state ) {
+	rw.ui.Publish.prototype.setItemState = function( word, state ) {
 	    // TODO: use a correlation table to asociate state and HTML class
 	    if ( state !== 'finalizing' ) {
 	        $('html, body').animate( {
@@ -50,7 +50,7 @@
 	    this.showNextButton();
 	};
 
-	rw.ui.Confirm.prototype.showNextButton = function() {
+	rw.ui.Publish.prototype.showNextButton = function() {
         console.log( this.metadatas.statesCount );
 	    if ( this.metadatas.statesCount.finalizing > 0 ) {
 	        this.previousButton.setDisabled( true );

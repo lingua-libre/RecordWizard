@@ -22,8 +22,7 @@
 	    this.steps.details = new rw.controller.Details( this.api, this.config );
 	    this.steps.license = new rw.controller.License( this.api, this.config );
 	    this.steps.studio = new rw.controller.Studio( this.api, this.config );
-	    this.steps.confirm = new rw.controller.Confirm( this.api, this.config );
-	    this.steps.thanks = new rw.controller.Thanks( this.api, this.config );
+	    this.steps.publish = new rw.controller.Publish( this.api, this.config );
 
 	    this.steps.tutorial.setNextStep( this.steps.details );
 
@@ -34,12 +33,10 @@
 	    this.steps.license.setNextStep( this.steps.studio );
 
 	    this.steps.studio.setPreviousStep( this.steps.license );
-	    this.steps.studio.setNextStep( this.steps.confirm );
+	    this.steps.studio.setNextStep( this.steps.publish );
 
-	    this.steps.confirm.setPreviousStep( this.steps.studio );
-	    this.steps.confirm.setNextStep( this.steps.thanks );
-
-	    this.steps.thanks.setNextStep( this.steps.details );
+	    this.steps.publish.setPreviousStep( this.steps.studio );
+	    this.steps.publish.setNextStep( this.steps.details );
 	};
 
 

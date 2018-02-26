@@ -10,27 +10,27 @@
   to {transform: rotate(360deg);}
 }
 
-#mwe-recwiz-stepdiv-confirm li {
+#mwe-recwiz-stepdiv-publish li {
     position: relative;
 }
 
-#mwe-recwiz-stepdiv-confirm li:after {
+#mwe-recwiz-stepdiv-publish li:after {
   position: absolute;
   right: 0;
   width: 40px;
   height: 40px;
 }
 
-#mwe-recwiz-stepdiv-confirm li.mwe-recwiz-finalizing:after {
+#mwe-recwiz-stepdiv-publish li.mwe-recwiz-finalizing:after {
   content: url( images/Spinner_font_awesome.svg );
   animation: spinner 1.5s linear infinite;
 }
 
-#mwe-recwiz-stepdiv-confirm li.mwe-recwiz-uploaded:after {
+#mwe-recwiz-stepdiv-publish li.mwe-recwiz-uploaded:after {
   content: url( images/Ok_sign_font_awesome_green.svg );
 }
 
-#mwe-recwiz-stepdiv-confirm li.mwe-recwiz-error:after {
+#mwe-recwiz-stepdiv-publish li.mwe-recwiz-error:after {
   content: url( images/Exclamation_sign_font_awesome_red.svg );
 }
 

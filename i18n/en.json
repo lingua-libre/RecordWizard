@@ -14,8 +14,7 @@
     "mwe-recwiz-step-details": "Details",
     "mwe-recwiz-step-license": "License",
     "mwe-recwiz-step-studio": "Studio",
-    "mwe-recwiz-step-confirm": "Confirm",
-    "mwe-recwiz-step-thanks": "Thanks",
+    "mwe-recwiz-step-publish": "Publish",
 
     "mwe-recwiz-upload-count": "$1 of $2 {{PLURAL:$2|sound|sounds}} uploaded",
 

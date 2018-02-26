@@ -7,20 +7,20 @@
 	 * @param {mw.Api} api
 	 * @param {Object} config RecordWizard config object.
 	 */
-	rw.controller.Confirm = function( api, config ) {
+	rw.controller.Publish = function( api, config ) {
 		rw.controller.Step.call(
 			this,
-			new rw.ui.Confirm(),
+			new rw.ui.Publish(),
 			api,
 			config
 		);
 
-		this.stepName = 'confirm';
+		this.stepName = 'publish';
 	};
 
-	OO.inheritClass( rw.controller.Confirm, rw.controller.Step );
+	OO.inheritClass( rw.controller.Publish, rw.controller.Step );
 
-	rw.controller.Confirm.prototype.load = function ( metadatas, records ) {
+	rw.controller.Publish.prototype.load = function ( metadatas, records ) {
 		var controller = this;
 
 		rw.controller.Step.prototype.load.call( this, metadatas, records );
@@ -38,7 +38,7 @@
         } );
 	};
 
-	rw.controller.Confirm.prototype.unload = function ( metadatas, records ) {
+	rw.controller.Publish.prototype.unload = function ( metadatas, records ) {
 		this.ui.off( 'retry-click' );
 		for ( word in this.records ) {
 		    this.records[ word ].off( 'state-change' );
@@ -47,17 +47,17 @@
 		rw.controller.Step.prototype.unload.call( this );
 	};
 
-	rw.controller.Confirm.prototype.upload = function( word ) {
+	rw.controller.Publish.prototype.upload = function( word ) {
 	    rw.requestQueue.push( this.records[ word ], 'finishUpload' );
 	};
 
-	rw.controller.Confirm.prototype.moveNext = function () {
+	rw.controller.Publish.prototype.moveNext = function () {
 		for( var word in this.records ) {
 		    this.upload( word );
 		}
 	};
 
-	rw.controller.Confirm.prototype.movePrevious = function () {
+	rw.controller.Publish.prototype.movePrevious = function () {
 		// XXX do stuff
 
 		rw.controller.Step.prototype.movePrevious.call( this );

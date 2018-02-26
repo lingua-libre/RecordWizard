@@ -71,8 +71,7 @@
                 "modules/ui/mw.recordWizard.ui.Details.js",
                 "modules/ui/mw.recordWizard.ui.License.js",
                 "modules/ui/mw.recordWizard.ui.Studio.js",
-                "modules/ui/mw.recordWizard.ui.Confirm.js",
-                "modules/ui/mw.recordWizard.ui.Thanks.js"
+                "modules/ui/mw.recordWizard.ui.Publish.js"
             ],
 			"dependencies": [
 			    "oojs"
@@ -82,8 +81,7 @@
                 "mwe-recwiz-step-details",
                 "mwe-recwiz-step-license",
                 "mwe-recwiz-step-studio",
-                "mwe-recwiz-step-confirm",
-                "mwe-recwiz-step-thanks",
+                "mwe-recwiz-step-publish",
                 "mwe-recwiz-upload-count",
                 "mwe-recwiz-next",
                 "mwe-recwiz-previous",
@@ -107,8 +105,7 @@
                 "modules/controller/mw.recordWizard.controller.Details.js",
                 "modules/controller/mw.recordWizard.controller.License.js",
                 "modules/controller/mw.recordWizard.controller.Studio.js",
-                "modules/controller/mw.recordWizard.controller.Confirm.js",
-                "modules/controller/mw.recordWizard.controller.Thanks.js"
+                "modules/controller/mw.recordWizard.controller.Publish.js"
             ],
 			"dependencies": [
 			    "mediawiki.confirmCloseWindow",
