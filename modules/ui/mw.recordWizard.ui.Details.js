@@ -22,11 +22,10 @@
 	OO.inheritClass( rw.ui.Details, rw.ui.Step );
 
 	rw.ui.Details.prototype.load = function ( metadatas, records ) {
+	    var ui = this;
+
 		rw.ui.Step.prototype.load.call( this, metadatas, records );
 
-		this.locutorLabel = new OO.ui.LabelWidget( {
-		    label: mw.config.get( 'wgUserName' )
-		} );
 		this.genderSelector = new OO.ui.FieldLayout( new OO.ui.ButtonSelectWidget( {
 	        items: [
 		        new OO.ui.ButtonOptionWidget( { label: mw.message( 'mwe-recwiz-gender-male' ).text() } ),
@@ -79,45 +78,80 @@
         } );
 
         this.generators = {};
-        this.generators.manual = new OO.ui.RadioOptionWidget( {
+        this.generators.manual = new rw.layout.RadioAccordeonLayout( {
             data: 'manual',
-            label: mw.message( 'mwe-recwiz-generator-manual' ).text()
-        } );
-
-        this.generators.nearby = new OO.ui.RadioOptionWidget( {
-            data: 'nearby',
-            label: mw.message( 'mwe-recwiz-generator-nearby' ).text()
-        } );
-
-        this.generatorsRadioSelector = new OO.ui.RadioSelectWidget( {
+            label: mw.message( 'mwe-recwiz-generator-manual' ).text(),
+            collapsed: true,
 	        classes: [ 'mwe-recwiz-increment' ],
-            items: [ this.generators.manual, this.generators.nearby ]
-         } );
+            content: new OO.ui.MultilineTextInputWidget( {
+	            rows: 10,
+	            autosize: true,
+	            value: ''
+            } )
+        } );
 
-        this.generatorsRadioSelector.selectItem( this.generators.manual );
+        this.generators.nearby = new rw.layout.RadioAccordeonLayout( {
+            data: 'nearby',
+            label: mw.message( 'mwe-recwiz-generator-nearby' ).text(),
+            collapsed: true,
+	        classes: [ 'mwe-recwiz-increment' ],
+            content: new OO.ui.MultilineTextInputWidget( {
+	            rows: 8,
+	            autosize: true,
+	            value: ''
+            } ).setDisabled( true )
+        } );
 
-		this.locutorFieldset = new rw.layout.DropdownLayout( {
+		this.locutorFieldset = new rw.layout.ButtonAccordeonLayout( {
 	        label: mw.message( 'mwe-recwiz-locutor' ).text(),
-	        items: [
-	            this.locutorLabel,
-		        this.genderSelector,
-		        this.spokenLanguagesSelector,
-		        this.locationSelector,
-	        ]
+	        stateValue: mw.config.get( 'wgUserName' ),
+	        content: new OO.ui.FieldsetLayout( {
+	            items: [
+		            this.genderSelector,
+		            this.spokenLanguagesSelector,
+		            this.locationSelector,
+	            ],
+	        } ),
         } );
-		this.paramFieldset = new rw.layout.DropdownLayout( {
+		this.paramFieldset = new rw.layout.ButtonAccordeonLayout( {
 	        label: mw.message( 'mwe-recwiz-param' ).text(),
-	        items: [
-		        this.languageSelector,
-	        ]
+	        stateValue: 'French',
+	        content: new OO.ui.FieldsetLayout( {
+	            items: [
+		            this.languageSelector,
+	            ],
+	        } ),
         } );
-		this.generatorFieldset = new rw.layout.DropdownLayout( {
+		this.generatorFieldset = new rw.layout.ButtonAccordeonLayout( {
 	        label: mw.message( 'mwe-recwiz-generator' ).text(),
-	        items: [
-		        this.generatorsRadioSelector
-	        ]
+	        stateValue: 'Manual',
+	        content: new OO.ui.FieldsetLayout( {
+	            items: [
+		            this.generators.manual,
+		            this.generators.nearby
+	            ],
+	        } ),
+        } );
+        this.locutorFieldset.on( 'expand', function() {
+            console.log( 'tty' );
+            ui.paramFieldset.collapse();
+            ui.generatorFieldset.collapse();
+        } );
+        this.paramFieldset.on( 'expand', function() {
+            ui.locutorFieldset.collapse();
+            ui.generatorFieldset.collapse();
+        } );
+        this.generatorFieldset.on( 'expand', function() {
+            ui.locutorFieldset.collapse();
+            ui.paramFieldset.collapse();
         } );
 
+        this.generators.manual.on( 'expand', function() {
+            ui.generators.nearby.collapse();
+        } );
+        this.generators.nearby.on( 'expand', function() {
+            ui.generators.manual.collapse();
+        } );
 
 		this.$container
 		    .prepend( this.generatorFieldset.$element )
