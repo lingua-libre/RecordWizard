@@ -1,6 +1,6 @@
 ( function ( mw, $, rw, OO ) {
 
-	rw.ui.DetailsParam = function( config ) {
+	rw.ui.DetailsParam = function( metadatas ) {
 
         this.languageSelector = new OO.ui.FieldLayout( new OO.ui.DropdownWidget( {
 	        menu: {

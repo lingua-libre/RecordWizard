@@ -1,9 +1,10 @@
 ( function ( mw, $, rw, OO ) {
 
 	rw.layout.AccordionLayout = function( config ) {
-	    var classes = config.classes || []
-	    classes.push( 'mwe-recwiz-accordionLayout' );
-	    OO.ui.Widget.call( this, { classes: classes } );
+	    config = config || {};
+	    this.classes = config.classes || []
+	    this.classes.push( 'mwe-recwiz-accordionLayout' );
+	    OO.ui.Widget.call( this, { classes: this.classes } );
 
         this.dropdowns = [];
         if ( config.items !== undefined ) {

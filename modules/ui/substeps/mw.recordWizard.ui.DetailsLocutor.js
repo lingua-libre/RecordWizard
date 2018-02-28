@@ -1,6 +1,6 @@
 ( function ( mw, $, rw, OO ) {
 
-	rw.ui.DetailsLocutor = function( config ) {
+	rw.ui.DetailsLocutor = function( metadatas ) {
 
 		this.genderSelector = new OO.ui.FieldLayout( new OO.ui.ButtonSelectWidget( {
 	        items: [

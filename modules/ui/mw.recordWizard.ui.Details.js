@@ -27,9 +27,9 @@
 		rw.ui.Step.prototype.load.call( this, metadatas, records );
 
 		this.substeps = {
-		    locutor: new rw.ui.DetailsLocutor(),
-		    param: new rw.ui.DetailsParam(),
-		    generator: new rw.ui.DetailsGenerator(),
+		    locutor: new rw.ui.DetailsLocutor( metadatas ),
+		    param: new rw.ui.DetailsParam( metadatas ),
+		    generator: new rw.ui.DetailsGenerator( metadatas ),
 		};
 
 		this.accordion = new rw.layout.AccordionLayout( {

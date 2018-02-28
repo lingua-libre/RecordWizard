@@ -11,7 +11,7 @@
 	    this.list = [];
 	    this.$element = null;
 	    this.label = mw.message( 'mwe-recwiz-generator-' + this.constructor.static.name ).text();
-	    this.params = { name: this.label };
+	    this.params = { name: this.constructor.static.name };
 	};
 
 	rw.generator.Generator.prototype.getList = function() {
@@ -20,6 +20,10 @@
 
 	rw.generator.Generator.prototype.getParams = function() {
 	    return this.params;
+	};
+
+	rw.generator.Generator.prototype.preload = function() {
+	    return;
 	};
 
 	rw.generator.Generator.static = {

@@ -41,6 +41,10 @@
         }
 	};
 
+	rw.layout.DropdownLayout.prototype.setStateValue = function( value ) {
+        this.stateLabel.setLabel( value );
+	};
+
 
 
 
@@ -110,12 +114,17 @@
 	    }
 
         this.on( 'collapse', this.onCollapse.bind( this ) );
+        this.on( 'expand', this.onExpand.bind( this ) );
 	};
 
 	OO.inheritClass( rw.layout.RadioDropdownLayout, rw.layout.DropdownLayout );
 
 	rw.layout.RadioDropdownLayout.prototype.onCollapse = function() {
         this.radioSelect.selectItem();
+	};
+
+	rw.layout.RadioDropdownLayout.prototype.onExpand = function() {
+        this.radioSelect.selectItem( this.radio );
 	};
 
 
