@@ -63,6 +63,16 @@
                 "lib/lingua-recorder/WordListStudio.js"
             ]
         },
+        "ext.recordWizard.generator":{
+            "scripts": [
+                "modules/generator/mw.recordWizard.generator.js",
+                "modules/generator/mw.recordWizard.generator.Generator.js",
+                "modules/generator/mw.recordWizard.generator.Manual.js"
+            ],
+			"dependencies": [
+			    "oojs"
+			]
+        },
         "ext.recordWizard.layout":{
             "scripts": [
                 "modules/layout/mw.recordWizard.layout.js",
@@ -137,6 +147,7 @@
 			    "mediawiki.confirmCloseWindow",
 			    "oojs",
 			    "ext.recordWizard.recorder",
+			    "ext.recordWizard.generator",
 			    "ext.recordWizard.ui"
 			]
         }
