@@ -66,6 +66,7 @@
         "ext.recordWizard.layout":{
             "scripts": [
                 "modules/layout/mw.recordWizard.layout.js",
+                "modules/layout/mw.recordWizard.layout.DropdownLayout.js",
                 "modules/layout/mw.recordWizard.layout.AccordionLayout.js"
             ],
 			"dependencies": [

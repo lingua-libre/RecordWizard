@@ -31,24 +31,15 @@
 		this.substeps.param = new rw.ui.DetailsParam();
 		this.substeps.generator = new rw.ui.DetailsGenerator();
 
+		this.accordion = new rw.layout.AccordionLayout( {
+		    items: [
+		        this.substeps.locutor,
+		        this.substeps.param,
+		        this.substeps.generator
+		    ],
+		} );
 
-        this.substeps.locutor.on( 'expand', function() {
-            ui.substeps.param.collapse();
-            ui.substeps.generator.collapse();
-        } );
-        this.substeps.param.on( 'expand', function() {
-            ui.substeps.locutor.collapse();
-            ui.substeps.generator.collapse();
-        } );
-        this.substeps.generator.on( 'expand', function() {
-            ui.substeps.locutor.collapse();
-            ui.substeps.param.collapse();
-        } );
-
-		this.$container
-		    .prepend( this.substeps.generator.$element )
-		    .prepend( this.substeps.param.$element )
-		    .prepend( this.substeps.locutor.$element );
+		this.$container.prepend( this.accordion.$element );
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

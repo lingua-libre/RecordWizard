@@ -24,13 +24,13 @@
             ],
         } );
 
-		rw.layout.ButtonAccordionLayout.call( this, {
+		rw.layout.ButtonDropdownLayout.call( this, {
 	        label: mw.message( 'mwe-recwiz-param' ).text(),
             content: this.content,
 		} );
 
 	};
 
-	OO.inheritClass( rw.ui.DetailsParam, rw.layout.ButtonAccordionLayout );
+	OO.inheritClass( rw.ui.DetailsParam, rw.layout.ButtonDropdownLayout );
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

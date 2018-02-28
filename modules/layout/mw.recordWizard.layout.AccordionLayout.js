@@ -1,116 +1,39 @@
 ( function ( mw, $, rw, OO ) {
 
-	rw.layout.AccordeonLayout = function( config ) {
-	    OO.EventEmitter.call( this );
-	    OO.ui.Widget.call( this, { classes: config.classes } );
+	rw.layout.AccordionLayout = function( config ) {
+	    var classes = config.classes || []
+	    classes.push( 'mwe-recwiz-accordionLayout' );
+	    OO.ui.Widget.call( this, { classes: classes } );
 
-	    this.label = config.label;
-	    this.expanded = true;
-
-		this.content = config.content;
-
-		this.stateLabel = new OO.ui.LabelWidget( { label: config.stateValue || '' } );
-		this.header = new OO.ui.HorizontalLayout( {
-			items: [
-			    this.stateLabel
-			],
-	    } );
-
-	    this.$element
-	        .append( this.header.$element )
-	        .append( this.content.$element );
-	};
-
-	OO.mixinClass( rw.layout.AccordeonLayout, OO.EventEmitter );
-	OO.inheritClass( rw.layout.AccordeonLayout, OO.ui.Widget );
-
-	rw.layout.AccordeonLayout.prototype.collapse = function() {
-        if ( this.expanded ) {
-            this.content.$element.slideUp();
-            this.expanded = false;
-            this.emit( 'collapse' );
-        }
-	};
-
-	rw.layout.AccordeonLayout.prototype.expand = function() {
-        if ( ! this.expanded ) {
-            this.content.$element.slideDown();
-            this.expanded = true;
-            this.emit( 'expand' );
-        }
-	};
-
-
-
-
-	rw.layout.ButtonAccordeonLayout = function( config ) {
-		rw.layout.AccordeonLayout.call( this, config );
-
-        this.button = new OO.ui.ButtonWidget( {
-	        framed: false,
-	        flags: [ 'progressive' ],
-	        icon: 'expand',
-	        label: this.label
-        } );
-		this.header.addItems( [ this.button ], 0 );
-        this.button.on( 'click', this.onClick.bind( this ) );
-
-        this.on( 'expand', this.onExpand.bind( this ) );
-        this.on( 'collapse', this.onCollapse.bind( this ) );
-	};
-
-	OO.inheritClass( rw.layout.ButtonAccordeonLayout, rw.layout.AccordeonLayout );
-
-	rw.layout.ButtonAccordeonLayout.prototype.onClick = function() {
-        if ( this.expanded ) {
-            this.collapse();
-        }
-        else {
-            this.expand();
-        }
-    };
-
-	rw.layout.ButtonAccordeonLayout.prototype.onExpand = function() {
-        this.button.setIcon( 'expand' );
-    };
-
-	rw.layout.ButtonAccordeonLayout.prototype.onCollapse = function() {
-        this.button.setIcon( 'next' );
-    };
-
-
-
-
-	rw.layout.RadioAccordeonLayout = function( config ) {
-		rw.layout.AccordeonLayout.call( this, config );
-
-        this.radio = new OO.ui.RadioOptionWidget( {
-            data: config.data,
-            label: config.label
-        } );
-		this.radioSelect = new OO.ui.RadioSelectWidget( {
-            items: [ this.radio ]
-         } );
-
-		this.header.addItems( [ this.radioSelect ], 0 );
-
-        this.radioSelect.on( 'choose', this.expand.bind( this ) );
-
-	    this.$element.prepend( this.header.$element );
-
-        if ( config.collapsed ) {
-	        this.collapse();
+        this.dropdowns = [];
+        if ( config.items !== undefined ) {
+	        this.addDropdowns( config.items );
 	    }
 
-        this.on( 'collapse', this.onCollapse.bind( this ) );
+
 	};
 
-	OO.inheritClass( rw.layout.RadioAccordeonLayout, rw.layout.AccordeonLayout );
+	OO.inheritClass( rw.layout.AccordionLayout, OO.ui.Widget );
 
-	rw.layout.RadioAccordeonLayout.prototype.onCollapse = function() {
-        this.radioSelect.selectItem();
-	};
+    rw.layout.AccordionLayout.prototype.addDropdowns = function( dropdowns ) {
+        if( ! Array.isArray( dropdowns ) ) {
+            dropdowns = [ dropdowns ];
+        }
 
+        for ( var i=0; i < dropdowns.length; i++ ) {
+            this.dropdowns.push( dropdowns[ i ] );
+            this.$element.append( dropdowns[ i ].$element );
+            dropdowns[ i ].on( 'expand', this.onExpand.bind( this ) );
+        }
+    };
+
+    rw.layout.AccordionLayout.prototype.onExpand = function( dropdown ) {
+        for ( var i=0; i < this.dropdowns.length; i++ ) {
+            if ( this.dropdowns[ i ] !== dropdown ) {
+                this.dropdowns[ i ].collapse();
+            }
+        }
+    };
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );
 

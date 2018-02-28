@@ -47,7 +47,7 @@
         } );
 
 
-		rw.layout.ButtonAccordionLayout.call( this, {
+		rw.layout.ButtonDropdownLayout.call( this, {
 	        label: mw.message( 'mwe-recwiz-locutor' ).text(),
 	        stateValue: mw.config.get( 'wgUserName' ),
             content: this.content,
@@ -55,6 +55,6 @@
 
 	};
 
-	OO.inheritClass( rw.ui.DetailsLocutor, rw.layout.ButtonAccordionLayout );
+	OO.inheritClass( rw.ui.DetailsLocutor, rw.layout.ButtonDropdownLayout );
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

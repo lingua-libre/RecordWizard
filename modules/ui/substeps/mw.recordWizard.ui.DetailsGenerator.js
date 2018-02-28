@@ -3,7 +3,7 @@
 	rw.ui.DetailsGenerator = function( config ) {
 
         this.generators = {};
-        this.generators.manual = new rw.layout.RadioAccordionLayout( {
+        this.generators.manual = new rw.layout.RadioDropdownLayout( {
             data: 'manual',
             label: mw.message( 'mwe-recwiz-generator-manual' ).text(),
             collapsed: true,
@@ -15,7 +15,7 @@
             } )
         } );
 
-        this.generators.nearby = new rw.layout.RadioAccordionLayout( {
+        this.generators.nearby = new rw.layout.RadioDropdownLayout( {
             data: 'nearby',
             label: mw.message( 'mwe-recwiz-generator-nearby' ).text(),
             collapsed: true,
@@ -27,27 +27,21 @@
             } ).setDisabled( true )
         } );
 
-		this.content = new OO.ui.FieldsetLayout( {
+		this.content = new rw.layout.AccordionLayout( {
             items: [
 	            this.generators.manual,
 	            this.generators.nearby
             ],
         } );
 
-		rw.layout.ButtonAccordionLayout.call( this, {
+		rw.layout.ButtonDropdownLayout.call( this, {
 	        label: mw.message( 'mwe-recwiz-generator' ).text(),
 	        stateValue: 'Manual',
             content: this.content
 		} );
 
-        this.generators.manual.on( 'expand', function() {
-            ui.generators.nearby.collapse();
-        } );
-        this.generators.nearby.on( 'expand', function() {
-            ui.generators.manual.collapse();
-        } );
 	};
 
-	OO.inheritClass( rw.ui.DetailsGenerator, rw.layout.ButtonAccordionLayout );
+	OO.inheritClass( rw.ui.DetailsGenerator, rw.layout.ButtonDropdownLayout );
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );
