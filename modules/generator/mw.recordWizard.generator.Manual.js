@@ -10,7 +10,7 @@
             value: ''
         } );
 
-		this.$element = this.textarea;
+		this.$element = this.textarea.$element;
 
 	};
 

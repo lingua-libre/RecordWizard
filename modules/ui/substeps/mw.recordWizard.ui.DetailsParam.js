@@ -18,15 +18,11 @@
 	        label: mw.message( 'mwe-recwiz-param-lang' ).text()
         } );
 
-		this.content = new OO.ui.FieldsetLayout( {
-            items: [
-	            this.languageSelector,
-            ],
-        } );
+		this.$content = $( '<div>' ).append( this.languageSelector.$element );
 
 		rw.layout.ButtonDropdownLayout.call( this, {
 	        label: mw.message( 'mwe-recwiz-param' ).text(),
-            content: this.content,
+            $content: this.$content,
 		} );
 
 	};

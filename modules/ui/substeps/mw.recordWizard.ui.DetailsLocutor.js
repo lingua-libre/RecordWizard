@@ -38,19 +38,16 @@
 	        label: mw.message( 'mwe-recwiz-locutor-location' ).text()
         } );
 
-        this.content = new OO.ui.FieldsetLayout( {
-            items: [
-	            this.genderSelector,
-	            this.spokenLanguagesSelector,
-	            this.locationSelector,
-            ],
-        } );
+        this.$content = $( '<div>' )
+            .append( this.genderSelector.$element )
+	        .append( this.spokenLanguagesSelector.$element )
+	        .append( this.locationSelector.$element );
 
 
 		rw.layout.ButtonDropdownLayout.call( this, {
 	        label: mw.message( 'mwe-recwiz-locutor' ).text(),
 	        stateValue: mw.config.get( 'wgUserName' ),
-            content: this.content,
+            $content: this.$content,
 		} );
 
 	};

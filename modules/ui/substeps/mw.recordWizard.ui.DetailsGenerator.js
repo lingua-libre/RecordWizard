@@ -18,7 +18,7 @@
                     label: this.generators[ name ].label,
                     collapsed: true,
                     classes: [ 'mwe-recwiz-increment' ],
-                    content: this.generators[ name ].$element
+                    $content: this.generators[ name ].$element
                 } );
                 this.accordion.addDropdowns( [ this.radioDropdowns[ name ] ] );
             }
@@ -35,7 +35,7 @@
 		rw.layout.ButtonDropdownLayout.call( this, {
 	        label: mw.message( 'mwe-recwiz-generator' ).text(),
 	        stateValue: '',
-            content: this.accordion
+            $content: this.accordion.$element
 		} );
 
 	};

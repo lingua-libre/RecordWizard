@@ -8,7 +8,7 @@
 	    this.label = config.label;
 	    this.expanded = true;
 
-		this.content = config.content;
+		this.$content = config.$content;
 
 		this.stateLabel = new OO.ui.LabelWidget( { label: config.stateValue || '' } );
 		this.header = new OO.ui.HorizontalLayout( {
@@ -19,7 +19,7 @@
 
 	    this.$element
 	        .append( this.header.$element )
-	        .append( this.content.$element );
+	        .append( this.$content );
 	};
 
 	OO.inheritClass( rw.layout.DropdownLayout, OO.ui.Widget );
@@ -27,7 +27,7 @@
 
 	rw.layout.DropdownLayout.prototype.collapse = function() {
         if ( this.expanded ) {
-            this.content.$element.slideUp();
+            this.$content.slideUp();
             this.expanded = false;
             this.emit( 'collapse', this );
         }
@@ -35,7 +35,7 @@
 
 	rw.layout.DropdownLayout.prototype.expand = function() {
         if ( ! this.expanded ) {
-            this.content.$element.slideDown();
+            this.$content.slideDown();
             this.expanded = true;
             this.emit( 'expand', this );
         }
