@@ -89,6 +89,8 @@
 	    config.classes.push( 'mwe-recwiz-radioDropdownLayout' );
 		rw.layout.DropdownLayout.call( this, config );
 
+        this.data = config.data;
+
         this.radio = new OO.ui.RadioOptionWidget( {
             data: config.data,
             label: config.label

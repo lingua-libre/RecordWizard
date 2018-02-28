@@ -26,10 +26,11 @@
 
 		rw.ui.Step.prototype.load.call( this, metadatas, records );
 
-		this.substeps = {};
-		this.substeps.locutor = new rw.ui.DetailsLocutor();
-		this.substeps.param = new rw.ui.DetailsParam();
-		this.substeps.generator = new rw.ui.DetailsGenerator();
+		this.substeps = {
+		    locutor: new rw.ui.DetailsLocutor(),
+		    param: new rw.ui.DetailsParam(),
+		    generator: new rw.ui.DetailsGenerator(),
+		};
 
 		this.accordion = new rw.layout.AccordionLayout( {
 		    items: [
@@ -40,6 +41,12 @@
 		} );
 
 		this.$container.prepend( this.accordion.$element );
+	};
+
+	rw.ui.Details.prototype.collect = function() {
+	    for ( substep in this.substeps ) {
+	        $.extend( this.metadatas, this.substeps[ substep ].collect() );
+	    }
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

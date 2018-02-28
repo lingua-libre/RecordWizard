@@ -9,7 +9,7 @@
         if ( config.items !== undefined ) {
 	        this.addDropdowns( config.items );
 	    }
-
+        this.selected = null;
 
 	};
 
@@ -28,11 +28,17 @@
     };
 
     rw.layout.AccordionLayout.prototype.onExpand = function( dropdown ) {
+        this.selected = dropdown;
         for ( var i=0; i < this.dropdowns.length; i++ ) {
             if ( this.dropdowns[ i ] !== dropdown ) {
                 this.dropdowns[ i ].collapse();
             }
         }
+        this.emit( 'change', dropdown );
+    };
+
+    rw.layout.AccordionLayout.prototype.getSelected = function() {
+        return this.selected;
     };
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

@@ -3,45 +3,49 @@
 	rw.ui.DetailsGenerator = function( config ) {
 
         this.generators = {};
-        this.generators.manual = new rw.layout.RadioDropdownLayout( {
-            data: 'manual',
-            label: mw.message( 'mwe-recwiz-generator-manual' ).text(),
-            collapsed: true,
-	        classes: [ 'mwe-recwiz-increment' ],
-            content: new OO.ui.MultilineTextInputWidget( {
-	            rows: 10,
-	            autosize: true,
-	            value: ''
-            } )
-        } );
+        this.radioDropdowns = [];
 
-        this.generators.nearby = new rw.layout.RadioDropdownLayout( {
-            data: 'nearby',
-            label: mw.message( 'mwe-recwiz-generator-nearby' ).text(),
-            collapsed: true,
-	        classes: [ 'mwe-recwiz-increment' ],
-            content: new OO.ui.MultilineTextInputWidget( {
-	            rows: 8,
-	            autosize: true,
-	            value: ''
-            } ).setDisabled( true )
-        } );
+        for ( className in rw.generator ) {
+            var name = rw.generator[ className ].static.name;
+            console.log( name );
+            if ( name !== '__generic__' ) {
+                this.generators[ name ] = new rw.generator[ className ]();
 
-		this.content = new rw.layout.AccordionLayout( {
-            items: [
-	            this.generators.manual,
-	            this.generators.nearby
-            ],
+                var radioDropdown = new rw.layout.RadioDropdownLayout( {
+                    data: name,
+                    label: this.generators[ name ].label,
+                    collapsed: true,
+                    classes: [ 'mwe-recwiz-increment' ],
+                    content: this.generators[ name ].$element
+                } );
+                this.radioDropdowns.push( radioDropdown );
+            }
+        }
+
+		this.accordion = new rw.layout.AccordionLayout( {
+            items: this.radioDropdowns,
         } );
 
 		rw.layout.ButtonDropdownLayout.call( this, {
 	        label: mw.message( 'mwe-recwiz-generator' ).text(),
 	        stateValue: 'Manual',
-            content: this.content
+            content: this.accordion
 		} );
 
 	};
 
 	OO.inheritClass( rw.ui.DetailsGenerator, rw.layout.ButtonDropdownLayout );
+
+	rw.ui.DetailsGenerator.prototype.collect = function() {
+	    var selectedRadio = this.accordion.getSelected();
+	    if ( selectedRadio === null ) {
+	        return {};
+	    }
+
+	    return {
+	        words: this.generators[ selectedRadio.getData() ].getList(),
+	        generator: this.generators[ selectedRadio.getData() ].getParams(),
+	    };
+	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

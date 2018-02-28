@@ -57,4 +57,8 @@
 
 	OO.inheritClass( rw.ui.DetailsLocutor, rw.layout.ButtonDropdownLayout );
 
+	rw.ui.DetailsLocutor.prototype.collect = function() {
+	    return {};
+	};
+
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

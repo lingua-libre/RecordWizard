@@ -33,4 +33,8 @@
 
 	OO.inheritClass( rw.ui.DetailsParam, rw.layout.ButtonDropdownLayout );
 
+	rw.ui.DetailsParam.prototype.collect = function() {
+        return {};
+	};
+
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );
