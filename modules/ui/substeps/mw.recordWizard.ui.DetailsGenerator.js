@@ -16,6 +16,7 @@
                 this.radioDropdowns[ name ] = new rw.layout.RadioDropdownLayout( {
                     data: name,
                     label: this.generators[ name ].label,
+                    name: 'mwe-recwiz-generators',
                     collapsed: true,
                     classes: [ 'mwe-recwiz-increment' ],
                     $content: this.generators[ name ].$element

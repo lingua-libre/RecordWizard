@@ -95,17 +95,16 @@
 
         this.data = config.data;
 
-        this.radio = new OO.ui.RadioOptionWidget( {
-            data: config.data,
-            label: config.label
+        this.radio = new OO.ui.RadioInputWidget( {
+            name: config.name,
+            value: config.data
         } );
-		this.radioSelect = new OO.ui.RadioSelectWidget( {
-            items: [ this.radio ]
-         } );
 
-		this.header.addItems( [ this.radioSelect ], 0 );
+		this.header.addItems( [
+		    new OO.ui.FieldLayout( this.radio, { label: config.label, align: 'inline' } )
+		], 0 );
 
-        this.radioSelect.on( 'choose', this.expand.bind( this ) );
+        this.radio.$element.on( 'change', this.expand.bind( this ) );
 
 	    this.$element.prepend( this.header.$element );
 
@@ -120,11 +119,11 @@
 	OO.inheritClass( rw.layout.RadioDropdownLayout, rw.layout.DropdownLayout );
 
 	rw.layout.RadioDropdownLayout.prototype.onCollapse = function() {
-        this.radioSelect.selectItem();
+        this.radio.setSelected( false );
 	};
 
 	rw.layout.RadioDropdownLayout.prototype.onExpand = function() {
-        this.radioSelect.selectItem( this.radio );
+        this.radio.setSelected( true );
 	};
 
 
