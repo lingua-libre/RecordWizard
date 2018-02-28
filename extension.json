@@ -67,6 +67,7 @@
             "scripts": [
                 "modules/generator/mw.recordWizard.generator.js",
                 "modules/generator/mw.recordWizard.generator.Generator.js",
+                "modules/generator/mw.recordWizard.generator.Nearby.js",
                 "modules/generator/mw.recordWizard.generator.Manual.js"
             ],
 			"dependencies": [

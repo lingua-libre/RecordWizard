@@ -6,6 +6,10 @@
     margin-top:1em;
 }
 
+.mwe-recwiz-nearby .oo-ui-textInputWidget {
+    max-width: 7em;
+}
+
 @keyframes spinner {
   to {transform: rotate(360deg);}
 }
