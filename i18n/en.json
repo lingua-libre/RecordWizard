@@ -49,9 +49,12 @@
     "mwe-recwiz-warning-faileduploads": "Some of your records have not been uploaded due to a network error, do you want to remove them?",
 
     "mwe-recwiz-nearby-coordinates": "Coordinates",
+    "mwe-recwiz-nearby-coordinates-help": "Type coordinates in decimal notation.",
     "mwe-recwiz-nearby-limit": "Number of words to get",
+    "mwe-recwiz-nearby-limit-help": "It must be an integer between 1 and 500.",
     "mwe-recwiz-nearby-latitude": "latitude",
     "mwe-recwiz-nearby-longitude": "longitude",
     "mwe-recwiz-nearby-getcoordinates": "Get my position",
-    "mwe-recwiz-nearby-fetch": "Fetch words"
+    "mwe-recwiz-nearby-source": "Source",
+    "mwe-recwiz-error-cantgetposition": "Your position can't be found, you'll have to set the coordinates by hand ($1)."
 }

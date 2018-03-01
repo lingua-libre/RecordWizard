@@ -49,9 +49,12 @@
     "mwe-recwiz-warning-faileduploads": "",
 
     "mwe-recwiz-nearby-coordinates": "",
+    "mwe-recwiz-nearby-coordinates-help": "",
     "mwe-recwiz-nearby-limit": "",
+    "mwe-recwiz-nearby-limit-help": "",
     "mwe-recwiz-nearby-latitude": "",
     "mwe-recwiz-nearby-longitude": "",
     "mwe-recwiz-nearby-getcoordinates": "",
-    "mwe-recwiz-nearby-fetch": "",
+    "mwe-recwiz-nearby-source": "",
+    "mwe-recwiz-error-cantgetposition": ""
 }

@@ -78,11 +78,14 @@
                 "mwe-recwiz-generator-manual",
                 "mwe-recwiz-generator-nearby",
 			    "mwe-recwiz-nearby-coordinates",
+			    "mwe-recwiz-nearby-coordinates-help",
 			    "mwe-recwiz-nearby-limit",
+			    "mwe-recwiz-nearby-limit-help",
 			    "mwe-recwiz-nearby-latitude",
 			    "mwe-recwiz-nearby-longitude",
 			    "mwe-recwiz-nearby-getcoordinates",
-			    "mwe-recwiz-nearby-fetch"
+			    "mwe-recwiz-nearby-source",
+			    "mwe-recwiz-error-cantgetposition"
 			]
         },
         "ext.recordWizard.layout":{
@@ -109,7 +112,7 @@
                 "modules/ui/substeps/mw.recordWizard.ui.DetailsGenerator.js"
             ],
 			"dependencies": [
-			    "oojs",
+			    "oojs-ui",
 			    "ext.recordWizard.layout"
 			],
 			"messages": [

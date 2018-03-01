@@ -7,7 +7,12 @@
 }
 
 .mwe-recwiz-nearby .oo-ui-textInputWidget {
-    max-width: 8em;
+    max-width: 10em;
+}
+
+.mwe-recwiz-nearby .oo-ui-fieldLayout-header label {
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
 @keyframes spinner {
