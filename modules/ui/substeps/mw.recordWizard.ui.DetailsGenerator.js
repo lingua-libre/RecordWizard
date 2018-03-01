@@ -3,40 +3,46 @@
 	rw.ui.DetailsGenerator = function( metadatas ) {
 
         this.generators = {};
-        this.radioDropdowns = {};
+        if ( metadatas.generator === undefined ) {
+            metadatas.generator = {};
+        }
 
-		this.accordion = new rw.layout.AccordionLayout();
+        this.textarea = new OO.ui.MultilineTextInputWidget( { //TODO: maybe use a multi capsule widget instead?
+            rows: 10,
+            autosize: true,
+            value: ''
+        } );
+
+        this.generatorButtons = new OO.ui.ButtonGroupWidget();
 
         for ( className in rw.generator ) {
             var name = rw.generator[ className ].static.name;
 
             if ( name !== '__generic__' ) {
-                this.generators[ name ] = new rw.generator[ className ]();
+                this.generators[ name ] = new rw.generator[ className ]( metadatas, this.textarea );
 
-                this.radioDropdowns[ name ] = new rw.layout.RadioDropdownLayout( {
-                    data: name,
-                    label: this.generators[ name ].label,
-                    name: 'mwe-recwiz-generators',
-                    collapsed: true,
-                    classes: [ 'mwe-recwiz-increment' ],
-                    $content: this.generators[ name ].$element
-                } );
-                this.accordion.addDropdowns( [ this.radioDropdowns[ name ] ] );
+                var button = new OO.ui.ButtonWidget( { label: this.generators[ name ].label, icon: 'add' } );
+                button.on( 'click', this.generators[ name ].load.bind( this.generators[ name ] ) );
+
+                this.generatorButtons.addItems( [ button ] );
             }
         }
 
-        if ( metadatas.generator !== undefined ) {
-            this.radioDropdowns[ metadatas.generator.name ].expand();
-            this.generators[ metadatas.generator.name ].preload( metadatas );
-        }
-
-        this.accordion.on( 'change', this.onChange.bind( this ) );
-
+        this.layout = new OO.ui.Widget( {
+            content: [
+                new OO.ui.FieldLayout( this.textarea, {
+                    align: 'top',
+                    label: mw.message( 'mwe-recwiz-generator-wordlist' ).text(),
+                } ),
+                this.generatorButtons
+            ],
+            classes: [ 'mwe-recwiz-increment' ],
+        } );
 
 		rw.layout.ButtonDropdownLayout.call( this, {
 	        label: mw.message( 'mwe-recwiz-generator' ).text(),
 	        stateValue: '',
-            $content: this.accordion.$element
+            $content: this.layout.$element
 		} );
 
 	};

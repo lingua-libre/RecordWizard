@@ -23,7 +23,8 @@
 	    return this.params;
 	};
 
-	rw.generator.Generator.prototype.preload = function() {
+	rw.generator.Generator.prototype.load = function() {
+	    console.log( this.name )
 	    return;
 	};
 
