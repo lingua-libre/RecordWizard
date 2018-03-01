@@ -11,7 +11,6 @@
 		        ]
 	        },
 	        $overlay: $( 'body' ),
-            indicator: 'required',
         } ), {
 	        align: 'left',
 	        classes: [ 'mwe-recwiz-increment' ],

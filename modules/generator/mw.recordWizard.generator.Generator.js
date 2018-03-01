@@ -10,8 +10,9 @@
 	rw.generator.Generator = function() {
 	    this.list = [];
 	    this.$element = null;
-	    this.label = mw.message( 'mwe-recwiz-generator-' + this.constructor.static.name ).text();
-	    this.params = { name: this.constructor.static.name };
+	    this.name = this.constructor.static.name;
+	    this.label = mw.message( 'mwe-recwiz-generator-' + this.name ).text();
+	    this.params = { name: this.name };
 	};
 
 	rw.generator.Generator.prototype.getList = function() {

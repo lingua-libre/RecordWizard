@@ -46,6 +46,7 @@
 	rw.ui.DetailsGenerator.prototype.onChange = function( dropdown ) {
         var name = dropdown.getData();
         this.setStateValue( this.generators[ name ].label );
+        //TODO: inform the generator that it has been (de)selected
 	};
 
 	rw.ui.DetailsGenerator.prototype.collect = function() {

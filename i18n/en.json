@@ -46,5 +46,12 @@
 
     "mwe-recwiz-warning-wordsleft": "There are some words left, are you sure you want to stop there?",
     "mwe-recwiz-warning-pendinguploads": "All your records have not been uploaded yet, do you want to abort them?",
-    "mwe-recwiz-warning-faileduploads": "Some of your records have not been uploaded due to a network error, do you want to remove them?"
+    "mwe-recwiz-warning-faileduploads": "Some of your records have not been uploaded due to a network error, do you want to remove them?",
+
+    "mwe-recwiz-nearby-coordinates": "Coordinates",
+    "mwe-recwiz-nearby-limit": "Number of words to get",
+    "mwe-recwiz-nearby-latitude": "latitude",
+    "mwe-recwiz-nearby-longitude": "longitude",
+    "mwe-recwiz-nearby-getcoordinates": "Get my position",
+    "mwe-recwiz-nearby-fetch": "Fetch words"
 }

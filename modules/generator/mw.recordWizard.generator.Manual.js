@@ -29,7 +29,7 @@
 	    return this.list;
 	};
 
-	rw.generator.Generator.prototype.preload = function( metadatas ) {
+	rw.generator.Manual.prototype.preload = function( metadatas ) {
 	    this.textarea.setValue( metadatas.words.join( '\n' ) );
 	};
 

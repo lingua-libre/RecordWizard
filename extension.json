@@ -71,7 +71,16 @@
                 "modules/generator/mw.recordWizard.generator.Manual.js"
             ],
 			"dependencies": [
-			    "oojs"
+			    "oojs",
+			    "mediawiki.ForeignApi"
+			],
+			"messages": [
+			    "mwe-recwiz-nearby-coordinates",
+			    "mwe-recwiz-nearby-limit",
+			    "mwe-recwiz-nearby-latitude",
+			    "mwe-recwiz-nearby-longitude",
+			    "mwe-recwiz-nearby-getcoordinates",
+			    "mwe-recwiz-nearby-fetch"
 			]
         },
         "ext.recordWizard.layout":{
