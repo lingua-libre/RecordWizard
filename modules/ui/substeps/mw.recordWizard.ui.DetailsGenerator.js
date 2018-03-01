@@ -11,11 +11,14 @@
         this.windowManager = new OO.ui.WindowManager();
         $( 'body' ).append( this.windowManager.$element );
 
-        this.textarea = new OO.ui.MultilineTextInputWidget( { //TODO: maybe use a multi capsule widget instead?
-            rows: 10,
-            autosize: true,
-            value: ''
+        this.wordList = new rw.layout.WordSelectorWidget( {
+	        placeholder: mw.message( 'mwe-recwiz-generator-addwords' ).text(),
+	        allowArbitrary: true,
+	        inputPosition: 'outline' //TODO: maybe inline ?
         } );
+        if ( this.metadatas.words !== undefined ) {
+            this.addWords( this.metadatas.words );
+        }
 
         this.generatorButtons = new OO.ui.ButtonGroupWidget();
 
@@ -27,7 +30,7 @@
 
         this.layout = new OO.ui.Widget( {
             content: [
-                new OO.ui.FieldLayout( this.textarea, {
+                new OO.ui.FieldLayout( this.wordList, {
                     align: 'top',
                     label: mw.message( 'mwe-recwiz-generator-wordlist' ).text(),
                 } ),
@@ -65,27 +68,17 @@
         this.generatorButtons.addItems( [ button ] );
 	};
 
-	rw.ui.DetailsGenerator.prototype.onChange = function( dropdown ) {
-        var name = dropdown.getData();
-        this.setStateValue( this.generators[ name ].label );
-        //TODO: inform the generator that it has been (de)selected
-	};
-
 	rw.ui.DetailsGenerator.prototype.addWords = function( list ) {
 	    if ( list.length > 0 ) {
-	        this.textarea.setValue( this.textarea.getValue() + '\n' + list.join( '\n' ) );
+	        for ( var i=0; i < list.length; i++ ) {
+	            this.wordList.addTag( list[ i ] );
+	        }
 	    }
 	};
 
 	rw.ui.DetailsGenerator.prototype.collect = function() {
-	    var selectedRadio = this.accordion.getSelected();
-	    if ( selectedRadio === null ) {
-	        return {};
-	    }
-
 	    return {
-	        words: this.generators[ selectedRadio.getData() ].getList(),
-	        generator: this.generators[ selectedRadio.getData() ].getParams(),
+	        words: this.wordList.getValue(),
 	    };
 	};
 

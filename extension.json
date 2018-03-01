@@ -26,8 +26,8 @@
                 "modules/mw.recordWizard.RecordWizard.js"
             ],
 			"dependencies": [
+				"oojs-ui",
 				"mediawiki.util",
-				"oojs",
 			    "ext.recordWizard.base",
 			    "ext.recordWizard.styles",
 			    "ext.recordWizard.upload",
@@ -92,7 +92,8 @@
             "scripts": [
                 "modules/layout/mw.recordWizard.layout.js",
                 "modules/layout/mw.recordWizard.layout.DropdownLayout.js",
-                "modules/layout/mw.recordWizard.layout.AccordionLayout.js"
+                "modules/layout/mw.recordWizard.layout.AccordionLayout.js",
+                "modules/layout/mw.recordWizard.layout.WordSelectorWidget.js"
             ],
 			"dependencies": [
 			    "oojs-ui"
@@ -137,6 +138,8 @@
                 "mwe-recwiz-param",
                 "mwe-recwiz-param-lang",
                 "mwe-recwiz-generator",
+                "mwe-recwiz-generator-wordlist",
+                "mwe-recwiz-generator-addwords",
                 "mwe-recwiz-pendinguplads",
                 "mwe-recwiz-allsucceeded",
                 "mwe-recwiz-somefailed",

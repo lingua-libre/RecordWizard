@@ -36,6 +36,8 @@
     "mwe-recwiz-param-lang": "Record language",
 
     "mwe-recwiz-generator": "Word list",
+    "mwe-recwiz-generator-wordlist": "List of the words to record",
+    "mwe-recwiz-generator-addwords": "Add words",
     "mwe-recwiz-generator-manual": "Manual",
     "mwe-recwiz-generator-nearby": "Nearby items",
 
