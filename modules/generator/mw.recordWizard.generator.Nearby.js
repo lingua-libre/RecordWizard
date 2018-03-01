@@ -1,22 +1,27 @@
 ( function ( mw, $, rw, OO ) {
 
-	rw.generator.Nearby = function( metadatas ) {
-		rw.generator.Generator.call( this, metadatas );
+	rw.generator.Nearby = function( config ) {
+		rw.generator.Generator.call( this, config );
+	};
+
+	OO.inheritClass( rw.generator.Nearby, rw.generator.Generator );
+	rw.generator.Nearby.static.name = 'nearby';
+	rw.generator.Nearby.static.title = mw.message( 'mwe-recwiz-generator-nearby' ).text();
+
+    rw.generator.Nearby.prototype.initialize = function() {
 
         this.latitude = new OO.ui.TextInputWidget( { placeholder: mw.message( 'mwe-recwiz-nearby-latitude' ).text() } );
         this.longitude = new OO.ui.TextInputWidget( { placeholder: mw.message( 'mwe-recwiz-nearby-longitude' ).text() } );
         this.currentPositionButton = new OO.ui.ButtonWidget( { title: mw.message( 'mwe-recwiz-nearby-getcoordinates' ).text(), icon: 'tag' } );
-        this.limit = new OO.ui.NumberInputWidget( { min: 1, max: 500, step: 10, isInteger: true, value: 100 } );
-        this.fetchButton = new OO.ui.ButtonWidget( { label: mw.message( 'mwe-recwiz-nearby-fetch' ).text(), icon: 'search' } );
+        this.limit = new OO.ui.NumberInputWidget( { min: 1, max: 500, value: 100, step: 10, isInteger: true } );
 
 		this.layout = new OO.ui.Widget( {
+	        classes: [ 'mwe-recwiz-nearby', 'mwe-recwiz-increment' ],
 	        content: [
 	            new OO.ui.FieldLayout(
 	                new OO.ui.Widget( {
 	                    content: [
-	                        new OO.ui.HorizontalLayout( {
-			                    items: [ this.latitude, this.longitude, this.currentPositionButton ],
-		                    } )
+	                        new OO.ui.HorizontalLayout( { items: [ this.latitude, this.longitude, this.currentPositionButton ], } )
 		                ]
 		            } ), {
 	                    align: 'left',
@@ -31,30 +36,22 @@
 		        ),
 		        this.fetchButton
 	        ],
-	        classes: [ 'mwe-recwiz-nearby', 'mwe-recwiz-increment' ]
 	    } );
 
 
-
-		this.$element = this.layout.$element;
+		this.content.$element.append( this.layout.$element );
 
 
         this.currentPositionButton.on( 'click', this.getCurrentPosition.bind( this ) );
-        this.fetchButton.on( 'click', this.getWords.bind( this ) );
-	};
 
-	OO.inheritClass( rw.generator.Nearby, rw.generator.Generator );
-	rw.generator.Nearby.static.name = 'nearby';
+	    this.latitude.setValue( this.params.latitude );
+	    this.longitude.setValue( this.params.longitude );
+	    this.limit.setValue( this.params.limit );
 
-	rw.generator.Nearby.prototype.getList = function() {
-	    return this.list;
-	};
+        rw.generator.Generator.prototype.initialize.call( this );
+    };
 
-	rw.generator.Nearby.prototype.preload = function( metadatas ) {
-	    this.latitude.setValue( metadatas.generator.latitude );
-	    this.longitude.setValue( metadatas.generator.longitude );
-	    this.limit.setValue( metadatas.generator.limit );
-	};
+
 
 	rw.generator.Nearby.prototype.getCurrentPosition = function() {
         navigator.geolocation.getCurrentPosition(
@@ -79,17 +76,20 @@
         this.currentPositionButton.setFlags( 'destructive' );
 	};
 
-	rw.generator.Nearby.prototype.getWords = function( error ) {
-	    var lat = this.latitude.getValue(),
+	rw.generator.Nearby.prototype.fetch = function() {
+        var generator = this,
+	        lat = this.latitude.getValue(),
 	        lng = this.longitude.getValue(),
 	        limit = this.limit.getValue();
 	    // TODO: check quality of thoose inputs
+	    // if not, return this.deferred.reject( new OO.ui.Error( "bad value", { warning: true } ) );
 
 	    // save the inputs for a potential futur preload
 	    this.params.latitude = lat;
 	    this.params.longitude = lng;
 	    this.params.limit = limit;
 
+	    this.deferred = $.Deferred();
 	    this.wikidataApi = new mw.ForeignApi( 'https://www.wikidata.org/w/api.php', { anonymous: true } );
 	    this.list = [];
 
@@ -102,13 +102,20 @@
 	        'gsradius': '10000',
 	        'gslimit': limit,
 	        'origin': '*'
-        } ).then( this.getPagesInfo.bind( this ) );
+        } ).then( this.getTitlesFromIds.bind( this ) )
+        .fail( function( error ) {
+            generator.deferred.reject( new OO.ui.Error( error ) );
+        } );
+
+        // We're not done yet, make the dialog closing process to wait the promise
+        return this.deferred.promise();
 	};
 
-	rw.generator.Nearby.prototype.getPagesInfo = function( data ) {
+	rw.generator.Nearby.prototype.getTitlesFromIds = function( data ) {
         var generator = this,
             geosearch = data.query.geosearch,
             pages = [],
+            semaphore = 0,
             langCode = 'fr'; //TODO: make that value dynamic
 
         for ( var i=0; i < geosearch.length; i++ ) {
@@ -116,6 +123,7 @@
         }
 
         while ( pages.length > 0 ) {
+            semaphore++;
             this.wikidataApi.get( {
 	            'action': 'wbgetentities',
 	            'format': 'json',
@@ -125,6 +133,7 @@
 	            'formatversion': '2',
 	            'origin': '*'
             } ).then( function( data ) {
+                semaphore--;
                 for ( qid in data.entities ) {
                     var entity = data.entities[ qid ];
                     if ( entity.missing !== undefined ) {
@@ -135,6 +144,11 @@
                         generator.list.push( entity.labels[ langCode ].value );
                     }
                 }
+                if ( semaphore === 0 ) {
+                    generator.deferred.resolve();
+                }
+            } ).fail( function( error ) {
+                generator.deferred.reject( new OO.ui.Error( error ) );
             } );
         }
     };

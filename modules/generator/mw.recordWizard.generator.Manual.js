@@ -1,7 +1,16 @@
 ( function ( mw, $, rw, OO ) {
 
-	rw.generator.Manual = function( metadatas ) {
-		rw.generator.Generator.call( this, metadatas );
+	rw.generator.Manual = function( config ) {
+		rw.generator.Generator.call( this, config );
+	};
+
+	OO.inheritClass( rw.generator.Manual, rw.generator.Generator );
+	rw.generator.Manual.static.name = 'manual';
+	rw.generator.Manual.static.title = 'manual';
+
+
+	rw.generator.Manual.prototype.initialize = function() {
+	    rw.generator.Generator.prototype.initialize.call( this );
 
 		this.textarea = new OO.ui.MultilineTextInputWidget( {
 		    classes: [ 'mwe-recwiz-increment' ],
@@ -10,14 +19,13 @@
             value: ''
         } );
 
-		this.$element = this.textarea.$element;
-
+        if ( this.metadatas.words !== undefined ) {
+	        this.textarea.setValue( this.metadatas.words.join( '\n' ) );
+	    }
+		this.content.$element.append( this.textarea.$element );
 	};
 
-	OO.inheritClass( rw.generator.Manual, rw.generator.Generator );
-	rw.generator.Manual.static.name = 'manual';
-
-	rw.generator.Manual.prototype.getList = function() {
+	rw.generator.Manual.prototype.fetch = function() {
 	    this.list = [];
 	    var rawList = this.textarea.getValue().split( '\n' );
 	    for ( var i=0; i < rawList.length; i++ ) {
@@ -26,11 +34,7 @@
 	            this.list.push( rawList[ i ] );
 	        }
 	    }
-	    return this.list;
-	};
-
-	rw.generator.Manual.prototype.preload = function( metadatas ) {
-	    this.textarea.setValue( metadatas.words.join( '\n' ) );
+	    return true;
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

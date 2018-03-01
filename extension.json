@@ -71,10 +71,12 @@
                 "modules/generator/mw.recordWizard.generator.Manual.js"
             ],
 			"dependencies": [
-			    "oojs",
+			    "oojs-ui",
 			    "mediawiki.ForeignApi"
 			],
 			"messages": [
+                "mwe-recwiz-generator-manual",
+                "mwe-recwiz-generator-nearby",
 			    "mwe-recwiz-nearby-coordinates",
 			    "mwe-recwiz-nearby-limit",
 			    "mwe-recwiz-nearby-latitude",
@@ -132,8 +134,6 @@
                 "mwe-recwiz-param",
                 "mwe-recwiz-param-lang",
                 "mwe-recwiz-generator",
-                "mwe-recwiz-generator-manual",
-                "mwe-recwiz-generator-nearby",
                 "mwe-recwiz-pendinguplads",
                 "mwe-recwiz-allsucceeded",
                 "mwe-recwiz-somefailed",
