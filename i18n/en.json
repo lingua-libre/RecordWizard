@@ -58,5 +58,6 @@
     "mwe-recwiz-nearby-longitude": "longitude",
     "mwe-recwiz-nearby-getcoordinates": "Get my position",
     "mwe-recwiz-nearby-source": "Source",
-    "mwe-recwiz-error-cantgetposition": "Your position can't be found, you'll have to set the coordinates by hand ($1)."
+    "mwe-recwiz-error-cantgetposition": "Your position can't be found, you'll have to set the coordinates by hand ($1).",
+    "mwe-recwiz-warning-noresults": "There is no items near these coordinates."
 }

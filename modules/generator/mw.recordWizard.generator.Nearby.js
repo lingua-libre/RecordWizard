@@ -52,6 +52,8 @@
 
 
         this.currentPositionButton.on( 'click', this.getCurrentPosition.bind( this ) );
+        this.latitude.on( 'change', this.unlockUI.bind( this ) );
+        this.longitude.on( 'change', this.unlockUI.bind( this ) );
 
 	    this.latitude.setValue( this.params.latitude );
 	    this.longitude.setValue( this.params.longitude );
@@ -102,6 +104,8 @@
         this.longitude.setDisabled( false );
         this.latitude.popPending();
         this.longitude.popPending();
+
+        this.getActions().get( { actions: 'save' } )[ 0 ].setDisabled( false );
 	};
 
 	rw.generator.Nearby.prototype.fetch = function() {
@@ -116,7 +120,11 @@
 	    this.params.limit = limit;
 
 	    this.deferred = $.Deferred();
-	    this.wikidataApi = new mw.ForeignApi( 'https://www.wikidata.org/w/api.php', { anonymous: true } );
+	    this.wikidataApi = new mw.ForeignApi( 'https://www.wikidata.org/w/api.php', {
+	        anonymous: true,
+	        parameters: { 'origin': '*' },
+	        ajax: { timeout: 10000 }
+	    } );
 	    this.list = [];
 
 	    this.wikidataApi.get( {
@@ -127,7 +135,6 @@
 	        'gscoord': lat + '|' + lng,
 	        'gsradius': '10000',
 	        'gslimit': limit,
-	        'origin': '*'
         } ).then( this.getTitlesFromIds.bind( this ) )
         .fail( function( error ) {
             generator.deferred.reject( new OO.ui.Error( error ) );
@@ -144,6 +151,12 @@
             semaphore = 0,
             langCode = 'fr'; //TODO: make that value dynamic
 
+        if ( geosearch.length === 0 ) {
+            var errorMessage = mw.message( 'mwe-recwiz-warning-noresults' ).text();
+            this.deferred.reject( new OO.ui.Error( errorMessage, { warning: true, recoverable: false } ) );
+            return;
+        }
+
         for ( var i=0; i < geosearch.length; i++ ) {
             pages.push( geosearch[ i ].title );
         }
@@ -157,7 +170,6 @@
 	            'props': 'labels',
 	            'languages': langCode,
 	            'formatversion': '2',
-	            'origin': '*'
             } ).then( function( data ) {
                 semaphore--;
                 for ( qid in data.entities ) {

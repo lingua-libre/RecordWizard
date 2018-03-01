@@ -85,7 +85,8 @@
 			    "mwe-recwiz-nearby-longitude",
 			    "mwe-recwiz-nearby-getcoordinates",
 			    "mwe-recwiz-nearby-source",
-			    "mwe-recwiz-error-cantgetposition"
+			    "mwe-recwiz-error-cantgetposition",
+			    "mwe-recwiz-warning-noresults"
 			]
         },
         "ext.recordWizard.layout":{
