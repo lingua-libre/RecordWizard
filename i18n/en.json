@@ -38,6 +38,8 @@
     "mwe-recwiz-generator": "Word list",
     "mwe-recwiz-generator-wordlist": "List of the words to record",
     "mwe-recwiz-generator-addwords": "Add words",
+    "mwe-recwiz-generator-noword": "No words selected",
+    "mwe-recwiz-generator-wordcount": "$1 {{PLURAL:$1|word|words}}",
     "mwe-recwiz-generator-manual": "Manual",
     "mwe-recwiz-generator-nearby": "Nearby items",
 

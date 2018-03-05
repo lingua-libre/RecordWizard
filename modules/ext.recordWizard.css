@@ -6,14 +6,18 @@
     margin-top:1em;
 }
 
-.mwe-recwiz-nearby .oo-ui-textInputWidget {
+#mwe-recwiz-stepdiv-details .mwe-recwiz-nearby .oo-ui-textInputWidget {
     max-width: 10em;
 }
 
-.mwe-recwiz-nearby .oo-ui-fieldLayout-header label {
+#mwe-recwiz-stepdiv-details .mwe-recwiz-nearby .oo-ui-fieldLayout-header label {
     font-weight: bold;
     font-size: 1.1em;
 }
+#mwe-recwiz-stepdiv-details .mwe-recwiz-wordSelectorWidget {
+	max-width: 100%;
+}
+
 
 @keyframes spinner {
   to {transform: rotate(360deg);}

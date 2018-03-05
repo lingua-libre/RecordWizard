@@ -45,6 +45,7 @@
             $content: this.layout.$element
 		} );
 
+		this.wordList.on( 'change', this.onWordListUpdate.bind( this ) );
 	};
 
 	OO.inheritClass( rw.ui.DetailsGenerator, rw.layout.ButtonDropdownLayout );
@@ -74,6 +75,16 @@
 	            this.wordList.addTag( list[ i ] );
 	        }
 	    }
+	};
+
+	rw.ui.DetailsGenerator.prototype.onWordListUpdate = function() {
+		var nbWords = this.wordList.getItemCount();
+		if ( nbWords === 0 ) {
+	    	this.setStateValue( mw.message( 'mwe-recwiz-generator-noword' ).text() );
+	  	}
+	  	else {
+	    	this.setStateValue( mw.message( 'mwe-recwiz-generator-wordcount', nbWords ).text() );
+	  	}
 	};
 
 	rw.ui.DetailsGenerator.prototype.collect = function() {

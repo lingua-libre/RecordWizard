@@ -50,15 +50,14 @@
 
 		this.content.$element.append( this.layout.$element );
 
-
-        this.currentPositionButton.on( 'click', this.getCurrentPosition.bind( this ) );
-        this.latitude.on( 'change', this.unlockUI.bind( this ) );
-        this.longitude.on( 'change', this.unlockUI.bind( this ) );
-
 	    this.latitude.setValue( this.params.latitude );
 	    this.longitude.setValue( this.params.longitude );
 	    this.limit.setValue( this.params.limit || this.limit.getValue() );
         this.source.selectItem( this.wikidata );
+
+        this.currentPositionButton.on( 'click', this.getCurrentPosition.bind( this ) );
+        this.latitude.on( 'change', this.unlockUI.bind( this ) );
+        this.longitude.on( 'change', this.unlockUI.bind( this ) );
 
         rw.generator.Generator.prototype.initialize.call( this );
     };

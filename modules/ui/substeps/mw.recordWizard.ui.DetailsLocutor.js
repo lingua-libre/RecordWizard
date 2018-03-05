@@ -22,7 +22,7 @@
 			        new OO.ui.MenuOptionWidget( { data: 'Alemannic', label: 'Alemannic' } )
 		        ]
 	        },
-	        $overlay: $( 'body' ),
+	        //$overlay: ,
             indicator: 'required',
         } ), {
 	        align: 'left',

@@ -10,7 +10,7 @@
 			        new OO.ui.MenuOptionWidget( { data: 'Alemannic', label: 'Alemannic' } )
 		        ]
 	        },
-	        $overlay: $( 'body' ),
+	        //$overlay: ,
         } ), {
 	        align: 'left',
 	        classes: [ 'mwe-recwiz-increment' ],

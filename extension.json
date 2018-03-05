@@ -117,6 +117,7 @@
 			    "ext.recordWizard.layout"
 			],
 			"messages": [
+				"ooui-item-remove",
 		        "mwe-recwiz-step-tutorial",
                 "mwe-recwiz-step-details",
                 "mwe-recwiz-step-license",
@@ -140,6 +141,8 @@
                 "mwe-recwiz-generator",
                 "mwe-recwiz-generator-wordlist",
                 "mwe-recwiz-generator-addwords",
+                "mwe-recwiz-generator-noword",
+                "mwe-recwiz-generator-wordcount",
                 "mwe-recwiz-pendinguplads",
                 "mwe-recwiz-allsucceeded",
                 "mwe-recwiz-somefailed",
