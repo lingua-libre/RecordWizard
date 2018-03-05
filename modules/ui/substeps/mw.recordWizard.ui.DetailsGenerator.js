@@ -1,7 +1,8 @@
 ( function ( mw, $, rw, OO ) {
 
-	rw.ui.DetailsGenerator = function( metadatas ) {
+	rw.ui.DetailsGenerator = function( metadatas, records ) {
         this.metadatas = metadatas;
+        this.records = records;
         this.generators = {};
 
         if ( this.metadatas.generator === undefined ) {
@@ -46,6 +47,7 @@
 		} );
 
 		this.wordList.on( 'change', this.onWordListUpdate.bind( this ) );
+		this.wordList.on( 'add', this.onWordListAdd.bind( this ) );
 	};
 
 	OO.inheritClass( rw.ui.DetailsGenerator, rw.layout.ButtonDropdownLayout );
@@ -72,9 +74,26 @@
 	rw.ui.DetailsGenerator.prototype.addWords = function( list ) {
 	    if ( list.length > 0 ) {
 	        for ( var i=0; i < list.length; i++ ) {
-	            this.wordList.addTag( list[ i ] );
+	        	var word = list[ i ],
+	        		extra = {};
+	        	if ( typeof list[ i ] !== 'string' ) {
+	            	word = list[ i ].text;
+	            	delete list[ i ].text;
+	            	extra = list[ i ];
+	           	}
+	           	//TODO: Move this somehow to a controller
+	           	this.wordList.addTag( word );
+	           	this.records[ word ].setExtra( extra );
 	        }
 	    }
+	};
+
+	rw.ui.DetailsGenerator.prototype.onWordListAdd = function( item, index ) {
+	    //TODO: Move this somehow to a controller
+	    word = item.getData();
+       	if ( this.records[ word ] === undefined ) {
+       		this.records[ word ] = new rw.Record( word );
+       	}
 	};
 
 	rw.ui.DetailsGenerator.prototype.onWordListUpdate = function() {
@@ -88,9 +107,7 @@
 	};
 
 	rw.ui.DetailsGenerator.prototype.collect = function() {
-	    return {
-	        words: this.wordList.getValue(),
-	    };
+	    this.metadatas.words = this.wordList.getValue();
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

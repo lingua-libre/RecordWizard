@@ -178,7 +178,10 @@
                     }
 
                     if ( entity.labels[ langCode ] !== undefined ) {
-                        generator.list.push( entity.labels[ langCode ].value );
+                        generator.list.push( {
+                        	text: entity.labels[ langCode ].value,
+                        	P16: qid,
+                        } );
                     }
                 }
                 if ( semaphore === 0 ) {

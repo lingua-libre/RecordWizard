@@ -27,9 +27,9 @@
 		rw.ui.Step.prototype.load.call( this, metadatas, records );
 
 		this.substeps = {
-		    locutor: new rw.ui.DetailsLocutor( metadatas ),
-		    param: new rw.ui.DetailsParam( metadatas ),
-		    generator: new rw.ui.DetailsGenerator( metadatas ),
+		    locutor: new rw.ui.DetailsLocutor( metadatas, records ),
+		    param: new rw.ui.DetailsParam( metadatas, records ),
+		    generator: new rw.ui.DetailsGenerator( metadatas, records ),
 		};
 
 		this.accordion = new rw.layout.AccordionLayout( {
@@ -45,7 +45,7 @@
 
 	rw.ui.Details.prototype.collect = function() {
 	    for ( substep in this.substeps ) {
-	        $.extend( this.metadatas, this.substeps[ substep ].collect() );
+	        this.substeps[ substep ].collect();
 	    }
 	};
 

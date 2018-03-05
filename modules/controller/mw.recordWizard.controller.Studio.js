@@ -33,13 +33,12 @@
                 'error': 0,
             };
         }
-        else {
-		    for( var word in this.records ) {
-	            this.records[ word ].on( 'state-change', this.switchState.bind( this ) );
-		    }
-		}
 
 		rw.controller.Step.prototype.load.call( this, metadatas, records );
+
+	    for( var word in this.records ) {
+            this.records[ word ].on( 'state-change', this.switchState.bind( this ) );
+	    }
 
         this.recorder = new rw.libs.LinguaRecorder( {
             'autoStart': true,
@@ -92,6 +91,9 @@
                 return;
             }
 
+	        this.records[ currentWord ] = new rw.Record( currentWord );
+	        this.records[ currentWord ].on( 'state-change', this.switchState.bind( this ) );
+
             controller.metadatas.words.push( word );
             controller.ui.addWord( word );
 
@@ -132,11 +134,6 @@
 	rw.controller.Studio.prototype.onStop = function( audioRecord ) {
 	    var currentWord = this.currentWord;
 
-        if ( this.records[ currentWord ] === undefined ) {
-	        this.records[ currentWord ] = new rw.Record( currentWord );
-	        this.records[ currentWord ].on( 'state-change', this.switchState.bind( this ) );
-        }
-
 	    this.upload( currentWord, audioRecord.getBlob() );
 
         if ( ! this.startNextRecord() ) {
@@ -162,7 +159,7 @@
 	    if ( this.isRecording ) {
 	        var newWordAvailable = false;
 	        for( var i=index+1; i < this.metadatas.words.length; i++ ) {
-	            if ( this.records[ this.metadatas.words[ i ] ] === undefined ) {
+	            if ( this.records[ this.metadatas.words[ i ] ].getState() === 'up' ) {
 	                newWordAvailable = true;
 	                this.currentWord = this.metadatas.words[ i ];
 	                break;

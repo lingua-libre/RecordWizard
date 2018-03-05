@@ -8,6 +8,7 @@
 		this.filename = null;
 		this.filekey = null;
 		this.word = word;
+		this.extra = {};
 
         this.inQueue = false;
         this.error = false;
@@ -26,6 +27,10 @@
 
 	rw.Record.prototype.getState = function() {
 	    return this.state;
+	};
+
+	rw.Record.prototype.setExtra = function( extra ) {
+	    this.extra = extra;
 	};
 
 	rw.Record.prototype.setState = function( newState ) {
@@ -50,7 +55,8 @@
 
 	rw.Record.prototype.getText = function() {
 	    // TODO: generate real description based on metadatas and a configured template
-	    return 'The word \'\'' + this.word + '\'\' pronounced by ' + mw.config.get( 'wgUserName' );
+	    return 'The word \'\'' + this.word + '\'\' pronounced by ' + mw.config.get( 'wgUserName' ) + '.\n\n'
+	    	+ JSON.stringify( this.extra );
 	};
 
 	rw.Record.prototype.getFilekey = function() {
