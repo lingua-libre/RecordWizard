@@ -21,6 +21,35 @@ class SpecialRecordWizard extends SpecialPage {
 			return;
 		}
 
+		$qids = [ 'Q22', 'Q19', 'Q20', 'Q18' ];
+		$titles = [];
+		foreach( $qids as $qid ) {
+			$titles[] = \Title::makeTitle( 0 , $qid ); //TODO: use $wgWBRepoSettings['entityNamespaces']['item']
+		}
+
+		$wbRepo = Wikibase\Repo\WikibaseRepo::getDefaultInstance();
+		$entityIdLookup = $wbRepo->getEntityIdLookup();
+		$entityRevisionLookup = $wbRepo->getEntityRevisionLookup();
+		$languageFallbackChain = $wbRepo->getLanguageFallbackChainFactory()->newFromLanguage( $wbRepo->getUserLanguage() );
+
+		$entities = $entityIdLookup->getEntityIds( $titles );
+		$langCodeProperty = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( WB_NS_PROPERTY, 'P15') ); //TODO: make this configurable
+
+		foreach ( $entities as $id => $itemId ) {
+			$entity = $entityRevisionLookup->getEntityRevision( $itemId )->getEntity();
+
+			$terms = $entity->getLabels();
+			$labels = [];
+			foreach ( $terms as $term ) {
+				$languageCode = $term->getLanguageCode();
+				$labels[$languageCode] = $term->getText();
+			}
+
+			wfDebugLog( 'OOOOOOOOO', $entity->getId() );
+			wfDebugLog( 'OOOOOOOOO', $languageFallbackChain->extractPreferredValueOrAny( $labels )[ 'value' ] );
+			wfDebugLog( 'OOOOOOOOO', $entity->getStatements()->getByPropertyId( $langCodeProperty )->getAllSnaks()[ 0 ]->getDataValue()->getValue() );
+		}
+
 		$out->addModuleStyles( 'ext.recordWizard.styles' );
 		$out->addModules( 'ext.recordWizard' );
 		$out->setPageTitle( $this->msg( 'special-recordWizard-title' ) );
