@@ -10,6 +10,11 @@
     "license-name": "GPL-2.0+",
     "type": "other",
     "manifest_version": 1,
+	"config": {
+		"wgRecordWizardProperties": {
+			"langCode": ""
+		}
+	},
     "MessagesDirs": {
         "RecordWizard": [
             "i18n"

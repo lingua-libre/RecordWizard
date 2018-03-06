@@ -16,6 +16,8 @@ class SpecialRecordWizard extends SpecialPage {
 	 * @param string $sub The subpage string argument (if any).
 	 */
 	public function execute( $sub ) {
+		global $wgRecordWizardProperties, $wgWBRepoSettings;
+
 		$out = $this->getOutput();
 		if ( !( $this->isUploadAllowed() && $this->isUserUploadAllowed( $this->getUser() ) ) ) {
 			return;
@@ -29,7 +31,7 @@ class SpecialRecordWizard extends SpecialPage {
 			array( 'page_title' ),
 			array(
 				'page_content_model' => 'wikibase-item',
-				'old_text like \'%"property":"P15"%\'',
+				'old_text like \'%"property":"' . $wgRecordWizardProperties["langCode"] . '"%\'',
 			),
 			__METHOD__,
 			array(),
@@ -45,7 +47,7 @@ class SpecialRecordWizard extends SpecialPage {
 
 		$titles = [];
 		foreach( $qids as $qid ) {
-			$titles[] = \Title::makeTitle( 0 , $qid ); //TODO: use $wgWBRepoSettings['entityNamespaces']['item']
+			$titles[] = \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['item'], $qid );
 		}
 
 		$wbRepo = Wikibase\Repo\WikibaseRepo::getDefaultInstance();
@@ -54,9 +56,10 @@ class SpecialRecordWizard extends SpecialPage {
 		$languageFallbackChain = $wbRepo->getLanguageFallbackChainFactory()->newFromLanguage( $wbRepo->getUserLanguage() );
 
 		$entities = $entityIdLookup->getEntityIds( $titles );
-		$langCodeProperty = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( WB_NS_PROPERTY, 'P15') ); //TODO: make this configurable
+		$langCodeProperty = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardProperties["langCode"] ) );
 
 		foreach ( $entities as $id => $itemId ) {
+			//TODO: Perfs: do only one DB request instead of N
 			$entity = $entityRevisionLookup->getEntityRevision( $itemId )->getEntity();
 
 			$terms = $entity->getLabels();
