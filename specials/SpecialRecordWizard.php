@@ -19,6 +19,7 @@ class SpecialRecordWizard extends SpecialPage {
 		global $wgRecordWizardProperties, $wgWBRepoSettings;
 
 		$out = $this->getOutput();
+		$config = array();
 		if ( !( $this->isUploadAllowed() && $this->isUserUploadAllowed( $this->getUser() ) ) ) {
 			return;
 		}
@@ -58,6 +59,7 @@ class SpecialRecordWizard extends SpecialPage {
 		$entities = $entityIdLookup->getEntityIds( $titles );
 		$langCodeProperty = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardProperties["langCode"] ) );
 
+		$config[ 'languages' ] = array();
 		foreach ( $entities as $id => $itemId ) {
 			//TODO: Perfs: do only one DB request instead of N
 			$entity = $entityRevisionLookup->getEntityRevision( $itemId )->getEntity();
@@ -69,11 +71,16 @@ class SpecialRecordWizard extends SpecialPage {
 				$labels[$languageCode] = $term->getText();
 			}
 
-			$qid = $entity->getId();
 			$label = $languageFallbackChain->extractPreferredValueOrAny( $labels )[ 'value' ];
 			$langCode = $entity->getStatements()->getByPropertyId( $langCodeProperty )->getAllSnaks()[ 0 ]->getDataValue()->getValue();
+
+			$config[ 'languages' ][ $langCode ] = array();
+			$config[ 'languages' ][ $langCode ][ 'code' ] = $langCode;
+			$config[ 'languages' ][ $langCode ][ 'qid' ] = (string) $itemId;
+			$config[ 'languages' ][ $langCode ][ 'localname' ] = $label;
 		}
 
+		$out->addJsConfigVars( [ 'RecordWizardConfig' => $config ] );
 		$out->addModuleStyles( 'ext.recordWizard.styles' );
 		$out->addModules( 'ext.recordWizard' );
 		$out->setPageTitle( $this->msg( 'special-recordWizard-title' ) );
