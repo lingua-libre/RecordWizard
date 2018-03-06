@@ -21,7 +21,28 @@ class SpecialRecordWizard extends SpecialPage {
 			return;
 		}
 
-		$qids = [ 'Q22', 'Q19', 'Q20', 'Q18' ];
+		$qids = [];
+		$dbr = wfGetDB( DB_REPLICA );
+
+		$res = $dbr->select(
+			array( 'text', 'revision', 'page' ),
+			array( 'page_title' ),
+			array(
+				'page_content_model' => 'wikibase-item',
+				'old_text like \'%"property":"P15"%\'',
+			),
+			__METHOD__,
+			array(),
+			array(
+				'revision' => array( 'INNER JOIN', array( 'old_id=rev_text_id' ) ),
+				'page' => array( 'INNER JOIN', array( 'page_latest=rev_id' ) )
+			)
+		);
+
+		foreach( $res as $row ) {
+			$qids[] = $row->page_title;
+		}
+
 		$titles = [];
 		foreach( $qids as $qid ) {
 			$titles[] = \Title::makeTitle( 0 , $qid ); //TODO: use $wgWBRepoSettings['entityNamespaces']['item']
@@ -45,9 +66,9 @@ class SpecialRecordWizard extends SpecialPage {
 				$labels[$languageCode] = $term->getText();
 			}
 
-			wfDebugLog( 'OOOOOOOOO', $entity->getId() );
-			wfDebugLog( 'OOOOOOOOO', $languageFallbackChain->extractPreferredValueOrAny( $labels )[ 'value' ] );
-			wfDebugLog( 'OOOOOOOOO', $entity->getStatements()->getByPropertyId( $langCodeProperty )->getAllSnaks()[ 0 ]->getDataValue()->getValue() );
+			$qid = $entity->getId();
+			$label = $languageFallbackChain->extractPreferredValueOrAny( $labels )[ 'value' ];
+			$langCode = $entity->getStatements()->getByPropertyId( $langCodeProperty )->getAllSnaks()[ 0 ]->getDataValue()->getValue();
 		}
 
 		$out->addModuleStyles( 'ext.recordWizard.styles' );
