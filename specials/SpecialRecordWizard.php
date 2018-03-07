@@ -64,23 +64,25 @@ class SpecialRecordWizard extends SpecialPage {
 			//TODO: Perfs: do only one DB request instead of N
 			$entity = $entityRevisionLookup->getEntityRevision( $itemId )->getEntity();
 
-			$terms = $entity->getLabels();
-			$labels = [];
-			foreach ( $terms as $term ) {
-				$languageCode = $term->getLanguageCode();
-				$labels[$languageCode] = $term->getText();
-			}
+			$labels = $entity->getLabels()->toTextArray();
 
 			$label = $languageFallbackChain->extractPreferredValueOrAny( $labels )[ 'value' ];
 			$langCode = $entity->getStatements()->getByPropertyId( $langCodeProperty )->getAllSnaks()[ 0 ]->getDataValue()->getValue();
 
-			$config[ 'languages' ][ $langCode ] = array();
-			$config[ 'languages' ][ $langCode ][ 'code' ] = $langCode;
-			$config[ 'languages' ][ $langCode ][ 'qid' ] = (string) $itemId;
-			$config[ 'languages' ][ $langCode ][ 'localname' ] = $label;
+			$qid = (string) $itemId;
+			$config[ 'languages' ][ $qid ] = array();
+			$config[ 'languages' ][ $qid ][ 'code' ] = $langCode;
+			$config[ 'languages' ][ $qid ][ 'qid' ] = (string) $qid;
+			$config[ 'languages' ][ $qid ][ 'localname' ] = $label;
 		}
+
+		$locutorId = $this->getUser()->getOption( 'recwiz-locutor' );
+		$config[ 'locutor' ] = $this->getLocutor( $locutorId, $entityIdLookup, $entityRevisionLookup );
+
 		$config[ 'properties' ] = $wgRecordWizardConfig[ 'properties' ];
 		$config[ 'items' ] = $wgRecordWizardConfig[ 'items' ];
+
+
 
 		$out->addJsConfigVars( [ 'RecordWizardConfig' => $config ] );
 		$out->addModuleStyles( 'ext.recordWizard.styles' );
@@ -93,6 +95,66 @@ class SpecialRecordWizard extends SpecialPage {
 
 	protected function getGroupName() {
 		return 'media';
+	}
+
+	private function getLocutor( $locutorId, $entityIdLookup, $entityRevisionLookup ) {
+		global $wgRecordWizardConfig, $wgWBRepoSettings;
+		$locutor = array(
+			'name' => '',
+			'gender' => '',
+			'languages' => []
+		);
+
+		if ( $locutorId != '' ) {
+			$itemId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['item'], $locutorId ) );
+			$revision = $entityRevisionLookup->getEntityRevision( $itemId );
+			if ( $revision !== null ) {
+				$item = $revision->getEntity();
+
+				$instanceOfPropertyId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['instanceOf'] ) );
+				$instanceOf = $this->getPropertyValues( $item, $instanceOfPropertyId );
+
+				if ( array_search( $wgRecordWizardConfig['items']['locutor'], $instanceOf ) !== false ) {
+					$labels = $item->getLabels()->getIterator();
+					if ( $labels->valid() ) {
+						$locutor['name'] = $labels->current()->getText();
+					}
+
+					$genderPropertyId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['gender'] ) );
+					$gender = $this->getPropertyValues( $item, $genderPropertyId );
+					if ( count( $gender ) > 0 ) {
+						$locutor['gender'] = $gender[ 0 ];
+					}
+
+					$spokenLanguagesPropertyId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['spokenLanguages'] ) );
+					$locutor['languages'] = $this->getPropertyValues( $item, $spokenLanguagesPropertyId );
+				}
+			}
+		}
+
+		return $locutor;
+	}
+
+	private function getPropertyValues( $item, $propertyId ) {
+		$statements = $item->getStatements()->getByPropertyId( $propertyId )->toArray();
+		$values = array();
+		foreach ( $statements as $statement ) {
+			$snak = $statement->getMainSnak();
+			if ( $snak->getType() == 'value' ) {
+				$dataValue = $snak->getDataValue();
+				switch ( $dataValue->getType() ) {
+					case 'wikibase-entityid':
+						$values[] = (string) $dataValue->getEntityId();
+						break;
+
+					default:
+						$values[] = $dataValue->getValue();
+						break;
+				}
+
+			}
+		}
+		return $values;
 	}
 
 	/**

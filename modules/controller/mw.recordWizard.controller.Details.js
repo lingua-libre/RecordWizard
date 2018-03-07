@@ -21,10 +21,12 @@
 	OO.inheritClass( rw.controller.Details, rw.controller.Step );
 
 	rw.controller.Details.prototype.load = function ( metadatas, records ) {
+		if ( metadatas.locutor === undefined ) {
+			metadatas.locutor = rw.config.locutor;
+		}
+
 		rw.controller.Step.prototype.load.call( this, metadatas, records );
 
-
-        // XXX do stuff
 	};
 
 	rw.controller.Details.prototype.moveNext = function () {

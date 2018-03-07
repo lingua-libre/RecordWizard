@@ -14,17 +14,20 @@
 		"wgRecordWizardConfig": {
 			"properties": {
 				"langCode": "",
-				"gender": ""
+				"gender": "",
+				"spokenLanguages": "",
+				"instanceOf": ""
 			},
 			"items": {
 				"genderMale": "",
 				"genderFemale": "",
-				"genderOther": ""
+				"genderOther": "",
+				"locutor": ""
 			}
 		}
 	},
 	"DefaultUserOptions": {
-		"recwiz-locutor": "{}",
+		"recwiz-locutor": "",
 		"recwiz-lang": ""
 	},
     "MessagesDirs": {
@@ -182,6 +185,7 @@
 			"dependencies": [
 			    "mediawiki.confirmCloseWindow",
 			    "oojs",
+			    "wikibase.api.RepoApi",
 			    "ext.recordWizard.recorder",
 			    "ext.recordWizard.generator",
 			    "ext.recordWizard.ui"
