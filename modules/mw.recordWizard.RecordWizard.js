@@ -6,7 +6,7 @@
 	rw.RecordWizard = function ( config ) {
 
 		// Shortcut for local references
-		this.config = config;
+		rw.config = config;
         this.steps = {};
         this.api = new mw.Api();
         this.createInterface();

@@ -16,7 +16,7 @@ class SpecialRecordWizard extends SpecialPage {
 	 * @param string $sub The subpage string argument (if any).
 	 */
 	public function execute( $sub ) {
-		global $wgRecordWizardProperties, $wgWBRepoSettings;
+		global $wgRecordWizardConfig, $wgWBRepoSettings;
 
 		$out = $this->getOutput();
 		$config = array();
@@ -32,7 +32,7 @@ class SpecialRecordWizard extends SpecialPage {
 			array( 'page_title' ),
 			array(
 				'page_content_model' => 'wikibase-item',
-				'old_text like \'%"property":"' . $wgRecordWizardProperties["langCode"] . '"%\'',
+				'old_text like \'%"property":"' . $wgRecordWizardConfig['properties']["langCode"] . '"%\'',
 			),
 			__METHOD__,
 			array(),
@@ -57,7 +57,7 @@ class SpecialRecordWizard extends SpecialPage {
 		$languageFallbackChain = $wbRepo->getLanguageFallbackChainFactory()->newFromLanguage( $wbRepo->getUserLanguage() );
 
 		$entities = $entityIdLookup->getEntityIds( $titles );
-		$langCodeProperty = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardProperties["langCode"] ) );
+		$langCodeProperty = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['langCode'] ) );
 
 		$config[ 'languages' ] = array();
 		foreach ( $entities as $id => $itemId ) {
@@ -79,6 +79,8 @@ class SpecialRecordWizard extends SpecialPage {
 			$config[ 'languages' ][ $langCode ][ 'qid' ] = (string) $itemId;
 			$config[ 'languages' ][ $langCode ][ 'localname' ] = $label;
 		}
+		$config[ 'properties' ] = $wgRecordWizardConfig[ 'properties' ];
+		$config[ 'items' ] = $wgRecordWizardConfig[ 'items' ];
 
 		$out->addJsConfigVars( [ 'RecordWizardConfig' => $config ] );
 		$out->addModuleStyles( 'ext.recordWizard.styles' );

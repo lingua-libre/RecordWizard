@@ -11,8 +11,16 @@
     "type": "other",
     "manifest_version": 1,
 	"config": {
-		"wgRecordWizardProperties": {
-			"langCode": ""
+		"wgRecordWizardConfig": {
+			"properties": {
+				"langCode": "",
+				"gender": ""
+			},
+			"items": {
+				"genderMale": "",
+				"genderFemale": "",
+				"genderOther": ""
+			}
 		}
 	},
     "MessagesDirs": {
