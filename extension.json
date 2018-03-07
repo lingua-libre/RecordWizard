@@ -23,6 +23,10 @@
 			}
 		}
 	},
+	"DefaultUserOptions": {
+		"recwiz-locutor": "{}",
+		"recwiz-lang": ""
+	},
     "MessagesDirs": {
         "RecordWizard": [
             "i18n"
@@ -197,6 +201,9 @@
     "Hooks": {
         "ResourceLoaderTestModules": [
             "RecordWizardHooks::onResourceLoaderTestModules"
+        ],
+        "GetPreferences": [
+            "RecordWizardHooks::onGetPreferences"
         ]
     }
 }

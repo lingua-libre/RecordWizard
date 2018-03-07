@@ -29,5 +29,18 @@ class RecordWizardHooks {
 		return true;
 	}
 
+	public static function onGetPreferences( $user, &$preferences ) {
+		// A checkbox
+		$preferences['recwiz-locutor'] = array(
+			'type' => 'text',
+			'section' => 'recwiz/locutor',
+		);
+		$preferences['recwiz-lang'] = array(
+			'type' => 'text',
+			'section' => 'recwiz/param',
+		);
+
+		return true;
+	}
 
 }
