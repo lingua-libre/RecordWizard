@@ -47,6 +47,13 @@
 			    label: mw.message( 'mwe-recwiz-locutor-location' ).text()
 		    } ).$element );
 
+		// Populate
+		if ( this.metadatas.locutor !== undefined ) {
+			this.genderSelector.selectItemByData( this.metadatas.locutor.gender );
+			this.spokenLanguagesSelector.setItemsFromData( this.metadatas.locutor.languages );
+			this.locationSelector.setValue( this.metadatas.locutor.location );
+		}
+
 
 		rw.layout.ButtonDropdownLayout.call( this, {
 	        label: mw.message( 'mwe-recwiz-locutor' ).text(),
@@ -59,9 +66,15 @@
 	OO.inheritClass( rw.ui.DetailsLocutor, rw.layout.ButtonDropdownLayout );
 
 	rw.ui.DetailsLocutor.prototype.collect = function() {
-		this.genderSelector.getSelectedItem().getData(); // getSelectedItem is null if empty, in other cases 'Qid'
-		this.spokenLanguagesSelector.getItemsData(); //[] if empty, in other cases ['Qid1', 'Qid2',...]
-	    return {};
+		var genderItem = this.genderSelector.getSelectedItem();
+
+		this.metadatas.locutor = {
+			gender: genderItem === null ? null : genderItem.getData(),
+			languages: this.spokenLanguagesSelector.getItemsData(),
+			location: this.locationSelector.getValue()
+		};
+
+	    return this.metadatas.locutor;
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );
