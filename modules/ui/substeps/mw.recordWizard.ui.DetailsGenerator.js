@@ -92,7 +92,7 @@
 	    //TODO: Move this somehow to a controller
 	    word = item.getData();
        	if ( this.records[ word ] === undefined ) {
-       		this.records[ word ] = new rw.Record( word );
+       		this.records[ word ] = new rw.Record( word, this.metadatas );
        	}
 	};
 
