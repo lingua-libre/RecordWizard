@@ -28,6 +28,9 @@
 
 		this.recordItems = {};
 		for( var word in this.records ) {
+			if ( this.records[ word ].getState() === 'up' ) {
+				continue;
+			}
 		    var $audio = $( '<audio>' )
 		        .attr( 'src', this.records[ word ].getStashedFileUrl() )
 		        .attr( 'controls', true );

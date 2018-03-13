@@ -52,6 +52,7 @@
 	};
 
 	rw.controller.Publish.prototype.moveNext = function () {
+		this.removeWaitingRecords();
 		for( var word in this.records ) {
 		    this.upload( word );
 		}

@@ -142,6 +142,16 @@
 		return this.records.length !== 0;
 	};
 
+	rw.controller.Step.prototype.removeWaitingRecords = function() {
+	    for ( word in this.records ) {
+	        var state = this.records[ word ].getState();
+	        if ( state === 'up' ) {
+	            this.records[ word ].remove();
+	            delete this.records[ word ];
+	        }
+	    }
+	};
+
 	rw.controller.Step.prototype.removePendingRecords = function() {
 	    for ( word in this.records ) {
 	        var state = this.records[ word ].getState();
