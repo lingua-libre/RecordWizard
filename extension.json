@@ -172,6 +172,18 @@
                 "mwe-recwiz-warning-faileduploads"
 			]
         },
+        "ext.recordWizard.wikibase": {
+            "scripts": [
+                "modules/wikibase/mw.recordWizard.wikibase.js",
+                "modules/wikibase/mw.recordWizard.wikibase.Snak.js",
+                "modules/wikibase/mw.recordWizard.wikibase.Statement.js",
+                "modules/wikibase/mw.recordWizard.wikibase.Item.js"
+            ],
+			"dependencies": [
+			    "wikibase.datamodel",
+			    "wikibase.serialization"
+			]
+        },
         "ext.recordWizard.controller": {
             "scripts": [
                 "modules/controller/mw.recordWizard.controller.js",
@@ -188,7 +200,8 @@
 			    "wikibase.api.RepoApi",
 			    "ext.recordWizard.recorder",
 			    "ext.recordWizard.generator",
-			    "ext.recordWizard.ui"
+			    "ext.recordWizard.ui",
+			    "ext.recordWizard.wikibase"
 			]
         }
     },
