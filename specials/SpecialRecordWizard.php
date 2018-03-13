@@ -100,9 +100,10 @@ class SpecialRecordWizard extends SpecialPage {
 	private function getLocutor( $locutorId, $entityIdLookup, $entityRevisionLookup ) {
 		global $wgRecordWizardConfig, $wgWBRepoSettings;
 		$locutor = array(
-			'name' => '',
-			'gender' => '',
-			'languages' => []
+			'name' => null,
+			'gender' => null,
+			'languages' => null,
+			'qid' => null,
 		);
 
 		if ( $locutorId != '' ) {
@@ -128,6 +129,8 @@ class SpecialRecordWizard extends SpecialPage {
 
 					$spokenLanguagesPropertyId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['spokenLanguages'] ) );
 					$locutor['languages'] = $this->getPropertyValues( $item, $spokenLanguagesPropertyId );
+
+					$locutor['qid'] = (string) $itemId;
 				}
 			}
 		}

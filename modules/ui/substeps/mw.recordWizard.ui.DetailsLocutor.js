@@ -68,11 +68,9 @@
 	rw.ui.DetailsLocutor.prototype.collect = function() {
 		var genderItem = this.genderSelector.getSelectedItem();
 
-		this.metadatas.locutor = {
-			gender: genderItem === null ? null : genderItem.getData(),
-			languages: this.spokenLanguagesSelector.getItemsData(),
-			location: this.locationSelector.getValue()
-		};
+		this.metadatas.locutor['gender'] = ( genderItem === null ? null : genderItem.getData() );
+		this.metadatas.locutor['languages'] = this.spokenLanguagesSelector.getItemsData();
+		this.metadatas.locutor['location'] = this.locationSelector.getValue();
 
 	    return this.metadatas.locutor;
 	};
