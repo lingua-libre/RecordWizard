@@ -21,8 +21,6 @@
 
 		this.ui = ui;
 
-		this.records = [];
-
 		this.ui.on( 'next-step', function () {
 			step.moveNext();
 		} );
@@ -68,17 +66,14 @@
 
 	/**
 	 * Initialize this step.
-	 *
-	 * @param {object} metadatas Metadatas concerning the records.
-	 * @param {rw.Record[]} records List of records being carried forward.
 	 */
-	rw.controller.Step.prototype.load = function ( metadatas, records ) {
+	rw.controller.Step.prototype.load = function () {
 		var step = this;
 
 		this.emit( 'load' );
 
-		this.records = records || {};
-		this.metadatas = metadatas || {};
+		rw.records = rw.records || {};
+		rw.metadatas = rw.metadatas || {};
 
 		// prevent the window from being closed as long as we have data
 		this.allowCloseWindow = mw.confirmCloseWindow( {
@@ -86,7 +81,7 @@
 			test: step.hasData.bind( this )
 		} );
 
-		this.ui.load( metadatas, records );
+		this.ui.load();
 	};
 
 	/**
@@ -108,7 +103,7 @@
 		this.unload();
 
 		if ( this.nextStep ) {
-			this.nextStep.load( this.metadatas, this.records );
+			this.nextStep.load();
 		}
 	};
 
@@ -119,7 +114,7 @@
 		this.unload();
 
 		if ( this.previousStep ) {
-			this.previousStep.load( this.metadatas, this.records );
+			this.previousStep.load();
 		}
 	};
 
@@ -139,34 +134,34 @@
 	 * @return {boolean}
 	 */
 	rw.controller.Step.prototype.hasData = function () {
-		return this.records.length !== 0;
+		return rw.records.length !== 0;
 	};
 
 	rw.controller.Step.prototype.removeWaitingRecords = function() {
-	    for ( word in this.records ) {
-	        var state = this.records[ word ].getState();
+	    for ( word in rw.records ) {
+	        var state = rw.records[ word ].getState();
 	        if ( state === 'up' ) {
-	            this.records[ word ].remove();
-	            delete this.records[ word ];
+	            rw.records[ word ].remove();
+	            delete rw.records[ word ];
 	        }
 	    }
 	};
 
 	rw.controller.Step.prototype.removePendingRecords = function() {
-	    for ( word in this.records ) {
-	        var state = this.records[ word ].getState();
+	    for ( word in rw.records ) {
+	        var state = rw.records[ word ].getState();
 	        if ( state === 'uploading' || state === 'finalizing' ) {
-	            this.records[ word ].remove();
-	            delete this.records[ word ];
+	            rw.records[ word ].remove();
+	            delete rw.records[ word ];
 	        }
 	    }
 	};
 
 	rw.controller.Step.prototype.removeFailedRecords = function() {
-	    for ( word in this.records ) {
-	        if ( this.records[ word ].hasFailed() ) {
-	            this.records[ word ].remove();
-	            delete this.records[ word ];
+	    for ( word in rw.records ) {
+	        if ( rw.records[ word ].hasFailed() ) {
+	            rw.records[ word ].remove();
+	            delete rw.records[ word ];
 	        }
 	    }
 	};
@@ -174,9 +169,9 @@
     rw.controller.Step.prototype.switchState = function( word, state, prevState ) {
         console.log( prevState + '-' + state );
         if ( prevState !== 'up' ) {
-            this.metadatas.statesCount[ prevState ]--;
+            rw.metadatas.statesCount[ prevState ]--;
         }
-        this.metadatas.statesCount[ state ]++;
+        rw.metadatas.statesCount[ state ]++;
         this.ui.setItemState( word, state );
     };
 

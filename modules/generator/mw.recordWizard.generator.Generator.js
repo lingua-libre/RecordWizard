@@ -11,13 +11,12 @@
 	    config.size = config.size || 'medium';
 	    rw.generator.Generator.parent.call( this, config );
 
-        this.metadatas = config.metadatas;
         this.callback = config.callback;
 	    this.list = [];
 	    this.name = this.constructor.static.name;
 	    this.label = this.constructor.static.title;
 	    this.size = config.size;
-	    this.params = this.metadatas.generator[ this.name ] || {};
+	    this.params = rw.metadatas.generator[ this.name ] || {};
         this.content = new OO.ui.PanelLayout( { padded: true, expanded: false } );
 	};
     OO.inheritClass( rw.generator.Generator, OO.ui.ProcessDialog );
@@ -56,7 +55,7 @@
 	};
 
 	rw.generator.Generator.prototype.saveParams = function() {
-	    this.metadatas.generator[ this.name ] = this.params;
+	    rw.metadatas.generator[ this.name ] = this.params;
 	};
 
 	rw.generator.Generator.prototype.finished = function() {

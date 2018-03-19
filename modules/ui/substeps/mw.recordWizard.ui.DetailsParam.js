@@ -1,8 +1,6 @@
 ( function ( mw, $, rw, OO ) {
 
-	rw.ui.DetailsParam = function( metadatas, records ) {
-        this.metadatas = metadatas;
-
+	rw.ui.DetailsParam = function() {
         this.languageSelector = new OO.ui.FieldLayout( new OO.ui.DropdownWidget( {
 	        menu: {
 		        items: [

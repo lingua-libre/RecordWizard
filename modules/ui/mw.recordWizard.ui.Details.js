@@ -21,15 +21,15 @@
 
 	OO.inheritClass( rw.ui.Details, rw.ui.Step );
 
-	rw.ui.Details.prototype.load = function ( metadatas, records ) {
+	rw.ui.Details.prototype.load = function () {
 	    var ui = this;
 
-		rw.ui.Step.prototype.load.call( this, metadatas, records );
+		rw.ui.Step.prototype.load.call( this );
 
 		this.substeps = {
-		    locutor: new rw.ui.DetailsLocutor( metadatas, records ),
-		    param: new rw.ui.DetailsParam( metadatas, records ),
-		    generator: new rw.ui.DetailsGenerator( metadatas, records ),
+		    locutor: new rw.ui.DetailsLocutor(),
+		    param: new rw.ui.DetailsParam(),
+		    generator: new rw.ui.DetailsGenerator(),
 		};
 
 		this.accordion = new rw.layout.AccordionLayout( {

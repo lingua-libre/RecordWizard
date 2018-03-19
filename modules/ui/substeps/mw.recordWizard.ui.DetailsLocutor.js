@@ -1,8 +1,6 @@
 ( function ( mw, $, rw, OO ) {
 
-	rw.ui.DetailsLocutor = function( metadatas, records ) {
-        this.metadatas = metadatas;
-
+	rw.ui.DetailsLocutor = function() {
 		var languages = [];
 		for ( code in rw.config.languages ) {
 			languages.push( new OO.ui.MenuOptionWidget( {
@@ -48,10 +46,10 @@
 		    } ).$element );
 
 		// Populate
-		if ( this.metadatas.locutor !== undefined ) {
-			this.genderSelector.selectItemByData( this.metadatas.locutor.gender );
-			this.spokenLanguagesSelector.setItemsFromData( this.metadatas.locutor.languages );
-			this.locationSelector.setValue( this.metadatas.locutor.location );
+		if ( rw.metadatas.locutor !== undefined ) {
+			this.genderSelector.selectItemByData( rw.metadatas.locutor.gender );
+			this.spokenLanguagesSelector.setItemsFromData( rw.metadatas.locutor.languages );
+			this.locationSelector.setValue( rw.metadatas.locutor.location );
 		}
 
 
@@ -68,11 +66,11 @@
 	rw.ui.DetailsLocutor.prototype.collect = function() {
 		var genderItem = this.genderSelector.getSelectedItem();
 
-		this.metadatas.locutor['gender'] = ( genderItem === null ? null : genderItem.getData() );
-		this.metadatas.locutor['languages'] = this.spokenLanguagesSelector.getItemsData();
-		this.metadatas.locutor['location'] = this.locationSelector.getValue();
+		rw.metadatas.locutor['gender'] = ( genderItem === null ? null : genderItem.getData() );
+		rw.metadatas.locutor['languages'] = this.spokenLanguagesSelector.getItemsData();
+		rw.metadatas.locutor['location'] = this.locationSelector.getValue();
 
-	    return this.metadatas.locutor;
+	    return rw.metadatas.locutor;
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

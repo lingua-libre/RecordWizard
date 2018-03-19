@@ -21,8 +21,8 @@
 
 	OO.inheritClass( rw.ui.License, rw.ui.Step );
 
-	rw.ui.License.prototype.load = function ( metadatas, records ) {
-		rw.ui.Step.prototype.load.call( this, metadatas, records );
+	rw.ui.License.prototype.load = function () {
+		rw.ui.Step.prototype.load.call( this );
 
 		this.$container.prepend(
 			$( '<div>' )

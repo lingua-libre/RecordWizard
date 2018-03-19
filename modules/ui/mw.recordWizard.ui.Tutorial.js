@@ -26,8 +26,8 @@
 
 	OO.inheritClass( rw.ui.Tutorial, rw.ui.Step );
 
-	rw.ui.Tutorial.prototype.load = function ( metadatas, records ) {
-		rw.ui.Step.prototype.load.call( this, metadatas, records );
+	rw.ui.Tutorial.prototype.load = function () {
+		rw.ui.Step.prototype.load.call( this );
 
 		this.$container.prepend(
 			$( '<div>' )

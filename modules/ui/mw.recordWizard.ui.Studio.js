@@ -20,9 +20,9 @@
 
 	OO.inheritClass( rw.ui.Studio, rw.ui.Step );
 
-	rw.ui.Studio.prototype.load = function ( metadatas, records ) {
+	rw.ui.Studio.prototype.load = function () {
 	    var ui = this;
-		rw.ui.Step.prototype.load.call( this, metadatas, records );
+		rw.ui.Step.prototype.load.call( this );
 
 	    this.isRecording = false;
         this.generateUI();
@@ -30,8 +30,8 @@
         this.updateCounter();
         this.amplitudeGraph = new rw.ui.AmplitudeGraph();
 
-        for ( word in this.records ) {
-            this.setItemState( word, this.records[ word ].getState() );
+        for ( word in rw.records ) {
+            this.setItemState( word, rw.records[ word ].getState() );
         }
 
         this.$wordInput.keypress( function( e ) {
@@ -56,9 +56,9 @@
 
 		this.$list = $( '<ul>' ).addClass( 'studio-wordlist' );
 		this.recordItems = {};
-		for( var i=0; i < this.metadatas.words.length; i++ ) {
-		    this.recordItems[ this.metadatas.words[ i ] ] = $( '<li>' ).text( this.metadatas.words[ i ] );
-		    this.$list.append( this.recordItems[ this.metadatas.words[ i ] ] );
+		for( var i=0; i < rw.metadatas.words.length; i++ ) {
+		    this.recordItems[ rw.metadatas.words[ i ] ] = $( '<li>' ).text( rw.metadatas.words[ i ] );
+		    this.$list.append( this.recordItems[ rw.metadatas.words[ i ] ] );
 		}
 		this.$wordInput = $( '<input>' ).attr( 'placeholder', mw.message( 'mwe-recwiz-studio-input-placeholder' ).text() );
 
@@ -168,8 +168,8 @@
 	};
 
 	rw.ui.Studio.prototype.showNextButton = function() {
-	    console.log( this.metadatas.statesCount );
-	    if ( Object.keys( this.records ).length === 0 ) {
+	    console.log( rw.metadatas.statesCount );
+	    if ( Object.keys( rw.records ).length === 0 ) {
 	        this.nextButton.toggle( false );
 	        this.stateLabel.toggle( false );
 	        this.retryButton.toggle( false );
@@ -177,17 +177,17 @@
 	    }
 
         this.stateLabel.toggle( true );
-        if ( this.metadatas.statesCount.stashed > 0 ) {
+        if ( rw.metadatas.statesCount.stashed > 0 ) {
 	        // all ok
 	        this.retryButton.toggle( false );
 	        this.nextButton.toggle( true );
 	        this.stateLabel.setLabel( mw.message( 'mwe-recwiz-allsucceeded' ).text() );
 	        this.nextButton.setLabel( mw.message( 'mwe-recwiz-continue' ).text() );
 	    }
-        if ( this.metadatas.statesCount.error > 0 ) {
+        if ( rw.metadatas.statesCount.error > 0 ) {
 	        this.retryButton.toggle( true );
 
-	        if ( this.metadatas.statesCount.stashed > 0 ) {
+	        if ( rw.metadatas.statesCount.stashed > 0 ) {
 	            // some ok
                 this.stateLabel.setLabel( mw.message( 'mwe-recwiz-somefailed' ).text() );
 	            this.nextButton.setLabel( mw.message( 'mwe-recwiz-continueanyway' ).text() );
@@ -199,14 +199,14 @@
 	        }
 	    }
 
-	    if ( this.metadatas.statesCount.uploading > 0 ) {
+	    if ( rw.metadatas.statesCount.uploading > 0 ) {
 	        this.stateLabel.setLabel( mw.message( 'mwe-recwiz-pendinguplads' ).text() );
 	    }
 
 	};
 
 	rw.ui.Studio.prototype.updateCounter = function() {
-	    var count = this.metadatas.statesCount;
+	    var count = rw.metadatas.statesCount;
 	    var total = count.stashed + count.uploading + count.error;
         if ( total > 0 ) {
 	        this.$recordCounter.text( mw.message( 'mwe-recwiz-upload-count', count.stashed, total ).text() );

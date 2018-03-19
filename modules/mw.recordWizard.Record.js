@@ -1,7 +1,7 @@
 // TODO: cleaner state managment
 ( function ( mw, rw, $ ) {
 
-	rw.Record = function ( word, metadatas ) {
+	rw.Record = function ( word ) {
 		OO.EventEmitter.call( this );
 
 		this.file = null;
@@ -13,8 +13,6 @@
         this.inQueue = false;
         this.error = false;
 		this.state = 'up';
-		
-		this.metadatas = metadatas;
 	};
 
 	OO.mixinClass( rw.Record, OO.EventEmitter );
@@ -162,21 +160,21 @@
 	rw.Record.prototype.createWikibaseItem = function( api, deferred ) {
 			//TODO: change state
         var record = this;
-        
+
         var today = new Date();
 		today.setUTCHours(0,0,0,0);
 		today = today.toISOString().slice(0,-5)+'Z';
-        
+
 		var item = new mw.recordWizard.wikibase.Item();
 		item.labels = { en: this.word };
-		item.descriptions = { en: 'audio record from' + this.metadatas.locutor.name + '(' + mw.config.get( 'wgUserName' ) + ')' };
-		
+		item.descriptions = { en: 'audio record from' + rw.metadatas.locutor.name + '(' + mw.config.get( 'wgUserName' ) + ')' };
+
 		//TODO: make property and item configuration-dependant, and not hardcoded
 		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P2' ).setType( 'wikibase-item' ).setValue( 'Q2' ) ); //InstanceOf
 		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P19' ).setType( 'wikibase-item' ).setValue( 'Q30' ) ); //SubclassOf
 		//item.addStatement( new mw.recordWizard.wikibase.Statement( 'P3' ).setType( 'commonsMedia' ).setValue( this.getFilename() ) ); //Audio file
-		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P4' ).setType( 'somevalue' ) );//TODO: .setValue( this.metadatas.language ) ); //Language
-		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P5' ).setType( 'wikibase-item' ).setValue( this.metadatas.locutor.qid ) ); //Locutor
+		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P4' ).setType( 'somevalue' ) );//TODO: .setValue( rw.metadatas.language ) ); //Language
+		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P5' ).setType( 'wikibase-item' ).setValue( rw.metadatas.locutor.qid ) ); //Locutor
 		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P7' ).setType( 'time' ).setValue( { timestamp: today } ) ); //Date
 		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P8' ).setType( 'monolingualtext' ).setValue( { languageCode: 'fr', text: this.word } ) ); //Transcription
 		for ( propertyId in this.extra ) {

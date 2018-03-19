@@ -1,12 +1,10 @@
 ( function ( mw, $, rw, OO ) {
 
-	rw.ui.DetailsGenerator = function( metadatas, records ) {
-        this.metadatas = metadatas;
-        this.records = records;
+	rw.ui.DetailsGenerator = function() {
         this.generators = {};
 
-        if ( this.metadatas.generator === undefined ) {
-            this.metadatas.generator = {};
+        if ( rw.metadatas.generator === undefined ) {
+            rw.metadatas.generator = {};
         }
 
         this.windowManager = new OO.ui.WindowManager();
@@ -17,8 +15,8 @@
 	        allowArbitrary: true,
 	        inputPosition: 'outline' //TODO: maybe inline ?
         } );
-        if ( this.metadatas.words !== undefined ) {
-            this.addWords( this.metadatas.words );
+        if ( rw.metadatas.words !== undefined ) {
+            this.addWords( rw.metadatas.words );
         }
 
         this.generatorButtons = new OO.ui.ButtonGroupWidget();
@@ -57,7 +55,6 @@
             name = rw.generator[ className ].static.name;
 
         this.generators[ name ] = new rw.generator[ className ]( {
-            metadatas: this.metadatas,
             callback: this.addWords.bind( this ),
         } );
         this.windowManager.addWindows( [ this.generators[ name ] ] );
@@ -83,7 +80,7 @@
 	           	}
 	           	//TODO: Move this somehow to a controller
 	           	this.wordList.addTag( word );
-	           	this.records[ word ].setExtra( extra );
+	           	rw.records[ word ].setExtra( extra );
 	        }
 	    }
 	};
@@ -91,8 +88,8 @@
 	rw.ui.DetailsGenerator.prototype.onWordListAdd = function( item, index ) {
 	    //TODO: Move this somehow to a controller
 	    word = item.getData();
-       	if ( this.records[ word ] === undefined ) {
-       		this.records[ word ] = new rw.Record( word, this.metadatas );
+       	if ( rw.records[ word ] === undefined ) {
+       		rw.records[ word ] = new rw.Record( word, rw.metadatas );
        	}
 	};
 
@@ -107,7 +104,7 @@
 	};
 
 	rw.ui.DetailsGenerator.prototype.collect = function() {
-	    this.metadatas.words = this.wordList.getValue();
+	    rw.metadatas.words = this.wordList.getValue();
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

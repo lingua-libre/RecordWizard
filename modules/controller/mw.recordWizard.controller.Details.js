@@ -20,12 +20,12 @@
 
 	OO.inheritClass( rw.controller.Details, rw.controller.Step );
 
-	rw.controller.Details.prototype.load = function ( metadatas, records ) {
-		if ( metadatas.locutor === undefined ) {
-			metadatas.locutor = rw.config.locutor;
+	rw.controller.Details.prototype.load = function () {
+		if ( rw.metadatas.locutor === undefined ) {
+			rw.metadatas.locutor = rw.config.locutor;
 		}
 
-		rw.controller.Step.prototype.load.call( this, metadatas, records );
+		rw.controller.Step.prototype.load.call( this );
 
 		/*this.ui.substeps.locutor.on( 'change', ... );
 		this.ui.substeps.param.on( 'change', ... );
@@ -43,11 +43,11 @@
 
 		//TODO: create/update a wikibase item
 		var repoApi = new wb.api.RepoApi( this.api );
-		if ( this.metadatas.locutor.qid === null ) {
-			var item = this.createLocutorItem( mw.config.get( 'wgUserName' ), this.metadatas.locutor.gender, this.metadatas.locutor.languages );
+		if ( rw.metadatas.locutor.qid === null ) {
+			var item = this.createLocutorItem( mw.config.get( 'wgUserName' ), rw.metadatas.locutor.gender, rw.metadatas.locutor.languages );
 			repoApi.createEntity( 'item', item.serialize() )
 			.then( function( data ) {
-				controller.metadatas.locutor.qid = data.entity.id;
+				rw.metadatas.locutor.qid = data.entity.id;
 				deferred.resolve();
 			} )
 			.fail( function( code, data ) {
@@ -60,10 +60,10 @@
 			//TODO: update already existing items
 			deferred.resolve();
 		}
-		
+
 		deferred.then( function() {
 			controller.api.saveOptions( {
-				'recwiz-locutor': controller.metadatas.locutor.qid,
+				'recwiz-locutor': rw.metadatas.locutor.qid,
 				'recwiz-lang': '',
 			} )
 			.then( function() {
@@ -75,11 +75,11 @@
 		} );
 	};
 
-	rw.controller.Details.prototype.createLocutorItem = function ( name, gender, languages) {
+	rw.controller.Details.prototype.createLocutorItem = function ( name, gender, languages ) {
 		var item = new mw.recordWizard.wikibase.Item();
 		item.labels = { en: name };
 		item.descriptions = { en: 'locutor of ' + mw.config.get( 'wgUserName' ) };
-		
+
 		//TODO: make property and item configuration-dependant, and not hardcoded
 		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P2' ).setType( 'wikibase-item' ).setValue( 'Q3' ) );
 		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P11' ).setType( 'external-id' ).setValue( '0x010C' ).setRank( 2 ) );
@@ -88,7 +88,7 @@
 		for ( var i=0; i < languages.length; i++ ) {
 			item.addStatement( new mw.recordWizard.wikibase.Statement( 'P4' )
 				.setType( 'wikibase-item' )
-				.setValue( this.metadatas.locutor.languages[ i ] )
+				.setValue( languages[ i ] )
 				//TODO: support language level: .addQualifier( new mw.recordWizard.wikibase.Snak( 'P13', 'wikibase-item', 'Q...' ) )
 			);
 		}

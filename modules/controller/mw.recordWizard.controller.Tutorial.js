@@ -20,8 +20,8 @@
 
 	OO.inheritClass( rw.controller.Tutorial, rw.controller.Step );
 
-	rw.controller.Tutorial.prototype.load = function ( metadatas, records ) {
-		rw.controller.Step.prototype.load.call( this, metadatas, records );
+	rw.controller.Tutorial.prototype.load = function () {
+		rw.controller.Step.prototype.load.call( this );
 
         // XXX do stuff
 	};

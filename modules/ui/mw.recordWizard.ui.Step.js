@@ -38,13 +38,11 @@
 	 *
 	 * @param {mw.UploadWizardUpload[]} uploads
 	 */
-	rw.ui.Step.prototype.load = function ( metadatas, records ) {
+	rw.ui.Step.prototype.load = function () {
 		var offset = $( 'h1:first' ).offset();
 
 		this.movedFrom = false;
 
-		this.metadatas = metadatas;
-		this.records = records;
 		this.$container
 			.append( this.$buttons )
 		    .show();

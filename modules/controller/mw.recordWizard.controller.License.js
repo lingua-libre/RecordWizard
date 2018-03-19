@@ -20,10 +20,10 @@
 
 	OO.inheritClass( rw.controller.License, rw.controller.Step );
 
-	rw.controller.License.prototype.load = function ( metadatas, records ) {
-		rw.controller.Step.prototype.load.call( this, metadatas, records );
+	rw.controller.License.prototype.load = function () {
+		rw.controller.Step.prototype.load.call( this );
 
-        this.metadatas[ 'license' ] = '{{cc-by-sa-4.0}}';
+        rw.metadatas.license = '{{cc-by-sa-4.0}}';
 	};
 
 	rw.controller.License.prototype.moveNext = function () {

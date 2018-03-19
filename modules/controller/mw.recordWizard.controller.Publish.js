@@ -20,40 +20,40 @@
 
 	OO.inheritClass( rw.controller.Publish, rw.controller.Step );
 
-	rw.controller.Publish.prototype.load = function ( metadatas, records ) {
+	rw.controller.Publish.prototype.load = function () {
 		var controller = this;
 
-		rw.controller.Step.prototype.load.call( this, metadatas, records );
+		rw.controller.Step.prototype.load.call( this );
 
-		for( var word in this.records ) {
-	        this.records[ word ].on( 'state-change', this.switchState.bind( this ) );
+		for( var word in rw.records ) {
+	        rw.records[ word ].on( 'state-change', this.switchState.bind( this ) );
 		}
 
         this.ui.on( 'retry-click', function( word ) {
-            for ( word in controller.records ) {
-                if ( controller.records[ word ].hasFailed() ) {
+            for ( word in rw.records ) {
+                if ( rw.records[ word ].hasFailed() ) {
                     controller.upload( word );
                 }
             }
         } );
 	};
 
-	rw.controller.Publish.prototype.unload = function ( metadatas, records ) {
+	rw.controller.Publish.prototype.unload = function () {
 		this.ui.off( 'retry-click' );
-		for ( word in this.records ) {
-		    this.records[ word ].off( 'state-change' );
+		for ( word in rw.records ) {
+		    rw.records[ word ].off( 'state-change' );
 		}
 
 		rw.controller.Step.prototype.unload.call( this );
 	};
 
 	rw.controller.Publish.prototype.upload = function( word ) {
-	    rw.requestQueue.push( this.records[ word ], 'finishUpload' );
+	    rw.requestQueue.push( rw.records[ word ], 'finishUpload' );
 	};
 
 	rw.controller.Publish.prototype.moveNext = function () {
 		this.removeWaitingRecords();
-		for( var word in this.records ) {
+		for( var word in rw.records ) {
 		    this.upload( word );
 		}
 	};

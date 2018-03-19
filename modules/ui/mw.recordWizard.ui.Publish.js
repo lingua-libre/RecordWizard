@@ -21,18 +21,18 @@
 
 	OO.inheritClass( rw.ui.Publish, rw.ui.Step );
 
-	rw.ui.Publish.prototype.load = function ( metadatas, records ) {
-		rw.ui.Step.prototype.load.call( this, metadatas, records );
+	rw.ui.Publish.prototype.load = function () {
+		rw.ui.Step.prototype.load.call( this );
 
 		this.$list = $( '<ul>' );
 
 		this.recordItems = {};
-		for( var word in this.records ) {
-			if ( this.records[ word ].getState() === 'up' ) {
+		for( var word in rw.records ) {
+			if ( rw.records[ word ].getState() === 'up' ) {
 				continue;
 			}
 		    var $audio = $( '<audio>' )
-		        .attr( 'src', this.records[ word ].getStashedFileUrl() )
+		        .attr( 'src', rw.records[ word ].getStashedFileUrl() )
 		        .attr( 'controls', true );
 		    this.recordItems[ word ] = $( '<li>' ).text( word ).prepend( $audio );
 		    this.$list.append( this.recordItems[ word ] );
@@ -54,25 +54,25 @@
 	};
 
 	rw.ui.Publish.prototype.showNextButton = function() {
-        console.log( this.metadatas.statesCount );
-	    if ( this.metadatas.statesCount.finalizing > 0 ) {
+        console.log( rw.metadatas.statesCount );
+	    if ( rw.metadatas.statesCount.finalizing > 0 ) {
 	        this.previousButton.setDisabled( true );
 	        this.retryButton.toggle( false );
             this.nextButton.setDisabled( true );
             this.stateLabel.toggle( true );
 	        this.stateLabel.setLabel( mw.message( 'mwe-recwiz-pendinguplads' ).text() );
 	    }
-        else if ( this.metadatas.statesCount.error > 0 ) {
+        else if ( rw.metadatas.statesCount.error > 0 ) {
 	        this.retryButton.toggle( true );
 
-	        if ( this.metadatas.statesCount.uploaded > 0 ) {
+	        if ( rw.metadatas.statesCount.uploaded > 0 ) {
                 this.stateLabel.setLabel( mw.message( 'mwe-recwiz-somefailed' ).text() );
 	        }
 	        else {
                 this.stateLabel.setLabel( mw.message( 'mwe-recwiz-allfailed' ).text() );
 	        }
 	    }
-        else if ( this.metadatas.statesCount.stashed > 0 ) {
+        else if ( rw.metadatas.statesCount.stashed > 0 ) {
 	        this.stateLabel.setLabel( mw.message( 'mwe-recwiz-allsucceeded' ).text() );
 	    }
 	    else {
