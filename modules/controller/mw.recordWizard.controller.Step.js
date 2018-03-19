@@ -155,7 +155,7 @@
 	rw.controller.Step.prototype.removePendingRecords = function() {
 	    for ( word in rw.records ) {
 	        var state = rw.records[ word ].getState();
-	        if ( state === 'uploading' || state === 'finalizing' ) {
+	        if ( [ 'stashing', 'uploading', 'finalizing' ].indexOf( state ) > -1 ) {
 	            rw.records[ word ].remove();
 	            delete rw.records[ word ];
 	        }

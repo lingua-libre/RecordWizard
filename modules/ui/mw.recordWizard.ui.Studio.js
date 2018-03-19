@@ -153,7 +153,7 @@
 	rw.ui.Studio.prototype.setItemState = function( word, state, prevState ) {
 	    // TODO: use a correlation table to asociate state and HTML class
 	    if ( this.recordItems[ word ] !== undefined ) {
-	        this.recordItems[ word ].removeClass( 'mwe-recwiz-word-uploading' );
+	        this.recordItems[ word ].removeClass( 'mwe-recwiz-word-stashing' );
 	        this.recordItems[ word ].removeClass( 'mwe-recwiz-word-stashed' );
 	        this.recordItems[ word ].removeClass( 'mwe-recwiz-word-error' );
 	        this.recordItems[ word ].addClass( 'mwe-recwiz-word-'+state );
@@ -199,7 +199,7 @@
 	        }
 	    }
 
-	    if ( rw.metadatas.statesCount.uploading > 0 ) {
+	    if ( rw.metadatas.statesCount.stashing > 0 ) {
 	        this.stateLabel.setLabel( mw.message( 'mwe-recwiz-pendinguplads' ).text() );
 	    }
 
@@ -207,7 +207,7 @@
 
 	rw.ui.Studio.prototype.updateCounter = function() {
 	    var count = rw.metadatas.statesCount;
-	    var total = count.stashed + count.uploading + count.error;
+	    var total = count.stashed + count.stashing + count.error;
         if ( total > 0 ) {
 	        this.$recordCounter.text( mw.message( 'mwe-recwiz-upload-count', count.stashed, total ).text() );
 	        this.$recordCounter.show();

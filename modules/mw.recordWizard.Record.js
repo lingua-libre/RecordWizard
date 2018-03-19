@@ -7,6 +7,7 @@
 		this.file = null;
 		this.filename = null;
 		this.filekey = null;
+		this.imageInfo = null;
 		this.word = word;
 		this.extra = {};
 
@@ -33,20 +34,28 @@
 	    this.extra = extra;
 	};
 
+	// up				object created
+	// ready			audio record available
+	// stashing			stash request is pending
+	// stashed			record is stashed
+	// uploading		upload 2 commons request is pending
+	// uploaded			record is uploaded on commons
+	// finalizing		WB item creation request is pending
+	// done				all has finished
 	rw.Record.prototype.setState = function( newState ) {
 	    this.emit( 'state-change', this.getWord(), newState, this.state );
 	    this.state = newState;
 	};
 
 	rw.Record.prototype.hasData = function() {
-	    if ( this.state === 'up' || this.state === 'uploaded' ) {
+	    if ( this.state === 'up' || this.state === 'done' ) {
 	    	return false;
 	    }
 	    return true;
 	};
 
 	rw.Record.prototype.getStashedFileUrl = function() {
-	    if ( this.filekey !== null && ( this.state === 'stashed' || this.state === 'uploaded' ) ) {
+	    if ( this.filekey !== null ) {
 	        return mw.util.getUrl( 'Special:UploadStash/file/' + this.filekey );
 	    }
 	    return null;
@@ -76,8 +85,9 @@
 	    this.setState( 'stashed' );
 	};
 
-	rw.Record.prototype.finished = function( imageinfo ) {
+	rw.Record.prototype.uploaded = function( imageinfo ) {
 	    this.imageInfo = imageinfo;
+	    this.filekey = null;
 	    this.setState( 'uploaded' );
 	};
 
@@ -95,7 +105,7 @@
 
 	rw.Record.prototype.setBlob = function( audioBlob ) {
 	    // Only allow re-recording an audio when it's not already uploaded
-	    if ( this.state !== 'uploaded' && this.state !== 'finalizing' ) {
+	    if ( [ 'up', 'ready', 'stashing', 'stashed' ].indexOf( this.state ) > -1 ) {
 	        this.setState( 'ready' );
 		    this.filekey = null;
 	        this.error = false;
@@ -123,7 +133,7 @@
     rw.Record.prototype.uploadToStash = function( api, deferred ) {
         var record = this;
         if ( this.state === 'ready' || this.state === 'error' ) {
-            this.setState( 'uploading' );
+            this.setState( 'stashing' );
 
 	        api.upload( this.file, {
 	            stash: true,
@@ -136,14 +146,16 @@
                 record.setError( errorCode );
             } );
         }
-        else {
-
-        }
 	};
 
 	rw.Record.prototype.finishUpload = function( api, deferred ) {
         var record = this;
-        this.setState( 'finalizing' );
+
+        if ( this.state === 'error' && this.imageInfo !== null ) {
+        	return this.createWikibaseItem( api, deferred );
+        }
+
+        this.setState( 'uploading' );
 
         // TODO: switch from upload to upload-to-commons, if available
         // use the config to detect it
@@ -156,7 +168,7 @@
             removeafterupload: true,
             ignorewarnings: true, //TODO: manage warnings
         } ).then( function( result ) {
-            record.finished( result['upload-to-commons'].oauth.upload.imageinfo );
+            record.uploaded( result['upload-to-commons'].oauth.upload.imageinfo );
             record.createWikibaseItem( api, deferred );
         } ).fail( function( errorCode, result ) {
             deferred.reject( errorCode, result );
@@ -165,8 +177,8 @@
 	};
 
 	rw.Record.prototype.createWikibaseItem = function( api, deferred ) {
-			//TODO: change state
         var record = this;
+        this.setState( 'finalizing' );
 
         var today = new Date();
 		today.setUTCHours(0,0,0,0);
@@ -193,6 +205,7 @@
 		.then( function( data ) {
 			//TODO: change state
 			record.qid = data.entity.id;
+			record.setState( 'done' );
 			deferred.resolve();
 		} )
 		.fail( function( errorCode, result ) {

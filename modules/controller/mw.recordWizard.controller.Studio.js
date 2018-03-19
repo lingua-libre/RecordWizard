@@ -26,10 +26,12 @@
         if ( rw.metadatas.statesCount === undefined ) {
             rw.metadatas.statesCount = {
                 'ready': 0,
-                'uploading': 0,
+                'stashing': 0,
                 'stashed': 0,
-                'finalizing': 0,
+                'uploading': 0,
                 'uploaded': 0,
+                'finalizing': 0,
+                'done': 0,
                 'error': 0,
             };
         }
@@ -193,7 +195,7 @@
 
 	rw.controller.Studio.prototype.moveNext = function ( skipFirstWarning ) {
 	    var controller = this,
-	        total = rw.metadatas.statesCount.error + rw.metadatas.statesCount.stashed + rw.metadatas.statesCount.uploading;
+	        total = rw.metadatas.statesCount.error + rw.metadatas.statesCount.stashed + rw.metadatas.statesCount.stashing;
 	    skipFirstWarning = skipFirstWarning || false;
 
 		this.recorder.cancel();
@@ -208,11 +210,11 @@
 		    return;
 		}
 
-		if ( rw.metadatas.statesCount.uploading > 0 ) {
+		if ( rw.metadatas.statesCount.stashing > 0 ) {
 		    OO.ui.confirm( mw.message( 'mwe-recwiz-warning-pendinguploads' ).text() ).done( function( confirmed ) {
 		        if ( confirmed ) {
 		            controller.removePendingRecords();
-		            rw.metadatas.statesCount.uploading = 0;
+		            rw.metadatas.statesCount.stashing = 0;
                     controller.ui.updateCounter();
 		            controller.moveNext( true );
 		        }

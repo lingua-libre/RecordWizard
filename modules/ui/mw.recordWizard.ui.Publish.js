@@ -43,7 +43,7 @@
 
 	rw.ui.Publish.prototype.setItemState = function( word, state ) {
 	    // TODO: use a correlation table to asociate state and HTML class
-	    if ( state !== 'finalizing' ) {
+	    if ( [ 'done', 'error' ].indexOf( state ) > -1 ) {
 	        $('html, body').animate( {
                 scrollTop: this.recordItems[ word ].offset().top - 50
             }, 400 );
@@ -55,7 +55,7 @@
 
 	rw.ui.Publish.prototype.showNextButton = function() {
         console.log( rw.metadatas.statesCount );
-	    if ( rw.metadatas.statesCount.finalizing > 0 ) {
+	    if ( rw.metadatas.statesCount.uploading > 0 ) {
 	        this.previousButton.setDisabled( true );
 	        this.retryButton.toggle( false );
             this.nextButton.setDisabled( true );
@@ -65,7 +65,7 @@
         else if ( rw.metadatas.statesCount.error > 0 ) {
 	        this.retryButton.toggle( true );
 
-	        if ( rw.metadatas.statesCount.uploaded > 0 ) {
+	        if ( rw.metadatas.statesCount.done > 0 ) {
                 this.stateLabel.setLabel( mw.message( 'mwe-recwiz-somefailed' ).text() );
 	        }
 	        else {

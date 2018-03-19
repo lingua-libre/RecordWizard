@@ -38,12 +38,14 @@
   height: 40px;
 }
 
+#mwe-recwiz-stepdiv-publish li.mwe-recwiz-uploading:after,
+#mwe-recwiz-stepdiv-publish li.mwe-recwiz-uploaded:after,
 #mwe-recwiz-stepdiv-publish li.mwe-recwiz-finalizing:after {
   content: url( images/Spinner_font_awesome.svg );
   animation: spinner 1.5s linear infinite;
 }
 
-#mwe-recwiz-stepdiv-publish li.mwe-recwiz-uploaded:after {
+#mwe-recwiz-stepdiv-publish li.mwe-recwiz-done:after {
   content: url( images/Ok_sign_font_awesome_green.svg );
 }
 
@@ -166,7 +168,7 @@
     background-color: olivedrab;
 }
 
-.studio-wordlist li.mwe-recwiz-word-uploading {
+.studio-wordlist li.mwe-recwiz-word-stashing {
     background-color: #FF3399;
 }
 
