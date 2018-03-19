@@ -134,7 +134,12 @@
 	 * @return {boolean}
 	 */
 	rw.controller.Step.prototype.hasData = function () {
-		return rw.records.length !== 0;
+		for ( word in rw.records ) {
+			if ( rw.records[ word ].hasData() ) {
+				return true;
+			}
+		}
+		return false;
 	};
 
 	rw.controller.Step.prototype.removeWaitingRecords = function() {

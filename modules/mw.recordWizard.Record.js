@@ -38,6 +38,13 @@
 	    this.state = newState;
 	};
 
+	rw.Record.prototype.hasData = function() {
+	    if ( this.state === 'up' || this.state === 'uploaded' ) {
+	    	return false;
+	    }
+	    return true;
+	};
+
 	rw.Record.prototype.getStashedFileUrl = function() {
 	    if ( this.filekey !== null && ( this.state === 'stashed' || this.state === 'uploaded' ) ) {
 	        return mw.util.getUrl( 'Special:UploadStash/file/' + this.filekey );
