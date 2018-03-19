@@ -23,7 +23,8 @@
 				"genderFemale": "",
 				"genderOther": "",
 				"locutor": ""
-			}
+			},
+			"listNamespace": 0
 		}
 	},
 	"DefaultUserOptions": {
@@ -87,15 +88,17 @@
             "scripts": [
                 "modules/generator/mw.recordWizard.generator.js",
                 "modules/generator/mw.recordWizard.generator.Generator.js",
+                "modules/generator/mw.recordWizard.generator.List.js",
                 "modules/generator/mw.recordWizard.generator.Nearby.js"
             ],
 			"dependencies": [
 			    "oojs-ui",
-			    "mediawiki.ForeignApi"
+			    "mediawiki.ForeignApi",
+			    "mediawiki.widgets"
 			],
 			"messages": [
-                "mwe-recwiz-generator-manual",
                 "mwe-recwiz-generator-nearby",
+                "mwe-recwiz-generator-list",
 			    "mwe-recwiz-nearby-coordinates",
 			    "mwe-recwiz-nearby-coordinates-help",
 			    "mwe-recwiz-nearby-limit",
@@ -105,7 +108,10 @@
 			    "mwe-recwiz-nearby-getcoordinates",
 			    "mwe-recwiz-nearby-source",
 			    "mwe-recwiz-error-cantgetposition",
-			    "mwe-recwiz-warning-noresults"
+			    "mwe-recwiz-warning-noresults",
+			    "mwe-recwiz-list-title",
+				"mwe-recwiz-list-title-help",
+				"mwe-recwiz-error-pagemissing"
 			]
         },
         "ext.recordWizard.layout":{

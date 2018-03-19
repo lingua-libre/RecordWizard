@@ -40,8 +40,8 @@
     "mwe-recwiz-generator-addwords": "",
     "mwe-recwiz-generator-noword": "",
     "mwe-recwiz-generator-wordcount": "",
-    "mwe-recwiz-generator-manual": "",
     "mwe-recwiz-generator-nearby": "",
+    "mwe-recwiz-generator-list": "",
 
     "mwe-recwiz-pendinguplads": "",
     "mwe-recwiz-allsucceeded": "",
@@ -61,5 +61,9 @@
     "mwe-recwiz-nearby-getcoordinates": "",
     "mwe-recwiz-nearby-source": "",
     "mwe-recwiz-error-cantgetposition": "",
-    "mwe-recwiz-warning-noresults": ""
+    "mwe-recwiz-warning-noresults": "",
+
+    "mwe-recwiz-list-title": "",
+    "mwe-recwiz-list-title-help": "",
+    "mwe-recwiz-error-pagemissing": ""
 }

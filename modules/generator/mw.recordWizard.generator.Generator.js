@@ -47,7 +47,8 @@
 	    return rw.generator.Generator.parent.prototype.getActionProcess.call( this, action );
     };
     rw.generator.Generator.prototype.getBodyHeight = function () {
-	    return this.content.$element.outerHeight( true );
+    	var height = this.content.$element.outerHeight( true );
+	    return height > 210 ? height : 210;
     };
 
 	rw.generator.Generator.prototype.fetch = function() {

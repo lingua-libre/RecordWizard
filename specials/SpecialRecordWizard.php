@@ -19,7 +19,7 @@ class SpecialRecordWizard extends SpecialPage {
 		global $wgRecordWizardConfig, $wgWBRepoSettings;
 
 		$out = $this->getOutput();
-		$config = array();
+		$config = $wgRecordWizardConfig;
 		if ( !( $this->isUploadAllowed() && $this->isUserUploadAllowed( $this->getUser() ) ) ) {
 			return;
 		}
@@ -78,10 +78,6 @@ class SpecialRecordWizard extends SpecialPage {
 
 		$locutorId = $this->getUser()->getOption( 'recwiz-locutor' );
 		$config[ 'locutor' ] = $this->getLocutor( $locutorId, $entityIdLookup, $entityRevisionLookup );
-
-		$config[ 'properties' ] = $wgRecordWizardConfig[ 'properties' ];
-		$config[ 'items' ] = $wgRecordWizardConfig[ 'items' ];
-
 
 
 		$out->addJsConfigVars( [ 'RecordWizardConfig' => $config ] );

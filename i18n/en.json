@@ -40,8 +40,8 @@
     "mwe-recwiz-generator-addwords": "Add words",
     "mwe-recwiz-generator-noword": "No words selected",
     "mwe-recwiz-generator-wordcount": "$1 {{PLURAL:$1|word|words}}",
-    "mwe-recwiz-generator-manual": "Manual",
     "mwe-recwiz-generator-nearby": "Nearby items",
+    "mwe-recwiz-generator-list": "List",
 
     "mwe-recwiz-pendinguplads": "...Uploading...",
     "mwe-recwiz-allsucceeded": "All uploads were successful!",
@@ -61,5 +61,9 @@
     "mwe-recwiz-nearby-getcoordinates": "Get my position",
     "mwe-recwiz-nearby-source": "Source",
     "mwe-recwiz-error-cantgetposition": "Your position can't be found, you'll have to set the coordinates by hand ($1).",
-    "mwe-recwiz-warning-noresults": "There is no items near these coordinates."
+    "mwe-recwiz-warning-noresults": "There is no items near these coordinates.",
+
+    "mwe-recwiz-list-title": "Title",
+    "mwe-recwiz-list-title-help": "Title of a page within the list namespace.",
+    "mwe-recwiz-error-pagemissing": "There is currently no text in the page $1..."
 }
