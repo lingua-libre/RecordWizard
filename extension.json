@@ -131,7 +131,6 @@
                 "modules/ui/mw.recordWizard.ui.Step.js",
                 "modules/ui/mw.recordWizard.ui.Tutorial.js",
                 "modules/ui/mw.recordWizard.ui.Details.js",
-                "modules/ui/mw.recordWizard.ui.License.js",
                 "modules/ui/mw.recordWizard.ui.Studio.js",
                 "modules/ui/mw.recordWizard.ui.Publish.js",
                 "modules/ui/substeps/mw.recordWizard.ui.DetailsLocutor.js",
@@ -146,7 +145,6 @@
 				"ooui-item-remove",
 		        "mwe-recwiz-step-tutorial",
                 "mwe-recwiz-step-details",
-                "mwe-recwiz-step-license",
                 "mwe-recwiz-step-studio",
                 "mwe-recwiz-step-publish",
                 "mwe-recwiz-upload-count",
@@ -196,7 +194,6 @@
                 "modules/controller/mw.recordWizard.controller.Step.js",
                 "modules/controller/mw.recordWizard.controller.Tutorial.js",
                 "modules/controller/mw.recordWizard.controller.Details.js",
-                "modules/controller/mw.recordWizard.controller.License.js",
                 "modules/controller/mw.recordWizard.controller.Studio.js",
                 "modules/controller/mw.recordWizard.controller.Publish.js"
             ],
