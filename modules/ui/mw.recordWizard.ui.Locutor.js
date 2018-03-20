@@ -1,47 +1,45 @@
 ( function ( mw, $, rw, OO ) {
 
 	/**
-	 * Represents the UI for the wizard's Details step.
+	 * Represents the UI for the wizard's Locutor step.
 	 *
-	 * @class rw.ui.Details
+	 * @class rw.ui.Locutor
 	 * @extends rw.ui.Step
 	 * @constructor
 	 */
-	rw.ui.Details = function() {
+	rw.ui.Locutor = function() {
 		var ui = this;
 
 		rw.ui.Step.call(
 			this,
-			'details'
+			'locutor'
 		);
 
 		this.addPreviousButton();
 		this.addNextButton();
 	};
 
-	OO.inheritClass( rw.ui.Details, rw.ui.Step );
+	OO.inheritClass( rw.ui.Locutor, rw.ui.Step );
 
-	rw.ui.Details.prototype.load = function () {
+	rw.ui.Locutor.prototype.load = function () {
 	    var ui = this;
 
 		rw.ui.Step.prototype.load.call( this );
 
 		this.substeps = {
-		    param: new rw.ui.DetailsParam(),
-		    generator: new rw.ui.DetailsGenerator(),
+		    locutor: new rw.ui.DetailsLocutor(),
 		};
 
 		this.accordion = new rw.layout.AccordionLayout( {
 		    items: [
-		        this.substeps.param,
-		        this.substeps.generator
+		        this.substeps.locutor,
 		    ],
 		} );
 
 		this.$container.prepend( this.accordion.$element );
 	};
 
-	rw.ui.Details.prototype.collect = function() {
+	rw.ui.Locutor.prototype.collect = function() {
 	    for ( substep in this.substeps ) {
 	        this.substeps[ substep ].collect();
 	    }

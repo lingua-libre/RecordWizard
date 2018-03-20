@@ -11,6 +11,7 @@
     "special-recordWizard-title": "Title of the special page Special:RecordWizard",
 
     "mwe-recwiz-step-tutorial": "Name of a step displayed in the arrow line.",
+    "mwe-recwiz-step-locutor": "Name of a step displayed in the arrow line.",
     "mwe-recwiz-step-details": "Name of a step displayed in the arrow line.",
     "mwe-recwiz-step-studio": "Name of a step displayed in the arrow line.",
     "mwe-recwiz-step-publish": "Name of a step displayed in the arrow line.",

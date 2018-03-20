@@ -130,6 +130,7 @@
                 "modules/ui/mw.recordWizard.ui.js",
                 "modules/ui/mw.recordWizard.ui.Step.js",
                 "modules/ui/mw.recordWizard.ui.Tutorial.js",
+                "modules/ui/mw.recordWizard.ui.Locutor.js",
                 "modules/ui/mw.recordWizard.ui.Details.js",
                 "modules/ui/mw.recordWizard.ui.Studio.js",
                 "modules/ui/mw.recordWizard.ui.Publish.js",
@@ -144,6 +145,7 @@
 			"messages": [
 				"ooui-item-remove",
 		        "mwe-recwiz-step-tutorial",
+                "mwe-recwiz-step-locutor",
                 "mwe-recwiz-step-details",
                 "mwe-recwiz-step-studio",
                 "mwe-recwiz-step-publish",
@@ -193,6 +195,7 @@
                 "modules/controller/mw.recordWizard.controller.js",
                 "modules/controller/mw.recordWizard.controller.Step.js",
                 "modules/controller/mw.recordWizard.controller.Tutorial.js",
+                "modules/controller/mw.recordWizard.controller.Locutor.js",
                 "modules/controller/mw.recordWizard.controller.Details.js",
                 "modules/controller/mw.recordWizard.controller.Studio.js",
                 "modules/controller/mw.recordWizard.controller.Publish.js"
