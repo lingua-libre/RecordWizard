@@ -117,8 +117,6 @@
         "ext.recordWizard.layout":{
             "scripts": [
                 "modules/layout/mw.recordWizard.layout.js",
-                "modules/layout/mw.recordWizard.layout.DropdownLayout.js",
-                "modules/layout/mw.recordWizard.layout.AccordionLayout.js",
                 "modules/layout/mw.recordWizard.layout.WordSelectorWidget.js"
             ],
 			"dependencies": [
@@ -133,10 +131,7 @@
                 "modules/ui/mw.recordWizard.ui.Locutor.js",
                 "modules/ui/mw.recordWizard.ui.Details.js",
                 "modules/ui/mw.recordWizard.ui.Studio.js",
-                "modules/ui/mw.recordWizard.ui.Publish.js",
-                "modules/ui/substeps/mw.recordWizard.ui.DetailsLocutor.js",
-                "modules/ui/substeps/mw.recordWizard.ui.DetailsParam.js",
-                "modules/ui/substeps/mw.recordWizard.ui.DetailsGenerator.js"
+                "modules/ui/mw.recordWizard.ui.Publish.js"
             ],
 			"dependencies": [
 			    "oojs-ui",
