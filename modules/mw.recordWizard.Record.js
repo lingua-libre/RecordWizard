@@ -185,14 +185,16 @@
 		today = today.toISOString().slice(0,-5)+'Z';
 
 		var item = new mw.recordWizard.wikibase.Item();
+		//TODO: manage other languages
 		item.labels = { en: this.word };
+		//TODO: add language information
 		item.descriptions = { en: 'audio record from' + rw.metadatas.locutor.name + '(' + mw.config.get( 'wgUserName' ) + ')' };
 
 		//TODO: make property and item configuration-dependant, and not hardcoded
 		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P2' ).setType( 'wikibase-item' ).setValue( 'Q2' ) ); //InstanceOf
 		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P19' ).setType( 'wikibase-item' ).setValue( 'Q30' ) ); //SubclassOf
 		//item.addStatement( new mw.recordWizard.wikibase.Statement( 'P3' ).setType( 'commonsMedia' ).setValue( this.getFilename() ) ); //Audio file
-		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P4' ).setType( 'somevalue' ) );//TODO: .setValue( rw.metadatas.language ) ); //Language
+		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P4' ).setType( 'wikibase-item' ).setValue( rw.metadatas.language ) ); //Language
 		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P5' ).setType( 'wikibase-item' ).setValue( rw.metadatas.locutor.qid ) ); //Locutor
 		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P7' ).setType( 'time' ).setValue( { timestamp: today } ) ); //Date
 		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P8' ).setType( 'monolingualtext' ).setValue( { languageCode: 'fr', text: this.word } ) ); //Transcription

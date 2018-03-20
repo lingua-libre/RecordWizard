@@ -52,11 +52,10 @@
 			}
 		}
 
-		//TODO: check that the language field is set
 		//TODO: warning if no words (but allowed to continue)
 
 		this.api.saveOptions( {
-			'recwiz-lang': '', //TODO: save lang
+			'recwiz-lang': rw.metadatas.language,
 		} );
 		rw.controller.Step.prototype.moveNext.call( this );
 	};

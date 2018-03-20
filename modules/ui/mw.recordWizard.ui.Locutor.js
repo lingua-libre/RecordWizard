@@ -26,15 +26,7 @@
 
 		rw.ui.Step.prototype.load.call( this );
 
-		var languages = [];
-		for ( code in rw.config.languages ) {
-			languages.push( new OO.ui.MenuOptionWidget( {
-				data: rw.config.languages[ code ].qid,
-				label: rw.config.languages[ code ].localname
-			} ) );
-		}
-		languages.sort( function( a, b ) { return a.getLabel() > b.getLabel(); } );
-
+		// Gender
 		this.genderSelector = new OO.ui.ButtonSelectWidget( {
 	        items: [
 		        new OO.ui.ButtonOptionWidget( { data: rw.config.items['genderMale'], label: mw.message( 'mwe-recwiz-gender-male' ).text() } ),
@@ -43,16 +35,26 @@
 	        ]
         } );
 
+		// Spoken languages
+		var languages = [];
+		for ( code in rw.config.languages ) {
+			languages.push( new OO.ui.MenuOptionWidget( {
+				data: rw.config.languages[ code ].qid,
+				label: rw.config.languages[ code ].localname
+			} ) );
+		}
+		languages.sort( function( a, b ) { return a.getLabel() > b.getLabel(); } );
         this.spokenLanguagesSelector = new OO.ui.CapsuleMultiselectWidget( {
 	        menu: { items: languages },
-	        //$overlay: ,
             indicator: 'required',
         } );
 
+		// Location
         this.locationSelector = new OO.ui.TextInputWidget( {
 	        name: 'location',
         } );
 
+		// Layout
         this.$content = $( '<div>' )
             .append( new OO.ui.FieldLayout( this.genderSelector, {
 			    align: 'left',
@@ -83,9 +85,9 @@
 	rw.ui.Locutor.prototype.collect = function() {
 	    var genderItem = this.genderSelector.getSelectedItem();
 
-		rw.metadatas.locutor['gender'] = ( genderItem === null ? null : genderItem.getData() );
-		rw.metadatas.locutor['languages'] = this.spokenLanguagesSelector.getItemsData();
-		rw.metadatas.locutor['location'] = this.locationSelector.getValue();
+		rw.metadatas.locutor.gender = ( genderItem === null ? null : genderItem.getData() );
+		rw.metadatas.locutor.languages = this.spokenLanguagesSelector.getItemsData();
+		rw.metadatas.locutor.location = this.locationSelector.getValue();
 
 	    return rw.metadatas.locutor;
 	};

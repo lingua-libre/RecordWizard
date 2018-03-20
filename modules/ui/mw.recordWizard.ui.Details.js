@@ -27,13 +27,12 @@
 		rw.ui.Step.prototype.load.call( this );
 
 		// Language selector
-        this.languageSelector = new OO.ui.DropdownInputWidget( {
-	        options: [
-				{ data: 'a', label: 'First' },
-				{ data: 'b', label: 'Second'},
-				{ data: 'c', label: 'Third' }
-			],
-        } );
+        var options = [];
+        for ( var i=0; i < rw.metadatas.locutor.languages.length; i++ ) {
+        	var qid = rw.metadatas.locutor.languages[ i ];
+        	options.push( { label: rw.config.languages[ qid ].localname, data: qid } );
+        }
+        this.languageSelector = new OO.ui.DropdownInputWidget( { options: options } );
 
 		// Word list
         this.wordList = new rw.layout.WordSelectorWidget( {
@@ -76,6 +75,7 @@
             	this.addWord( rw.metadatas.words[ i ] );
         	}
         }
+		this.languageSelector.setValue( rw.metadatas.language || rw.config.savedLanguage );
 
 		//Manage events
 		this.wordList.on( 'change', function() {
@@ -110,7 +110,7 @@
 	};
 
 	rw.ui.Details.prototype.collect = function() {
-		//TODO collect language
+		rw.metadatas.language = this.languageSelector.getValue();
 	    rw.metadatas.words = this.wordList.getValue();
 	    rw.metadatas.randomise = this.randomSwitch.getValue();
 	};

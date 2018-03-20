@@ -78,7 +78,7 @@ class SpecialRecordWizard extends SpecialPage {
 
 		$locutorId = $this->getUser()->getOption( 'recwiz-locutor' );
 		$config[ 'locutor' ] = $this->getLocutor( $locutorId, $entityIdLookup, $entityRevisionLookup );
-
+		$config[ 'savedLanguage' ] = $this->getUser()->getOption( 'recwiz-lang' );
 
 		$out->addJsConfigVars( [ 'RecordWizardConfig' => $config ] );
 		$out->addModuleStyles( 'ext.recordWizard.styles' );
