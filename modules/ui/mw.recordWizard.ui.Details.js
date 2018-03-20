@@ -41,28 +41,15 @@
 	        label: mw.message( 'mwe-recwiz-param-lang' ).text()
         } );
 
-		this.generators = {};
-
-        if ( rw.metadatas.generator === undefined ) {
-            rw.metadatas.generator = {};
-        }
-
-        this.windowManager = new OO.ui.WindowManager();
-        $( 'body' ).append( this.windowManager.$element );
-
         this.wordList = new rw.layout.WordSelectorWidget( {
 	        placeholder: mw.message( 'mwe-recwiz-generator-addwords' ).text(),
 	        allowArbitrary: true,
 	        inputPosition: 'outline' //TODO: maybe inline ?
         } );
-        if ( rw.metadatas.words !== undefined ) {
-            this.addWords( rw.metadatas.words );
-        }
 
+        this.windowManager = new OO.ui.WindowManager();
+        $( 'body' ).append( this.windowManager.$element );
         this.generatorButtons = new OO.ui.ButtonGroupWidget();
-        for ( className in rw.generator ) {
-            this.setupGenerator( className );
-        }
 
         this.layout = new OO.ui.Widget( {
             content: [
@@ -75,68 +62,43 @@
             classes: [ 'mwe-recwiz-increment' ],
         } );
 
-		this.wordList.on( 'change', this.onWordListUpdate.bind( this ) );
-		this.wordList.on( 'add', this.onWordListAdd.bind( this ) );
+        // Populate
+        if ( rw.metadatas.words !== undefined ) {
+        	for ( var i=0; i < rw.metadatas.words.length; i++ ) {
+            	this.addWord( rw.metadatas.words[ i ] );
+        	}
+        }
+
+		//Manage events
+		this.wordList.on( 'change', function() {
+			ui.emit( 'wordlist-change' );
+		} );
+		this.wordList.on( 'add', function( item, index ) {
+			ui.emit( 'wordlist-add', item.getData(), index );
+		} );
 
 		this.$container.prepend( this.layout.$element ).prepend( this.languageSelector.$element );
 	};
 
-	rw.ui.Details.prototype.setupGenerator = function( className ) {
-        var ui = this,
-            name = rw.generator[ className ].static.name;
+	rw.ui.Details.prototype.addGeneratorButton = function( generator ) {
+		var ui = this,
+        	button = new OO.ui.ButtonWidget( { label: generator.label, icon: 'add' } );
 
-        if ( name === '__generic__' ) {
-        	return;
-        }
-
-        this.generators[ name ] = new rw.generator[ className ]( {
-            callback: this.addWords.bind( this ),
-        } );
-        this.windowManager.addWindows( [ this.generators[ name ] ] );
-
-        var button = new OO.ui.ButtonWidget( { label: this.generators[ name ].label, icon: 'add' } );
         button.on( 'click', function() {
-            console.log( name );
-            ui.windowManager.openWindow( ui.generators[ name ] );
+            ui.windowManager.openWindow( generator );
         } );
+
+        this.windowManager.addWindows( [ generator ] );
 
         this.generatorButtons.addItems( [ button ] );
 	};
 
-	rw.ui.Details.prototype.addWords = function( list ) {
-	    if ( list.length > 0 ) {
-	        for ( var i=0; i < list.length; i++ ) {
-	        	var word = list[ i ],
-	        		extra = {};
-	        	if ( typeof list[ i ] !== 'string' ) {
-	            	word = list[ i ].text;
-	            	delete list[ i ].text;
-	            	extra = list[ i ];
-	           	}
-	           	//TODO: Move this somehow to a controller
-	           	this.wordList.addTag( word );
-	           	rw.records[ word ].setExtra( extra );
-	        }
-	    }
+	rw.ui.Details.prototype.addWord = function( word ) {
+		return this.wordList.addTag( word );
 	};
 
-	rw.ui.Details.prototype.onWordListAdd = function( item, index ) {
-	    //TODO: Move this somehow to a controller
-	    word = item.getData();
-       	if ( rw.records[ word ] === undefined ) {
-       		rw.records[ word ] = new rw.Record( word, rw.metadatas );
-       	}
-	};
-
-	rw.ui.Details.prototype.onWordListUpdate = function() {
-		var nbWords = this.wordList.getItemCount();
-		//TODO: find a place to display word count
-		if ( nbWords === 0 ) {
-	    	//mw.message( 'mwe-recwiz-generator-noword' ).text();
-	  	}
-	  	else {
-	    	//mw.message( 'mwe-recwiz-generator-wordcount', nbWords ).text();
-	  	}
+	rw.ui.Details.prototype.countWords = function() {
+		return this.wordList.getItemCount();
 	};
 
 	rw.ui.Details.prototype.collect = function() {
