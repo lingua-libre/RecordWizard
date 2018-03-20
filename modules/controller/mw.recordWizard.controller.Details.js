@@ -39,6 +39,19 @@
 	rw.controller.Details.prototype.moveNext = function () {
 		this.ui.collect();
 
+		// Randomise word list if asked to
+		if ( rw.metadatas.randomise === true ) {
+			// Fisher-Yates shuffle
+			for (var i = rw.metadatas.words.length-1; i >=0; i--) {
+
+				var randomIndex = Math.floor( Math.random() * ( i+1 ) );
+
+				var tmp = rw.metadatas.words[ randomIndex ];
+				rw.metadatas.words[ randomIndex ] = rw.metadatas.words[ i ];
+				rw.metadatas.words[ i ] = tmp;
+			}
+		}
+
 		//TODO: check that the language field is set
 		//TODO: warning if no words (but allowed to continue)
 
@@ -89,10 +102,10 @@
 		var nbWords = this.ui.countWords();
 		//TODO: find a place to display word count
 		if ( nbWords === 0 ) {
-	    	//mw.message( 'mwe-recwiz-generator-noword' ).text();
+	    	//mw.message( 'mwe-recwiz-details-noword' ).text();
 	  	}
 	  	else {
-	    	//mw.message( 'mwe-recwiz-generator-wordcount', nbWords ).text();
+	    	//mw.message( 'mwe-recwiz-details-wordcount', nbWords ).text();
 	  	}
 	};
 

@@ -26,38 +26,46 @@
 
 		rw.ui.Step.prototype.load.call( this );
 
-        this.languageSelector = new OO.ui.FieldLayout( new OO.ui.DropdownWidget( {
-	        menu: {
-		        items: [
-			        new OO.ui.MenuOptionWidget( { data: 'English', label: 'English' } ),
-			        new OO.ui.MenuOptionWidget( { data: 'French', label: 'French' } ),
-			        new OO.ui.MenuOptionWidget( { data: 'Alemannic', label: 'Alemannic' } )
-		        ]
-	        },
-	        //$overlay: ,
-        } ), {
-	        align: 'left',
-	        classes: [ 'mwe-recwiz-increment' ],
-	        label: mw.message( 'mwe-recwiz-param-lang' ).text()
+		// Language selector
+        this.languageSelector = new OO.ui.DropdownInputWidget( {
+	        options: [
+				{ data: 'a', label: 'First' },
+				{ data: 'b', label: 'Second'},
+				{ data: 'c', label: 'Third' }
+			],
         } );
 
+		// Word list
         this.wordList = new rw.layout.WordSelectorWidget( {
-	        placeholder: mw.message( 'mwe-recwiz-generator-addwords' ).text(),
+	        placeholder: mw.message( 'mwe-recwiz-details-addwords' ).text(),
 	        allowArbitrary: true,
-	        inputPosition: 'outline' //TODO: maybe inline ?
+	        inputPosition: 'outline'
         } );
 
+		// Generators
         this.windowManager = new OO.ui.WindowManager();
         $( 'body' ).append( this.windowManager.$element );
         this.generatorButtons = new OO.ui.ButtonGroupWidget();
 
+		// Randomisation
+		this.randomSwitch = new OO.ui.ToggleSwitchWidget( { value: rw.metadatas.randomise } );
+
+		// Layout
         this.layout = new OO.ui.Widget( {
             content: [
+            	new OO.ui.FieldLayout( this.languageSelector, {
+					align: 'left',
+					label: mw.message( 'mwe-recwiz-details-lang' ).text()
+				} ),
+                new OO.ui.FieldLayout( this.randomSwitch, {
+                    align: 'left',
+                    label: mw.message( 'mwe-recwiz-details-randomise' ).text(),
+                } ),
                 new OO.ui.FieldLayout( this.wordList, {
                     align: 'top',
-                    label: mw.message( 'mwe-recwiz-generator-wordlist' ).text(),
+                    label: mw.message( 'mwe-recwiz-details-wordlist' ).text(),
                 } ),
-                this.generatorButtons
+                this.generatorButtons,
             ],
             classes: [ 'mwe-recwiz-increment' ],
         } );
@@ -77,7 +85,7 @@
 			ui.emit( 'wordlist-add', item.getData(), index );
 		} );
 
-		this.$container.prepend( this.layout.$element ).prepend( this.languageSelector.$element );
+		this.$container.prepend( this.layout.$element );
 	};
 
 	rw.ui.Details.prototype.addGeneratorButton = function( generator ) {
@@ -104,6 +112,7 @@
 	rw.ui.Details.prototype.collect = function() {
 		//TODO collect language
 	    rw.metadatas.words = this.wordList.getValue();
+	    rw.metadatas.randomise = this.randomSwitch.getValue();
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );
