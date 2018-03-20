@@ -93,6 +93,7 @@
         	button = new OO.ui.ButtonWidget( { label: generator.label, icon: 'add' } );
 
         button.on( 'click', function() {
+        	ui.collect();
             ui.windowManager.openWindow( generator );
         } );
 

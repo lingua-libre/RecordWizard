@@ -18,7 +18,6 @@
 			allowSuggestionsWhenEmpty: true,
 			api: this.api,
 			namespace: rw.config.listNamespace,
-			value: this.params.title || 'fr/', //TODO: Put correct lang code here
 		} );
 
 		this.layout = new OO.ui.Widget( {
@@ -37,12 +36,14 @@
 		this.content.$element.append( this.layout.$element );
 
         rw.generator.Generator.prototype.initialize.call( this );
+
+	    this.on( 'open', this.onOpen.bind( this ) );
     };
 
-    rw.generator.List.prototype.getReadyProcess = function( data ) {
-		this.titleInput.$input.focus();
-    	return rw.generator.Generator.prototype.getReadyProcess.call( this, data );
-    };
+	rw.generator.List.prototype.onOpen = function() {
+		this.titleInput.setValue( this.params.title || this.language.code + '/' );
+	    this.titleInput.$input.focus();
+	};
 
 	rw.generator.List.prototype.fetch = function() {
         var generator = this,

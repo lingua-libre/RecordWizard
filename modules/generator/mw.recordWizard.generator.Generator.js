@@ -13,6 +13,7 @@
 
         this.callback = config.callback;
 	    this.list = [];
+	    this.language = {};
 	    this.name = this.constructor.static.name;
 	    this.label = this.constructor.static.title;
 	    this.size = config.size;
@@ -36,6 +37,12 @@
 
         this.setSize( this.size );
         this.updateSize();
+    };
+    rw.generator.Generator.prototype.getReadyProcess = function ( data ) {
+		this.language = rw.config.languages[ rw.metadatas.language ];
+		this.emit( 'open' );
+
+		return rw.generator.Generator.parent.prototype.getReadyProcess.call( this, data );
     };
     rw.generator.Generator.prototype.getActionProcess = function ( action ) {
 	    if ( action === 'save' ) {

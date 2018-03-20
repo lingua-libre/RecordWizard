@@ -148,7 +148,7 @@
             geosearch = data.query.geosearch,
             pages = [],
             semaphore = 0,
-            langCode = 'fr'; //TODO: make that value dynamic
+            langCode = this.language.code;
 
         if ( geosearch.length === 0 ) {
             var errorMessage = mw.message( 'mwe-recwiz-warning-noresults' ).text();
