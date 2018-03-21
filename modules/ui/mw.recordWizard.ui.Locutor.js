@@ -31,7 +31,7 @@
 		items.push( new OO.ui.MenuSectionOptionWidget( { label: mw.message( 'mwe-recwiz-locutor-profilemain' ).text() } ) );
 		items.push( new OO.ui.MenuOptionWidget( {
 			data: rw.config.locutor.qid || '*',
-			label: rw.config.locutor.name || mw.config.get( 'wgUserName' )
+			label: rw.config.locutor.name
 		} ) );
 		items.push( new OO.ui.MenuSectionOptionWidget( { label: mw.message( 'mwe-recwiz-locutor-profileother' ).text() } ) );
 		for ( var qid in rw.config.otherLocutors ) {
@@ -47,6 +47,9 @@
 				items: items
 			}
 		} );
+
+		// Name
+        this.nameSelector = new OO.ui.TextInputWidget();
 
 		// Gender
 		this.genderSelector = new OO.ui.ButtonSelectWidget( {
@@ -72,15 +75,18 @@
         } );
 
 		// Location
-        this.locationSelector = new OO.ui.TextInputWidget( {
-	        name: 'location',
-        } );
+        this.locationSelector = new OO.ui.TextInputWidget();
 
 		// Layout
         this.$content = $( '<div>' )
             .append( new OO.ui.FieldLayout( this.profilePicker, {
 			    align: 'left',
 			    label: mw.message( 'mwe-recwiz-locutor-profile' ).text(),
+		    } ).$element )
+            .append( new OO.ui.FieldLayout( this.nameSelector, {
+			    align: 'left',
+			    classes: [ 'mwe-recwiz-increment' ],
+			    label: mw.message( 'mwe-recwiz-locutor-name' ).text(),
 		    } ).$element )
             .append( new OO.ui.FieldLayout( this.genderSelector, {
 			    align: 'left',
@@ -115,6 +121,8 @@
 	};
 
 	rw.ui.Locutor.prototype.populateProfile = function( locutor ) {
+		this.nameSelector.setValue( locutor.name );
+		this.nameSelector.setDisabled( locutor.main === true );
 		this.genderSelector.selectItemByData( locutor.gender );
 		this.spokenLanguagesSelector.setItemsFromData( locutor.languages );
 		this.locationSelector.setValue( locutor.location );

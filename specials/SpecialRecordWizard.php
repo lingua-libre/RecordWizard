@@ -19,8 +19,9 @@ class SpecialRecordWizard extends SpecialPage {
 		global $wgRecordWizardConfig, $wgWBRepoSettings;
 
 		$out = $this->getOutput();
+		$user = $this->getUser();
 		$config = $wgRecordWizardConfig;
-		if ( !( $this->isUploadAllowed() && $this->isUserUploadAllowed( $this->getUser() ) ) ) {
+		if ( !( $this->isUploadAllowed() && $this->isUserUploadAllowed( $user ) ) ) {
 			return;
 		}
 
@@ -76,18 +77,22 @@ class SpecialRecordWizard extends SpecialPage {
 			$config[ 'languages' ][ $qid ][ 'localname' ] = $label;
 		}
 
-		$locutorId = $this->getUser()->getOption( 'recwiz-locutor' );
+		$locutorId = $user->getOption( 'recwiz-locutor' );
 		$config[ 'locutor' ] = $this->getLocutor( $locutorId, $entityIdLookup, $entityRevisionLookup );
-		$otherLocutors = $this->getUser()->getOption( 'recwiz-otherLocutors' );
+		$config[ 'locutor' ][ 'main' ] = true;
+		if ( $config[ 'locutor' ][ 'name' ] == null ) {
+			$config[ 'locutor' ][ 'name' ] = $user->getName();
+		}
+		$otherLocutors = $user->getOption( 'recwiz-otherLocutors' );
 		$config[ 'otherLocutors' ] = [];
 		if ( $otherLocutors != '' ) {
-			$otherLocutorIds = explode( ',', $this->getUser()->getOption( 'recwiz-otherLocutors' ) );
+			$otherLocutorIds = explode( ',', $user->getOption( 'recwiz-otherLocutors' ) );
 			foreach( $otherLocutorIds as $qid ) {
 				$config[ 'otherLocutors' ][ $qid ] = $this->getLocutor( $qid, $entityIdLookup, $entityRevisionLookup );
 			}
 		}
 
-		$config[ 'savedLanguage' ] = $this->getUser()->getOption( 'recwiz-lang' );
+		$config[ 'savedLanguage' ] = $user->getOption( 'recwiz-lang' );
 
 		$out->addJsConfigVars( [ 'RecordWizardConfig' => $config ] );
 		$out->addModuleStyles( 'ext.recordWizard.styles' );
