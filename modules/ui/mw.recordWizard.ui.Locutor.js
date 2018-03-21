@@ -107,7 +107,7 @@
 
 		// Preload
 		this.profilePicker.getMenu().selectItemByData( rw.metadatas.locutor.qid || rw.config.locutor.qid || '*' );
-		if ( rw.metadatas.locutor !== undefined ) {
+		if ( rw.metadatas.locutor.qid !== undefined ) {
 			this.populateProfile( rw.metadatas.locutor );
 		}
 		else {
@@ -131,9 +131,24 @@
 	rw.ui.Locutor.prototype.collect = function() {
 	    var genderItem = this.genderSelector.getSelectedItem();
 
+		rw.metadatas.locutor = {};
+
+		rw.metadatas.locutor.qid = this.profilePicker.getMenu().getSelectedItem().getData();
+		rw.metadatas.locutor.name = this.nameSelector.getValue();
 		rw.metadatas.locutor.gender = ( genderItem === null ? null : genderItem.getData() );
 		rw.metadatas.locutor.languages = this.spokenLanguagesSelector.getItemsData();
 		rw.metadatas.locutor.location = this.locationSelector.getValue();
+
+		rw.metadatas.locutor.main = false;
+		if ( rw.metadatas.locutor.qid === '*' || rw.metadatas.locutor.qid === rw.config.locutor.qid ) {
+			rw.metadatas.locutor.main = true;
+		}
+
+		rw.metadatas.locutor.new = false;
+		if ( rw.metadatas.locutor.qid[ 0 ] !== 'Q' ) {
+			rw.metadatas.locutor.new = true;
+			rw.metadatas.locutor.qid = null;
+		}
 
 	    return rw.metadatas.locutor;
 	};
