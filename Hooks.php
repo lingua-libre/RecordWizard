@@ -30,8 +30,11 @@ class RecordWizardHooks {
 	}
 
 	public static function onGetPreferences( $user, &$preferences ) {
-		// A checkbox
 		$preferences['recwiz-locutor'] = array(
+			'type' => 'text',
+			'section' => 'recwiz/locutor',
+		);
+		$preferences['recwiz-otherLocutors'] = array(
 			'type' => 'text',
 			'section' => 'recwiz/locutor',
 		);

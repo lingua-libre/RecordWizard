@@ -78,6 +78,15 @@ class SpecialRecordWizard extends SpecialPage {
 
 		$locutorId = $this->getUser()->getOption( 'recwiz-locutor' );
 		$config[ 'locutor' ] = $this->getLocutor( $locutorId, $entityIdLookup, $entityRevisionLookup );
+		$otherLocutors = $this->getUser()->getOption( 'recwiz-otherLocutors' );
+		$config[ 'otherLocutors' ] = [];
+		if ( $otherLocutors != '' ) {
+			$otherLocutorIds = explode( ',', $this->getUser()->getOption( 'recwiz-otherLocutors' ) );
+			foreach( $otherLocutorIds as $qid ) {
+				$config[ 'otherLocutors' ][ $qid ] = $this->getLocutor( $qid, $entityIdLookup, $entityRevisionLookup );
+			}
+		}
+
 		$config[ 'savedLanguage' ] = $this->getUser()->getOption( 'recwiz-lang' );
 
 		$out->addJsConfigVars( [ 'RecordWizardConfig' => $config ] );

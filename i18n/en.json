@@ -24,6 +24,10 @@
     "mwe-recwiz-continueanyway": "Continue anyway",
     "mwe-recwiz-retry": "retry failed upload",
 
+    "mwe-recwiz-locutor-profile": "Locutor profile to use",
+    "mwe-recwiz-locutor-profilemain": "Your main locutor",
+    "mwe-recwiz-locutor-profileother": "Other locutors",
+    "mwe-recwiz-locutor-profilenew": "Create a new locutor",
     "mwe-recwiz-locutor-languages": "Spoken languages",
     "mwe-recwiz-locutor-location": "Dwelling place",
     "mwe-recwiz-locutor-gender": "Gender",

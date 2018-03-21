@@ -26,6 +26,28 @@
 
 		rw.ui.Step.prototype.load.call( this );
 
+		// Profile picker
+		var items = [];
+		items.push( new OO.ui.MenuSectionOptionWidget( { label: mw.message( 'mwe-recwiz-locutor-profilemain' ).text() } ) );
+		items.push( new OO.ui.MenuOptionWidget( {
+			data: rw.config.locutor.qid || '*',
+			label: rw.config.locutor.name || mw.config.get( 'wgUserName' )
+		} ) );
+		items.push( new OO.ui.MenuSectionOptionWidget( { label: mw.message( 'mwe-recwiz-locutor-profileother' ).text() } ) );
+		for ( var qid in rw.config.otherLocutors ) {
+			items.push( new OO.ui.MenuOptionWidget( {
+				data: qid,
+				label: rw.config.otherLocutors[ qid ].name,
+			} ) );
+		}
+		items.push( new OO.ui.MenuOptionWidget( { data: '+', label: $( '<i>' ).text( mw.message( 'mwe-recwiz-locutor-profilenew' ).text() ) } ) );
+		this.profilePicker = new OO.ui.DropdownWidget( {
+			label: 'Select one',
+			menu: {
+				items: items
+			}
+		} );
+
 		// Gender
 		this.genderSelector = new OO.ui.ButtonSelectWidget( {
 	        items: [
@@ -56,6 +78,10 @@
 
 		// Layout
         this.$content = $( '<div>' )
+            .append( new OO.ui.FieldLayout( this.profilePicker, {
+			    align: 'left',
+			    label: mw.message( 'mwe-recwiz-locutor-profile' ).text(),
+		    } ).$element )
             .append( new OO.ui.FieldLayout( this.genderSelector, {
 			    align: 'left',
 			    classes: [ 'mwe-recwiz-increment' ],
@@ -71,15 +97,27 @@
 			    classes: [ 'mwe-recwiz-increment' ],
 			    label: mw.message( 'mwe-recwiz-locutor-location' ).text()
 		    } ).$element );
+		this.$container.prepend( this.$content );
 
-		// Populate
+		// Preload
+		this.profilePicker.getMenu().selectItemByData( rw.metadatas.locutor.qid || rw.config.locutor.qid || '*' );
 		if ( rw.metadatas.locutor !== undefined ) {
-			this.genderSelector.selectItemByData( rw.metadatas.locutor.gender );
-			this.spokenLanguagesSelector.setItemsFromData( rw.metadatas.locutor.languages );
-			this.locationSelector.setValue( rw.metadatas.locutor.location );
+			this.populateProfile( rw.metadatas.locutor );
+		}
+		else {
+			this.populateProfile( rw.config.locutor );
 		}
 
-		this.$container.prepend( this.$content );
+		// Events
+		this.profilePicker.getMenu().on( 'choose', function( item ) {
+			ui.emit( 'profile-change', item.getData() );
+		} )
+	};
+
+	rw.ui.Locutor.prototype.populateProfile = function( locutor ) {
+		this.genderSelector.selectItemByData( locutor.gender );
+		this.spokenLanguagesSelector.setItemsFromData( locutor.languages );
+		this.locationSelector.setValue( locutor.location );
 	};
 
 	rw.ui.Locutor.prototype.collect = function() {

@@ -26,6 +26,8 @@
 		}
 
 		rw.controller.Step.prototype.load.call( this );
+
+		this.ui.on( 'profile-change', this.onProfileChange.bind( this ) );
 	};
 
 	rw.controller.Locutor.prototype.moveNext = function () {
@@ -69,6 +71,18 @@
 		} );
 	};
 
+	rw.controller.Locutor.prototype.onProfileChange = function( locutorQid ) {
+		var profile = {};
+		if ( rw.config.locutor.qid === locutorQid ) {
+			profile = rw.config.locutor;
+		}
+		else if ( locutorQid[ 0 ] === 'Q' ) {
+			profile = rw.config.otherLocutors[ locutorQid ];
+		}
+
+		this.ui.populateProfile( profile );
+	};
+
 	rw.controller.Locutor.prototype.createLocutorItem = function ( name, gender, languages ) {
 		var item = new mw.recordWizard.wikibase.Item();
 		item.labels = { en: name };
@@ -88,12 +102,6 @@
 		}
 
 		return item;
-	};
-
-	rw.controller.Locutor.prototype.movePrevious = function () {
-		// XXX do stuff
-
-		rw.controller.Step.prototype.movePrevious.call( this );
 	};
 
 }( mediaWiki, mediaWiki.recordWizard, jQuery, OO, wikibase ) );
