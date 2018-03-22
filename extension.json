@@ -181,6 +181,7 @@
             "scripts": [
                 "modules/wikibase/mw.recordWizard.wikibase.js",
                 "modules/wikibase/mw.recordWizard.wikibase.Snak.js",
+                "modules/wikibase/mw.recordWizard.wikibase.Reference.js",
                 "modules/wikibase/mw.recordWizard.wikibase.Statement.js",
                 "modules/wikibase/mw.recordWizard.wikibase.Item.js"
             ],
