@@ -8,6 +8,15 @@
 		this.aliases = {};
 	};
 
+	rw.wikibase.Item.prototype.getId = function() {
+		return this.itemId;
+	};
+
+	rw.wikibase.Item.prototype.setId = function( itemId ) {
+		this.itemId = itemId;
+		return this;
+	};
+
 	rw.wikibase.Item.prototype.getStatement = function( guid ) {
 		for ( propertyId in this.statementGroups ) {
 		    var statements = this.statementGroups[ propertyId ];
@@ -147,38 +156,17 @@
 		return length;
 	};
 
-	rw.wikibase.Item.prototype.setLabel = function( lang, label ) {
-		this.labels[ lang ] = label;
-		return this;
-	};
-
-	rw.wikibase.Item.prototype.setDescription = function( lang, description ) {
-		this.descriptions[ lang ] = description;
-		return this;
-	};
-
-	rw.wikibase.Item.prototype.setAlias = function( lang, alias ) {
-		if ( typeof alias === 'string' ) {
-			alias = [ alias ];
-		}
-		this.aliases[ lang ] = alias;
-		return this;
-	};
-
-	rw.wikibase.Item.prototype.addAlias = function( lang, alias ) {
-		if ( this.aliases[ lang ] === undefined ) {
-			this.aliases[ lang ] = [];
-		}
-		this.aliases[ lang ].push( alias );
-		return this;
-	};
-
 	rw.wikibase.Item.prototype.getLabel = function( lang ) {
 		return this.labels[ lang ];
 	};
 
 	rw.wikibase.Item.prototype.getLabels = function() {
 		return this.labels;
+	};
+
+	rw.wikibase.Item.prototype.setLabel = function( lang, label ) {
+		this.labels[ lang ] = label;
+		return this;
 	};
 
 	rw.wikibase.Item.prototype.getDescription = function( lang ) {
@@ -189,12 +177,33 @@
 		return this.descriptions;
 	};
 
+	rw.wikibase.Item.prototype.setDescription = function( lang, description ) {
+		this.descriptions[ lang ] = description;
+		return this;
+	};
+
 	rw.wikibase.Item.prototype.getAlias = function( lang ) {
 		return this.aliases[ lang ];
 	};
 
 	rw.wikibase.Item.prototype.getAliases = function() {
-		return this.aliases[ lang ];
+		return this.aliases;
+	};
+
+	rw.wikibase.Item.prototype.addAlias = function( lang, alias ) {
+		if ( this.aliases[ lang ] === undefined ) {
+			this.aliases[ lang ] = [];
+		}
+		this.aliases[ lang ].push( alias );
+		return this;
+	};
+
+	rw.wikibase.Item.prototype.setAlias = function( lang, alias ) {
+		if ( typeof alias === 'string' ) {
+			alias = [ alias ];
+		}
+		this.aliases[ lang ] = alias;
+		return this;
 	};
 
 
@@ -290,6 +299,89 @@
 
 		return this;
 	};
+
+	rw.wikibase.Item.prototype.merge = function( item ) {
+		for ( lang in item.labels ) {
+			this.setLabel( lang, item.labels[ lang ] );
+		}
+		for ( lang in item.descriptions ) {
+			this.setDescription( lang, item.descriptions[ lang ] );
+		}
+		for ( lang in item.aliases ) {
+			this.setAliases( lang, item.aliases[ lang ] );
+		}
+
+		for ( propertyId in item.statementGroups ) {
+			this.addOrReplaceStatements( item.statementGroups[ propertyId ], true );
+		}
+	};
+
+	rw.wikibase.Item.prototype.copy = function( item ) {
+		//TODO: implement it
+	};
+
+	rw.wikibase.Item.prototype.getFromApi = function( api ) {
+		var item = this,
+			repoApi = new wb.api.RepoApi( api || new mw.Api() );
+
+		return repoApi.getEntities( this.itemId )
+		.then( function( data ) {
+			var rawItem = data.entities[ item.itemId ];
+			item.deserialize( rawItem );
+
+			return item;
+		} );
+	};
+
+	rw.wikibase.Item.prototype.createOrUpdate = function( api, forceUpdateIfExist, deferred ) {
+		var item = this,
+			payload = {
+				action: 'wbeditentity',
+				format: 'json',
+				formatversion: '2',
+				data: JSON.stringify( this.serialize() ),
+				clear: 1,
+				errorformat: 'raw',
+			};
+		if ( this.itemId === '' ) {
+			payload.new = 'item';
+		}
+		else {
+			payload.id = this.itemId;
+		}
+
+		deferred = deferred || $.Deferred();
+
+		api.postWithToken( 'csrf', payload )
+		.then( function( data ) {
+			deferred.resolve( data );
+		} )
+		.fail( function( code, result ) {
+			if ( code === 'modification-failed' &&
+				item.itemId === '' &&
+				forceUpdateIfExist === true &&
+				result.errors !== undefined &&
+				result.errors[ 0 ].key === 'wikibase-validator-label-with-description-conflict' ) {
+
+				var remoteQid = result.errors[ 0 ].params[ 2 ].match( /\[\[(.+)\|.+\]\]/ )[ 1 ],
+					remoteItem = new rw.wikibase.Item( remoteQid );
+
+				remoteItem.getFromApi( api ).then( function() {
+					remoteItem.merge( item );
+					remoteItem.createOrUpdate( api, false, deferred );
+					item.copy( remoteItem );
+				} ).fail( function() {
+					deferred.reject( code, result );
+				} );
+			}
+			else {
+				deferred.reject( code, result );
+			}
+		} );
+
+		return deferred;
+	};
+
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, wikibase ) );
 
