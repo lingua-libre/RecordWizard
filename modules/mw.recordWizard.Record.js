@@ -8,6 +8,7 @@
 		this.filename = null;
 		this.filekey = null;
 		this.imageInfo = null;
+		this.wbItem = null;
 		this.word = word;
 		this.extra = {};
 
@@ -169,53 +170,50 @@
             ignorewarnings: true, //TODO: manage warnings
         } ).then( function( result ) {
             record.uploaded( result['upload-to-commons'].oauth.upload.imageinfo );
-            record.createWikibaseItem( api, deferred );
-        } ).fail( function( errorCode, result ) {
-            deferred.reject( errorCode, result );
-            record.setError( errorCode );
+            deferred.resolve();
+        } ).fail( function( code, result ) {
+            record.setError( code );
+            deferred.reject( code, result );
         } );
 	};
 
-	rw.Record.prototype.createWikibaseItem = function( api, deferred ) {
-        var record = this;
+	rw.Record.prototype.saveWbItem = function( api ) {
+		var record = this;
+
         this.setState( 'finalizing' );
 
+		this.wbItem = new mw.recordWizard.wikibase.Item();
+		this.fillWbItem();
+
+		return this.wbItem.createOrUpdate( api, true ).then( function() {
+			record.setState( 'done' );
+		} ).fail( function( code ) {
+            record.setError( code );
+		} );
+
+	};
+
+	rw.Record.prototype.fillWbItem = function() {
         var today = new Date();
 		today.setUTCHours(0,0,0,0);
 		today = today.toISOString().slice(0,-5)+'Z';
 
-		var item = new mw.recordWizard.wikibase.Item();
 		//TODO: manage other languages
-		item.labels = { en: this.word };
+		this.wbItem.labels = { en: this.word };
 		//TODO: add language information
-		item.descriptions = { en: 'audio record from' + rw.metadatas.locutor.name + '(' + mw.config.get( 'wgUserName' ) + ')' };
+		this.wbItem.descriptions = { en: 'audio record from' + rw.metadatas.locutor.name + '(' + mw.config.get( 'wgUserName' ) + ')' };
 
 		//TODO: make property and item configuration-dependant, and not hardcoded
-		item.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P2' ).setType( 'wikibase-item' ).setValue( 'Q2' ), true ); //InstanceOf
-		item.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P19' ).setType( 'wikibase-item' ).setValue( 'Q30' ), true ); //SubclassOf
+		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P2' ).setType( 'wikibase-item' ).setValue( 'Q2' ), true ); //InstanceOf
+		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P19' ).setType( 'wikibase-item' ).setValue( 'Q30' ), true ); //SubclassOf
 		//item.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P3' ).setType( 'commonsMedia' ).setValue( this.getFilename() ), true ); //Audio file
-		item.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P4' ).setType( 'wikibase-item' ).setValue( rw.metadatas.language ), true ); //Language
-		item.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P5' ).setType( 'wikibase-item' ).setValue( rw.metadatas.locutor.qid ), true ); //Locutor
-		item.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P7' ).setType( 'time' ).setValue( { time: today } ), true ); //Date
-		item.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P8' ).setType( 'monolingualtext' ).setValue( { language: 'fr', text: this.word } ), true ); //Transcription
+		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P4' ).setType( 'wikibase-item' ).setValue( rw.metadatas.language ), true ); //Language
+		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P5' ).setType( 'wikibase-item' ).setValue( rw.metadatas.locutor.qid ), true ); //Locutor
+		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P7' ).setType( 'time' ).setValue( { time: today } ), true ); //Date
+		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P8' ).setType( 'monolingualtext' ).setValue( { language: 'fr', text: this.word } ), true ); //Transcription
 		for ( propertyId in this.extra ) {
-			item.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( propertyId ).setType( 'string' ).setValue( this.extra[ propertyId ] ), true );
+			this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( propertyId ).setType( 'string' ).setValue( this.extra[ propertyId ] ), true );
 		}
-		console.log( item.serialize() );
-		var repoApi = new wb.api.RepoApi( api );
-		repoApi.createEntity( 'item', item.serialize() )
-		.then( function( data ) {
-			//TODO: change state
-			record.qid = data.entity.id;
-			record.setState( 'done' );
-			deferred.resolve();
-		} )
-		.fail( function( errorCode, result ) {
-			console.log( errorCode );
-			console.log( result );
-            deferred.reject( errorCode, result );
-            record.setError( errorCode );
-		} );
 	};
 
 }( mediaWiki, mediaWiki.recordWizard, jQuery ) );

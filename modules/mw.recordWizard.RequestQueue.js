@@ -16,23 +16,24 @@
 	    }
 	    record.isInQueue( true );
 
-        this.queue.push( { 'type': type, 'record': record } );
+	    var deferred = $.Deferred();
+
+        this.queue.push( { type: type, record: record, deferred: deferred } );
 
         if ( this.currentRequests < this.maxConcurentRequests ) {
             this.currentRequests++;
             this.next();
         }
 
-        return true;
+        return deferred;
 	};
 
     rw.RequestQueue.prototype.next = function() {
         if ( this.queue.length > 0 ) {
-            var param = this.queue.shift(),
-	            deferred = $.Deferred();
-	        deferred.then( this.next.bind(this) ).fail( this.next.bind(this) );
+            var param = this.queue.shift();
+	        param.deferred.then( this.next.bind(this) ).fail( this.next.bind(this) );
 
-            param.record[param.type]( this.api, deferred );
+            param.record[param.type]( this.api, param.deferred );
 	        param.record.isInQueue( false );
         }
         else {

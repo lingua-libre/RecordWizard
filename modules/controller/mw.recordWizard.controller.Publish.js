@@ -47,21 +47,30 @@
 		rw.controller.Step.prototype.unload.call( this );
 	};
 
-	rw.controller.Publish.prototype.upload = function( word ) {
-	    rw.requestQueue.push( rw.records[ word ], 'finishUpload' );
-	};
-
 	rw.controller.Publish.prototype.moveNext = function () {
+
 		this.removeWaitingRecords();
 		for( var word in rw.records ) {
-		    this.upload( word );
+			this.makeRequests( word );
 		}
 	};
 
-	rw.controller.Publish.prototype.movePrevious = function () {
-		// XXX do stuff
+	rw.controller.Publish.prototype.makeRequests = function( word ) {
+		var process = new OO.ui.Process();
 
-		rw.controller.Step.prototype.movePrevious.call( this );
+		process.next( this.upload.bind( this, word ) ) //upload file to commons
+		process.next( this.saveWbItem.bind( this, word ) ) //save the formed item
+		process.next( console.log.bind( this, 'Done :)' ) ); //TODO: do something cool
+
+		process.execute();
+	};
+
+	rw.controller.Publish.prototype.upload = function( word ) {
+		return rw.requestQueue.push( rw.records[ word ], 'finishUpload' );
+	};
+
+	rw.controller.Publish.prototype.saveWbItem = function( word ) {
+		return rw.records[ word ].saveWbItem( this.api );
 	};
 
 }( mediaWiki, mediaWiki.recordWizard, jQuery, OO ) );
