@@ -64,14 +64,7 @@
 	};
 
 	rw.controller.Locutor.prototype.getExistingWbItem = function () {
-		var controller = this,
-			repoApi = new wb.api.RepoApi( this.api );
-
-		return repoApi.getEntities( rw.metadatas.locutor.qid )
-		.then( function( data ) {
-			var rawWbItem = data.entities[ rw.metadatas.locutor.qid ];
-			controller.wbItem.deserialize( rawWbItem );
-		} );
+		return this.wbItem.setId( rw.metadatas.locutor.qid ).getFromApi( this.api );
 	};
 
 	rw.controller.Locutor.prototype.fillWbItem = function () {
@@ -100,24 +93,7 @@
 	};
 
 	rw.controller.Locutor.prototype.createOrUpdateWbItem = function () {
-		console.log( this.wbItem.serialize() );
-		payload = {
-			action: 'wbeditentity',
-			format: 'json',
-			formatversion: '2',
-			data: JSON.stringify( this.wbItem.serialize() ),
-			clear: 1,
-		};
-		if ( rw.metadatas.locutor.new ) {
-			payload.new = 'item';
-		}
-		else {
-			payload.id = rw.metadatas.locutor.qid;
-		}
-
-		console.log( payload );
-
-		return this.api.postWithToken( 'csrf', payload )
+		return this.wbItem.createOrUpdate( this.api )
 		.then( function( data ) {
 			rw.metadatas.locutor.qid = data.entity.id;
 		} )
