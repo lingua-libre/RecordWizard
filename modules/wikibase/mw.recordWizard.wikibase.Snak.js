@@ -53,7 +53,7 @@
 
 	rw.wikibase.Snak.prototype._build = function() {
 		var value;
-		
+
 		switch ( this.type ) {
 			case 'novalue':
 				return new wb.datamodel.PropertyNoValueSnak( this.propertyId );
@@ -68,17 +68,20 @@
 				value = new dataValues.GlobeCoordinateValue( coordinates );
 				break;
 			case 'monolingualtext':
-				value = new dataValues.MonolingualTextValue( this.value.languageCode, this.value.text );
+				value = new dataValues.MonolingualTextValue( this.value.language, this.value.text );
 				break;
 			case 'quantity':
-				value = new dataValues.QuantityValue( this.value.number, this.value.unit, this.value.upperBound || null, this.value.lowerBound || null );
+				value = new dataValues.QuantityValue( this.value.amount, this.value.unit, this.value.upperbound || null, this.value.lowerbound || null );
 				break;
 			case 'string':
 				value = new dataValues.StringValue( this.value );
 				break;
 			case 'time':
 		        //TODO: allow Date object and convert them with d.setUTCHours(0,0,0,0);timestamp = d.toISOString().slice(0,-5)+'Z';
-				value = new dataValues.TimeValue( this.value.timestamp, this.value );
+		        if ( this.value.calendarmodel !== undefined ) {
+		        	this.value.calendarModel = this.value.calendarmodel;
+		        }
+				value = new dataValues.TimeValue( this.value.time, this.value );
 				break;
 			case 'wikibase-item':
 				value = new wb.datamodel.EntityId( this.value );
@@ -86,13 +89,36 @@
 			case 'wikibase-property':
 				value = new wb.datamodel.EntityId( this.value );
 				break;
-			
+
 			// covers commonsMedia, geo-shape, tabular-data, url, external-id and math
 			default:
 				value = new dataValues.StringValue( this.value );
 				break;
 		}
 		return new wb.datamodel.PropertyValueSnak( this.propertyId, value );
+	};
+
+	rw.wikibase.Snak.deserialize = function( data ) {
+		var propertyId = data.property;
+		var type = data.snaktype;
+		var value;
+
+		if ( type !== 'value' ) {
+			return new rw.wikibase.Snak( propertyId, type );
+		}
+
+		type = data.datatype;
+		value = data.datavalue.value;
+		switch( type ) {
+			case 'wikibase-item':
+				value = value[ 'id' ];
+				break;
+			case 'wikibase-property':
+				value = value[ 'id' ];
+				break;
+		}
+
+		return new rw.wikibase.Snak( propertyId, type, value );
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, wikibase ) );

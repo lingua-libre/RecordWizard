@@ -84,17 +84,19 @@
 
 		//TODO: make property and item configuration-dependant, and not hardcoded
 
-		this.wbItem.addStatement( new mw.recordWizard.wikibase.Statement( 'P2' ).setType( 'wikibase-item' ).setValue( 'Q3' ) );
-		this.wbItem.addStatement( new mw.recordWizard.wikibase.Statement( 'P11' ).setType( 'external-id' ).setValue( mw.config.get( 'wgUserName' ) ).setRank( 2 ) );
-		this.wbItem.addStatement( new mw.recordWizard.wikibase.Statement( 'P9' ).setType( 'wikibase-item' ).setValue( gender ) );
+		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P2' ).setType( 'wikibase-item' ).setValue( 'Q3' ), true );
+		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P11' ).setType( 'external-id' ).setValue( mw.config.get( 'wgUserName' ) ).setRank( 2 ), true );
+		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P9' ).setType( 'wikibase-item' ).setValue( gender ), true );
 
+		var languageStatements = [];
 		for ( var i=0; i < languages.length; i++ ) {
-			this.wbItem.addStatement( new mw.recordWizard.wikibase.Statement( 'P4' )
+			languageStatements.push( new mw.recordWizard.wikibase.Statement( 'P4' )
 				.setType( 'wikibase-item' )
 				.setValue( languages[ i ] )
 				//TODO: support language level: .addQualifier( new mw.recordWizard.wikibase.Snak( 'P13', 'wikibase-item', 'Q...' ) )
 			);
 		}
+		this.wbItem.addOrReplaceStatements( languageStatements, true );
 	};
 
 	rw.controller.Locutor.prototype.createOrUpdateWbItem = function () {

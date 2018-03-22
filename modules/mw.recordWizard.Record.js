@@ -191,15 +191,15 @@
 		item.descriptions = { en: 'audio record from' + rw.metadatas.locutor.name + '(' + mw.config.get( 'wgUserName' ) + ')' };
 
 		//TODO: make property and item configuration-dependant, and not hardcoded
-		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P2' ).setType( 'wikibase-item' ).setValue( 'Q2' ) ); //InstanceOf
-		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P19' ).setType( 'wikibase-item' ).setValue( 'Q30' ) ); //SubclassOf
-		//item.addStatement( new mw.recordWizard.wikibase.Statement( 'P3' ).setType( 'commonsMedia' ).setValue( this.getFilename() ) ); //Audio file
-		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P4' ).setType( 'wikibase-item' ).setValue( rw.metadatas.language ) ); //Language
-		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P5' ).setType( 'wikibase-item' ).setValue( rw.metadatas.locutor.qid ) ); //Locutor
-		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P7' ).setType( 'time' ).setValue( { timestamp: today } ) ); //Date
-		item.addStatement( new mw.recordWizard.wikibase.Statement( 'P8' ).setType( 'monolingualtext' ).setValue( { languageCode: 'fr', text: this.word } ) ); //Transcription
+		item.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P2' ).setType( 'wikibase-item' ).setValue( 'Q2' ), true ); //InstanceOf
+		item.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P19' ).setType( 'wikibase-item' ).setValue( 'Q30' ), true ); //SubclassOf
+		//item.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P3' ).setType( 'commonsMedia' ).setValue( this.getFilename() ), true ); //Audio file
+		item.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P4' ).setType( 'wikibase-item' ).setValue( rw.metadatas.language ), true ); //Language
+		item.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P5' ).setType( 'wikibase-item' ).setValue( rw.metadatas.locutor.qid ), true ); //Locutor
+		item.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P7' ).setType( 'time' ).setValue( { time: today } ), true ); //Date
+		item.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P8' ).setType( 'monolingualtext' ).setValue( { language: 'fr', text: this.word } ), true ); //Transcription
 		for ( propertyId in this.extra ) {
-			item.addStatement( new mw.recordWizard.wikibase.Statement( propertyId ).setType( 'string' ).setValue( this.extra[ propertyId ] ) );
+			item.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( propertyId ).setType( 'string' ).setValue( this.extra[ propertyId ] ), true );
 		}
 		console.log( item.serialize() );
 		var repoApi = new wb.api.RepoApi( api );

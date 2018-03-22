@@ -71,8 +71,8 @@
 		return this;
 	};
 
-	rw.wikibase.Statement.prototype.addReference = function( snak ) {
-		this.references.push( snak );
+	rw.wikibase.Statement.prototype.addReference = function( reference ) {
+		this.references.push( reference );
 		return this;
 	};
 
@@ -85,7 +85,28 @@
 	};
 
 	rw.wikibase.Statement.prototype.removeReference = function( index ) {
-		this.references.splice( index, 1 );
+		if ( typeof index === 'string' ) {
+			var hash = index;
+			index = -1;
+
+			for ( var i=0; i < this.references.length; i++ ) {
+				if ( this.references[ i ].getHash() === hash ) {
+					index = i;
+					break;
+				}
+			}
+		}
+
+		if ( index >= 0 ) {
+			this.references.splice( index, 1 );
+		}
+
+		return this;
+	};
+
+	rw.wikibase.Statement.prototype.removeReferences = function() {
+		this.references = [];
+
 		return this;
 	};
 
@@ -110,15 +131,36 @@
 
 		var referenceList = new wb.datamodel.ReferenceList();
 		for ( var i=0; i < this.references.length; i++ ) {
-		    var referenceSnakList = new wb.datamodel.SnakList();
-		    for ( var j=0; j < this.references[ i ].length; j++ ) {
-		        referenceSnakList.addItem( this.references[ i ][ j ]._build() )
-		    }
-		    var reference = new wb.datamodel.Reference( referenceSnakList ); //TODO: manage hashes
-		    referenceList.addItem( reference );
+		    referenceList.addItem( references[ i ]._build() );
 		}
 
 		return new wb.datamodel.Statement( claim, referenceList, this.rank );
+	};
+
+	rw.wikibase.Statement.deserialize = function( data ) {
+		if ( data.type !== 'statement' ) {
+			return null;
+		}
+
+		var statement = new rw.wikibase.Statement( data.mainsnak.property, data.id );
+		statement.setRank( [ 'deprecated', 'normal', 'preferred' ].indexOf( data.rank ) );
+		statement.setMainSnak( rw.wikibase.Snak.deserialize( data.mainsnak ) );
+
+		for ( propertyId in data.qualifiers ) {
+			for ( var i=0; i < data.qualifiers[ propertyId ].length; i++ ) {
+				var qualifier = rw.wikibase.Snak.deserialize( data.qualifiers[ propertyId ][ i ] );
+				statement.addQualifier( qualifier );
+			}
+		}
+
+		if ( data.references !== undefined ) {
+			for ( var i=0; i < data.references.length; i++ ) {
+				var reference = rw.wikibase.Reference.deserialize( data.references[ i ] );
+				statement.addReference( reference );
+			}
+		}
+
+		return statement;
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, wikibase ) );

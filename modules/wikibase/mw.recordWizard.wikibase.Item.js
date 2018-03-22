@@ -5,7 +5,7 @@
 		this.statementGroups = {};
 		this.labels = {};
 		this.descriptions = {};
-		this.alias = {};
+		this.aliases = {};
 	};
 
 	rw.wikibase.Item.prototype.getStatement = function( guid ) {
@@ -41,7 +41,7 @@
 		    this.statementGroups[ propertyId ] = [];
 		}
 		this.statementGroups[ propertyId ].push( statement );
-		
+
 		return this;
 	};
 
@@ -50,7 +50,56 @@
 		for ( var i=0; i < length; i++ ) {
 		    this.addStatement( statements[ i ] );
 		}
-		
+
+		return this;
+	};
+
+	// all statements MUST have the same propertyId
+	rw.wikibase.Item.prototype.addOrReplaceStatements = function( statements, removeExcess ) {
+		if ( ! Array.isArray( statements ) ) {
+			statements = [ statements ];
+		}
+
+		var propertyId = statements[ 0 ].getPropertyId(),
+			i;
+
+		for ( i=0; i < statements.length; i++ ) {
+			this.addOrReplaceStatement( statements[ i ], i );
+		}
+
+		if ( removeExcess === true ) {
+			this.statementGroups[ propertyId ].splice( i, this.statementGroups[ propertyId ].length - i );
+		}
+
+		return this;
+	};
+
+	rw.wikibase.Item.prototype.addOrReplaceStatement = function( statement, index ) {
+		var propertyId = statement.getPropertyId();
+		index = index || 0;
+
+		if ( this.statementGroups[ propertyId ] !== undefined ) {
+			if ( this.statementGroups[ propertyId ].length > index ) {
+				statement.setGUID( this.statementGroups[ propertyId ][ index ].getGUID() );
+				this.statementGroups[ propertyId ][ index ] = statement;
+				return this;
+			}
+		}
+
+		this.addStatement( statement );
+		return this;
+	};
+
+	rw.wikibase.Item.prototype.replaceStatement = function( statement, GUID ) {
+		var propertyId = statement.getPropertyId();
+		for ( var i=0; i < this.statementGroups[ propertyId ].length; i++ ) {
+			if ( this.statementGroups[ propertyId ][ i ].getGUID() === GUID ) {
+				statement.setGUID( GUID );
+				this.statementGroups[ propertyId ][ i ] = statement;
+				break;
+			}
+		}
+
 		return this;
 	};
 
@@ -59,7 +108,7 @@
 		    var statements = this.statementGroups[ propertyId ];
 		    for ( var i=0; i < statements.length; i++ ) {
 		        if ( statements[ i ].getGUID() === guid ) {
-		            delete statements[ i ]
+		            statements.splice( i, 1 );
 		            return true;
 		        }
 		    }
@@ -96,6 +145,56 @@
 		}
 
 		return length;
+	};
+
+	rw.wikibase.Item.prototype.setLabel = function( lang, label ) {
+		this.labels[ lang ] = label;
+		return this;
+	};
+
+	rw.wikibase.Item.prototype.setDescription = function( lang, description ) {
+		this.descriptions[ lang ] = description;
+		return this;
+	};
+
+	rw.wikibase.Item.prototype.setAlias = function( lang, alias ) {
+		if ( typeof alias === 'string' ) {
+			alias = [ alias ];
+		}
+		this.aliases[ lang ] = alias;
+		return this;
+	};
+
+	rw.wikibase.Item.prototype.addAlias = function( lang, alias ) {
+		if ( this.aliases[ lang ] === undefined ) {
+			this.aliases[ lang ] = [];
+		}
+		this.aliases[ lang ].push( alias );
+		return this;
+	};
+
+	rw.wikibase.Item.prototype.getLabel = function( lang ) {
+		return this.labels[ lang ];
+	};
+
+	rw.wikibase.Item.prototype.getLabels = function() {
+		return this.labels;
+	};
+
+	rw.wikibase.Item.prototype.getDescription = function( lang ) {
+		return this.descriptions[ lang ];
+	};
+
+	rw.wikibase.Item.prototype.getDescriptions = function() {
+		return this.descriptions;
+	};
+
+	rw.wikibase.Item.prototype.getAlias = function( lang ) {
+		return this.aliases[ lang ];
+	};
+
+	rw.wikibase.Item.prototype.getAliases = function() {
+		return this.aliases[ lang ];
 	};
 
 
@@ -153,15 +252,44 @@
 		return new wb.serialization.StatementGroupSerializer().serialize( this._buildStatements() );
 	};
 
-	rw.wikibase.Item.prototype.deserialize = function() {
-		// TODO
+	rw.wikibase.Item.prototype.deserialize = function( data ) {
+		if ( data.type === 'item' ) {
+			this.itemId = data.id;
+			this.deserializeStatements( data.claims );
+			this.deserializeFingerprint( data );
+		}
+
+		return this;
 	};
 
-	rw.wikibase.Item.prototype.deserializeStatements = function( propertyId ) {
-		// TODO
+	rw.wikibase.Item.prototype.deserializeStatements = function( claims ) {
+		for ( propertyId in claims ) {
+			for ( var i=0; i < claims[ propertyId ].length; i++ ) {
+				var statement = rw.wikibase.Statement.deserialize( claims[ propertyId ][ i ] );
+				this.addStatement( statement );
+			}
+		}
+
+		return this;
 	};
-	
-	// TODO getter/setter for label, description, alias
+
+	rw.wikibase.Item.prototype.deserializeFingerprint = function( data ) {
+		for ( langCode in data.labels ) {
+			this.setLabel( langCode, data.labels[ langCode ].value );
+		}
+		for ( langCode in data.descriptions ) {
+			this.setDescription( langCode, data.descriptions[ langCode ].value );
+		}
+		for ( langCode in data.aliases ) {
+			var aliasList = []
+			for ( var i=0; i < data.aliases[ langCode ].length; i++ ) {
+				aliasList.push( data.aliases[ langCode ][ i ].value );
+			}
+			this.setAlias( langCode, aliasList );
+		}
+
+		return this;
+	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, wikibase ) );
 
