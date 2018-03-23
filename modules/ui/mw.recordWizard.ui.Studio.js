@@ -145,9 +145,10 @@
 
         this.amplitudeGraph.setContainer( this.recordItems[ word ] );
 
-	    this.$list.animate( {
-	        scrollTop: this.recordItems[ word ].offset().top - this.$list.offset().top + this.$list.scrollTop() - ( this.recordItems[ word ].innerHeight() - this.recordItems[ word ].height() )
-	    } ) ;
+		this.$list.stop( true );
+		this.$list.animate( {
+		    scrollTop: this.recordItems[ word ].offset().top - this.$list.offset().top + this.$list.scrollTop() - ( this.recordItems[ word ].innerHeight() - this.recordItems[ word ].height() )
+		} ) ;
 	};
 
 	rw.ui.Studio.prototype.setItemState = function( word, state, prevState ) {

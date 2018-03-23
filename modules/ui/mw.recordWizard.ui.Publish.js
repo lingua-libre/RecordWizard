@@ -44,9 +44,10 @@
 	rw.ui.Publish.prototype.setItemState = function( word, state ) {
 	    // TODO: use a correlation table to asociate state and HTML class
 	    if ( [ 'done', 'error' ].indexOf( state ) > -1 ) {
-	        $('html, body').animate( {
+	    	$( 'html, body' ).stop( true );
+	        $( 'html, body' ).animate( {
                 scrollTop: this.recordItems[ word ].offset().top - 50
-            }, 400 );
+            } );
 	    }
 	    this.recordItems[ word ].removeClass();
 	    this.recordItems[ word ].addClass( 'mwe-recwiz-' + state );
@@ -55,7 +56,7 @@
 
 	rw.ui.Publish.prototype.showNextButton = function() {
         console.log( rw.metadatas.statesCount );
-	    if ( rw.metadatas.statesCount.uploading > 0 ) {
+	    if ( rw.metadatas.statesCount.uploading + rw.metadatas.statesCount.uploaded + rw.metadatas.statesCount.finalizing > 0 ) {
 	        this.previousButton.setDisabled( true );
 	        this.retryButton.toggle( false );
             this.nextButton.setDisabled( true );

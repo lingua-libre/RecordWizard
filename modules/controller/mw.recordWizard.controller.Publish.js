@@ -48,6 +48,12 @@
 	};
 
 	rw.controller.Publish.prototype.moveNext = function () {
+		if ( rw.metadatas.statesCount.stashed === 0 ) {
+			delete rw.metadatas.words;
+			delete rw.metadatas.statesCount;
+			rw.records = {};
+			return rw.controller.Step.prototype.moveNext.call( this );
+		}
 
 		this.removeWaitingRecords();
 		for( var word in rw.records ) {
