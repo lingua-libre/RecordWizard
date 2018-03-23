@@ -63,17 +63,38 @@
 	};
 
 	rw.Record.prototype.getFilename = function() {
-	    if ( this.filename === null ) {
-	        // TODO: add language name/code
-	        this.filename = mw.config.get( 'wgUserName' ) + '-' + this.word + '.wav';
-	    }
-	    return this.filename;
+	    return 'LL'
+			+ '-' + rw.metadatas.locutor.name
+			+ ( mw.config.get( 'wgUserName' ) !== rw.metadatas.locutor.name ? ' (' + mw.config.get( 'wgUserName' ) + ')' : '' )
+			+ '-' + rw.config.languages[ rw.metadatas.language ].code
+			+ '-' + this.word + '.wav';
 	};
 
 	rw.Record.prototype.getText = function() {
-	    // TODO: generate real description based on metadatas and a configured template
-	    return 'The word \'\'' + this.word + '\'\' pronounced by ' + mw.config.get( 'wgUserName' ) + '.\n\n'
-	    	+ JSON.stringify( this.extra );
+		var date = new Date();
+		var gender = '';
+		switch ( rw.metadatas.locutor.gender ) {
+			case rw.config.items['genderMale']:
+				gender = 'male';
+				break;
+			case rw.config.items['genderFemale']:
+				gender = 'female';
+				break;
+			case rw.config.items['genderOther']:
+				gender = 'other';
+				break;
+		}
+	    return '{{Lingua Libre record'
+			+ '\n | locutor       = ' + rw.metadatas.locutor.name
+			+ '\n | locutorId     = ' + rw.metadatas.locutor.qid
+			+ '\n | locutorGender = ' + gender
+			+ '\n | author        = ' + '[[User:' + mw.config.get( 'wgUserName' ) + '|]]'
+			+ '\n | language      = ' + rw.config.languages[ rw.metadatas.language ].localname
+			+ '\n | languageCode  = ' + rw.config.languages[ rw.metadatas.language ].code
+			+ '\n | transcription = ' + this.word
+			+ '\n | date          = ' + date.getFullYear() + '-' + ( date.getMonth() + 1 ) + '-' + date.getDate()
+			+ '\n | permission    = ' + '{{' + rw.metadatas.license + '}}'
+			+ '\n}}';
 	};
 
 	rw.Record.prototype.getFilekey = function() {
@@ -201,7 +222,7 @@
 		//TODO: manage other languages
 		this.wbItem.labels = { en: this.word };
 		//TODO: add language information
-		this.wbItem.descriptions = { en: 'audio record from' + rw.metadatas.locutor.name + '(' + mw.config.get( 'wgUserName' ) + ')' };
+		this.wbItem.descriptions = { en: 'audio record from ' + rw.metadatas.locutor.name + ' (' + mw.config.get( 'wgUserName' ) + ')' };
 
 		//TODO: make property and item configuration-dependant, and not hardcoded
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P2' ).setType( 'wikibase-item' ).setValue( 'Q2' ), true ); //InstanceOf
