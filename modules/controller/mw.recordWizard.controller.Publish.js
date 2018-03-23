@@ -57,18 +57,15 @@
 
 		this.removeWaitingRecords();
 		for( var word in rw.records ) {
-			this.makeRequests( word );
+			// Make requests
+			var process = new OO.ui.Process();
+
+			process.next( this.upload.bind( this, word ) ) //upload file to commons
+			process.next( this.saveWbItem.bind( this, word ) ) //save the formed item
+			process.next( console.log.bind( this, 'Done :)' ) ); //TODO: do something cool
+
+			process.execute();
 		}
-	};
-
-	rw.controller.Publish.prototype.makeRequests = function( word ) {
-		var process = new OO.ui.Process();
-
-		process.next( this.upload.bind( this, word ) ) //upload file to commons
-		process.next( this.saveWbItem.bind( this, word ) ) //save the formed item
-		process.next( console.log.bind( this, 'Done :)' ) ); //TODO: do something cool
-
-		process.execute();
 	};
 
 	rw.controller.Publish.prototype.upload = function( word ) {

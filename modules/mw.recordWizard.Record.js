@@ -153,7 +153,7 @@
         var record = this;
 
         if ( this.state === 'error' && this.imageInfo !== null ) {
-        	return this.createWikibaseItem( api, deferred );
+        	deferred.resolve();
         }
 
         this.setState( 'uploading' );
