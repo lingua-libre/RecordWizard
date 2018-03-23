@@ -5,6 +5,7 @@
  * @file
  * @ingroup Extensions
  */
+
 class SpecialRecordWizard extends SpecialPage {
 	public function __construct() {
 		parent::__construct( 'RecordWizard', 'upload' );
@@ -92,6 +93,25 @@ class SpecialRecordWizard extends SpecialPage {
 			}
 		}
 
+		$licensesMessage = $this->msg( 'licenses' );
+		while( $licensesMessage->plain() == '-' && $licensesMessage->getLanguage()->getCode() != 'en' ) {
+			$fallbackLanguage = $licensesMessage->getLanguage()->getFallbackLanguages()[ 0 ];
+			$licensesMessage->inLanguage( $fallbackLanguage );
+		}
+		if ( $licensesMessage->plain() != '-' ) {
+			$licenses = new Licenses( [ 'fieldname' => 'licenses', 'licenses' => $licensesMessage->plain() ] );
+			$config[ 'licenses' ] = json_decode( json_encode( $licenses->getLicenses() ), true );
+		}
+		else {
+			//Fallback license, in case [[Mediawiki:Licenses]] is empty
+			//TODO: make this configurable
+			$config[ 'licenses' ] = array(
+				'text' => 'cc-by-sa 4.0',
+				'template' => 'cc-by-sa-4.0'
+			);
+		}
+
+		$config[ 'savedLicense' ] = $user->getOption( 'recwiz-license' );
 		$config[ 'savedLanguage' ] = $user->getOption( 'recwiz-lang' );
 
 		$out->addJsConfigVars( [ 'RecordWizardConfig' => $config ] );

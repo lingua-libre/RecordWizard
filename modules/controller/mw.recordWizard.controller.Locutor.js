@@ -116,7 +116,8 @@
 	rw.controller.Locutor.prototype.saveOptions = function () {
 		return this.api.saveOptions( {
 			'recwiz-locutor': rw.config.locutor.qid,
-			'recwiz-otherLocutors': Object.keys( rw.config.otherLocutors ).join( ',' )
+			'recwiz-otherLocutors': Object.keys( rw.config.otherLocutors ).join( ',' ),
+			'recwiz-license': rw.metadatas.license,
 		} ).fail( function() {
 			// TODO: manage errors
 		} );

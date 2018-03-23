@@ -38,6 +38,10 @@ class RecordWizardHooks {
 			'type' => 'text',
 			'section' => 'recwiz/locutor',
 		);
+		$preferences['recwiz-license'] = array(
+			'type' => 'text',
+			'section' => 'recwiz/param',
+		);
 		$preferences['recwiz-lang'] = array(
 			'type' => 'text',
 			'section' => 'recwiz/param',

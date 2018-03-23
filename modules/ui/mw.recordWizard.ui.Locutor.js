@@ -77,6 +77,9 @@
 		// Location
         this.locationSelector = new OO.ui.TextInputWidget();
 
+        // License
+        this.licenseSelector = new rw.layout.LicenseSelectorWidget( { licenses: rw.config.licenses } );
+
 		// Layout
         this.$content = $( '<div>' )
             .append( new OO.ui.FieldLayout( this.profilePicker, {
@@ -102,8 +105,21 @@
 			    align: 'left',
 			    classes: [ 'mwe-recwiz-increment' ],
 			    label: mw.message( 'mwe-recwiz-locutor-location' ).text()
+		    } ).$element )
+	        .append( new OO.ui.FieldLayout( this.licenseSelector, {
+			    align: 'left',
+			    classes: [ 'mwe-recwiz-increment' ],
+			    label: mw.message( 'mwe-recwiz-locutor-license' ).text()
 		    } ).$element );
 		this.$container.prepend( this.$content );
+
+		// Events
+		this.profilePicker.getMenu().on( 'choose', function( item ) {
+			ui.emit( 'profile-change', item.getData() );
+		} )
+		this.nameSelector.on( 'change', function( value ) {
+			ui.licenseSelector.setDescription( mw.msg( 'mwe-recwiz-locutor-licensecontent', value ) );
+		} )
 
 		// Preload
 		this.profilePicker.getMenu().selectItemByData( rw.metadatas.locutor.qid || rw.config.locutor.qid || '*' );
@@ -113,11 +129,7 @@
 		else {
 			this.populateProfile( rw.config.locutor );
 		}
-
-		// Events
-		this.profilePicker.getMenu().on( 'choose', function( item ) {
-			ui.emit( 'profile-change', item.getData() );
-		} )
+		this.licenseSelector.setValue( rw.metadatas.license || rw.config.savedLicense );
 	};
 
 	rw.ui.Locutor.prototype.populateProfile = function( locutor ) {
@@ -132,6 +144,7 @@
 	    var genderItem = this.genderSelector.getSelectedItem();
 
 		rw.metadatas.locutor = {};
+		rw.metadatas.license = this.licenseSelector.getValue();
 
 		rw.metadatas.locutor.qid = this.profilePicker.getMenu().getSelectedItem().getData();
 		rw.metadatas.locutor.name = this.nameSelector.getValue();

@@ -30,6 +30,7 @@
 	"DefaultUserOptions": {
 		"recwiz-locutor": "",
 		"recwiz-otherLocutors": "",
+		"recwiz-license": "",
 		"recwiz-lang": ""
 	},
     "MessagesDirs": {
@@ -118,6 +119,7 @@
         "ext.recordWizard.layout":{
             "scripts": [
                 "modules/layout/mw.recordWizard.layout.js",
+                "modules/layout/mw.recordWizard.layout.LicenseSelectorWidget.js",
                 "modules/layout/mw.recordWizard.layout.WordSelectorWidget.js"
             ],
 			"dependencies": [
@@ -158,6 +160,8 @@
                 "mwe-recwiz-locutor-name",
                 "mwe-recwiz-locutor-languages",
                 "mwe-recwiz-locutor-location",
+				"mwe-recwiz-locutor-license",
+				"mwe-recwiz-locutor-licensecontent",
                 "mwe-recwiz-locutor-gender",
                 "mwe-recwiz-gender-male",
                 "mwe-recwiz-gender-female",
