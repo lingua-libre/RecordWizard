@@ -31,10 +31,9 @@
 
 		this.$container.prepend(
 			$( '<div>' )
-				.attr( 'id', 'mwe-recwiz-tutorial' )
-				.append(
-					$( '<div>' ).text( 'patate!' )
-				)
+				.attr( 'id', 'mwe-recwiz-tutorial' ).css( 'text-align', 'center' )
+				.append( $( '<img>' ).attr( 'src', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/LinguaLibre_LOGO-04_%28cropped%29.png/450px-LinguaLibre_LOGO-04_%28cropped%29.png' ) )
+				.append( mw.message( 'mwe-recwiz-tutorial' ).parse() )
 		);
 	};
 
