@@ -4,8 +4,8 @@
 	    config = config || {};
 	    config.classes = config.classes || []
 	    config.classes.push( 'mwe-recwiz-wordSelectorWidget' );
-	    config.maxHeight = config.maxHeight || 400;
-	    config.minHeight = config.minHeight || 250;
+	    config.maxHeight = config.maxHeight || 250;
+	    config.minHeight = config.minHeight || 150;
 
 	    OO.ui.TagMultiselectWidget.call( this, config );
 

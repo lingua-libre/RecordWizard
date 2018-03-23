@@ -1,0 +1,77 @@
+{
+    "@metadata": {
+        "authors": [
+            "Antoine Lamielle"
+        ]
+    },
+    "recordWizard": "RecordWizard",
+    "recordwizard": "Record Wizard",
+    "recordWizard-desc": "Un outil simple d'utilisation et entièrement automatisé pour enregistrer en masse la prononciation de mots.",
+    "special-recordWizard-title": "Record Wizard",
+    "special-recordWizard-intro": "",
+
+    "mwe-recwiz-step-tutorial": "Tutoriel",
+    "mwe-recwiz-step-locutor": "Locuteur",
+    "mwe-recwiz-step-details": "Détails",
+    "mwe-recwiz-step-studio": "Studio",
+    "mwe-recwiz-step-publish": "Publication",
+
+    "mwe-recwiz-next": "Suivant",
+    "mwe-recwiz-previous": "Précédent",
+    "mwe-recwiz-continue": "Continuer",
+    "mwe-recwiz-continueanyway": "Continuer quand même",
+    "mwe-recwiz-retry": "relancer les versements échoués",
+
+    "mwe-recwiz-tutorial": "",
+
+    "mwe-recwiz-locutor-profile": "Profil locuteur à utiliser",
+    "mwe-recwiz-locutor-profilemain": "Votre locuteur principale",
+    "mwe-recwiz-locutor-profileother": "Autre locuteurs",
+    "mwe-recwiz-locutor-profilenew": "Créer un nouveau locuteur",
+    "mwe-recwiz-locutor-name": "Nom affiché",
+    "mwe-recwiz-locutor-languages": "Langues parlées",
+    "mwe-recwiz-locutor-location": "Lieu de résidence",
+    "mwe-recwiz-locutor-license": "Licence",
+    "mwe-recwiz-locutor-licensecontent": "Moi, $1, accorde irrévocablement à quiconque le droit d'utiliser mes enregistrements audio créés avec cet outil sous la licence suivante :",
+    "mwe-recwiz-locutor-gender": "Genre",
+    "mwe-recwiz-gender-male": "masculin",
+    "mwe-recwiz-gender-female": "féminin",
+    "mwe-recwiz-gender-other": "autre",
+
+    "mwe-recwiz-details-lang": "Langue d'enregistrement",
+    "mwe-recwiz-details-wordlist": "Liste des mots à enregistrer",
+    "mwe-recwiz-details-randomise": "Mélanger la liste",
+    "mwe-recwiz-details-addwords": "Ajouter des mots",
+    "mwe-recwiz-details-noword": "Aucun mot sélectionné",
+    "mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|mot|mots}}",
+
+    "mwe-recwiz-generator-nearby": "À proximité",
+    "mwe-recwiz-generator-list": "Liste",
+
+    "mwe-recwiz-studio-input-placeholder": "Ajouter un mot",
+    "mwe-recwiz-studio-uploadcount": "$1 {{PLURAL:$1|fichier|fichiers}} sur $2 {{PLURAL:$2|uploadé|uploadés}}",
+
+    "mwe-recwiz-pendinguplads": "...Versement...",
+    "mwe-recwiz-allsucceeded": "Tous les versements ont réussis!",
+    "mwe-recwiz-somefailed": "Certain versement ont échoués.",
+    "mwe-recwiz-allfailed": "Aucun versement n'a réussi.",
+
+    "mwe-recwiz-warning-wordsleft": "Il reste des mots non-enregistrés, êtes-vous sure de vouloir continuer ?",
+    "mwe-recwiz-warning-pendinguploads": "Tous vos enregistrement n'ont pas encore été versés, voulez-vous les stoper ?",
+    "mwe-recwiz-warning-faileduploads": "Le versement de certain de vos enregistrements ont échoués, voulez-vous les retirer ?",
+
+    "mwe-recwiz-nearby-coordinates": "Coordonnées",
+    "mwe-recwiz-nearby-coordinates-help": "Entrez les coordonnées en notation décilame.",
+    "mwe-recwiz-nearby-limit": "Nombre de mots à récupérer",
+    "mwe-recwiz-nearby-limit-help": "Cela doit être un nombre entier entre 1 et 500.",
+    "mwe-recwiz-nearby-latitude": "latitude",
+    "mwe-recwiz-nearby-longitude": "longitude",
+    "mwe-recwiz-nearby-getcoordinates": "Récupérer ma position actuelle",
+    "mwe-recwiz-nearby-source": "Source",
+    "mwe-recwiz-error-cantgetposition": "Impossible de déterminer votre position, vous devez les saisir manuellement ($1).",
+    "mwe-recwiz-warning-noresults": "Il n'y a aucun élément à proximité de ces coordonnées.",
+
+    "mwe-recwiz-list-title": "Titre",
+    "mwe-recwiz-list-title-help": "Titre d'une page dans l'espace de nom List.",
+    "mwe-recwiz-error-pagemissing": "Il n'y a actuellement aucun texte dans la page $1."
+}

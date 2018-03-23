@@ -8,7 +8,7 @@
     "recordwizard": "Record Wizard",
     "recordWizard-desc": "A user-friendly and automated tool to record audio pronunciation files.",
     "special-recordWizard-title": "Record Wizard",
-    "special-recordWizard-intro": "Record some audio pronunciation files.",
+    "special-recordWizard-intro": "",
 
     "mwe-recwiz-step-tutorial": "Tutorial",
     "mwe-recwiz-step-locutor": "Locutor",
@@ -40,7 +40,7 @@
 
     "mwe-recwiz-details-lang": "Record language",
     "mwe-recwiz-details-wordlist": "List of the words to record",
-    "mwe-recwiz-details-randomise": "Randomise list",
+    "mwe-recwiz-details-randomise": "Shuffle list",
     "mwe-recwiz-details-addwords": "Add words",
     "mwe-recwiz-details-noword": "No words selected",
     "mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|word|words}}",
@@ -73,5 +73,5 @@
 
     "mwe-recwiz-list-title": "Title",
     "mwe-recwiz-list-title-help": "Title of a page within the list namespace.",
-    "mwe-recwiz-error-pagemissing": "There is currently no text in the page $1..."
+    "mwe-recwiz-error-pagemissing": "There is currently no text in the page $1."
 }
