@@ -93,8 +93,8 @@
                 return;
             }
 
-	        rw.records[ currentWord ] = new rw.Record( currentWord );
-	        rw.records[ currentWord ].on( 'state-change', this.switchState.bind( this ) );
+	        rw.records[ word ] = new rw.Record( word );
+	        rw.records[ word ].on( 'state-change', controller.switchState.bind( controller ) );
 
             rw.metadatas.words.push( word );
             controller.ui.addWord( word );

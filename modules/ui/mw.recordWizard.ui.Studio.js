@@ -15,7 +15,6 @@
 
 		this.addPreviousButton();
 		this.addNextButton();
-
 	};
 
 	OO.inheritClass( rw.ui.Studio, rw.ui.Step );
@@ -210,7 +209,7 @@
 	    var count = rw.metadatas.statesCount;
 	    var total = count.stashed + count.stashing + count.error;
         if ( total > 0 ) {
-	        this.$recordCounter.text( mw.message( 'mwe-recwiz-upload-count', count.stashed, total ).text() );
+	        this.$recordCounter.text( mw.message( 'mwe-recwiz-studio-uploadcount', count.stashed, total ).text() );
 	        this.$recordCounter.show();
 	    }
 	};
