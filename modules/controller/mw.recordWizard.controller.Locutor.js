@@ -75,15 +75,18 @@
 		this.wbItem.labels = { en: name };
 		this.wbItem.descriptions = { en: 'locutor of the user "' + mw.config.get( 'wgUserName' ) + '"' };
 
-		//TODO: make property and item configuration-dependant, and not hardcoded
+		var instanceOfStatement = new mw.recordWizard.wikibase.Statement( rw.config.properties.instanceOf ).setType( 'wikibase-item' ).setValue( rw.config.items.locutor );
+		var userStatement = new mw.recordWizard.wikibase.Statement( rw.config.properties.linkedUser ).setType( 'external-id' ).setValue( mw.config.get( 'wgUserName' ) ).setRank( 2 );
+		var genderStatement = new mw.recordWizard.wikibase.Statement( rw.config.properties.gender );
+		genderStatement.setType( gender === null ? 'somevalue' : 'wikibase-item' ).setValue( gender );
 
-		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P2' ).setType( 'wikibase-item' ).setValue( 'Q3' ), true );
-		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P11' ).setType( 'external-id' ).setValue( mw.config.get( 'wgUserName' ) ).setRank( 2 ), true );
-		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( 'P9' ).setType( 'wikibase-item' ).setValue( gender ), true );
+		this.wbItem.addOrReplaceStatements( instanceOfStatement, true );
+		this.wbItem.addOrReplaceStatements( userStatement, true );
+		this.wbItem.addOrReplaceStatements( genderStatement, true );
 
 		var languageStatements = [];
 		for ( var i=0; i < languages.length; i++ ) {
-			languageStatements.push( new mw.recordWizard.wikibase.Statement( 'P4' )
+			languageStatements.push( new mw.recordWizard.wikibase.Statement( rw.config.properties.spokenLanguages )
 				.setType( 'wikibase-item' )
 				.setValue( languages[ i ] )
 				//TODO: support language level: .addQualifier( new mw.recordWizard.wikibase.Snak( 'P13', 'wikibase-item', 'Q...' ) )

@@ -16,13 +16,22 @@
 				"langCode": "",
 				"gender": "",
 				"spokenLanguages": "",
-				"instanceOf": ""
+				"instanceOf": "",
+				"linkedUser": "",
+				"subclassOf": "",
+				"audioRecord": "",
+				"locutor": "",
+				"date": "",
+				"transcription": "",
+				"wikidataId": ""
 			},
 			"items": {
 				"genderMale": "",
 				"genderFemale": "",
 				"genderOther": "",
-				"locutor": ""
+				"locutor": "",
+				"record": "",
+				"word": ""
 			},
 			"listNamespace": 0
 		}

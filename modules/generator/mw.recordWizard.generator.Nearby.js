@@ -178,10 +178,10 @@
                     }
 
                     if ( entity.labels[ langCode ] !== undefined ) {
-                        generator.list.push( {
-                        	text: entity.labels[ langCode ].value,
-                        	P16: qid,
-                        } );
+                    	var element = {};
+                    	element.text = entity.labels[ langCode ].value;
+                    	element[ rw.config.properties.wikidataId ] = qid;
+                        generator.list.push( element );
                     }
                 }
                 if ( semaphore === 0 ) {
