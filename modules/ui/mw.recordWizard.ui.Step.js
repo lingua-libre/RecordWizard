@@ -95,7 +95,7 @@
 		} );
 
 		this.nextLayout = new OO.ui.HorizontalLayout( {
-			classes: [ 'mwe-recwiz-button-next' ],
+			classes: [ 'mwe-recwiz-button-next', 'mwe-recwiz-right' ],
 		    items: [
 		        this.stateLabel,
 		        this.retryButton,

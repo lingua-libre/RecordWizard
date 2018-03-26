@@ -46,6 +46,15 @@
         $( 'body' ).append( this.windowManager.$element );
         this.generatorButtons = new OO.ui.ButtonGroupWidget();
 
+		// Clear button
+        this.clearButton = new OO.ui.ButtonWidget( {
+        	label: mw.msg( 'mwe-recwiz-details-clear' ),
+        	icon: 'subtract',
+        	flags: [ 'destructive' ],
+        	framed: false,
+        	classes: [ 'mwe-recwiz-right' ],
+        } );
+
 		// Randomisation
 		this.randomSwitch = new OO.ui.ToggleSwitchWidget( { value: rw.metadatas.randomise } );
 
@@ -65,6 +74,7 @@
                     label: mw.message( 'mwe-recwiz-details-wordlist' ).text(),
                 } ),
                 this.generatorButtons,
+                this.clearButton,
             ],
             classes: [ 'mwe-recwiz-increment' ],
         } );
@@ -84,6 +94,7 @@
 		this.wordList.on( 'add', function( item, index ) {
 			ui.emit( 'wordlist-add', item.getData(), index );
 		} );
+		this.clearButton.on( 'click', this.clearWords.bind( this ) );
 
 		this.$container.prepend( this.layout.$element );
 	};
@@ -108,6 +119,10 @@
 
 	rw.ui.Details.prototype.countWords = function() {
 		return this.wordList.getItemCount();
+	};
+
+	rw.ui.Details.prototype.clearWords = function() {
+		this.wordList.clearItems();
 	};
 
 	rw.ui.Details.prototype.collect = function() {
