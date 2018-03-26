@@ -133,7 +133,8 @@
                 "modules/layout/mw.recordWizard.layout.WordSelectorWidget.js"
             ],
 			"dependencies": [
-			    "oojs-ui"
+			    "oojs-ui",
+			    "oojs-ui.styles.icons-wikimedia"
 			]
         },
         "ext.recordWizard.ui": {

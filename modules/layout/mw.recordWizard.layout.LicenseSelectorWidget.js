@@ -14,7 +14,10 @@
 
 		this.dropdown = new OO.ui.DropdownInputWidget( {
 			options: this.options,
-			dropdown: { $overlay: $( 'body' ) },
+			dropdown: {
+				$overlay: $( 'body' ),
+				icon: 'logoCC',
+			},
 		} );
 
 		this.$element.append( this.description ).append( this.dropdown.$element );
