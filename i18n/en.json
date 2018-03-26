@@ -56,6 +56,10 @@
     "mwe-recwiz-somefailed": "Some upload failed.",
     "mwe-recwiz-allfailed": "None of the uploads were successful.",
 
+    "mwe-recwiz-error-noname": "You must choose a name for your locutor.",
+    "mwe-recwiz-error-duplicatename": "You already have a locutor called $1. Each of your locutors must have a different name.",
+    "mwe-recwiz-error-nolanguages": "I'm sure you're speaking at least one language ;)",
+    "mwe-recwiz-error-emptylist": "You have to choose some words to continue.",
     "mwe-recwiz-warning-wordsleft": "There are some words left, are you sure you want to stop there?",
     "mwe-recwiz-warning-pendinguploads": "All your records have not been uploaded yet, do you want to abort them?",
     "mwe-recwiz-warning-faileduploads": "Some of your records have not been uploaded due to a network error, do you want to remove them?",

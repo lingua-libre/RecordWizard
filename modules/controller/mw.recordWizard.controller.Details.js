@@ -52,7 +52,10 @@
 			}
 		}
 
-		//TODO: warning if no words (but allowed to continue)
+		if ( rw.metadatas.words.length === 0 ) {
+			OO.ui.alert( mw.msg( 'mwe-recwiz-error-emptylist' ) );
+			return;
+		}
 
 		this.api.saveOptions( {
 			'recwiz-lang': rw.metadatas.language,

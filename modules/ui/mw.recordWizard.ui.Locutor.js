@@ -147,7 +147,7 @@
 		rw.metadatas.license = this.licenseSelector.getValue();
 
 		rw.metadatas.locutor.qid = this.profilePicker.getMenu().getSelectedItem().getData();
-		rw.metadatas.locutor.name = this.nameSelector.getValue();
+		rw.metadatas.locutor.name = this.nameSelector.getValue().trim();
 		rw.metadatas.locutor.gender = ( genderItem === null ? null : genderItem.getData() );
 		rw.metadatas.locutor.languages = this.spokenLanguagesSelector.getItemsData();
 		rw.metadatas.locutor.location = this.locationSelector.getValue();

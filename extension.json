@@ -187,6 +187,10 @@
                 "mwe-recwiz-allsucceeded",
                 "mwe-recwiz-somefailed",
                 "mwe-recwiz-allfailed",
+                "mwe-recwiz-error-noname",
+				"mwe-recwiz-error-duplicatename",
+				"mwe-recwiz-error-nolanguages",
+				"mwe-recwiz-error-emptylist",
                 "mwe-recwiz-warning-wordsleft",
                 "mwe-recwiz-warning-pendinguploads",
                 "mwe-recwiz-warning-faileduploads"

@@ -32,7 +32,7 @@
 
 	rw.controller.Locutor.prototype.onProfileChange = function( locutorQid ) {
 		var locutor = {};
-		if ( rw.config.locutor.qid === locutorQid ) {
+		if ( locutorQid === rw.config.locutor.qid || locutorQid === '*' ) {
 			locutor = rw.config.locutor;
 		}
 		else if ( locutorQid[ 0 ] === 'Q' ) {
@@ -47,7 +47,26 @@
 			process = new OO.ui.Process();
 
 		this.ui.collect();
-		//TODO: check that all required fields are set
+		if ( rw.metadatas.locutor.name === '' ) {
+			OO.ui.alert( mw.msg( 'mwe-recwiz-error-noname' ) );
+			return;
+		}
+		if ( rw.metadatas.locutor.name === rw.config.locutor.name && rw.metadatas.locutor.main !== true ) {
+			OO.ui.alert( mw.msg( 'mwe-recwiz-error-duplicatename', rw.metadatas.locutor.name ) );
+			return;
+		}
+		for ( qid in rw.config.otherLocutors ) {
+			if ( rw.metadatas.locutor.name === rw.config.otherLocutors[ qid ].name && rw.metadatas.locutor.qid !== qid ) {
+				OO.ui.alert( mw.msg( 'mwe-recwiz-error-duplicatename', rw.metadatas.locutor.name ) );
+				return;
+			}
+		}
+		if ( rw.metadatas.locutor.languages.length === 0 ) {
+			OO.ui.alert( mw.msg( 'mwe-recwiz-error-nolanguages' ) );
+			return;
+		}
+
+
 		this.wbItem = new mw.recordWizard.wikibase.Item();
 
 		if ( ! rw.metadatas.locutor.new ) {
