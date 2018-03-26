@@ -105,7 +105,8 @@
 			"dependencies": [
 			    "oojs-ui",
 			    "mediawiki.ForeignApi",
-			    "mediawiki.widgets"
+			    "mediawiki.widgets",
+			    "oojs-ui.styles.icons-location"
 			],
 			"messages": [
                 "mwe-recwiz-generator-nearby",

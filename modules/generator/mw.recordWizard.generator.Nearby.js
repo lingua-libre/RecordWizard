@@ -12,7 +12,7 @@
 
         this.latitude = new OO.ui.TextInputWidget( { placeholder: mw.message( 'mwe-recwiz-nearby-latitude' ).text() } );
         this.longitude = new OO.ui.TextInputWidget( { placeholder: mw.message( 'mwe-recwiz-nearby-longitude' ).text() } );
-        this.currentPositionButton = new OO.ui.ButtonWidget( { title: mw.message( 'mwe-recwiz-nearby-getcoordinates' ).text(), icon: 'tag' } );
+        this.currentPositionButton = new OO.ui.ButtonWidget( { title: mw.message( 'mwe-recwiz-nearby-getcoordinates' ).text(), icon: 'mapPin' } );
         this.limit = new OO.ui.NumberInputWidget( { min: 1, max: 500, value: 100, step: 10, pageStep: 100, isInteger: true } );
         this.wikidata = new OO.ui.RadioOptionWidget( { label: 'Wikidata' } );
         this.source = new OO.ui.RadioSelectWidget( { items: [ this.wikidata ] } );
@@ -23,7 +23,10 @@
 	            new OO.ui.FieldLayout(
 	                new OO.ui.Widget( {
 	                    content: [
-	                        new OO.ui.HorizontalLayout( { items: [ this.latitude, this.longitude, this.currentPositionButton ], } )
+	                        new OO.ui.HorizontalLayout( {
+	                        	items: [ this.latitude, this.longitude, this.currentPositionButton ],
+	                        	classes: [ 'mwe-recwiz-nearby-coordinates' ],
+	                        } )
 		                ]
 		            } ), {
 	                    align: 'top',

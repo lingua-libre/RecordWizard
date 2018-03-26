@@ -18,6 +18,9 @@
 	max-width: 100%;
 }
 
+.mwe-recwiz-nearby-coordinates .oo-ui-textInputWidget {
+	width: 32%;
+}
 
 @keyframes spinner {
   to {transform: rotate(360deg);}
