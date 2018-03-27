@@ -69,7 +69,7 @@
 			} ) );
 		}
 		languages.sort( function( a, b ) { return a.getLabel() > b.getLabel(); } );
-        this.spokenLanguagesSelector = new OO.ui.CapsuleMultiselectWidget( {
+        this.spokenLanguagesSelector = new rw.layout.LanguagesSelectorWidget( {
 	        menu: { items: languages },
             indicator: 'required',
         } );
@@ -136,7 +136,7 @@
 		this.nameSelector.setValue( locutor.name );
 		this.nameSelector.setDisabled( locutor.main === true );
 		this.genderSelector.selectItemByData( locutor.gender );
-		this.spokenLanguagesSelector.setItemsFromData( locutor.languages );
+		this.spokenLanguagesSelector.setValue( locutor.languages );
 		this.locationSelector.setValue( locutor.location );
 	};
 
@@ -149,7 +149,7 @@
 		rw.metadatas.locutor.qid = this.profilePicker.getMenu().getSelectedItem().getData();
 		rw.metadatas.locutor.name = this.nameSelector.getValue().trim();
 		rw.metadatas.locutor.gender = ( genderItem === null ? null : genderItem.getData() );
-		rw.metadatas.locutor.languages = this.spokenLanguagesSelector.getItemsData();
+		rw.metadatas.locutor.languages = this.spokenLanguagesSelector.getValue();
 		rw.metadatas.locutor.location = this.locationSelector.getValue();
 
 		rw.metadatas.locutor.main = false;

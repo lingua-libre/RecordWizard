@@ -23,7 +23,8 @@
 				"locutor": "",
 				"date": "",
 				"transcription": "",
-				"wikidataId": ""
+				"wikidataId": "",
+				"languageLevel": ""
 			},
 			"items": {
 				"genderMale": "",
@@ -129,6 +130,7 @@
         "ext.recordWizard.layout":{
             "scripts": [
                 "modules/layout/mw.recordWizard.layout.js",
+                "modules/layout/mw.recordWizard.layout.LanguagesSelectorWidget.js",
                 "modules/layout/mw.recordWizard.layout.LicenseSelectorWidget.js",
                 "modules/layout/mw.recordWizard.layout.WordSelectorWidget.js"
             ],
@@ -170,6 +172,9 @@
                 "mwe-recwiz-locutor-profilenew",
                 "mwe-recwiz-locutor-name",
                 "mwe-recwiz-locutor-languages",
+                "mwe-recwiz-locutor-languagedialog",
+				"mwe-recwiz-locutor-languagelevel",
+                "mwe-recwiz-locutor-languagelocation",
                 "mwe-recwiz-locutor-location",
 				"mwe-recwiz-locutor-license",
 				"mwe-recwiz-locutor-licensecontent",

@@ -28,8 +28,7 @@
 
 		// Language selector
         var options = [];
-        for ( var i=0; i < rw.metadatas.locutor.languages.length; i++ ) {
-        	var qid = rw.metadatas.locutor.languages[ i ];
+        for ( var qid in rw.metadatas.locutor.languages ) {
         	options.push( { label: rw.config.languages[ qid ].localname, data: qid } );
         }
         this.languageSelector = new OO.ui.DropdownInputWidget( { options: options } );

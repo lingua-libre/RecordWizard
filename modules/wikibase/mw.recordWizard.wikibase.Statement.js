@@ -141,17 +141,17 @@
 		if ( data.type !== 'statement' ) {
 			return null;
 		}
-
 		var statement = new rw.wikibase.Statement( data.mainsnak.property, data.id );
 		statement.setRank( [ 'deprecated', 'normal', 'preferred' ].indexOf( data.rank ) );
 		statement.setMainSnak( rw.wikibase.Snak.deserialize( data.mainsnak ) );
 
-		for ( propertyId in data.qualifiers ) {
+		//TODO: find why it makes a "claims[propertyId] is undefined" error
+		/*for ( propertyId in data.qualifiers ) {
 			for ( var i=0; i < data.qualifiers[ propertyId ].length; i++ ) {
 				var qualifier = rw.wikibase.Snak.deserialize( data.qualifiers[ propertyId ][ i ] );
 				statement.addQualifier( qualifier );
 			}
-		}
+		}*/
 
 		if ( data.references !== undefined ) {
 			for ( var i=0; i < data.references.length; i++ ) {

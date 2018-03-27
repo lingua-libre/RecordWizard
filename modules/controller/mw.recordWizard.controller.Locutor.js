@@ -61,7 +61,7 @@
 				return;
 			}
 		}
-		if ( rw.metadatas.locutor.languages.length === 0 ) {
+		if ( Object.keys( rw.metadatas.locutor.languages ).length === 0 ) {
 			OO.ui.alert( mw.msg( 'mwe-recwiz-error-nolanguages' ) );
 			return;
 		}
@@ -104,11 +104,15 @@
 		this.wbItem.addOrReplaceStatements( genderStatement, true );
 
 		var languageStatements = [];
-		for ( var i=0; i < languages.length; i++ ) {
+		for ( qid in languages ) {
 			languageStatements.push( new mw.recordWizard.wikibase.Statement( rw.config.properties.spokenLanguages )
 				.setType( 'wikibase-item' )
-				.setValue( languages[ i ] )
-				//TODO: support language level: .addQualifier( new mw.recordWizard.wikibase.Snak( 'P13', 'wikibase-item', 'Q...' ) )
+				.setValue( qid )
+				.addQualifier( new mw.recordWizard.wikibase.Snak(
+					rw.config.properties.languageLevel,
+					'wikibase-item',
+					languages[ qid ].languageLevel
+				) )
 			);
 		}
 		this.wbItem.addOrReplaceStatements( languageStatements, true );

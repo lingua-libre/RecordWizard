@@ -144,8 +144,7 @@ class SpecialRecordWizard extends SpecialPage {
 
 				$instanceOfPropertyId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['instanceOf'] ) );
 				$instanceOf = $this->getPropertyValues( $item, $instanceOfPropertyId );
-
-				if ( array_search( $wgRecordWizardConfig['items']['locutor'], $instanceOf ) !== false ) {
+				if ( $instanceOf[ 0 ][ 'value' ] == $wgRecordWizardConfig['items']['locutor'] ) {
 					$labels = $item->getLabels()->getIterator();
 					if ( $labels->valid() ) {
 						$locutor['name'] = $labels->current()->getText();
@@ -154,11 +153,22 @@ class SpecialRecordWizard extends SpecialPage {
 					$genderPropertyId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['gender'] ) );
 					$gender = $this->getPropertyValues( $item, $genderPropertyId );
 					if ( count( $gender ) > 0 ) {
-						$locutor['gender'] = $gender[ 0 ];
+						$locutor['gender'] = $gender[ 0 ][ 'value' ];
 					}
 
 					$spokenLanguagesPropertyId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['spokenLanguages'] ) );
-					$locutor['languages'] = $this->getPropertyValues( $item, $spokenLanguagesPropertyId );
+					$languages = $this->getPropertyValues( $item, $spokenLanguagesPropertyId );
+					$locutor['languages'] = array();
+					foreach ( $languages as $language ) {
+						$langId = $language[ 'value' ];
+						$locutor['languages'][ $langId ] = array(
+							'qid' => $langId
+						);
+						$languageLevelProperty = $wgRecordWizardConfig[ 'properties' ][ 'languageLevel' ];
+						if ( isset( $language[ 'qualifiers' ][ $languageLevelProperty ] ) ) {
+							$locutor[ 'languages' ][ $langId ][ 'languageLevel' ] = $language[ 'qualifiers' ][ $languageLevelProperty ];
+						}
+					}
 
 					$locutor['qid'] = (string) $itemId;
 				}
@@ -170,24 +180,48 @@ class SpecialRecordWizard extends SpecialPage {
 
 	private function getPropertyValues( $item, $propertyId ) {
 		$statements = $item->getStatements()->getByPropertyId( $propertyId )->toArray();
-		$values = array();
+		$elements = array();
 		foreach ( $statements as $statement ) {
 			$snak = $statement->getMainSnak();
-			if ( $snak->getType() == 'value' ) {
-				$dataValue = $snak->getDataValue();
-				switch ( $dataValue->getType() ) {
-					case 'wikibase-entityid':
-						$values[] = (string) $dataValue->getEntityId();
-						break;
-
-					default:
-						$values[] = $dataValue->getValue();
-						break;
+			$value = $this->getSnakValue( $snak );
+			if ( $value != null ) {
+				$element = array(
+					'value' => $value
+				);
+				$qualifiers = $statement->getQualifiers();
+				if ( ! $qualifiers->isEmpty() ) {
+					$element['qualifiers'] = array();
+					$iterator = $qualifiers->getIterator();
+					while ( $iterator->valid() ) {
+						$qualifierSnak = $iterator->current();
+						$qualifierValue = $this->getsnakValue( $qualifierSnak );
+						if ( $qualifierValue != null ) {
+							$element['qualifiers'][ (string) $qualifierSnak->getPropertyId() ] = $qualifierValue;
+						}
+						$iterator->next();
+					}
 				}
-
+				$elements[] = $element;
 			}
 		}
-		return $values;
+		return $elements;
+	}
+
+	private function getsnakValue( $snak ) {
+		$value = null;
+		if ( $snak->getType() == 'value' ) {
+			$dataValue = $snak->getDataValue();
+			switch ( $dataValue->getType() ) {
+				case 'wikibase-entityid':
+					$value = (string) $dataValue->getEntityId();
+					break;
+
+				default:
+					$value = $dataValue->getValue();
+					break;
+			}
+		}
+		return $value;
 	}
 
 	/**
