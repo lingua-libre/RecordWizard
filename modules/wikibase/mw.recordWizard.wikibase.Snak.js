@@ -31,6 +31,14 @@
 
 	rw.wikibase.Snak.prototype.setType = function( type ) {
 		this.type = type;
+
+		if ( this.type === 'novalue' ) {
+			this.value = null;
+		}
+		if ( this.type === 'somevalue' ) {
+			this.value = undefined;
+		}
+
 		return this;
 	};
 
@@ -53,6 +61,13 @@
 
 	rw.wikibase.Snak.prototype._build = function() {
 		var value;
+
+		if ( this.value === null ) {
+			return new wb.datamodel.PropertyNoValueSnak( this.propertyId );
+		}
+		if ( this.value === undefined ) {
+			return new wb.datamodel.PropertySomeValueSnak( this.propertyId );
+		}
 
 		switch ( this.type ) {
 			case 'novalue':
