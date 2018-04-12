@@ -132,6 +132,7 @@ class SpecialRecordWizard extends SpecialPage {
 		$locutor = array(
 			'name' => null,
 			'gender' => null,
+			'location' => null,
 			'languages' => null,
 			'qid' => null,
 		);
@@ -154,6 +155,12 @@ class SpecialRecordWizard extends SpecialPage {
 					$gender = $this->getPropertyValues( $item, $genderPropertyId );
 					if ( count( $gender ) > 0 ) {
 						$locutor['gender'] = $gender[ 0 ][ 'value' ];
+					}
+
+					$locationPropertyId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['residencePlace'] ) );
+					$location = $this->getPropertyValues( $item, $locationPropertyId );
+					if ( count( $location ) > 0 ) {
+						$locutor['location'] = $location[ 0 ][ 'value' ];
 					}
 
 					$spokenLanguagesPropertyId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['spokenLanguages'] ) );

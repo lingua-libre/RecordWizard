@@ -75,7 +75,7 @@
         } );
 
 		// Location
-        this.locationSelector = new OO.ui.TextInputWidget();
+        this.locationSelector = new rw.layout.WikidataSearchWidget();
 
         // License
         this.licenseSelector = new rw.layout.LicenseSelectorWidget( { licenses: rw.config.licenses } );

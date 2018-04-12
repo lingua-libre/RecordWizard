@@ -89,6 +89,7 @@
 	rw.controller.Locutor.prototype.fillWbItem = function () {
 		var name = rw.metadatas.locutor.name,
 			gender = rw.metadatas.locutor.gender,
+			location = rw.metadatas.locutor.location,
 			languages = rw.metadatas.locutor.languages;
 
 		this.wbItem.labels = { en: name };
@@ -96,11 +97,14 @@
 
 		var instanceOfStatement = new mw.recordWizard.wikibase.Statement( rw.config.properties.instanceOf ).setType( 'wikibase-item' ).setValue( rw.config.items.locutor );
 		var userStatement = new mw.recordWizard.wikibase.Statement( rw.config.properties.linkedUser ).setType( 'external-id' ).setValue( mw.config.get( 'wgUserName' ) ).setRank( 2 );
+		var locationStatement = new mw.recordWizard.wikibase.Statement( rw.config.properties.residencePlace );
+		locationStatement.setType( location === '' ? 'somevalue' : 'external-id' ).setValue( location );
 		var genderStatement = new mw.recordWizard.wikibase.Statement( rw.config.properties.gender );
 		genderStatement.setType( gender === null ? 'somevalue' : 'wikibase-item' ).setValue( gender );
 
 		this.wbItem.addOrReplaceStatements( instanceOfStatement, true );
 		this.wbItem.addOrReplaceStatements( userStatement, true );
+		this.wbItem.addOrReplaceStatements( locationStatement, true );
 		this.wbItem.addOrReplaceStatements( genderStatement, true );
 
 		var languageStatements = [];

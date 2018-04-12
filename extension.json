@@ -24,7 +24,8 @@
 				"date": "",
 				"transcription": "",
 				"wikidataId": "",
-				"languageLevel": ""
+				"languageLevel": "",
+				"residencePlace": ""
 			},
 			"items": {
 				"genderMale": "",
@@ -132,7 +133,8 @@
                 "modules/layout/mw.recordWizard.layout.js",
                 "modules/layout/mw.recordWizard.layout.LanguagesSelectorWidget.js",
                 "modules/layout/mw.recordWizard.layout.LicenseSelectorWidget.js",
-                "modules/layout/mw.recordWizard.layout.WordSelectorWidget.js"
+                "modules/layout/mw.recordWizard.layout.WordSelectorWidget.js",
+                "modules/layout/mw.recordWizard.layout.WikidataSearchWidget.js"
             ],
 			"dependencies": [
 			    "oojs-ui",
