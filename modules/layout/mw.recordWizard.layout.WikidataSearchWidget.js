@@ -1,29 +1,5 @@
 ( function ( mw, $, rw, OO ) {
 
-	rw.layout.WordSelectorWidget = function( config ) {
-	    config = config || {};
-	    config.classes = config.classes || []
-	    config.classes.push( 'mwe-recwiz-wordSelectorWidget' );
-	    config.maxHeight = config.maxHeight || 250;
-	    config.minHeight = config.minHeight || 150;
-
-	    OO.ui.TagMultiselectWidget.call( this, config );
-
-	    this.$handle.css( 'max-height', config.maxHeight  );
-	    this.$handle.css( 'min-height', config.minHeight );
-	    this.$handle.css( 'overflow-y', 'auto' );
-
-        this.on( 'add', this.onAdd.bind( this ) )
-	};
-
-	OO.inheritClass( rw.layout.WordSelectorWidget, OO.ui.TagMultiselectWidget );
-
-    rw.layout.WordSelectorWidget.prototype.onAdd = function( item, index ) {
-        var height = this.$handle[ 0 ].scrollHeight;
-        this.$handle.scrollTop( height );
-    };
-
-
 	/**
 	 * Search widget fetching propositions from wikidata
 	 *
@@ -34,7 +10,11 @@
 	 * @constructor
 	 * @param {Object} config Configuration options
 	 */
-	rw.layout.WikidataSearchWidget = function DemoNumberLookupTextInputWidget( config ) {
+	rw.layout.WikidataSearchWidget = function( config ) {
+		this.wikidataApi = new mw.ForeignApi( 'https://www.wikidata.org/w/api.php', { anonymous: true } );
+		this.lang = mw.config.get( 'wgUserLanguage' );
+		this.qid = null;
+
 		// Parent constructor
 		OO.ui.TextInputWidget.call( this, config );
 		// Mixin constructors
@@ -44,18 +24,57 @@
 	OO.inheritClass( rw.layout.WikidataSearchWidget, OO.ui.TextInputWidget );
 	OO.mixinClass( rw.layout.WikidataSearchWidget, OO.ui.mixin.LookupElement );
 
+	rw.layout.WikidataSearchWidget.prototype.setValue = function ( value, isQid ) {
+		if ( [ '', undefined, null ].indexOf( value ) === -1 ) {
+			if ( isQid === true || this.qid === null ) {
+				this.setQid( value, true );
+			}
+		}
+		else {
+			this.setQid( undefined );
+		}
+		OO.ui.TextInputWidget.prototype.setValue.call( this, value );
+	};
+
+	rw.layout.WikidataSearchWidget.prototype.setQid = function ( qid, lookupLabel ) {
+		var widget = this;
+
+		this.qid = qid;
+		this.setLabel( qid );
+
+		if ( lookupLabel === true && [ '', undefined, null ].indexOf( qid ) === -1 ) {
+			this.pushPending();
+			this.wikidataApi.get( {
+				action: 'wbgetentities',
+				format: 'json',
+				ids: qid,
+				props: 'labels',
+				languages: this.lang,
+				languagefallback: 1
+			} ).then( function( data ) {
+				widget.popPending();
+				OO.ui.TextInputWidget.prototype.setValue.call( widget, data.entities[ qid ].labels[ widget.lang ].value );
+			} ).fail( function() {
+				widget.popPending();
+			} );
+		}
+	};
+
+	rw.layout.WikidataSearchWidget.prototype.getData = function () {
+		return this.qid;
+	};
 
 	rw.layout.WikidataSearchWidget.prototype.getLookupRequest = function () {
-		var wikidataApi = new mw.ForeignApi( 'https://www.wikidata.org/w/api.php', { anonymous: true } ),
-			value = this.getValue(),
+		var value = this.getValue(),
 			deferred = $.Deferred();
 
-		wikidataApi.get( {
-			action: "wbsearchentities",
-			format: "json",
+		this.wikidataApi.get( {
+			action: 'wbsearchentities',
+			format: 'json',
 			search: value,
-			language: mw.config.get( 'wgUserLanguage' ),
-			limit: "7",
+			language: this.lang,
+			uselang: this.lang,
+			limit: '7',
 			origin: '*',
 		} ).then( function( data ) {
 			var results = [];
@@ -86,6 +105,12 @@
 		}
 
 		return items;
+	};
+
+	rw.layout.WikidataSearchWidget.prototype.onLookupMenuItemChoose = function ( item ) {
+		this.setValue( item.getLabel() );
+		this.setQid( item.getData() );
+		//return OO.ui.mixin.LookupElement.prototype.onLookupMenuItemChoose.call( this, item );
 	};
 
 
