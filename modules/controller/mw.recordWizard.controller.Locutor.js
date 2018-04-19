@@ -117,6 +117,11 @@
 					'wikibase-item',
 					languages[ qid ].languageLevel
 				) )
+				.addQualifier( new mw.recordWizard.wikibase.Snak(
+					rw.config.properties.learningPlace,
+					'external-id',
+					languages[ qid ].location
+				) )
 			);
 		}
 		this.wbItem.addOrReplaceStatements( languageStatements, true );

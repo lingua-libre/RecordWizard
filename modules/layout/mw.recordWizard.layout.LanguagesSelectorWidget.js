@@ -106,7 +106,9 @@
 		    align: 'left',
 	    } );
 
-		this.locationInput = new OO.ui.TextInputWidget();
+		this.locationInput = new rw.layout.WikidataSearchWidget( {
+			$overlay: $( 'body' )
+		} );
 		this.locationFieldset = new OO.ui.FieldLayout( this.locationInput, {
 		    align: 'left',
 	    } );
@@ -128,7 +130,8 @@
     rw.layout.LanguagesSelectorWidget.Dialog.prototype.getActionProcess = function ( action ) {
 	    if ( action === 'save' ) {
 		    var level = this.levelDropdown.getValue();
-		    this.callback( { languageLevel: level } );
+		    var location = this.locationInput.getData();
+		    this.callback( { languageLevel: level, location: location } );
 
 		    this.close();
 	    }

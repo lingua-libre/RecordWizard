@@ -137,7 +137,7 @@
 		this.nameSelector.setDisabled( locutor.main === true );
 		this.genderSelector.selectItemByData( locutor.gender );
 		this.spokenLanguagesSelector.setValue( locutor.languages );
-		this.locationSelector.setValue( locutor.location );
+		this.locationSelector.setValue( locutor.location, true );
 	};
 
 	rw.ui.Locutor.prototype.collect = function() {
@@ -150,7 +150,7 @@
 		rw.metadatas.locutor.name = this.nameSelector.getValue().trim();
 		rw.metadatas.locutor.gender = ( genderItem === null ? null : genderItem.getData() );
 		rw.metadatas.locutor.languages = this.spokenLanguagesSelector.getValue();
-		rw.metadatas.locutor.location = this.locationSelector.getValue();
+		rw.metadatas.locutor.location = this.locationSelector.getData();
 
 		rw.metadatas.locutor.main = false;
 		if ( rw.metadatas.locutor.qid === '*' || rw.metadatas.locutor.qid === rw.config.locutor.qid ) {
