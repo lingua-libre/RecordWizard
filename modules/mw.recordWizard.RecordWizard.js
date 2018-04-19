@@ -44,6 +44,7 @@
 	    // show page.
 	    rw.requestQueue = new rw.RequestQueue();
 	    rw.recordWizard = new rw.RecordWizard( mw.config.get( 'RecordWizardConfig' ) );
+	    $( '#mwe-recwiz-spinner' ).hide();
     } );
 
 
