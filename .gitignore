@@ -2,5 +2,7 @@
 *.swp
 node_modules
 vendor
-composer.lock
+*.lock
 lib/
+.ftpconfig
+.ftpignore
