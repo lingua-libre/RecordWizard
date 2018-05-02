@@ -1,3 +1,5 @@
+'use strict';
+
 ( function ( mw, $, rw, OO ) {
 
 	rw.generator.Nearby = function( config ) {
@@ -174,7 +176,7 @@
 	            'formatversion': '2',
             } ).then( function( data ) {
                 semaphore--;
-                for ( qid in data.entities ) {
+                for ( var qid in data.entities ) {
                     var entity = data.entities[ qid ];
                     if ( entity.missing !== undefined ) {
                         continue;

@@ -1,3 +1,5 @@
+'use strict';
+
 // TODO: cleaner state managment
 ( function ( mw, rw, $ ) {
 
@@ -230,7 +232,7 @@
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.locutor ).setType( 'wikibase-item' ).setValue( rw.metadatas.locutor.qid ), true ); //Locutor
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.date ).setType( 'time' ).setValue( { time: today } ), true ); //Date
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.transcription ).setType( 'monolingualtext' ).setValue( { language: 'fr', text: this.word } ), true ); //Transcription
-		for ( propertyId in this.extra ) {
+		for ( var propertyId in this.extra ) {
 			this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( propertyId ).setType( 'string' ).setValue( this.extra[ propertyId ] ), true );
 		}
 	};

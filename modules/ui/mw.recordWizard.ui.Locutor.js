@@ -1,3 +1,5 @@
+'use strict';
+
 ( function ( mw, $, rw, OO ) {
 
 	/**
@@ -62,7 +64,7 @@
 
 		// Spoken languages
 		var languages = [];
-		for ( code in rw.config.languages ) {
+		for ( var code in rw.config.languages ) {
 			languages.push( new OO.ui.MenuOptionWidget( {
 				data: rw.config.languages[ code ].qid,
 				label: rw.config.languages[ code ].localname

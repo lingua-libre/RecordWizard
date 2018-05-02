@@ -1,3 +1,5 @@
+'use strict';
+
 ( function ( mw, $, rw, OO ) {
 
 	/**
@@ -79,7 +81,7 @@
 		} ).then( function( data ) {
 			var results = [];
 			for ( var i=0; i < data.search.length; i++ ) {
-				result = data.search[ i ];
+				var result = data.search[ i ];
 				results.push( {
 					label: result.label,
 					data: result.id,

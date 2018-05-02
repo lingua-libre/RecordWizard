@@ -1,3 +1,5 @@
+'use strict';
+
 ( function ( mw, rw, $, OO, wb ) {
 	/**
 	 * The Locutor step.
@@ -55,7 +57,7 @@
 			OO.ui.alert( mw.msg( 'mwe-recwiz-error-duplicatename', rw.metadatas.locutor.name ) );
 			return;
 		}
-		for ( qid in rw.config.otherLocutors ) {
+		for ( var qid in rw.config.otherLocutors ) {
 			if ( rw.metadatas.locutor.name === rw.config.otherLocutors[ qid ].name && rw.metadatas.locutor.qid !== qid ) {
 				OO.ui.alert( mw.msg( 'mwe-recwiz-error-duplicatename', rw.metadatas.locutor.name ) );
 				return;
@@ -108,7 +110,7 @@
 		this.wbItem.addOrReplaceStatements( genderStatement, true );
 
 		var languageStatements = [];
-		for ( qid in languages ) {
+		for ( var qid in languages ) {
 			languageStatements.push( new mw.recordWizard.wikibase.Statement( rw.config.properties.spokenLanguages )
 				.setType( 'wikibase-item' )
 				.setValue( qid )

@@ -1,3 +1,5 @@
+'use strict';
+
 ( function ( rw ) {
 	// create RecordWizard ui namespace
 	rw.ui = {

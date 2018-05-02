@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Object that represents the entire multi-step Record Wizard
  */

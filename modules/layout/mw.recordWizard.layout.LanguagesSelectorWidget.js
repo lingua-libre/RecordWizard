@@ -1,3 +1,5 @@
+'use strict';
+
 ( function ( mw, $, rw, OO ) {
 
 	rw.layout.LanguagesSelectorWidget = function( config ) {

@@ -1,3 +1,5 @@
+'use strict';
+
 ( function ( mw, $, rw, wb ) {
 
 	rw.wikibase.Item = function( itemId ) {
@@ -38,8 +40,8 @@
 		for ( propertyId in this.statementGroups ) {
 		    statements.push.apply( statements, this.statementGroups[ propertyId ] );
 		}
-		if ( allStatements.length > 0 ) {
-		    return allStatements;
+		if ( statements.length > 0 ) {
+		    return statements;
 		}
 		return null;
 	};
@@ -272,7 +274,7 @@
 	};
 
 	rw.wikibase.Item.prototype.deserializeStatements = function( claims ) {
-		for ( propertyId in claims ) {
+		for ( var propertyId in claims ) {
 			for ( var i=0; i < claims[ propertyId ].length; i++ ) {
 				var statement = rw.wikibase.Statement.deserialize( claims[ propertyId ][ i ] );
 				this.addStatement( statement );
@@ -283,13 +285,13 @@
 	};
 
 	rw.wikibase.Item.prototype.deserializeFingerprint = function( data ) {
-		for ( langCode in data.labels ) {
+		for ( var langCode in data.labels ) {
 			this.setLabel( langCode, data.labels[ langCode ].value );
 		}
-		for ( langCode in data.descriptions ) {
+		for ( var langCode in data.descriptions ) {
 			this.setDescription( langCode, data.descriptions[ langCode ].value );
 		}
-		for ( langCode in data.aliases ) {
+		for ( var langCode in data.aliases ) {
 			var aliasList = []
 			for ( var i=0; i < data.aliases[ langCode ].length; i++ ) {
 				aliasList.push( data.aliases[ langCode ][ i ].value );
@@ -301,17 +303,17 @@
 	};
 
 	rw.wikibase.Item.prototype.merge = function( item ) {
-		for ( lang in item.labels ) {
+		for ( var lang in item.labels ) {
 			this.setLabel( lang, item.labels[ lang ] );
 		}
-		for ( lang in item.descriptions ) {
+		for ( var lang in item.descriptions ) {
 			this.setDescription( lang, item.descriptions[ lang ] );
 		}
-		for ( lang in item.aliases ) {
+		for ( var lang in item.aliases ) {
 			this.setAliases( lang, item.aliases[ lang ] );
 		}
 
-		for ( propertyId in item.statementGroups ) {
+		for ( var propertyId in item.statementGroups ) {
 			this.addOrReplaceStatements( item.statementGroups[ propertyId ], true );
 		}
 	};

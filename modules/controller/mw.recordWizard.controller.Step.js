@@ -1,3 +1,5 @@
+'use strict';
+
 ( function ( mw, rw, OO, $ ) {
 	/**
 	 * Represents a step in the wizard.
@@ -134,7 +136,7 @@
 	 * @return {boolean}
 	 */
 	rw.controller.Step.prototype.hasData = function () {
-		for ( word in rw.records ) {
+		for ( var word in rw.records ) {
 			if ( rw.records[ word ].hasData() ) {
 				return true;
 			}
@@ -143,7 +145,7 @@
 	};
 
 	rw.controller.Step.prototype.removeWaitingRecords = function() {
-	    for ( word in rw.records ) {
+	    for ( var word in rw.records ) {
 	        var state = rw.records[ word ].getState();
 	        if ( state === 'up' ) {
 	            rw.records[ word ].remove();
@@ -153,7 +155,7 @@
 	};
 
 	rw.controller.Step.prototype.removePendingRecords = function() {
-	    for ( word in rw.records ) {
+	    for ( var word in rw.records ) {
 	        var state = rw.records[ word ].getState();
 	        if ( [ 'stashing', 'uploading', 'finalizing' ].indexOf( state ) > -1 ) {
 	            rw.records[ word ].remove();
@@ -163,7 +165,7 @@
 	};
 
 	rw.controller.Step.prototype.removeFailedRecords = function() {
-	    for ( word in rw.records ) {
+	    for ( var word in rw.records ) {
 	        if ( rw.records[ word ].hasFailed() ) {
 	            rw.records[ word ].remove();
 	            delete rw.records[ word ];

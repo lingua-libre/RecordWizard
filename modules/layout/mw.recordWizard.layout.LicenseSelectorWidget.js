@@ -1,3 +1,5 @@
+'use strict';
+
 ( function ( mw, $, rw, OO ) {
 
 	rw.layout.LicenseSelectorWidget = function( config ) {

@@ -1,3 +1,5 @@
+'use strict';
+
 ( function ( mw, $, rw, OO ) {
 	/**
 	 * Represents a generic UI for a step.

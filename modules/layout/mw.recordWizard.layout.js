@@ -1,3 +1,5 @@
+'use strict';
+
 ( function ( rw ) {
 	// create RecordWizard layout namespace
 	rw.layout = {

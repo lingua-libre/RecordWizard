@@ -1,3 +1,5 @@
+'use strict';
+
 ( function ( mw, rw, $, OO, wb ) {
 	/**
 	 * The Details step.
@@ -28,7 +30,7 @@
         if ( rw.metadatas.generator === undefined ) {
             rw.metadatas.generator = {};
         }
-        for ( className in rw.generator ) {
+        for ( var className in rw.generator ) {
             this.setupGenerator( className );
         }
 

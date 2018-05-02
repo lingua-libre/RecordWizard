@@ -1,3 +1,5 @@
+'use strict';
+
 ( function ( mw, $, rw, OO ) {
 
 	/**
@@ -29,7 +31,7 @@
         this.updateCounter();
         this.amplitudeGraph = new rw.ui.AmplitudeGraph();
 
-        for ( word in rw.records ) {
+        for ( var word in rw.records ) {
             this.setItemState( word, rw.records[ word ].getState() );
         }
 

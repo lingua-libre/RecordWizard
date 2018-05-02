@@ -1,3 +1,5 @@
+'use strict';
+
 ( function ( mw, rw, $, OO ) {
 	/**
 	 * The Studio step.
@@ -127,7 +129,7 @@
 		this.ui.off( 'next-item-click' );
 		this.ui.off( 'wordinput-validate' );
 		this.ui.off( 'retry-click' );
-		for ( word in rw.records ) {
+		for ( var word in rw.records ) {
 		    rw.records[ word ].off( 'state-change' );
 		}
 		rw.controller.Step.prototype.unload.call( this );
