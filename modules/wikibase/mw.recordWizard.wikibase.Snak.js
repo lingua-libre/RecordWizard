@@ -2,7 +2,6 @@
 
 ( function ( mw, $, rw, wb ) {
 
-
 	/*
 	existing type and data structure it takes as value:
 	commonsMedia            string
@@ -20,18 +19,18 @@
 	math                    string
 	*/
 
-	rw.wikibase.Snak = function( propertyId, type, value ) {
+	rw.wikibase.Snak = function ( propertyId, type, value ) {
 		this.propertyId = propertyId;
 		this.type = type;
 		this.value = value;
 	};
 
-	rw.wikibase.Snak.prototype.setPropertyId = function( propertyId ) {
+	rw.wikibase.Snak.prototype.setPropertyId = function ( propertyId ) {
 		this.propertyId = propertyId;
 		return this;
 	};
 
-	rw.wikibase.Snak.prototype.setType = function( type ) {
+	rw.wikibase.Snak.prototype.setType = function ( type ) {
 		this.type = type;
 
 		if ( this.type === 'novalue' ) {
@@ -44,25 +43,25 @@
 		return this;
 	};
 
-	rw.wikibase.Snak.prototype.setValue = function( value ) {
+	rw.wikibase.Snak.prototype.setValue = function ( value ) {
 		this.value = value;
 		return this;
 	};
 
-	rw.wikibase.Snak.prototype.getPropertyId = function() {
+	rw.wikibase.Snak.prototype.getPropertyId = function () {
 		return this.propertyId;
 	};
 
-	rw.wikibase.Snak.prototype.getType = function() {
+	rw.wikibase.Snak.prototype.getType = function () {
 		return this.type;
 	};
 
-	rw.wikibase.Snak.prototype.getValue = function() {
+	rw.wikibase.Snak.prototype.getValue = function () {
 		return this.value;
 	};
 
-	rw.wikibase.Snak.prototype._build = function() {
-		var value;
+	rw.wikibase.Snak.prototype._build = function () {
+		var value, coordinates;
 
 		if ( this.value === null ) {
 			return new wb.datamodel.PropertyNoValueSnak( this.propertyId );
@@ -74,14 +73,12 @@
 		switch ( this.type ) {
 			case 'novalue':
 				return new wb.datamodel.PropertyNoValueSnak( this.propertyId );
-				break;
 			case 'somevalue':
 				return new wb.datamodel.PropertySomeValueSnak( this.propertyId );
-				break;
 			case 'globe-coordinate':
-		        //TODO: calculate precision if not given
-		        this.value.precision = 0.0001;
-				var coordinates = new globeCoordinate.GlobeCoordinate( this.value );
+				// TODO: calculate precision if not given
+				this.value.precision = 0.0001;
+				coordinates = new globeCoordinate.GlobeCoordinate( this.value );
 				value = new dataValues.GlobeCoordinateValue( coordinates );
 				break;
 			case 'monolingualtext':
@@ -94,10 +91,10 @@
 				value = new dataValues.StringValue( this.value );
 				break;
 			case 'time':
-		        //TODO: allow Date object and convert them with d.setUTCHours(0,0,0,0);timestamp = d.toISOString().slice(0,-5)+'Z';
-		        if ( this.value.calendarmodel !== undefined ) {
-		        	this.value.calendarModel = this.value.calendarmodel;
-		        }
+				// TODO: allow Date object and convert them with d.setUTCHours(0,0,0,0);timestamp = d.toISOString().slice(0,-5)+'Z';
+				if ( this.value.calendarmodel !== undefined ) {
+					this.value.calendarModel = this.value.calendarmodel;
+				}
 				value = new dataValues.TimeValue( this.value.time, this.value );
 				break;
 			case 'wikibase-item':
@@ -115,10 +112,10 @@
 		return new wb.datamodel.PropertyValueSnak( this.propertyId, value );
 	};
 
-	rw.wikibase.Snak.deserialize = function( data ) {
-		var propertyId = data.property;
-		var type = data.snaktype;
-		var value;
+	rw.wikibase.Snak.deserialize = function ( data ) {
+		var value,
+			propertyId = data.property,
+			type = data.snaktype;
 
 		if ( type !== 'value' ) {
 			return new rw.wikibase.Snak( propertyId, type );
@@ -126,12 +123,12 @@
 
 		type = data.datatype;
 		value = data.datavalue.value;
-		switch( type ) {
+		switch ( type ) {
 			case 'wikibase-item':
-				value = value[ 'id' ];
+				value = value.id;
 				break;
 			case 'wikibase-property':
-				value = value[ 'id' ];
+				value = value.id;
 				break;
 		}
 
@@ -139,4 +136,3 @@
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, wikibase ) );
-
