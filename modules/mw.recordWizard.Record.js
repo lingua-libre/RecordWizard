@@ -3,6 +3,18 @@
 // TODO: cleaner state managment
 ( function ( mw, rw, $ ) {
 
+	/**
+	 * Constructor for objects representing records.
+	 *
+	 * Records are first created without any sounds, just with it's textual
+	 * transcription. It will then follow many steps and perform the needed API
+	 * requests to see the audio record uploaded and sorted.
+	 *
+	 * @class rw.Record
+	 * @mixins OO.EventEmitter
+	 * @constructor
+	 * @param  {string} word Textual transcription of the Record
+	 */
 	rw.Record = function ( word ) {
 		OO.EventEmitter.call( this );
 
@@ -21,35 +33,74 @@
 
 	OO.mixinClass( rw.Record, OO.EventEmitter );
 
+	/**
+	 * Get the textual transcription of the record.
+	 *
+	 * @return {string}  Textual transcription of the record
+	 */
 	rw.Record.prototype.getWord = function () {
 		return this.word;
 	};
 
+	/**
+	 * Get a WAVE-encoded blob containing the audio record.
+	 *
+	 * @return {Blob|null}  WAVE-encoded audio record.
+	 */
 	rw.Record.prototype.getBlob = function () {
 		return this.file;
 	};
 
+	/**
+	 * Get the current state of the record.
+	 *
+	 * Can be one of the following: 'ready', 'stashing', 'stashed', 'uploading',
+	 * 'uploaded', finalizing', 'done', 'error'.
+	 *
+	 * @return {string}  State of the record
+	 */
 	rw.Record.prototype.getState = function () {
 		return this.state;
 	};
 
+	/**
+	 * Add extra wikibase statements.
+	 *
+	 * @param  {Object} extra Wikibase statements, in the format
+	 *                        "PropertyId": "value".
+	 */
 	rw.Record.prototype.setExtra = function ( extra ) {
 		this.extra = extra;
 	};
 
-	// up				object created
-	// ready			audio record available
-	// stashing			stash request is pending
-	// stashed			record is stashed
-	// uploading		upload 2 commons request is pending
-	// uploaded			record is uploaded on commons
-	// finalizing		WB item creation request is pending
-	// done				all has finished
+	/**
+	 * Set the current state of the record.
+	 *
+	 * It can be one of the following:
+	 * * "up"           object created
+	 * * "ready"        audio record available
+	 * * "stashing"     stash request is pending
+	 * * "stashed"      record is stashed
+	 * * "uploading"    upload 2 commons request is pending
+	 * * "uploaded"     record is uploaded on commons
+	 * * "finalizing"   WB item creation request is pending
+	 * * "done"         all has finished
+	 *
+	 * @private
+	 * @param  {string} newState Name of the state the record should switch to
+	 */
 	rw.Record.prototype.setState = function ( newState ) {
 		this.emit( 'state-change', this.getWord(), newState, this.state );
 		this.state = newState;
 	};
 
+	/**
+	 * Verify if the Record object has data.
+	 *
+	 * It is usefull to check if the current window can be closed safely or not.
+	 *
+	 * @return {boolean}  Whether the Record object has some data
+	 */
 	rw.Record.prototype.hasData = function () {
 		if ( this.state === 'up' || this.state === 'done' ) {
 			return false;
@@ -57,6 +108,14 @@
 		return true;
 	};
 
+	/**
+	 * Get the url of the stashed file as indicated by MediaWiki.
+	 *
+	 * This is only valid when the file is stashed, in other words when the
+	 * record is in 'stashed' or 'uploading' state.
+	 *
+	 * @return {string|null}  Url of the stashed file
+	 */
 	rw.Record.prototype.getStashedFileUrl = function () {
 		if ( this.filekey !== null ) {
 			return mw.util.getUrl( 'Special:UploadStash/file/' + this.filekey );
@@ -64,6 +123,13 @@
 		return null;
 	};
 
+	/**
+	 * Generate a filename for this record based on the curent metadatas.
+	 *
+	 * The format looks like 'LL-Username (locutor)-lang-transcription.wav'.
+	 *
+	 * @return {string}  Name to give to this record
+	 */
 	rw.Record.prototype.getFilename = function () {
 		return 'LL' +
 			'-' + rw.metadatas.locutor.name +
@@ -72,6 +138,12 @@
 			'-' + this.word + '.wav';
 	};
 
+	/**
+	 * Generate the wikitext for the description of the record
+	 * on Wikimedia Commons.
+	 *
+	 * @return {string}  Description of the record
+	 */
 	rw.Record.prototype.getText = function () {
 		var date = new Date(),
 			gender = '';
@@ -99,27 +171,59 @@
 			'\n}}';
 	};
 
+	/**
+	 * Get the internal file key of the record file.
+	 *
+	 * This is only set after the 'stashed' state is reached.
+	 *
+	 * @return {string|null}  File key of the record
+	 */
 	rw.Record.prototype.getFilekey = function () {
 		return this.filekey;
 	};
 
+	/**
+	 * Set the internal stash filekey of this record.
+	 *
+	 * This method is called when the file has been successfully stashed.
+	 *
+	 * @private
+	 * @param  {string} filekey Filekey of this record file
+	 */
 	rw.Record.prototype.setFilekey = function ( filekey ) {
 		this.filekey = filekey;
 		this.file = null;
 		this.setState( 'stashed' );
 	};
 
+	/**
+	 * Switch to the "uploaded" state, once the upload is successful.
+	 *
+	 * @private
+	 * @param  {Object} imageinfo Imageinfo object returned by the Api
+	 */
 	rw.Record.prototype.uploaded = function ( imageinfo ) {
 		this.imageInfo = imageinfo;
 		this.filekey = null;
 		this.setState( 'uploaded' );
 	};
 
+	/**
+	 * Switch the record to the error state.
+	 *
+	 * @private
+	 * @param  {type} error Message explaining the error.
+	 */
 	rw.Record.prototype.setError = function ( error ) {
 		this.error = error;
 		this.setState( 'error' );
 	};
 
+	/**
+	 * Check whether the record is in error or not.
+	 *
+	 * @return {boolean}  Whether an error occured
+	 */
 	rw.Record.prototype.hasFailed = function () {
 		if ( this.state === 'error' ) {
 			return true;
@@ -127,6 +231,12 @@
 		return false;
 	};
 
+	/**
+	 * Add an audio file to this record.
+	 *
+	 * @param  {Blob} audioBlob WAVE-encoded Blob containing the audio file
+	 * @return {boolean}        Whether the audio file has been set correctly
+	 */
 	rw.Record.prototype.setBlob = function ( audioBlob ) {
 		// Only allow re-recording an audio when it's not already uploaded
 		if ( [ 'up', 'ready', 'stashing', 'stashed' ].indexOf( this.state ) > -1 ) {
@@ -141,6 +251,13 @@
 		return false;
 	};
 
+	/**
+	 * Check if the record is in the request queue, or change it's state.
+	 *
+	 * @param  {boolean|undefined} inQueue if set, change the inQueue value
+	 * @return {type}                      Whether the record is in the request
+	 *                                     queue
+	 */
 	rw.Record.prototype.isInQueue = function ( inQueue ) {
 		if ( inQueue !== undefined ) {
 			this.inQueue = inQueue;
@@ -148,12 +265,23 @@
 		return this.inQueue;
 	};
 
+	/**
+	 * Clear locally the audio record file.
+	 */
 	rw.Record.prototype.remove = function () {
 		// TODO: abort request if uploading
 		// this.offStateChange();
 		this.file = null;
 	};
 
+	/**
+	 * Upload the audio file to the upload stash.
+	 *
+	 * This method is made to be used through the request queue.
+	 *
+	 * @param  {mw.Api} api          Api object to use for the request
+	 * @param  {$.Deferred} deferred A promise, to resolv when we're done
+	 */
 	rw.Record.prototype.uploadToStash = function ( api, deferred ) {
 		var record = this;
 		if ( this.state === 'ready' || this.state === 'error' ) {
@@ -172,6 +300,14 @@
 		}
 	};
 
+	/**
+	 * Push the audio file from the upload stash to Wikimedia Commons.
+	 *
+	 * This method is made to be used through the request queue.
+	 *
+	 * @param  {mw.Api} api          Api object to use for the request
+	 * @param  {$.Deferred} deferred A promise, to resolv when we're done
+	 */
 	rw.Record.prototype.finishUpload = function ( api, deferred ) {
 		var record = this;
 
@@ -200,6 +336,14 @@
 		} );
 	};
 
+	/**
+	 * Push the audio file from the upload stash to Wikimedia Commons.
+	 *
+	 * This method is not made to be used through the request queue.
+	 *
+	 * @param  {mw.Api} api  Api object to use for the request
+	 * @return {$.Deferred}  A promise, resolved when we're done
+	 */
 	rw.Record.prototype.saveWbItem = function ( api ) {
 		var record = this;
 
@@ -215,6 +359,9 @@
 		} );
 	};
 
+	/**
+	 * Fill the record's wikibase item with all known metadatas on it.
+	 */
 	rw.Record.prototype.fillWbItem = function () {
 		var propertyId,
 			today = new Date();

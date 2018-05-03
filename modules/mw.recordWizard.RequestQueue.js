@@ -1,10 +1,13 @@
 'use strict';
 
-/**
- *
- */
 ( function ( mw, rw, $ ) {
 
+	/**
+	 * Manage API requests, temporize them in a first-in-first-out pattern.
+	 *
+	 * @class rw.RequestQueue
+	 * @constructor
+	 */
 	rw.RequestQueue = function () {
 		this.maxConcurentRequests = 3;
 		this.queue = [];
@@ -12,6 +15,15 @@
 		this.api = new mw.Api();
 	};
 
+	/**
+	 * Add a request to the queue.
+	 *
+	 * If some slots are available, start directly the request.
+	 *
+	 * @param  {rw.Record} record  Context object to request on
+	 * @param  {string} type       Method name to call on the given object
+	 * @return {$.Deferred}        A promise, resolved when we're done
+	 */
 	rw.RequestQueue.prototype.push = function ( record, type ) {
 		var deferred = $.Deferred();
 
@@ -30,6 +42,11 @@
 		return deferred;
 	};
 
+	/**
+	 * Start the next request in the queue.
+	 *
+	 * @private
+	 */
 	rw.RequestQueue.prototype.next = function () {
 		var param;
 

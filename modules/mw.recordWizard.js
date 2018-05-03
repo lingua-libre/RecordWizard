@@ -1,10 +1,8 @@
 'use strict';
 
 ( function ( mw ) {
-	/**
-	 * @class mw.recordWizard
-	 * @singleton
-	 */
+
+	// create RecordWizard namespace
 	mw.recordWizard = {
 	};
 }( mediaWiki ) );

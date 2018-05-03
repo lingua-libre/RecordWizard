@@ -5,6 +5,13 @@
  */
 ( function ( mw, rw, $ ) {
 
+	/**
+	 * Represent the entire RecordWizard multi-step process.
+	 *
+	 * @class rw.RecordWizard
+	 * @constructor
+	 * @param  {Object} config Configuration options
+	 */
 	rw.RecordWizard = function ( config ) {
 
 		// Shortcut for local references
@@ -14,12 +21,19 @@
 		this.createInterface();
 	};
 
-	rw.RecordWizard.prototype.createInterface = function () {
+	/**
+	 * Load the first step.
+	 */
+	rw.RecordWizard.prototype.createInterface = function() {
 		this.initialiseSteps();
+		$( '#mwe-recwiz-spinner' ).hide();
 		this.steps.tutorial.load( null, null );
 	};
 
-	rw.RecordWizard.prototype.initialiseSteps = function () {
+	/**
+	 * Initialise each steps of the process.
+	 */
+	rw.RecordWizard.prototype.initialiseSteps = function() {
 		this.steps.tutorial = new rw.controller.Tutorial( this.api, this.config );
 		this.steps.locutor = new rw.controller.Locutor( this.api, this.config );
 		this.steps.details = new rw.controller.Details( this.api, this.config );
@@ -45,7 +59,6 @@
 		// show page.
 		rw.requestQueue = new rw.RequestQueue();
 		rw.recordWizard = new rw.RecordWizard( mw.config.get( 'RecordWizardConfig' ) );
-		$( '#mwe-recwiz-spinner' ).hide();
 	} );
 
 }( mediaWiki, mediaWiki.recordWizard, jQuery ) );
