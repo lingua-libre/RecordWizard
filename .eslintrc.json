@@ -13,6 +13,18 @@
 		"dataValues": false
 	},
 	"rules": {
-		"no-underscore-dangle": [ 0 ]
+		"no-underscore-dangle": [ 0 ],
+		"require-jsdoc": [
+			"error",
+			{
+				"require": {
+					"FunctionDeclaration": true,
+					"MethodDefinition": true,
+					"ClassDeclaration": true,
+					"ArrowFunctionExpression": true,
+					"FunctionExpression": true
+				}
+			}
+		]
 	}
 }
