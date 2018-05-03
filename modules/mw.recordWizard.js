@@ -1,10 +1,10 @@
 'use strict';
 
-( function () {
+( function ( mw ) {
 	/**
 	 * @class mw.recordWizard
 	 * @singleton
 	 */
 	mw.recordWizard = {
 	};
-}() );
+}( mediaWiki ) );
