@@ -9,7 +9,7 @@
 	 * @constructor
 	 * @param {string} name The name of this step
 	 */
-	rw.ui.Step = function( name ) {
+	rw.ui.Step = function ( name ) {
 		OO.EventEmitter.call( this );
 
 		this.name = name;
@@ -21,9 +21,9 @@
 			.addClass( 'mwe-recwiz-stepdiv' )
 			.hide();
 
-	    this.$arrow = $( '<li>' )
-	        .text( mw.message( 'mwe-recwiz-step-' + name ).text() )
-	        .appendTo( '.mwe-recwiz-steps' );
+		this.$arrow = $( '<li>' )
+			.text( mw.message( 'mwe-recwiz-step-' + name ).text() )
+			.appendTo( '.mwe-recwiz-steps' );
 
 		$( '#mwe-recwiz-content' ).append( this.$container );
 
@@ -47,7 +47,7 @@
 
 		this.$container
 			.append( this.$buttons )
-		    .show();
+			.show();
 		this.$arrow.addClass( 'mwe-recwiz-current' );
 
 		$( 'html, body' ).animate( {
@@ -80,7 +80,7 @@
 	rw.ui.Step.prototype.addNextButton = function () {
 		var ui = this;
 
-		this.stateLabel = new OO.ui.LabelWidget( {label:''} ).toggle();
+		this.stateLabel = new OO.ui.LabelWidget( { label: '' } ).toggle();
 
 		this.retryButton = new OO.ui.ButtonWidget( {
 			label: mw.message( 'mwe-recwiz-retry' ).text(),
@@ -98,11 +98,11 @@
 
 		this.nextLayout = new OO.ui.HorizontalLayout( {
 			classes: [ 'mwe-recwiz-button-next', 'mwe-recwiz-right' ],
-		    items: [
-		        this.stateLabel,
-		        this.retryButton,
-		        this.nextButton,
-		    ]
+			items: [
+				this.stateLabel,
+				this.retryButton,
+				this.nextButton
+			]
 		} );
 
 		this.nextButtonPromise.done( function () {

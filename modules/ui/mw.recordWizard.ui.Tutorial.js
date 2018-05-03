@@ -9,7 +9,7 @@
 	 * @extends rw.ui.Step
 	 * @constructor
 	 */
-	rw.ui.Tutorial = function() {
+	rw.ui.Tutorial = function () {
 		var ui = this;
 
 		rw.ui.Step.call(
@@ -40,4 +40,3 @@
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );
-
