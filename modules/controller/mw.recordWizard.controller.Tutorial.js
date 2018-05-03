@@ -9,7 +9,7 @@
 	 * @param {mw.Api} api
 	 * @param {Object} config RecordWizard config object.
 	 */
-	rw.controller.Tutorial = function( api, config ) {
+	rw.controller.Tutorial = function ( api, config ) {
 		rw.controller.Step.call(
 			this,
 			new rw.ui.Tutorial(),
@@ -25,7 +25,7 @@
 	rw.controller.Tutorial.prototype.load = function () {
 		rw.controller.Step.prototype.load.call( this );
 
-        // XXX do stuff
+		// XXX do stuff
 	};
 
 	rw.controller.Tutorial.prototype.moveNext = function () {
@@ -41,4 +41,3 @@
 	};
 
 }( mediaWiki, mediaWiki.recordWizard, jQuery, OO ) );
-

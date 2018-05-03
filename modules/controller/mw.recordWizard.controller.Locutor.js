@@ -1,6 +1,6 @@
 'use strict';
 
-( function ( mw, rw, $, OO, wb ) {
+( function ( mw, rw, $, OO ) {
 	/**
 	 * The Locutor step.
 	 *
@@ -9,7 +9,7 @@
 	 * @param {mw.Api} api
 	 * @param {Object} config RecordWizard config object.
 	 */
-	rw.controller.Locutor = function( api, config ) {
+	rw.controller.Locutor = function ( api, config ) {
 		rw.controller.Step.call(
 			this,
 			new rw.ui.Locutor(),
@@ -32,12 +32,11 @@
 		this.ui.on( 'profile-change', this.onProfileChange.bind( this ) );
 	};
 
-	rw.controller.Locutor.prototype.onProfileChange = function( locutorQid ) {
+	rw.controller.Locutor.prototype.onProfileChange = function ( locutorQid ) {
 		var locutor = {};
 		if ( locutorQid === rw.config.locutor.qid || locutorQid === '*' ) {
 			locutor = rw.config.locutor;
-		}
-		else if ( locutorQid[ 0 ] === 'Q' ) {
+		} else if ( locutorQid[ 0 ] === 'Q' ) {
 			locutor = rw.config.otherLocutors[ locutorQid ];
 		}
 
@@ -45,7 +44,7 @@
 	};
 
 	rw.controller.Locutor.prototype.moveNext = function () {
-		var controller = this,
+		var qid,
 			process = new OO.ui.Process();
 
 		this.ui.collect();
@@ -57,7 +56,7 @@
 			OO.ui.alert( mw.msg( 'mwe-recwiz-error-duplicatename', rw.metadatas.locutor.name ) );
 			return;
 		}
-		for ( var qid in rw.config.otherLocutors ) {
+		for ( qid in rw.config.otherLocutors ) {
 			if ( rw.metadatas.locutor.name === rw.config.otherLocutors[ qid ].name && rw.metadatas.locutor.qid !== qid ) {
 				OO.ui.alert( mw.msg( 'mwe-recwiz-error-duplicatename', rw.metadatas.locutor.name ) );
 				return;
@@ -68,18 +67,17 @@
 			return;
 		}
 
-
 		this.wbItem = new mw.recordWizard.wikibase.Item();
 
-		if ( ! rw.metadatas.locutor.new ) {
-			process.next( this.getExistingWbItem, this ) //get the existing item
+		if ( !rw.metadatas.locutor.new ) {
+			process.next( this.getExistingWbItem, this ); // get the existing item
 		}
 
-		process.next( this.fillWbItem, this ) //save the formed item
-		process.next( this.createOrUpdateWbItem, this ) //save the formed item
-		process.next( this.updateConfig, this ) //update recordWizard's locutors config
-		process.next( this.saveOptions, this ) //save options
-		process.next( rw.controller.Step.prototype.moveNext, this ); //go next
+		process.next( this.fillWbItem, this ); // save the formed item
+		process.next( this.createOrUpdateWbItem, this ); // save the formed item
+		process.next( this.updateConfig, this ); // update recordWizard's locutors config
+		process.next( this.saveOptions, this ); // save options
+		process.next( rw.controller.Step.prototype.moveNext, this ); // go next
 
 		process.execute();
 	};
@@ -89,19 +87,21 @@
 	};
 
 	rw.controller.Locutor.prototype.fillWbItem = function () {
-		var name = rw.metadatas.locutor.name,
+		var qid,
+			name = rw.metadatas.locutor.name,
 			gender = rw.metadatas.locutor.gender,
 			location = rw.metadatas.locutor.location,
-			languages = rw.metadatas.locutor.languages;
+			languages = rw.metadatas.locutor.languages,
+			instanceOfStatement = new mw.recordWizard.wikibase.Statement( rw.config.properties.instanceOf ).setType( 'wikibase-item' ).setValue( rw.config.items.locutor ),
+			userStatement = new mw.recordWizard.wikibase.Statement( rw.config.properties.linkedUser ).setType( 'external-id' ).setValue( mw.config.get( 'wgUserName' ) ).setRank( 2 ),
+			locationStatement = new mw.recordWizard.wikibase.Statement( rw.config.properties.residencePlace ),
+			genderStatement = new mw.recordWizard.wikibase.Statement( rw.config.properties.gender ),
+			languageStatements = [];
 
 		this.wbItem.labels = { en: name };
 		this.wbItem.descriptions = { en: 'locutor of the user "' + mw.config.get( 'wgUserName' ) + '"' };
 
-		var instanceOfStatement = new mw.recordWizard.wikibase.Statement( rw.config.properties.instanceOf ).setType( 'wikibase-item' ).setValue( rw.config.items.locutor );
-		var userStatement = new mw.recordWizard.wikibase.Statement( rw.config.properties.linkedUser ).setType( 'external-id' ).setValue( mw.config.get( 'wgUserName' ) ).setRank( 2 );
-		var locationStatement = new mw.recordWizard.wikibase.Statement( rw.config.properties.residencePlace );
 		locationStatement.setType( location === '' ? 'somevalue' : 'external-id' ).setValue( location );
-		var genderStatement = new mw.recordWizard.wikibase.Statement( rw.config.properties.gender );
 		genderStatement.setType( gender === null ? 'somevalue' : 'wikibase-item' ).setValue( gender );
 
 		this.wbItem.addOrReplaceStatements( instanceOfStatement, true );
@@ -109,8 +109,7 @@
 		this.wbItem.addOrReplaceStatements( locationStatement, true );
 		this.wbItem.addOrReplaceStatements( genderStatement, true );
 
-		var languageStatements = [];
-		for ( var qid in languages ) {
+		for ( qid in languages ) {
 			languageStatements.push( new mw.recordWizard.wikibase.Statement( rw.config.properties.spokenLanguages )
 				.setType( 'wikibase-item' )
 				.setValue( qid )
@@ -131,21 +130,20 @@
 
 	rw.controller.Locutor.prototype.createOrUpdateWbItem = function () {
 		return this.wbItem.createOrUpdate( this.api )
-		.then( function( data ) {
-			rw.metadatas.locutor.qid = data.entity.id;
-		} )
-		.fail( function( code, data ) {
-			console.log( code );
-			console.log( data );
-			//TODO: manage errors
-		} );
+			.then( function ( data ) {
+				rw.metadatas.locutor.qid = data.entity.id;
+			} )
+			.fail( function ( code, data ) {
+				console.log( code );
+				console.log( data );
+			// TODO: manage errors
+			} );
 	};
 
 	rw.controller.Locutor.prototype.updateConfig = function () {
 		if ( rw.metadatas.locutor.main ) {
 			rw.config.locutor = rw.metadatas.locutor;
-		}
-		else {
+		} else {
 			rw.config.otherLocutors[ rw.metadatas.locutor.qid ] = rw.metadatas.locutor;
 		}
 	};
@@ -154,11 +152,10 @@
 		return this.api.saveOptions( {
 			'recwiz-locutor': rw.config.locutor.qid,
 			'recwiz-otherLocutors': Object.keys( rw.config.otherLocutors ).join( ',' ),
-			'recwiz-license': rw.metadatas.license,
-		} ).fail( function() {
+			'recwiz-license': rw.metadatas.license
+		} ).fail( function () {
 			// TODO: manage errors
 		} );
 	};
 
-}( mediaWiki, mediaWiki.recordWizard, jQuery, OO, wikibase ) );
-
+}( mediaWiki, mediaWiki.recordWizard, jQuery, OO ) );

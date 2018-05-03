@@ -11,7 +11,7 @@
 	 * @param {mw.Api} api
 	 * @param {Object} config RecordWizard config object.
 	 */
-	rw.controller.Step = function( ui, api, config ) {
+	rw.controller.Step = function ( ui, api, config ) {
 		var step = this;
 
 		OO.EventEmitter.call( this );
@@ -22,6 +22,8 @@
 		this.api = api;
 
 		this.ui = ui;
+
+		this.config = config;
 
 		this.ui.on( 'next-step', function () {
 			step.moveNext();
@@ -90,8 +92,6 @@
 	 * Cleanup this step.
 	 */
 	rw.controller.Step.prototype.unload = function () {
-		var step = this;
-
 		this.allowCloseWindow.release();
 		this.ui.unload();
 
@@ -136,7 +136,9 @@
 	 * @return {boolean}
 	 */
 	rw.controller.Step.prototype.hasData = function () {
-		for ( var word in rw.records ) {
+		var word;
+
+		for ( word in rw.records ) {
 			if ( rw.records[ word ].hasData() ) {
 				return true;
 			}
@@ -144,42 +146,48 @@
 		return false;
 	};
 
-	rw.controller.Step.prototype.removeWaitingRecords = function() {
-	    for ( var word in rw.records ) {
-	        var state = rw.records[ word ].getState();
-	        if ( state === 'up' ) {
-	            rw.records[ word ].remove();
-	            delete rw.records[ word ];
-	        }
-	    }
+	rw.controller.Step.prototype.removeWaitingRecords = function () {
+		var word, state;
+
+		for ( word in rw.records ) {
+			state = rw.records[ word ].getState();
+			if ( state === 'up' ) {
+				rw.records[ word ].remove();
+				delete rw.records[ word ];
+			}
+		}
 	};
 
-	rw.controller.Step.prototype.removePendingRecords = function() {
-	    for ( var word in rw.records ) {
-	        var state = rw.records[ word ].getState();
-	        if ( [ 'stashing', 'uploading', 'finalizing' ].indexOf( state ) > -1 ) {
-	            rw.records[ word ].remove();
-	            delete rw.records[ word ];
-	        }
-	    }
+	rw.controller.Step.prototype.removePendingRecords = function () {
+		var word, state;
+
+		for ( word in rw.records ) {
+			state = rw.records[ word ].getState();
+			if ( [ 'stashing', 'uploading', 'finalizing' ].indexOf( state ) > -1 ) {
+				rw.records[ word ].remove();
+				delete rw.records[ word ];
+			}
+		}
 	};
 
-	rw.controller.Step.prototype.removeFailedRecords = function() {
-	    for ( var word in rw.records ) {
-	        if ( rw.records[ word ].hasFailed() ) {
-	            rw.records[ word ].remove();
-	            delete rw.records[ word ];
-	        }
-	    }
+	rw.controller.Step.prototype.removeFailedRecords = function () {
+		var word;
+
+		for ( word in rw.records ) {
+			if ( rw.records[ word ].hasFailed() ) {
+				rw.records[ word ].remove();
+				delete rw.records[ word ];
+			}
+		}
 	};
 
-    rw.controller.Step.prototype.switchState = function( word, state, prevState ) {
-        console.log( prevState + '-' + state );
-        if ( prevState !== 'up' ) {
-            rw.metadatas.statesCount[ prevState ]--;
-        }
-        rw.metadatas.statesCount[ state ]++;
-        this.ui.setItemState( word, state );
-    };
+	rw.controller.Step.prototype.switchState = function ( word, state, prevState ) {
+		console.log( prevState + '-' + state );
+		if ( prevState !== 'up' ) {
+			rw.metadatas.statesCount[ prevState ]--;
+		}
+		rw.metadatas.statesCount[ state ]++;
+		this.ui.setItemState( word, state );
+	};
 
 }( mediaWiki, mediaWiki.recordWizard, OO, jQuery ) );
