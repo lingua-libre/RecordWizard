@@ -4,10 +4,11 @@
 	/**
 	 * The Confirm step.
 	 *
-	 * @class
+	 * @class rw.controller.Publish
 	 * @extends mw.recordWizard.controller.Step
-	 * @param {mw.Api} api
-	 * @param {Object} config RecordWizard config object.
+	 * @constructor
+	 * @param {mw.Api} api     API instance to perform requests
+	 * @param {Object} config  RecordWizard config object.
 	 */
 	rw.controller.Publish = function ( api, config ) {
 		rw.controller.Step.call(
@@ -22,6 +23,9 @@
 
 	OO.inheritClass( rw.controller.Publish, rw.controller.Step );
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.controller.Publish.prototype.load = function () {
 		var word,
 			controller = this;
@@ -41,6 +45,9 @@
 		} );
 	};
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.controller.Publish.prototype.unload = function () {
 		var word;
 
@@ -52,6 +59,9 @@
 		rw.controller.Step.prototype.unload.call( this );
 	};
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.controller.Publish.prototype.moveNext = function () {
 		var word, process;
 
@@ -75,6 +85,9 @@
 		}
 	};
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.controller.Publish.prototype.upload = function ( word ) {
 		return rw.requestQueue.push( rw.records[ word ], 'finishUpload' );
 	};

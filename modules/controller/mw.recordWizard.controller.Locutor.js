@@ -4,10 +4,11 @@
 	/**
 	 * The Locutor step.
 	 *
-	 * @class
+	 * @class rw.controller.Locutor
 	 * @extends mw.recordWizard.controller.Step
-	 * @param {mw.Api} api
-	 * @param {Object} config RecordWizard config object.
+	 * @constructor
+	 * @param {mw.Api} api     API instance to perform requests
+	 * @param {Object} config  RecordWizard config object.
 	 */
 	rw.controller.Locutor = function ( api, config ) {
 		rw.controller.Step.call(
@@ -22,6 +23,9 @@
 
 	OO.inheritClass( rw.controller.Locutor, rw.controller.Step );
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.controller.Locutor.prototype.load = function () {
 		if ( rw.metadatas.locutor === undefined ) {
 			rw.metadatas.locutor = {};
@@ -32,6 +36,12 @@
 		this.ui.on( 'profile-change', this.onProfileChange.bind( this ) );
 	};
 
+	/**
+	 * Event handler, called when the user changes the selected profile.
+	 *
+	 * @private
+	 * @param  {string} locutorQid Qid of the newly selected locutor
+	 */
 	rw.controller.Locutor.prototype.onProfileChange = function ( locutorQid ) {
 		var locutor = {};
 		if ( locutorQid === rw.config.locutor.qid || locutorQid === '*' ) {
@@ -43,6 +53,9 @@
 		this.ui.populateProfile( locutor );
 	};
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.controller.Locutor.prototype.moveNext = function () {
 		var qid,
 			process = new OO.ui.Process();
@@ -82,10 +95,16 @@
 		process.execute();
 	};
 
+	/**
+	 * Get the Wikibase Item of the selected locutor through the API.
+	 */
 	rw.controller.Locutor.prototype.getExistingWbItem = function () {
 		return this.wbItem.setId( rw.metadatas.locutor.qid ).getFromApi( this.api );
 	};
 
+	/**
+	 * Fill the Wikibase item of the locutor with the values given by the UI.
+	 */
 	rw.controller.Locutor.prototype.fillWbItem = function () {
 		var qid,
 			name = rw.metadatas.locutor.name,
@@ -128,6 +147,11 @@
 		this.wbItem.addOrReplaceStatements( languageStatements, true );
 	};
 
+	/**
+	 * Save the Wikibase item (update it if it already exists, create it if not)
+	 *
+	 * @return {$.Deferred}  A promise, resolved when we're done
+	 */
 	rw.controller.Locutor.prototype.createOrUpdateWbItem = function () {
 		return this.wbItem.createOrUpdate( this.api )
 			.then( function ( data ) {
@@ -140,6 +164,9 @@
 			} );
 	};
 
+	/**
+	 * Update the global config with the new informations we got on the locutor.
+	 */
 	rw.controller.Locutor.prototype.updateConfig = function () {
 		if ( rw.metadatas.locutor.main ) {
 			rw.config.locutor = rw.metadatas.locutor;
@@ -148,6 +175,15 @@
 		}
 	};
 
+	/**
+	 * Save inside user's preferences some options.
+	 *
+	 * This includes the main locutor Qid, all the secondary locutors Qid, and
+	 * the preferred license. This will allow to preload those data at the next
+	 * use of the RecordWizard.
+	 *
+	 * @return {$.Deferred}  A promise, resolved when we're done
+	 */
 	rw.controller.Locutor.prototype.saveOptions = function () {
 		return this.api.saveOptions( {
 			'recwiz-locutor': rw.config.locutor.qid,

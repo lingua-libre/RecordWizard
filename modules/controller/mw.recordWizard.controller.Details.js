@@ -4,10 +4,11 @@
 	/**
 	 * The Details step.
 	 *
-	 * @class
+	 * @class rw.controller.Details
 	 * @extends mw.recordWizard.controller.Step
-	 * @param {mw.Api} api
-	 * @param {Object} config RecordWizard config object.
+	 * @constructor
+	 * @param {mw.Api} api     API instance to perform requests
+	 * @param {Object} config  RecordWizard config object
 	 */
 	rw.controller.Details = function ( api, config ) {
 		rw.controller.Step.call(
@@ -22,6 +23,9 @@
 
 	OO.inheritClass( rw.controller.Details, rw.controller.Step );
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.controller.Details.prototype.load = function () {
 		var className;
 		rw.controller.Step.prototype.load.call( this );
@@ -39,6 +43,9 @@
 		this.ui.on( 'wordlist-change', this.onWordListChange.bind( this ) );
 	};
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.controller.Details.prototype.moveNext = function () {
 		var i, randomIndex, tmp;
 
@@ -67,6 +74,12 @@
 		rw.controller.Step.prototype.moveNext.call( this );
 	};
 
+	/**
+	 * Instanciate and load the given generator
+	 *
+	 * @param  {string} className Name of the generator's class, as it can be
+	 *                          accessed in the rw.generator namespace
+	 */
 	rw.controller.Details.prototype.setupGenerator = function ( className ) {
 		var name = rw.generator[ className ].static.name;
 
@@ -81,30 +94,45 @@
 		this.ui.addGeneratorButton( this.generators[ name ] );
 	};
 
+	/**
+	 * Add words to our global word list.
+	 *
+	 * @param  {Array} list list of word strings and/or objects containing the
+	 *                      word and extra metadata
+	 */
 	rw.controller.Details.prototype.addWords = function ( list ) {
 		var i, word, extra;
-		if ( list.length > 0 ) {
-			for ( i = 0; i < list.length; i++ ) {
-				word = list[ i ];
-				extra = {};
-				if ( typeof list[ i ] !== 'string' ) {
-					word = list[ i ].text;
-					delete list[ i ].text;
-					extra = list[ i ];
-				}
-
-				this.ui.addWord( word );
-				rw.records[ word ].setExtra( extra );
+		for ( i = 0; i < list.length; i++ ) {
+			word = list[ i ];
+			extra = {};
+			if ( typeof list[ i ] !== 'string' ) {
+				word = list[ i ].text;
+				delete list[ i ].text;
+				extra = list[ i ];
 			}
+
+			this.ui.addWord( word );
+			rw.records[ word ].setExtra( extra );
 		}
 	};
 
+	/**
+	 * Event handler, called when a word is added to the list, regardless of
+	 * the method used.
+	 *
+	 * @private
+	 * @param  {string} word  textual transcription of the word added
+	 * @param  {number} index position of the new word in the list
+	 */
 	rw.controller.Details.prototype.onWordListAdd = function ( word, index ) {
 		if ( rw.records[ word ] === undefined ) {
 			rw.records[ word ] = new rw.Record( word );
 		}
 	};
 
+	/**
+	 * Event handler called when a change happen in the word list.
+	 */
 	rw.controller.Details.prototype.onWordListChange = function () {
 		var nbWords = this.ui.countWords();
 		// TODO: find a place to display word count

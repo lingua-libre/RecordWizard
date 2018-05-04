@@ -4,12 +4,13 @@
 	/**
 	 * Represents a step in the wizard.
 	 *
-	 * @class
+	 * @class rw.controller.Step
 	 * @mixins OO.EventEmitter
 	 * @abstract
-	 * @param {mw;recorWizard.ui.Step} ui The UI object that controls this step.
-	 * @param {mw.Api} api
-	 * @param {Object} config RecordWizard config object.
+	 * @constructor
+	 * @param {mw.recorWizard.ui.Step} ui The UI object that controls this step
+	 * @param {mw.Api} api                API instance to perform requests
+	 * @param {Object} config             RecordWizard config object
 	 */
 	rw.controller.Step = function ( ui, api, config ) {
 		var step = this;
@@ -121,19 +122,10 @@
 	};
 
 	/**
-	 * Check if upload is able to be put through this step's changes.
-	 *
-	 * @return {boolean}
-	 */
-	rw.controller.Step.prototype.canTransition = function () {
-		return true;
-	};
-
-	/**
 	 * Check if this step has data, to test if the window can be close (i.e. if
 	 * content is going to be lost)
 	 *
-	 * @return {boolean}
+	 * @return {boolean} Wether the step has data or not
 	 */
 	rw.controller.Step.prototype.hasData = function () {
 		var word;
@@ -146,6 +138,9 @@
 		return false;
 	};
 
+	/**
+	 * Remove all the records objects from the list that has no audio file.
+	 */
 	rw.controller.Step.prototype.removeWaitingRecords = function () {
 		var word, state;
 
@@ -158,6 +153,9 @@
 		}
 	};
 
+	/**
+	 * Remove all the records objects from the list whose requests are pending.
+	 */
 	rw.controller.Step.prototype.removePendingRecords = function () {
 		var word, state;
 
@@ -170,6 +168,9 @@
 		}
 	};
 
+	/**
+	 * Remove all records objects from the list that has encountered an error.
+	 */
 	rw.controller.Step.prototype.removeFailedRecords = function () {
 		var word;
 
@@ -181,6 +182,13 @@
 		}
 	};
 
+	/**
+	 * Change the state of a specific word and track this change.
+	 *
+	 * @param  {string} word      textual transcription of the word to change state
+	 * @param  {string} state     new state to switch the word tp
+	 * @param  {string} prevState previous state of the word, for tracking purpose
+	 */
 	rw.controller.Step.prototype.switchState = function ( word, state, prevState ) {
 		console.log( prevState + '-' + state );
 		if ( prevState !== 'up' ) {

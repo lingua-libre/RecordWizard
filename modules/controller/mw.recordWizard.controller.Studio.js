@@ -4,10 +4,11 @@
 	/**
 	 * The Studio step.
 	 *
-	 * @class
+	 * @class rw.controller.Studio
 	 * @extends mw.recordWizard.controller.Step
-	 * @param {mw.Api} api
-	 * @param {Object} config RecordWizard config object.
+	 * @constructor
+	 * @param {mw.Api} api     API instance to perform requests
+	 * @param {Object} config  RecordWizard config object.
 	 */
 	rw.controller.Studio = function ( api, config ) {
 		rw.controller.Step.call(
@@ -22,6 +23,9 @@
 
 	OO.inheritClass( rw.controller.Studio, rw.controller.Step );
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.controller.Studio.prototype.load = function () {
 		var word,
 			controller = this;
@@ -124,6 +128,9 @@
 		} );
 	};
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.controller.Studio.prototype.unload = function () {
 		var word;
 
@@ -139,6 +146,11 @@
 		rw.controller.Step.prototype.unload.call( this );
 	};
 
+	/**
+	 * Event handler called when an audio record has just ended.
+	 *
+	 * @param  {rw.libs.AudioRecord} audioRecord Object containing the audio datas
+	 */
 	rw.controller.Studio.prototype.onStop = function ( audioRecord ) {
 		var currentWord = this.currentWord;
 
@@ -150,6 +162,13 @@
 		}
 	};
 
+	/**
+	 * Launch the upload to the stash of the given audio record.
+	 *
+	 * @param  {string} word textual transcription, must match an existing
+	 *                       listed record object
+	 * @param  {Blob} blob   WAVE-encoded audio file
+	 */
 	rw.controller.Studio.prototype.upload = function ( word, blob ) {
 		if ( blob !== undefined ) {
 			rw.records[ word ].setBlob( blob );
@@ -158,6 +177,11 @@
 		rw.requestQueue.push( rw.records[ word ], 'uploadToStash' );
 	};
 
+	/**
+	 * Go to the next word in the list and start a new record for it.
+	 *
+	 * @return {boolean}  Whether a new record has started or not
+	 */
 	rw.controller.Studio.prototype.startNextRecord = function () {
 		var i,
 			index = rw.metadatas.words.indexOf( this.currentWord ),
@@ -187,6 +211,12 @@
 		return true;
 	};
 
+	/**
+	 * Change the selected word.
+	 *
+	 * @param  {string} word textual transcription, must match an existing
+	 *                       listed record object
+	 */
 	rw.controller.Studio.prototype.selectWord = function ( word ) {
 		this.recorder.cancel();
 
@@ -200,6 +230,9 @@
 		}
 	};
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.controller.Studio.prototype.moveNext = function ( skipFirstWarning ) {
 		var controller = this,
 			total = rw.metadatas.statesCount.error + rw.metadatas.statesCount.stashed + rw.metadatas.statesCount.stashing;
@@ -244,6 +277,9 @@
 		rw.controller.Step.prototype.moveNext.call( this );
 	};
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.controller.Studio.prototype.movePrevious = function () {
 		// TODO: warning about a potential data loss
 
