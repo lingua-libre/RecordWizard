@@ -183,25 +183,17 @@
 	 * @return {boolean}  Whether a new record has started or not
 	 */
 	rw.controller.Studio.prototype.startNextRecord = function () {
-		var i,
-			index = rw.metadatas.words.indexOf( this.currentWord ),
-			newWordAvailable = false;
+		var index = rw.metadatas.words.indexOf( this.currentWord );
 
 		if ( index < 0 ) {
 			return false;
 		}
 
 		if ( this.isRecording ) {
-			for ( i = index + 1; i < rw.metadatas.words.length; i++ ) {
-				if ( rw.records[ rw.metadatas.words[ i ] ].getState() === 'up' ) {
-					newWordAvailable = true;
-					this.currentWord = rw.metadatas.words[ i ];
-					break;
-				}
-			}
-			if ( !newWordAvailable ) {
+			if ( index >= rw.metadatas.words.length - 1 ) {
 				return false;
 			}
+			this.currentWord = rw.metadatas.words[ index + 1 ];
 		}
 
 		this.recorder.start();
