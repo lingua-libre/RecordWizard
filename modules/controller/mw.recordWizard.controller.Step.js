@@ -190,7 +190,6 @@
 	 * @param  {string} prevState previous state of the word, for tracking purpose
 	 */
 	rw.controller.Step.prototype.switchState = function ( word, state, prevState ) {
-		console.log( prevState + '-' + state );
 		if ( prevState !== 'up' ) {
 			rw.metadatas.statesCount[ prevState ]--;
 		}

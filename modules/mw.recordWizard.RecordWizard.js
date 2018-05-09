@@ -24,7 +24,7 @@
 	/**
 	 * Load the first step.
 	 */
-	rw.RecordWizard.prototype.createInterface = function() {
+	rw.RecordWizard.prototype.createInterface = function () {
 		this.initialiseSteps();
 		$( '#mwe-recwiz-spinner' ).hide();
 		this.steps.tutorial.load( null, null );
@@ -33,7 +33,7 @@
 	/**
 	 * Initialise each steps of the process.
 	 */
-	rw.RecordWizard.prototype.initialiseSteps = function() {
+	rw.RecordWizard.prototype.initialiseSteps = function () {
 		this.steps.tutorial = new rw.controller.Tutorial( this.api, this.config );
 		this.steps.locutor = new rw.controller.Locutor( this.api, this.config );
 		this.steps.details = new rw.controller.Details( this.api, this.config );

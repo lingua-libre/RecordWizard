@@ -59,7 +59,6 @@
 	};
 
 	rw.ui.Publish.prototype.showNextButton = function () {
-		console.log( rw.metadatas.statesCount );
 		if ( rw.metadatas.statesCount.uploading + rw.metadatas.statesCount.uploaded + rw.metadatas.statesCount.finalizing > 0 ) {
 			this.previousButton.setDisabled( true );
 			this.retryButton.toggle( false );

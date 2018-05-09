@@ -263,7 +263,6 @@
 
 		this.recorder.cancel();
 		this.ui.onStop();
-		console.log( rw.metadatas.statesCount );
 		if ( total < rw.metadatas.words.length && !skipFirstWarning ) {
 			OO.ui.confirm( mw.message( 'mwe-recwiz-warning-wordsleft' ).text() ).done( function ( confirmed ) {
 				if ( confirmed ) {

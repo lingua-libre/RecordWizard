@@ -79,7 +79,7 @@
 
 			process.next( this.upload.bind( this, word ) ); // upload file to commons
 			process.next( this.saveWbItem.bind( this, word ) ); // save the formed item
-			process.next( console.log.bind( this, 'Done :)' ) ); // TODO: do something cool
+			// TODO: do something cool once it's done --> process.next(  );
 
 			process.execute();
 		}
