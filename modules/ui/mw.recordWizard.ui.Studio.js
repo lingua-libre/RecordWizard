@@ -78,7 +78,7 @@
 		this.$studio.append( this.$head ).append( this.$list.append( this.$wordInput ) );
 		this.$container.prepend( this.$studio );
 
-		this.$recordCounter = $( '<div>' ).addClass( 'mwe-recwiz-record-count' ).hide();
+		this.$recordCounter = $( '<div>' ).addClass( 'mwe-recwiz-record-count mwe-recwiz-right' ).hide();
 		this.$container.append( this.$recordCounter );
 	};
 
@@ -240,8 +240,10 @@
 	 * current state.
 	 */
 	rw.ui.Studio.prototype.showNextButton = function () {
-		console.log( rw.metadatas.statesCount );
-		if ( Object.keys( rw.records ).length === 0 ) {
+		var count = rw.metadatas.statesCount,
+			total = count.stashed + count.stashing + count.error;
+
+		if ( total === 0 ) {
 			this.nextButton.toggle( false );
 			this.stateLabel.toggle( false );
 			this.retryButton.toggle( false );
