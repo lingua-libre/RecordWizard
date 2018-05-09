@@ -186,7 +186,7 @@
 	 * Change the state of a specific word and track this change.
 	 *
 	 * @param  {string} word      textual transcription of the word to change state
-	 * @param  {string} state     new state to switch the word tp
+	 * @param  {string} state     new state to switch the word to
 	 * @param  {string} prevState previous state of the word, for tracking purpose
 	 */
 	rw.controller.Step.prototype.switchState = function ( word, state, prevState ) {

@@ -21,6 +21,9 @@
 
 	OO.inheritClass( rw.ui.Studio, rw.ui.Step );
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.ui.Studio.prototype.load = function () {
 		var word,
 			ui = this;
@@ -44,11 +47,17 @@
 		} );
 	};
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.ui.Studio.prototype.unload = function () {
 		$( document ).off( 'keydown' );
 		rw.ui.Step.prototype.unload.call( this );
 	};
 
+	/**
+	 * Build all the needed HTML nodes and add them to the DOM.
+	 */
 	rw.ui.Studio.prototype.generateUI = function () {
 		var i;
 
@@ -73,6 +82,11 @@
 		this.$container.append( this.$recordCounter );
 	};
 
+	/**
+	 * Event handler called when an audio record has just ended.
+	 *
+	 * @private
+	 */
 	rw.ui.Studio.prototype.onReady = function () {
 		var word,
 			ui = this;
@@ -112,11 +126,23 @@
 		this.$head.addClass( 'studio-ready' );
 	};
 
+	/**
+	 * Event handler called when an audio record has just started.
+	 *
+	 * @private
+	 */
 	rw.ui.Studio.prototype.onStart = function () {
 		this.$head.addClass( 'studio-rec' );
 		this.amplitudeGraph.start();
 	};
 
+	/**
+	 * Event handler called each ~100ms when a record is performed
+	 *
+	 * @private
+	 * @param  {Float32Array} samples Sound samples of the audio recorded since
+	 *                                last call
+	 */
 	rw.ui.Studio.prototype.onRecord = function ( samples ) {
 		var i, amplitude,
 			amplitudeMax = 0;
@@ -130,19 +156,40 @@
 		this.amplitudeGraph.push( amplitudeMax );
 	};
 
+	/**
+	 * Event handler called when an audio record has just ended.
+	 *
+	 * @private
+	 */
 	rw.ui.Studio.prototype.onStop = function () {
 		this.$head.removeClass( 'studio-rec' );
 		this.amplitudeGraph.stop();
 	};
 
+	/**
+	 * Event handler called when an audio record has been canceled.
+	 *
+	 * @private
+	 */
 	rw.ui.Studio.prototype.onCancel = function () {
 
 	};
 
+	/**
+	 * Event handler called when an audio record got saturated.
+	 *
+	 * @private
+	 */
 	rw.ui.Studio.prototype.onSaturate = function () {
 
 	};
 
+	/**
+	 * Change the selected item in the word list
+	 *
+	 * @param  {string} word textual transcription, must match an existing
+	 *                       listed record object
+	 */
 	rw.ui.Studio.prototype.setSelectedItem = function ( word ) {
 		$( '.studio-wordlist-selected' ).removeClass( 'studio-wordlist-selected' );
 		if ( this.recordItems[ word ] !== undefined ) {
@@ -157,6 +204,14 @@
 		} );
 	};
 
+	/**
+	 * Change the state of a specific word
+	 *
+	 * @param  {string} word      textual transcription, must match an existing
+	 *                            listed record object
+	 * @param  {string} state     new state to switch the word to
+	 * @param  {string} prevState previous state of the word
+	 */
 	rw.ui.Studio.prototype.setItemState = function ( word, state, prevState ) {
 		// TODO: use a correlation table to asociate state and HTML class
 		if ( this.recordItems[ word ] !== undefined ) {
@@ -169,11 +224,21 @@
 		this.updateCounter();
 	};
 
+	/**
+	 * Add a word to the list.
+	 *
+	 * @param  {string} word      textual transcription, must match an existing
+	 *                            listed record object
+	 */
 	rw.ui.Studio.prototype.addWord = function ( word ) {
 		this.recordItems[ word ] = $( '<li>' ).text( word );
 		this.$wordInput.before( this.recordItems[ word ] );
 	};
 
+	/**
+	 * Display the next button, with labels and actions depending of the
+	 * current state.
+	 */
 	rw.ui.Studio.prototype.showNextButton = function () {
 		console.log( rw.metadatas.statesCount );
 		if ( Object.keys( rw.records ).length === 0 ) {
@@ -211,6 +276,9 @@
 
 	};
 
+	/**
+	 * Update the upload count display on the bottom of tyhe page.
+	 */
 	rw.ui.Studio.prototype.updateCounter = function () {
 		var count = rw.metadatas.statesCount,
 			total = count.stashed + count.stashing + count.error;
@@ -220,6 +288,12 @@
 		}
 	};
 
+	/**
+	 * Small animated vertical bar graph showing the amplitude of a sound stream.
+	 *
+	 * @class rw.ui.AmplitudeGraph
+	 * @constructor
+	 */
 	rw.ui.AmplitudeGraph = function () {
 		this.$container = null;
 		this.amplitudes = [];
@@ -230,6 +304,18 @@
 		this.ctx.save();
 	};
 
+	/**
+	 * Start to animate the amplitude graph.
+	 */
+	rw.ui.AmplitudeGraph.prototype.start = function () {
+		this.isRecording = true;
+
+		requestAnimationFrame( this.draw.bind( this ) );
+	};
+
+	/**
+	 * Stop the animation loop and clear the graph.
+	 */
 	rw.ui.AmplitudeGraph.prototype.stop = function () {
 		this.isRecording = false;
 
@@ -237,12 +323,11 @@
 		this.ctx.clearRect( 0, 0, this.$canvas.width, this.$canvas.height );
 	};
 
-	rw.ui.AmplitudeGraph.prototype.start = function () {
-		this.isRecording = true;
-
-		requestAnimationFrame( this.draw.bind( this ) );
-	};
-
+	/**
+	 * Main animation loop of the AmplitudeGraph
+	 *
+	 * @private
+	 */
 	rw.ui.AmplitudeGraph.prototype.draw = function () {
 		var i, height;
 
@@ -270,6 +355,11 @@
 		requestAnimationFrame( this.draw.bind( this ) );
 	};
 
+	/**
+	 * Set or change the container in which the graph is displayed.
+	 *
+	 * @param  {JQuery} container node of the container to use
+	 */
 	rw.ui.AmplitudeGraph.prototype.setContainer = function ( container ) {
 		this.amplitudes = [];
 		this.ctx.clearRect( 0, 0, this.$canvas.width, this.$canvas.height );
@@ -285,6 +375,11 @@
 		this.ctx.clearRect( 0, 0, this.$canvas.width, this.$canvas.height );
 	};
 
+	/**
+	 * Add a new value to display on the graph.
+	 *
+	 * @param  {number} amplitude Max amplitude mesured in the last timeframe
+	 */
 	rw.ui.AmplitudeGraph.prototype.push = function ( amplitude ) {
 		this.amplitudes.push( amplitude );
 

@@ -6,6 +6,7 @@
 	 *
 	 * @class rw.ui.Step
 	 * @mixins OO.EventEmitter
+	 * @abstract
 	 * @constructor
 	 * @param {string} name The name of this step
 	 */
@@ -37,8 +38,6 @@
 
 	/**
 	 * Initialize this step.
-	 *
-	 * @param {mw.UploadWizardUpload[]} uploads
 	 */
 	rw.ui.Step.prototype.load = function () {
 		var offset = $( 'h1:first' ).offset();
@@ -66,10 +65,16 @@
 		this.$container.children().detach();
 	};
 
+	/**
+	 * Enable the 'next' button, whenever it is added to the UI.
+	 */
 	rw.ui.Step.prototype.enableNextButton = function () {
 		this.nextButtonPromise.resolve();
 	};
 
+	/**
+	 * Enable the 'previous' button, whenever it is added to the UI.
+	 */
 	rw.ui.Step.prototype.enablePreviousButton = function () {
 		this.previousButtonPromise.resolve();
 	};

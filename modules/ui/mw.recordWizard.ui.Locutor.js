@@ -21,6 +21,9 @@
 
 	OO.inheritClass( rw.ui.Locutor, rw.ui.Step );
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.ui.Locutor.prototype.load = function () {
 		var qid, code,
 			ui = this,

@@ -7,15 +7,11 @@
 	 * @class rw.controller.Tutorial
 	 * @extends mw.recordWizard.controller.Step
 	 * @constructor
-	 * @param {mw.Api} api     API instance to perform requests
-	 * @param {Object} config  RecordWizard config object.
 	 */
-	rw.controller.Tutorial = function ( api, config ) {
+	rw.controller.Tutorial = function () {
 		rw.controller.Step.call(
 			this,
-			new rw.ui.Tutorial(),
-			api,
-			config
+			new rw.ui.Tutorial()
 		);
 
 		this.stepName = 'tutorial';

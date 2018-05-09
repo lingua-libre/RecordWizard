@@ -21,6 +21,9 @@
 
 	OO.inheritClass( rw.ui.Details, rw.ui.Step );
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.ui.Details.prototype.load = function () {
 		var qid, i,
 			ui = this,
@@ -99,6 +102,11 @@
 		this.$container.prepend( this.layout.$element );
 	};
 
+	/**
+	 * Add a button to open the given generator
+	 *
+	 * @param  {rw.generator.Generator} generator Generator to add to the UI
+	 */
 	rw.ui.Details.prototype.addGeneratorButton = function ( generator ) {
 		var ui = this,
 			button = new OO.ui.ButtonWidget( { label: generator.label, icon: 'add' } );
@@ -113,6 +121,13 @@
 		this.generatorButtons.addItems( [ button ] );
 	};
 
+	/**
+	 * Add a word to the list 
+	 *
+	 * @param  {string} word textual transcription, must match an existing
+	 *                       listed record object
+	 * @return {type}        Whether the item was added successfully
+	 */
 	rw.ui.Details.prototype.addWord = function ( word ) {
 		return this.wordList.addTag( word );
 	};

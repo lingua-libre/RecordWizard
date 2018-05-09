@@ -28,6 +28,9 @@
 
 	OO.inheritClass( rw.ui.Tutorial, rw.ui.Step );
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.ui.Tutorial.prototype.load = function () {
 		rw.ui.Step.prototype.load.call( this );
 

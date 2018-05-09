@@ -1,7 +1,7 @@
 'use strict';
 
 ( function ( rw ) {
-	// create RecordWizard ui namespace
+	// create RecordWizard UI namespace
 	rw.ui = {
 	};
 }( mediaWiki.recordWizard ) );

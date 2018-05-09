@@ -21,6 +21,9 @@
 
 	OO.inheritClass( rw.ui.Publish, rw.ui.Step );
 
+	/**
+	 * @inheritDoc
+	 */
 	rw.ui.Publish.prototype.load = function () {
 		var word, $audio;
 		rw.ui.Step.prototype.load.call( this );
