@@ -91,6 +91,7 @@
 		this.languageSelector.setValue( rw.metadatas.language || rw.config.savedLanguage );
 
 		// Manage events
+		this.languageSelector.on( 'change', this.clearWords.bind( this ) );
 		this.wordList.on( 'change', function () {
 			ui.emit( 'wordlist-change' );
 		} );
@@ -122,7 +123,7 @@
 	};
 
 	/**
-	 * Add a word to the list 
+	 * Add a word to the list
 	 *
 	 * @param  {string} word textual transcription, must match an existing
 	 *                       listed record object
