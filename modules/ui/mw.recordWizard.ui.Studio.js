@@ -130,9 +130,12 @@
 	 * Event handler called when an audio record has just started.
 	 *
 	 * @private
+	 * @param  {string} word textual transcription, must match an existing
+	 *                       listed record object
 	 */
-	rw.ui.Studio.prototype.onStart = function () {
+	rw.ui.Studio.prototype.onStart = function ( word ) {
 		this.$head.addClass( 'studio-rec' );
+		this.recordItems[ word ].removeClass( 'mwe-recwiz-word-error' );
 		this.amplitudeGraph.start();
 	};
 
@@ -167,21 +170,14 @@
 	};
 
 	/**
-	 * Event handler called when an audio record has been canceled.
-	 *
-	 * @private
-	 */
-	rw.ui.Studio.prototype.onCancel = function () {
-
-	};
-
-	/**
 	 * Event handler called when an audio record got saturated.
 	 *
 	 * @private
+	 * @param  {string} word textual transcription, must match an existing
+	 *                       listed record object
 	 */
-	rw.ui.Studio.prototype.onSaturate = function () {
-
+	rw.ui.Studio.prototype.onSaturate = function ( word ) {
+		this.recordItems[ word ].addClass( 'mwe-recwiz-word-error' );
 	};
 
 	/**

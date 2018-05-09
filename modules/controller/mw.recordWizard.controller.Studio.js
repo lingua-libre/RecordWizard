@@ -58,11 +58,11 @@
 		this.currentWord = rw.metadatas.words[ 0 ];
 
 		this.recorder.on( 'ready', this.ui.onReady.bind( this.ui ) );
-		this.recorder.on( 'started', this.ui.onStart.bind( this.ui ) );
+		this.recorder.on( 'started', this.onStart.bind( this ) );
 		this.recorder.on( 'recording', this.ui.onRecord.bind( this.ui ) );
 		this.recorder.on( 'stoped', this.onStop.bind( this ) );
-		this.recorder.on( 'canceled', this.ui.onCancel.bind( this.ui ) );
-		this.recorder.on( 'saturated', this.ui.onSaturate.bind( this.ui ) );
+		this.recorder.on( 'canceled', this.onCancel.bind( this ) );
+		this.recorder.on( 'saturated', this.onSaturate.bind( this ) );
 
 		this.ui.on( 'studiobutton-click', function () {
 
@@ -147,6 +147,15 @@
 	};
 
 	/**
+	 * Event handler called when an audio record has just started.
+	 *
+	 * @private
+	 */
+	rw.controller.Studio.prototype.onStart = function () {
+		this.ui.onStart( this.currentWord );
+	};
+
+	/**
 	 * Event handler called when an audio record has just ended.
 	 *
 	 * @param  {rw.libs.AudioRecord} audioRecord Object containing the audio datas
@@ -160,6 +169,28 @@
 			this.isRecording = false;
 			this.ui.onStop();
 		}
+	};
+
+	/**
+	 * Event handler called when an audio record has been canceled.
+	 *
+	 * @private
+	 * @param  {string} reason Why has the record been canceled
+	 */
+	rw.controller.Studio.prototype.onCancel = function ( reason ) {
+		if ( reason === 'saturated' ) {
+			this.isRecording = false;
+			this.startNextRecord();
+		}
+	};
+
+	/**
+	 * Event handler called when an audio record got saturated.
+	 *
+	 * @private
+	 */
+	rw.controller.Studio.prototype.onSaturate = function () {
+		this.ui.onSaturate( this.currentWord );
 	};
 
 	/**
