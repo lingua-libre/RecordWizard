@@ -97,6 +97,8 @@
 
 	/**
 	 * Get the Wikibase Item of the selected locutor through the API.
+	 *
+	 * @return {$.Deferred}  A promise, resolved when we're done
 	 */
 	rw.controller.Locutor.prototype.getExistingWbItem = function () {
 		return this.wbItem.setId( rw.metadatas.locutor.qid ).getFromApi( this.api );

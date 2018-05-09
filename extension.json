@@ -34,7 +34,11 @@
 				"genderOther": "",
 				"locutor": "",
 				"record": "",
-				"word": ""
+				"word": "",
+				"langLevelNative": "",
+				"langLevelGood": "",
+				"langLevelAverage": "",
+				"langLevelBeginner": ""
 			},
 			"listNamespace": 0
 		}
@@ -177,6 +181,10 @@
                 "mwe-recwiz-locutor-languages",
                 "mwe-recwiz-locutor-languagedialog",
 				"mwe-recwiz-locutor-languagelevel",
+				"mwe-recwiz-locutor-languagelevel-native",
+				"mwe-recwiz-locutor-languagelevel-good",
+				"mwe-recwiz-locutor-languagelevel-average",
+				"mwe-recwiz-locutor-languagelevel-beginner",
                 "mwe-recwiz-locutor-languagelocation",
                 "mwe-recwiz-locutor-location",
 				"mwe-recwiz-locutor-license",

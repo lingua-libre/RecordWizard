@@ -18,6 +18,7 @@
 		// Dialog box
 		this.windowManager = new OO.ui.WindowManager();
 		this.dialog = new rw.layout.LanguagesSelectorWidget.Dialog();
+		window.languages = this.dialog;
 		$( 'body' ).append( this.windowManager.$element );
 		this.windowManager.addWindows( [ this.dialog ] );
 
@@ -53,7 +54,7 @@
 				qid: lang
 			};
 
-			this.windowManager.openWindow( this.dialog, { label: item.getLabel(), callback: this.onQualifierSelected.bind( this, lang ) } );
+			this.windowManager.openWindow( this.dialog, { label: item.getLabel(), title: item.getLabel(), callback: this.onQualifierSelected.bind( this, lang ) } );
 		}
 	};
 
@@ -77,7 +78,7 @@
 	OO.inheritClass( rw.layout.LanguagesSelectorWidget.Dialog, OO.ui.ProcessDialog );
 
 	rw.layout.LanguagesSelectorWidget.Dialog.static.name = 'languageselector';
-	rw.layout.LanguagesSelectorWidget.Dialog.static.title = mw.message( 'mwe-recwiz-locutor-languagedialog' ).text();
+	rw.layout.LanguagesSelectorWidget.Dialog.static.title = 'languageselector';
 	rw.layout.LanguagesSelectorWidget.Dialog.static.actions = [
 		{ action: 'save', label: 'Done', flags: [ 'primary', 'progressive' ] },
 		{ action: 'cancel', label: 'Cancel', flags: [ 'safe', 'back' ] }
@@ -86,10 +87,10 @@
 	rw.layout.LanguagesSelectorWidget.Dialog.prototype.initialize = function () {
 		// TODO: get from config
 		var options = [
-			{ label: 'native', data: 'Q36' },
-			{ label: 'good level', data: 'Q35' },
-			{ label: 'average level', data: 'Q34' },
-			{ label: 'beginner', data: 'Q33' }
+			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-native' ), data: rw.config.items.langLevelNative },
+			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-good' ), data: rw.config.items.langLevelGood },
+			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-average' ), data: rw.config.items.langLevelAverage },
+			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-beginner' ), data: rw.config.items.langLevelBeginner }
 		];
 
 		rw.layout.LanguagesSelectorWidget.Dialog.parent.prototype.initialize.apply( this, arguments );
@@ -101,14 +102,16 @@
 			}
 		} );
 		this.levelFieldset = new OO.ui.FieldLayout( this.levelDropdown, {
-			align: 'left'
+			align: 'left',
+			label: mw.msg( 'mwe-recwiz-locutor-languagelevel' )
 		} );
 
 		this.locationInput = new rw.layout.WikidataSearchWidget( {
 			$overlay: $( 'body' )
 		} );
 		this.locationFieldset = new OO.ui.FieldLayout( this.locationInput, {
-			align: 'left'
+			align: 'left',
+			label: mw.msg( 'mwe-recwiz-locutor-languagelocation' )
 		} );
 
 		this.content.$element.append( this.levelFieldset.$element ).append( this.locationFieldset.$element );
@@ -120,8 +123,6 @@
 	};
 	rw.layout.LanguagesSelectorWidget.Dialog.prototype.getSetupProcess = function ( data ) {
 		this.callback = data.callback;
-		this.levelFieldset.setLabel( mw.message( 'mwe-recwiz-locutor-languagelevel', data.label ).text() );
-		this.locationFieldset.setLabel( mw.message( 'mwe-recwiz-locutor-languagelocation', data.label ).text() );
 
 		return rw.layout.LanguagesSelectorWidget.Dialog.parent.prototype.getSetupProcess.call( this, data );
 	};
