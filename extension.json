@@ -210,6 +210,7 @@
 				"mwe-recwiz-error-duplicatename",
 				"mwe-recwiz-error-nolanguages",
 				"mwe-recwiz-error-emptylist",
+				"mwe-recwiz-error-network",
                 "mwe-recwiz-warning-wordsleft",
                 "mwe-recwiz-warning-pendinguploads",
                 "mwe-recwiz-warning-faileduploads"

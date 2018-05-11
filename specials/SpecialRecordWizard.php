@@ -284,12 +284,12 @@ class SpecialRecordWizard extends SpecialPage {
 
 		return '<div id="mwe-recwiz">
 
+		            <ul class="mwe-recwiz-steps">
+                    </ul>
+
                 	<div id="mwe-recwiz-spinner">
 						<img src="' . $wgExtensionAssetsPath . '/RecordWizard/modules/images/Spinner_font_awesome.svg" width="40" height="40" />
 					</div>
-
-		            <ul class="mwe-recwiz-steps">
-                    </ul>
 
                     <div id="mwe-recwiz-content">
                     </div>

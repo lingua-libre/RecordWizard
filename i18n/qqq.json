@@ -67,6 +67,7 @@
 	"mwe-recwiz-error-duplicatename": "Error message indicating that the value of the name field is already used by an other locutor.",
 	"mwe-recwiz-error-nolanguages": "Error message indicating that the language field can not be empty.",
 	"mwe-recwiz-error-emptylist": "Error message indicating that the record word list can not be empty.",
+	"mwe-recwiz-error-network": "Error message displayed in an alert box, indicating that the server can't be reached due to a network error.",
 	"mwe-recwiz-warning-wordsleft": "Warning message displayed when the user continue to next step when some words are left.",
 	"mwe-recwiz-warning-pendinguploads": "Warning message displayed when the user continue while uploads are still pending.",
 	"mwe-recwiz-warning-faileduploads": "Warning message displayed when the user continue while some uploads have failed.",

@@ -67,6 +67,7 @@
 	"mwe-recwiz-error-duplicatename": "Vous avez déjà un locuteur nommé $1. Chacun doit avoir un nom unique.",
 	"mwe-recwiz-error-nolanguages": "Je suis sûr que vous parlez au moins une langue ;).",
 	"mwe-recwiz-error-emptylist": "Vous devez choisir quelques mots avant de continuer.",
+	"mwe-recwiz-error-network": "Impossible de contacter le serveur. Veuillez vérifier votre connexion internet et réessayer.",
 	"mwe-recwiz-warning-wordsleft": "Il rest des mots non-enregistrés, êtes-vous {{GENDER:|sûr|sûre}} de vouloir continuer ?",
 	"mwe-recwiz-warning-pendinguploads": "Tous vos enregistrements n'ont pas encore été versés, voulez-vous les stopper ?",
 	"mwe-recwiz-warning-faileduploads": "Le versement de certains enregistrements a échoué, voulez-vous les retirer ?",

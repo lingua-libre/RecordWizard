@@ -58,6 +58,7 @@
 	 */
 	rw.controller.Locutor.prototype.moveNext = function () {
 		var qid,
+			controller = this,
 			process = new OO.ui.Process();
 
 		this.ui.collect();
@@ -82,6 +83,8 @@
 
 		this.wbItem = new mw.recordWizard.wikibase.Item();
 
+		process.next( this.ui.lockUI, this.ui );
+
 		if ( !rw.metadatas.locutor.new ) {
 			process.next( this.getExistingWbItem, this ); // get the existing item
 		}
@@ -92,7 +95,10 @@
 		process.next( this.saveOptions, this ); // save options
 		process.next( rw.controller.Step.prototype.moveNext, this ); // go next
 
-		process.execute();
+		process.execute().fail( function () {
+			controller.ui.unlockUI();
+			OO.ui.alert( mw.msg( 'mwe-recwiz-error-network' ) );
+		} );
 	};
 
 	/**

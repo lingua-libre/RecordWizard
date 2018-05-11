@@ -49,6 +49,9 @@
 			.show();
 		this.$arrow.addClass( 'mwe-recwiz-current' );
 
+		this.$buttons.show();
+		$( '#mwe-recwiz-spinner' ).hide();
+
 		$( 'html, body' ).animate( {
 			scrollTop: offset.top,
 			scrollLeft: offset.left
@@ -131,5 +134,21 @@
 		this.previousButtonPromise.done( function () {
 			ui.$buttons.append( ui.previousButton.$element );
 		} );
+	};
+
+	/**
+	 * Replace the current step's UI with a spinner.
+	 */
+	rw.ui.Step.prototype.lockUI = function () {
+		this.$container.children().hide();
+		$( '#mwe-recwiz-spinner' ).show();
+	};
+
+	/**
+	 * Replace the spinner with the current step's UI.
+	 */
+	rw.ui.Step.prototype.unlockUI = function () {
+		$( '#mwe-recwiz-spinner' ).hide();
+		this.$container.children().show();
 	};
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );
