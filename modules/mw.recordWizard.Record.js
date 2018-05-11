@@ -337,9 +337,7 @@
 	};
 
 	/**
-	 * Push the audio file from the upload stash to Wikimedia Commons.
-	 *
-	 * This method is not made to be used through the request queue.
+	 * Create a Wikibase item for our record on our local repository.
 	 *
 	 * @param  {mw.Api} api  Api object to use for the request
 	 * @return {$.Deferred}  A promise, resolved when we're done
@@ -371,7 +369,7 @@
 		// TODO: manage other languages
 		this.wbItem.labels = { en: this.word };
 		// TODO: add language information
-		this.wbItem.descriptions = { en: 'audio record from ' + rw.metadatas.locutor.name + ' (' + mw.config.get( 'wgUserName' ) + ')' };
+		this.wbItem.descriptions = { en: 'audio record - ' + mw.recordWizard.config.languages[ mw.recordWizard.metadatas.language ].code + ' - ' + rw.metadatas.locutor.name + ' (' + mw.config.get( 'wgUserName' ) + ')' };
 
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.instanceOf ).setType( 'wikibase-item' ).setValue( rw.config.items.record ), true ); // InstanceOf
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.subclassOf ).setType( 'wikibase-item' ).setValue( rw.config.items.word ), true ); // SubclassOf
