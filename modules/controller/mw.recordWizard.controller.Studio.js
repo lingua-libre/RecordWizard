@@ -72,7 +72,7 @@
 				controller.ui.onStop();
 			} else {
 				if ( controller.startNextRecord() ) {
-					controller.ui.onStart();
+					controller.ui.onStart( controller.currentWord );
 				}
 			}
 
