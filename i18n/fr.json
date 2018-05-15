@@ -22,6 +22,8 @@
 	"mwe-recwiz-continueanyway": "Continuer quand même",
 	"mwe-recwiz-retry": "relancer les versements échoués",
 
+	"mwe-recwiz-tutorial-reopenpopup": "Réouvrir la popup",
+
 	"mwe-recwiz-locutor-profile": "Profil locuteur à utiliser",
 	"mwe-recwiz-locutor-profilemain": "Votre locuteur principal",
 	"mwe-recwiz-locutor-profileother": "Autres locuteurs",
@@ -61,6 +63,10 @@
 	"mwe-recwiz-somefailed": "Certain versement ont échoués.",
 	"mwe-recwiz-allfailed": "Aucun versement n'a réussi.",
 
+	"mwe-recwiz-error-mediastream-notallowed": "Vous n'avez pas autorisé l'accès à votre microphone. Pour pouvoir utiliser le RecordWizard, vous devez autoriser ce site à y accéder.",
+	"mwe-recwiz-error-mediastream-notfound": "Aucun microphone n'a été détecté. Pour pouvoir continuer, procurez-vous en un et connectez-le à votre appareil.",
+	"mwe-recwiz-error-mediastream-technical": "Un problème technique de votre navigateur ou système d'exploitation empêche l'accès à votre microphone. Essayer de recharger la page. Détail de l'erreur : $1",
+	"mwe-recwiz-error-mediastream-unknow": "Une erreur inconnu empêche le RecordWizard d'accéder à votre microphone. Essayez de recharger la page.",
 	"mwe-recwiz-error-noname": "Vous devez choisir un nom pour votre locuteur.",
 	"mwe-recwiz-error-duplicatename": "Vous avez déjà un locuteur nommé $1. Chacun doit avoir un nom unique.",
 	"mwe-recwiz-error-nolanguages": "Je suis sûr que vous parlez au moins une langue ;).",

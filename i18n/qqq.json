@@ -22,7 +22,9 @@
 	"mwe-recwiz-continueanyway": "Label on a button, used to go to the next step when errors occured during the current step.",
 	"mwe-recwiz-retry": "Label on a button, used to retry failed uploads.",
 
-	"mwe-recwiz-tutorial": "Content of the initial tutorial.",
+	"mwe-recwiz-tutorial-activate": "Content of the initial tutorial.",
+	"mwe-recwiz-tutorial-configure": "Content of the initial tutorial.",
+	"mwe-recwiz-tutorial-reopenpopup": "Buton in the tutorial step to force the browser's popup asking for microphone sharing to reopen.",
 
 	"mwe-recwiz-locutor-profile": "Label for the profile selector field on the locutor tab.",
 	"mwe-recwiz-locutor-profilemain": "Label of the option group containing the main profile in the profile selector dropdown.",
@@ -63,6 +65,10 @@
 	"mwe-recwiz-somefailed": "Status message next to the continue button indicating that some uploads have failed.",
 	"mwe-recwiz-allfailed": "Status message next to the continue button indicating that all uploads have failed.",
 
+	"mwe-recwiz-error-mediastream-notallowed": "Error message occuring when the user disalow to share access to its microphone.",
+	"mwe-recwiz-error-mediastream-notfound": "Error message occuring when no microphone has been found.",
+	"mwe-recwiz-error-mediastream-technical": "Error message occuring when access to the microphone is blocked by a technical problem on the user's side.",
+	"mwe-recwiz-error-mediastream-unknow": "Error message occuring when an unknown error block the script to use the microphone.",
 	"mwe-recwiz-error-noname": "Error message indicating that the name field can not be empty.",
 	"mwe-recwiz-error-duplicatename": "Error message indicating that the value of the name field is already used by an other locutor.",
 	"mwe-recwiz-error-nolanguages": "Error message indicating that the language field can not be empty.",

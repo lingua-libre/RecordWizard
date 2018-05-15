@@ -22,6 +22,8 @@
 	"mwe-recwiz-continueanyway": "Continue anyway",
 	"mwe-recwiz-retry": "retry failed upload",
 
+	"mwe-recwiz-tutorial-reopenpopup": "Reopen the popup",
+
 	"mwe-recwiz-locutor-profile": "Locutor profile to use",
 	"mwe-recwiz-locutor-profilemain": "Your main locutor",
 	"mwe-recwiz-locutor-profileother": "Other locutors",
@@ -61,6 +63,10 @@
 	"mwe-recwiz-somefailed": "Some upload failed.",
 	"mwe-recwiz-allfailed": "None of the uploads were successful.",
 
+	"mwe-recwiz-error-mediastream-notallowed": "You don't allowed access to the microphone. To use the RecordWizard, go in your browser settings to allow it, and click the button below.",
+	"mwe-recwiz-error-mediastream-notfound": "No microphone has been found. To continue, you have to get one and connect it to your device.",
+	"mwe-recwiz-error-mediastream-technical": "A technical error in your browser or in your operating system prevent the use of your microphone. Try to reload the page. Error details: $1",
+	"mwe-recwiz-error-mediastream-unknow": "An unknow error prevent the use of your microphone. Try to reload the page.",
 	"mwe-recwiz-error-noname": "You must choose a name for your locutor.",
 	"mwe-recwiz-error-duplicatename": "You already have a locutor called $1. Each of your locutors must have a different name.",
 	"mwe-recwiz-error-nolanguages": "I'm sure you're speaking at least one language ;)",

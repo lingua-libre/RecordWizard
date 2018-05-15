@@ -2,8 +2,24 @@
     float: right;
 }
 
+.mwe-recwiz-right {
+    text-align: center;
+}
+
 .mwe-recwiz-buttons {
     margin-top:1em;
+}
+
+.mwe-recwiz-volumeMetter-silent {
+	background-color: #36c !important;
+}
+
+.mwe-recwiz-volumeMetter-active {
+	background-color: #52B080 !important;
+}
+
+.mwe-recwiz-volumeMetter-saturate {
+	background-color: #D55353 !important;
 }
 
 #mwe-recwiz-stepdiv-details .mwe-recwiz-nearby .oo-ui-textInputWidget {
@@ -232,6 +248,7 @@ canvas.mwe-recwiz-wordcanvas {
     background-color: white;
     padding: 0.2em 0em 0.2em 0.2em;
     margin-bottom: 15px;
+	margin-left: 0;
     display: flex;
 }
 
@@ -295,7 +312,3 @@ canvas.mwe-recwiz-wordcanvas {
 .mwe-recwiz-steps li.mwe-recwiz-current:after {
     border-left-color: #3E95D6 !important;
 }
-
-
-
-
