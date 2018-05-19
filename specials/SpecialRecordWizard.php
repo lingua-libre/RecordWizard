@@ -118,7 +118,6 @@ class SpecialRecordWizard extends SpecialPage {
 		$out->addModuleStyles( 'ext.recordWizard.styles' );
 		$out->addModules( 'ext.recordWizard' );
 		$out->setPageTitle( $this->msg( 'special-recordWizard-title' ) );
-		$out->addHelpLink( 'Yolo' );
 		$out->addWikiMsg( 'special-recordWizard-intro' );
 		$out->addHTML( $this->getWizardHtml() );
 	}
