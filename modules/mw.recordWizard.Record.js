@@ -158,17 +158,19 @@
 				gender = 'other';
 				break;
 		}
-		return '{{Lingua Libre record' +
-			'\n | locutor	   = ' + rw.metadatas.locutor.name +
-			'\n | locutorId	 = ' + rw.metadatas.locutor.qid +
+		return '== {{int:filedesc}} ==' +
+			'\n{{Lingua Libre record' +
+			'\n | locutor       = ' + rw.metadatas.locutor.name +
+			'\n | locutorId     = ' + rw.metadatas.locutor.qid +
 			'\n | locutorGender = ' + gender +
-			'\n | author		= [[User:' + mw.config.get( 'wgUserName' ) + '|]]' +
-			'\n | language	  = ' + rw.config.languages[ rw.metadatas.language ].localname +
+			'\n | author        = [[User:' + mw.config.get( 'wgUserName' ) + '|]]' +
+			'\n | language      = ' + rw.config.languages[ rw.metadatas.language ].localname +
 			'\n | languageCode  = ' + rw.config.languages[ rw.metadatas.language ].code +
 			'\n | transcription = ' + this.word +
-			'\n | date		  = ' + date.getFullYear() + '-' + ( date.getMonth() + 1 ) + '-' + date.getDate() +
-			'\n | permission	= {{' + rw.metadatas.license + '}}' +
-			'\n}}';
+			'\n | date          = ' + date.getFullYear() + '-' + ( date.getMonth() + 1 ) + '-' + date.getDate() +
+			'\n}}' +
+			'\n\n== {{int:license-header}} ==' +
+			'\n{{' + rw.metadatas.license + '}}';
 	};
 
 	/**
@@ -373,7 +375,7 @@
 
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.instanceOf ).setType( 'wikibase-item' ).setValue( rw.config.items.record ), true ); // InstanceOf
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.subclassOf ).setType( 'wikibase-item' ).setValue( rw.config.items.word ), true ); // SubclassOf
-		// item.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.audioRecord ).setType( 'commonsMedia' ).setValue( this.getFilename() ), true ); //Audio file
+		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.audioRecord ).setType( 'commonsMedia' ).setValue( this.getFilename() ), true ); //Audio file
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.spokenLanguages ).setType( 'wikibase-item' ).setValue( rw.metadatas.language ), true ); // Language
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.locutor ).setType( 'wikibase-item' ).setValue( rw.metadatas.locutor.qid ), true ); // Locutor
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.date ).setType( 'time' ).setValue( { time: today } ), true ); // Date
