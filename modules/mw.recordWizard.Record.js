@@ -332,6 +332,7 @@
 			removeafterupload: true,
 			ignorewarnings: true // TODO: manage warnings
 		} ).then( function ( result ) {
+			console.log( result )
 			record.uploaded( result[ 'upload-to-commons' ].oauth.upload.imageinfo );
 			deferred.resolve();
 		} ).fail( function ( code, result ) {

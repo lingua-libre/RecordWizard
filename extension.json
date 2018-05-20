@@ -102,7 +102,10 @@
                 "lib/lingua-recorder/LinguaRecorder.js",
                 "lib/lingua-recorder/Studio.js",
                 "lib/lingua-recorder/WordListStudio.js"
-            ]
+            ],
+			"dependencies": [
+				"ext.recordWizard.base"
+			]
         },
         "ext.recordWizard.generator":{
             "scripts": [
@@ -234,6 +237,7 @@
                 "modules/wikibase/mw.recordWizard.wikibase.Item.js"
             ],
 			"dependencies": [
+				"ext.recordWizard.base",
 			    "wikibase.datamodel",
 			    "wikibase.serialization"
 			]
