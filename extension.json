@@ -14,6 +14,7 @@
 		"wgRecordWizardConfig": {
 			"properties": {
 				"langCode": "",
+				"iso3": "",
 				"gender": "",
 				"spokenLanguages": "",
 				"instanceOf": "",
@@ -32,6 +33,7 @@
 				"genderMale": "",
 				"genderFemale": "",
 				"genderOther": "",
+				"language": "",
 				"locutor": "",
 				"record": "",
 				"word": "",
@@ -126,6 +128,7 @@
 			    "mwe-recwiz-nearby-longitude",
 			    "mwe-recwiz-nearby-getcoordinates",
 			    "mwe-recwiz-nearby-source",
+				"mwe-recwiz-error-unsupportedlanguage",
 			    "mwe-recwiz-error-cantgetposition",
 			    "mwe-recwiz-warning-noresults",
 			    "mwe-recwiz-list-title",

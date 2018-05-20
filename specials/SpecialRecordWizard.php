@@ -30,17 +30,18 @@ class SpecialRecordWizard extends SpecialPage {
 		$dbr = wfGetDB( DB_REPLICA );
 
 		$res = $dbr->select(
-			array( 'text', 'revision', 'page' ),
+			array( 'page', 'pagelinks' ),
 			array( 'page_title' ),
 			array(
+				'pl_from_namespace = ' . $wgWBRepoSettings['entityNamespaces']['item'],
+				'pl_namespace = ' . $wgWBRepoSettings['entityNamespaces']['item'],
+				'pl_title' => $wgRecordWizardConfig['items']['language'],
 				'page_content_model' => 'wikibase-item',
-				'old_text like \'%"property":"' . $wgRecordWizardConfig['properties']["langCode"] . '"%\'',
 			),
 			__METHOD__,
 			array(),
 			array(
-				'revision' => array( 'INNER JOIN', array( 'old_id=rev_text_id' ) ),
-				'page' => array( 'INNER JOIN', array( 'page_latest=rev_id' ) )
+				'pagelinks' => array( 'INNER JOIN', array( 'pl_from=page_id' ) )
 			)
 		);
 
@@ -60,20 +61,31 @@ class SpecialRecordWizard extends SpecialPage {
 
 		$entities = $entityIdLookup->getEntityIds( $titles );
 		$langCodeProperty = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['langCode'] ) );
+		$iso3Property = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['iso3'] ) );
+		$wikidataIdProperty = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['wikidataId'] ) );
 
 		$config[ 'languages' ] = array();
 		foreach ( $entities as $id => $itemId ) {
 			//TODO: Perfs: do only one DB request instead of N
-			$entity = $entityRevisionLookup->getEntityRevision( $itemId )->getEntity();
+			$item = $entityRevisionLookup->getEntityRevision( $itemId )->getEntity();
 
-			$labels = $entity->getLabels()->toTextArray();
-
+			$labels = $item->getLabels()->toTextArray();
 			$label = $languageFallbackChain->extractPreferredValueOrAny( $labels )[ 'value' ];
-			$langCode = $entity->getStatements()->getByPropertyId( $langCodeProperty )->getAllSnaks()[ 0 ]->getDataValue()->getValue();
+
+			$langCodes = $this->getPropertyValues( $item, $langCodeProperty );
+			$langCode = (count($langCodes) > 0 ? $langCodes[ 0 ][ 'value' ] : null);
+
+			$iso3s = $this->getPropertyValues( $item, $iso3Property );
+			$iso3 = (count($iso3s) > 0 ? $iso3s[ 0 ][ 'value' ] : null);
+
+			$wikidataIds = $this->getPropertyValues( $item, $wikidataIdProperty );
+			$wikidataId = (count($wikidataIds) > 0 ? $wikidataIds[ 0 ][ 'value' ] : null);
 
 			$qid = (string) $itemId;
 			$config[ 'languages' ][ $qid ] = array();
 			$config[ 'languages' ][ $qid ][ 'code' ] = $langCode;
+			$config[ 'languages' ][ $qid ][ 'iso3' ] = $iso3;
+			$config[ 'languages' ][ $qid ][ 'wikidataId' ] = $wikidataId;
 			$config[ 'languages' ][ $qid ][ 'qid' ] = (string) $qid;
 			$config[ 'languages' ][ $qid ][ 'localname' ] = $label;
 		}

@@ -122,6 +122,11 @@
 		this.params.limit = limit;
 
 		this.deferred = $.Deferred();
+
+		if ( this.language.code === null ) {
+			this.deferred.reject( new OO.ui.Error( mw.msg( 'mwe-recwiz-error-unsupportedlanguage' ) ) );
+		}
+
 		this.wikidataApi = new mw.ForeignApi( 'https://www.wikidata.org/w/api.php', {
 			anonymous: true,
 			parameters: { origin: '*' },

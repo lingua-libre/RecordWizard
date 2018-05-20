@@ -86,6 +86,7 @@
 	"mwe-recwiz-nearby-longitude": "Placeholder of the longitude field, in the nearby generator dialog box.",
 	"mwe-recwiz-nearby-getcoordinates": "Title attribute of the automatic coordinates fetching button, in the nearby generator dialog box.",
 	"mwe-recwiz-nearby-source": "Label of the data source selector, in the nearby generator dialog box.",
+	"mwe-recwiz-error-unsupportedlanguage": "Error message indicating that the language selected by the user is not supported by this generator.",
 	"mwe-recwiz-error-cantgetposition": "Error message indicating that the automatic coordinates fetching has failed.",
 	"mwe-recwiz-warning-noresults": "Warning message indicating that the request gives no results.",
 

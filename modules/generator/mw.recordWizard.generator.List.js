@@ -43,7 +43,9 @@
 	};
 
 	rw.generator.List.prototype.onOpen = function () {
-		this.titleInput.setValue( this.params.title || this.language.code + '/' );
+		if ( this.params.title !== undefined || this.language.iso3 !== null ) {
+			this.titleInput.setValue( this.params.title || this.language.iso3 + '/' );
+		}
 		this.titleInput.$input.focus();
 	};
 

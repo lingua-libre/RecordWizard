@@ -131,10 +131,13 @@
 	 * @return {string}  Name to give to this record
 	 */
 	rw.Record.prototype.getFilename = function () {
+		var lang = rw.config.languages[ rw.metadatas.language ];
+
 		return 'LL' +
+			'-' + lang.wikidataId +
+			( lang.iso3 !== null ? ' (' + lang.iso3 + ')' : '' ) +
 			'-' + rw.metadatas.locutor.name +
 			( mw.config.get( 'wgUserName' ) !== rw.metadatas.locutor.name ? ' (' + mw.config.get( 'wgUserName' ) + ')' : '' ) +
-			'-' + rw.config.languages[ rw.metadatas.language ].code +
 			'-' + this.word + '.wav';
 	};
 
@@ -164,8 +167,7 @@
 			'\n | locutorId     = ' + rw.metadatas.locutor.qid +
 			'\n | locutorGender = ' + gender +
 			'\n | author        = [[User:' + mw.config.get( 'wgUserName' ) + '|]]' +
-			'\n | language      = ' + rw.config.languages[ rw.metadatas.language ].localname +
-			'\n | languageCode  = ' + rw.config.languages[ rw.metadatas.language ].code +
+			'\n | languageId    = ' + rw.config.languages[ rw.metadatas.language ].wikidataId +
 			'\n | transcription = ' + this.word +
 			'\n | date          = ' + date.getFullYear() + '-' + ( date.getMonth() + 1 ) + '-' + date.getDate() +
 			'\n}}' +
@@ -375,7 +377,9 @@
 
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.instanceOf ).setType( 'wikibase-item' ).setValue( rw.config.items.record ), true ); // InstanceOf
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.subclassOf ).setType( 'wikibase-item' ).setValue( rw.config.items.word ), true ); // SubclassOf
-		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.audioRecord ).setType( 'commonsMedia' ).setValue( this.getFilename() ), true ); //Audio file
+		if ( mw.Debug === undefined ) { // Disable media on the dev environment
+			this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.audioRecord ).setType( 'commonsMedia' ).setValue( this.getFilename() ), true ); //Audio file
+		}
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.spokenLanguages ).setType( 'wikibase-item' ).setValue( rw.metadatas.language ), true ); // Language
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.locutor ).setType( 'wikibase-item' ).setValue( rw.metadatas.locutor.qid ), true ); // Locutor
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.date ).setType( 'time' ).setValue( { time: today } ), true ); // Date
