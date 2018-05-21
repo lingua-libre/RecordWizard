@@ -125,6 +125,7 @@
 	 * @param  {number} index position of the new word in the list
 	 */
 	rw.controller.Details.prototype.onWordListAdd = function ( word, index ) {
+		word = word.trim();
 		if ( rw.records[ word ] === undefined ) {
 			rw.records[ word ] = new rw.Record( word );
 		}

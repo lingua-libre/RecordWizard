@@ -36,13 +36,7 @@
 			rw.records[ word ].on( 'state-change', this.switchState.bind( this ) );
 		}
 
-		this.ui.on( 'retry-click', function ( word ) {
-			for ( word in rw.records ) {
-				if ( rw.records[ word ].hasFailed() ) {
-					controller.upload( word );
-				}
-			}
-		} );
+		this.ui.on( 'retry-click', this.moveNext.bind( this ) );
 	};
 
 	/**
@@ -65,7 +59,8 @@
 	rw.controller.Publish.prototype.moveNext = function () {
 		var word, process;
 
-		if ( rw.metadatas.statesCount.stashed === 0 ) {
+		// Cleanup and restart the process when
+		if ( rw.metadatas.statesCount.stashed + rw.metadatas.statesCount.error === 0 ) {
 			delete rw.metadatas.words;
 			delete rw.metadatas.statesCount;
 			rw.records = {};
@@ -74,6 +69,11 @@
 
 		this.removeWaitingRecords();
 		for ( word in rw.records ) {
+			// Only start publishing the records that are not already published
+			if ( [ 'stashed', 'error' ].indexOf( rw.records[ word ].getState() ) === -1 ) {
+				continue;
+			}
+
 			// Make requests
 			process = new OO.ui.Process();
 

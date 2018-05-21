@@ -315,6 +315,7 @@
 	rw.Record.prototype.finishUpload = function ( api, deferred ) {
 		var record = this;
 
+		console.log( this.state )
 		if ( this.state === 'error' && this.imageInfo !== null ) {
 			deferred.resolve();
 		}
