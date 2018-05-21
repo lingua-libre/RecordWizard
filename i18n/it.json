@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"mwe-recwiz-step-tutorial": "Tutorial",
+	"mwe-recwiz-step-details": "Dettagli",
+	"mwe-recwiz-step-publish": "Pubblica",
+	"mwe-recwiz-next": "Successivo",
+	"mwe-recwiz-previous": "Precedente",
+	"mwe-recwiz-continue": "Continua",
+	"mwe-recwiz-continueanyway": "Continua comunque",
+	"mwe-recwiz-locutor-languages": "Lingue parlate",
+	"mwe-recwiz-locutor-languagelevel": "Livello lingua",
+	"mwe-recwiz-locutor-languagelevel-native": "nativo",
+	"mwe-recwiz-locutor-languagelevel-average": "livello medio",
+	"mwe-recwiz-locutor-languagelevel-beginner": "principiante",
+	"mwe-recwiz-locutor-license": "Licenza",
+	"mwe-recwiz-locutor-gender": "Sesso",
+	"mwe-recwiz-gender-male": "Uomo",
+	"mwe-recwiz-gender-female": "Donna",
+	"mwe-recwiz-gender-other": "Altro",
+	"mwe-recwiz-details-addwords": "Aggiungi parole",
+	"mwe-recwiz-details-clear": "Pulisci",
+	"mwe-recwiz-details-noword": "Nessuna parola selezionata",
+	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|parola|parole}}",
+	"mwe-recwiz-generator-list": "Elenco",
+	"mwe-recwiz-studio-input-placeholder": "Aggiungi una nuova parola",
+	"mwe-recwiz-allsucceeded": "Tutti i caricamenti sono riusciti!",
+	"mwe-recwiz-nearby-coordinates": "Coordinate",
+	"mwe-recwiz-nearby-limit-help": "Deve essere un numero intero compreso tra 1 e 500.",
+	"mwe-recwiz-nearby-latitude": "latitudine",
+	"mwe-recwiz-nearby-longitude": "longitudine",
+	"mwe-recwiz-list-title": "Titolo"
+}

@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nikosgranturismogt"
+		]
+	},
+	"mwe-recwiz-step-tutorial": "Σεμινάριο",
+	"mwe-recwiz-step-studio": "Στούντιο",
+	"mwe-recwiz-step-publish": "Δημοσίευση",
+	"mwe-recwiz-next": "Επόμενο",
+	"mwe-recwiz-previous": "Προηγούμενο",
+	"mwe-recwiz-continue": "Συνέχεια",
+	"mwe-recwiz-continueanyway": "Συνέχεια όπως και αν έχει",
+	"mwe-recwiz-locutor-name": "Όνομα προς εμφάνιση",
+	"mwe-recwiz-locutor-languages": "Ομιλούμενες γλώσσες",
+	"mwe-recwiz-locutor-languagelevel": "Επίπεδο γλώσσας",
+	"mwe-recwiz-locutor-languagelevel-native": "μητρικός",
+	"mwe-recwiz-locutor-languagelevel-average": "μέσο επίπεδο",
+	"mwe-recwiz-locutor-languagelevel-beginner": "αρχάριος",
+	"mwe-recwiz-locutor-languagelocation": "Σημείο μάθησης",
+	"mwe-recwiz-locutor-license": "Άδεια",
+	"mwe-recwiz-locutor-gender": "Φύλο",
+	"mwe-recwiz-gender-male": "Άνδρας",
+	"mwe-recwiz-gender-female": "Γυναίκα",
+	"mwe-recwiz-gender-other": "Άλλο",
+	"mwe-recwiz-details-lang": "Καταγραφή γλώσσας",
+	"mwe-recwiz-details-addwords": "Προσθήκη λέξεων",
+	"mwe-recwiz-details-clear": "Εκκαθάριση",
+	"mwe-recwiz-details-noword": "Δεν επιλέχθηκαν λέξεις",
+	"mwe-recwiz-generator-list": "Κατάλογος",
+	"mwe-recwiz-studio-input-placeholder": "Προσθήκη νέας λέξης",
+	"mwe-recwiz-pendinguplads": "...Γίνεται ανέβασμα...",
+	"mwe-recwiz-error-nolanguages": "Είμαι σίγουρος ότι μιλάτε τουλάχιστον μια γλώσσα ;)",
+	"mwe-recwiz-error-emptylist": "Πρέπει να επιλέξετε μερικές λέξεις για να συνεχίσετε.",
+	"mwe-recwiz-nearby-coordinates": "Συντεταγμένες",
+	"mwe-recwiz-nearby-latitude": "Γεωγραφικό πλάτος",
+	"mwe-recwiz-nearby-longitude": "Γεωγραφικό μήκος",
+	"mwe-recwiz-nearby-source": "Πηγή",
+	"mwe-recwiz-list-title": "Τίτλος"
+}

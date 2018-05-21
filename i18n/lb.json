@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"mwe-recwiz-step-tutorial": "Uleedung",
+	"mwe-recwiz-step-details": "Detailer",
+	"mwe-recwiz-step-studio": "Studio",
+	"mwe-recwiz-step-publish": "Verëffentlechen",
+	"mwe-recwiz-next": "Weider",
+	"mwe-recwiz-previous": "Vireg",
+	"mwe-recwiz-continue": "Virufueren",
+	"mwe-recwiz-continueanyway": "Trotzdeem virufueren",
+	"mwe-recwiz-locutor-name": "Numm fir ze weisen",
+	"mwe-recwiz-locutor-languagelevel": "Sproochniveau",
+	"mwe-recwiz-locutor-languagelevel-native": "Mammesproochler",
+	"mwe-recwiz-locutor-languagelevel-beginner": "Ufänger",
+	"mwe-recwiz-locutor-license": "Lizenz",
+	"mwe-recwiz-locutor-gender": "Geschlecht",
+	"mwe-recwiz-gender-male": "Männlech",
+	"mwe-recwiz-gender-female": "Weiblech",
+	"mwe-recwiz-details-lang": "Sprooch ophuelen",
+	"mwe-recwiz-details-addwords": "Wierder derbäisetzen",
+	"mwe-recwiz-details-clear": "Eidel maachen",
+	"mwe-recwiz-details-noword": "Keng Wierder erausgesicht",
+	"mwe-recwiz-generator-nearby": "Elementer nobäi",
+	"mwe-recwiz-generator-list": "Lëscht",
+	"mwe-recwiz-studio-input-placeholder": "En neit Wuert derbäisetzen",
+	"mwe-recwiz-pendinguplads": "...Eroplueden...",
+	"mwe-recwiz-nearby-coordinates": "Koordinaten",
+	"mwe-recwiz-nearby-limit-help": "Et muss eng ganz Zuel tëscht 1 a 500 sinn.",
+	"mwe-recwiz-nearby-latitude": "Breedegrad",
+	"mwe-recwiz-nearby-source": "Quell",
+	"mwe-recwiz-list-title": "Titel",
+	"mwe-recwiz-error-pagemissing": "Et ass elo keen Text op der Säit $1."
+}

@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"mwe-recwiz-step-details": "Detaljer",
+	"mwe-recwiz-step-studio": "Studio",
+	"mwe-recwiz-step-publish": "Publicera",
+	"mwe-recwiz-next": "Nästa",
+	"mwe-recwiz-previous": "Föregående",
+	"mwe-recwiz-continue": "Fortsätt",
+	"mwe-recwiz-continueanyway": "Fortsätt ändå",
+	"mwe-recwiz-locutor-name": "Namn att visa",
+	"mwe-recwiz-locutor-languagelevel": "Språknivå",
+	"mwe-recwiz-locutor-languagelevel-native": "infödd",
+	"mwe-recwiz-locutor-languagelevel-good": "god nivå",
+	"mwe-recwiz-locutor-languagelevel-beginner": "nybörjare",
+	"mwe-recwiz-locutor-license": "Licens",
+	"mwe-recwiz-locutor-gender": "Kön",
+	"mwe-recwiz-gender-male": "Man",
+	"mwe-recwiz-gender-female": "Kvinna",
+	"mwe-recwiz-gender-other": "Övrigt",
+	"mwe-recwiz-details-addwords": "Lägg till ord",
+	"mwe-recwiz-details-clear": "Rensa",
+	"mwe-recwiz-details-noword": "Inga ord har valts",
+	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|ord}}",
+	"mwe-recwiz-generator-nearby": "Föremål i närheten",
+	"mwe-recwiz-generator-list": "Lista",
+	"mwe-recwiz-studio-input-placeholder": "Lägg till ett nytt ord",
+	"mwe-recwiz-studio-uploadcount": "$1 av $2 {{PLURAL:$2|ljud}} laddades upp",
+	"mwe-recwiz-pendinguplads": "...Laddar upp...",
+	"mwe-recwiz-allsucceeded": "Alla uppladdningar genomfördes!",
+	"mwe-recwiz-error-emptylist": "Du har valt några ord för att fortsätta.",
+	"mwe-recwiz-nearby-coordinates": "Koordinater",
+	"mwe-recwiz-nearby-limit": "Antal ord att hämta",
+	"mwe-recwiz-nearby-limit-help": "Det måste vara ett heltal mellan 1 och 500.",
+	"mwe-recwiz-nearby-latitude": "latitud",
+	"mwe-recwiz-nearby-longitude": "longitud",
+	"mwe-recwiz-nearby-getcoordinates": "Hämta min position",
+	"mwe-recwiz-nearby-source": "Källa",
+	"mwe-recwiz-list-title": "Titel"
+}
