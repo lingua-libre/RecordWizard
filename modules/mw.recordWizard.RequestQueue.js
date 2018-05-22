@@ -12,7 +12,9 @@
 		this.maxConcurentRequests = 3;
 		this.queue = [];
 		this.currentRequests = 0;
-		this.api = new mw.Api();
+		this.api = new mw.Api( {
+			ajax: { timeout: 18000 }
+		} );
 	};
 
 	/**
