@@ -1,31 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
-			"Antoine Lamielle"
+			"Antoine Lamielle",
+			"Robby"
 		]
 	},
 	"recordWizard": "The name of the extension",
 	"recordwizard": "The name of the extension display on Special:SpecialPages",
 	"recordWizard-desc": "{{desc|name=RecordWizard|url=https://www.mediawiki.org/wiki/Extension:RecorderWizard}}",
-	"special-recordWizard-intro": "Description appearing on top of <tvar|1>Special:{{ll|RecordWizard}}</>.",
 	"special-recordWizard-title": "Title of the special page Special:RecordWizard",
-
+	"special-recordWizard-intro": "Description appearing on top of <tvar|1>Special:{{ll|RecordWizard}}</>.",
 	"mwe-recwiz-step-tutorial": "Name of a step displayed in the arrow line.",
 	"mwe-recwiz-step-locutor": "Name of a step displayed in the arrow line.",
 	"mwe-recwiz-step-details": "Name of a step displayed in the arrow line.",
 	"mwe-recwiz-step-studio": "Name of a step displayed in the arrow line.",
-	"mwe-recwiz-step-publish": "Name of a step displayed in the arrow line.",
-
+	"mwe-recwiz-step-publish": "Name of a step displayed in the arrow line.\n{{Identical|Publish}}",
 	"mwe-recwiz-next": "Label on a button, used to go to the next step.",
 	"mwe-recwiz-previous": "Label on a button, used to go to the previous step.",
 	"mwe-recwiz-continue": "Label on a button, used to go to the next step.",
 	"mwe-recwiz-continueanyway": "Label on a button, used to go to the next step when errors occured during the current step.",
 	"mwe-recwiz-retry": "Label on a button, used to retry failed uploads.",
-
-	"mwe-recwiz-tutorial-activate": "Content of the initial tutorial.",
-	"mwe-recwiz-tutorial-configure": "Content of the initial tutorial.",
 	"mwe-recwiz-tutorial-reopenpopup": "Buton in the tutorial step to force the browser's popup asking for microphone sharing to reopen.",
-
 	"mwe-recwiz-locutor-profile": "Label for the profile selector field on the locutor tab.",
 	"mwe-recwiz-locutor-profilemain": "Label of the option group containing the main profile in the profile selector dropdown.",
 	"mwe-recwiz-locutor-profileother": "Label of the option group containing the secondary profiles in the profile selector dropdown.",
@@ -39,13 +34,12 @@
 	"mwe-recwiz-locutor-languagelevel-beginner": "Label of the option 'beginner' language level, displayed in the language dialog box.",
 	"mwe-recwiz-locutor-languagelocation": "Label of a field asking the place where the locutor has learned a language, inside the language dialog box.",
 	"mwe-recwiz-locutor-location": "Label of a field asking for the place where the locutor lives, on the locutor tab.",
-	"mwe-recwiz-locutor-license": "Label of a field asking the locutor to choose a license, on the locutor tab.",
+	"mwe-recwiz-locutor-license": "Label of a field asking the locutor to choose a license, on the locutor tab.\n{{Identical|License}}",
 	"mwe-recwiz-locutor-licensecontent": "Generic license agreement which is folowed by a license selector, on the locutor tab.",
 	"mwe-recwiz-locutor-gender": "Label of a field asking the gender of the locutor, on the locutor tab.",
-	"mwe-recwiz-gender-male": "Label of the 'male' option in the gender selector.",
+	"mwe-recwiz-gender-male": "Label of the 'male' option in the gender selector.\n{{Identical|Male}}",
 	"mwe-recwiz-gender-female": "Label of the 'female' option in the gender selector.",
 	"mwe-recwiz-gender-other": "Label of the 'other' option in the gender selector.",
-
 	"mwe-recwiz-details-lang": "Label of a field asking the language of the recording session, on the details tab.",
 	"mwe-recwiz-details-wordlist": "Label of the textarea containing all the words to record, on the details tab.",
 	"mwe-recwiz-details-randomise": "Label of a checkbox switching on the word order randomisation, on the details tab.",
@@ -53,18 +47,14 @@
 	"mwe-recwiz-details-clear": "Label of the button to clear the words in the record list.",
 	"mwe-recwiz-details-noword": "Status message indicating there are no words in the record list.",
 	"mwe-recwiz-details-wordcount": "Status message indicationg the number of words in the list.",
-
 	"mwe-recwiz-generator-nearby": "Label of the button to open the 'neaby' generator dialog box, on the details tab.",
 	"mwe-recwiz-generator-list": "Label of the button to open the 'list' generator dialog box, on the details tab.",
-
 	"mwe-recwiz-studio-input-placeholder": "Placeholder of the text field used to add words to the record list, on the studio tab.",
 	"mwe-recwiz-studio-uploadcount": "Status message indicationg the total number of uploads and the number of upload succeded.",
-
 	"mwe-recwiz-pendinguplads": "Status message next to the continue button indicating that some uploads are still pending.",
 	"mwe-recwiz-allsucceeded": "Status message next to the continue button indicating that all uploads are successful.",
 	"mwe-recwiz-somefailed": "Status message next to the continue button indicating that some uploads have failed.",
 	"mwe-recwiz-allfailed": "Status message next to the continue button indicating that all uploads have failed.",
-
 	"mwe-recwiz-error-mediastream-notallowed": "Error message occuring when the user disalow to share access to its microphone.",
 	"mwe-recwiz-error-mediastream-notfound": "Error message occuring when no microphone has been found.",
 	"mwe-recwiz-error-mediastream-technical": "Error message occuring when access to the microphone is blocked by a technical problem on the user's side.",
@@ -77,19 +67,16 @@
 	"mwe-recwiz-warning-wordsleft": "Warning message displayed when the user continue to next step when some words are left.",
 	"mwe-recwiz-warning-pendinguploads": "Warning message displayed when the user continue while uploads are still pending.",
 	"mwe-recwiz-warning-faileduploads": "Warning message displayed when the user continue while some uploads have failed.",
-
 	"mwe-recwiz-nearby-coordinates": "Label of the coordinates field, in the nearby generator dialog box.",
 	"mwe-recwiz-nearby-coordinates-help": "Help message displayed in a popup nextto the coordinates field, in the nearby generator dialog box.",
 	"mwe-recwiz-nearby-limit": "Label of the limit field, in the nearby generator dialog box.",
 	"mwe-recwiz-nearby-limit-help": "Help message displayed in a popup nextto the limit field, in the nearby generator dialog box.",
-	"mwe-recwiz-nearby-latitude": "Placeholder of the latitude field, in the nearby generator dialog box.",
+	"mwe-recwiz-nearby-latitude": "Placeholder of the latitude field, in the nearby generator dialog box.\n{{Identical|Latitude}}",
 	"mwe-recwiz-nearby-longitude": "Placeholder of the longitude field, in the nearby generator dialog box.",
 	"mwe-recwiz-nearby-getcoordinates": "Title attribute of the automatic coordinates fetching button, in the nearby generator dialog box.",
 	"mwe-recwiz-nearby-source": "Label of the data source selector, in the nearby generator dialog box.",
-	"mwe-recwiz-error-unsupportedlanguage": "Error message indicating that the language selected by the user is not supported by this generator.",
 	"mwe-recwiz-error-cantgetposition": "Error message indicating that the automatic coordinates fetching has failed.",
 	"mwe-recwiz-warning-noresults": "Warning message indicating that the request gives no results.",
-
 	"mwe-recwiz-list-title": "Label of the page title field, in the list generator dialog box.",
 	"mwe-recwiz-list-title-help": "Help message displayed in a popup nextto the page title field, in the list generator dialog box.",
 	"mwe-recwiz-error-pagemissing": "Error message indicating that the page title field can not be empty."
