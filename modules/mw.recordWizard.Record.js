@@ -330,8 +330,7 @@
 			filekey: this.getFilekey(),
 			filename: this.getFilename(),
 			text: this.getText(),
-			removeafterupload: true,
-			ignorewarnings: true // TODO: manage warnings
+			ignorewarnings: true // TODO: manage warnings !important
 		} ).then( function ( result ) {
 			console.log( result )
 			record.uploaded( result[ 'upload-to-commons' ].oauth.upload.imageinfo );
