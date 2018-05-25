@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sonic N800",
+			"محمد عصام"
+		]
+	},
+	"mwe-recwiz-step-tutorial": "مقدمة تعليمية",
+	"mwe-recwiz-step-details": "التفاصيل",
+	"mwe-recwiz-step-publish": "نشر",
+	"mwe-recwiz-next": "اللاحق",
+	"mwe-recwiz-previous": "السابق",
+	"mwe-recwiz-retry": "أعد محاولة رفع الملفات الفاشلة",
+	"mwe-recwiz-locutor-name": "اسم لعرضه",
+	"mwe-recwiz-locutor-languagelevel-average": "مستوى متوسط",
+	"mwe-recwiz-locutor-license": "الترخيص",
+	"mwe-recwiz-locutor-gender": "الجنس",
+	"mwe-recwiz-gender-male": "ذكر",
+	"mwe-recwiz-gender-female": "أنثى",
+	"mwe-recwiz-gender-other": "آخر",
+	"mwe-recwiz-details-addwords": "أضف كلمات",
+	"mwe-recwiz-details-noword": "لم يتم اختيار أي كلمة",
+	"mwe-recwiz-generator-list": "قائمة",
+	"mwe-recwiz-studio-input-placeholder": "أضف كلمة جديدة",
+	"mwe-recwiz-pendinguplads": "جارٍ الرفع...",
+	"mwe-recwiz-error-nolanguages": "أنا متأكد أنك تتحدث لغة واحدة على الأقل ;)",
+	"mwe-recwiz-error-emptylist": "عليك أن تختار بعض الكلمات لتستمر.",
+	"mwe-recwiz-nearby-coordinates": "إحداثيات",
+	"mwe-recwiz-nearby-longitude": "خط الطول",
+	"mwe-recwiz-nearby-source": "المصدر",
+	"mwe-recwiz-list-title": "لقب"
+}

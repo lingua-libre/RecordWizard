@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Athena in Wonderland"
+		]
+	},
+	"recordWizard": "RecordWizard",
+	"recordwizard": "Record Wizard",
+	"special-recordWizard-title": "Record Wizard",
+	"mwe-recwiz-step-tutorial": "Explicação",
+	"mwe-recwiz-step-locutor": "Locutor",
+	"mwe-recwiz-step-details": "Detalhes",
+	"mwe-recwiz-step-studio": "Estúdio",
+	"mwe-recwiz-step-publish": "Publicar",
+	"mwe-recwiz-next": "Seguinte",
+	"mwe-recwiz-previous": "Anterior",
+	"mwe-recwiz-continue": "Continuar",
+	"mwe-recwiz-continueanyway": "Continuar mesmo assim",
+	"mwe-recwiz-retry": "repetir os envios que falharam",
+	"mwe-recwiz-locutor-license": "Licença",
+	"mwe-recwiz-locutor-gender": "Género",
+	"mwe-recwiz-gender-male": "Masculino",
+	"mwe-recwiz-gender-female": "Feminino",
+	"mwe-recwiz-gender-other": "Outro",
+	"mwe-recwiz-details-clear": "Limpar",
+	"mwe-recwiz-generator-list": "Lista",
+	"mwe-recwiz-pendinguplads": "...A carregar...",
+	"mwe-recwiz-allsucceeded": "Todos os envios decorreram com sucesso!",
+	"mwe-recwiz-somefailed": "Alguns dos envios falharam.",
+	"mwe-recwiz-nearby-coordinates": "Coordenadas",
+	"mwe-recwiz-nearby-latitude": "latitude",
+	"mwe-recwiz-nearby-longitude": "longitude",
+	"mwe-recwiz-nearby-getcoordinates": "Obter a minha posição",
+	"mwe-recwiz-nearby-source": "Fonte",
+	"mwe-recwiz-list-title": "Título"
+}

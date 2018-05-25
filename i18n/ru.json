@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"ArslanX",
+			"Okras"
+		]
+	},
+	"mwe-recwiz-step-tutorial": "Руководство",
+	"mwe-recwiz-step-publish": "Опубликовать",
+	"mwe-recwiz-continue": "Продолжить",
+	"mwe-recwiz-continueanyway": "Всё равно продолжить",
+	"mwe-recwiz-locutor-languagelevel": "Уровень владения языком",
+	"mwe-recwiz-locutor-languagelevel-native": "носитель",
+	"mwe-recwiz-locutor-languagelevel-good": "хороший уровень",
+	"mwe-recwiz-locutor-languagelevel-average": "средний уровень",
+	"mwe-recwiz-locutor-languagelevel-beginner": "начальный уровень",
+	"mwe-recwiz-locutor-license": "Лицензия",
+	"mwe-recwiz-locutor-gender": "Пол",
+	"mwe-recwiz-gender-male": "Мужской",
+	"mwe-recwiz-gender-female": "Женский",
+	"mwe-recwiz-gender-other": "Иное",
+	"mwe-recwiz-details-addwords": "Добавить слова",
+	"mwe-recwiz-generator-list": "Список",
+	"mwe-recwiz-nearby-coordinates": "Координаты",
+	"mwe-recwiz-nearby-latitude": "широта",
+	"mwe-recwiz-nearby-longitude": "долгота",
+	"mwe-recwiz-list-title": "Заголовок"
+}

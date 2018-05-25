@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Guycn2"
+			"Guycn2",
+			"Rotemliss"
 		]
 	},
 	"recordWizard": "אשף ההקלטה",
@@ -33,7 +34,7 @@
 	"mwe-recwiz-locutor-languagelocation": "מקום הלימוד",
 	"mwe-recwiz-locutor-location": "מקום מגורים",
 	"mwe-recwiz-locutor-license": "רישיון",
-	"mwe-recwiz-locutor-licensecontent": "לתשומת לבך, $1: העלאת ההקלטה מהווה את הסכמתך הבלתי־הפיכה לכך שכל אחד יוכל להשתמש בהקלטות השמע שהעלית באמצעות הכלי הזה, תחת תנאי הרישיון הבא:",
+	"mwe-recwiz-locutor-licensecontent": "לתשומת לבך, $1: העלאת ההקלטה מהווה הסכמה בלתי הפיכה מצדך לכך שכל אחד יוכל להשתמש בהקלטות השמע שהעלית באמצעות הכלי הזה, תחת תנאי הרישיון הבא:",
 	"mwe-recwiz-locutor-gender": "מגדר",
 	"mwe-recwiz-gender-male": "זכר",
 	"mwe-recwiz-gender-female": "נקבה",

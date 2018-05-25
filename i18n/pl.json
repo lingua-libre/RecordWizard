@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"mwe-recwiz-step-tutorial": "Samouczek",
+	"mwe-recwiz-step-details": "Szczegóły",
+	"mwe-recwiz-step-publish": "Opublikuj",
+	"mwe-recwiz-next": "Dalej",
+	"mwe-recwiz-continue": "Kontynuuj",
+	"mwe-recwiz-continueanyway": "Kontynuuj mimo to",
+	"mwe-recwiz-locutor-languagelevel": "Poziom języka",
+	"mwe-recwiz-locutor-languagelevel-beginner": "początkujący",
+	"mwe-recwiz-locutor-license": "Licencja",
+	"mwe-recwiz-locutor-gender": "Płeć",
+	"mwe-recwiz-gender-male": "Mężczyzna",
+	"mwe-recwiz-gender-female": "Kobieta",
+	"mwe-recwiz-gender-other": "Inna",
+	"mwe-recwiz-details-randomise": "Lista losowa",
+	"mwe-recwiz-details-clear": "Wyczyść",
+	"mwe-recwiz-details-noword": "Nie wybrano żadnych słów",
+	"mwe-recwiz-generator-list": "Lista",
+	"mwe-recwiz-studio-input-placeholder": "Dodaj nowe słowo",
+	"mwe-recwiz-pendinguplads": "...Przesyłanie...",
+	"mwe-recwiz-error-mediastream-notfound": "Nie znaleziono mikrofonu. Aby kontynuować, musisz podłączyć go do swojego urządzenia.",
+	"mwe-recwiz-error-mediastream-technical": "Błąd techniczny w przeglądarce lub systemie operacyjnym uniemożliwia korzystanie z mikrofonu. Spróbuj ponownie załadować stronę. Szczegóły błędu: $1",
+	"mwe-recwiz-error-emptylist": "Musisz wybrać kilka wyrazów, aby kontynuować.",
+	"mwe-recwiz-warning-pendinguploads": "Wszystkie twoje rekordy nie zostały jeszcze przesłane, czy chcesz je usunąć?",
+	"mwe-recwiz-nearby-coordinates": "Współrzędne",
+	"mwe-recwiz-nearby-coordinates-help": "Wpisz współrzędne w zapisie dziesiętnym.",
+	"mwe-recwiz-nearby-limit-help": "Musi to być liczba całkowita z zakresu od 1 do 500.",
+	"mwe-recwiz-nearby-latitude": "szerokość geograficzna",
+	"mwe-recwiz-nearby-longitude": "długość geograficzna",
+	"mwe-recwiz-nearby-getcoordinates": "Określ moją pozycję",
+	"mwe-recwiz-nearby-source": "Źródło",
+	"mwe-recwiz-error-cantgetposition": "Nie można znaleźć Twojej pozycji, musisz ręcznie ustawić współrzędne ($1).",
+	"mwe-recwiz-warning-noresults": "Nie ma elementów w pobliżu tych współrzędnych.",
+	"mwe-recwiz-list-title": "Tytuł"
+}

@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aftabuzzaman"
+		]
+	},
+	"recordwizard": "রেকর্ড উইজার্ড",
+	"special-recordWizard-title": "রেকর্ড উইজার্ড",
+	"mwe-recwiz-step-details": "বিস্তারিত",
+	"mwe-recwiz-step-studio": "স্টুডিও",
+	"mwe-recwiz-step-publish": "প্রকাশ করুন",
+	"mwe-recwiz-next": "পরবর্তী",
+	"mwe-recwiz-previous": "পূর্ববর্তী",
+	"mwe-recwiz-continue": "অগ্রসর হোন",
+	"mwe-recwiz-retry": "ব্যর্থ আপলোড পুনরায় চেষ্টা করুন",
+	"mwe-recwiz-locutor-name": "প্রদর্শনের নাম",
+	"mwe-recwiz-locutor-languages": "কথ্য ভাষাসমূহ",
+	"mwe-recwiz-locutor-license": "লাইসেন্স",
+	"mwe-recwiz-locutor-gender": "লিঙ্গ",
+	"mwe-recwiz-gender-male": "পুরুষ",
+	"mwe-recwiz-gender-female": "মহিলা",
+	"mwe-recwiz-gender-other": "অন্য",
+	"mwe-recwiz-details-addwords": "শব্দ যোগ করুন",
+	"mwe-recwiz-details-clear": "পরিষ্কার করুন",
+	"mwe-recwiz-details-noword": "কোন শব্দ নির্বাচন করা হয়নি",
+	"mwe-recwiz-details-wordcount": "$1টি {{PLURAL:$1|শব্দ}}",
+	"mwe-recwiz-generator-nearby": "কাছাকাছি আইটেম",
+	"mwe-recwiz-generator-list": "তালিকা",
+	"mwe-recwiz-pendinguplads": "আপলোড করা হচ্ছে...",
+	"mwe-recwiz-allsucceeded": "সকল আপলোড সফলভাবে সম্পন্ন হয়েছে!",
+	"mwe-recwiz-nearby-coordinates": "স্থানাঙ্কসমূহ",
+	"mwe-recwiz-nearby-limit": "পাওয়ার জন্য শব্দ সংখ্যা",
+	"mwe-recwiz-nearby-limit-help": "এটিকে অবশ্যই ১ এবং ৫০০-এর মধ্যে একটি পূর্ণসংখ্যা হতে হবে।",
+	"mwe-recwiz-nearby-latitude": "অক্ষাংশ",
+	"mwe-recwiz-nearby-longitude": "দ্রাঘিমাংশ",
+	"mwe-recwiz-nearby-getcoordinates": "আমার অবস্থান পান",
+	"mwe-recwiz-nearby-source": "উৎস",
+	"mwe-recwiz-list-title": "শিরোনাম"
+}
