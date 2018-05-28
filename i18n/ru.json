@@ -2,13 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"ArslanX",
-			"Okras"
+			"Okras",
+			"Redredsonia"
 		]
 	},
 	"mwe-recwiz-step-tutorial": "Руководство",
 	"mwe-recwiz-step-publish": "Опубликовать",
+	"mwe-recwiz-next": "Далее",
+	"mwe-recwiz-previous": "Назад",
 	"mwe-recwiz-continue": "Продолжить",
 	"mwe-recwiz-continueanyway": "Всё равно продолжить",
+	"mwe-recwiz-locutor-name": "Имя для отображения",
 	"mwe-recwiz-locutor-languagelevel": "Уровень владения языком",
 	"mwe-recwiz-locutor-languagelevel-native": "носитель",
 	"mwe-recwiz-locutor-languagelevel-good": "хороший уровень",
@@ -20,9 +24,13 @@
 	"mwe-recwiz-gender-female": "Женский",
 	"mwe-recwiz-gender-other": "Иное",
 	"mwe-recwiz-details-addwords": "Добавить слова",
+	"mwe-recwiz-details-clear": "Очистить",
 	"mwe-recwiz-generator-list": "Список",
+	"mwe-recwiz-studio-input-placeholder": "Добавить новое слово",
+	"mwe-recwiz-pendinguplads": "...Загрузка...",
 	"mwe-recwiz-nearby-coordinates": "Координаты",
 	"mwe-recwiz-nearby-latitude": "широта",
 	"mwe-recwiz-nearby-longitude": "долгота",
+	"mwe-recwiz-nearby-source": "Источник",
 	"mwe-recwiz-list-title": "Заголовок"
 }

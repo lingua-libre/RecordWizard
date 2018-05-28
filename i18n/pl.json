@@ -25,6 +25,8 @@
 	"mwe-recwiz-pendinguplads": "...Przesyłanie...",
 	"mwe-recwiz-error-mediastream-notfound": "Nie znaleziono mikrofonu. Aby kontynuować, musisz podłączyć go do swojego urządzenia.",
 	"mwe-recwiz-error-mediastream-technical": "Błąd techniczny w przeglądarce lub systemie operacyjnym uniemożliwia korzystanie z mikrofonu. Spróbuj ponownie załadować stronę. Szczegóły błędu: $1",
+	"mwe-recwiz-error-mediastream-unknow": "Nieznany błąd uniemożliwił użycie mikrofonu. Spróbuj ponownie załadować stronę.",
+	"mwe-recwiz-error-nolanguages": "Jestem pewien, że mówisz przynajmniej jednym językiem ;)",
 	"mwe-recwiz-error-emptylist": "Musisz wybrać kilka wyrazów, aby kontynuować.",
 	"mwe-recwiz-warning-pendinguploads": "Wszystkie twoje rekordy nie zostały jeszcze przesłane, czy chcesz je usunąć?",
 	"mwe-recwiz-nearby-coordinates": "Współrzędne",

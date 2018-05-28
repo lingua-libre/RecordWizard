@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Adjen"
 		]
 	},
 	"recordWizard": "Asistente de grabaciones",
@@ -19,6 +20,7 @@
 	"mwe-recwiz-locutor-name": "Nombre para mostrar",
 	"mwe-recwiz-locutor-languagelevel": "Nivel de lengua",
 	"mwe-recwiz-locutor-languagelevel-native": "nativo",
+	"mwe-recwiz-locutor-languagelevel-average": "Nivel basico",
 	"mwe-recwiz-locutor-languagelevel-beginner": "principiante",
 	"mwe-recwiz-locutor-languagelocation": "Lugar de aprendizaje",
 	"mwe-recwiz-locutor-location": "Lugar de residencia",
@@ -28,12 +30,14 @@
 	"mwe-recwiz-gender-male": "Masculino",
 	"mwe-recwiz-gender-female": "Femenino",
 	"mwe-recwiz-gender-other": "Otro",
+	"mwe-recwiz-details-lang": "Lenguajé grabado",
 	"mwe-recwiz-details-wordlist": "Lista de palabras que grabar",
 	"mwe-recwiz-details-addwords": "Añadir palabras",
 	"mwe-recwiz-details-noword": "No se seleccionó ninguna palabra",
 	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|palabra|palabras}}",
 	"mwe-recwiz-generator-list": "Lista",
 	"mwe-recwiz-studio-input-placeholder": "Añadir una palabra nueva",
+	"mwe-recwiz-error-duplicatename": "Ya tienes un locutor llamadó $1. Cada cual de tus locutores tiene que tener un nombre diferente.",
 	"mwe-recwiz-error-nolanguages": "Estamos seguros de que por lo menos hablas una lengua ;)",
 	"mwe-recwiz-error-emptylist": "Debes elegir algunas palabras para continuar.",
 	"mwe-recwiz-warning-pendinguploads": "Aún no se han cargado todos los registros. ¿Quieres interrumpir el proceso?",
