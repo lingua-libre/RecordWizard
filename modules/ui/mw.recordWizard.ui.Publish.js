@@ -43,6 +43,7 @@
 		}
 
 		this.$container.prepend( this.$list );
+		this.showNextButton();
 	};
 
 	rw.ui.Publish.prototype.setItemState = function ( word, state ) {
@@ -60,12 +61,14 @@
 
 	rw.ui.Publish.prototype.showNextButton = function () {
 		if ( rw.metadatas.statesCount.uploading + rw.metadatas.statesCount.uploaded + rw.metadatas.statesCount.finalizing > 0 ) {
+			// Some uploads are pending
 			this.previousButton.setDisabled( true );
 			this.retryButton.toggle( false );
 			this.nextButton.setDisabled( true );
 			this.stateLabel.toggle( true );
 			this.stateLabel.setLabel( mw.message( 'mwe-recwiz-pendinguplads' ).text() );
 		} else if ( rw.metadatas.statesCount.error > 0 ) {
+			// All uploads are finished, but some has failed
 			this.retryButton.toggle( true );
 
 			if ( rw.metadatas.statesCount.done > 0 ) {
@@ -74,10 +77,15 @@
 				this.stateLabel.setLabel( mw.message( 'mwe-recwiz-allfailed' ).text() );
 			}
 		} else if ( rw.metadatas.statesCount.stashed > 0 ) {
-			this.stateLabel.setLabel( mw.message( 'mwe-recwiz-allsucceeded' ).text() );
+			// At the begigging, before the publish button has been ever clicked
+			this.previousButton.setDisabled( false );
+			this.nextButton.setLabel( mw.message( 'mwe-recwiz-publish' ).text() );
 		} else {
+			// At the end, all upload has succeded
 			this.nextButton.setDisabled( false );
 			this.stateLabel.toggle( false );
+			this.nextButton.setLabel( mw.message( 'mwe-recwiz-restart' ).text() );
+			this.stateLabel.setLabel( mw.message( 'mwe-recwiz-allsucceeded' ).text() );
 		}
 
 	};

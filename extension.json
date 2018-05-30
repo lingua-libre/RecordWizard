@@ -178,6 +178,8 @@
                 "mwe-recwiz-continue",
                 "mwe-recwiz-continueanyway",
                 "mwe-recwiz-retry",
+				"mwe-recwiz-publish",
+				"mwe-recwiz-restart",
 		        "mwe-recwiz-tutorial-activate",
 		        "mwe-recwiz-tutorial-configure",
 		        "mwe-recwiz-tutorial-reopenpopup",

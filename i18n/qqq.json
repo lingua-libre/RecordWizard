@@ -20,6 +20,8 @@
 	"mwe-recwiz-continue": "Label on a button, used to go to the next step.",
 	"mwe-recwiz-continueanyway": "Label on a button, used to go to the next step when errors occured during the current step.",
 	"mwe-recwiz-retry": "Label on a button, used to retry failed uploads.",
+	"mwe-recwiz-publish": "Label on a button, used to confirm the last step and upload all files on Wikimedia Commons.",
+	"mwe-recwiz-restart": "Label on a button, displayed once the uploads are successful. Used to restart the RecordWizard to record some more words.",
 	"mwe-recwiz-tutorial-reopenpopup": "Buton in the tutorial step to force the browser's popup asking for microphone sharing to reopen.",
 	"mwe-recwiz-locutor-profile": "Label for the profile selector field on the locutor tab.",
 	"mwe-recwiz-locutor-profilemain": "Label of the option group containing the main profile in the profile selector dropdown.",
