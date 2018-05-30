@@ -73,6 +73,11 @@
 			if ( [ 'stashed', 'error' ].indexOf( rw.records[ word ].getState() ) === -1 ) {
 				continue;
 			}
+			// Only start publishing the records that are in the current list
+			if ( rw.metadatas.words.indexOf( word ) === -1 ) {
+				rw.metadatas.statesCount.stashed--;
+				continue;
+			}
 
 			// Make requests
 			process = new OO.ui.Process();

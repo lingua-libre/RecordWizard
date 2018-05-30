@@ -32,7 +32,11 @@
 
 		this.recordItems = {};
 		for ( word in rw.records ) {
-			if ( rw.records[ word ].getState() === 'up' ) {
+			// Do not display words that are not in the current list
+			if ( rw.metadatas.words.indexOf( word ) === -1 ) {
+				continue;
+			}
+			if ( rw.records[ word ].getState() !== 'stashed' ) {
 				continue;
 			}
 			$audio = $( '<audio>' )
