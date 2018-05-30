@@ -279,6 +279,19 @@
 	};
 
 	/**
+	 * Reset the object
+	 */
+	rw.Record.prototype.reset = function () {
+		// TODO: abort request if uploading
+		// this.offStateChange();
+		this.file = null;
+		this.filekey = null;
+		this.imageInfo = null;
+		this.error = false;
+		this.state = 'up';
+	};
+
+	/**
 	 * Upload the audio file to the upload stash.
 	 *
 	 * This method is made to be used through the request queue.

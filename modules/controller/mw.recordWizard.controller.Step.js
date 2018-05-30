@@ -147,8 +147,7 @@
 		for ( word in rw.records ) {
 			state = rw.records[ word ].getState();
 			if ( state === 'up' ) {
-				rw.records[ word ].remove();
-				delete rw.records[ word ];
+				rw.records[ word ].reset();
 			}
 		}
 	};
@@ -162,8 +161,7 @@
 		for ( word in rw.records ) {
 			state = rw.records[ word ].getState();
 			if ( [ 'stashing', 'uploading', 'finalizing' ].indexOf( state ) > -1 ) {
-				rw.records[ word ].remove();
-				delete rw.records[ word ];
+				rw.records[ word ].reset();
 			}
 		}
 	};
@@ -176,8 +174,7 @@
 
 		for ( word in rw.records ) {
 			if ( rw.records[ word ].hasFailed() ) {
-				rw.records[ word ].remove();
-				delete rw.records[ word ];
+				rw.records[ word ].reset();
 			}
 		}
 	};
