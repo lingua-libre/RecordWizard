@@ -39,15 +39,28 @@
 			if ( rw.records[ word ].getState() !== 'stashed' ) {
 				continue;
 			}
-			$audio = $( '<audio>' )
-				.attr( 'src', rw.records[ word ].getStashedFileUrl() )
-				.attr( 'controls', true );
-			this.recordItems[ word ] = $( '<li>' ).text( word ).prepend( $audio );
+			$audio = this.createPlayButton( word, rw.records[ word ].getStashedFileUrl() );
+			this.recordItems[ word ] = $( '<li>' ).append( $audio );
 			this.$list.append( this.recordItems[ word ] );
 		}
 
 		this.$container.prepend( this.$list );
 		this.showNextButton();
+	};
+
+	rw.ui.Publish.prototype.createPlayButton = function ( text, audioUrl ) {
+		var button = new OO.ui.ButtonWidget( {
+			framed: false,
+			icon: 'play',
+			title: 'play',
+			label: text
+		} );
+		button.on( 'click', function () {
+			var audio = new Audio( audioUrl );
+			audio.play();
+		} );
+
+		return button.$element;
 	};
 
 	rw.ui.Publish.prototype.setItemState = function ( word, state ) {

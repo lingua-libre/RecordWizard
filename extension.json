@@ -164,6 +164,7 @@
             ],
 			"dependencies": [
 			    "oojs-ui",
+				"oojs-ui.styles.icons-media",
 			    "ext.recordWizard.layout"
 			],
 			"messages": [
