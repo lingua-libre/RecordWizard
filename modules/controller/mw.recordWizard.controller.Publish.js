@@ -68,6 +68,7 @@
 		}
 
 		this.removeWaitingRecords();
+		this.ui.disableRemoveButtons();
 		for ( word in rw.records ) {
 			// Only start publishing the records that are not already published
 			if ( [ 'stashed', 'error' ].indexOf( rw.records[ word ].getState() ) === -1 ) {
