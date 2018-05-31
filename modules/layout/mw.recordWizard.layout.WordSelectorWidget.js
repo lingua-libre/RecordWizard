@@ -21,7 +21,21 @@
 	OO.inheritClass( rw.layout.WordSelectorWidget, OO.ui.TagMultiselectWidget );
 
 	rw.layout.WordSelectorWidget.prototype.onAdd = function ( item, index ) {
-		var height = this.$handle[ 0 ].scrollHeight;
+		var i,
+			texts = item.getData().split( '#' ),
+			height = this.$handle[ 0 ].scrollHeight;
+
+		// Cut the text into several texts using the ";" character as separator
+		if ( texts.length > 1 ) {
+			this.removeItems( [ item ] );
+			for ( i = 0; i < texts.length; i++ ) {
+				if ( texts[ i ].trim() !== '' ) {
+					this.addTag( texts[ i ].trim() );
+				}
+			}
+		}
+
+		// Scroll the textarea to show the newly added items
 		this.$handle.scrollTop( height );
 	};
 

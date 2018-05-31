@@ -49,7 +49,7 @@
 	"mwe-recwiz-details-lang": "Record language",
 	"mwe-recwiz-details-wordlist": "List of the words to record",
 	"mwe-recwiz-details-randomise": "Shuffle list",
-	"mwe-recwiz-details-addwords": "Add words",
+	"mwe-recwiz-details-addwords": "Type a word and press <Enter> (or several words using # as a separator)",
 	"mwe-recwiz-details-clear": "Clear",
 	"mwe-recwiz-details-noword": "No words selected",
 	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|word|words}}",
