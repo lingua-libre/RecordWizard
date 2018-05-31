@@ -16,6 +16,7 @@
 	 * @param  {string} word Textual transcription of the Record
 	 */
 	rw.Record = function ( word ) {
+		var decomposedWord;
 		OO.EventEmitter.call( this );
 
 		this.file = null;
@@ -23,8 +24,18 @@
 		this.filekey = null;
 		this.imageInfo = null;
 		this.wbItem = null;
-		this.word = word;
+
+		this.word = word.trim();
 		this.extra = {};
+
+		decomposedWord = this.word.match( /^(.+) \((.+)\)$/m );
+		if ( decomposedWord === null ) {
+			this.transcription = this.word;
+			this.qualifier = null;
+		} else {
+			this.transcription = decomposedWord[ 1 ];
+			this.qualifier = decomposedWord[ 2 ];
+		}
 
 		this.inQueue = false;
 		this.error = false;
@@ -34,12 +45,30 @@
 	OO.mixinClass( rw.Record, OO.EventEmitter );
 
 	/**
+	 * Get the full textual identifier of the record.
+	 *
+	 * @return {string}  Textual identifier of the record
+	 */
+	rw.Record.prototype.getWord = function () {
+		return this.word;
+	};
+
+	/**
 	 * Get the textual transcription of the record.
 	 *
 	 * @return {string}  Textual transcription of the record
 	 */
-	rw.Record.prototype.getWord = function () {
-		return this.word;
+	rw.Record.prototype.getTranscription = function () {
+		return this.transcription;
+	};
+
+	/**
+	 * Get the qualifier of the recorded word (if any).
+	 *
+	 * @return {string|null}  Qualifier of the record
+	 */
+	rw.Record.prototype.getQualifier = function () {
+		return this.qualifier;
 	};
 
 	/**
@@ -168,7 +197,8 @@
 			'\n | locutorGender = ' + gender +
 			'\n | author        = [[User:' + mw.config.get( 'wgUserName' ) + '|]]' +
 			'\n | languageId    = ' + rw.config.languages[ rw.metadatas.language ].wikidataId +
-			'\n | transcription = ' + this.word +
+			'\n | transcription = ' + this.transcription +
+			'\n | qualifier     = ' + ( this.qualifier !== null ? this.qualifier : '' ) +
 			'\n | date          = ' + date.getFullYear() + '-' + ( date.getMonth() + 1 ) + '-' + date.getDate() +
 			'\n}}' +
 			'\n\n== {{int:license-header}} ==' +
@@ -328,7 +358,6 @@
 	rw.Record.prototype.finishUpload = function ( api, deferred ) {
 		var record = this;
 
-		console.log( this.state )
 		if ( this.state === 'error' && this.imageInfo !== null ) {
 			deferred.resolve();
 		}
@@ -345,7 +374,6 @@
 			text: this.getText(),
 			ignorewarnings: true // TODO: manage warnings !important
 		} ).then( function ( result ) {
-			console.log( result )
 			record.uploaded( result[ 'upload-to-commons' ].oauth.upload.imageinfo );
 			deferred.resolve();
 		} ).fail( function ( code, result ) {
@@ -397,7 +425,11 @@
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.spokenLanguages ).setType( 'wikibase-item' ).setValue( rw.metadatas.language ), true ); // Language
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.locutor ).setType( 'wikibase-item' ).setValue( rw.metadatas.locutor.qid ), true ); // Locutor
 		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.date ).setType( 'time' ).setValue( { time: today } ), true ); // Date
-		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.transcription ).setType( 'monolingualtext' ).setValue( { language: 'fr', text: this.word } ), true ); // Transcription
+		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.transcription ).setType( 'monolingualtext' ).setValue( { language: 'en', text: this.transcription } ), true ); // Transcription
+		if ( this.qualifier !== null ) {
+			this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.qualifier ).setType( 'string' ).setValue( this.qualifier ), true ); // Qualifier
+		}
+
 		for ( propertyId in this.extra ) {
 			this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( propertyId ).setType( 'string' ).setValue( this.extra[ propertyId ] ), true );
 		}

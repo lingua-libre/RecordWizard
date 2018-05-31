@@ -38,6 +38,17 @@
 	width: 32%;
 }
 
+.mwe-recwiz-qualifier {
+    font-size: 75%;
+    color: #EEEEEE;
+}
+.mwe-recwiz-qualifier::before {
+    content: " (";
+}
+.mwe-recwiz-qualifier::after {
+    content: ")";
+}
+
 @keyframes spinner {
   to {transform: rotate(360deg);}
 }

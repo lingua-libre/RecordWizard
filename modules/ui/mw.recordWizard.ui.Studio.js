@@ -52,7 +52,7 @@
 	 * Build all the needed HTML nodes and add them to the DOM.
 	 */
 	rw.ui.Studio.prototype.generateUI = function () {
-		var i;
+		var i, record;
 
 		this.$studio = $( '<div>' ).addClass( 'studio' );
 
@@ -63,7 +63,18 @@
 		this.$list = $( '<ul>' ).addClass( 'studio-wordlist' );
 		this.recordItems = {};
 		for ( i = 0; i < rw.metadatas.words.length; i++ ) {
-			this.recordItems[ rw.metadatas.words[ i ] ] = $( '<li>' ).text( rw.metadatas.words[ i ] );
+			record = rw.records[ rw.metadatas.words[ i ] ];
+
+			this.recordItems[ rw.metadatas.words[ i ] ] = $( '<li>' )
+				.text( record.getTranscription() )
+				.attr( 'data', rw.metadatas.words[ i ] );
+			if ( record.getQualifier() !== null ) {
+				this.recordItems[ rw.metadatas.words[ i ] ].append( $( '<span>' )
+					.text( record.getQualifier() )
+					.addClass( 'mwe-recwiz-qualifier' )
+				);
+			}
+
 			this.$list.append( this.recordItems[ rw.metadatas.words[ i ] ] );
 		}
 		this.$studio.append( this.$head ).append( this.$list );
@@ -88,7 +99,11 @@
 
 		this.$list.click( function ( event ) {
 			if ( event.target.nodeName === 'LI' ) {
-				word = $( event.target ).text();
+				word = $( event.target ).attr( 'data' );
+				ui.emit( 'item-click', word );
+			}
+			if ( event.target.nodeName === 'SPAN' ) {
+				word = $( event.target ).parent().attr( 'data' );
 				ui.emit( 'item-click', word );
 			}
 		} );
