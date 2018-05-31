@@ -38,13 +38,6 @@
 		for ( word in rw.records ) {
 			this.setItemState( word, rw.records[ word ].getState() );
 		}
-
-		this.$wordInput.keypress( function ( e ) {
-			if ( e.which === 13 && ui.$wordInput.val().trim() !== '' ) {
-				ui.emit( 'wordinput-validate', ui.$wordInput.val().trim() );
-				ui.$wordInput.val( '' );
-			}
-		} );
 	};
 
 	/**
@@ -73,9 +66,7 @@
 			this.recordItems[ rw.metadatas.words[ i ] ] = $( '<li>' ).text( rw.metadatas.words[ i ] );
 			this.$list.append( this.recordItems[ rw.metadatas.words[ i ] ] );
 		}
-		this.$wordInput = $( '<input>' ).attr( 'placeholder', mw.message( 'mwe-recwiz-studio-input-placeholder' ).text() );
-
-		this.$studio.append( this.$head ).append( this.$list.append( this.$wordInput ) );
+		this.$studio.append( this.$head ).append( this.$list );
 		this.$container.prepend( this.$studio );
 
 		this.$recordCounter = $( '<div>' ).addClass( 'mwe-recwiz-record-count mwe-recwiz-right' ).hide();
@@ -218,17 +209,6 @@
 		}
 		this.showNextButton();
 		this.updateCounter();
-	};
-
-	/**
-	 * Add a word to the list.
-	 *
-	 * @param  {string} word      textual transcription, must match an existing
-	 *                            listed record object
-	 */
-	rw.ui.Studio.prototype.addWord = function ( word ) {
-		this.recordItems[ word ] = $( '<li>' ).text( word );
-		this.$wordInput.before( this.recordItems[ word ] );
 	};
 
 	/**

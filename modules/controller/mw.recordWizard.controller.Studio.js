@@ -94,31 +94,6 @@
 			}
 		} );
 
-		this.ui.on( 'wordinput-validate', function ( word ) {
-			var i;
-
-			if ( rw.metadatas.words.indexOf( word ) !== -1 ) {
-				return;
-			}
-
-			rw.records[ word ] = new rw.Record( word );
-			rw.records[ word ].on( 'state-change', controller.switchState.bind( controller ) );
-
-			rw.metadatas.words.push( word );
-			controller.ui.addWord( word );
-
-			// Move the cursor to the new item only if all the items (except the
-			// last one, the one we've just added) have already been recorded
-			for ( i = 0; i < rw.metadatas.words.length - 1; i++ ) {
-				if ( rw.records[ rw.metadatas.words[ i ] ] === undefined ) {
-					return;
-				}
-			}
-			controller.currentWord = word;
-			controller.ui.setSelectedItem( word );
-
-		} );
-
 		this.ui.on( 'retry-click', function ( word ) {
 			for ( word in rw.records ) {
 				if ( rw.records[ word ].hasFailed() ) {
