@@ -25,7 +25,7 @@
 		this.imageInfo = null;
 		this.wbItem = null;
 
-		this.word = word.trim();
+		this.word = word;
 		this.extra = {};
 
 		decomposedWord = this.word.match( /^(.+) \((.+)\)$/m );

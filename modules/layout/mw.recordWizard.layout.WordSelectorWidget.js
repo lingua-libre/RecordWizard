@@ -39,4 +39,15 @@
 		this.$handle.scrollTop( height );
 	};
 
+	rw.layout.WordSelectorWidget.prototype.getValue = function () {
+		var i,
+			value = OO.ui.TagMultiselectWidget.prototype.getValue.call( this );
+
+		for ( i = 0; i < value.length; i++ ) {
+			value[ i ] = value[ i ].trim();
+		}
+
+		return value;
+	};
+
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );
