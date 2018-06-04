@@ -3,10 +3,13 @@
 		"authors": [
 			"ArslanX",
 			"Okras",
-			"Redredsonia"
+			"Redredsonia",
+			"Movses"
 		]
 	},
+	"recordWizard-desc": "Удобный в использовании, автоматический инструмент для записи аудио-файлов произношения.",
 	"mwe-recwiz-step-tutorial": "Руководство",
+	"mwe-recwiz-step-details": "Подробности",
 	"mwe-recwiz-step-publish": "Опубликовать",
 	"mwe-recwiz-next": "Далее",
 	"mwe-recwiz-previous": "Назад",
@@ -23,7 +26,7 @@
 	"mwe-recwiz-gender-male": "Мужской",
 	"mwe-recwiz-gender-female": "Женский",
 	"mwe-recwiz-gender-other": "Иное",
-	"mwe-recwiz-details-addwords": "Добавить слова",
+	"mwe-recwiz-details-addwords": "Наберите слово и нажмите <Enter> (или несколько слов, используя # в качестве разделителя)",
 	"mwe-recwiz-details-clear": "Очистить",
 	"mwe-recwiz-generator-list": "Список",
 	"mwe-recwiz-studio-input-placeholder": "Добавить новое слово",

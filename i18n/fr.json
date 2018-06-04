@@ -50,6 +50,8 @@
 	"mwe-recwiz-generator-list": "Liste",
 	"mwe-recwiz-studio-input-placeholder": "Ajouter un nouveau mot",
 	"mwe-recwiz-studio-uploadcount": "$1 {{PLURAL:$1|fichier|fichiers}} sur $2 téléversé{{PLURAL:$2||s}}",
+	"mwe-recwiz-publish-remove": "Supprimer",
+	"mwe-recwiz-publish-removelabel": "Supprimer",
 	"mwe-recwiz-pendinguplads": "...Téléversement...",
 	"mwe-recwiz-allsucceeded": "Tous les téléversements ont réussi !",
 	"mwe-recwiz-somefailed": "Certain téléversements ont échoué.",

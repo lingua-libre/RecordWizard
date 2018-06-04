@@ -1,16 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps"
+			"Chrumps",
+			"Railfail536"
 		]
 	},
 	"mwe-recwiz-step-tutorial": "Samouczek",
 	"mwe-recwiz-step-details": "Szczegóły",
 	"mwe-recwiz-step-publish": "Opublikuj",
 	"mwe-recwiz-next": "Dalej",
+	"mwe-recwiz-previous": "Poprzedni",
 	"mwe-recwiz-continue": "Kontynuuj",
 	"mwe-recwiz-continueanyway": "Kontynuuj mimo to",
+	"mwe-recwiz-publish": "Opublikuj w Wikimedia Commons",
+	"mwe-recwiz-locutor-name": "Nazwa do wyświetlenia",
 	"mwe-recwiz-locutor-languagelevel": "Poziom języka",
+	"mwe-recwiz-locutor-languagelevel-good": "dobry poziom",
+	"mwe-recwiz-locutor-languagelevel-average": "średni poziom",
 	"mwe-recwiz-locutor-languagelevel-beginner": "początkujący",
 	"mwe-recwiz-locutor-license": "Licencja",
 	"mwe-recwiz-locutor-gender": "Płeć",
@@ -22,7 +28,10 @@
 	"mwe-recwiz-details-noword": "Nie wybrano żadnych słów",
 	"mwe-recwiz-generator-list": "Lista",
 	"mwe-recwiz-studio-input-placeholder": "Dodaj nowe słowo",
+	"mwe-recwiz-publish-remove": "Usuń",
+	"mwe-recwiz-publish-removelabel": "Usuń",
 	"mwe-recwiz-pendinguplads": "...Przesyłanie...",
+	"mwe-recwiz-somefailed": "Nie udało się przesłać niektórych plików.",
 	"mwe-recwiz-error-mediastream-notfound": "Nie znaleziono mikrofonu. Aby kontynuować, musisz podłączyć go do swojego urządzenia.",
 	"mwe-recwiz-error-mediastream-technical": "Błąd techniczny w przeglądarce lub systemie operacyjnym uniemożliwia korzystanie z mikrofonu. Spróbuj ponownie załadować stronę. Szczegóły błędu: $1",
 	"mwe-recwiz-error-mediastream-unknow": "Nieznany błąd uniemożliwił użycie mikrofonu. Spróbuj ponownie załadować stronę.",

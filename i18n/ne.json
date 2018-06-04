@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nirajan pant"
+		]
+	},
+	"mwe-recwiz-step-publish": "प्रकाशन गर्नुहोस्",
+	"mwe-recwiz-next": "अर्को",
+	"mwe-recwiz-previous": "पछिल्लो",
+	"mwe-recwiz-continueanyway": "जसरी पनि चालू राख्नुहोस्",
+	"mwe-recwiz-retry": "असफल उर्ध्वभरण फेरि प्रयास गर्नुहोस्",
+	"mwe-recwiz-locutor-name": "देखाउनका निमित्त नाम",
+	"mwe-recwiz-locutor-languagelevel": "भाषा तह",
+	"mwe-recwiz-locutor-languagelevel-beginner": "सिकारू",
+	"mwe-recwiz-locutor-license": "इजाजतपत्र",
+	"mwe-recwiz-locutor-gender": "लिङ्ग",
+	"mwe-recwiz-gender-male": "पुरुष",
+	"mwe-recwiz-gender-female": "महिला",
+	"mwe-recwiz-gender-other": "अन्य",
+	"mwe-recwiz-details-addwords": "शब्दहरू थप्नुहोस्",
+	"mwe-recwiz-details-clear": "खाली गर्नुहोस्",
+	"mwe-recwiz-details-noword": "कुनै पनि शब्दहरू रोजिएका छैनन्",
+	"mwe-recwiz-generator-list": "सूची",
+	"mwe-recwiz-studio-input-placeholder": "नयाँ शब्द थप्नुहोस्",
+	"mwe-recwiz-pendinguplads": "...उर्ध्वभरण गरिँदै...",
+	"mwe-recwiz-nearby-coordinates": "निर्देशाङ्कहरू",
+	"mwe-recwiz-nearby-limit-help": "यो १ र ५०० को बीचको पूर्णाङ्क हुनुपर्दछ।",
+	"mwe-recwiz-list-title": "शीर्षक"
+}
