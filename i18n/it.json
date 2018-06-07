@@ -23,7 +23,7 @@
 	"mwe-recwiz-gender-male": "Uomo",
 	"mwe-recwiz-gender-female": "Donna",
 	"mwe-recwiz-gender-other": "Altro",
-	"mwe-recwiz-details-addwords": "Aggiungi parole",
+	"mwe-recwiz-details-addwords": "Digita una parola e premi <Invio> (o più parole usando # come separatore)",
 	"mwe-recwiz-details-clear": "Pulisci",
 	"mwe-recwiz-details-noword": "Nessuna parola selezionata",
 	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|parola|parole}}",

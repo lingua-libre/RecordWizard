@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Antoine Lamielle",
-			"Wladek92"
+			"Wladek92",
+			"0x010C"
 		]
 	},
 	"recordWizard": "RecordWizard",
@@ -19,6 +20,8 @@
 	"mwe-recwiz-continue": "Continuer",
 	"mwe-recwiz-continueanyway": "Continuer quand même",
 	"mwe-recwiz-retry": "relancer les téléversements échoués",
+	"mwe-recwiz-publish": "Publier sur Wikimedia Commons",
+	"mwe-recwiz-restart": "Enregistrer plus de mots",
 	"mwe-recwiz-tutorial-reopenpopup": "Réouvrir la popup",
 	"mwe-recwiz-locutor-profile": "Profil locuteur à utiliser",
 	"mwe-recwiz-locutor-profilemain": "Votre locuteur principal",
@@ -42,7 +45,7 @@
 	"mwe-recwiz-details-lang": "Langue d'enregistrement",
 	"mwe-recwiz-details-wordlist": "Liste des mots à enregistrer",
 	"mwe-recwiz-details-randomise": "Mélanger la liste",
-	"mwe-recwiz-details-addwords": "Ajouter des mots",
+	"mwe-recwiz-details-addwords": "Saisissez un mot et appuyez sur <Entrer> (ou plusieurs mots en les séparant avec un « # »)",
 	"mwe-recwiz-details-clear": "Effacer",
 	"mwe-recwiz-details-noword": "Aucun mot sélectionné",
 	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|mot|mots}}",
@@ -50,7 +53,9 @@
 	"mwe-recwiz-generator-list": "Liste",
 	"mwe-recwiz-studio-input-placeholder": "Ajouter un nouveau mot",
 	"mwe-recwiz-studio-uploadcount": "$1 {{PLURAL:$1|fichier|fichiers}} sur $2 téléversé{{PLURAL:$2||s}}",
+	"mwe-recwiz-publish-play": "Lecture",
 	"mwe-recwiz-publish-remove": "Supprimer",
+	"mwe-recwiz-publish-areyousure": "Êtes-vous sûr de vouloir supprimer cet enregistrement ?",
 	"mwe-recwiz-publish-removelabel": "Supprimer",
 	"mwe-recwiz-pendinguplads": "...Téléversement...",
 	"mwe-recwiz-allsucceeded": "Tous les téléversements ont réussi !",

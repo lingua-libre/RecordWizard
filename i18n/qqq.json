@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Antoine Lamielle",
-			"Robby"
+			"Robby",
+			"Liuxinyu970226"
 		]
 	},
 	"recordWizard": "The name of the extension",
@@ -53,7 +54,7 @@
 	"mwe-recwiz-generator-list": "Label of the button to open the 'list' generator dialog box, on the details tab.",
 	"mwe-recwiz-studio-input-placeholder": "Placeholder of the text field used to add words to the record list, on the studio tab.",
 	"mwe-recwiz-studio-uploadcount": "Status message indicationg the total number of uploads and the number of upload succeded.",
-	"mwe-recwiz-publish-play": "Label of a tooltip over a button, which is used to start the listening of a record.",
+	"mwe-recwiz-publish-play": "Label of a tooltip over a button, which is used to start the listening of a record.\n{{Identical|Play}}",
 	"mwe-recwiz-publish-remove": "Label of a tooltip over a button, which is used to remove a record.\n{{Identical|Remove}}",
 	"mwe-recwiz-publish-areyousure": "Text inside a popup, which ask the user for a confirmation before removing a record.",
 	"mwe-recwiz-publish-removelabel": "Label of the button used to confirm the deletion of a record.\n{{Identical|Remove}}",
