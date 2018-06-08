@@ -14,7 +14,7 @@
 		rw.generator.Generator.prototype.initialize.call( this );
 	};
 
-	rw.generator.Generator.prototype.getReadyProcess = function ( data ) {
+	rw.generator.WMCategory.prototype.getReadyProcess = function ( data ) {
 		var generator = this,
 			process = new OO.ui.Process();
 
