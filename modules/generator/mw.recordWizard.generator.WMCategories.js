@@ -25,17 +25,18 @@
 		}
 
 		this.projects = [];
+		this.langCode = mw.recordWizard.config.languages[ mw.recordWizard.metadatas.language ].code;
 		process.next( this.exists.bind(
 			this,
 			mw.msg( 'mwe-recwiz-wmcategory-wikipedia' ),
 			rw.config.properties.wikipediaTitle,
-			'https://' + mw.recordWizard.config.languages[ mw.recordWizard.metadatas.language ].code + '.wikipedia.org/w/api.php'
+			'https://' + this.langCode + '.wikipedia.org/w/api.php'
 		) );
 		process.next( this.exists.bind(
 			this,
 			mw.msg( 'mwe-recwiz-wmcategory-wiktionary' ),
 			rw.config.properties.wiktionaryEntry,
-			'https://' + mw.recordWizard.config.languages[ mw.recordWizard.metadatas.language ].code + '.wiktionary.org/w/api.php'
+			'https://' + this.langCode + '.wiktionary.org/w/api.php'
 		) );
 		process.next( function () {
 			if ( generator.projects.length === 0 ) {
@@ -139,7 +140,7 @@
 			for ( i = 0; i < pages.length; i++ ) {
 				element = {};
 				element.text = pages[ i ].title;
-				element[ generator.localProperty ] = pages[ i ].title;
+				element[ generator.localProperty ] = generator.langCode + ':' + pages[ i ].title;
 				generator.list.push( element );
 			}
 			generator.deferred.resolve();
