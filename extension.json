@@ -112,7 +112,8 @@
                 "modules/generator/mw.recordWizard.generator.js",
                 "modules/generator/mw.recordWizard.generator.Generator.js",
                 "modules/generator/mw.recordWizard.generator.List.js",
-                "modules/generator/mw.recordWizard.generator.Nearby.js"
+                "modules/generator/mw.recordWizard.generator.Nearby.js",
+                "modules/generator/mw.recordWizard.generator.WMCategories.js"
             ],
 			"dependencies": [
 			    "oojs-ui",
@@ -123,6 +124,7 @@
 			"messages": [
                 "mwe-recwiz-generator-nearby",
                 "mwe-recwiz-generator-list",
+				"mwe-recwiz-generator-wmcategory",
 			    "mwe-recwiz-nearby-coordinates",
 			    "mwe-recwiz-nearby-coordinates-help",
 			    "mwe-recwiz-nearby-limit",
@@ -136,6 +138,10 @@
 			    "mwe-recwiz-warning-noresults",
 			    "mwe-recwiz-list-title",
 				"mwe-recwiz-list-title-help",
+				"mwe-recwiz-wmcategory-title",
+				"mwe-recwiz-wmcategory-title-help",
+				"mwe-recwiz-wmcategory-wikipedia",
+				"mwe-recwiz-wmcategory-wiktionary",
 				"mwe-recwiz-error-pagemissing"
 			]
         },

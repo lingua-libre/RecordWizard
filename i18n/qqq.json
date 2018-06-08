@@ -52,6 +52,7 @@
 	"mwe-recwiz-details-wordcount": "Status message indicationg the number of words in the list.",
 	"mwe-recwiz-generator-nearby": "Label of the button to open the 'neaby' generator dialog box, on the details tab.",
 	"mwe-recwiz-generator-list": "Label of the button to open the 'list' generator dialog box, on the details tab.",
+	"mwe-recwiz-generator-wmcategory": "Label of the button to open the 'Wikimedia Category' generator dialog box, on the details tab.",
 	"mwe-recwiz-studio-input-placeholder": "Placeholder of the text field used to add words to the record list, on the studio tab.",
 	"mwe-recwiz-studio-uploadcount": "Status message indicationg the total number of uploads and the number of upload succeded.",
 	"mwe-recwiz-publish-play": "Label of a tooltip over a button, which is used to start the listening of a record.\n{{Identical|Play}}",
@@ -86,5 +87,9 @@
 	"mwe-recwiz-warning-noresults": "Warning message indicating that the request gives no results.",
 	"mwe-recwiz-list-title": "Label of the page title field, in the list generator dialog box.",
 	"mwe-recwiz-list-title-help": "Help message displayed in a popup nextto the page title field, in the list generator dialog box.",
+	"mwe-recwiz-wmcategory-title": "Label of the page title field, in the 'Wikimedia Category' generator dialog box.",
+	"mwe-recwiz-wmcategory-title-help": "Help message displayed in a popup nextto the page title field, in the 'Wikimedia Category' generator dialog box.",
+	"mwe-recwiz-wmcategory-wikipedia": "Label of a radio button in the 'Wikimedia Category' generator dialog box.",
+	"mwe-recwiz-wmcategory-wiktionary": "Label of a radio button in the 'Wikimedia Category' generator dialog box.",
 	"mwe-recwiz-error-pagemissing": "Error message indicating that the page title field can not be empty."
 }
