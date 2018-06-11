@@ -156,18 +156,22 @@
 	 * Generate a filename for this record based on the curent metadatas.
 	 *
 	 * The format looks like 'LL-Username (locutor)-lang-transcription.wav'.
+	 * All illegal characters are replaced by a dash, see for reference:
+	 * https://www.mediawiki.org/wiki/Manual:$wgIllegalFileChars
 	 *
 	 * @return {string}  Name to give to this record
 	 */
 	rw.Record.prototype.getFilename = function () {
-		var lang = rw.config.languages[ rw.metadatas.language ];
+		var lang = rw.config.languages[ rw.metadatas.language ],
+			illegalChars = /[#<>[\]|{}:/\\]/g,
+			filename = 'LL' +
+				'-' + lang.wikidataId +
+				( lang.iso3 !== null ? ' (' + lang.iso3 + ')' : '' ) +
+				'-' + rw.metadatas.locutor.name +
+				( mw.config.get( 'wgUserName' ) !== rw.metadatas.locutor.name ? ' (' + mw.config.get( 'wgUserName' ) + ')' : '' ) +
+				'-' + this.word + '.wav';
 
-		return 'LL' +
-			'-' + lang.wikidataId +
-			( lang.iso3 !== null ? ' (' + lang.iso3 + ')' : '' ) +
-			'-' + rw.metadatas.locutor.name +
-			( mw.config.get( 'wgUserName' ) !== rw.metadatas.locutor.name ? ' (' + mw.config.get( 'wgUserName' ) + ')' : '' ) +
-			'-' + this.word + '.wav';
+		return filename.replace( illegalChars, '-' );
 	};
 
 	/**
