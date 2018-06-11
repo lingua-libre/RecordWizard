@@ -99,6 +99,7 @@
 	"mwe-recwiz-list-title-help": "Title of a page within the list namespace.",
 	"mwe-recwiz-wmcategory-title": "Category name",
 	"mwe-recwiz-wmcategory-title-help": "Name of a category, including the Category namespace.",
+	"mwe-recwiz-wmcategory-source": "Source",
 	"mwe-recwiz-wmcategory-wikipedia": "Wikipedia",
 	"mwe-recwiz-wmcategory-wiktionary": "Wiktionary",
 	"mwe-recwiz-error-pagemissing": "There is currently no text in the page $1."

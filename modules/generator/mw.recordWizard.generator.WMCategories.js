@@ -39,17 +39,23 @@
 			'https://' + this.langCode + '.wiktionary.org/w/api.php'
 		) );
 		process.next( function () {
+			var i;
 			if ( generator.projects.length === 0 ) {
 				return false; // TODO: Add an error message
 			}
 
-			// TODO: add a source selector
-			generator.api = generator.projects[ 0 ].api;
-			generator.project = generator.projects[ 0 ].name;
-			generator.localProperty = generator.projects[ 0 ].localProperty;
-			generator.categoryName = generator.projects[ 0 ].categoryName;
+			generator.source = new OO.ui.RadioSelectWidget( {} );
+			for ( i = 0; i < generator.projects.length; i++ ) {
+				generator.source.addItems( [ new OO.ui.RadioOptionWidget( {
+					label: generator.projects[ i ].name,
+					data: generator.projects[ i ]
+				} ) ] );
+			}
+			generator.source.on( 'choose', generator.switchSource.bind( generator ) );
+
+			generator.source.selectItemByLabel( generator.projects[ 0 ].name );
+			generator.switchSource( generator.source.getFirstSelectableItem() );
 		} );
-		process.next( this.generateInterface.bind( this ) );
 
 		return process;
 	};
@@ -84,6 +90,17 @@
 		return deferred;
 	};
 
+	rw.generator.WMCategory.prototype.switchSource = function ( item ) {
+		var selectedProject = item.getData();
+
+		this.api = selectedProject.api;
+		this.project = selectedProject.name;
+		this.localProperty = selectedProject.localProperty;
+		this.categoryName = selectedProject.categoryName;
+
+		this.generateInterface();
+	};
+
 	rw.generator.WMCategory.prototype.generateInterface = function () {
 		// TODO: don't regenerate the complete interface each times
 
@@ -98,6 +115,12 @@
 		this.layout = new OO.ui.Widget( {
 			classes: [ 'mwe-recwiz-wmcategory' ],
 			content: [
+				new OO.ui.FieldLayout(
+					this.source, {
+						align: 'top',
+						label: mw.message( 'mwe-recwiz-wmcategory-source' ).text()
+					}
+				),
 				new OO.ui.FieldLayout(
 					this.titleInput, {
 						align: 'top',
