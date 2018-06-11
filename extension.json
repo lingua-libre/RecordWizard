@@ -172,6 +172,7 @@
 			"dependencies": [
 			    "oojs-ui",
 				"oojs-ui.styles.icons-media",
+			    "oojs-ui.styles.icons-wikimedia",
 			    "ext.recordWizard.layout"
 			],
 			"messages": [
@@ -224,6 +225,7 @@
 				"mwe-recwiz-publish-remove",
 				"mwe-recwiz-publish-areyousure",
 				"mwe-recwiz-publish-removelabel",
+				"mwe-recwiz-publish-commonsfilelist",
                 "mwe-recwiz-pendinguplads",
                 "mwe-recwiz-allsucceeded",
                 "mwe-recwiz-somefailed",

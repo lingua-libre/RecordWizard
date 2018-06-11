@@ -44,8 +44,27 @@
 			this.$list.append( this.recordItems[ word ] );
 		}
 
+		this.commonsFileListButton = new OO.ui.ButtonWidget( {
+			label: mw.msg( 'mwe-recwiz-publish-commonsfilelist' ),
+			framed: false,
+			flags: [ 'progressive' ],
+			icon: 'logoWikimediaCommons'
+		} );
+		this.commonsFileListButton.on( 'click', function () {
+			window.open( 'https://commons.wikimedia.org/wiki/Special:ListFiles/' + mw.config.get( 'wgUserName' ), '_blank' );
+		} );
+		this.commonsFileListButton.$element.insertBefore( this.nextButton.$element );
+
 		this.$container.prepend( this.$list );
 		this.showNextButton();
+	};
+
+	/**
+	 * @inheritDoc
+	 */
+	rw.ui.Publish.prototype.unload = function () {
+		rw.ui.Step.prototype.unload.call( this );
+		this.commonsFileListButton.$element.detach();
 	};
 
 	rw.ui.Publish.prototype.createPlayButton = function ( word, audioUrl ) {
@@ -126,6 +145,7 @@
 			this.nextButton.setDisabled( true );
 			this.stateLabel.toggle( true );
 			this.stateLabel.setLabel( mw.message( 'mwe-recwiz-pendinguplads' ).text() );
+			console.log( 'a' );
 		} else if ( rw.metadatas.statesCount.error > 0 ) {
 			// All uploads are finished, but some has failed
 			this.retryButton.toggle( true );
@@ -135,17 +155,23 @@
 			} else {
 				this.stateLabel.setLabel( mw.message( 'mwe-recwiz-allfailed' ).text() );
 			}
+			console.log( 'b' );
 		} else if ( rw.metadatas.statesCount.stashed > 0 ) {
 			// At the begigging, before the publish button has been ever clicked
 			this.previousButton.setDisabled( false );
 			this.nextButton.setDisabled( false );
 			this.nextButton.setLabel( mw.message( 'mwe-recwiz-publish' ).text() );
+
+			this.commonsFileListButton.toggle( false );
+			console.log( 'c' );
 		} else {
 			// At the end, all upload has succeded
 			this.nextButton.setDisabled( false );
-			this.stateLabel.toggle( false );
 			this.nextButton.setLabel( mw.message( 'mwe-recwiz-restart' ).text() );
-			this.stateLabel.setLabel( mw.message( 'mwe-recwiz-allsucceeded' ).text() );
+			this.stateLabel.toggle( false );
+
+			this.commonsFileListButton.toggle( true );
+			console.log( 'd' );
 		}
 
 	};

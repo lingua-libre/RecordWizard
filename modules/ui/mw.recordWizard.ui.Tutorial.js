@@ -38,7 +38,6 @@
 
 		this.reopenPopupButton = new OO.ui.ButtonWidget( {
 			label: mw.msg( 'mwe-recwiz-tutorial-reopenpopup' ),
-			classes: [ 'mwe-recwiz-center' ]
 		} );
 
 		this.volumeMeter = new OO.ui.ProgressBarWidget( {
