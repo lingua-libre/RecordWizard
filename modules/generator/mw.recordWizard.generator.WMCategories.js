@@ -41,7 +41,8 @@
 		process.next( function () {
 			var i;
 			if ( generator.projects.length === 0 ) {
-				return false; // TODO: Add an error message
+				OO.ui.alert( mw.msg( 'mwe-recwiz-error-nowiki' ) );
+				return false;
 			}
 
 			generator.source = new OO.ui.RadioSelectWidget( {} );

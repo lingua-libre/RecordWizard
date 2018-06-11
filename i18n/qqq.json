@@ -93,5 +93,6 @@
 	"mwe-recwiz-wmcategory-source": "Label of the data source selector, in the Wikimedia Category generator dialog box.\n{{Identical|mwe-recwiz-nearby-source}}",
 	"mwe-recwiz-wmcategory-wikipedia": "Label of a radio button in the 'Wikimedia Category' generator dialog box.",
 	"mwe-recwiz-wmcategory-wiktionary": "Label of a radio button in the 'Wikimedia Category' generator dialog box.",
-	"mwe-recwiz-error-pagemissing": "Error message indicating that the page title field can not be empty."
+	"mwe-recwiz-error-pagemissing": "Error message indicating that the given page cannot be found.",
+	"mwe-recwiz-error-nowiki": "Error message indicating that the generator cannot find a Wikipedia or a Wiktionary in the selected language."
 }
