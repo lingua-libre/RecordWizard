@@ -51,11 +51,12 @@
 	"mwe-recwiz-details-randomise": "Shuffle list",
 	"mwe-recwiz-details-addwords": "Type a word and press <Enter> (or several words using # as a separator)",
 	"mwe-recwiz-details-clear": "Clear",
+	"mwe-recwiz-details-generators": "No idea? Try out a word generator",
 	"mwe-recwiz-details-noword": "No words selected",
 	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|word|words}}",
 
 	"mwe-recwiz-generator-nearby": "Nearby items",
-	"mwe-recwiz-generator-list": "List",
+	"mwe-recwiz-generator-list": "Local list",
 	"mwe-recwiz-generator-wmcategory": "Wikimedia Category",
 
 	"mwe-recwiz-studio-input-placeholder": "Add a new word",

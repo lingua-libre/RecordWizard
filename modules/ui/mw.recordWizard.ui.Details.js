@@ -76,8 +76,12 @@
 					align: 'top',
 					label: mw.message( 'mwe-recwiz-details-wordlist' ).text()
 				} ),
-				this.generatorButtons,
-				this.clearButton
+				this.clearButton,
+				new OO.ui.FieldLayout( this.generatorButtons, {
+					align: 'left',
+					label: mw.message( 'mwe-recwiz-details-generators' ).text(),
+					classes: [ 'mwe-recwiz-clear' ]
+				} )
 			],
 			classes: [ 'mwe-recwiz-increment' ]
 		} );

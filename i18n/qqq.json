@@ -48,6 +48,7 @@
 	"mwe-recwiz-details-randomise": "Label of a checkbox switching on the word order randomisation, on the details tab.",
 	"mwe-recwiz-details-addwords": "Placeholder of the text field used to add words to the record list, on the details tab.",
 	"mwe-recwiz-details-clear": "Label of the button to clear the words in the record list.",
+	"mwe-recwiz-details-generators": "Label above a button group used to start word generators.",
 	"mwe-recwiz-details-noword": "Status message indicating there are no words in the record list.",
 	"mwe-recwiz-details-wordcount": "Status message indicationg the number of words in the list.",
 	"mwe-recwiz-generator-nearby": "Label of the button to open the 'neaby' generator dialog box, on the details tab.",

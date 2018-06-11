@@ -2,6 +2,10 @@
     float: right;
 }
 
+.mwe-recwiz-clear {
+    clear: both;
+}
+
 .mwe-recwiz-buttons {
     margin-top:1em;
 }
