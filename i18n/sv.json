@@ -32,6 +32,7 @@
 	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|ord}}",
 	"mwe-recwiz-generator-nearby": "Föremål i närheten",
 	"mwe-recwiz-generator-list": "Lista",
+	"mwe-recwiz-generator-wmcategory": "Wikimedia-kategori",
 	"mwe-recwiz-studio-input-placeholder": "Lägg till ett nytt ord",
 	"mwe-recwiz-studio-uploadcount": "$1 av $2 {{PLURAL:$2|ljud}} laddades upp",
 	"mwe-recwiz-publish-play": "Spela upp",
@@ -53,5 +54,9 @@
 	"mwe-recwiz-nearby-getcoordinates": "Hämta min position",
 	"mwe-recwiz-nearby-source": "Källa",
 	"mwe-recwiz-list-title": "Titel",
-	"mwe-recwiz-list-title-help": "Titeln på en sida inom listnamnrymden."
+	"mwe-recwiz-list-title-help": "Titeln på en sida inom listnamnrymden.",
+	"mwe-recwiz-wmcategory-title": "Kategorinamn",
+	"mwe-recwiz-wmcategory-title-help": "Namn på en kategori, inkluderar kategorinamnrymden.",
+	"mwe-recwiz-wmcategory-wikipedia": "Wikipedia",
+	"mwe-recwiz-wmcategory-wiktionary": "Wiktionary"
 }

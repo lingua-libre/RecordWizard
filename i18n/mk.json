@@ -49,6 +49,7 @@
 	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|збор|збора}}",
 	"mwe-recwiz-generator-nearby": "Предмети во близина",
 	"mwe-recwiz-generator-list": "Список",
+	"mwe-recwiz-generator-wmcategory": "Викимедиина категорија",
 	"mwe-recwiz-studio-input-placeholder": "Додајте нов збор",
 	"mwe-recwiz-studio-uploadcount": "{{PLURAL:$2|Подигнат е $1 од $2 звук|Подигнати се $1 од $2 звуци}}",
 	"mwe-recwiz-publish-play": "Пушти",
@@ -83,5 +84,9 @@
 	"mwe-recwiz-warning-noresults": "Нема предмети во близина со тие координати.",
 	"mwe-recwiz-list-title": "Наслов",
 	"mwe-recwiz-list-title-help": "Наслов на страницата во списочниот именски простор.",
+	"mwe-recwiz-wmcategory-title": "Име на категоријата",
+	"mwe-recwiz-wmcategory-title-help": "Име на категоријата, вклучувајќи го именскиот простор.",
+	"mwe-recwiz-wmcategory-wikipedia": "Википедија",
+	"mwe-recwiz-wmcategory-wiktionary": "Викиречник",
 	"mwe-recwiz-error-pagemissing": "Засега нема текст на страницата „$1“."
 }

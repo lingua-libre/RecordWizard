@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Neamitika"
 		]
 	},
 	"mwe-recwiz-step-tutorial": "Tutorial",
@@ -25,11 +26,14 @@
 	"mwe-recwiz-gender-other": "Altro",
 	"mwe-recwiz-details-addwords": "Digita una parola e premi <Invio> (o più parole usando # come separatore)",
 	"mwe-recwiz-details-clear": "Pulisci",
+	"mwe-recwiz-details-generators": "Non sai cosa mettere? Prova il generatore di parole.",
 	"mwe-recwiz-details-noword": "Nessuna parola selezionata",
 	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|parola|parole}}",
 	"mwe-recwiz-generator-nearby": "Elementi nelle vicinanze",
-	"mwe-recwiz-generator-list": "Elenco",
+	"mwe-recwiz-generator-list": "Elenco locale",
+	"mwe-recwiz-generator-wmcategory": "Categoria Wikimedia",
 	"mwe-recwiz-studio-input-placeholder": "Aggiungi una nuova parola",
+	"mwe-recwiz-publish-commonsfilelist": "Controlla i tuoi caricamenti su Wikimedia Commons",
 	"mwe-recwiz-allsucceeded": "Tutti i caricamenti sono riusciti!",
 	"mwe-recwiz-error-nolanguages": "Sono sicuro che sai parlare almeno una lingua ;)",
 	"mwe-recwiz-error-emptylist": "Devi scegliere alcune parole per continuare.",
@@ -38,5 +42,10 @@
 	"mwe-recwiz-nearby-limit-help": "Deve essere un numero intero compreso tra 1 e 500.",
 	"mwe-recwiz-nearby-latitude": "latitudine",
 	"mwe-recwiz-nearby-longitude": "longitudine",
-	"mwe-recwiz-list-title": "Titolo"
+	"mwe-recwiz-list-title": "Titolo",
+	"mwe-recwiz-wmcategory-title": "Nome della categoria",
+	"mwe-recwiz-wmcategory-wikipedia": "Wikipedia",
+	"mwe-recwiz-wmcategory-wiktionary": "Wikizionario",
+	"mwe-recwiz-error-pagemissing": "Al momento non esiste una pagina con il nome \"$1\".",
+	"mwe-recwiz-error-nowiki": "Non ci sono Wikipedia o Wikizionario nella tua lingua."
 }

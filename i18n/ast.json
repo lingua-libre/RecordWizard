@@ -48,7 +48,7 @@
 	"mwe-recwiz-details-noword": "Nun s'escoyó nenguna palabra",
 	"mwe-recwiz-details-wordcount": "{{PLURAL:$1|1 palabra|$1 palabres}}",
 	"mwe-recwiz-generator-nearby": "Elementos cercanos",
-	"mwe-recwiz-generator-list": "Llista",
+	"mwe-recwiz-generator-list": "Llista llocal",
 	"mwe-recwiz-studio-input-placeholder": "Añadir una palabra nueva",
 	"mwe-recwiz-studio-uploadcount": "{{PLURAL:$2|Xubíu $1 soníu|Xubíos $1 soníos}} de $2",
 	"mwe-recwiz-publish-play": "Reproducir",
@@ -69,5 +69,5 @@
 	"mwe-recwiz-error-cantgetposition": "Nun pudo atopase la to posición, tendrás de definir les coordenaes de forma manual ($1).",
 	"mwe-recwiz-warning-noresults": "Nun hai nengún elementu cerca d'eses coordenaes.",
 	"mwe-recwiz-list-title": "Títulu",
-	"mwe-recwiz-error-pagemissing": "Anguaño nun hai testu na páxina $1."
+	"mwe-recwiz-error-pagemissing": "Anguaño nun hai nenguna páxina col nome «$1»."
 }

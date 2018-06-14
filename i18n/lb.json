@@ -32,7 +32,8 @@
 	"mwe-recwiz-details-noword": "Keng Wierder erausgesicht",
 	"mwe-recwiz-details-wordcount": "$1 ({{PLURAL:$1|Wuert|Wierder}})",
 	"mwe-recwiz-generator-nearby": "Elementer nobäi",
-	"mwe-recwiz-generator-list": "Lëscht",
+	"mwe-recwiz-generator-list": "Lokal Lëscht",
+	"mwe-recwiz-generator-wmcategory": "Wikimedia-Kategorie",
 	"mwe-recwiz-studio-input-placeholder": "En neit Wuert derbäisetzen",
 	"mwe-recwiz-publish-play": "Spillen",
 	"mwe-recwiz-publish-remove": "Ewechhuelen",
@@ -50,5 +51,10 @@
 	"mwe-recwiz-error-cantgetposition": "Är Positioun konnt net festgestallt ginn, Dir musst d'Koordinate vun Hand aginn ($1).",
 	"mwe-recwiz-warning-noresults": "Et gëtt keng Elementer nobäi dëse Koordinaten.",
 	"mwe-recwiz-list-title": "Titel",
-	"mwe-recwiz-error-pagemissing": "Et ass elo keen Text op der Säit $1."
+	"mwe-recwiz-wmcategory-title": "Numm vun der Kategorie",
+	"mwe-recwiz-wmcategory-title-help": "Numm vun enger Kategorie, inklusiv den Nummraum Kategorie.",
+	"mwe-recwiz-wmcategory-source": "Quell",
+	"mwe-recwiz-wmcategory-wikipedia": "Wikipedia",
+	"mwe-recwiz-wmcategory-wiktionary": "Wiktionnaire",
+	"mwe-recwiz-error-pagemissing": "Et ass elo keng Säit mam Numm \"$1\"."
 }

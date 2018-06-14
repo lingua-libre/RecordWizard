@@ -3,7 +3,8 @@
 		"authors": [
 			"Antoine Lamielle",
 			"Wladek92",
-			"0x010C"
+			"0x010C",
+			"Gomoko"
 		]
 	},
 	"recordWizard": "RecordWizard",
@@ -45,18 +46,21 @@
 	"mwe-recwiz-details-lang": "Langue d'enregistrement",
 	"mwe-recwiz-details-wordlist": "Liste des mots à enregistrer",
 	"mwe-recwiz-details-randomise": "Mélanger la liste",
-	"mwe-recwiz-details-addwords": "Saisissez un mot et appuyez sur <Entrer> (ou plusieurs mots en les séparant avec un « # »)",
+	"mwe-recwiz-details-addwords": "Saisissez un mot et appuyez sur <Entrer> (ou plusieurs mots séparés par « # »)",
 	"mwe-recwiz-details-clear": "Effacer",
+	"mwe-recwiz-details-generators": "Aucune idée ? Essayez un générateur de mots",
 	"mwe-recwiz-details-noword": "Aucun mot sélectionné",
 	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|mot|mots}}",
 	"mwe-recwiz-generator-nearby": "À proximité",
-	"mwe-recwiz-generator-list": "Liste",
+	"mwe-recwiz-generator-list": "Liste locale",
+	"mwe-recwiz-generator-wmcategory": "Catégorie Wikimédia",
 	"mwe-recwiz-studio-input-placeholder": "Ajouter un nouveau mot",
 	"mwe-recwiz-studio-uploadcount": "$1 {{PLURAL:$1|fichier|fichiers}} sur $2 téléversé{{PLURAL:$2||s}}",
 	"mwe-recwiz-publish-play": "Lecture",
 	"mwe-recwiz-publish-remove": "Supprimer",
 	"mwe-recwiz-publish-areyousure": "Êtes-vous sûr de vouloir supprimer cet enregistrement ?",
 	"mwe-recwiz-publish-removelabel": "Supprimer",
+	"mwe-recwiz-publish-commonsfilelist": "Vérifier vos téléchargements sur Wikimédia Communs",
 	"mwe-recwiz-pendinguplads": "...Téléversement...",
 	"mwe-recwiz-allsucceeded": "Tous les téléversements ont réussi !",
 	"mwe-recwiz-somefailed": "Certain téléversements ont échoué.",
@@ -85,5 +89,11 @@
 	"mwe-recwiz-warning-noresults": "Il n'y a aucun élément à proximité de ces coordonnées.",
 	"mwe-recwiz-list-title": "Titre",
 	"mwe-recwiz-list-title-help": "Titre d'une page dans l'espace de noms de la liste.",
-	"mwe-recwiz-error-pagemissing": "Il n'y a actuellement aucun texte dans la page $1."
+	"mwe-recwiz-wmcategory-title": "Nom de la catégorie",
+	"mwe-recwiz-wmcategory-title-help": "Nom d'une catégorie, incluant l'espace de noms Category.",
+	"mwe-recwiz-wmcategory-source": "Source",
+	"mwe-recwiz-wmcategory-wikipedia": "Wikipédia",
+	"mwe-recwiz-wmcategory-wiktionary": "Wiktionnaire",
+	"mwe-recwiz-error-pagemissing": "Il n’y a actuellement aucune page nommée « $1 ».",
+	"mwe-recwiz-error-nowiki": "Il n’y a pas de Wikipédia ou de Wiktionary dans votre langue."
 }
