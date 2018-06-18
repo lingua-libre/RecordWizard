@@ -28,7 +28,7 @@
 	"mwe-recwiz-details-clear": "Wyczyść",
 	"mwe-recwiz-details-noword": "Nie wybrano żadnych słów",
 	"mwe-recwiz-generator-nearby": "Pobliskie elementy",
-	"mwe-recwiz-generator-list": "Lista",
+	"mwe-recwiz-generator-list": "Lista lokalna",
 	"mwe-recwiz-generator-wmcategory": "Kategoria Wikimedia",
 	"mwe-recwiz-studio-input-placeholder": "Dodaj nowe słowo",
 	"mwe-recwiz-publish-remove": "Usuń",
@@ -56,5 +56,5 @@
 	"mwe-recwiz-wmcategory-source": "Źródło",
 	"mwe-recwiz-wmcategory-wikipedia": "Wikipedia",
 	"mwe-recwiz-wmcategory-wiktionary": "Wikisłownik",
-	"mwe-recwiz-error-pagemissing": "Obecnie nie ma tekstu na stronie $1."
+	"mwe-recwiz-error-pagemissing": "Obecnie nie ma strony o nazwie „$1”."
 }

@@ -39,6 +39,7 @@
 	"mwe-recwiz-publish-remove": "Ewechhuelen",
 	"mwe-recwiz-publish-areyousure": "Sidd Dir sécher dat Dir dëst Enregistrement ewechhuele wëllt?",
 	"mwe-recwiz-publish-removelabel": "Ewechhuelen",
+	"mwe-recwiz-publish-commonsfilelist": "Iwwerpréift Är eropgeluede Fichieren op Wikimedia Commmons",
 	"mwe-recwiz-pendinguplads": "...Eroplueden...",
 	"mwe-recwiz-somefailed": "D'Eropluede vun e puer Fichieren huet net funktionéiert.",
 	"mwe-recwiz-error-nolanguages": "Ech si sécher Dir schwätzt mindestens eng Sprooch ;)",
@@ -56,5 +57,6 @@
 	"mwe-recwiz-wmcategory-source": "Quell",
 	"mwe-recwiz-wmcategory-wikipedia": "Wikipedia",
 	"mwe-recwiz-wmcategory-wiktionary": "Wiktionnaire",
-	"mwe-recwiz-error-pagemissing": "Et ass elo keng Säit mam Numm \"$1\"."
+	"mwe-recwiz-error-pagemissing": "Et ass elo keng Säit mam Numm \"$1\".",
+	"mwe-recwiz-error-nowiki": "Et gëtt keng Wikipedia oder kee Wictionnaire an Ärer Sprooch."
 }

@@ -40,7 +40,7 @@
 	"mwe-recwiz-details-clear": "Vaciar",
 	"mwe-recwiz-details-noword": "No se seleccionó ninguna palabra",
 	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|palabra|palabras}}",
-	"mwe-recwiz-generator-list": "Lista",
+	"mwe-recwiz-generator-list": "Lista local",
 	"mwe-recwiz-generator-wmcategory": "Categoría de Wikimedia",
 	"mwe-recwiz-studio-input-placeholder": "Añadir una palabra nueva",
 	"mwe-recwiz-publish-play": "Reproducir",
@@ -60,7 +60,10 @@
 	"mwe-recwiz-error-cantgetposition": "No se pudo encontrar tu posición. Deberás definir manualmente las coordenadas ($1).",
 	"mwe-recwiz-warning-noresults": "No hay ningún elemento cerca de estas coordenadas.",
 	"mwe-recwiz-list-title": "Título",
+	"mwe-recwiz-wmcategory-title": "Nombre de categoría",
+	"mwe-recwiz-wmcategory-source": "Fuente",
 	"mwe-recwiz-wmcategory-wikipedia": "Wikipedia",
 	"mwe-recwiz-wmcategory-wiktionary": "Wikcionario",
-	"mwe-recwiz-error-pagemissing": "Actualmente no hay texto en la página $1."
+	"mwe-recwiz-error-pagemissing": "Actualmente no existe ninguna página denominada «$1».",
+	"mwe-recwiz-error-nowiki": "No hay ninguna edición de Wikipedia o de Wikcionario en tu idioma."
 }

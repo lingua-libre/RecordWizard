@@ -45,10 +45,11 @@
 	"mwe-recwiz-details-randomise": "Смешај го списокот",
 	"mwe-recwiz-details-addwords": "Внесете збор и стиснете на <Enter> (или пак неколку збора, одделувајќи ги со #)",
 	"mwe-recwiz-details-clear": "Исчисти",
+	"mwe-recwiz-details-generators": "Немате идеја? Пробајте го создавачот на зборови",
 	"mwe-recwiz-details-noword": "Немате избрано зборови",
 	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|збор|збора}}",
 	"mwe-recwiz-generator-nearby": "Предмети во близина",
-	"mwe-recwiz-generator-list": "Список",
+	"mwe-recwiz-generator-list": "Месен список",
 	"mwe-recwiz-generator-wmcategory": "Викимедиина категорија",
 	"mwe-recwiz-studio-input-placeholder": "Додајте нов збор",
 	"mwe-recwiz-studio-uploadcount": "{{PLURAL:$2|Подигнат е $1 од $2 звук|Подигнати се $1 од $2 звуци}}",
@@ -56,6 +57,7 @@
 	"mwe-recwiz-publish-remove": "Отстрани",
 	"mwe-recwiz-publish-areyousure": "Сигурно сакате да ја отстраните снимкава?",
 	"mwe-recwiz-publish-removelabel": "Отстрани",
+	"mwe-recwiz-publish-commonsfilelist": "Проверете си ги подигнатите на Ризницата",
 	"mwe-recwiz-pendinguplads": "...Подигам...",
 	"mwe-recwiz-allsucceeded": "Сите подигања успејаа!",
 	"mwe-recwiz-somefailed": "Некои подигања не успејаа.",
@@ -86,7 +88,9 @@
 	"mwe-recwiz-list-title-help": "Наслов на страницата во списочниот именски простор.",
 	"mwe-recwiz-wmcategory-title": "Име на категоријата",
 	"mwe-recwiz-wmcategory-title-help": "Име на категоријата, вклучувајќи го именскиот простор.",
+	"mwe-recwiz-wmcategory-source": "Извор",
 	"mwe-recwiz-wmcategory-wikipedia": "Википедија",
 	"mwe-recwiz-wmcategory-wiktionary": "Викиречник",
-	"mwe-recwiz-error-pagemissing": "Засега нема текст на страницата „$1“."
+	"mwe-recwiz-error-pagemissing": "Засега нема страница наречена „$1“.",
+	"mwe-recwiz-error-nowiki": "Нема Википедија или Викиречник на вашиот јазик."
 }

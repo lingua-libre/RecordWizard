@@ -4,7 +4,8 @@
 			"ArslanX",
 			"Okras",
 			"Redredsonia",
-			"Movses"
+			"Movses",
+			"Kareyac"
 		]
 	},
 	"recordWizard-desc": "Удобный в использовании, автоматический инструмент для записи аудио-файлов произношения.",
@@ -35,5 +36,6 @@
 	"mwe-recwiz-nearby-latitude": "широта",
 	"mwe-recwiz-nearby-longitude": "долгота",
 	"mwe-recwiz-nearby-source": "Источник",
-	"mwe-recwiz-list-title": "Заголовок"
+	"mwe-recwiz-list-title": "Заголовок",
+	"mwe-recwiz-wmcategory-source": "Источник"
 }
