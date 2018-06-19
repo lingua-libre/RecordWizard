@@ -173,6 +173,7 @@
 			"dependencies": [
 			    "oojs-ui",
 				"oojs-ui.styles.icons-media",
+			    "oojs-ui.styles.icons-content",
 			    "oojs-ui.styles.icons-wikimedia",
 			    "ext.recordWizard.layout"
 			],

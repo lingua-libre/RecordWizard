@@ -161,6 +161,7 @@
 			this.previousButton.setDisabled( false );
 			this.nextButton.setDisabled( false );
 			this.nextButton.setLabel( mw.message( 'mwe-recwiz-publish' ).text() );
+			this.nextButton.setIcon( 'upload' );
 
 			this.commonsFileListButton.toggle( false );
 			console.log( 'c' );
@@ -168,6 +169,7 @@
 			// At the end, all upload has succeded
 			this.nextButton.setDisabled( false );
 			this.nextButton.setLabel( mw.message( 'mwe-recwiz-restart' ).text() );
+			this.nextButton.setIcon();
 			this.stateLabel.toggle( false );
 
 			this.commonsFileListButton.toggle( true );
