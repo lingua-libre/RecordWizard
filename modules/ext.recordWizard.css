@@ -1,3 +1,4 @@
+/* Navigation buttons */
 .mwe-recwiz-right {
     float: right;
 }
@@ -10,17 +11,48 @@
     margin-top:1em;
 }
 
-.mwe-recwiz-volumeMetter-silent {
-	background-color: #36c !important;
+#mwe-recwiz-tutorial-activate {
+	font-size: 1.5em;
+	text-align: center;
+	width: 100%;
+}
+#mwe-recwiz-tutorial-activate .mwe-recwiz-no-microphone {
+	display: block;
+	margin: auto;
 }
 
-.mwe-recwiz-volumeMetter-active {
-	background-color: #52B080 !important;
+/* Microphone tester */
+#mwe-recwiz-tutorial-mictester {
+	width: 80%;
+	text-align: center;
+	margin: 25px auto 25px;
 }
 
-.mwe-recwiz-volumeMetter-saturate {
-	background-color: #D55353 !important;
+#mwe-recwiz-tutorial-mictester .oo-ui-buttonWidget {
+	font-size: 1.5em;
 }
+
+#mwe-recwiz-tutorial-mictester .mwe-recwiz-tutorial-mictester-help {
+	text-align: left;
+	width: intrinsic;           /* Safari/WebKit uses a non-standard name */
+	width: -moz-max-content;    /* Firefox/Gecko */
+	width: -webkit-max-content; /* Chrome */
+	margin: auto;
+}
+
+#mwe-recwiz-tutorial-mictester .mwe-recwiz-tutorial-mictester-help ol {
+	margin-bottom: 0.25rem;
+}
+
+#mwe-recwiz-tutorial-mictester .mwe-recwiz-tutorial-mictester-state {
+	font-size: 1.5em;
+	font-style: italic;
+}
+
+#mwe-recwiz-tutorial-mictester .mwe-recwiz-tutorial-mictester-state img {
+	margin-right: 5px;
+}
+
 
 #mwe-recwiz-stepdiv-details .mwe-recwiz-nearby .oo-ui-textInputWidget {
     max-width: 10em;
@@ -57,12 +89,15 @@
     margin-left: 5em;
 }
 
+.mwe-recwiz-spinner {
+	animation: spinner 1.5s linear infinite;
+}
+
 #mwe-recwiz-spinner {
 	width:40px;
 	height:150px;
 	line-height:150px;
 	margin: auto;
-	animation: spinner 1.5s linear infinite;
 }
 
 #mwe-recwiz-stepdiv-publish li {

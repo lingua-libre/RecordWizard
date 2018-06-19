@@ -27,6 +27,7 @@
 
 		this.getAudioStream();
 		this.ui.on( 'reopen-audiostream-popup', this.getAudioStream.bind( this ) );
+		this.ui.on( 'mictester-start', this.mictesterStart.bind( this ) );
 	};
 
 	/**
@@ -39,14 +40,53 @@
 		// to reopen the popup
 		this.unloadRecorder();
 
-		this.recorder = new rw.libs.LinguaRecorder();
+		this.recorder = new rw.libs.LinguaRecorder( {
+			autoStart: true,
+			autoStop: true
+		} );
 
 		this.recorder.on( 'ready', function () {
 			controller.ui.switchMessage();
-			controller.recorder.start();
-			controller.recorder.on( 'recording', controller.ui.animateVolumeBar.bind( controller.ui ) );
+			controller.recorder.on( 'stoped', controller.mictesterPlay.bind( controller ) );
 		} );
 		this.recorder.on( 'readyFail', this.ui.showError.bind( this.ui ) );
+	};
+
+	/**
+	 *
+	 */
+	rw.controller.Tutorial.prototype.mictesterStart = function () {
+		var controller = this;
+
+		this.ui.mictesterSwitchState( 3 );
+
+		setTimeout( function () {
+			controller.ui.mictesterSwitchState( 1 );
+			controller.recorder.start();
+			controller.timer = setTimeout(
+				controller.recorder.stop.bind( controller.recorder ),
+				10000
+			);
+		}, 1100 );
+	};
+
+	/**
+	 *
+	 */
+	rw.controller.Tutorial.prototype.mictesterPlay = function ( record ) {
+		var controller = this;
+
+		this.ui.mictesterSwitchState( 3 );
+
+		setTimeout( function () {
+			controller.ui.mictesterSwitchState( 2 );
+			clearTimeout( controller.timer );
+			record.play();
+			setTimeout(
+				controller.ui.mictesterSwitchState.bind( controller.ui, 0 ),
+				record.getDuration() * 1000 + 300
+			);
+		}, 1100 );
 	};
 
 	/**
@@ -59,7 +99,7 @@
 
 		this.recorder.stop();
 		this.recorder.off( 'ready' );
-		this.recorder.off( 'recording' );
+		this.recorder.off( 'stoped' );
 		this.recorder = null;
 	};
 

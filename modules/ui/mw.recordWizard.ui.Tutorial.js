@@ -40,42 +40,64 @@
 			label: mw.msg( 'mwe-recwiz-tutorial-reopenpopup' ),
 		} );
 
-		this.volumeMeter = new OO.ui.ProgressBarWidget( {
-			progress: 4
+		this.microphoneTesterStart = new OO.ui.ButtonWidget( {
+			label: mw.msg( 'mwe-recwiz-tutorial-mictester-start' )
 		} );
+
+		this.$microphoneTesterRecording = $( '<div>' )
+			.addClass( 'mwe-recwiz-tutorial-mictester-state' )
+			.append( mw.msg( 'mwe-recwiz-tutorial-mictester-recording' ) )
+			.hide();
+
+		this.$microphoneTesterPlaying = $( '<div>' )
+			.addClass( 'mwe-recwiz-tutorial-mictester-state' )
+			.append( mw.msg( 'mwe-recwiz-tutorial-mictester-playing' ) )
+			.hide();
+
+		this.$microphoneTesterWaiting = $( '<div>' )
+			.addClass( 'mwe-recwiz-tutorial-mictester-state' )
+			.append( $( '<img src="' + mw.config.get( 'wgExtensionAssetsPath' ) + '/RecordWizard/modules/images/Spinner_font_awesome.svg" width="40" height="40" class="mwe-recwiz-spinner" />' ) )
+			.append( mw.msg( 'mwe-recwiz-tutorial-mictester-waiting' ) )
+			.hide();
+
+		this.$microphoneTester = $( '<div>' )
+			.attr( 'id', 'mwe-recwiz-tutorial-mictester' )
+			.append( this.microphoneTesterStart.$element )
+			.append( this.$microphoneTesterRecording )
+			.append( this.$microphoneTesterPlaying )
+			.append( this.$microphoneTesterWaiting )
+			.append(
+				$( '<div>' )
+					.addClass( 'mwe-recwiz-tutorial-mictester-help' )
+					.append( mw.msg( 'mwe-recwiz-tutorial-mictester-help1' ) )
+					.append(
+						$( '<ol>' )
+							.append( $( '<li>' ).text( mw.msg( 'mwe-recwiz-tutorial-mictester-help2' ) ) )
+							.append( $( '<li>' ).text( mw.msg( 'mwe-recwiz-tutorial-mictester-help3' ) ) )
+							.append( $( '<li>' ).text( mw.msg( 'mwe-recwiz-tutorial-mictester-help4' ) ) )
+					)
+					.append( mw.msg( 'mwe-recwiz-tutorial-mictester-help5' ) )
+			);
 
 		this.$activateMessage = $( '<div>' )
 			.attr( 'id', 'mwe-recwiz-tutorial-activate' )
-			.append( this.parseMessage( mw.message( 'mwe-recwiz-tutorial-activate' ).parse() ) );
+			.append( $( '<img src="' + mw.config.get( 'wgExtensionAssetsPath' ) + '/RecordWizard/modules/images/microphone_slash_font_awesome.svg" width="40" height="40" class="mwe-recwiz-no-microphone" />' ) )
+			.append( mw.message( 'mwe-recwiz-tutorial-activate' ).parse() );
 		this.$buttons.append( this.reopenPopupButton.$element );
 
 		this.$configureMessage = $( '<div>' )
 			.attr( 'id', 'mwe-recwiz-tutorial-configure' )
-			.append( this.parseMessage( mw.message( 'mwe-recwiz-tutorial-configure' ).parse() ) )
+			.append( $( '<h3>' ).text( mw.msg( 'mwe-recwiz-tutorial-configure-top' ) ) )
+			.append( this.$microphoneTester )
+			.append( mw.message( 'mwe-recwiz-tutorial-configure-bottom' ).parse() )
 			.hide();
 		this.nextButton.$element.hide();
-
-		$volumeBar = this.$configureMessage.find( '#mwe-recwiz-tutorial-volumebar' );
-		if ( $volumeBar.length > 0 ) {
-			$volumeBar.append( this.volumeMeter.$element );
-		} else {
-			this.$configureMessage.append( this.volumeMeter.$element );
-		}
 
 		this.$container.prepend( this.$activateMessage );
 		this.$container.prepend( this.$configureMessage );
 
 		this.reopenPopupButton.on( 'click', this.emit.bind( this, 'reopen-audiostream-popup' ) );
-	};
-
-	/**
-	 *
-	 */
-	rw.ui.Tutorial.prototype.parseMessage = function ( wikicode ) {
-		return wikicode
-			.replace( /&lt;/g, '<' )
-			.replace( /&gt;/g, '>' )
-			.replace( /<volumebar\/ ?>/g, '<div id="mwe-recwiz-tutorial-volumebar"></div>' );
+		this.microphoneTesterStart.on( 'click', this.emit.bind( this, 'mictester-start' ) );
 	};
 
 	/**
@@ -90,35 +112,25 @@
 
 	/**
 	 *
-	 *
-	 * @private
-	 * @param  {Float32Array} samples Sound samples of the audio recorded since
-	 *                                last call
 	 */
-	rw.ui.Tutorial.prototype.animateVolumeBar = function ( samples ) {
-		var i, amplitude, progress, barClass,
-			amplitudeMax = 0;
-		for ( i = 0; i < samples.length; i++ ) {
-			amplitude = Math.abs( samples[ i ] );
-			if ( amplitude > amplitudeMax ) {
-				amplitudeMax = amplitude;
-			}
+	rw.ui.Tutorial.prototype.mictesterSwitchState = function ( state ) {
+		this.microphoneTesterStart.toggle( false );
+		this.$microphoneTesterRecording.hide();
+		this.$microphoneTesterPlaying.hide();
+		this.$microphoneTesterWaiting.hide();
+		switch( state ) {
+			case 1:
+				this.$microphoneTesterRecording.show();
+				break;
+			case 2:
+				this.$microphoneTesterPlaying.show();
+				break;
+			case 3:
+				this.$microphoneTesterWaiting.show();
+				break;
+			default:
+				this.microphoneTesterStart.toggle( true );
 		}
-
-		if ( amplitudeMax <= 0.05 ) {
-			barClass = 'mwe-recwiz-volumeMetter-silent';
-		} else if ( amplitudeMax <= 0.9 ) {
-			barClass = 'mwe-recwiz-volumeMetter-active';
-		} else {
-			barClass = 'mwe-recwiz-volumeMetter-saturate';
-		}
-
-		progress = amplitudeMax * 100 + 4; // +4 to avoid empty bar
-		this.volumeMeter.setProgress( progress );
-
-		this.volumeMeter.$element.find( '.oo-ui-progressBarWidget-bar' )
-			.removeClass( 'mwe-recwiz-volumeMetter-silent mwe-recwiz-volumeMetter-active mwe-recwiz-volumeMetter-saturate' )
-			.addClass( barClass );
 	};
 
 	/**
