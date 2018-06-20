@@ -31,19 +31,19 @@ class RecordWizardHooks {
 
 	public static function onGetPreferences( $user, &$preferences ) {
 		$preferences['recwiz-locutor'] = array(
-			'type' => 'text',
+			'type' => 'api',
 			'section' => 'recwiz/locutor',
 		);
 		$preferences['recwiz-otherLocutors'] = array(
-			'type' => 'text',
+			'type' => 'api',
 			'section' => 'recwiz/locutor',
 		);
 		$preferences['recwiz-license'] = array(
-			'type' => 'text',
+			'type' => 'api',
 			'section' => 'recwiz/param',
 		);
 		$preferences['recwiz-lang'] = array(
-			'type' => 'text',
+			'type' => 'api',
 			'section' => 'recwiz/param',
 		);
 
