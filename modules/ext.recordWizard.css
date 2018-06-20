@@ -229,20 +229,22 @@
     list-style: none;
     margin: 5px;
 
-    background-color: #3399FF;
+    background-color: #80befc;
 }
 
 .studio-wordlist li.studio-wordlist-selected {
     text-decoration: underline;
-    border: 1px dashed black;
+    border: 2px solid black;
+	background-color: #3399FF;
+    padding: 8px;
 }
 
 .studio-wordlist li.mwe-recwiz-word-stashed {
-    background-color: olivedrab;
+    background-color: #2de552;
 }
 
 .studio-wordlist li.mwe-recwiz-word-stashing {
-    background-color: #FF3399;
+    background-color: #7ce291;
 }
 
 .studio-wordlist li.mwe-recwiz-word-error {
@@ -251,7 +253,7 @@
 
 canvas.mwe-recwiz-wordcanvas {
     position: absolute;
-    top: 0px;
+    top: -2px; /* to compensate the border of 2px */
     left: 0px;
 }
 
@@ -269,18 +271,6 @@ canvas.mwe-recwiz-wordcanvas {
     90%{
         box-shadow: 0px 0px 5px 13px rgba(173,0,0,0);
     }
-}
-
-/* Dynamic */
-
-.studio-wordlist input {
-    position:relative;
-    color: #fff;
-    padding: 10px;
-    margin: 5px;
-
-    background-color: rgba(51, 153, 255, 0.5);
-    border: 0;
 }
 
 
