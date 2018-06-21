@@ -89,8 +89,8 @@
 						.text( mw.msg( 'mwe-recwiz-publish-areyousure' ) )
 						.append( removeButton.$element ),
 					padded: true,
-					position: 'after',
-					align: 'center'
+					position: 'below',
+					align: 'forwards'
 				},
 				title: mw.msg( 'mwe-recwiz-publish-remove' )
 			} );
