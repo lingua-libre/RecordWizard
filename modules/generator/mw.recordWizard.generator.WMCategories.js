@@ -171,8 +171,9 @@
 			title = this.titleInput.getValue();
 
 		this.deferred = $.Deferred();
+		this.list = [];
 
-		this.api.get( {
+		this.recursiveFetch( {
 			action: 'query',
 			format: 'json',
 			formatversion: '2',
@@ -183,7 +184,16 @@
 			gcmtitle: title,
 			gcmtype: 'page',
 			gcmlimit: 'max'
-		} ).then( function ( data ) {
+		} );
+
+		// We're not done yet, make the dialog closing process to wait the promise
+		return this.deferred.promise();
+	};
+
+	rw.generator.WMCategory.prototype.recursiveFetch = function ( payload ) {
+		var generator = this;
+
+		this.api.get( payload ).then( function ( data ) {
 			var i, pages, element;
 
 			if ( data.query === undefined ) {
@@ -191,7 +201,6 @@
 			}
 
 			pages = data.query.pages;
-			generator.list = [];
 			for ( i = 0; i < pages.length; i++ ) {
 				element = {};
 
@@ -203,7 +212,14 @@
 				element[ generator.localProperty ] = generator.langDropdown.getValue() + ':' + pages[ i ].title;
 				generator.list.push( element );
 			}
-			generator.deferred.resolve();
+
+			if ( data.continue !== undefined ) {
+				payload.gcmcontinue = data.continue.gcmcontinue;
+				generator.recursiveFetch( payload );
+			}
+			else {
+				generator.deferred.resolve();
+			}
 		} ).fail( function ( error ) {
 			generator.deferred.reject( new OO.ui.Error( error ) );
 		} );
