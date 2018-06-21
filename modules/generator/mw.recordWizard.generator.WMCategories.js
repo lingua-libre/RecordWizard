@@ -12,92 +12,111 @@
 
 	rw.generator.WMCategory.prototype.initialize = function () {
 		rw.generator.Generator.prototype.initialize.call( this );
+		this.wikiLabels = {
+			wiki: { label: 'Wikipedia', property: rw.config.properties.wikipediaTitle },
+			wiktionary: { label: 'Wiktionary', property: rw.config.properties.wiktionaryEntry }
+			// wikibooks: { label: 'Wikibooks', property: '' },
+			// wikinews: { label: 'Wikinews', property: '' },
+			// wikiquote: { label: 'Wikiquote', property: '' },
+			// wikisource: { label: 'Wikisource', property: '' },
+			// wikiversity: { label: 'Wikiversity', property: '' },
+			// wikivoyage: { label: 'Wikivoyage', property: '' }
+		};
+		this.siteMatrix = {};
+		this.metaApi = new mw.ForeignApi( 'https://meta.wikimedia.org/w/api.php', {
+			anonymous: true,
+			parameters: { origin: '*' },
+			ajax: { timeout: 10000 }
+		} );
 	};
 
 	rw.generator.WMCategory.prototype.getReadyProcess = function ( data ) {
-		var generator = this,
-			process = new OO.ui.Process();
+		var process = rw.generator.Generator.parent.prototype.getReadyProcess.call( this, data ),
+			lang = rw.config.languages[ rw.metadatas.language ].code;
 
-		rw.generator.Generator.parent.prototype.getReadyProcess.call( this, data );
-
-		if ( this.language.code === null ) {
-			this.close();
+		// Don't run this every time the generator is opened
+		if ( this.WMLangCode !== lang ) {
+			this.WMLangCode = lang;
+			process.next( this.getSiteMatrix.bind( this ) );
+			process.next( this.createSourceDropdowns.bind( this ) );
 		}
-
-		this.projects = [];
-		this.langCode = mw.recordWizard.config.languages[ mw.recordWizard.metadatas.language ].code;
-		process.next( this.exists.bind(
-			this,
-			mw.msg( 'mwe-recwiz-wmcategory-wikipedia' ),
-			rw.config.properties.wikipediaTitle,
-			'https://' + this.langCode + '.wikipedia.org/w/api.php'
-		) );
-		process.next( this.exists.bind(
-			this,
-			mw.msg( 'mwe-recwiz-wmcategory-wiktionary' ),
-			rw.config.properties.wiktionaryEntry,
-			'https://' + this.langCode + '.wiktionary.org/w/api.php'
-		) );
-		process.next( function () {
-			var i;
-			if ( generator.projects.length === 0 ) {
-				OO.ui.alert( mw.msg( 'mwe-recwiz-error-nowiki' ) );
-				return false;
-			}
-
-			generator.source = new OO.ui.RadioSelectWidget( {} );
-			for ( i = 0; i < generator.projects.length; i++ ) {
-				generator.source.addItems( [ new OO.ui.RadioOptionWidget( {
-					label: generator.projects[ i ].name,
-					data: generator.projects[ i ]
-				} ) ] );
-			}
-			generator.source.on( 'choose', generator.switchSource.bind( generator ) );
-
-			generator.source.selectItemByLabel( generator.projects[ 0 ].name );
-			generator.switchSource( generator.source.getFirstSelectableItem() );
-		} );
 
 		return process;
 	};
 
-	rw.generator.WMCategory.prototype.exists = function ( name, localProperty, apiUrl ) {
-		var generator = this,
-			deferred = $.Deferred(),
-			api = new mw.ForeignApi( apiUrl, {
-				anonymous: true,
-				parameters: { origin: '*' },
-				ajax: { timeout: 10000 }
-			} );
+	rw.generator.WMCategory.prototype.getSiteMatrix = function () {
+		var langKey, lang, siteKey, site,
+			generator = this;
 
-		api.get( {
-			action: 'query',
+		return this.metaApi.get( {
+			action: 'sitematrix',
 			format: 'json',
-			meta: 'siteinfo',
-			formatversion: '2',
-			siprop: 'namespaces'
+			formatversion: 2,
+			smtype: 'language'
 		} ).then( function ( data ) {
-			generator.projects.push( {
-				name: name,
-				api: api,
-				localProperty: localProperty,
-				categoryName: data.query.namespaces[ '14' ].name
-			} );
-			deferred.resolve();
-		} ).fail( function () {
-			deferred.resolve();
-		} );
+			for ( langKey in data.sitematrix ) {
+				if ( langKey === 'count' ) {
+					continue;
+				}
+				lang = data.sitematrix[ langKey ];
 
-		return deferred;
+				generator.siteMatrix[ lang.code ] = {};
+				for ( siteKey = 0; siteKey < lang.site.length; siteKey++ ) {
+					site = lang.site[ siteKey ];
+					if ( site.private === true && site.closed === true && site.fishbowl === true ) {
+						continue;
+					}
+					if ( !( site.code in generator.wikiLabels ) ) {
+						continue;
+					}
+
+					generator.siteMatrix[ lang.code ][ site.code ] = site.url;
+
+					if ( lang.code === mw.config.get( 'wgUserLanguage' ) ) {
+						generator.wikiLabels[ site.code ].label = site.sitename;
+					}
+				}
+			}
+		} );
 	};
 
-	rw.generator.WMCategory.prototype.switchSource = function ( item ) {
-		var selectedProject = item.getData();
+	rw.generator.WMCategory.prototype.createSourceDropdowns = function () {
+		this.projectDropdown = new OO.ui.DropdownInputWidget( {
+			classes: [ 'mwe-recwiz-generator-wmcategory-projectdropdown' ]
+		} );
+		this.projectDropdown.on( 'change', this.switchSource.bind( this ) );
 
-		this.api = selectedProject.api;
-		this.project = selectedProject.name;
-		this.localProperty = selectedProject.localProperty;
-		this.categoryName = selectedProject.categoryName;
+		this.langDropdown = new OO.ui.DropdownInputWidget( {
+			classes: [ 'mwe-recwiz-generator-wmcategory-langdropdown' ],
+			options: Object.keys( this.siteMatrix ).map( function ( key ) { return { data: key }; } )
+		} );
+		this.langDropdown.on( 'change', this.switchProjects.bind( this ) );
+		this.langDropdown.setValue( this.WMLangCode in this.siteMatrix ? this.WMLangCode : 'en' );
+	};
+
+	rw.generator.WMCategory.prototype.switchProjects = function ( selectedLang ) {
+		var generator = this,
+			selectedProject = this.projectDropdown.getValue();
+
+		this.projectDropdown.setOptions( Object.keys( this.siteMatrix[ selectedLang ] ).map( function ( key ) {
+			return { label: generator.wikiLabels[ key ].label, data: key };
+		} ) );
+
+		this.projectDropdown.setValue( selectedProject );
+	};
+
+	rw.generator.WMCategory.prototype.switchSource = function ( selectedProject ) {
+		var selectedLang = this.langDropdown.getValue(),
+			apiUrl = this.siteMatrix[ selectedLang ][ selectedProject ] + '/w/api.php';
+
+		this.api = new mw.ForeignApi( apiUrl, {
+			anonymous: true,
+			parameters: { origin: '*' },
+			ajax: { timeout: 10000 }
+		} );
+		this.project = this.wikiLabels[ selectedProject ].label;
+		this.localProperty = this.wikiLabels[ selectedProject ].property;
+		// TODO: this.categoryName = selectedProject.categoryName;
 
 		this.generateInterface();
 	};
@@ -109,15 +128,25 @@
 			$overlay: $( 'body' ),
 			allowSuggestionsWhenEmpty: true,
 			api: this.api,
-			namespace: 14, // Category
-			value: this.categoryName + ':'
+			namespace: 14 // Category
+			// value: this.categoryName + ':'
 		} );
 
 		this.layout = new OO.ui.Widget( {
 			classes: [ 'mwe-recwiz-wmcategory' ],
 			content: [
 				new OO.ui.FieldLayout(
-					this.source, {
+					new OO.ui.Widget( {
+						content: [
+							new OO.ui.HorizontalLayout( {
+								classes: [ 'mwe-recwiz-generator-wmcategory-source' ],
+								items: [
+									this.langDropdown,
+									this.projectDropdown
+								]
+							} )
+						]
+					} ), {
 						align: 'top',
 						label: mw.message( 'mwe-recwiz-wmcategory-source' ).text()
 					}
@@ -164,7 +193,7 @@
 			for ( i = 0; i < pages.length; i++ ) {
 				element = {};
 				element.text = pages[ i ].title;
-				element[ generator.localProperty ] = generator.langCode + ':' + pages[ i ].title;
+				element[ generator.localProperty ] = generator.langDropdown.getValue() + ':' + pages[ i ].title;
 				generator.list.push( element );
 			}
 			generator.deferred.resolve();

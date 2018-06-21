@@ -100,6 +100,19 @@
 	margin: auto;
 }
 
+.mwe-recwiz-generator-wmcategory-source {
+	display: flex;
+}
+
+.mwe-recwiz-generator-wmcategory-langdropdown {
+	max-width: 110px !important;
+	display: inline-flex;
+}
+
+.mwe-recwiz-generator-wmcategory-projectdropdown {
+	display: inline-flex;
+}
+
 #mwe-recwiz-stepdiv-publish li {
     position: relative;
 }
