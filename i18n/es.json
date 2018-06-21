@@ -38,6 +38,7 @@
 	"mwe-recwiz-details-wordlist": "Lista de palabras que grabar",
 	"mwe-recwiz-details-addwords": "Escribe una palabra y oprime <Intro> (o añade varias separándolas con un «#»)",
 	"mwe-recwiz-details-clear": "Vaciar",
+	"mwe-recwiz-details-generators": "¿Sin ideas? Prueba un generador de palabras",
 	"mwe-recwiz-details-noword": "No se seleccionó ninguna palabra",
 	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|palabra|palabras}}",
 	"mwe-recwiz-generator-list": "Lista local",
