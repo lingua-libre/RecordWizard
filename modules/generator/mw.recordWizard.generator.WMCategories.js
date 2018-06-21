@@ -66,7 +66,7 @@
 					if ( site.private === true && site.closed === true && site.fishbowl === true ) {
 						continue;
 					}
-					if ( !( site.code in generator.wikiLabels ) ) {
+					if ( generator.wikiLabels[ site.code ] === undefined ) {
 						continue;
 					}
 
@@ -176,6 +176,8 @@
 			action: 'query',
 			format: 'json',
 			formatversion: '2',
+			prop: 'pageterms',
+			wbptterms: 'label',
 			generator: 'categorymembers',
 			gcmnamespace: '0',
 			gcmtitle: title,
@@ -192,7 +194,12 @@
 			generator.list = [];
 			for ( i = 0; i < pages.length; i++ ) {
 				element = {};
-				element.text = pages[ i ].title;
+
+				if ( pages[ i ].terms !== undefined ) {
+					element.text = pages[ i ].terms.label[ 0 ];
+				} else {
+					element.text = pages[ i ].title;
+				}
 				element[ generator.localProperty ] = generator.langDropdown.getValue() + ':' + pages[ i ].title;
 				generator.list.push( element );
 			}
