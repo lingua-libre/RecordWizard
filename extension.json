@@ -268,7 +268,8 @@
 			"dependencies": [
 				"ext.recordWizard.base",
 			    "wikibase.datamodel",
-			    "wikibase.serialization"
+			    "wikibase.serialization",
+				"wikibase.api.RepoApi"
 			]
         },
         "ext.recordWizard.controller": {

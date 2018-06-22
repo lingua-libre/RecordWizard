@@ -397,7 +397,7 @@
 
 		this.setState( 'finalizing' );
 
-		this.wbItem = new mw.recordWizard.wikibase.Item();
+		this.wbItem = new rw.wikibase.Item();
 		this.fillWbItem();
 
 		return this.wbItem.createOrUpdate( api, true ).then( function () {
@@ -411,31 +411,31 @@
 	 * Fill the record's wikibase item with all known metadatas on it.
 	 */
 	rw.Record.prototype.fillWbItem = function () {
-		var propertyId,
+		var propertyId, lang,
 			today = new Date();
 		today.setUTCHours( 0, 0, 0, 0 );
 		today = today.toISOString().slice( 0, -5 ) + 'Z';
 
-		// TODO: manage other languages
 		this.wbItem.labels = { en: this.word };
-		// TODO: add language information
-		this.wbItem.descriptions = { en: 'audio record - ' + mw.recordWizard.config.languages[ mw.recordWizard.metadatas.language ].code + ' - ' + rw.metadatas.locutor.name + ' (' + mw.config.get( 'wgUserName' ) + ')' };
 
-		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.instanceOf ).setType( 'wikibase-item' ).setValue( rw.config.items.record ), true ); // InstanceOf
-		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.subclassOf ).setType( 'wikibase-item' ).setValue( rw.config.items.word ), true ); // SubclassOf
+		lang = rw.config.languages[ rw.metadatas.language ]
+		this.wbItem.descriptions = { en: 'audio record - ' + ( lang.iso3 !== null ? lang.iso3 : lang.wikidataId ) + ' - ' + rw.metadatas.locutor.name + ' (' + mw.config.get( 'wgUserName' ) + ')' };
+
+		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.instanceOf ).setType( 'wikibase-item' ).setValue( rw.config.items.record ), true ); // InstanceOf
+		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.subclassOf ).setType( 'wikibase-item' ).setValue( rw.config.items.word ), true ); // SubclassOf
 		if ( mw.Debug === undefined ) { // Disable media on the dev environment
-			this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.audioRecord ).setType( 'commonsMedia' ).setValue( this.getFilename() ), true ); //Audio file
+			this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.audioRecord ).setType( 'commonsMedia' ).setValue( this.getFilename() ), true ); //Audio file
 		}
-		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.spokenLanguages ).setType( 'wikibase-item' ).setValue( rw.metadatas.language ), true ); // Language
-		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.locutor ).setType( 'wikibase-item' ).setValue( rw.metadatas.locutor.qid ), true ); // Locutor
-		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.date ).setType( 'time' ).setValue( { time: today } ), true ); // Date
-		this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.transcription ).setType( 'string' ).setValue( this.transcription ), true ); // Transcription
+		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.spokenLanguages ).setType( 'wikibase-item' ).setValue( rw.metadatas.language ), true ); // Language
+		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.locutor ).setType( 'wikibase-item' ).setValue( rw.metadatas.locutor.qid ), true ); // Locutor
+		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.date ).setType( 'time' ).setValue( { time: today } ), true ); // Date
+		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.transcription ).setType( 'string' ).setValue( this.transcription ), true ); // Transcription
 		if ( this.qualifier !== null ) {
-			this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( rw.config.properties.qualifier ).setType( 'string' ).setValue( this.qualifier ), true ); // Qualifier
+			this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.qualifier ).setType( 'string' ).setValue( this.qualifier ), true ); // Qualifier
 		}
 
 		for ( propertyId in this.extra ) {
-			this.wbItem.addOrReplaceStatements( new mw.recordWizard.wikibase.Statement( propertyId ).setType( 'string' ).setValue( this.extra[ propertyId ] ), true );
+			this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( propertyId ).setType( 'string' ).setValue( this.extra[ propertyId ] ), true );
 		}
 	};
 
