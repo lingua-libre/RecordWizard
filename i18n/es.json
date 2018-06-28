@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
-			"Adjen"
+			"Adjen",
+			"RisingVoices"
 		]
 	},
 	"recordWizard": "Asistente de grabaciones",
@@ -20,6 +21,7 @@
 	"mwe-recwiz-retry": "reintentar carga fallida",
 	"mwe-recwiz-publish": "Publicar en Wikimedia Commons",
 	"mwe-recwiz-restart": "Grabar más palabras",
+	"mwe-recwiz-tutorial-mictester-start": "Iniciar la prueba",
 	"mwe-recwiz-tutorial-mictester-waiting": "cargando",
 	"mwe-recwiz-locutor-name": "Nombre para mostrar",
 	"mwe-recwiz-locutor-languages": "Idiomas hablados",
@@ -46,6 +48,7 @@
 	"mwe-recwiz-generator-wmcategory": "Categoría de Wikimedia",
 	"mwe-recwiz-studio-input-placeholder": "Añadir una palabra nueva",
 	"mwe-recwiz-publish-play": "Reproducir",
+	"mwe-recwiz-publish-remove": "Eliminar",
 	"mwe-recwiz-error-mediastream-notfound": "No se encontró ningún micrófono. Antes de continuar, consigue uno y conéctalo al dispositivo.",
 	"mwe-recwiz-error-mediastream-technical": "Se produjo un error técnico en el navegador o el sistema operativo que impide el uso del micrófono. Prueba a cargar la página de nuevo. Detalles del error: $1",
 	"mwe-recwiz-error-duplicatename": "Ya tienes un locutor llamado $1. Cada uno de tus locutores tiene que tener un nombre diferente.",

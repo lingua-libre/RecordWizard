@@ -108,5 +108,5 @@
 	"mwe-recwiz-wmcategory-wikipedia": "Wikipédia",
 	"mwe-recwiz-wmcategory-wiktionary": "Wiktionnaire",
 	"mwe-recwiz-error-pagemissing": "Il n’y a actuellement aucune page nommée « $1 ».",
-	"mwe-recwiz-error-nowiki": "Il n’y a pas de Wikipédia ou de Wiktionary dans votre langue."
+	"mwe-recwiz-error-nowiki": "Il n’existe pas de Wikipédia ou de Wiktionary dans votre langue."
 }
