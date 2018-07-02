@@ -3,7 +3,8 @@
 		"authors": [
 			"Sonic N800",
 			"محمد عصام",
-			"ديفيد"
+			"ديفيد",
+			"محمد أحمد عبد الفتاح"
 		]
 	},
 	"recordWizard": "معالج التسجيل",
@@ -104,6 +105,7 @@
 	"mwe-recwiz-wmcategory-title-help": "اسم التصنيف، متضمنا نطاق التصنيف.",
 	"mwe-recwiz-wmcategory-source": "المصدر",
 	"mwe-recwiz-wmcategory-wikipedia": "ويكيبيديا",
+	"mwe-recwiz-wmcategory-wiktionary": "ويكي قاموس",
 	"mwe-recwiz-error-pagemissing": "لا توجد حاليا أية صفحة بالاسم \"$1\".",
 	"mwe-recwiz-error-nowiki": "لا توجد ويكيبيديا أو ويكاموس بلغتك."
 }
