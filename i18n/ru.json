@@ -5,7 +5,8 @@
 			"Okras",
 			"Redredsonia",
 			"Movses",
-			"Kareyac"
+			"Kareyac",
+			"Vlad5250"
 		]
 	},
 	"recordWizard-desc": "Удобный в использовании, автоматический инструмент для записи аудио-файлов произношения.",
@@ -16,6 +17,7 @@
 	"mwe-recwiz-previous": "Назад",
 	"mwe-recwiz-continue": "Продолжить",
 	"mwe-recwiz-continueanyway": "Всё равно продолжить",
+	"mwe-recwiz-tutorial-mictester-waiting": "загрузка",
 	"mwe-recwiz-locutor-name": "Имя для отображения",
 	"mwe-recwiz-locutor-languagelevel": "Уровень владения языком",
 	"mwe-recwiz-locutor-languagelevel-native": "носитель",
@@ -29,7 +31,7 @@
 	"mwe-recwiz-gender-other": "Иное",
 	"mwe-recwiz-details-addwords": "Наберите слово и нажмите <Enter> (или несколько слов, используя # в качестве разделителя)",
 	"mwe-recwiz-details-clear": "Очистить",
-	"mwe-recwiz-generator-list": "Список",
+	"mwe-recwiz-generator-list": "Локальный список",
 	"mwe-recwiz-studio-input-placeholder": "Добавить новое слово",
 	"mwe-recwiz-pendinguplads": "...Загрузка...",
 	"mwe-recwiz-nearby-coordinates": "Координаты",
@@ -37,5 +39,6 @@
 	"mwe-recwiz-nearby-longitude": "долгота",
 	"mwe-recwiz-nearby-source": "Источник",
 	"mwe-recwiz-list-title": "Заголовок",
-	"mwe-recwiz-wmcategory-source": "Источник"
+	"mwe-recwiz-wmcategory-source": "Источник",
+	"mwe-recwiz-error-pagemissing": "Не существует страницы с названием \"$1\"."
 }
