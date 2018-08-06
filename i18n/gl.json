@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Banjo",
+			"Elisardojm"
+		]
+	},
+	"mwe-recwiz-step-tutorial": "Tutorial",
+	"mwe-recwiz-step-details": "Detalles",
+	"mwe-recwiz-step-studio": "Estudio",
+	"mwe-recwiz-step-publish": "Publicar",
+	"mwe-recwiz-next": "Seguinte",
+	"mwe-recwiz-previous": "Anterior",
+	"mwe-recwiz-continue": "Continuar",
+	"mwe-recwiz-continueanyway": "Continuar de calquera xeito",
+	"mwe-recwiz-tutorial-mictester-start": "Comezar a proba",
+	"mwe-recwiz-tutorial-mictester-waiting": "cargando",
+	"mwe-recwiz-locutor-languagelevel-native": "nativo",
+	"mwe-recwiz-locutor-languagelevel-good": "bo nivel",
+	"mwe-recwiz-locutor-languagelevel-average": "nivel medio",
+	"mwe-recwiz-locutor-languagelevel-beginner": "novato",
+	"mwe-recwiz-locutor-gender": "Xénero",
+	"mwe-recwiz-gender-male": "Home",
+	"mwe-recwiz-gender-female": "Muller",
+	"mwe-recwiz-gender-other": "Outro",
+	"mwe-recwiz-generator-wmcategory": "Categoría Wikimedia",
+	"mwe-recwiz-publish-remove": "Eliminar",
+	"mwe-recwiz-publish-removelabel": "Eliminar",
+	"mwe-recwiz-pendinguplads": "...Cargando...",
+	"mwe-recwiz-nearby-coordinates": "Coordenadas",
+	"mwe-recwiz-nearby-latitude": "latitude",
+	"mwe-recwiz-nearby-longitude": "lonxitude",
+	"mwe-recwiz-list-title": "Título",
+	"mwe-recwiz-wmcategory-source": "Fonte",
+	"mwe-recwiz-wmcategory-wikipedia": "Wikipedia"
+}
