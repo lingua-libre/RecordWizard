@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saederup92"
+		]
+	},
+	"mwe-recwiz-step-details": "Detaljer",
+	"mwe-recwiz-next": "Næste",
+	"mwe-recwiz-previous": "Forrige",
+	"mwe-recwiz-continue": "Fortsæt",
+	"mwe-recwiz-continueanyway": "Fortsæt alligevel",
+	"mwe-recwiz-tutorial-mictester-start": "Start testen",
+	"mwe-recwiz-tutorial-mictester-recording": "1. Sig noget",
+	"mwe-recwiz-tutorial-mictester-playing": "2. Lyt",
+	"mwe-recwiz-tutorial-mictester-waiting": "indlæser",
+	"mwe-recwiz-locutor-languages": "Talte sprog",
+	"mwe-recwiz-locutor-languagelevel": "Sprogniveau",
+	"mwe-recwiz-locutor-languagelevel-native": "modersmål",
+	"mwe-recwiz-locutor-languagelevel-good": "godt niveau",
+	"mwe-recwiz-locutor-languagelevel-average": "gennemsnitligt niveau",
+	"mwe-recwiz-locutor-languagelevel-beginner": "nybegynner",
+	"mwe-recwiz-locutor-gender": "Køn",
+	"mwe-recwiz-gender-male": "Mand",
+	"mwe-recwiz-gender-female": "Kvinde",
+	"mwe-recwiz-gender-other": "Andet",
+	"mwe-recwiz-generator-wmcategory": "Wikimedia-kategori",
+	"mwe-recwiz-studio-input-placeholder": "Tilføj et nyt ord",
+	"mwe-recwiz-publish-play": "Afspil",
+	"mwe-recwiz-publish-remove": "Fjern",
+	"mwe-recwiz-publish-removelabel": "Fjern",
+	"mwe-recwiz-nearby-coordinates": "Koordinater",
+	"mwe-recwiz-nearby-source": "Kilde",
+	"mwe-recwiz-list-title": "Titel",
+	"mwe-recwiz-wmcategory-source": "Kilde",
+	"mwe-recwiz-wmcategory-wikipedia": "Wikipedia",
+	"mwe-recwiz-wmcategory-wiktionary": "Wiktionary"
+}

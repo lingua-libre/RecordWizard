@@ -6,7 +6,8 @@
 			"Redredsonia",
 			"Movses",
 			"Kareyac",
-			"Vlad5250"
+			"Vlad5250",
+			"Shaleych"
 		]
 	},
 	"recordWizard-desc": "Удобный в использовании, автоматический инструмент для записи аудио-файлов произношения.",
@@ -32,14 +33,25 @@
 	"mwe-recwiz-gender-other": "Иное",
 	"mwe-recwiz-details-addwords": "Наберите слово и нажмите <Enter> (или несколько слов, используя # в качестве разделителя)",
 	"mwe-recwiz-details-clear": "Очистить",
+	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|слово|слова|слов}}",
 	"mwe-recwiz-generator-list": "Локальный список",
 	"mwe-recwiz-studio-input-placeholder": "Добавить новое слово",
+	"mwe-recwiz-publish-play": "Воспроизвести",
+	"mwe-recwiz-publish-remove": "Удалить",
+	"mwe-recwiz-publish-areyousure": "Вы уверены, что хотите удалить эту запись?",
+	"mwe-recwiz-publish-removelabel": "Удалить",
 	"mwe-recwiz-pendinguplads": "...Загрузка...",
+	"mwe-recwiz-allsucceeded": "Все загрузки завершены успешно!",
+	"mwe-recwiz-somefailed": "Некоторые загрузки выполнить не удалось.",
+	"mwe-recwiz-error-emptylist": "Вы должны выбрать несколько слов для продолжения.",
 	"mwe-recwiz-nearby-coordinates": "Координаты",
 	"mwe-recwiz-nearby-latitude": "широта",
 	"mwe-recwiz-nearby-longitude": "долгота",
 	"mwe-recwiz-nearby-source": "Источник",
 	"mwe-recwiz-list-title": "Заголовок",
+	"mwe-recwiz-wmcategory-title": "Название категории",
 	"mwe-recwiz-wmcategory-source": "Источник",
+	"mwe-recwiz-wmcategory-wikipedia": "Википедия",
+	"mwe-recwiz-wmcategory-wiktionary": "Викисловарь",
 	"mwe-recwiz-error-pagemissing": "Не существует страницы с названием \"$1\"."
 }
