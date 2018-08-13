@@ -23,6 +23,7 @@
 	"mwe-recwiz-gender-male": "Mand",
 	"mwe-recwiz-gender-female": "Kvinde",
 	"mwe-recwiz-gender-other": "Andet",
+	"mwe-recwiz-generator-list": "Lokal liste",
 	"mwe-recwiz-generator-wmcategory": "Wikimedia-kategori",
 	"mwe-recwiz-studio-input-placeholder": "Tilføj et nyt ord",
 	"mwe-recwiz-publish-play": "Afspil",
@@ -31,6 +32,7 @@
 	"mwe-recwiz-nearby-coordinates": "Koordinater",
 	"mwe-recwiz-nearby-source": "Kilde",
 	"mwe-recwiz-list-title": "Titel",
+	"mwe-recwiz-wmcategory-title": "Kategorinavn",
 	"mwe-recwiz-wmcategory-source": "Kilde",
 	"mwe-recwiz-wmcategory-wikipedia": "Wikipedia",
 	"mwe-recwiz-wmcategory-wiktionary": "Wiktionary"
