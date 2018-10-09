@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kly"
+			"Kly",
+			"LNDDYL"
 		]
 	},
 	"recordWizard": "錄音精靈",
@@ -75,7 +76,7 @@
 	"mwe-recwiz-somefailed": "部份上傳失敗。",
 	"mwe-recwiz-allfailed": "沒有上傳是成功的。",
 	"mwe-recwiz-error-mediastream-notallowed": "您不被允許使用麥克風。要使用錄音精靈請前往您的瀏覽器設定來允許，並點擊以下按鈕。",
-	"mwe-recwiz-error-mediastream-notfound": "找不到麥克風，您必須至少要有一個連接到您設備上的麥克風。",
+	"mwe-recwiz-error-mediastream-notfound": "找不到麥克風。欲繼續，您必須至少要有一個連線至您裝置上的麥克風。",
 	"mwe-recwiz-error-mediastream-technical": "在您的瀏覽器或作業系統發生了技術上錯誤，導致無法使用您的麥克風。請嘗試重新載入頁面。錯誤詳情：$1",
 	"mwe-recwiz-error-mediastream-unknow": "發生未知錯誤而無法使用您的麥克風。請重新載入頁面。",
 	"mwe-recwiz-error-noname": "您必須挑選您的播音員名稱。",
