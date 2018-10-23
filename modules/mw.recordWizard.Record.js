@@ -203,7 +203,7 @@
 			'\n | languageId    = ' + rw.config.languages[ rw.metadatas.language ].wikidataId +
 			'\n | transcription = ' + this.transcription +
 			'\n | qualifier     = ' + ( this.qualifier !== null ? this.qualifier : '' ) +
-			'\n | date          = ' + date.getFullYear() + '-' + ( date.getMonth() + 1 ) + '-' + date.getDate() +
+			'\n | date          = ' + date.getFullYear() + '-' + ( ( '0' + ( date.getMonth() + 1 ) ).slice( -2 ) ) + '-' + ( '0' + date.getDate() ).slice( -2 ) +
 			'\n}}' +
 			'\n\n== {{int:license-header}} ==' +
 			'\n{{' + rw.metadatas.license + '}}';
