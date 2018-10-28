@@ -25,8 +25,7 @@
 	 * @inheritDoc
 	 */
 	rw.ui.Studio.prototype.load = function () {
-		var word,
-			ui = this;
+		var word;
 		rw.ui.Step.prototype.load.call( this );
 
 		this.isRecording = false;
@@ -122,6 +121,11 @@
 
 				case 39: // right
 					ui.emit( 'next-item-click' );
+					break;
+
+				case 46: // del
+				case 8: // backspace
+					ui.emit( 'delete-record' );
 					break;
 
 				default: return;
@@ -278,6 +282,8 @@
 		if ( total > 0 ) {
 			this.$recordCounter.text( mw.message( 'mwe-recwiz-studio-uploadcount', count.stashed, total ).text() );
 			this.$recordCounter.show();
+		} else {
+			this.$recordCounter.hide();
 		}
 	};
 

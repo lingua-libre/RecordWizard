@@ -190,7 +190,9 @@
 		if ( prevState !== 'up' ) {
 			rw.metadatas.statesCount[ prevState ]--;
 		}
-		rw.metadatas.statesCount[ state ]++;
+		if ( state !== 'up' ) {
+			rw.metadatas.statesCount[ state ]++;
+		}
 		this.ui.setItemState( word, state );
 	};
 

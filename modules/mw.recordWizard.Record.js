@@ -307,22 +307,28 @@
 	 * Clear locally the audio record file.
 	 */
 	rw.Record.prototype.remove = function () {
-		// TODO: abort request if uploading
-		// this.offStateChange();
 		this.file = null;
+
+		// Cancel any pending request
+		if ( this.deferred !== undefined ) {
+			this.deferred.reject( 'cancel' );
+		}
 	};
 
 	/**
 	 * Reset the object
 	 */
 	rw.Record.prototype.reset = function () {
-		// TODO: abort request if uploading
-		// this.offStateChange();
 		this.file = null;
 		this.filekey = null;
 		this.imageInfo = null;
 		this.error = false;
-		this.state = 'up';
+		this.setState( 'up' );
+
+		// Cancel any pending request
+		if ( this.deferred !== undefined ) {
+			this.deferred.reject( 'cancel' );
+		}
 	};
 
 	/**
@@ -338,15 +344,19 @@
 		if ( this.state === 'ready' || this.state === 'error' ) {
 			this.setState( 'stashing' );
 
+			this.deferred = deferred;
+
 			api.upload( this.file, {
 				stash: true,
 				filename: this.getFilename()
-			} ).then( function ( result ) {
+			} ).then( deferred.resolve.bind( deferred ), deferred.reject.bind( deferred ) );
+
+			this.deferred.then( function ( result ) {
 				record.setFilekey( result.upload.filekey );
-				deferred.resolve( result );
-			} ).fail( function ( errorCode, result ) {
-				deferred.reject( errorCode, result );
-				record.setError( errorCode );
+			}, function ( errorCode ) {
+				if ( errorCode !== 'cancel' ) {
+					record.setError( errorCode );
+				}
 			} );
 		}
 	};
@@ -364,12 +374,13 @@
 
 		if ( this.state === 'error' && this.imageInfo !== null ) {
 			deferred.resolve();
+			return;
 		}
 
 		this.setState( 'uploading' );
 
-		// TODO: switch from upload to upload-to-commons, if available
-		// use the config to detect it
+		this.deferred = deferred;
+
 		api.postWithToken( 'csrf', {
 			action: 'upload-to-commons',
 			format: 'json',
@@ -377,12 +388,14 @@
 			filename: this.getFilename(),
 			text: this.getText(),
 			ignorewarnings: true // TODO: manage warnings !important
-		} ).then( function ( result ) {
+		} ).then( deferred.resolve.bind( deferred ), deferred.reject.bind( deferred ) );
+
+		this.deferred.then( function ( result ) {
 			record.uploaded( result[ 'upload-to-commons' ].oauth.upload.imageinfo );
-			deferred.resolve();
-		} ).fail( function ( code, result ) {
-			record.setError( code );
-			deferred.reject( code, result );
+		}, function ( errorCode ) {
+			if ( errorCode !== 'cancel' ) {
+				record.setError( errorCode );
+			}
 		} );
 	};
 
@@ -418,13 +431,13 @@
 
 		this.wbItem.labels = { en: this.word };
 
-		lang = rw.config.languages[ rw.metadatas.language ]
+		lang = rw.config.languages[ rw.metadatas.language ];
 		this.wbItem.descriptions = { en: 'audio record - ' + ( lang.iso3 !== null ? lang.iso3 : lang.wikidataId ) + ' - ' + rw.metadatas.locutor.name + ' (' + mw.config.get( 'wgUserName' ) + ')' };
 
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.instanceOf ).setType( 'wikibase-item' ).setValue( rw.config.items.record ), true ); // InstanceOf
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.subclassOf ).setType( 'wikibase-item' ).setValue( rw.config.items.word ), true ); // SubclassOf
 		if ( mw.Debug === undefined ) { // Disable media on the dev environment
-			this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.audioRecord ).setType( 'commonsMedia' ).setValue( this.getFilename() ), true ); //Audio file
+			this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.audioRecord ).setType( 'commonsMedia' ).setValue( this.getFilename() ), true ); // Audio file
 		}
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.spokenLanguages ).setType( 'wikibase-item' ).setValue( rw.metadatas.language ), true ); // Language
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.locutor ).setType( 'wikibase-item' ).setValue( rw.metadatas.locutor.qid ), true ); // Locutor

@@ -101,6 +101,8 @@
 				}
 			}
 		} );
+
+		this.ui.on( 'delete-record', this.onDelete.bind( this ) );
 	};
 
 	/**
@@ -156,6 +158,20 @@
 		if ( reason === 'saturated' ) {
 			this.isRecording = false;
 			this.startNextRecord();
+		}
+	};
+
+	/**
+	 * Event handler called when the user want to delete a record.
+	 */
+	rw.controller.Studio.prototype.onDelete = function () {
+		// Reset the selected word
+		rw.records[ this.currentWord ].reset();
+		this.ui.setItemState( this.currentWord, 'up', '' );
+
+		// If a record is pending, cancel it
+		if ( this.isRecording ) {
+			this.selectWord( this.currentWord );
 		}
 	};
 

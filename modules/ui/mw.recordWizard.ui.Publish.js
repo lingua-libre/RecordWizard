@@ -125,6 +125,9 @@
 	};
 
 	rw.ui.Publish.prototype.setItemState = function ( word, state ) {
+		if ( !( word in this.recordItems ) ) {
+			return;
+		}
 		// TODO: use a correlation table to asociate state and HTML class
 		if ( [ 'done', 'error' ].indexOf( state ) > -1 ) {
 			$( 'html, body' ).stop( true );
