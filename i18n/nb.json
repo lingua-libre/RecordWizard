@@ -3,7 +3,8 @@
 		"authors": [
 			"Citadell",
 			"Jon Harald Søby",
-			"Orf3us"
+			"Orf3us",
+			"Alphabet Qi"
 		]
 	},
 	"recordWizard": "RecordWizard",
@@ -81,7 +82,7 @@
 	"mwe-recwiz-error-mediastream-technical": "En teknisk feil i nettleseren eller i operativsystemet ditt forhindrer bruken av mikrofonen. Prøv å laste siden på nytt. Feildetaljer: $1",
 	"mwe-recwiz-error-mediastream-unknow": "En ukjent feil forhindrer bruken av mikrofonen. Prøv å laste siden på nytt.",
 	"mwe-recwiz-error-noname": "Du må velge et navn på taleren din.",
-	"mwe-recwiz-error-duplicatename": "Du har allerede en taler kalt $1. Talerne må ha forskjellige navn.",
+	"mwe-recwiz-error-duplicatename": "Du har allerede en taler kalt $1. Hver taler må ha et annet navn.",
 	"mwe-recwiz-error-nolanguages": "Du snakker nok minst ett språk ;-)",
 	"mwe-recwiz-error-emptylist": "Du må velge noen ord for å fortsette.",
 	"mwe-recwiz-error-network": "Kunne ikke kontakte tjeneren. Sjekk internettforbindelsen din og prøv igjen.",

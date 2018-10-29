@@ -5,6 +5,7 @@
 		]
 	},
 	"mwe-recwiz-step-tutorial": "Uleedung",
+	"mwe-recwiz-step-locutor": "Riedner",
 	"mwe-recwiz-step-details": "Detailer",
 	"mwe-recwiz-step-studio": "Studio",
 	"mwe-recwiz-step-publish": "Verëffentlechen",
@@ -19,6 +20,7 @@
 	"mwe-recwiz-tutorial-mictester-recording": "1. Eppes soen",
 	"mwe-recwiz-tutorial-mictester-playing": "2. Lauschteren",
 	"mwe-recwiz-tutorial-mictester-waiting": "lueden",
+	"mwe-recwiz-locutor-profileother": "Aner Riedner",
 	"mwe-recwiz-locutor-name": "Numm fir ze weisen",
 	"mwe-recwiz-locutor-languages": "Geschwat Sproochen",
 	"mwe-recwiz-locutor-languagelevel": "Sproochniveau",
