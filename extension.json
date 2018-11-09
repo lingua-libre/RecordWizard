@@ -99,9 +99,7 @@
             "scripts": [
                 "modules/mw.recordWizard.libs.js",
                 "lib/lingua-recorder/AudioRecord.js",
-                "lib/lingua-recorder/LinguaRecorder.js",
-                "lib/lingua-recorder/Studio.js",
-                "lib/lingua-recorder/WordListStudio.js"
+                "lib/lingua-recorder/LinguaRecorder.js"
             ],
 			"dependencies": [
 				"ext.recordWizard.base"
