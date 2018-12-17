@@ -111,6 +111,7 @@
 				extra = list[ i ];
 			}
 
+			word = word.replace( /\t/g, '' ).trim();
 			this.ui.addWord( word );
 			rw.records[ word ].setExtra( extra );
 		}
@@ -125,7 +126,7 @@
 	 * @param  {number} index position of the new word in the list
 	 */
 	rw.controller.Details.prototype.onWordListAdd = function ( word, index ) {
-		word = word.trim();
+		word = word.replace( /\t/g, '' ).trim();
 		if ( rw.records[ word ] === undefined ) {
 			rw.records[ word ] = new rw.Record( word );
 		}
