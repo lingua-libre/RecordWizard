@@ -246,9 +246,8 @@
 }
 
 .studio-wordlist li.studio-wordlist-selected {
-    text-decoration: underline;
     border: 2px solid black;
-	background-color: #3399FF;
+    background-color: #3399FF;
     padding: 8px;
 }
 
