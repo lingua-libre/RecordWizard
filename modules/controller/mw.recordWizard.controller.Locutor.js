@@ -201,7 +201,7 @@
 	};
 
 	/**
-	 * Save inside user's preferences some options.
+	 * Save some options in a personal subpage.
 	 *
 	 * This includes the main locutor Qid, all the secondary locutors Qid, and
 	 * the preferred license. This will allow to preload those data at the next
@@ -210,10 +210,18 @@
 	 * @return {$.Deferred}  A promise, resolved when we're done
 	 */
 	rw.controller.Locutor.prototype.saveOptions = function () {
-		return this.api.saveOptions( {
-			'recwiz-locutor': rw.config.locutor.qid,
-			'recwiz-otherLocutors': Object.keys( rw.config.otherLocutors ).join( ',' ),
-			'recwiz-license': rw.metadatas.license
+		var userConfig = {
+			locutor: rw.config.locutor.qid,
+			otherLocutors: Object.keys( rw.config.otherLocutors ),
+			license: rw.metadatas.license
+		};
+		return this.api.postWithToken( 'csrf', {
+			action: 'edit',
+			format: 'json',
+			title: 'User:' + mw.config.get( 'wgUserName' ) + '/RecordWizard.json',
+			text: JSON.stringify( userConfig ),
+			summary: 'personal config update',
+			recreate: 1
 		} ).fail( function () {
 			// TODO: manage errors
 		} );

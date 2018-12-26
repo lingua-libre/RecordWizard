@@ -90,19 +90,36 @@ class SpecialRecordWizard extends SpecialPage {
 			$config[ 'languages' ][ $qid ][ 'localname' ] = $label;
 		}
 
-		$locutorId = $user->getOption( 'recwiz-locutor' );
+		// Get speakers
+		$locutorId = null;
+		$otherLocutorIds = [];
+		$userConfigWikiPage = WikiPage::factory( Title::makeTitleSafe( NS_USER, $user->getName() . '/RecordWizard.json' ) );
+		if ( $userConfigWikiPage->exists() ) {
+			$revision = $userConfigWikiPage->getRevision();
+			$content = $revision->getContent( Revision::RAW );
+			$text = JsonContentHandler::getContentText( $content );
+			$userConfig = json_decode($text, true);
+			if ( $userConfig != null ) {
+				if ( array_key_exists( 'locutor', $userConfig ) ) {
+					$locutorId = $userConfig[ 'locutor' ];
+				}
+				if ( array_key_exists( 'otherLocutors', $userConfig ) ) {
+					$otherLocutorIds = $userConfig[ 'otherLocutors' ];
+				}
+				if ( array_key_exists( 'license', $userConfig ) ) {
+					$config[ 'savedLicense' ] = $userConfig[ 'license' ];
+				}
+			}
+		}
+
 		$config[ 'locutor' ] = $this->getLocutor( $locutorId, $entityIdLookup, $entityRevisionLookup );
 		$config[ 'locutor' ][ 'main' ] = true;
 		if ( $config[ 'locutor' ][ 'name' ] == null ) {
 			$config[ 'locutor' ][ 'name' ] = $user->getName();
 		}
-		$otherLocutors = $user->getOption( 'recwiz-otherLocutors' );
 		$config[ 'otherLocutors' ] = [];
-		if ( $otherLocutors != '' ) {
-			$otherLocutorIds = explode( ',', $user->getOption( 'recwiz-otherLocutors' ) );
-			foreach( $otherLocutorIds as $qid ) {
-				$config[ 'otherLocutors' ][ $qid ] = $this->getLocutor( $qid, $entityIdLookup, $entityRevisionLookup );
-			}
+		foreach( $otherLocutorIds as $qid ) {
+			$config[ 'otherLocutors' ][ $qid ] = $this->getLocutor( $qid, $entityIdLookup, $entityRevisionLookup );
 		}
 
 		$licensesMessage = $this->msg( 'licenses' );
@@ -123,7 +140,6 @@ class SpecialRecordWizard extends SpecialPage {
 			);
 		}
 
-		$config[ 'savedLicense' ] = $user->getOption( 'recwiz-license' );
 		$config[ 'savedLanguage' ] = $user->getOption( 'recwiz-lang' );
 
 		$out->addJsConfigVars( [ 'RecordWizardConfig' => $config ] );
@@ -148,7 +164,7 @@ class SpecialRecordWizard extends SpecialPage {
 			'qid' => null,
 		);
 
-		if ( $locutorId != '' ) {
+		if ( $locutorId != null ) {
 			$itemId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['item'], $locutorId ) );
 			$revision = $entityRevisionLookup->getEntityRevision( $itemId );
 			if ( $revision !== null ) {
@@ -156,7 +172,7 @@ class SpecialRecordWizard extends SpecialPage {
 
 				$instanceOfPropertyId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['instanceOf'] ) );
 				$instanceOf = $this->getPropertyValues( $item, $instanceOfPropertyId );
-				if ( $instanceOf[ 0 ][ 'value' ] == $wgRecordWizardConfig['items']['locutor'] ) {
+				if ( count( $instanceOf ) > 0 && $instanceOf[ 0 ][ 'value' ] == $wgRecordWizardConfig['items']['locutor'] ) {
 					$labels = $item->getLabels()->getIterator();
 					if ( $labels->valid() ) {
 						$locutor['name'] = $labels->current()->getText();
