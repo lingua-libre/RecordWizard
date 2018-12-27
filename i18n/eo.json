@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robin van der Vliet"
+		]
+	},
+	"mwe-recwiz-step-tutorial": "Lernilo",
+	"mwe-recwiz-step-locutor": "Parolanto",
+	"mwe-recwiz-step-details": "Detaloj",
+	"mwe-recwiz-step-publish": "Publikigi",
+	"mwe-recwiz-next": "Sekva",
+	"mwe-recwiz-previous": "Antaŭa",
+	"mwe-recwiz-continue": "Daŭrigi",
+	"mwe-recwiz-continueanyway": "Tamen daŭrigi",
+	"mwe-recwiz-locutor-profilemain": "Via ĉefa parolanto",
+	"mwe-recwiz-locutor-profileother": "Aliaj parolantoj",
+	"mwe-recwiz-locutor-profilenew": "Krei novan parolanton",
+	"mwe-recwiz-locutor-languages": "Parolataj lingvoj",
+	"mwe-recwiz-locutor-languagelevel": "Lingva nivelo",
+	"mwe-recwiz-locutor-languagelevel-native": "denaskulo",
+	"mwe-recwiz-locutor-languagelevel-beginner": "komencanto",
+	"mwe-recwiz-locutor-license": "Permesilo",
+	"mwe-recwiz-locutor-gender": "Genro",
+	"mwe-recwiz-gender-male": "Vira",
+	"mwe-recwiz-gender-female": "Ina",
+	"mwe-recwiz-gender-other": "Alia",
+	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|vorto|vortoj}}",
+	"mwe-recwiz-generator-list": "Loka listo",
+	"mwe-recwiz-studio-input-placeholder": "Aldoni novan vorton",
+	"mwe-recwiz-publish-play": "Ludi",
+	"mwe-recwiz-publish-remove": "Forigi",
+	"mwe-recwiz-publish-removelabel": "Forigi",
+	"mwe-recwiz-nearby-coordinates": "Koordinatoj",
+	"mwe-recwiz-nearby-latitude": "latitudo",
+	"mwe-recwiz-nearby-longitude": "longitudo",
+	"mwe-recwiz-nearby-source": "Fonto",
+	"mwe-recwiz-list-title": "Titolo",
+	"mwe-recwiz-wmcategory-wikipedia": "Vikipedio",
+	"mwe-recwiz-wmcategory-wiktionary": "Vikivortaro"
+}
