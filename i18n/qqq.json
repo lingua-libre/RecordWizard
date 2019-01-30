@@ -3,7 +3,8 @@
 		"authors": [
 			"Antoine Lamielle",
 			"Robby",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"MarcoAurelio"
 		]
 	},
 	"recordWizard": "The name of the extension",
@@ -19,7 +20,7 @@
 	"mwe-recwiz-next": "Label on a button, used to go to the next step.",
 	"mwe-recwiz-previous": "Label on a button, used to go to the previous step.",
 	"mwe-recwiz-continue": "Label on a button, used to go to the next step.",
-	"mwe-recwiz-continueanyway": "Label on a button, used to go to the next step when errors occured during the current step.",
+	"mwe-recwiz-continueanyway": "Label on a button, used to go to the next step when errors occurred during the current step.",
 	"mwe-recwiz-retry": "Label on a button, used to retry failed uploads.",
 	"mwe-recwiz-publish": "Label on a button, used to confirm the last step and upload all files on Wikimedia Commons.",
 	"mwe-recwiz-restart": "Label on a button, displayed once the uploads are successful. Used to restart the RecordWizard to record some more words.",
