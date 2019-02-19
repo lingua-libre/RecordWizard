@@ -25,6 +25,7 @@
 				"date": "",
 				"transcription": "",
 				"wikidataId": "",
+				"mediaType": "",
 				"languageLevel": "",
 				"residencePlace": "",
 				"learningPlace": ""
@@ -40,7 +41,9 @@
 				"langLevelNative": "",
 				"langLevelGood": "",
 				"langLevelAverage": "",
-				"langLevelBeginner": ""
+				"langLevelBeginner": "",
+				"mediaTypeAudio": "",
+				"mediaTypeVideo": ""
 			},
 			"listNamespace": 0
 		}

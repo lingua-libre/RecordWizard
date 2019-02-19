@@ -81,10 +81,14 @@ class SpecialRecordWizard extends SpecialPage {
 			$wikidataIds = $this->getPropertyValues( $item, $wikidataIdProperty );
 			$wikidataId = (count($wikidataIds) > 0 ? $wikidataIds[ 0 ][ 'value' ] : null);
 
+			$mediaTypeIds = $this->getPropertyValues( $item, $mediaTypeProperty );
+			$mediaTypeId = (count($mediaTypeIds) > 0 ? $wikidataIds[ 0 ][ 'value' ] : $wgRecordWizardConfig['items']['mediaTypeAudio']);
+
 			$qid = (string) $itemId;
 			$config[ 'languages' ][ $qid ] = array();
 			$config[ 'languages' ][ $qid ][ 'code' ] = $langCode;
 			$config[ 'languages' ][ $qid ][ 'iso3' ] = $iso3;
+			$config[ 'languages' ][ $qid ][ 'mediaType' ] = (string) $mediaTypeId;
 			$config[ 'languages' ][ $qid ][ 'wikidataId' ] = $wikidataId;
 			$config[ 'languages' ][ $qid ][ 'qid' ] = (string) $qid;
 			$config[ 'languages' ][ $qid ][ 'localname' ] = $label;
