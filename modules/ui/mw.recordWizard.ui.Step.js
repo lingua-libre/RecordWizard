@@ -9,8 +9,9 @@
 	 * @abstract
 	 * @constructor
 	 * @param {string} name The name of this step
+	 * @param {bool} isVirtual Set this to true to hide this step from the arrow bar
 	 */
-	rw.ui.Step = function ( name ) {
+	rw.ui.Step = function ( name, isVirtual ) {
 		OO.EventEmitter.call( this );
 
 		this.name = name;
@@ -26,7 +27,9 @@
 			.text( mw.message( 'mwe-recwiz-step-' + name ).text() )
 			.appendTo( '.mwe-recwiz-steps' );
 
-		$( '#mwe-recwiz-content' ).append( this.$container );
+		if ( isVirtual !== true ) {
+			$( '#mwe-recwiz-content' ).append( this.$container );
+		}
 
 		// this will make sure that buttons will only be added if they've been
 		// set in the controller, otherwise there's nowhere to go...

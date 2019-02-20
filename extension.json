@@ -169,6 +169,8 @@
                 "modules/ui/mw.recordWizard.ui.Locutor.js",
                 "modules/ui/mw.recordWizard.ui.Details.js",
                 "modules/ui/mw.recordWizard.ui.Studio.js",
+                "modules/ui/mw.recordWizard.ui.AudioStudio.js",
+                "modules/ui/mw.recordWizard.ui.VideoStudio.js",
                 "modules/ui/mw.recordWizard.ui.Publish.js"
             ],
 			"dependencies": [
@@ -281,6 +283,8 @@
                 "modules/controller/mw.recordWizard.controller.Locutor.js",
                 "modules/controller/mw.recordWizard.controller.Details.js",
                 "modules/controller/mw.recordWizard.controller.Studio.js",
+                "modules/controller/mw.recordWizard.controller.AudioStudio.js",
+                "modules/controller/mw.recordWizard.controller.VideoStudio.js",
                 "modules/controller/mw.recordWizard.controller.Publish.js"
             ],
 			"dependencies": [

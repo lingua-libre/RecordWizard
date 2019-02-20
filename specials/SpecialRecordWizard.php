@@ -63,6 +63,7 @@ class SpecialRecordWizard extends SpecialPage {
 		$langCodeProperty = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['langCode'] ) );
 		$iso3Property = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['iso3'] ) );
 		$wikidataIdProperty = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['wikidataId'] ) );
+		$mediaTypeProperty = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['mediaType'] ) );
 
 		$config[ 'languages' ] = array();
 		foreach ( $entities as $id => $itemId ) {
@@ -81,14 +82,14 @@ class SpecialRecordWizard extends SpecialPage {
 			$wikidataIds = $this->getPropertyValues( $item, $wikidataIdProperty );
 			$wikidataId = (count($wikidataIds) > 0 ? $wikidataIds[ 0 ][ 'value' ] : null);
 
-			$mediaTypeIds = $this->getPropertyValues( $item, $mediaTypeProperty );
-			$mediaTypeId = (count($mediaTypeIds) > 0 ? $wikidataIds[ 0 ][ 'value' ] : $wgRecordWizardConfig['items']['mediaTypeAudio']);
+			$mediaTypes = $this->getPropertyValues( $item, $mediaTypeProperty );
+			$mediaType = (count($mediaTypes) > 0 ? $mediaTypes[ 0 ][ 'value' ] : $wgRecordWizardConfig['items']['mediaTypeAudio']);
 
 			$qid = (string) $itemId;
 			$config[ 'languages' ][ $qid ] = array();
 			$config[ 'languages' ][ $qid ][ 'code' ] = $langCode;
 			$config[ 'languages' ][ $qid ][ 'iso3' ] = $iso3;
-			$config[ 'languages' ][ $qid ][ 'mediaType' ] = (string) $mediaTypeId;
+			$config[ 'languages' ][ $qid ][ 'mediaType' ] = (string) $mediaType;
 			$config[ 'languages' ][ $qid ][ 'wikidataId' ] = $wikidataId;
 			$config[ 'languages' ][ $qid ][ 'qid' ] = (string) $qid;
 			$config[ 'languages' ][ $qid ][ 'localname' ] = $label;
