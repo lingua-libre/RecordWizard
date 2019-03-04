@@ -27,6 +27,7 @@
 
 		this.word = word;
 		this.extra = {};
+		this.date = new Date();
 
 		decomposedWord = this.word.match( /^(.+) \((.+)\)$/m );
 		if ( decomposedWord === null ) {
@@ -181,8 +182,7 @@
 	 * @return {string}  Description of the record
 	 */
 	rw.Record.prototype.getText = function () {
-		var date = new Date(),
-			gender = '';
+		var gender = '';
 		switch ( rw.metadatas.locutor.gender ) {
 			case rw.config.items.genderMale:
 				gender = 'male';
@@ -203,7 +203,7 @@
 			'\n | languageId    = ' + rw.config.languages[ rw.metadatas.language ].wikidataId +
 			'\n | transcription = ' + this.transcription +
 			'\n | qualifier     = ' + ( this.qualifier !== null ? this.qualifier : '' ) +
-			'\n | date          = ' + date.getFullYear() + '-' + ( ( '0' + ( date.getMonth() + 1 ) ).slice( -2 ) ) + '-' + ( '0' + date.getDate() ).slice( -2 ) +
+			'\n | date          = ' + this.date.getFullYear() + '-' + ( ( '0' + ( this.date.getMonth() + 1 ) ).slice( -2 ) ) + '-' + ( '0' + this.date.getDate() ).slice( -2 ) +
 			'\n}}' +
 			'\n\n== {{int:license-header}} ==' +
 			'\n{{' + rw.metadatas.license + '}}';
@@ -424,10 +424,10 @@
 	 * Fill the record's wikibase item with all known metadatas on it.
 	 */
 	rw.Record.prototype.fillWbItem = function () {
-		var propertyId, lang,
-			today = new Date();
-		today.setUTCHours( 0, 0, 0, 0 );
-		today = today.toISOString().slice( 0, -5 ) + 'Z';
+		var propertyId, lang, date;
+
+		this.date.setUTCHours( 0, 0, 0, 0 );
+		date = this.date.toISOString().slice( 0, -5 ) + 'Z';
 
 		this.wbItem.labels = { en: this.word };
 
@@ -441,7 +441,7 @@
 		}
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.spokenLanguages ).setType( 'wikibase-item' ).setValue( rw.metadatas.language ), true ); // Language
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.locutor ).setType( 'wikibase-item' ).setValue( rw.metadatas.locutor.qid ), true ); // Locutor
-		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.date ).setType( 'time' ).setValue( { time: today } ), true ); // Date
+		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.date ).setType( 'time' ).setValue( { time: date } ), true ); // Date
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.transcription ).setType( 'string' ).setValue( this.transcription ), true ); // Transcription
 		if ( this.qualifier !== null ) {
 			this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.qualifier ).setType( 'string' ).setValue( this.qualifier ), true ); // Qualifier
