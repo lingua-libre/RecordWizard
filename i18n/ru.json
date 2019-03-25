@@ -8,7 +8,8 @@
 			"Kareyac",
 			"Vlad5250",
 			"Shaleych",
-			"Nk88"
+			"Nk88",
+			"Diralik"
 		]
 	},
 	"recordwizard": "\nМастер записи",
@@ -78,9 +79,9 @@
 	"mwe-recwiz-error-cantgetposition": "Ваша позиция не может быть найдена, вам придется установить координаты вручную ($1).",
 	"mwe-recwiz-warning-noresults": "Нет пунктов рядом с этими координатами.",
 	"mwe-recwiz-list-title": "Заголовок",
-	"mwe-recwiz-list-title-help": "Название страницы в пространстве имен списка.",
+	"mwe-recwiz-list-title-help": "Название страницы в пространстве имён списка.",
 	"mwe-recwiz-wmcategory-title": "Название категории",
-	"mwe-recwiz-wmcategory-title-help": "Название категории, включая пространство имен категорий.",
+	"mwe-recwiz-wmcategory-title-help": "Название категории, включая пространство имён категорий.",
 	"mwe-recwiz-wmcategory-source": "Источник",
 	"mwe-recwiz-wmcategory-wikipedia": "Википедия",
 	"mwe-recwiz-wmcategory-wiktionary": "Викисловарь",
