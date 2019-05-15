@@ -59,9 +59,16 @@
             "i18n"
         ]
     },
+    "AutoloadNamespaces": {
+        "RecordWizard\\": "includes/"
+    },
     "AutoloadClasses": {
         "SpecialRecordWizard": "specials/SpecialRecordWizard.php",
-        "RecordWizardHooks": "Hooks.php"
+        "RecordWizardHooks": "Hooks.php",
+        "RecordWizard\\ApiQueryRwRecords": "includes/ApiQueryRwRecords.php"
+    },
+    "APIListModules": {
+        "rwrecords": "RecordWizard\\ApiQueryRwRecords"
     },
     "ResourceModules": {
         "ext.recordWizard": {
