@@ -39,8 +39,12 @@
 			this.setupGenerator( className );
 		}
 
+		this.onLanguageChange();
+
+		this.ui.on( 'language-change', this.onLanguageChange.bind( this ) );
 		this.ui.on( 'wordlist-add', this.onWordListAdd.bind( this ) );
 		this.ui.on( 'wordlist-change', this.onWordListChange.bind( this ) );
+		this.ui.on( 'deduplicate', this.onDeduplicate.bind( this ) );
 	};
 
 	/**
@@ -143,6 +147,65 @@
 		} else {
 			// mw.message( 'mwe-recwiz-details-wordcount', nbWords ).text();
 		}
+	};
+
+	/**
+	 * Event handler called when a the recording language is changed.
+	 */
+	rw.controller.Details.prototype.onLanguageChange = function () {
+		this.ui.clearWords();
+		this.ui.collect();
+		this.getPastRecords();
+	};
+
+	/**
+	 * Event handler called when the deduplicate button is clicked.
+	 */
+	rw.controller.Details.prototype.onDeduplicate = function () {
+		var i, word,
+			pastRecords = rw.metadatas.locutor.languages[ rw.metadatas.language ].pastRecords;
+
+		this.ui.collect(); // to get all words add by the user in the list
+		for ( i = 0; i < rw.metadatas.words.length; i++ ) {
+			word = rw.metadatas.words[ i ];
+			if ( pastRecords.indexOf( word ) > -1 ) {
+				this.ui.removeWord( word );
+			}
+		}
+	};
+
+	rw.controller.Details.prototype.getPastRecords = function ( deferred, offset, pastRecords ) {
+		deferred = deferred || $.Deferred();
+		offset = offset || 0;
+		pastRecords = pastRecords || [];
+
+		if ( rw.metadatas.locutor.languages[ rw.metadatas.language ].pastRecords !== undefined ) {
+			deferred.resolve( rw.metadatas.locutor.languages[ rw.metadatas.language ].pastRecords );
+		} else {
+			this.api.get( {
+				action: 'query',
+				format: 'json',
+				list: 'rwrecords',
+				rwrspeaker: rw.metadatas.locutor.qid,
+				rwrlanguage: rw.metadatas.language,
+				rwrlimit: 'max',
+				rwroffset: offset
+			} ).then( function ( result ) {
+				pastRecords = result.query.rwrecords.concat( pastRecords );
+
+				if ( result.continue !== undefined ) {
+					this.getPastRecords( deferred, result.continue.rwroffset, pastRecords );
+				} else {
+					rw.metadatas.locutor.languages[ rw.metadatas.language ].pastRecords = pastRecords;
+					deferred.resolve( pastRecords );
+				}
+			}.bind( this ), function () {
+				rw.metadatas.locutor.languages[ rw.metadatas.language ].pastRecords = [];
+				deferred.reject();
+			} );
+		}
+
+		return deferred.promise();
 	};
 
 }( mediaWiki, mediaWiki.recordWizard, jQuery, OO ) );

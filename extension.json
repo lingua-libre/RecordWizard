@@ -240,6 +240,7 @@
                 "mwe-recwiz-details-wordlist",
                 "mwe-recwiz-details-randomise",
                 "mwe-recwiz-details-addwords",
+				"mwe-recwiz-details-deduplicate",
                 "mwe-recwiz-details-clear",
 				"mwe-recwiz-details-generators",
                 "mwe-recwiz-details-noword",

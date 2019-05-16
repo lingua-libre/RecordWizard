@@ -58,6 +58,15 @@
 			classes: [ 'mwe-recwiz-right' ]
 		} );
 
+		// deduplicate button
+		this.deduplicateButton = new OO.ui.ButtonWidget( {
+			label: mw.msg( 'mwe-recwiz-details-deduplicate' ),
+			icon: 'checkAll',
+			flags: [ 'constructive' ],
+			framed: false,
+			classes: [ 'mwe-recwiz-right' ]
+		} );
+
 		// Randomisation
 		this.randomSwitch = new OO.ui.ToggleSwitchWidget( { value: rw.metadatas.randomise } );
 
@@ -77,6 +86,7 @@
 					label: mw.message( 'mwe-recwiz-details-wordlist' ).text()
 				} ),
 				this.clearButton,
+				this.deduplicateButton,
 				new OO.ui.FieldLayout( this.generatorButtons, {
 					align: 'left',
 					label: mw.message( 'mwe-recwiz-details-generators' ).text(),
@@ -95,7 +105,7 @@
 		this.languageSelector.setValue( rw.metadatas.language || rw.config.savedLanguage );
 
 		// Manage events
-		this.languageSelector.on( 'change', this.clearWords.bind( this ) );
+		this.languageSelector.on( 'change', this.emit.bind( this, 'language-change' ) );
 		this.wordList.on( 'change', function () {
 			ui.emit( 'wordlist-change' );
 		} );
@@ -103,6 +113,7 @@
 			ui.emit( 'wordlist-add', item.getData(), index );
 		} );
 		this.clearButton.on( 'click', this.clearWords.bind( this ) );
+		this.deduplicateButton.on( 'click', this.emit.bind( this, 'deduplicate' ) );
 
 		this.$container.prepend( this.layout.$element );
 	};
@@ -143,6 +154,11 @@
 
 	rw.ui.Details.prototype.clearWords = function () {
 		this.wordList.clearItems();
+	};
+
+	rw.ui.Details.prototype.removeWord = function ( word ) {
+		console.log( 'removeWord', word );
+		this.wordList.removeTagByData( word );
 	};
 
 	rw.ui.Details.prototype.collect = function () {
