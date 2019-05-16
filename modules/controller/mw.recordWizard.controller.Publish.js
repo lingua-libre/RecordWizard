@@ -63,6 +63,7 @@
 		if ( rw.metadatas.statesCount.stashed + rw.metadatas.statesCount.error === 0 ) {
 			delete rw.metadatas.words;
 			delete rw.metadatas.statesCount;
+			delete rw.metadatas.locutor.languages[ rw.metadatas.language ].pastRecords;
 			rw.records = {};
 			return rw.controller.Step.prototype.moveNext.call( this );
 		}

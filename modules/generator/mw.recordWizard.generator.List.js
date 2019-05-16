@@ -21,6 +21,7 @@
 			api: this.api,
 			namespace: rw.config.listNamespace
 		} );
+		this.deduplicate = new OO.ui.ToggleSwitchWidget();
 
 		this.layout = new OO.ui.Widget( {
 			classes: [ 'mwe-recwiz-list' ],
@@ -30,6 +31,12 @@
 						align: 'top',
 						label: mw.message( 'mwe-recwiz-list-title' ).text(),
 						help: mw.message( 'mwe-recwiz-list-title-help' ).text()
+					}
+				),
+				new OO.ui.FieldLayout(
+					this.deduplicate, {
+						align: 'left',
+						label: mw.message( 'mwe-recwiz-list-deduplicate' ).text()
 					}
 				)
 			]
@@ -46,19 +53,22 @@
 		if ( this.params.title !== undefined || this.language.iso3 !== null ) {
 			this.titleInput.setValue( this.params.title || this.language.iso3 + '/' );
 		}
+		this.deduplicate.setValue( this.params.deduplicate || true );
 		this.titleInput.$input.focus();
 	};
 
 	rw.generator.List.prototype.fetch = function () {
 		var generator = this,
 			title = this.titleInput.getValue(),
-			namespace = mw.config.get( 'wgFormattedNamespaces' )[ mw.recordWizard.config.listNamespace ] + ':';
+			namespace = mw.config.get( 'wgFormattedNamespaces' )[ mw.recordWizard.config.listNamespace ] + ':',
+			deduplicate = this.deduplicate.getValue();
 
 		if ( title.lastIndexOf( namespace, 0 ) !== 0 ) {
 			title = namespace + title;
 		}
 
 		this.params.title = title;
+		this.params.deduplicate = deduplicate;
 		this.deferred = $.Deferred();
 
 		this.api.get( {
@@ -81,6 +91,10 @@
 			generator.list = content.split( '\n' );
 			for ( i = 0; i < generator.list.length; i++ ) {
 				generator.list[ i ] = generator.list[ i ].replace( /^[*#]/, '' ).trim();
+				if ( deduplicate === true && generator.isAlreadyRecorded( generator.list[ i ] ) ) {
+					generator.list.splice( i, 1 );
+					i--; // Necessary as we've just removed an item of the list we're exploring
+				}
 			}
 			generator.deferred.resolve();
 		} )

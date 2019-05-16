@@ -69,7 +69,7 @@
 	"mwe-recwiz-details-randomise": "Shuffle list",
 	"mwe-recwiz-details-addwords": "Type a word and press <Enter> (or several words using # as a separator)",
 	"mwe-recwiz-details-clear": "Clear",
-	"mwe-recwiz-details-deduplicate": "Remove already recorded words",
+	"mwe-recwiz-details-deduplicate": "Remove words already recorded",
 	"mwe-recwiz-details-generators": "No idea? Try out a word generator",
 	"mwe-recwiz-details-noword": "No words selected",
 	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|word|words}}",
@@ -127,16 +127,19 @@
 	"mwe-recwiz-nearby-longitude": "longitude",
 	"mwe-recwiz-nearby-getcoordinates": "Get my position",
 	"mwe-recwiz-nearby-source": "Source",
+	"mwe-recwiz-nearby-deduplicate": "Exclude words you have already recorded",
 	"mwe-recwiz-error-cantgetposition": "Your position can't be found, you'll have to set the coordinates by hand ($1).",
 	"mwe-recwiz-warning-noresults": "There is no items near these coordinates.",
 
 	"mwe-recwiz-list-title": "Title",
 	"mwe-recwiz-list-title-help": "Title of a page within the list namespace.",
+	"mwe-recwiz-list-deduplicate": "Exclude words you have already recorded",
 	"mwe-recwiz-wmcategory-title": "Category name",
 	"mwe-recwiz-wmcategory-title-help": "Name of a category, including the Category namespace.",
 	"mwe-recwiz-wmcategory-source": "Source",
 	"mwe-recwiz-wmcategory-wikipedia": "Wikipedia",
 	"mwe-recwiz-wmcategory-wiktionary": "Wiktionary",
+	"mwe-recwiz-wmcategory-deduplicate": "Exclude words you have already recorded",
 	"mwe-recwiz-error-pagemissing": "There is currently no page with the name \"$1\".",
 	"mwe-recwiz-error-nowiki": "There is no Wikipedia or Wiktionary in your language."
 }

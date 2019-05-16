@@ -31,7 +31,7 @@
 	};
 
 	rw.generator.WMCategory.prototype.getReadyProcess = function ( data ) {
-		var process = rw.generator.Generator.parent.prototype.getReadyProcess.call( this, data ),
+		var process = rw.generator.Generator.prototype.getReadyProcess.call( this, data ),
 			lang = rw.config.languages[ rw.metadatas.language ].code;
 
 		// Don't run this every time the generator is opened
@@ -131,6 +131,9 @@
 			namespace: 14 // Category
 			// value: this.categoryName + ':'
 		} );
+		this.deduplicate = new OO.ui.ToggleSwitchWidget( {
+			value: this.params.deduplicate || true
+		} );
 
 		this.layout = new OO.ui.Widget( {
 			classes: [ 'mwe-recwiz-wmcategory' ],
@@ -157,6 +160,12 @@
 						label: mw.message( 'mwe-recwiz-wmcategory-title' ).text(),
 						help: mw.message( 'mwe-recwiz-wmcategory-title-help' ).text()
 					}
+				),
+				new OO.ui.FieldLayout(
+					this.deduplicate, {
+						align: 'left',
+						label: mw.message( 'mwe-recwiz-wmcategory-deduplicate' ).text()
+					}
 				)
 			]
 		} );
@@ -167,9 +176,10 @@
 	};
 
 	rw.generator.WMCategory.prototype.fetch = function () {
-		var generator = this,
-			title = this.titleInput.getValue();
+		var title = this.titleInput.getValue(),
+			deduplicate = this.deduplicate.getValue();
 
+		this.params.deduplicate = deduplicate;
 		this.deferred = $.Deferred();
 		this.list = [];
 
@@ -197,7 +207,7 @@
 			var i, pages, element;
 
 			if ( data.query === undefined ) {
-				return generator.deferred.reject( new OO.ui.Error( mw.message( 'mwe-recwiz-error-pagemissing', title ).text() ) );
+				return generator.deferred.reject( new OO.ui.Error( mw.message( 'mwe-recwiz-error-pagemissing' ).text() ) );
 			}
 
 			pages = data.query.pages;
@@ -209,6 +219,11 @@
 				} else {
 					element.text = pages[ i ].title;
 				}
+
+				if ( generator.params.deduplicate && generator.isAlreadyRecorded( element.text ) ) {
+					continue;
+				}
+
 				element[ generator.localProperty ] = generator.langDropdown.getValue() + ':' + pages[ i ].title;
 				generator.list.push( element );
 			}
@@ -216,8 +231,7 @@
 			if ( data.continue !== undefined ) {
 				payload.gcmcontinue = data.continue.gcmcontinue;
 				generator.recursiveFetch( payload );
-			}
-			else {
+			} else {
 				generator.deferred.resolve();
 			}
 		} ).fail( function ( error ) {

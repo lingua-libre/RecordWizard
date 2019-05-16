@@ -41,6 +41,7 @@
 	};
 	rw.generator.Generator.prototype.getReadyProcess = function ( data ) {
 		this.language = rw.config.languages[ rw.metadatas.language ];
+		this.pastRecords = rw.metadatas.locutor.languages[ rw.metadatas.language ].pastRecords;
 		this.emit( 'open' );
 
 		return rw.generator.Generator.parent.prototype.getReadyProcess.call( this, data );
@@ -56,6 +57,10 @@
 	rw.generator.Generator.prototype.getBodyHeight = function () {
 		var height = this.content.$element.outerHeight( true );
 		return height > 210 ? height : 210;
+	};
+
+	rw.generator.Generator.prototype.isAlreadyRecorded = function ( word ) {
+		return this.pastRecords.indexOf( word ) > -1;
 	};
 
 	rw.generator.Generator.prototype.fetch = function () {

@@ -15,9 +15,10 @@
 		this.latitude = new OO.ui.TextInputWidget( { placeholder: mw.message( 'mwe-recwiz-nearby-latitude' ).text() } );
 		this.longitude = new OO.ui.TextInputWidget( { placeholder: mw.message( 'mwe-recwiz-nearby-longitude' ).text() } );
 		this.currentPositionButton = new OO.ui.ButtonWidget( { title: mw.message( 'mwe-recwiz-nearby-getcoordinates' ).text(), icon: 'mapPin' } );
-		this.limit = new OO.ui.NumberInputWidget( { min: 1, max: 500, value: 100, step: 10, pageStep: 100, isInteger: true } );
+		this.limit = new OO.ui.NumberInputWidget( { min: 1, max: 500, step: 10, pageStep: 100, isInteger: true } );
 		this.wikidata = new OO.ui.RadioOptionWidget( { label: 'Wikidata' } );
 		this.source = new OO.ui.RadioSelectWidget( { items: [ this.wikidata ] } );
+		this.deduplicate = new OO.ui.ToggleSwitchWidget();
 
 		this.layout = new OO.ui.Widget( {
 			classes: [ 'mwe-recwiz-nearby' ],
@@ -45,8 +46,14 @@
 				),
 				new OO.ui.FieldLayout(
 					this.source, {
-						align: 'top',
+						align: 'left',
 						label: mw.message( 'mwe-recwiz-nearby-source' ).text()
+					}
+				),
+				new OO.ui.FieldLayout(
+					this.deduplicate, {
+						align: 'left',
+						label: mw.message( 'mwe-recwiz-nearby-deduplicate' ).text()
 					}
 				)
 			]
@@ -54,10 +61,12 @@
 
 		this.content.$element.append( this.layout.$element );
 
+		// Populate the fields with stored or default value
 		this.latitude.setValue( this.params.latitude );
 		this.longitude.setValue( this.params.longitude );
-		this.limit.setValue( this.params.limit || this.limit.getValue() );
+		this.limit.setValue( this.params.limit || 100 );
 		this.source.selectItem( this.wikidata );
+		this.deduplicate.setValue( this.params.deduplicate || true );
 
 		this.currentPositionButton.on( 'click', this.getCurrentPosition.bind( this ) );
 		this.latitude.on( 'change', this.unlockUI.bind( this ) );
@@ -120,6 +129,7 @@
 		this.params.latitude = lat;
 		this.params.longitude = lng;
 		this.params.limit = limit;
+		this.params.deduplicate = this.deduplicate.getValue();
 
 		this.deferred = $.Deferred();
 
@@ -141,7 +151,7 @@
 			list: 'geosearch',
 			gscoord: lat + '|' + lng,
 			gsradius: '10000',
-			gslimit: limit
+			gslimit: 'max'
 		} ).then( this.getTitlesFromIds.bind( this ) )
 			.fail( function ( error ) {
 				generator.deferred.reject( new OO.ui.Error( error ) );
@@ -184,10 +194,15 @@
 	};
 	rw.generator.Nearby.prototype.parseLabels = function ( data ) {
 		var qid, entity, element,
-			generator = this;
+			limit = this.params.limit,
+			deduplicate = this.params.deduplicate;
 		this.semaphore--;
 
 		for ( qid in data.entities ) {
+			if ( this.list.length >= limit ) {
+				break;
+			}
+
 			entity = data.entities[ qid ];
 			if ( entity.missing !== undefined ) {
 				continue;
@@ -197,11 +212,14 @@
 				element = {};
 				element.text = entity.labels[ this.language.code ].value;
 				element[ rw.config.properties.wikidataId ] = qid;
-				generator.list.push( element );
+
+				if ( deduplicate === false || this.isAlreadyRecorded( element.text ) === false ) {
+					this.list.push( element );
+				}
 			}
 		}
 		if ( this.semaphore === 0 ) {
-			generator.deferred.resolve();
+			this.deferred.resolve();
 		}
 	};
 
