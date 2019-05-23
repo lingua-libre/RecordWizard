@@ -8,7 +8,9 @@
 	"recordwizard": "Assistente de gravação",
 	"recordWizard-desc": "Uma ferramenta amigável e automatizada para gravar arquivos de pronúncia de áudio.",
 	"special-recordWizard-title": "Assistente de gravação",
+	"apihelp-query+rwrecords-summary": "Listar todas as transcrições de registros feitas por um falante em um determinado idioma.",
 	"apihelp-query+rwrecords-param-sort": "Propriedade pela qual ordenar.",
+	"apihelp-query+rwrecords-param-limit": "Quantas transcrições no total para retornar.",
 	"mwe-recwiz-step-tutorial": "Tutorial",
 	"mwe-recwiz-step-locutor": "Orador",
 	"mwe-recwiz-step-details": "Detalhes",
@@ -101,11 +103,13 @@
 	"mwe-recwiz-warning-noresults": "Não há itens perto dessas coordenadas.",
 	"mwe-recwiz-list-title": "Título",
 	"mwe-recwiz-list-title-help": "Título de uma página dentro do namespace da lista.",
+	"mwe-recwiz-list-deduplicate": "Excluir palavras que você já gravou",
 	"mwe-recwiz-wmcategory-title": "Nome da categoria",
 	"mwe-recwiz-wmcategory-title-help": "Nome de uma categoria, incluindo o espaço nominal \"Categoria\".",
 	"mwe-recwiz-wmcategory-source": "Fonte",
 	"mwe-recwiz-wmcategory-wikipedia": "Wikipédia",
 	"mwe-recwiz-wmcategory-wiktionary": "Wikcionário",
+	"mwe-recwiz-wmcategory-deduplicate": "Excluir palavras que você já gravou",
 	"mwe-recwiz-error-pagemissing": "Neste momento não existe nenhuma página com o nome \"$1\".",
 	"mwe-recwiz-error-nowiki": "Neste momento a Wikipédia e o Wikcionário não estão disponíveis no seu idioma."
 }
