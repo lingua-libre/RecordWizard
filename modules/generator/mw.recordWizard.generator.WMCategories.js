@@ -95,14 +95,17 @@
 	};
 
 	rw.generator.WMCategory.prototype.switchProjects = function ( selectedLang ) {
-		var generator = this,
-			selectedProject = this.projectDropdown.getValue();
+		var selectedProject,
+			generator = this;
 
 		this.projectDropdown.setOptions( Object.keys( this.siteMatrix[ selectedLang ] ).map( function ( key ) {
 			return { label: generator.wikiLabels[ key ].label, data: key };
 		} ) );
 
+		selectedProject = this.projectDropdown.getValue();
+
 		this.projectDropdown.setValue( selectedProject );
+		this.switchSource( selectedProject );
 	};
 
 	rw.generator.WMCategory.prototype.switchSource = function ( selectedProject ) {
