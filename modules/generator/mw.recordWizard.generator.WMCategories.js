@@ -28,6 +28,7 @@
 			parameters: { origin: '*' },
 			ajax: { timeout: 10000 }
 		} );
+		this.limit = new OO.ui.NumberInputWidget( { min: 1, max: 2000, value: 200, step: 100, pageStep: 500, isInteger: true } );
 	};
 
 	rw.generator.WMCategory.prototype.getReadyProcess = function ( data ) {
@@ -42,6 +43,16 @@
 		}
 
 		return process;
+	};
+
+	/**
+	 * Get the height of the window body.
+	 * Used by the ProcessDialog to set an accurate height to the dialog.
+	 *
+	 * @return {number} Height in px the dialog should be.
+	 */
+	rw.generator.WMCategory.prototype.getBodyHeight = function () {
+		return 320;
 	};
 
 	rw.generator.WMCategory.prototype.getSiteMatrix = function () {
@@ -165,6 +176,13 @@
 					}
 				),
 				new OO.ui.FieldLayout(
+					this.limit, {
+						align: 'left',
+						label: mw.message( 'mwe-recwiz-wmcategory-limit' ).text(),
+						help: mw.message( 'mwe-recwiz-wmcategory-limit-help' ).text()
+					}
+				),
+				new OO.ui.FieldLayout(
 					this.deduplicate, {
 						align: 'left',
 						label: mw.message( 'mwe-recwiz-wmcategory-deduplicate' ).text()
@@ -180,11 +198,18 @@
 
 	rw.generator.WMCategory.prototype.fetch = function () {
 		var title = this.titleInput.getValue(),
-			deduplicate = this.deduplicate.getValue();
+			deduplicate = this.deduplicate.getValue(),
+			limit = parseInt( this.limit.getValue() ) || 200;
 
 		this.params.deduplicate = deduplicate;
 		this.deferred = $.Deferred();
 		this.list = [];
+
+		if ( limit > 2000 ) {
+			limit = 2000;
+		} else if ( limit < 1 ) {
+			limit = 1;
+		}
 
 		this.recursiveFetch( {
 			action: 'query',
@@ -197,13 +222,13 @@
 			gcmtitle: title,
 			gcmtype: 'page',
 			gcmlimit: 'max'
-		} );
+		}, limit );
 
 		// We're not done yet, make the dialog closing process to wait the promise
 		return this.deferred.promise();
 	};
 
-	rw.generator.WMCategory.prototype.recursiveFetch = function ( payload ) {
+	rw.generator.WMCategory.prototype.recursiveFetch = function ( payload, limit ) {
 		var generator = this;
 
 		this.api.get( payload ).then( function ( data ) {
@@ -228,12 +253,14 @@
 				}
 
 				element[ generator.localProperty ] = generator.langDropdown.getValue() + ':' + pages[ i ].title;
-				generator.list.push( element );
+				if ( generator.list.push( element ) >= limit ) {
+					break;
+				}
 			}
 
-			if ( data.continue !== undefined ) {
+			if ( data.continue !== undefined && generator.list.length < limit ) {
 				payload.gcmcontinue = data.continue.gcmcontinue;
-				generator.recursiveFetch( payload );
+				generator.recursiveFetch( payload, limit );
 			} else {
 				generator.deferred.resolve();
 			}

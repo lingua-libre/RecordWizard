@@ -154,6 +154,8 @@
 				"mwe-recwiz-wmcategory-wikipedia",
 				"mwe-recwiz-wmcategory-wiktionary",
 				"mwe-recwiz-wmcategory-deduplicate",
+				"mwe-recwiz-wmcategory-limit",
+				"mwe-recwiz-wmcategory-limit-help",
 				"mwe-recwiz-error-pagemissing",
 				"mwe-recwiz-error-nowiki"
 			]

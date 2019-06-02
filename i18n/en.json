@@ -140,6 +140,8 @@
 	"mwe-recwiz-wmcategory-wikipedia": "Wikipedia",
 	"mwe-recwiz-wmcategory-wiktionary": "Wiktionary",
 	"mwe-recwiz-wmcategory-deduplicate": "Exclude words you have already recorded",
+	"mwe-recwiz-wmcategory-limit": "Number of words to get",
+	"mwe-recwiz-wmcategory-limit-help": "It must be an integer between 1 and 2000.",
 	"mwe-recwiz-error-pagemissing": "There is currently no page with the name \"$1\".",
 	"mwe-recwiz-error-nowiki": "There is no Wikipedia or Wiktionary in your language."
 }
