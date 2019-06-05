@@ -231,63 +231,6 @@
 	};
 
 	/**
-	 * Display the next button, with labels and actions depending of the
-	 * current state.
-	 */
-	rw.ui.AudioStudio.prototype.showNextButton = function () {
-		var count = rw.metadatas.statesCount,
-			total = count.stashed + count.stashing + count.error;
-
-		if ( total === 0 ) {
-			this.nextButton.toggle( false );
-			this.stateLabel.toggle( false );
-			this.retryButton.toggle( false );
-			return;
-		}
-
-		this.stateLabel.toggle( true );
-		if ( rw.metadatas.statesCount.stashed > 0 ) {
-			// all ok
-			this.retryButton.toggle( false );
-			this.nextButton.toggle( true );
-			this.stateLabel.setLabel( mw.message( 'mwe-recwiz-allsucceeded' ).text() );
-			this.nextButton.setLabel( mw.message( 'mwe-recwiz-continue' ).text() );
-		}
-		if ( rw.metadatas.statesCount.error > 0 ) {
-			this.retryButton.toggle( true );
-
-			if ( rw.metadatas.statesCount.stashed > 0 ) {
-				// some ok
-				this.stateLabel.setLabel( mw.message( 'mwe-recwiz-somefailed' ).text() );
-				this.nextButton.setLabel( mw.message( 'mwe-recwiz-continueanyway' ).text() );
-			} else {
-				// none ok
-				this.nextButton.toggle( false );
-				this.stateLabel.setLabel( mw.message( 'mwe-recwiz-allfailed' ).text() );
-			}
-		}
-
-		if ( rw.metadatas.statesCount.stashing > 0 ) {
-			this.stateLabel.setLabel( mw.message( 'mwe-recwiz-pendinguplads' ).text() );
-		}
-
-	};
-
-	/**
-	 * Update the upload count display on the bottom of tyhe page.
-	 */
-	rw.ui.AudioStudio.prototype.updateCounter = function () {
-		var count = rw.metadatas.statesCount,
-			total = count.stashed + count.stashing + count.error;
-		if ( total > 0 ) {
-			this.$recordCounter.text( mw.message( 'mwe-recwiz-studio-uploadcount', count.stashed, total ).text() );
-			this.$recordCounter.show();
-		} else {
-			this.$recordCounter.hide();
-		}
-	};
-
-	/**
 	 * Small animated vertical bar graph showing the amplitude of a sound stream.
 	 *
 	 * @class rw.ui.AmplitudeGraph

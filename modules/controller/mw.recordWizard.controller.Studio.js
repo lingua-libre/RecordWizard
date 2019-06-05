@@ -41,4 +41,20 @@
 		}
 	};
 
+	/**
+	 * Launch the upload to the stash of the given video record.
+	 *
+	 * @param  {string} word textual transcription, must match an existing
+	 *                       listed record object
+	 * @param  {string} extension file extension
+	 * @param  {Blob} blob   WAVE-encoded video file
+	 */
+	rw.controller.Studio.prototype.upload = function ( word, extension, blob ) {
+		if ( blob !== undefined ) {
+			rw.records[ word ].setBlob( blob, extension );
+		}
+
+		rw.requestQueue.push( rw.records[ word ], 'uploadToStash' );
+	};
+
 }( mediaWiki, mediaWiki.recordWizard, jQuery, OO ) );

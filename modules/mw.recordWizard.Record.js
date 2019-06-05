@@ -17,10 +17,12 @@
 	 */
 	rw.Record = function ( word ) {
 		var decomposedWord;
+
 		OO.EventEmitter.call( this );
 
 		this.file = null;
 		this.filename = null;
+		this.fileextension = 'wav';
 		this.filekey = null;
 		this.imageInfo = null;
 		this.wbItem = null;
@@ -170,7 +172,7 @@
 				( lang.iso3 !== null ? ' (' + lang.iso3 + ')' : '' ) +
 				'-' + rw.metadatas.locutor.name +
 				( mw.config.get( 'wgUserName' ) !== rw.metadatas.locutor.name ? ' (' + mw.config.get( 'wgUserName' ) + ')' : '' ) +
-				'-' + this.word + '.wav';
+				'-' + this.word + '.' + this.fileExtension;
 
 		return filename.replace( illegalChars, '-' );
 	};
@@ -273,13 +275,15 @@
 	 * Add an audio file to this record.
 	 *
 	 * @param  {Blob} audioBlob WAVE-encoded Blob containing the audio file
+	 * @param  {string} extension file extension
 	 * @return {boolean}        Whether the audio file has been set correctly
 	 */
-	rw.Record.prototype.setBlob = function ( audioBlob ) {
+	rw.Record.prototype.setBlob = function ( audioBlob, extension ) {
 		// Only allow re-recording an audio when it's not already uploaded
 		if ( [ 'up', 'ready', 'stashing', 'stashed' ].indexOf( this.state ) > -1 ) {
 			this.setState( 'ready' );
 			this.filekey = null;
+			this.fileExtension = extension;
 			this.error = false;
 
 			this.file = audioBlob;
