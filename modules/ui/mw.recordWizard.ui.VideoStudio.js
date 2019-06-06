@@ -52,20 +52,11 @@
 	rw.ui.VideoStudio.prototype.generateUI = function () {
 		var i, record;
 
-		this.$studio = $( '<div>' ).addClass( 'studio' );
-
-		this.$studioButton = $( '<button>' ).addClass( 'studio-rbutton-inner' );
 		this.$video = $( '<video>' );
 		this.$videoOverlay = $( '<div>' ).addClass( 'studio-video-overlay' ).text( 'Please allow Lingua Libre to access your webcam' );
 		this.$player = $( '<div>' ).addClass( 'studio-video-player' ).append( this.$video ).append( this.$videoOverlay );
-		this.$head = $( '<div>' ).addClass( 'studio-head' )
-			.append( $( '<div>' ).addClass( 'studio-rbutton' ).append( this.$studioButton ) );
 
-		this.$studio.append( this.$player ).append( this.$head );
-		this.$container.prepend( this.$studio );
-
-		this.$recordCounter = $( '<div>' ).addClass( 'mwe-recwiz-record-count mwe-recwiz-right' ).hide();
-		this.$container.append( this.$recordCounter );
+		this.$container.prepend( this.$player );
 	};
 
 	/**

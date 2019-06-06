@@ -19,133 +19,20 @@
 		this.addNextButton();
 	};
 
-	OO.inheritClass( rw.ui.AudioStudio, rw.ui.Step );
+	OO.inheritClass( rw.ui.AudioStudio, rw.ui.Studio );
 
 	/**
 	 * @inheritDoc
 	 */
 	rw.ui.AudioStudio.prototype.load = function () {
-		var word;
-		rw.ui.Step.prototype.load.call( this );
-
-		this.isRecording = false;
-		this.generateUI();
-		this.showNextButton();
-		this.updateCounter();
 		this.amplitudeGraph = new rw.ui.AmplitudeGraph();
-
-		for ( word in rw.records ) {
-			this.setItemState( word, rw.records[ word ].getState() );
-		}
 	};
 
 	/**
 	 * @inheritDoc
 	 */
-	rw.ui.AudioStudio.prototype.unload = function () {
-		$( document ).off( 'keydown' );
-		rw.ui.Step.prototype.unload.call( this );
-	};
-
-	/**
-	 * Build all the needed HTML nodes and add them to the DOM.
-	 */
-	rw.ui.AudioStudio.prototype.generateUI = function () {
-		var i, record;
-
-		this.$studio = $( '<div>' ).addClass( 'studio' );
-
-		this.$studioButton = $( '<button>' ).addClass( 'studio-rbutton-inner' );
-		this.$head = $( '<div>' ).addClass( 'studio-head' )
-			.append( $( '<div>' ).addClass( 'studio-rbutton' ).append( this.$studioButton ) );
-
-		this.$list = $( '<ul>' ).addClass( 'studio-wordlist' );
-		this.recordItems = {};
-		for ( i = 0; i < rw.metadatas.words.length; i++ ) {
-			record = rw.records[ rw.metadatas.words[ i ] ];
-
-			this.recordItems[ rw.metadatas.words[ i ] ] = $( '<li>' )
-				.text( record.getTranscription() )
-				.attr( 'data', rw.metadatas.words[ i ] );
-			if ( record.getQualifier() !== null ) {
-				this.recordItems[ rw.metadatas.words[ i ] ].append( $( '<span>' )
-					.text( record.getQualifier() )
-					.addClass( 'mwe-recwiz-qualifier' )
-				);
-			}
-
-			this.$list.append( this.recordItems[ rw.metadatas.words[ i ] ] );
-		}
-		this.$studio.append( this.$head ).append( this.$list );
-		this.$container.prepend( this.$studio );
-
-		this.$recordCounter = $( '<div>' ).addClass( 'mwe-recwiz-record-count mwe-recwiz-right' ).hide();
-		this.$container.append( this.$recordCounter );
-	};
-
-	/**
-	 * Event handler called when an audio record has just ended.
-	 *
-	 * @private
-	 */
-	rw.ui.AudioStudio.prototype.onReady = function () {
-		var word,
-			ui = this;
-
-		this.$studioButton.click( function () {
-			ui.emit( 'studiobutton-click' );
-		} );
-
-		this.$list.click( function ( event ) {
-			if ( event.target.nodeName === 'LI' ) {
-				word = $( event.target ).attr( 'data' );
-				ui.emit( 'item-click', word );
-			}
-			if ( event.target.nodeName === 'SPAN' ) {
-				word = $( event.target ).parent().attr( 'data' );
-				ui.emit( 'item-click', word );
-			}
-		} );
-		$( document ).keydown( function ( event ) {
-			switch ( event.which ) {
-				case 32: // space
-					if ( event.target.nodeName === 'INPUT' || event.target.nodeName === 'BUTTON' ) {
-						return;
-					}
-					ui.emit( 'studiobutton-click' );
-					break;
-
-				case 37: // left
-					ui.emit( 'previous-item-click' );
-					break;
-
-				case 39: // right
-					ui.emit( 'next-item-click' );
-					break;
-
-				case 46: // del
-				case 8: // backspace
-					ui.emit( 'delete-record' );
-					break;
-
-				default: return;
-			}
-			event.preventDefault();
-		} );
-
-		this.$head.addClass( 'studio-ready' );
-	};
-
-	/**
-	 * Event handler called when an audio record has just started.
-	 *
-	 * @private
-	 * @param  {string} word textual transcription, must match an existing
-	 *                       listed record object
-	 */
 	rw.ui.AudioStudio.prototype.onStart = function ( word ) {
-		this.$head.addClass( 'studio-rec' );
-		this.recordItems[ word ].removeClass( 'mwe-recwiz-word-error' );
+		rw.ui.Studio.prototype.onStart.call( this, word );
 		this.amplitudeGraph.start();
 	};
 
@@ -159,6 +46,7 @@
 	rw.ui.AudioStudio.prototype.onRecord = function ( samples ) {
 		var i, amplitude,
 			amplitudeMax = 0;
+
 		for ( i = 0; i < samples.length; i++ ) {
 			amplitude = Math.abs( samples[ i ] );
 			if ( amplitude > amplitudeMax ) {
@@ -175,7 +63,8 @@
 	 * @private
 	 */
 	rw.ui.AudioStudio.prototype.onStop = function () {
-		this.$head.removeClass( 'studio-rec' );
+		rw.ui.Studio.prototype.onStop.call( this );
+
 		this.amplitudeGraph.stop();
 	};
 
@@ -197,37 +86,9 @@
 	 *                       listed record object
 	 */
 	rw.ui.AudioStudio.prototype.setSelectedItem = function ( word ) {
-		$( '.studio-wordlist-selected' ).removeClass( 'studio-wordlist-selected' );
-		if ( this.recordItems[ word ] !== undefined ) {
-			this.recordItems[ word ].addClass( 'studio-wordlist-selected' );
-		}
+		rw.ui.Studio.prototype.setSelectedItem.call( this, word );
 
 		this.amplitudeGraph.setContainer( this.recordItems[ word ] );
-
-		this.$list.stop( true );
-		this.$list.animate( {
-			scrollTop: this.recordItems[ word ].offset().top - this.$list.offset().top + this.$list.scrollTop() - ( this.recordItems[ word ].innerHeight() - this.recordItems[ word ].height() )
-		} );
-	};
-
-	/**
-	 * Change the state of a specific word
-	 *
-	 * @param  {string} word      textual transcription, must match an existing
-	 *                            listed record object
-	 * @param  {string} state     new state to switch the word to
-	 * @param  {string} prevState previous state of the word
-	 */
-	rw.ui.AudioStudio.prototype.setItemState = function ( word, state, prevState ) {
-		// TODO: use a correlation table to asociate state and HTML class
-		if ( this.recordItems[ word ] !== undefined ) {
-			this.recordItems[ word ].removeClass( 'mwe-recwiz-word-stashing' );
-			this.recordItems[ word ].removeClass( 'mwe-recwiz-word-stashed' );
-			this.recordItems[ word ].removeClass( 'mwe-recwiz-word-error' );
-			this.recordItems[ word ].addClass( 'mwe-recwiz-word-' + state );
-		}
-		this.showNextButton();
-		this.updateCounter();
 	};
 
 	/**
