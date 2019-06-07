@@ -25,25 +25,7 @@
 	 * @inheritDoc
 	 */
 	rw.ui.VideoStudio.prototype.load = function () {
-		var word;
-		rw.ui.Step.prototype.load.call( this );
-
-		this.isRecording = false;
-		this.generateUI();
-		this.showNextButton();
-		this.updateCounter();
-
-		for ( word in rw.records ) {
-			this.setItemState( word, rw.records[ word ].getState() );
-		}
-	};
-
-	/**
-	 * @inheritDoc
-	 */
-	rw.ui.VideoStudio.prototype.unload = function () {
-		$( document ).off( 'keydown' );
-		rw.ui.Step.prototype.unload.call( this );
+		return;
 	};
 
 	/**
@@ -51,6 +33,8 @@
 	 */
 	rw.ui.VideoStudio.prototype.generateUI = function () {
 		var i, record;
+
+		rw.ui.Studio.prototype.generateUI.call( this );
 
 		this.$video = $( '<video>' );
 		this.$videoOverlay = $( '<div>' ).addClass( 'studio-video-overlay' ).text( 'Please allow Lingua Libre to access your webcam' );
@@ -66,8 +50,8 @@
 	 * @param {MediaStream} stream audio and video stream given by the browser
 	 */
 	rw.ui.VideoStudio.prototype.onReady = function ( stream ) {
-		var ui = this,
-			video = this.$video[ 0 ]; // get the HTMLnode of the video tag
+		var video = this.$video[ 0 ]; // get the HTMLnode of the video tag
+
 		// Older browsers may not have srcObject
 		if ( 'srcObject' in video ) {
 			video.srcObject = stream;
@@ -75,53 +59,15 @@
 			// Avoid using this in new browsers, as it is going away.
 			video.src = window.URL.createObjectURL( stream );
 		}
-		video.onloadedmetadata = function ( e ) {
+		video.onloadedmetadata = function () {
+			console.log('onloadmetadata')
 			video.play();
+			video.muted = true;
 		};
 
-		this.$studioButton.click( function () {
-			ui.emit( 'studiobutton-click' );
-		} );
-
-		$( document ).keydown( function ( event ) {
-			switch ( event.which ) {
-				case 32: // space
-					ui.emit( 'studiobutton-click' );
-					break;
-
-				default: return;
-			}
-			event.preventDefault();
-		} );
+		rw.ui.Studio.prototype.onReady.call( this, stream );
 
 		this.$videoOverlay.text( 'Ready! Clic the button below.' );
-		this.$head.addClass( 'studio-ready' );
-	};
-
-	rw.ui.VideoStudio.prototype.onStart = function ( word ) {
-		this.$head.addClass( 'studio-rec' );
-	};
-
-	/**
-	 * Event handler called when an video record has just ended.
-	 *
-	 * @private
-	 */
-	rw.ui.VideoStudio.prototype.onStop = function () {
-		this.$head.removeClass( 'studio-rec' );
-	};
-
-	/**
-	 * Change the state of a specific word
-	 *
-	 * @param  {string} word      textual transcription, must match an existing
-	 *                            listed record object
-	 * @param  {string} state     new state to switch the word to
-	 * @param  {string} prevState previous state of the word
-	 */
-	rw.ui.VideoStudio.prototype.setItemState = function ( word, state, prevState ) {
-		this.showNextButton();
-		this.updateCounter();
 	};
 
 	/**

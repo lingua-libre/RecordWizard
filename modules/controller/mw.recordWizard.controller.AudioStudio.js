@@ -78,6 +78,7 @@
 		var shouldStart = rw.controller.Studio.prototype.startNextRecord.call( this );
 
 		if ( shouldStart === true ) {
+			this.isRecording = true;
 			this.recorder.start();
 		}
 

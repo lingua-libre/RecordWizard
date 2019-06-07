@@ -28,15 +28,6 @@
 		var word;
 		rw.ui.Step.prototype.load.call( this );
 
-		this.isRecording = false;
-		this.generateUI();
-		this.showNextButton();
-		this.updateCounter();
-
-		for ( word in rw.records ) {
-			this.setItemState( word, rw.records[ word ].getState() );
-		}
-
 		// Depending of the language selected, load the AudioStudio (most of the
 		// time) or the VideoStudio (for sign languages).
 		if ( rw.config.languages[ rw.metadatas.language ].mediaType === rw.config.items.mediaTypeAudio ) {
@@ -45,6 +36,15 @@
 		} else {
 			$.extend( this, rw.ui.VideoStudio.prototype, { load: rw.ui.Studio.prototype.load } );
 			rw.ui.VideoStudio.prototype.load.call( this );
+		}
+
+		this.isRecording = false;
+		this.generateUI();
+		this.showNextButton();
+		this.updateCounter();
+
+		for ( word in rw.records ) {
+			this.setItemState( word, rw.records[ word ].getState() );
 		}
 	};
 
@@ -98,48 +98,49 @@
 	 * @private
 	 */
 	rw.ui.Studio.prototype.onReady = function () {
-		var word,
-			ui = this;
 		this.$studioButton.click( function () {
-			ui.emit( 'studiobutton-click' );
-		} );
+			console.log('buttonclick-before');
+			this.emit( 'studiobutton-click' );
+				console.log('buttonclickafter');
+		}.bind( this ) );
 
 		this.$list.click( function ( event ) {
+			var word;
 			if ( event.target.nodeName === 'LI' ) {
 				word = $( event.target ).attr( 'data' );
-				ui.emit( 'item-click', word );
+				this.emit( 'item-click', word );
 			}
 			if ( event.target.nodeName === 'SPAN' ) {
 				word = $( event.target ).parent().attr( 'data' );
-				ui.emit( 'item-click', word );
+				this.emit( 'item-click', word );
 			}
-		} );
+		}.bind( this ) );
 		$( document ).keydown( function ( event ) {
 			switch ( event.which ) {
 				case 32: // space
 					if ( event.target.nodeName === 'INPUT' || event.target.nodeName === 'BUTTON' ) {
 						return;
 					}
-					ui.emit( 'studiobutton-click' );
+					this.emit( 'studiobutton-click' );
 					break;
 
 				case 37: // left
-					ui.emit( 'previous-item-click' );
+					this.emit( 'previous-item-click' );
 					break;
 
 				case 39: // right
-					ui.emit( 'next-item-click' );
+					this.emit( 'next-item-click' );
 					break;
 
 				case 46: // del
 				case 8: // backspace
-					ui.emit( 'delete-record' );
+					this.emit( 'delete-record' );
 					break;
 
 				default: return;
 			}
 			event.preventDefault();
-		} );
+		}.bind( this ) );
 
 		this.$head.addClass( 'studio-ready' );
 	};

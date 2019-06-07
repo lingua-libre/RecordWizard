@@ -181,7 +181,6 @@
 			}
 			this.currentWord = rw.metadatas.words[ index + 1 ];
 		}
-		this.isRecording = true;
 
 		this.ui.setSelectedItem( this.currentWord );
 
