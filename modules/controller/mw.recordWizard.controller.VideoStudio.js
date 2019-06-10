@@ -33,6 +33,26 @@
 			.catch( function ( err ) {
 				console.log( err.name + ': ' + err.message );
 			} );
+
+		this.parameters = this.ui.setParametersButtonWidget( 'Parameters', [ {
+			label: 'Video recording',
+			widgets: [
+				{
+					name: 'durationToRecord',
+					type: 'select',
+					label: 'Duration to record:',
+					options: [ 2, 3, 5, 8, 12 ],
+					value: 5
+				}, {
+					name: 'durationToWait',
+					type: 'select',
+					label: 'Delay between two records:',
+					options: [ 0, 1, 2, 3, 5 ],
+					value: 3
+				}
+			]
+		} ] );
+		console.log( this.parameters )
 	};
 
 	/**
@@ -58,8 +78,6 @@
 	rw.controller.VideoStudio.prototype.onReady = function ( stream ) {
 		this.stream = stream;
 
-		this.durationToRecord = 4;
-		this.durationToWait = 3;
 		this.timeoutId = 0;
 		this.isCanceled = false;
 		this.isWaitingToRecord = false;
@@ -92,7 +110,7 @@
 		console.info( 'shouldStart', shouldStart );
 
 		if ( shouldStart ) {
-			this.differedStart( this.durationToWait );
+			this.differedStart( this.parameters.getValue( 'durationToWait' ) );
 			this.ui.onStart( this.currentWord );
 		}
 
@@ -108,7 +126,7 @@
 			this.ui.setOverlay( this.currentWord );
 			this.startRecord();
 			this.isWaitingToRecord = false;
-			this.timeoutId = setTimeout( this.mediaRecorder.stop.bind( this.mediaRecorder ), this.durationToRecord * 1000 );
+			this.timeoutId = setTimeout( this.mediaRecorder.stop.bind( this.mediaRecorder ), this.parameters.getValue( 'durationToRecord' ) * 1000 );
 		}
 	};
 

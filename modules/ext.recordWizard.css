@@ -315,6 +315,15 @@ canvas.mwe-recwiz-wordcanvas {
 	width: 100%;
 }
 
+/* ParametersButtonWidget */
+.mwe-recwiz-parametersButtonWidget {
+	position: absolute;
+	right: 15px;
+}
+
+.mwe-recwiz-parametersButtonWidget .oo-ui-popupWidget-popup {
+	padding: 0 7px 7px 7px;
+}
 /***********************************
   Steps
 ***********************************/

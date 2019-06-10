@@ -154,11 +154,13 @@
                 "modules/layout/mw.recordWizard.layout.LanguagesSelectorWidget.js",
                 "modules/layout/mw.recordWizard.layout.LicenseSelectorWidget.js",
                 "modules/layout/mw.recordWizard.layout.WordSelectorWidget.js",
-                "modules/layout/mw.recordWizard.layout.WikidataSearchWidget.js"
+                "modules/layout/mw.recordWizard.layout.WikidataSearchWidget.js",
+				"modules/layout/mw.recordWizard.layout.ParametersButtonWidget.js"
             ],
 			"dependencies": [
 			    "oojs-ui",
-			    "oojs-ui.styles.icons-wikimedia"
+			    "oojs-ui.styles.icons-wikimedia",
+				"mediawiki.storage"
 			]
         },
         "ext.recordWizard.ui": {
