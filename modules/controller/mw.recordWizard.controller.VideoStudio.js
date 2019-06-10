@@ -41,7 +41,7 @@
 					name: 'durationToRecord',
 					type: 'select',
 					label: 'Duration to record:',
-					options: [ 2, 3, 5, 8, 12 ],
+					options: [ 2, 3, 5, 8, 12, 20 ],
 					value: 5
 				}, {
 					name: 'durationToWait',
@@ -52,7 +52,6 @@
 				}
 			]
 		} ] );
-		console.log( this.parameters )
 	};
 
 	/**
@@ -83,7 +82,6 @@
 		this.isWaitingToRecord = false;
 
 		this.ui.on( 'studiobutton-click', function () {
-			console.log( 'STATE:', 'isRecording', this.isRecording, 'isWaitingToRecord', this.isWaitingToRecord )
 			if ( this.isRecording || this.isWaitingToRecord ) {
 				this.cancelRecord();
 			} else {

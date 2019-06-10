@@ -20,7 +20,6 @@
 
 		// Attach events handlers to each individual widgets
 		for ( widgetName in this.parameterWidgets ) {
-			console.log( '[loading]', widgetName, this.parameterWidgets[ widgetName ] );
 			this.parameterWidgets[ widgetName ].on( 'change', this.onChange.bind( this, widgetName ) );
 			this.parameterWidgets[ widgetName ].on( 'choose', this.onChange.bind( this, widgetName ) );
 		}
@@ -40,8 +39,8 @@
 		for ( i = 0; i < this.groups.length; i++ ) {
 			group = this.groups[ i ];
 			// TODO: create groups
-			groupContainer = $( '<div>' );
-			groupContainer.append( $( '<h5>' ).text( group.label ) );
+			groupContainer = $( '<div>' ).addClass( 'mwe-recwiz-parametersButtonWidget-group' );
+			groupContainer.append( new OO.ui.LabelWidget( { label: group.label } ).$element );
 			for ( j = 0; j < group.widgets.length; j++ ) {
 				widget = group.widgets[ j ];
 				switch ( widget.type ) {
@@ -107,6 +106,7 @@
 				anchor: false,
 				align: 'backwards',
 				$autoCloseIgnore: this.$overlay,
+				classes: [ 'mwe-recwiz-parametersButtonWidget-popup' ],
 				$content: container
 			}
 		} );
