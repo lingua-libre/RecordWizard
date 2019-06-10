@@ -299,6 +299,8 @@ canvas.mwe-recwiz-wordcanvas {
 
 #mwe-recwiz-stepdiv-studio .studio-video-player video {
 	width: 640px;
+	box-shadow: 0 0 .5rem #777;
+	border-radius: .2rem;
 }
 
 #mwe-recwiz-stepdiv-studio .studio-video-player .studio-video-overlay {
