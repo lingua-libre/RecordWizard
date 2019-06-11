@@ -25,25 +25,63 @@
 	 * @inheritDoc
 	 */
 	rw.ui.Publish.prototype.load = function () {
-		var word;
+		var i, word;
 		rw.ui.Step.prototype.load.call( this );
 
-		this.$list = $( '<ul>' );
-
 		this.recordItems = {};
-		this.removeButtons = [];
-		for ( word in rw.records ) {
-			// Do not display words that are not in the current list
-			if ( rw.metadatas.words.indexOf( word ) === -1 ) {
-				continue;
-			}
+		this.currentWord = null;
+
+		// Create the media player
+		this.previousMediaButton = new OO.ui.ButtonWidget( { icon: 'previous', framed: false } );
+		this.nextMediaButton = new OO.ui.ButtonWidget( { icon: 'next', framed: false } );
+		this.$audioPlayer = $( '<audio controls="" preload="auto">' ).hide();
+		this.$videoPlayer = $( '<video controls="" preload="auto" height="400"></video>' ).hide();
+		this.$placeholder = $( '<i>' ).text( mw.message( 'mwe-recwiz-publish-nomedia' ).text() );
+		this.$wordLabel = $( '<h4>' );
+		this.removeButton = new OO.ui.ButtonWidget( {
+			flags: [ 'primary', 'destructive' ],
+			icon: 'trash',
+			label: mw.msg( 'mwe-recwiz-publish-removelabel' )
+		} );
+		this.popupButton = new OO.ui.PopupButtonWidget( {
+			indicator: 'clear',
+			framed: false,
+			popup: {
+				head: true,
+				$content: $( '<p>' )
+					.text( mw.msg( 'mwe-recwiz-publish-areyousure' ) )
+					.append( this.removeButton.$element ),
+				padded: true,
+				position: 'below',
+				align: 'forwards'
+			},
+			title: mw.msg( 'mwe-recwiz-publish-remove' ),
+			classes: [ 'mwe-recwiz-publish-removewidget' ]
+		} );
+		this.$centralElement = $( '<div>' ).append( this.$audioPlayer, this.$videoPlayer, $( '<div>' ).append( this.$wordLabel, this.popupButton.$element ) ).hide();
+		this.$mediaPlayer = $( '<div>' )
+			.addClass( 'mwe-recwiz-mediaplayer' )
+			.append( this.previousMediaButton.$element, this.$placeholder, this.$centralElement, this.nextMediaButton.$element );
+
+		// Fill the record list
+		this.$list = $( '<ul>' );
+		for ( i = 0; i < rw.metadatas.words.length; i++ ) {
+			word = rw.metadatas.words[ i ];
+
+			// Ignore words that have not been recorded
 			if ( rw.records[ word ].getState() !== 'stashed' ) {
 				continue;
 			}
-			this.recordItems[ word ] = this.createPlayButton( word, rw.records[ word ].getStashedFileUrl() );
+			this.recordItems[ word ] = this.createPlayButton( word );
 			this.$list.append( this.recordItems[ word ] );
+
+			// Load the first record into the media player
+			if ( this.currentWord === null ) {
+				this.switchRecord( word );
+			}
 		}
 
+		// Create a custom button to be redirected on Commons at the end
 		this.commonsFileListButton = new OO.ui.ButtonWidget( {
 			label: mw.msg( 'mwe-recwiz-publish-commonsfilelist' ),
 			framed: false,
@@ -55,7 +93,12 @@
 		} );
 		this.commonsFileListButton.$element.insertBefore( this.nextButton.$element );
 
-		this.$container.prepend( this.$list );
+		// Add everything into the view
+		this.$container.prepend( this.$mediaPlayer, this.$list );
+
+		// Manage events
+		this.removeButton.on( 'click', this.removeRecord.bind( this ) );
+
 		this.showNextButton();
 	};
 
@@ -67,61 +110,92 @@
 		this.commonsFileListButton.$element.detach();
 	};
 
-	rw.ui.Publish.prototype.createPlayButton = function ( word, audioUrl ) {
-		var ui = this,
-			playButton = new OO.ui.ButtonWidget( {
-				framed: false,
-				icon: 'play',
-				title: mw.msg( 'mwe-recwiz-publish-play' ),
-				label: word
-			} ),
-			removeButton = new OO.ui.ButtonWidget( {
-				flags: [ 'primary', 'destructive' ],
-				icon: 'trash',
-				label: mw.msg( 'mwe-recwiz-publish-removelabel' )
-			} ),
-			popupButton = new OO.ui.PopupButtonWidget( {
-				indicator: 'clear',
-				framed: false,
-				popup: {
-					head: true,
-					$content: $( '<p>' )
-						.text( mw.msg( 'mwe-recwiz-publish-areyousure' ) )
-						.append( removeButton.$element ),
-					padded: true,
-					position: 'below',
-					align: 'forwards'
-				},
-				title: mw.msg( 'mwe-recwiz-publish-remove' )
-			} );
-
-		playButton.on( 'click', function () {
-			var audio = new Audio( audioUrl );
-			audio.play();
+	rw.ui.Publish.prototype.createPlayButton = function ( word ) {
+		var playButton = new OO.ui.ButtonWidget( {
+			framed: false,
+			icon: 'play',
+			title: mw.msg( 'mwe-recwiz-publish-play' ),
+			label: word
 		} );
 
-		removeButton.on( 'click', function () {
-			rw.records[ word ].reset();
-			rw.metadatas.statesCount.stashed--;
-			ui.recordItems[ word ].remove();
+		playButton.on( 'click', this.switchRecord.bind( this, word ) );
 
-			// If there is no record left, don't allow to publish
-			if ( rw.metadatas.statesCount.stashed === 0 ) {
-				ui.nextButton.setDisabled( true );
-			}
-		} );
-
-		this.removeButtons.push( popupButton );
-
-		return $( '<li>' ).append( playButton.$element ).append( popupButton.$element );
+		return $( '<li>' ).append( playButton.$element );
 	};
 
-	rw.ui.Publish.prototype.disableRemoveButtons = function () {
-		var i;
+	// Called when the publish process starts
+	// aka when the user click on the "Publish" button
+	rw.ui.Publish.prototype.onPublish = function () {
+		this.removeButton.setDisabled( true );
+	};
 
-		for ( i = 0; i < this.removeButtons.length; i++ ) {
-			this.removeButtons[ i ].setDisabled( true );
+	rw.ui.Publish.prototype.switchRecord = function ( word ) {
+		var i, tmpWord;
+
+		console.info( '[switchRecord] ', word, rw.records[ word ], rw.records[ word ].isVideo() );
+		this.currentWord = word;
+		this.$wordLabel.text( word );
+
+		this.$placeholder.hide();
+		this.$centralElement.show();
+		if ( rw.records[ word ].isVideo() === true ) {
+			this.$audioPlayer.hide();
+			this.$audioPlayer[ 0 ].pause();
+
+			this.$videoPlayer.attr( 'src', rw.records[ word ].getMediaUrl() );
+			this.$videoPlayer.show();
+			this.$videoPlayer[ 0 ].play();
+		} else {
+			this.$videoPlayer.hide();
+			this.$videoPlayer[ 0 ].pause();
+
+			this.$audioPlayer.attr( 'src', rw.records[ word ].getMediaUrl() );
+			this.$audioPlayer.show();
+			this.$audioPlayer[ 0 ].play();
 		}
+
+		// Configure the previous media button
+		this.previousMediaButton.off( 'click' );
+		this.previousMediaButton.setDisabled( true );
+		for ( i = rw.metadatas.words.indexOf( word ) - 1; i >= 0; i-- ) {
+			tmpWord = rw.metadatas.words[ i ];
+
+			if ( [ 'up', 'ready', 'stashing' ].indexOf( rw.records[ tmpWord ].getState() ) === -1 ) {
+				this.previousMediaButton.on( 'click', this.switchRecord.bind( this, tmpWord ) );
+				this.previousMediaButton.setDisabled( false );
+				break;
+			}
+		}
+
+		// Configure the next media button
+		this.nextMediaButton.off( 'click' );
+		this.nextMediaButton.setDisabled( true );
+		for ( i = rw.metadatas.words.indexOf( word ) + 1; i < rw.metadatas.words.length; i++ ) {
+			tmpWord = rw.metadatas.words[ i ];
+
+			if ( [ 'up', 'ready', 'stashing' ].indexOf( rw.records[ tmpWord ].getState() ) === -1 ) {
+				this.nextMediaButton.on( 'click', this.switchRecord.bind( this, tmpWord ) );
+				this.nextMediaButton.setDisabled( false );
+				break;
+			}
+		}
+	};
+
+	rw.ui.Publish.prototype.removeRecord = function () {
+		rw.records[ this.currentWord ].reset();
+		rw.metadatas.statesCount.stashed--;
+		this.recordItems[ this.currentWord ].remove();
+		this.currentWord = null;
+
+		// If there is no record left, don't allow to publish
+		if ( rw.metadatas.statesCount.stashed === 0 ) {
+			this.nextButton.setDisabled( true );
+		}
+
+		this.$centralElement.hide();
+		this.$placeholder.show();
+		this.previousMediaButton.setDisabled( true );
+		this.nextMediaButton.setDisabled( true );
 	};
 
 	rw.ui.Publish.prototype.setItemState = function ( word, state ) {

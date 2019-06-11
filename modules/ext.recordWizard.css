@@ -362,6 +362,31 @@ canvas.mwe-recwiz-wordcanvas {
     padding-top: 1em;
 }
 
+/* Media Player */
+.mwe-recwiz-mediaplayer {
+	display: flex;
+	border: 1px solid #a2a9b1;
+	border-radius: 2px;
+	margin: 0.85714286em 0;
+	padding: 1.14285714em;
+	background-color: #eaecf0;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.mwe-recwiz-mediaplayer h4 {
+	display: inline-block;
+	font-size: 1.5em;
+
+}
+
+.mwe-recwiz-mediaplayer .mwe-recwiz-publish-removewidget {
+	margin-left: 5px;
+	top: -4px;
+}
+
 /***********************************
   Steps
 ***********************************/

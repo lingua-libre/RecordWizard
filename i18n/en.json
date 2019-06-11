@@ -87,6 +87,7 @@
 	"mwe-recwiz-publish-areyousure": "Are you sure to remove this record?",
 	"mwe-recwiz-publish-removelabel": "Remove",
 	"mwe-recwiz-publish-commonsfilelist": "Check your uploads on Wikimedia Commons",
+	"mwe-recwiz-publish-nomedia": "There is currently no media selected.",
 
 	"mwe-recwiz-pendinguplads": "...Uploading...",
 	"mwe-recwiz-allsucceeded": "All uploads were successful!",

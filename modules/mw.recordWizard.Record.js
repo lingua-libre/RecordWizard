@@ -22,7 +22,7 @@
 
 		this.file = null;
 		this.filename = null;
-		this.fileextension = 'wav';
+		this.fileExtension = 'wav';
 		this.filekey = null;
 		this.imageInfo = null;
 		this.wbItem = null;
@@ -86,8 +86,8 @@
 	/**
 	 * Get the current state of the record.
 	 *
-	 * Can be one of the following: 'ready', 'stashing', 'stashed', 'uploading',
-	 * 'uploaded', finalizing', 'done', 'error'.
+	 * Can be one of the following: 'up', 'ready', 'stashing', 'stashed',
+	 * 'uploading', 'uploaded', 'finalizing', 'done', 'error'.
 	 *
 	 * @return {string}  State of the record
 	 */
@@ -141,18 +141,18 @@
 	};
 
 	/**
-	 * Get the url of the stashed file as indicated by MediaWiki.
-	 *
-	 * This is only valid when the file is stashed, in other words when the
-	 * record is in 'stashed' or 'uploading' state.
+	 * Get the url of the stashed file as indicated by MediaWiki
+	 * or the uploaded file if already on Commons.
 	 *
 	 * @return {string|null}  Url of the stashed file
 	 */
-	rw.Record.prototype.getStashedFileUrl = function () {
+	rw.Record.prototype.getMediaUrl = function () {
 		if ( this.filekey !== null ) {
 			return mw.util.getUrl( 'Special:UploadStash/file/' + this.filekey );
+		} else if ( this.imageInfo !== null ) {
+			return this.imageInfo.url;
 		}
-		return null;
+		return '';
 	};
 
 	/**
@@ -260,6 +260,18 @@
 	};
 
 	/**
+	 * Check whether the record is a video or not.
+	 *
+	 * @return {boolean}  true means the media is a video
+	 */
+	rw.Record.prototype.isVideo = function () {
+		if ( this.fileExtension === 'webm' ) {
+			return true;
+		}
+		return false;
+	};
+
+	/**
 	 * Check whether the record is in error or not.
 	 *
 	 * @return {boolean}  Whether an error occured
@@ -269,6 +281,20 @@
 			return true;
 		}
 		return false;
+	};
+
+	/**
+	 * Check if the record is in the request queue, or change it's state.
+	 *
+	 * @param  {boolean|undefined} inQueue if set, change the inQueue value
+	 * @return {type}                      Whether the record is in the request
+	 *                                     queue
+	 */
+	rw.Record.prototype.isInQueue = function ( inQueue ) {
+		if ( inQueue !== undefined ) {
+			this.inQueue = inQueue;
+		}
+		return this.inQueue;
 	};
 
 	/**
@@ -291,20 +317,6 @@
 			return true;
 		}
 		return false;
-	};
-
-	/**
-	 * Check if the record is in the request queue, or change it's state.
-	 *
-	 * @param  {boolean|undefined} inQueue if set, change the inQueue value
-	 * @return {type}                      Whether the record is in the request
-	 *                                     queue
-	 */
-	rw.Record.prototype.isInQueue = function ( inQueue ) {
-		if ( inQueue !== undefined ) {
-			this.inQueue = inQueue;
-		}
-		return this.inQueue;
 	};
 
 	/**

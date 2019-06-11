@@ -80,6 +80,7 @@
 	"mwe-recwiz-publish-areyousure": "Text inside a popup, which ask the user for a confirmation before removing a record.",
 	"mwe-recwiz-publish-removelabel": "Label of the button used to confirm the deletion of a record.\n{{Identical|Remove}}",
 	"mwe-recwiz-publish-commonsfilelist": "Label of the button at the bottom of the publish step used to go to Commons",
+	"mwe-recwiz-publish-nomedia": "Label displayed when the user has not selected any media file to preview in the publish step.",
 	"mwe-recwiz-pendinguplads": "Status message next to the continue button indicating that some uploads are still pending.",
 	"mwe-recwiz-allsucceeded": "Status message next to the continue button indicating that all uploads are successful.",
 	"mwe-recwiz-somefailed": "Status message next to the continue button indicating that some uploads have failed.",
