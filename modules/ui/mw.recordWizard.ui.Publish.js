@@ -80,6 +80,17 @@
 				this.switchRecord( word );
 			}
 		}
+		this.listPanel = new OO.ui.PanelLayout( {
+			expanded: false,
+			framed: true,
+			padded: true,
+			scrollable: true,
+			$content: this.$list,
+			classes: [ 'mwe-recwiz-publish-listpanel' ]
+		} );
+
+		// Add everything into the view
+		this.$container.prepend( this.$mediaPlayer, this.listPanel.$element );
 
 		// Create a custom button to be redirected on Commons at the end
 		this.commonsFileListButton = new OO.ui.ButtonWidget( {
@@ -92,9 +103,6 @@
 			window.open( 'https://commons.wikimedia.org/wiki/Special:ListFiles/' + mw.config.get( 'wgUserName' ), '_blank' );
 		} );
 		this.commonsFileListButton.$element.insertBefore( this.nextButton.$element );
-
-		// Add everything into the view
-		this.$container.prepend( this.$mediaPlayer, this.$list );
 
 		// Manage events
 		this.removeButton.on( 'click', this.removeRecord.bind( this ) );
@@ -204,9 +212,9 @@
 		}
 		// TODO: use a correlation table to asociate state and HTML class
 		if ( [ 'done', 'error' ].indexOf( state ) > -1 ) {
-			$( 'html, body' ).stop( true );
-			$( 'html, body' ).animate( {
-				scrollTop: this.recordItems[ word ].offset().top - 50
+			this.listPanel.$element.stop( true );
+			this.listPanel.$element.animate( {
+				scrollTop: this.listPanel.$element.scrollTop() + this.recordItems[ word ].position().top
 			} );
 		}
 		this.recordItems[ word ].removeClass();

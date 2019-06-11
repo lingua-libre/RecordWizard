@@ -387,6 +387,10 @@ canvas.mwe-recwiz-wordcanvas {
 	top: -4px;
 }
 
+.mwe-recwiz-publish-listpanel {
+	max-height: 450px;
+}
+
 /***********************************
   Steps
 ***********************************/
