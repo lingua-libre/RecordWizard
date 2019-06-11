@@ -62,19 +62,19 @@
 	};
 
 	/**
-	 * Add a given ParametersButtonWidget at the top right corner of the step
+	 * Add a SettingsButtonWidget at the top right corner of the step
 	 *
 	 * @param {string} label Label displayed on the buttons
 	 * @param {array} groups Abstract representation of the widgets to create
 	 */
-	rw.ui.Step.prototype.setParametersButtonWidget = function ( label, groups ) {
-		var parametersButtonWidget = new rw.layout.ParametersButtonWidget( {
+	rw.ui.Step.prototype.setSettingsButtonWidget = function ( label, groups ) {
+		var settingsButtonWidget = new rw.layout.SettingsButtonWidget( {
 			label: label,
 			groups: groups
 		} );
-		this.$container.prepend( parametersButtonWidget.$element );
+		this.$container.prepend( settingsButtonWidget.$element );
 
-		return parametersButtonWidget;
+		return settingsButtonWidget;
 	};
 
 	/**

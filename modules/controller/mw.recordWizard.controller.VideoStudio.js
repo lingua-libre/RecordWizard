@@ -34,19 +34,19 @@
 				console.log( err.name + ': ' + err.message );
 			} );
 
-		this.parameters = this.ui.setParametersButtonWidget( 'Parameters', [ {
-			label: 'Video recording',
+		this.settings = this.ui.setSettingsButtonWidget( mw.message( 'mwe-recwiz-settings-label' ).text(), [ {
+			label: mw.message( 'mwe-recwiz-settings-videorecording' ).text(),
 			widgets: [
 				{
 					name: 'durationToRecord',
 					type: 'select',
-					label: 'Duration to record:',
+					label: mw.message( 'mwe-recwiz-settings-durationtorecord' ).text(),
 					options: [ 2, 3, 5, 8, 12, 20 ],
 					value: 5
 				}, {
 					name: 'durationToWait',
 					type: 'select',
-					label: 'Delay between two records:',
+					label: mw.message( 'mwe-recwiz-settings-delaybetweenrecords' ).text(),
 					options: [ 0, 1, 2, 3, 5 ],
 					value: 3
 				}
@@ -108,7 +108,7 @@
 		console.info( 'shouldStart', shouldStart );
 
 		if ( shouldStart ) {
-			this.differedStart( this.parameters.getValue( 'durationToWait' ) );
+			this.differedStart( this.settings.getValue( 'durationToWait' ) );
 			this.ui.onStart( this.currentWord );
 		}
 
@@ -124,7 +124,7 @@
 			this.ui.setOverlay( this.currentWord );
 			this.startRecord();
 			this.isWaitingToRecord = false;
-			this.timeoutId = setTimeout( this.mediaRecorder.stop.bind( this.mediaRecorder ), this.parameters.getValue( 'durationToRecord' ) * 1000 );
+			this.timeoutId = setTimeout( this.mediaRecorder.stop.bind( this.mediaRecorder ), this.settings.getValue( 'durationToRecord' ) * 1000 );
 		}
 	};
 

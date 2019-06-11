@@ -316,38 +316,38 @@ canvas.mwe-recwiz-wordcanvas {
 }
 
 /* ParametersButtonWidget */
-.mwe-recwiz-parametersButtonWidget {
+.mwe-recwiz-settingsButtonWidget {
 	position: absolute;
 	right: 15px;
 	font-family: sans-serif;
 	z-index: 5;
 }
 
-.mwe-recwiz-parametersButtonWidget-popup .oo-ui-popupWidget-popup {
+.mwe-recwiz-settingsButtonWidget-popup .oo-ui-popupWidget-popup {
 	padding: 3px 8px 8px 8px;
 }
 
-.mwe-recwiz-parametersButtonWidget-popup .oo-ui-labelElement-label.oo-ui-labelWidget,
-.mwe-recwiz-parametersButtonWidget-popup .oo-ui-fieldLayout-header .oo-ui-labelElement-label {
+.mwe-recwiz-settingsButtonWidget-popup .oo-ui-labelElement-label.oo-ui-labelWidget,
+.mwe-recwiz-settingsButtonWidget-popup .oo-ui-fieldLayout-header .oo-ui-labelElement-label {
 	display: block;
 	font-weight: bold;
 	margin-bottom: 0.5em;
 	font-size: 0.875em;
 }
 
-.mwe-recwiz-parametersButtonWidget-popup .oo-ui-fieldLayout.oo-ui-labelElement > .oo-ui-fieldLayout-body > .oo-ui-fieldLayout-header {
+.mwe-recwiz-settingsButtonWidget-popup .oo-ui-fieldLayout.oo-ui-labelElement > .oo-ui-fieldLayout-body > .oo-ui-fieldLayout-header {
 	padding-bottom: 0;
 }
 
-.mwe-recwiz-parametersButtonWidget-popup .oo-ui-fieldLayout-header .oo-ui-labelElement-label {
+.mwe-recwiz-settingsButtonWidget-popup .oo-ui-fieldLayout-header .oo-ui-labelElement-label {
 	color: #72777d;
 }
 
-.mwe-recwiz-parametersButtonWidget-popup .oo-ui-fieldLayout.oo-ui-labelElement {
+.mwe-recwiz-settingsButtonWidget-popup .oo-ui-fieldLayout.oo-ui-labelElement {
 	margin-top: 0.7em;
 }
 
-.mwe-recwiz-parametersButtonWidget-group + .mwe-recwiz-parametersButtonWidget-group {
+.mwe-recwiz-settingsButtonWidget-group + .mwe-recwiz-settingsButtonWidget-group {
     margin-top: 1em;
     border-top: 1px solid #a2a9b1;
     padding-top: 1em;

@@ -155,7 +155,7 @@
                 "modules/layout/mw.recordWizard.layout.LicenseSelectorWidget.js",
                 "modules/layout/mw.recordWizard.layout.WordSelectorWidget.js",
                 "modules/layout/mw.recordWizard.layout.WikidataSearchWidget.js",
-				"modules/layout/mw.recordWizard.layout.ParametersButtonWidget.js"
+				"modules/layout/mw.recordWizard.layout.SettingsButtonWidget.js"
             ],
 			"dependencies": [
 			    "oojs-ui",
@@ -248,6 +248,10 @@
                 "mwe-recwiz-allsucceeded",
                 "mwe-recwiz-somefailed",
                 "mwe-recwiz-allfailed",
+				"mwe-recwiz-settings-label",
+				"mwe-recwiz-settings-videorecording",
+				"mwe-recwiz-settings-durationtorecord",
+				"mwe-recwiz-settings-delaybetweenrecords",
 				"mwe-recwiz-error-mediastream-notallowed",
 				"mwe-recwiz-error-mediastream-notfound",
 				"mwe-recwiz-error-mediastream-technical",
