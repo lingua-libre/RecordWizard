@@ -65,7 +65,6 @@
 			video.src = window.URL.createObjectURL( stream );
 		}
 		video.onloadedmetadata = function () {
-			console.log('onloadmetadata')
 			video.play();
 			video.muted = true;
 		};

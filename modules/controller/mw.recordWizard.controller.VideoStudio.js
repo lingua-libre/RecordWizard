@@ -105,7 +105,6 @@
 	 */
 	rw.controller.VideoStudio.prototype.startNextRecord = function () {
 		var shouldStart = rw.controller.Studio.prototype.startNextRecord.call( this );
-		console.info( 'shouldStart', shouldStart );
 
 		if ( shouldStart ) {
 			this.differedStart( this.settings.getValue( 'durationToWait' ) );

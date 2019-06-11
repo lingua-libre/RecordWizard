@@ -140,7 +140,6 @@
 	rw.ui.Publish.prototype.switchRecord = function ( word ) {
 		var i, tmpWord;
 
-		console.info( '[switchRecord] ', word, rw.records[ word ], rw.records[ word ].isVideo() );
 		this.currentWord = word;
 		this.$wordLabel.text( word );
 
@@ -230,7 +229,6 @@
 			this.nextButton.setDisabled( true );
 			this.stateLabel.toggle( true );
 			this.stateLabel.setLabel( mw.message( 'mwe-recwiz-pendinguplads' ).text() );
-			console.log( 'a' );
 		} else if ( rw.metadatas.statesCount.error > 0 ) {
 			// All uploads are finished, but some has failed
 			this.retryButton.toggle( true );
@@ -240,7 +238,6 @@
 			} else {
 				this.stateLabel.setLabel( mw.message( 'mwe-recwiz-allfailed' ).text() );
 			}
-			console.log( 'b' );
 		} else if ( rw.metadatas.statesCount.stashed > 0 ) {
 			// At the begigging, before the publish button has been ever clicked
 			this.previousButton.setDisabled( false );
@@ -249,7 +246,6 @@
 			this.nextButton.setIcon( 'upload' );
 
 			this.commonsFileListButton.toggle( false );
-			console.log( 'c' );
 		} else {
 			// At the end, all upload has succeded
 			this.nextButton.setDisabled( false );
@@ -258,7 +254,6 @@
 			this.stateLabel.toggle( false );
 
 			this.commonsFileListButton.toggle( true );
-			console.log( 'd' );
 		}
 
 	};

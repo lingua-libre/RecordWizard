@@ -154,7 +154,6 @@
 	};
 
 	rw.layout.SettingsButtonWidget.prototype.onChange = function ( key, value ) {
-		console.info( '[onChange] ', key, value );
 		if ( this.settingsWidgets[ key ] === undefined ) {
 			return undefined;
 		}

@@ -99,9 +99,7 @@
 	 */
 	rw.ui.Studio.prototype.onReady = function () {
 		this.$studioButton.click( function () {
-			console.log('buttonclick-before');
 			this.emit( 'studiobutton-click' );
-				console.log('buttonclickafter');
 		}.bind( this ) );
 
 		this.$list.click( function ( event ) {
@@ -164,7 +162,6 @@
 	 */
 	rw.ui.Studio.prototype.onStop = function () {
 		this.$head.removeClass( 'studio-rec' );
-		console.log( 'studio stop' );
 	};
 
 	/**

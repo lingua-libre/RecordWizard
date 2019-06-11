@@ -56,11 +56,9 @@
 		if ( rw.config.languages[ rw.metadatas.language ].mediaType === rw.config.items.mediaTypeAudio ) {
 			$.extend( this, rw.controller.AudioStudio.prototype, { load: rw.controller.Studio.prototype.load } );
 			rw.controller.AudioStudio.prototype.load.call( this );
-			console.log( 'loading the audio studio' );
 		} else {
 			$.extend( this, rw.controller.VideoStudio.prototype, { load: rw.controller.Studio.prototype.load } );
 			rw.controller.VideoStudio.prototype.load.call( this );
-			console.log( 'loading the video studio' );
 		}
 
 		this.ui.on( 'item-click', this.selectWord.bind( this ) );
@@ -259,7 +257,6 @@
 	 */
 	rw.controller.Studio.prototype.upload = function ( word, extension, blob ) {
 		if ( blob !== undefined ) {
-			console.log('studioupload', extension, blob);
 			rw.records[ word ].setBlob( blob, extension );
 		}
 

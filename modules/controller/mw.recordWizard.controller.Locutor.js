@@ -103,7 +103,6 @@
 				if ( data.errors !== undefined && data.errors.length > 0 && data.errors[ 0 ].key === 'wikibase-validator-label-with-description-conflict' ) {
 						delete rw.metadatas.locutor.new;
 						// data.errors[ 0 ].params[ 2 ] contains the conflicting item in the form "[[Qxxxx|Qxxxx]]"
-						console.log( data.errors[ 0 ].params[ 2 ].split( '|' )[ 0 ].substring( 2 ) );
 						rw.metadatas.locutor.qid = data.errors[ 0 ].params[ 2 ].split( '|' )[ 0 ].substring( 2 );
 						if ( rw.metadatas.locutor.main === true ) {
 								rw.config.locutor = rw.metadatas.locutor;

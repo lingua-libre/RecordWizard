@@ -157,7 +157,6 @@
 	};
 
 	rw.ui.Details.prototype.removeWord = function ( word ) {
-		console.log( 'removeWord', word );
 		this.wordList.removeTagByData( word );
 	};
 
