@@ -308,11 +308,20 @@ canvas.mwe-recwiz-wordcanvas {
 	bottom: 20%;
 	background-color: rgba(0, 0, 0, 0.4);
 	color: white;
-	padding-top: 30px;
-	padding-bottom: 30px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 	text-align: center;
-	font-size: 2.5em;
 	width: 100%;
+	line-height: 1em;
+}
+
+#mwe-recwiz-stepdiv-studio .studio-video-player .studio-video-overlay-line1 {
+	font-size: 1.8em;
+}
+
+#mwe-recwiz-stepdiv-studio .studio-video-player .studio-video-overlay-line2 {
+	font-size: 3em;
+	line-height: 1.2em;
 }
 
 /* ParametersButtonWidget */

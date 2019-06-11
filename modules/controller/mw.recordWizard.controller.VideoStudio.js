@@ -110,6 +110,8 @@
 		if ( shouldStart ) {
 			this.differedStart( this.settings.getValue( 'durationToWait' ) );
 			this.ui.onStart( this.currentWord );
+		} else {
+			this.ui.setOverlay( mw.message( 'mwe-recwiz-videostudio-stopped' ).text(), mw.message( 'mwe-recwiz-videostudio-endofthelist' ).text() );
 		}
 
 		return shouldStart;
@@ -118,10 +120,10 @@
 	rw.controller.VideoStudio.prototype.differedStart = function ( remainingTime ) {
 		if ( remainingTime > 0 ) {
 			this.isWaitingToRecord = true;
-			this.ui.setOverlay( remainingTime );
+			this.ui.setOverlay(  mw.message( 'mwe-recwiz-videostudio-willstart', this.currentWord ).text(), remainingTime );
 			this.timeoutId = setTimeout( this.differedStart.bind( this, remainingTime - 1 ), 1000 );
 		} else {
-			this.ui.setOverlay( this.currentWord );
+			this.ui.setOverlay( mw.message( 'mwe-recwiz-videostudio-currentlyrecording' ).text(), this.currentWord );
 			this.startRecord();
 			this.isWaitingToRecord = false;
 			this.timeoutId = setTimeout( this.mediaRecorder.stop.bind( this.mediaRecorder ), this.settings.getValue( 'durationToRecord' ) * 1000 );
@@ -153,7 +155,6 @@
 	 * @return {boolean}  Whether a new record has started or not
 	 */
 	rw.controller.VideoStudio.prototype.cancelRecord = function () {
-		console.warn( 'CANCEL', this.timeoutId );
 		this.isCanceled = true;
 		this.isWaitingToRecord = false;
 		clearTimeout( this.timeoutId );
@@ -163,7 +164,7 @@
 		this.isRecording = false;
 		this.chunks = [];
 		this.ui.onStop();
-		this.ui.setOverlay( 'Cancelled' );
+		this.ui.setOverlay(  mw.message( 'mwe-recwiz-videostudio-stopped' ).text(), mw.message( 'mwe-recwiz-videostudio-clicktostart' ).text() );
 	};
 
 	/**

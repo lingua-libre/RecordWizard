@@ -37,10 +37,15 @@
 		rw.ui.Studio.prototype.generateUI.call( this );
 
 		this.$video = $( '<video>' );
-		this.$videoOverlay = $( '<div>' ).addClass( 'studio-video-overlay' ).text( 'Please allow Lingua Libre to access your webcam' );
-		this.$player = $( '<div>' ).addClass( 'studio-video-player' ).append( this.$video ).append( this.$videoOverlay );
+		this.$videoOverlay = $( '<div>' ).addClass( 'studio-video-overlay' );
+		this.$videoOverlayLine1 = $( '<div>' ).addClass( 'studio-video-overlay-line1' );
+		this.$videoOverlayLine2 = $( '<div>' ).addClass( 'studio-video-overlay-line2' );
+		this.$videoOverlay.append( this.$videoOverlayLine1, this.$videoOverlayLine2 );
+		this.$player = $( '<div>' ).addClass( 'studio-video-player' ).append( this.$video, this.$videoOverlay );
 
 		this.$container.prepend( this.$player );
+
+		this.setOverlay( mw.message( 'mwe-recwiz-videostudio-webcamaccess' ).text() );
 	};
 
 	/**
@@ -67,16 +72,18 @@
 
 		rw.ui.Studio.prototype.onReady.call( this, stream );
 
-		this.$videoOverlay.text( 'Ready! Clic the button below.' );
+		this.setOverlay( mw.message( 'mwe-recwiz-videostudio-ready' ).text(), mw.message( 'mwe-recwiz-videostudio-clicktostart' ).text() );
 	};
 
 	/**
 	 * Change the state of a specific word
 	 *
-	 * @param  {string} text
+	 * @param  {string} line1 First line of text to display in the video overlay
+	 * @param  {string} line2 Second line of text to display in the video overlay
 	 */
-	rw.ui.VideoStudio.prototype.setOverlay = function ( text ) {
-		this.$videoOverlay.text( text );
+	rw.ui.VideoStudio.prototype.setOverlay = function ( line1, line2 ) {
+		this.$videoOverlayLine1.text( line1 );
+		this.$videoOverlayLine2.text( line2 );
 	};
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );
