@@ -172,7 +172,7 @@
 	 * @param  {string} word textual transcription, must match an existing
 	 *                       listed record object
 	 */
-	rw.controller.Studio.prototype.selectWord = function ( word ) {
+	rw.controller.VideoStudio.prototype.selectWord = function ( word ) {
 		this.currentWord = word;
 
 		if ( this.isRecording || this.isWaitingToRecord ) {
