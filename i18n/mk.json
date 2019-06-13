@@ -112,6 +112,8 @@
 	"mwe-recwiz-wmcategory-wikipedia": "Википедија",
 	"mwe-recwiz-wmcategory-wiktionary": "Викиречник",
 	"mwe-recwiz-wmcategory-deduplicate": "Изземи веќе снимени зборови",
+	"mwe-recwiz-wmcategory-limit": "Колку зборови да се дадат",
+	"mwe-recwiz-wmcategory-limit-help": "Мора да биде цел број помеѓу 1 и 2000.",
 	"mwe-recwiz-error-pagemissing": "Засега нема страница наречена „$1“.",
 	"mwe-recwiz-error-nowiki": "Нема Википедија или Викиречник на вашиот јазик."
 }

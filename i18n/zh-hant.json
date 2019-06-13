@@ -113,6 +113,8 @@
 	"mwe-recwiz-wmcategory-wikipedia": "維基百科",
 	"mwe-recwiz-wmcategory-wiktionary": "維基詞典",
 	"mwe-recwiz-wmcategory-deduplicate": "排除您已錄下的字詞",
+	"mwe-recwiz-wmcategory-limit": "要取得的字詞數目",
+	"mwe-recwiz-wmcategory-limit-help": "必須是介於 1 和 2000 之間的整數。",
 	"mwe-recwiz-error-pagemissing": "目前沒有名稱為「$1」的頁面。",
 	"mwe-recwiz-error-nowiki": "沒有符合您所用語言的維基百科或維基詞典。"
 }

@@ -66,6 +66,7 @@
 	"mwe-recwiz-generator-wmcategory": "Categoria Wikimedia",
 	"mwe-recwiz-studio-input-placeholder": "Aggiungi una nuova parola",
 	"mwe-recwiz-studio-uploadcount": "$1 di $2 audio {{PLURAL:$2|caricato|caricati}}",
+	"mwe-recwiz-videostudio-endofthelist": "Sei arrivato alla fine dell'elenco!",
 	"mwe-recwiz-publish-play": "Riproduci",
 	"mwe-recwiz-publish-remove": "Rimuovi",
 	"mwe-recwiz-publish-areyousure": "Sei sicuro di voler rimuovere questa registrazione?",
@@ -75,6 +76,7 @@
 	"mwe-recwiz-allsucceeded": "Tutti i caricamenti sono riusciti!",
 	"mwe-recwiz-somefailed": "Alcuni caricamenti non sono andati a buon fine.",
 	"mwe-recwiz-allfailed": "Nessun caricamento è andato a buon fine.",
+	"mwe-recwiz-settings-label": "Impostazioni",
 	"mwe-recwiz-error-mediastream-notallowed": "Non hai consentito l'accesso al microfono. Per usare RecordWizard, vai nelle impostazioni del tuo browser per impostare il consenso, quindi clicca il pulsante qui sotto.",
 	"mwe-recwiz-error-mediastream-notfound": "Nessun microfono rilevato. Per continuare devi recuperarne uno e connetterlo al tuo dispositivo.",
 	"mwe-recwiz-error-mediastream-technical": "Un errore tecnico nel tuo browser o nel tuo sistema operativo impedisce l'uso del tuo microfono. Prova a ricaricare la pagina. Dettagli dell'errore: $1",
@@ -104,6 +106,8 @@
 	"mwe-recwiz-wmcategory-source": "Fonte",
 	"mwe-recwiz-wmcategory-wikipedia": "Wikipedia",
 	"mwe-recwiz-wmcategory-wiktionary": "Wikizionario",
+	"mwe-recwiz-wmcategory-limit": "Numero di parole da ottenere",
+	"mwe-recwiz-wmcategory-limit-help": "Deve essere un intero tra 1 e 2000.",
 	"mwe-recwiz-error-pagemissing": "Al momento non esiste una pagina con il nome \"$1\".",
 	"mwe-recwiz-error-nowiki": "Non ci sono Wikipedia o Wikizionario nella tua lingua."
 }

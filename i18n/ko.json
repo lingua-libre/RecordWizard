@@ -100,6 +100,8 @@
 	"mwe-recwiz-wmcategory-title-help": "분류 이름공간을 포함한 분류의 이름입니다.",
 	"mwe-recwiz-wmcategory-wikipedia": "위키백과",
 	"mwe-recwiz-wmcategory-wiktionary": "위키낱말사전",
+	"mwe-recwiz-wmcategory-limit": "가져올 단어 수",
+	"mwe-recwiz-wmcategory-limit-help": "1과 2000 사이의 정수여야 합니다.",
 	"mwe-recwiz-error-pagemissing": "현재 \"$1\" 이름의 문서가 없습니다.",
 	"mwe-recwiz-error-nowiki": "당신의 언어로 된 위키백과나 위키낱말사전이 없습니다."
 }
