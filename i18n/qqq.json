@@ -92,7 +92,7 @@
 	"mwe-recwiz-allsucceeded": "Status message next to the continue button indicating that all uploads are successful.",
 	"mwe-recwiz-somefailed": "Status message next to the continue button indicating that some uploads have failed.",
 	"mwe-recwiz-allfailed": "Status message next to the continue button indicating that all uploads have failed.",
-	"mwe-recwiz-settings-label": "Label displayed on the button used to display user settings in the top-right corner of the studio.",
+	"mwe-recwiz-settings-label": "Label displayed on the button used to display user settings in the top-right corner of the studio.\n{{Identical|Settings}}",
 	"mwe-recwiz-settings-videorecording": "Label displayed in the user settings menu.",
 	"mwe-recwiz-settings-durationtorecord": "Label displayed in the user settings menu.",
 	"mwe-recwiz-settings-delaybetweenrecords": "Label displayed in the user settings menu.",
