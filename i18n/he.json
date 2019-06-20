@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Guycn2",
-			"Rotemliss"
+			"Rotemliss",
+			"Steeve815"
 		]
 	},
 	"recordWizard": "אשף ההקלטה",
@@ -66,6 +67,7 @@
 	"mwe-recwiz-generator-wmcategory": "קטגוריה של ויקימדיה",
 	"mwe-recwiz-studio-input-placeholder": "הוספת מילה חדשה",
 	"mwe-recwiz-studio-uploadcount": "{{PLURAL:$1|צליל אחד הועלה|$1 צלילים הועלו}} מתוך {{PLURAL:$2|צליל אחד|$2 צלילים}}",
+	"mwe-recwiz-videostudio-willstart": "ההקלטה של \"$1\" תתחיל ב:",
 	"mwe-recwiz-publish-play": "הפעלה",
 	"mwe-recwiz-publish-remove": "הסרה",
 	"mwe-recwiz-publish-areyousure": "האם ברצונך להסיר הקלטה זו?",
