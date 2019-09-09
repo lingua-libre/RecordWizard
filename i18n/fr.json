@@ -82,7 +82,7 @@
 	"mwe-recwiz-videostudio-stopped": "L’enregistreur vidéo a été arrêté.",
 	"mwe-recwiz-videostudio-endofthelist": "Vous avez atteint la fin de la liste !",
 	"mwe-recwiz-videostudio-currentlyrecording": "Enregistrement en cours :",
-	"mwe-recwiz-videostudio-willstart": "L’enregistrement de « $1 » commencera dans :",
+	"mwe-recwiz-videostudio-willstart": "L’enregistrement de « $1 » commencera dans :",
 	"mwe-recwiz-publish-play": "Lecture",
 	"mwe-recwiz-publish-remove": "Supprimer",
 	"mwe-recwiz-publish-areyousure": "Êtes-vous sûr de vouloir supprimer cet enregistrement ?",
@@ -131,6 +131,6 @@
 	"mwe-recwiz-wmcategory-deduplicate": "Exclure les mots que vous avez déjà enregistrés",
 	"mwe-recwiz-wmcategory-limit": "Nombre de mots à obtenir",
 	"mwe-recwiz-wmcategory-limit-help": "Doit être un entier entre 1 et 2000.",
-	"mwe-recwiz-error-pagemissing": "Il n’y a actuellement aucune page nommée « $1 ».",
+	"mwe-recwiz-error-pagemissing": "Il n’y a actuellement aucune page nommée « $1 ».",
 	"mwe-recwiz-error-nowiki": "Il n’existe pas de Wikipédia ou de Wiktionary dans votre langue."
 }
