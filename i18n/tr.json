@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hedda"
+			"Hedda",
+			"Sayginer"
 		]
 	},
 	"recordWizard": "KayıtSihirbazı",
@@ -49,10 +50,13 @@
 	"mwe-recwiz-generator-list": "Liste",
 	"mwe-recwiz-studio-input-placeholder": "Yeni bir kelime ekle",
 	"mwe-recwiz-studio-uploadcount": "$2 {{PLURAL:$2|sesten|sesten}} $1 tanesi yüklendi",
+	"mwe-recwiz-videostudio-ready": "Video kaydedici hazır!",
+	"mwe-recwiz-videostudio-stopped": "Video kaydedici durduruldu.",
 	"mwe-recwiz-pendinguplads": "...Yükleniyor...",
 	"mwe-recwiz-allsucceeded": "Tümü başarıyla yüklendi!",
 	"mwe-recwiz-somefailed": "Dosyalardan bazıları yüklenemedi.",
 	"mwe-recwiz-allfailed": "Dosyaların hiçbiri yüklenemedi.",
+	"mwe-recwiz-settings-videorecording": "Video kayıtları",
 	"mwe-recwiz-error-mediastream-notallowed": "Mikrofon erişimine izin vermediniz. KayıtSihirbazı'nı kullanmak için tarayıcınızın ayarlarına izin verin ve aşağıdaki düğmeye tıklayın.",
 	"mwe-recwiz-error-mediastream-notfound": "Mikrofon bulunamadı. Devam etmek için bir tane almanız ve cihazınıza bağlamanız gerekiyor.",
 	"mwe-recwiz-error-mediastream-technical": "Tarayıcınızda veya işletim sisteminizde teknik bir hata, mikrofonunuzun kullanımını engellemektedir. Sayfayı yeniden yüklemeyi deneyin. Hata detayları: $1",
