@@ -57,6 +57,13 @@
 	};
 
 	/**
+	 * @inheritDoc
+	 */
+	rw.controller.AudioStudio.prototype.unload = function () {
+		rw.controller.Studio.prototype.unload.call( this );
+	};
+
+	/**
 	 * Event handler called when an audio record has just ended.
 	 *
 	 * @param  {rw.libs.AudioRecord} audioRecord Object containing the audio datas
