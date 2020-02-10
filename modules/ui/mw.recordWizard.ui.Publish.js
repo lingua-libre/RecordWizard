@@ -97,10 +97,9 @@
 			label: mw.msg( 'mwe-recwiz-publish-commonsfilelist' ),
 			framed: false,
 			flags: [ 'progressive' ],
-			icon: 'logoWikimediaCommons'
-		} );
-		this.commonsFileListButton.on( 'click', function () {
-			window.open( 'https://commons.wikimedia.org/wiki/Special:ListFiles/' + mw.config.get( 'wgUserName' ), '_blank' );
+			icon: 'logoWikimediaCommons',
+			href: 'https://commons.wikimedia.org/wiki/Special:ListFiles/' + mw.config.get( 'wgUserName' ),
+			target: '_blank'
 		} );
 		this.commonsFileListButton.$element.insertBefore( this.nextButton.$element );
 
