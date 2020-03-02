@@ -4,6 +4,8 @@
 			"Robby"
 		]
 	},
+	"recordWizard": "Assistent fir Opzehuelen",
+	"recordwizard": "Assistent fir Opzehuelen",
 	"mwe-recwiz-step-tutorial": "Uleedung",
 	"mwe-recwiz-step-locutor": "Riedner",
 	"mwe-recwiz-step-details": "Detailer",
@@ -34,6 +36,8 @@
 	"mwe-recwiz-gender-female": "Weiblech",
 	"mwe-recwiz-gender-other": "Anerer",
 	"mwe-recwiz-details-lang": "Sprooch ophuelen",
+	"mwe-recwiz-details-wordlist": "Lëscht vun de Wierder fir opzehuelen",
+	"mwe-recwiz-details-randomise": "Lëscht zoufälleg mëschen",
 	"mwe-recwiz-details-addwords": "Tippt e Wuert an dréckt <Enter>  (oder méi Wierder getrennt mat #)",
 	"mwe-recwiz-details-clear": "Eidel maachen",
 	"mwe-recwiz-details-noword": "Keng Wierder erausgesicht",
@@ -42,6 +46,8 @@
 	"mwe-recwiz-generator-list": "Lokal Lëscht",
 	"mwe-recwiz-generator-wmcategory": "Wikimedia-Kategorie",
 	"mwe-recwiz-studio-input-placeholder": "En neit Wuert derbäisetzen",
+	"mwe-recwiz-videostudio-ready": "De Videorekorder ass prett!",
+	"mwe-recwiz-videostudio-currentlyrecording": "Aktuell opgeholl:",
 	"mwe-recwiz-publish-play": "Spillen",
 	"mwe-recwiz-publish-remove": "Ewechhuelen",
 	"mwe-recwiz-publish-areyousure": "Sidd Dir sécher dat Dir dëst Enregistrement ewechhuele wëllt?",
@@ -52,11 +58,13 @@
 	"mwe-recwiz-settings-label": "Astellungen",
 	"mwe-recwiz-error-nolanguages": "Ech si sécher Dir schwätzt mindestens eng Sprooch ;)",
 	"mwe-recwiz-nearby-coordinates": "Koordinaten",
+	"mwe-recwiz-nearby-coordinates-help": "Tippt d'Koordinaten an der dezimaler Notatioun.",
 	"mwe-recwiz-nearby-limit-help": "Et muss eng ganz Zuel tëscht 1 a 500 sinn.",
 	"mwe-recwiz-nearby-latitude": "Breedegrad",
 	"mwe-recwiz-nearby-longitude": "Längegrad",
 	"mwe-recwiz-nearby-getcoordinates": "Meng Positioun ofruffen",
 	"mwe-recwiz-nearby-source": "Quell",
+	"mwe-recwiz-nearby-deduplicate": "Wierder ausschléissen déi Dir schonn opgeholl hutt",
 	"mwe-recwiz-error-cantgetposition": "Är Positioun konnt net festgestallt ginn, Dir musst d'Koordinate vun Hand aginn ($1).",
 	"mwe-recwiz-warning-noresults": "Et gëtt keng Elementer nobäi dëse Koordinaten.",
 	"mwe-recwiz-list-title": "Titel",
@@ -65,6 +73,7 @@
 	"mwe-recwiz-wmcategory-source": "Quell",
 	"mwe-recwiz-wmcategory-wikipedia": "Wikipedia",
 	"mwe-recwiz-wmcategory-wiktionary": "Wiktionnaire",
+	"mwe-recwiz-wmcategory-limit-help": "Et muss eng ganz Zuel tëscht 1 an 2000 sinn.",
 	"mwe-recwiz-error-pagemissing": "Et ass elo keng Säit mam Numm \"$1\".",
 	"mwe-recwiz-error-nowiki": "Et gëtt keng Wikipedia oder kee Wictionnaire an Ärer Sprooch."
 }
