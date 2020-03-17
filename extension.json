@@ -10,50 +10,50 @@
     "license-name": "GPL-2.0+",
     "type": "other",
     "manifest_version": 1,
-	"config": {
-		"wgRecordWizardConfig": {
-			"properties": {
-				"langCode": "",
-				"iso3": "",
-				"gender": "",
-				"spokenLanguages": "",
-				"instanceOf": "",
-				"linkedUser": "",
-				"subclassOf": "",
-				"audioRecord": "",
-				"locutor": "",
-				"date": "",
-				"transcription": "",
-				"wikidataId": "",
-				"mediaType": "",
-				"languageLevel": "",
-				"residencePlace": "",
-				"learningPlace": ""
-			},
-			"items": {
-				"genderMale": "",
-				"genderFemale": "",
-				"genderOther": "",
-				"language": "",
-				"locutor": "",
-				"record": "",
-				"word": "",
-				"langLevelNative": "",
-				"langLevelGood": "",
-				"langLevelAverage": "",
-				"langLevelBeginner": "",
-				"mediaTypeAudio": "",
-				"mediaTypeVideo": ""
-			},
-			"listNamespace": 0
-		}
-	},
-	"DefaultUserOptions": {
-		"recwiz-locutor": "",
-		"recwiz-otherLocutors": "",
-		"recwiz-license": "",
-		"recwiz-lang": ""
-	},
+    "config": {
+        "wgRecordWizardConfig": {
+            "properties": {
+                "langCode": "",
+                "iso3": "",
+                "gender": "",
+                "spokenLanguages": "",
+                "instanceOf": "",
+                "linkedUser": "",
+                "subclassOf": "",
+                "audioRecord": "",
+                "locutor": "",
+                "date": "",
+                "transcription": "",
+                "wikidataId": "",
+                "mediaType": "",
+                "languageLevel": "",
+                "residencePlace": "",
+                "learningPlace": ""
+            },
+            "items": {
+                "genderMale": "",
+                "genderFemale": "",
+                "genderOther": "",
+                "language": "",
+                "locutor": "",
+                "record": "",
+                "word": "",
+                "langLevelNative": "",
+                "langLevelGood": "",
+                "langLevelAverage": "",
+                "langLevelBeginner": "",
+                "mediaTypeAudio": "",
+                "mediaTypeVideo": ""
+            },
+            "listNamespace": 0
+        }
+    },
+    "DefaultUserOptions": {
+        "recwiz-locutor": "",
+        "recwiz-otherLocutors": "",
+        "recwiz-license": "",
+        "recwiz-lang": ""
+    },
     "MessagesDirs": {
         "RecordWizard": [
             "i18n"
@@ -76,14 +76,14 @@
                 "modules/mw.recordWizard.Record.js",
                 "modules/mw.recordWizard.RecordWizard.js"
             ],
-			"dependencies": [
-				"oojs-ui",
-				"mediawiki.util",
-			    "ext.recordWizard.base",
-			    "ext.recordWizard.styles",
-			    "ext.recordWizard.upload",
-				"ext.recordWizard.controller"
-			]
+            "dependencies": [
+                "oojs-ui",
+                "mediawiki.util",
+                "ext.recordWizard.base",
+                "ext.recordWizard.styles",
+                "ext.recordWizard.upload",
+                "ext.recordWizard.controller"
+            ]
         },
         "ext.recordWizard.base": {
             "scripts": [
@@ -99,11 +99,11 @@
             "scripts": [
                 "modules/mw.recordWizard.RequestQueue.js"
             ],
-			"dependencies": [
-			    "mediawiki.api",
-			    "mediawiki.api.upload",
-			    "ext.recordWizard.base"
-			]
+            "dependencies": [
+                "mediawiki.api",
+                "mediawiki.api.upload",
+                "ext.recordWizard.base"
+            ]
         },
         "ext.recordWizard.recorder": {
             "scripts": [
@@ -111,9 +111,9 @@
                 "lib/lingua-recorder/AudioRecord.js",
                 "lib/lingua-recorder/LinguaRecorder.js"
             ],
-			"dependencies": [
-				"ext.recordWizard.base"
-			]
+            "dependencies": [
+                "ext.recordWizard.base"
+            ]
         },
         "ext.recordWizard.generator":{
             "scripts": [
@@ -123,42 +123,42 @@
                 "modules/generator/mw.recordWizard.generator.Nearby.js",
                 "modules/generator/mw.recordWizard.generator.WMCategories.js"
             ],
-			"dependencies": [
-			    "oojs-ui",
-			    "mediawiki.ForeignApi",
-			    "mediawiki.widgets",
-			    "oojs-ui.styles.icons-location"
-			],
-			"messages": [
+            "dependencies": [
+                "oojs-ui",
+                "mediawiki.ForeignApi",
+                "mediawiki.widgets",
+                "oojs-ui.styles.icons-location"
+            ],
+            "messages": [
                 "mwe-recwiz-generator-nearby",
                 "mwe-recwiz-generator-list",
-				"mwe-recwiz-generator-wmcategory",
-			    "mwe-recwiz-nearby-coordinates",
-			    "mwe-recwiz-nearby-coordinates-help",
-			    "mwe-recwiz-nearby-limit",
-			    "mwe-recwiz-nearby-limit-help",
-			    "mwe-recwiz-nearby-latitude",
-			    "mwe-recwiz-nearby-longitude",
-			    "mwe-recwiz-nearby-getcoordinates",
-			    "mwe-recwiz-nearby-source",
-				"mwe-recwiz-nearby-deduplicate",
-				"mwe-recwiz-error-unsupportedlanguage",
-			    "mwe-recwiz-error-cantgetposition",
-			    "mwe-recwiz-warning-noresults",
-			    "mwe-recwiz-list-title",
-				"mwe-recwiz-list-title-help",
-				"mwe-recwiz-list-deduplicate",
-				"mwe-recwiz-wmcategory-title",
-				"mwe-recwiz-wmcategory-title-help",
-				"mwe-recwiz-wmcategory-source",
-				"mwe-recwiz-wmcategory-wikipedia",
-				"mwe-recwiz-wmcategory-wiktionary",
-				"mwe-recwiz-wmcategory-deduplicate",
-				"mwe-recwiz-wmcategory-limit",
-				"mwe-recwiz-wmcategory-limit-help",
-				"mwe-recwiz-error-pagemissing",
-				"mwe-recwiz-error-nowiki"
-			]
+                "mwe-recwiz-generator-wmcategory",
+                "mwe-recwiz-nearby-coordinates",
+                "mwe-recwiz-nearby-coordinates-help",
+                "mwe-recwiz-nearby-limit",
+                "mwe-recwiz-nearby-limit-help",
+                "mwe-recwiz-nearby-latitude",
+                "mwe-recwiz-nearby-longitude",
+                "mwe-recwiz-nearby-getcoordinates",
+                "mwe-recwiz-nearby-source",
+                "mwe-recwiz-nearby-deduplicate",
+                "mwe-recwiz-error-unsupportedlanguage",
+                "mwe-recwiz-error-cantgetposition",
+                "mwe-recwiz-warning-noresults",
+                "mwe-recwiz-list-title",
+                "mwe-recwiz-list-title-help",
+                "mwe-recwiz-list-deduplicate",
+                "mwe-recwiz-wmcategory-title",
+                "mwe-recwiz-wmcategory-title-help",
+                "mwe-recwiz-wmcategory-source",
+                "mwe-recwiz-wmcategory-wikipedia",
+                "mwe-recwiz-wmcategory-wiktionary",
+                "mwe-recwiz-wmcategory-deduplicate",
+                "mwe-recwiz-wmcategory-limit",
+                "mwe-recwiz-wmcategory-limit-help",
+                "mwe-recwiz-error-pagemissing",
+                "mwe-recwiz-error-nowiki"
+            ]
         },
         "ext.recordWizard.layout":{
             "scripts": [
@@ -167,13 +167,13 @@
                 "modules/layout/mw.recordWizard.layout.LicenseSelectorWidget.js",
                 "modules/layout/mw.recordWizard.layout.WordSelectorWidget.js",
                 "modules/layout/mw.recordWizard.layout.WikidataSearchWidget.js",
-				"modules/layout/mw.recordWizard.layout.SettingsButtonWidget.js"
+                "modules/layout/mw.recordWizard.layout.SettingsButtonWidget.js"
             ],
-			"dependencies": [
-			    "oojs-ui",
-			    "oojs-ui.styles.icons-wikimedia",
-				"mediawiki.storage"
-			]
+            "dependencies": [
+                "oojs-ui",
+                "oojs-ui.styles.icons-wikimedia",
+                "mediawiki.storage"
+            ]
         },
         "ext.recordWizard.ui": {
             "scripts": [
@@ -187,16 +187,16 @@
                 "modules/ui/mw.recordWizard.ui.VideoStudio.js",
                 "modules/ui/mw.recordWizard.ui.Publish.js"
             ],
-			"dependencies": [
-			    "oojs-ui",
-				"oojs-ui.styles.icons-media",
-			    "oojs-ui.styles.icons-content",
-			    "oojs-ui.styles.icons-wikimedia",
-			    "ext.recordWizard.layout"
-			],
-			"messages": [
-				"ooui-item-remove",
-		        "mwe-recwiz-step-tutorial",
+            "dependencies": [
+                "oojs-ui",
+                "oojs-ui.styles.icons-media",
+                "oojs-ui.styles.icons-content",
+                "oojs-ui.styles.icons-wikimedia",
+                "ext.recordWizard.layout"
+            ],
+            "messages": [
+                "ooui-item-remove",
+                "mwe-recwiz-step-tutorial",
                 "mwe-recwiz-step-locutor",
                 "mwe-recwiz-step-details",
                 "mwe-recwiz-step-studio",
@@ -206,21 +206,21 @@
                 "mwe-recwiz-continue",
                 "mwe-recwiz-continueanyway",
                 "mwe-recwiz-retry",
-				"mwe-recwiz-publish",
-				"mwe-recwiz-restart",
-		        "mwe-recwiz-tutorial-activate",
-		        "mwe-recwiz-tutorial-reopenpopup",
-				"mwe-recwiz-tutorial-configure-top",
-				"mwe-recwiz-tutorial-configure-bottom",
-				"mwe-recwiz-tutorial-mictester-start",
-				"mwe-recwiz-tutorial-mictester-recording",
-				"mwe-recwiz-tutorial-mictester-playing",
-				"mwe-recwiz-tutorial-mictester-waiting",
-				"mwe-recwiz-tutorial-mictester-help1",
-				"mwe-recwiz-tutorial-mictester-help2",
-				"mwe-recwiz-tutorial-mictester-help3",
-				"mwe-recwiz-tutorial-mictester-help4",
-				"mwe-recwiz-tutorial-mictester-help5",
+                "mwe-recwiz-publish",
+                "mwe-recwiz-restart",
+                "mwe-recwiz-tutorial-activate",
+                "mwe-recwiz-tutorial-reopenpopup",
+                "mwe-recwiz-tutorial-configure-top",
+                "mwe-recwiz-tutorial-configure-bottom",
+                "mwe-recwiz-tutorial-mictester-start",
+                "mwe-recwiz-tutorial-mictester-recording",
+                "mwe-recwiz-tutorial-mictester-playing",
+                "mwe-recwiz-tutorial-mictester-waiting",
+                "mwe-recwiz-tutorial-mictester-help1",
+                "mwe-recwiz-tutorial-mictester-help2",
+                "mwe-recwiz-tutorial-mictester-help3",
+                "mwe-recwiz-tutorial-mictester-help4",
+                "mwe-recwiz-tutorial-mictester-help5",
                 "mwe-recwiz-locutor-profile",
                 "mwe-recwiz-locutor-profilemain",
                 "mwe-recwiz-locutor-profileother",
@@ -228,15 +228,15 @@
                 "mwe-recwiz-locutor-name",
                 "mwe-recwiz-locutor-languages",
                 "mwe-recwiz-locutor-languagedialog",
-				"mwe-recwiz-locutor-languagelevel",
-				"mwe-recwiz-locutor-languagelevel-native",
-				"mwe-recwiz-locutor-languagelevel-good",
-				"mwe-recwiz-locutor-languagelevel-average",
-				"mwe-recwiz-locutor-languagelevel-beginner",
+                "mwe-recwiz-locutor-languagelevel",
+                "mwe-recwiz-locutor-languagelevel-native",
+                "mwe-recwiz-locutor-languagelevel-good",
+                "mwe-recwiz-locutor-languagelevel-average",
+                "mwe-recwiz-locutor-languagelevel-beginner",
                 "mwe-recwiz-locutor-languagelocation",
                 "mwe-recwiz-locutor-location",
-				"mwe-recwiz-locutor-license",
-				"mwe-recwiz-locutor-licensecontent",
+                "mwe-recwiz-locutor-license",
+                "mwe-recwiz-locutor-licensecontent",
                 "mwe-recwiz-locutor-gender",
                 "mwe-recwiz-gender-male",
                 "mwe-recwiz-gender-female",
@@ -245,47 +245,47 @@
                 "mwe-recwiz-details-wordlist",
                 "mwe-recwiz-details-randomise",
                 "mwe-recwiz-details-addwords",
-				"mwe-recwiz-details-deduplicate",
+                "mwe-recwiz-details-deduplicate",
                 "mwe-recwiz-details-clear",
-				"mwe-recwiz-details-generators",
+                "mwe-recwiz-details-generators",
                 "mwe-recwiz-details-noword",
                 "mwe-recwiz-details-wordcount",
-				"mwe-recwiz-studio-input-placeholder",
-				"mwe-recwiz-studio-uploadcount",
-				"mwe-recwiz-videostudio-webcamaccess",
-				"mwe-recwiz-videostudio-ready",
-				"mwe-recwiz-videostudio-clicktostart",
-				"mwe-recwiz-videostudio-stopped",
-				"mwe-recwiz-videostudio-endofthelist",
-				"mwe-recwiz-videostudio-currentlyrecording",
-				"mwe-recwiz-videostudio-willstart",
-				"mwe-recwiz-publish-play",
-				"mwe-recwiz-publish-remove",
-				"mwe-recwiz-publish-areyousure",
-				"mwe-recwiz-publish-removelabel",
-				"mwe-recwiz-publish-commonsfilelist",
-				"mwe-recwiz-publish-nomedia",
+                "mwe-recwiz-studio-input-placeholder",
+                "mwe-recwiz-studio-uploadcount",
+                "mwe-recwiz-videostudio-webcamaccess",
+                "mwe-recwiz-videostudio-ready",
+                "mwe-recwiz-videostudio-clicktostart",
+                "mwe-recwiz-videostudio-stopped",
+                "mwe-recwiz-videostudio-endofthelist",
+                "mwe-recwiz-videostudio-currentlyrecording",
+                "mwe-recwiz-videostudio-willstart",
+                "mwe-recwiz-publish-play",
+                "mwe-recwiz-publish-remove",
+                "mwe-recwiz-publish-areyousure",
+                "mwe-recwiz-publish-removelabel",
+                "mwe-recwiz-publish-commonsfilelist",
+                "mwe-recwiz-publish-nomedia",
                 "mwe-recwiz-pendinguplads",
                 "mwe-recwiz-allsucceeded",
                 "mwe-recwiz-somefailed",
                 "mwe-recwiz-allfailed",
-				"mwe-recwiz-settings-label",
-				"mwe-recwiz-settings-videorecording",
-				"mwe-recwiz-settings-durationtorecord",
-				"mwe-recwiz-settings-delaybetweenrecords",
-				"mwe-recwiz-error-mediastream-notallowed",
-				"mwe-recwiz-error-mediastream-notfound",
-				"mwe-recwiz-error-mediastream-technical",
-				"mwe-recwiz-error-mediastream-unknow",
+                "mwe-recwiz-settings-label",
+                "mwe-recwiz-settings-videorecording",
+                "mwe-recwiz-settings-durationtorecord",
+                "mwe-recwiz-settings-delaybetweenrecords",
+                "mwe-recwiz-error-mediastream-notallowed",
+                "mwe-recwiz-error-mediastream-notfound",
+                "mwe-recwiz-error-mediastream-technical",
+                "mwe-recwiz-error-mediastream-unknow",
                 "mwe-recwiz-error-noname",
-				"mwe-recwiz-error-duplicatename",
-				"mwe-recwiz-error-nolanguages",
-				"mwe-recwiz-error-emptylist",
-				"mwe-recwiz-error-network",
+                "mwe-recwiz-error-duplicatename",
+                "mwe-recwiz-error-nolanguages",
+                "mwe-recwiz-error-emptylist",
+                "mwe-recwiz-error-network",
                 "mwe-recwiz-warning-wordsleft",
                 "mwe-recwiz-warning-pendinguploads",
                 "mwe-recwiz-warning-faileduploads"
-			]
+            ]
         },
         "ext.recordWizard.wikibase": {
             "scripts": [
@@ -295,12 +295,12 @@
                 "modules/wikibase/mw.recordWizard.wikibase.Statement.js",
                 "modules/wikibase/mw.recordWizard.wikibase.Item.js"
             ],
-			"dependencies": [
-				"ext.recordWizard.base",
-			    "wikibase.datamodel",
-			    "wikibase.serialization",
-				"wikibase.api.RepoApi"
-			]
+            "dependencies": [
+                "ext.recordWizard.base",
+                "wikibase.datamodel",
+                "wikibase.serialization",
+                "wikibase.api.RepoApi"
+            ]
         },
         "ext.recordWizard.controller": {
             "scripts": [
@@ -314,15 +314,15 @@
                 "modules/controller/mw.recordWizard.controller.VideoStudio.js",
                 "modules/controller/mw.recordWizard.controller.Publish.js"
             ],
-			"dependencies": [
-			    "mediawiki.confirmCloseWindow",
-			    "oojs",
-			    "wikibase.api.RepoApi",
-			    "ext.recordWizard.recorder",
-			    "ext.recordWizard.generator",
-			    "ext.recordWizard.ui",
-			    "ext.recordWizard.wikibase"
-			]
+            "dependencies": [
+                "mediawiki.confirmCloseWindow",
+                "oojs",
+                "wikibase.api.RepoApi",
+                "ext.recordWizard.recorder",
+                "ext.recordWizard.generator",
+                "ext.recordWizard.ui",
+                "ext.recordWizard.wikibase"
+            ]
         }
     },
     "ResourceFileModulePaths": {

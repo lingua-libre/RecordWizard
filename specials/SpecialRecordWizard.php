@@ -1,4 +1,39 @@
 <?php
+
+class I18nTemplateParser extends TemplateParser {
+
+	/**
+	 * Compile the Mustache code into PHP code using LightnCandy
+	 * This is a derivate from the original compile method of TemplateParser
+	 * @param string $code Mustache code
+	 * @return string PHP code (with '<?php')
+	 * @throws RuntimeException
+	 */
+	protected function compile( $code ) {
+		if ( !class_exists( 'LightnCandy' ) ) {
+			throw new RuntimeException( 'LightnCandy class not defined' );
+		}
+		return LightnCandy::compile(
+			$code,
+			[
+				'flags' => $this->compileFlags,
+				'basedir' => $this->templateDir,
+				'fileext' => '.mustache',
+				'helpers' => array(
+					'_' => function( $msg ) {
+						return wfMessage( $msg )->plain();
+					},
+					'__' => function( $msg ) {
+						return wfMessage( $msg )->parse();
+					},
+				),
+			]
+		);
+	}
+}
+
+
+
 /**
  * recordWizard SpecialPage for RecordWizard extension
  *
@@ -314,20 +349,12 @@ class SpecialRecordWizard extends SpecialPage {
 	protected function getWizardHtml() {
 		global $wgExtensionAssetsPath;
 
-		return '<div id="mwe-recwiz">
-
-		            <ul class="mwe-recwiz-steps">
-                    </ul>
-
-                	<div id="mwe-recwiz-spinner" class="mwe-recwiz-spinner">
-						<img src="' . $wgExtensionAssetsPath . '/RecordWizard/modules/images/Spinner_font_awesome.svg" width="40" height="40" />
-					</div>
-
-                    <div id="mwe-recwiz-content">
-                    </div>
-
-					<div class="preload-images"></div>
-
-		        </div>';
+		$templateParser = new I18nTemplateParser(  __DIR__ . '/templates' );
+		return $templateParser->processTemplate(
+		    'recordwizard',
+		    [
+		        'wgExtensionAssetsPath' => $wgExtensionAssetsPath,
+		    ]
+		);
 	}
 }
