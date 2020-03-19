@@ -92,7 +92,13 @@
         },
         "ext.recordWizard.styles": {
             "styles": [
-                "modules/ext.recordWizard.css"
+                "stylesheets/ext.recordWizard.css",
+                "stylesheets/ext.tutorial.css",
+                "stylesheets/ext.locutor.css",
+                "stylesheets/ext.details.css",
+                "stylesheets/ext.audiostudio.css",
+                "stylesheets/ext.videostudio.css",
+                "stylesheets/ext.publish.css"
             ]
         },
         "ext.recordWizard.upload":{
