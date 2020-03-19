@@ -26,7 +26,7 @@
 	 */
 	rw.RecordWizard.prototype.createInterface = function () {
 		this.initialiseSteps();
-		$( '#mwe-recwiz-spinner' ).hide();
+		$( '#mwe-rw-spinner' ).hide();
 		this.steps.tutorial.load( null, null );
 	};
 

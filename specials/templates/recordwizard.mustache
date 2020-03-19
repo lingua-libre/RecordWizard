@@ -1,22 +1,25 @@
+<h2>Enregistrer une voix</h2>
 <div id="mwe-rw">
-	<ol id="mwe-rw-steps">
-		<li>{{_ "mwe-recwiz-step-tutorial"}}</li>
-		<li>{{_ "mwe-recwiz-step-locutor"}}</li>
-		<li>{{_ "mwe-recwiz-step-details"}}</li>
-		<li>{{_ "mwe-recwiz-step-studio"}}</li>
-		<li>{{_ "mwe-recwiz-step-publish"}}</li>
-	</ol>
+	<ul id="mwe-rw-steps">
+		<li><span class="mwe-rw-step-marker">1</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-tutorial"}}</li>
+		<li><span class="mwe-rw-step-marker">2</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-locutor"}}</li>
+		<li class="active"><span class="mwe-rw-step-marker">3</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-details"}}</li>
+		<li><span class="mwe-rw-step-marker">4</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-studio"}}</li>
+		<li><span class="mwe-rw-step-marker">5</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-publish"}}</li>
+	</ul>
 
 	<div id="mwe-rw-spinner" class="mwe-rw-spinner">
-		<img src="{{wgExtensionAssetsPath}}/RecordWizard/modules/images/Spinner_font_awesome.svg" width="40" height="40" />
+		<img src="{{wgExtensionAssetsPath}}/RecordWizard/images/Spinner_font_awesome.svg" width="40" height="40" />
 	</div>
 
-	<div id="mwe-rw-content">
-		{{>tutorial}}
-		{{>locutor}}
-		{{>details}}
-		{{>audiostudio}}
-		{{>videostudio}}
-		{{>publish}}
+	<div id="mwe-rw-main">
+		<div id="mwe-rw-content">
+			{{>tutorial}}
+			{{>locutor}}
+			{{>details}}
+			{{>audiostudio}}
+			{{>videostudio}}
+			{{>publish}}
+		</div>
 	</div>
 </div>

@@ -1,8 +1,85 @@
 /* General layout */
+#mwe-rw {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 32px;
+}
+
+#mwe-rw-steps {
+    width: 265px;
+}
+
+#mwe-rw-content {
+    max-width: 935px;
+}
+
+#mwe-rw-spinner {
+    display:none; /* TODO: remove */
+}
 
 
 /* Steps */
+#mwe-rw-steps {
+    display: flex;
+    flex-direction: column;
+}
 
+#mwe-rw-steps li {
+    list-style: none;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 900;
+    color: black;
+    margin-bottom: 12px;
+    display: flex;
+    line-height: 30px;
+    height: 30px;
+}
+#mwe-rw-steps li.active {
+    color: #3366cc;
+}
+#mwe-rw-steps li.active ~ li {
+    color: #a2a9b1;
+    font-weight: normal;
+}
+#mwe-rw-steps li span {
+    display: none;
+    box-sizing: border-box;
+
+    width: 30px;
+    height: 30px;
+    margin-right: 16px;
+
+    text-align: center;
+    background-color: black;
+    border-radius: 100%;
+}
+#mwe-rw-steps li .mwe-rw-step-marker {
+    color: white;
+    font-family: Charter;
+    font-weight: bold;
+}
+#mwe-rw-steps li.active .mwe-rw-step-marker {
+    display: inline-block;
+    background-color: #3366cc;
+}
+#mwe-rw-steps li.active ~ li .mwe-rw-step-marker {
+    display: inline-block;
+    background-color: rgba(162, 169, 177, 0.3);
+}
+#mwe-rw-steps li .mwe-rw-step-check img {
+    padding-top: 5px;
+    width: 20px;
+    height: 20px;
+}
+#mwe-rw-steps li .mwe-rw-step-check {
+    display: inline-block;
+}
+#mwe-rw-steps li.active .mwe-rw-step-check,
+#mwe-rw-steps li.active ~ li .mwe-rw-step-check  {
+    display: none;
+}
 
 /* Content box */
 
