@@ -94,11 +94,17 @@ body.mw-special-RecordWizard #contentHeading {
 
 /* Content box */
 #mwe-rw-content {
-    min-height: 300px;
+    min-height: 200px;
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.17);
     margin-bottom: 16px;
+}
+.mwe-rw-content {
+    display: none;
+}
+.mwe-rw-content.active {
+    display: block;
 }
 .mwe-rw-content > * {
     padding-left: 35px;
