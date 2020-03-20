@@ -1,17 +1,28 @@
 /* General layout */
+body.mw-special-RecordWizard #contentHeading {
+    display: none;
+}
+
 #mwe-rw {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     margin-top: 32px;
 }
+#mwe-rw-title {
+    font-family: Charter;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 55px !important;
+}
 
 #mwe-rw-steps {
     width: 265px;
 }
 
-#mwe-rw-content {
+#mwe-rw-main {
     max-width: 935px;
+    flex-grow: 1;
 }
 
 #mwe-rw-spinner {
@@ -82,6 +93,67 @@
 }
 
 /* Content box */
+#mwe-rw-content {
+    min-height: 300px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.17);
+    margin-bottom: 16px;
+}
+.mwe-rw-content > * {
+    padding-left: 35px;
+    padding-right: 35px;
+}
+#mwe-rw-content > .mwe-rw-content > h3 {
+    box-sizing: border-box;
+    height: 74px;
+    width: 100%;
+    padding-top: 25px;
+    border-bottom: 1px solid #dadada;
 
+    font-family: Lato;
+    font-size: 22px;
+    font-weight: 600;
+}
+#mwe-rw-content > .mwe-rw-content > section {
+    padding-top: 22px;
+}
 
 /* Navigation */
+#mwe-rw-navigation {
+    display: flex;
+    flex-direction: row;
+    margin-right: 24px;
+    margin-left: 16px;
+}
+
+#mwe-rw-navigation .oo-ui-buttonElement-button {
+    height: 32px;
+    padding-top: 0.4em;
+}
+#mwe-rw-navigation .oo-ui-iconElement-icon {
+    height: 10px;
+    width: 15px;
+    top: 5px;
+    min-width: unset;
+}
+
+
+#mwe-rw-cancel {
+    margin-right: auto;
+}
+#mwe-rw-cancel .oo-ui-labelElement-label {
+    font-weight: normal;
+    color: #979797;
+}
+#mwe-rw-prev {
+    margin-right: 26px;
+}
+#mwe-rw-next .oo-ui-buttonElement-button {
+padding-right: 2.64285714em;
+padding-left: 0.85714286em;
+}
+#mwe-rw-next .oo-ui-iconElement-icon {
+    left: unset; /* flip standard positionning of the icon */
+    right: 0.78571429em;
+}

@@ -55,6 +55,7 @@ class SpecialRecordWizard extends SpecialPage {
 		global $wgRecordWizardConfig, $wgWBRepoSettings;
 
 		$out = $this->getOutput();
+		$out->enableOOUI();
 		$user = $this->getUser();
 		$config = $wgRecordWizardConfig;
 		if ( !( $this->isUploadAllowed() && $this->isUserUploadAllowed( $user ) ) ) {
@@ -349,11 +350,16 @@ class SpecialRecordWizard extends SpecialPage {
 	protected function getWizardHtml() {
 		global $wgExtensionAssetsPath;
 
-		$templateParser = new I18nTemplateParser(  __DIR__ . '/templates' );
+		$templateParser = new I18nTemplateParser(  __DIR__ . '/templates', true );
 		return $templateParser->processTemplate(
 		    'recordwizard',
 		    [
 		        'wgExtensionAssetsPath' => $wgExtensionAssetsPath,
+				'nav' => [
+					'cancelButton' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rw-cancel', 'label' => wfMessage( 'mwe-recwiz-cancel' )->plain(), 'framed' => false  ] ),
+					'prevButton' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rw-prev', 'label' => wfMessage( 'mwe-recwiz-previous' )->plain(), 'flags' => [ 'progressive' ], 'framed' => false, 'icon' => 'previous' ] ),
+					'nextButton' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rw-next', 'label' => wfMessage( 'mwe-recwiz-next' )->plain(), 'flags' => [ 'progressive', 'primary' ], 'icon' => 'next' ] ),
+				],
 		    ]
 		);
 	}

@@ -22,6 +22,7 @@
 	"mwe-recwiz-step-details": "Name of a step displayed in the arrow line.",
 	"mwe-recwiz-step-studio": "Name of a step displayed in the arrow line.",
 	"mwe-recwiz-step-publish": "Name of a step displayed in the arrow line.\n{{Identical|Publish}}",
+	"mwe-recwiz-cancel": "Label on a button, used to cancel everything and leave the RecordWizard.\n{{Identical|Cancel}}.",
 	"mwe-recwiz-next": "Label on a button, used to go to the next step.",
 	"mwe-recwiz-previous": "Label on a button, used to go to the previous step.",
 	"mwe-recwiz-continue": "Label on a button, used to go to the next step.",

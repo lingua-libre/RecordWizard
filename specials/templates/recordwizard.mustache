@@ -1,4 +1,4 @@
-<h2>Enregistrer une voix</h2>
+<h2 id="mwe-rw-title">Enregistrer une voix</h2>
 <div id="mwe-rw">
 	<ul id="mwe-rw-steps">
 		<li><span class="mwe-rw-step-marker">1</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-tutorial"}}</li>
@@ -14,12 +14,17 @@
 
 	<div id="mwe-rw-main">
 		<div id="mwe-rw-content">
-			{{>tutorial}}
-			{{>locutor}}
-			{{>details}}
-			{{>audiostudio}}
-			{{>videostudio}}
-			{{>publish}}
+			<div class="mwe-rw-content" id="mwe-rw-tutorial">{{>tutorial}}</div>
+			<div class="mwe-rw-content" id="mwe-rw-locutor">{{>locutor}}</div>
+			<div class="mwe-rw-content" id="mwe-rw-details">{{>details}}</div>
+			<div class="mwe-rw-content" id="mwe-rw-audiostudio">{{>audiostudio}}</div>
+			<div class="mwe-rw-content" id="mwe-rw-videostudio">{{>videostudio}}</div>
+			<div class="mwe-rw-content" id="mwe-rw-publish">{{>publish}}</div>
+		</div>
+		<div id="mwe-rw-navigation">
+			{{&nav.cancelButton}}
+			{{&nav.prevButton}}
+			{{&nav.nextButton}}
 		</div>
 	</div>
 </div>
