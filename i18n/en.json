@@ -42,6 +42,8 @@
 	"mwe-recwiz-tutorial-mictester-playing": "2. Listen",
 	"mwe-recwiz-tutorial-mictester-waiting": "loading",
 
+	"mwe-recwiz-locutor-title": "Speaker profile",
+	"mwe-recwiz-locutor-warning": "This information will be publicly displayed and associated with your records.",
 	"mwe-recwiz-locutor-profile": "Speaker profile to use",
 	"mwe-recwiz-locutor-profilemain": "Your main speaker",
 	"mwe-recwiz-locutor-profileother": "Other speakers",

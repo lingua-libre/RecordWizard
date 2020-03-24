@@ -125,6 +125,46 @@ body.mw-special-RecordWizard #contentHeading {
     padding-top: 22px;
 }
 
+.mwe-rw-warning {
+    position: relative;
+    margin: 22px 0px;
+    padding: 14px 0px 12px 50px;
+    border-radius: 5px;
+    border: solid 1px #ffcc33;
+    background-color: #fff9e5;
+
+    font-family: Lato;
+    font-size: 15px;
+    font-weight: normal;
+    color: #c99d18;
+}
+.mwe-rw-warning::before {
+    content: '';
+
+    width: 20px;
+    height: 20px;
+    background-image: url('../icons/error.svg');
+    background-size: 20px 20px;
+
+    position: absolute;
+    left: 16px;
+}
+
+.mwe-rw-field {
+    display: flex;
+    margin-top: 0.857em;
+}
+
+.mwe-rw-field > label {
+	width: 35%;
+	margin-right: 5%;
+    padding-top: 0.285em;
+}
+
+.mwe-rw-field > div {
+	width: 60%;
+}
+
 /* Navigation */
 #mwe-rw-navigation {
     display: flex;

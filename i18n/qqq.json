@@ -40,6 +40,8 @@
 	"mwe-recwiz-tutorial-mictester-recording": "Message indicating a state of the microphone tester in the tutorial step.",
 	"mwe-recwiz-tutorial-mictester-playing": "Message indicating a state of the microphone tester in the tutorial step.",
 	"mwe-recwiz-tutorial-mictester-waiting": "Message indicating a state of the microphone tester in the tutorial step.",
+	"mwe-recwiz-locutor-title": "Title of the speaker step.",
+	"mwe-recwiz-locutor-warning": "Message at the top of the locutor step warning the user that everything typed will be publicly visible.",
 	"mwe-recwiz-locutor-profile": "Label for the profile selector field on the locutor tab.",
 	"mwe-recwiz-locutor-profilemain": "Label of the option group containing the main profile in the profile selector dropdown.",
 	"mwe-recwiz-locutor-profileother": "Label of the option group containing the secondary profiles in the profile selector dropdown.",
