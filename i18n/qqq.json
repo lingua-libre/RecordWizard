@@ -61,6 +61,7 @@
 	"mwe-recwiz-gender-male": "Label of the 'male' option in the gender selector.\n{{Identical|Male}}",
 	"mwe-recwiz-gender-female": "Label of the 'female' option in the gender selector.",
 	"mwe-recwiz-gender-other": "Label of the 'other' option in the gender selector.",
+	"mwe-recwiz-details-title": "Title of the details step",
 	"mwe-recwiz-details-lang": "Label of a field asking the language of the recording session, on the details tab.",
 	"mwe-recwiz-details-wordlist": "Label of the textarea containing all the words to record, on the details tab.",
 	"mwe-recwiz-details-randomise": "Label of a checkbox switching on the word order randomisation, on the details tab.",

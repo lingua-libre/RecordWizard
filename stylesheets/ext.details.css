@@ -1,1 +1,130 @@
 /* DETAILS */
+#mwe-rw-details .mwe-rw-section-group {
+	display: flex;
+	padding: 0px;
+}
+#mwe-rw-details section:first-child {
+	width: 55%;
+	border-right: 1px solid rgba(156, 173, 210, 0.5);
+}
+#mwe-rw-details section:last-child {
+	width: 45%;
+}
+
+/* Left column - input area */
+#mwe-rwd-input {
+	background-color: #e9ebf5;
+	padding: 16px 25px 8px 25px;
+	position: relative;
+}
+#mwe-rwd-input::after {
+	width: 36px;
+	height: 36px;
+	transform: rotate(45deg);
+	background-color: #e9ebf5;
+	position: relative;
+	top:-80px;
+}
+
+#mwe-rwd-word-input {
+	border-color: #3366cc;
+	border-radius: 3px;
+	padding-left: 14px;
+	padding-right: 40px;
+	height: 45px;
+
+	font-size: 17px;
+	line-height: 20px;
+}
+#mwe-rwd-word-input::placeholder {
+	color: rgba(23, 68, 153, 0.6);
+}
+#mwe-rwd-add {
+	position: absolute;
+	top: 28px;
+	right: 30px;
+}
+#mwe-rwd-add > a {
+	border-radius: 100%;
+	padding: 0;
+	width: 20px;
+	height: 20px;
+}
+#mwe-rwd-add > a > .oo-ui-iconElement-icon {
+	left: 0;
+	width: 18px;
+	min-width: 18px;
+	top: -1px;
+}
+
+#mwe-rwd-input-help {
+	font-size: 13px;
+	line-height: 20px;
+	color: #7a8496;
+	padding-top: 8px;
+	padding-left: 24px;
+	position: relative;
+}
+#mwe-rwd-input-help::before {
+	display: block;
+	content: '';
+
+	position: absolute;
+	top: 10px;
+	left: 0px;
+
+	width: 16px;
+	height: 16px;
+	background-image: url('../icons/alert.svg');
+	background-size: 16px 16px;
+}
+
+/* Left column - list */
+#mwe-rwd-list {
+	height: 285px;
+	overflow-y: scroll;
+}
+
+/* Left column - action buttons */
+#mwe-rwd-actions {
+	display: flex;
+	height: 68px;
+
+	border-top: 1px solid rgba(156, 173, 210, 0.5);
+}
+#mwe-rwd-actions .oo-ui-labelElement-label {
+	font-family: "HelveticaNeue";
+}
+#mwe-rwd-actions .oo-ui-buttonElement-button {
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	border: 0;
+}
+#mwe-rwd-actions > * {
+	display: flex;
+	align-items: center;
+}
+#mwe-rwd-actions .oo-ui-buttonElement ~ .oo-ui-buttonElement {
+	border-left: 1px solid rgba(156, 173, 210, 0.5);
+}
+#mwe-rwd-actions .oo-ui-buttonElement:first-child .oo-ui-buttonElement-button {
+	border-bottom-left-radius: 12px;
+}
+#mwe-rwd-actions .oo-ui-buttonElement.oo-ui-flaggedElement-destructive .oo-ui-buttonElement-button:active {
+	background-color: #fee7e6;
+}
+#mwe-rwd-deduplicate {
+	width: 65%;
+	margin-right: 0;
+}
+#mwe-rwd-deduplicate .oo-ui-labelElement-label {
+	color: rgba(34, 34, 34, 0.6);
+}
+#mwe-rwd-clear {
+	flex: 1;
+}

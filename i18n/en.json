@@ -63,7 +63,8 @@
 	"mwe-recwiz-gender-male": "Male",
 	"mwe-recwiz-gender-female": "Female",
 	"mwe-recwiz-gender-other": "Other",
-
+	
+	"mwe-recwiz-details-title": "List of words to record",
 	"mwe-recwiz-details-lang": "Record language",
 	"mwe-recwiz-details-wordlist": "List of the words to record",
 	"mwe-recwiz-details-randomise": "Shuffle list",

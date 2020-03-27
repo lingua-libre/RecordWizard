@@ -368,6 +368,12 @@ class SpecialRecordWizard extends SpecialPage {
 					'profile' => new OOUI\DropdownInputWidget( [ 'infusable' => true, 'id' => 'mwe-rwl-profile', 'inputId' => 'mwe-rwl-profile-input' ] ),
 					'name' => new OOUI\TextInputWidget( [ 'infusable' => true, 'id' => 'mwe-rwl-name', 'inputId' => 'mwe-rwl-name-input' ] ),
 				],
+				'details' => [
+					'wordInput' => new OOUI\TextInputWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-word', 'inputId' => 'mwe-rwd-word-input', 'placeholder' => 'Entrez ici le nom du mot à enregistrer' ] ),
+					'wordButton' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-add', 'invisibleLabel' => true, 'icon' => 'add', 'flags' => [ 'primary', 'progressive' ] ] ),
+					'clearButton' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-clear', 'label' => wfMessage( 'mwe-recwiz-details-clear' )->plain(), 'flags' => [ 'destructive' ] ] ),
+					'deduplicateButton' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-deduplicate', 'label' => wfMessage( 'mwe-recwiz-details-deduplicate' )->plain() ] ),
+				]
 		    ]
 		);
 	}
