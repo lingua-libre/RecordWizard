@@ -6,15 +6,71 @@
 			{{& details.wordButton}}
 			<div id="mwe-rwd-input-help">{{__ "mwe-recwiz-details-help"}}</div>
 		</div>
-		<div id="mwe-rwd-list">
-
-		</div>
+		<ul id="mwe-rwd-list">
+			<li>
+				<i class="mwe-rwd-handle"></i>
+				<span>Item 1</span>
+				<i class="mwe-rwd-trash"></i>
+			</li>
+			<li>
+				<i class="mwe-rwd-handle"></i>
+				<span>Item 2</span>
+				<i class="mwe-rwd-trash"></i>
+			</li>
+			<li>
+				<i class="mwe-rwd-handle"></i>
+				<span>Item 3 : Lorem Elsass ipsum mamsell morbi mollis habitant et Racing. Verdammi commodo tellus ftomi! ante Oberschaeffolsheim picon bière amet dolor schpeck  Gal ! Huguette leo so sed varius dignissim</span>
+				<i class="mwe-rwd-trash"></i>
+			</li>
+			<li>
+				<i class="mwe-rwd-handle"></i>
+				<span>Item 4</span>
+				<i class="mwe-rwd-trash"></i>
+			</li>
+			<li>
+				<i class="mwe-rwd-handle"></i>
+				<span>Item 5</span>
+				<i class="mwe-rwd-trash"></i>
+			</li>
+			<li>
+				<i class="mwe-rwd-handle"></i>
+				<span>Item 6</span>
+				<i class="mwe-rwd-trash"></i>
+			</li>
+			<li>
+				<i class="mwe-rwd-handle"></i>
+				<span>Item 7</span>
+				<i class="mwe-rwd-trash"></i>
+			</li>
+			<li>
+				<i class="mwe-rwd-handle"></i>
+				<span>Item 8</span>
+				<i class="mwe-rwd-trash"></i>
+			</li>
+			<li>
+				<i class="mwe-rwd-handle"></i>
+				<span>Item 9</span>
+				<i class="mwe-rwd-trash"></i>
+			</li>
+		</ul>
 		<div id="mwe-rwd-actions">
 			{{& details.deduplicateButton}}
 			{{& details.clearButton}}
 		</div>
 	</section>
 	<section>
-
+		<div  id="mwe-rwd-lang-field">
+			<label for="mwe-rwd-lang-input">{{&__ "mwe-recwiz-details-lang"}}</label>
+			{{& details.lang}}
+		</div>
+		<div id="mwe-rwd-generators-field">
+			<h4>{{&__ "mwe-recwiz-details-inspiration"}}</h4>
+			{{&__ "mwe-recwiz-details-generators"}}
+			<div id="mwe-rwd-generator-buttons">
+				{{& details.gen1}}
+				{{& details.gen2}}
+				{{& details.gen3}}
+			</div>
+		</div>
 	</section>
 </div>

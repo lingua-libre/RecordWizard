@@ -9,6 +9,8 @@
 }
 #mwe-rw-details section:last-child {
 	width: 45%;
+	padding: 21px 24px 42px 38px;
+	box-sizing: border-box;
 }
 
 /* Left column - input area */
@@ -18,12 +20,18 @@
 	position: relative;
 }
 #mwe-rwd-input::after {
+	display: inline-block;
+	content: '';
+
+	position: absolute;
+	bottom: -17px;
+	right: 30px;
+
 	width: 36px;
 	height: 36px;
+
 	transform: rotate(45deg);
-	background-color: #e9ebf5;
-	position: relative;
-	top:-80px;
+	background: linear-gradient(-45deg, #e9ebf5 50%, transparent 50%);
 }
 
 #mwe-rwd-word-input {
@@ -83,7 +91,42 @@
 #mwe-rwd-list {
 	height: 285px;
 	overflow-y: scroll;
+
+	margin: 10px 0px 10px 0px;
+	list-style: none;
 }
+#mwe-rwd-list li {
+	position: relative;
+
+	font-size: 16px;
+	padding: 10px 10px 10px 53px;
+}
+#mwe-rwd-list i {
+	display: none;
+	width: 16px;
+	height: 16px;
+
+	background-repeat: no-repeat;
+
+}
+#mwe-rwd-list li:hover i {
+	display: inline-block;
+}
+#mwe-rwd-list .mwe-rwd-handle {
+	position: absolute;
+	left: 25px;
+	top: 12px;
+
+	background-image: url('../icons/move.svg');
+}
+#mwe-rwd-list .mwe-rwd-trash {
+	position: relative;
+	top: 2px;
+	left: 12px;
+	background-image: url('../icons/delete.svg');
+}
+
+
 
 /* Left column - action buttons */
 #mwe-rwd-actions {
@@ -127,4 +170,57 @@
 }
 #mwe-rwd-clear {
 	flex: 1;
+}
+
+/* Rigth column - lang field */
+#mwe-rwd-lang-field label {
+	font-size: 17px;
+}
+#mwe-rwd-lang {
+	margin-top: 12px;
+}
+
+/* Rigth column - generator buttons group */
+#mwe-rwd-generators-field {
+	margin-top: 28px;
+
+	font-size: 16px;
+	line-height: 1.5;
+	color: #a2a9b1;
+}
+#mwe-rwd-generators-field h4 {
+	font-family: HelveticaNeue;
+	font-weight: bold;
+	color: black;
+}
+
+#mwe-rwd-generator-buttons {
+	display: flex;
+	flex-direction: column;
+}
+#mwe-rwd-generator-buttons .oo-ui-buttonWidget {
+	margin-top: 16px;
+	margin-right: 0;
+}
+#mwe-rwd-generator-buttons .oo-ui-buttonWidget > .oo-ui-buttonElement-button {
+	width: 100%;
+	height: 48px;
+	font-size: 16px;
+	text-align: left;
+	padding-left: 70px;
+	line-height: 1.6;
+	font-weight: normal;
+}
+#mwe-rwd-generator-buttons .oo-ui-iconElement-icon {
+	width: 32px !important;
+	background-repeat: no-repeat;
+}
+.oo-ui-icon-ll-list {
+	background-image: url('../icons/ll-mini.svg');
+}
+.oo-ui-icon-ll-nearby {
+	background-image: url('../icons/explore.svg');
+}
+.oo-ui-icon-ll-wmcategory {
+	background-image: url('../icons/wikipedia.svg');
 }

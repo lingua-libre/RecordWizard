@@ -63,19 +63,22 @@
 	"mwe-recwiz-gender-male": "Male",
 	"mwe-recwiz-gender-female": "Female",
 	"mwe-recwiz-gender-other": "Other",
-	
+
 	"mwe-recwiz-details-title": "List of words to record",
-	"mwe-recwiz-details-lang": "Record language",
+	"mwe-recwiz-details-placeholder": "Type here the word to record",
+	"mwe-recwiz-details-help": "To differentiate between two homographs, specify the meaning in parentheses eg: live (verb, to live) vs. live (adj, broadcasting in real time)",
+	"mwe-recwiz-details-lang": "You record words in:",
 	"mwe-recwiz-details-wordlist": "List of the words to record",
 	"mwe-recwiz-details-randomise": "Shuffle list",
 	"mwe-recwiz-details-addwords": "Type a word and press <Enter> (or several words using # as a separator)",
 	"mwe-recwiz-details-clear": "Clear",
 	"mwe-recwiz-details-deduplicate": "Remove words already recorded",
-	"mwe-recwiz-details-generators": "No idea? Try out a word generator",
+	"mwe-recwiz-details-inspiration": "Need inspiration?",
+	"mwe-recwiz-details-generators": "Try out a word generator",
 	"mwe-recwiz-details-noword": "No words selected",
 	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|word|words}}",
 
-	"mwe-recwiz-generator-nearby": "Nearby items",
+	"mwe-recwiz-generator-nearby": "Nearby",
 	"mwe-recwiz-generator-list": "Local list",
 	"mwe-recwiz-generator-wmcategory": "Wikimedia Category",
 
