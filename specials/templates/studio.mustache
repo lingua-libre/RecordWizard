@@ -1,0 +1,105 @@
+<h3>{{_ "mwe-recwiz-studio-title"}}</h3>
+<i id="mwe-rws-shortcuts"></i>
+<div class="mwe-rw-section-group mwe-rws-audio"><!--  mwe-rws-video mwe-rws-play -->
+	<section>
+		<ul id="mwe-rws-list">
+			<li class="mwe-rws-stashed">
+				<span>Item 1</span>
+				<i class="mwe-rws-play"></i>
+				<i class="mwe-rws-replay"></i>
+			</li>
+			<li class="mwe-rws-stashed mwe-rws-selected">
+				<span>Item 2</span>
+				<i class="mwe-rws-play"></i>
+				<i class="mwe-rws-replay"></i>
+			</li>
+			<li class="mwe-rws-stashed">
+				<span>Item 3</span>
+				<i class="mwe-rws-play"></i>
+				<i class="mwe-rws-replay"></i>
+			</li>
+			<li class="mwe-rws-stashing">
+				<span>Item 4</span>
+				<i class="mwe-rws-play"></i>
+				<i class="mwe-rws-replay"></i>
+			</li>
+			<li class="mwe-rws-selected">
+				<span>Item 5</span>
+				<i class="mwe-rws-play"></i>
+				<i class="mwe-rws-replay"></i>
+			</li>
+			<li>
+				<span>Item 6 : Lorem Elsass ipsum mamsell morbi mollis habitant et Racing. Verdammi commodo tellus ftomi! ante Oberschaeffolsheim picon bière amet dolor schpeck  Gal ! Huguette leo so sed varius dignissim</span>
+				<i class="mwe-rws-play"></i>
+				<i class="mwe-rws-replay"></i>
+			</li>
+			<li>
+				<span>Item 7</span>
+				<i class="mwe-rws-play"></i>
+				<i class="mwe-rws-replay"></i>
+			</li>
+			<li>
+				<span>Item 8</span>
+				<i class="mwe-rws-play"></i>
+				<i class="mwe-rws-replay"></i>
+			</li>
+			<li>
+				<span>Item 9</span>
+				<i class="mwe-rws-play"></i>
+				<i class="mwe-rws-replay"></i>
+			</li>
+			<li>
+				<span>Item 10</span>
+				<i class="mwe-rws-play"></i>
+				<i class="mwe-rws-replay"></i>
+			</li>
+			<li>
+				<span>Item 11</span>
+				<i class="mwe-rws-play"></i>
+				<i class="mwe-rws-replay"></i>
+			</li>
+			<li>
+				<span>Item 12</span>
+				<i class="mwe-rws-play"></i>
+				<i class="mwe-rws-replay"></i>
+			</li>
+		</ul>
+	</section>
+	<section>
+		<div id="mwe-rws-info-audio" class="mwe-rws-info">
+			{{&_ "mwe-recwiz-studio-info-audio" "<i></i>"}}
+		</div>
+		<div id="mwe-rws-info-video" class="mwe-rws-info">
+			{{&_ "mwe-recwiz-studio-info-video" "<i></i>"}}
+		</div>
+		<div id="mwe-rws-core">
+			<div id="mwe-rws-itembox">
+				<div id="mwe-rws-item">Item 1</div>
+				{{& studio.skip}}
+			</div>
+			<video src="./tty.webm" controls></video>
+		</div>
+		<div id="mwe-rws-actions">
+			{{& studio.record}}
+			<ul id="mwe-rws-vumeter">
+				<li class="mwe-rws-vu-active"></li>
+				<li class="mwe-rws-vu-active"></li>
+				<li class="mwe-rws-vu-active"></li>
+				<li class="mwe-rws-vu-active"></li>
+				<li class="mwe-rws-vu-active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<div id="mwe-rws-recording"></div>
+			<div id="mwe-rws-timer">00:00</div>
+		</div>
+	</section>
+</div>

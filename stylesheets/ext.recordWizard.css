@@ -102,6 +102,7 @@ body.mw-special-RecordWizard #contentHeading {
 }
 .mwe-rw-content {
     display: none;
+    position: relative;
 }
 .mwe-rw-content.active {
     display: block;
@@ -196,10 +197,20 @@ body.mw-special-RecordWizard #contentHeading {
     margin-right: 26px;
 }
 #mwe-rw-next .oo-ui-buttonElement-button {
-padding-right: 2.64285714em;
-padding-left: 0.85714286em;
+    padding-right: 2.64285714em;
+    padding-left: 0.85714286em;
 }
 #mwe-rw-next .oo-ui-iconElement-icon {
     left: unset; /* flip standard positionning of the icon */
     right: 0.78571429em;
+}
+
+/* Animations */
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(359deg);
+    }
 }

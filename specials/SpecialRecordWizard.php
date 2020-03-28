@@ -21,10 +21,10 @@ class I18nTemplateParser extends TemplateParser {
 				'fileext' => '.mustache',
 				'helpers' => array(
 					'_' => function( $msg ) {
-						return wfMessage( $msg )->plain();
+						return wfMessage( ...$msg )->plain();
 					},
 					'__' => function( $msg ) {
-						return wfMessage( $msg )->parse();
+						return wfMessage( ...$msg )->parse();
 					},
 				),
 			]
@@ -356,7 +356,7 @@ class SpecialRecordWizard extends SpecialPage {
 		    [
 		        'wgExtensionAssetsPath' => $wgExtensionAssetsPath,
 				'nav' => [
-					'cancelButton' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rw-cancel', 'label' => wfMessage( 'mwe-recwiz-cancel' )->plain(), 'framed' => false  ] ),
+					'cancelButton' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rw-cancel', 'label' => wfMessage( 'mwe-recwiz-cancel' )->plain(), 'framed' => false ] ),
 					'prevButton' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rw-prev', 'label' => wfMessage( 'mwe-recwiz-previous' )->plain(), 'flags' => [ 'progressive' ], 'framed' => false, 'icon' => 'previous' ] ),
 					'nextButton' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rw-next', 'label' => wfMessage( 'mwe-recwiz-next' )->plain(), 'flags' => [ 'progressive', 'primary' ], 'icon' => 'next' ] ),
 				],
@@ -377,6 +377,10 @@ class SpecialRecordWizard extends SpecialPage {
 					'gen1' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-generator-list', 'label' => wfMessage( 'mwe-recwiz-generator-list' )->plain(), 'icon' => 'll-list' ] ),
 					'gen2' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-generator-nearby', 'label' => wfMessage( 'mwe-recwiz-generator-nearby' )->plain(), 'icon' => 'll-nearby' ] ),
 					'gen3' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-generator-wmcategory', 'label' => wfMessage( 'mwe-recwiz-generator-wmcategory' )->plain(), 'icon' => 'll-wmcategory' ] ),
+				],
+				'studio' => [
+					'skip' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rws-skip', 'label' => wfMessage( 'mwe-recwiz-studio-skip' )->plain(), 'icon' => 'next', 'framed' => false ] ),
+					'record' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rws-record', 'invisibleLabel' => true, 'icon' => 'll-record', 'flags' => [ 'primary', 'progressive' ] ] ),
 				]
 		    ]
 		);

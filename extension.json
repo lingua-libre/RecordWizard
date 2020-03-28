@@ -96,8 +96,7 @@
                 "stylesheets/ext.tutorial.css",
                 "stylesheets/ext.locutor.css",
                 "stylesheets/ext.details.css",
-                "stylesheets/ext.audiostudio.css",
-                "stylesheets/ext.videostudio.css",
+                "stylesheets/ext.studio.css",
                 "stylesheets/ext.publish.css"
             ]
         },
