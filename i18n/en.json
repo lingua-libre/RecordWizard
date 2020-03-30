@@ -97,6 +97,8 @@
 	"mwe-recwiz-videostudio-currentlyrecording": "Currently recording:",
 	"mwe-recwiz-videostudio-willstart": "Recording of \"$1\" will start in:",
 
+	"mwe-recwiz-publish-title": "Publication",
+	"mwe-recwiz-publish-info": "Check your records before starting their publication.",
 	"mwe-recwiz-publish-play": "Play",
 	"mwe-recwiz-publish-remove": "Remove",
 	"mwe-recwiz-publish-areyousure": "Are you sure to remove this record?",

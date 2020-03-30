@@ -1,0 +1,77 @@
+<h3>{{_ "mwe-recwiz-publish-title"}}</h3>
+<div class="mwe-rw-section-group"><!--  mwe-rws-video mwe-rws-play -->
+	<section>
+		<ul id="mwe-rwp-list" class="mwe-rw-list">
+			<li>
+				{{& publish.cb1}}
+				<label for="mwe-rwp-cb1-input">Item 1</label>
+				<i class="mwe-rwp-play"></i>
+			</li>
+			<li>
+				{{& publish.cb2}}
+				<span>Item 2</span>
+				<i class="mwe-rwp-play"></i>
+			</li>
+			<li>
+				{{& publish.cb3}}
+				<span>Item 3</span>
+				<i class="mwe-rwp-play"></i>
+			</li>
+			<li>
+				{{& publish.cb4}}
+				<span>Item 4</span>
+				<i class="mwe-rwp-play"></i>
+			</li>
+			<li class="mwe-rwp-selected">
+				<span>Item 5</span>
+				<i class="mwe-rwp-play"></i>
+			</li>
+			<li>
+				<span>Item 6 : Lorem Elsass ipsum mamsell morbi mollis habitant et Racing. Verdammi commodo tellus ftomi! ante Oberschaeffolsheim picon bière amet dolor schpeck  Gal ! Huguette leo so sed varius dignissim</span>
+				<i class="mwe-rwp-play"></i>
+			</li>
+			<li>
+				<span>Item 7</span>
+				<i class="mwe-rwp-play"></i>
+			</li>
+			<li>
+				<span>Item 8</span>
+				<i class="mwe-rwp-play"></i>
+			</li>
+			<li>
+				<span>Item 9</span>
+				<i class="mwe-rwp-play"></i>
+			</li>
+			<li>
+				<span>Item 10</span>
+				<i class="mwe-rwp-play"></i>
+			</li>
+			<li>
+				<span>Item 11</span>
+				<i class="mwe-rwp-play"></i>
+			</li>
+			<li>
+				<span>Item 12</span>
+				<i class="mwe-rwp-play"></i>
+			</li>
+		</ul>
+	</section>
+	<section>
+		<div id="mwe-rwp-info" class="mwe-rw-info">
+			{{&_ "mwe-recwiz-publish-info"}}
+		</div>
+		<div id="mwe-rwp-core" class="mwe-rw-core">
+			<div id="mwe-rwp-itembox" class="mwe-rw-itembox">
+				{{& publish.prev}}
+				<div id="mwe-rwp-item" class="mwe-rw-item">Item 5</div>
+				{{& publish.next}}
+			</div>
+			<audio src="./tty.ogg" controls></audio>
+			<!--<video src="./tty.webm" controls></video>-->
+		</div>
+		<div id="mwe-rwp-actions" class="mwe-rw-actions">
+			{{& publish.progress}}
+			<div id="mwe-rwp-counter">999 / 999</div>
+		</div>
+	</section>
+</div>

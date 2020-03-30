@@ -90,6 +90,8 @@
 	"mwe-recwiz-videostudio-endofthelist": "Message displayed in the video studio when the user has reached the end of the list of words to record.",
 	"mwe-recwiz-videostudio-currentlyrecording": "Message displayed in the video studio when the video recorder is running, just above the word being recorded.",
 	"mwe-recwiz-videostudio-willstart": "Message displayed between two recordings in the video studio. $1 represents the next word to record.",
+	"mwe-recwiz-publish-title": "Title of the publish step.",
+	"mwe-recwiz-studio-info": "Informational message at the top of the publish step.",
 	"mwe-recwiz-publish-play": "Label of a tooltip over a button, which is used to start the listening of a record.\n{{Identical|Play}}",
 	"mwe-recwiz-publish-remove": "Label of a tooltip over a button, which is used to remove a record.\n{{Identical|Remove}}",
 	"mwe-recwiz-publish-areyousure": "Text inside a popup, which ask the user for a confirmation before removing a record.",
