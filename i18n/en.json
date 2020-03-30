@@ -83,15 +83,15 @@
 	"mwe-recwiz-generator-wmcategory": "Wikimedia Category",
 
 	"mwe-recwiz-studio-title": "Studio",
-	"mwe-recwiz-studio-info-audio": "Click on$1bellow then read the word aloud.",
-	"mwe-recwiz-studio-info-video": "Click on $1 bellow then say the word in sign language",
+	"mwe-recwiz-studio-info-audio": "Click on $1 below, then read the word aloud.",
+	"mwe-recwiz-studio-info-video": "Click on $1 below, then say the word in sign language",
 	"mwe-recwiz-studio-skip": "Skip",
 	"mwe-recwiz-studio-input-placeholder": "Add a new word",
 	"mwe-recwiz-studio-uploadcount": "$1 of $2 {{PLURAL:$2|sound|sounds}} uploaded",
 
 	"mwe-recwiz-videostudio-webcamaccess": "Please allow Lingua Libre to access your webcam.",
 	"mwe-recwiz-videostudio-ready": "The video recorder is ready!",
-	"mwe-recwiz-videostudio-clicktostart": "Clic the button below to start.",
+	"mwe-recwiz-videostudio-clicktostart": "Click the button below to start.",
 	"mwe-recwiz-videostudio-stopped": "The video recorder has been stopped.",
 	"mwe-recwiz-videostudio-endofthelist": "You have reached the end of the list!",
 	"mwe-recwiz-videostudio-currentlyrecording": "Currently recording:",
