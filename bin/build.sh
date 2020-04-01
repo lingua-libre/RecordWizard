@@ -7,3 +7,5 @@ for f in lib/lingua-recorder/*.js ; do
     filename=$(basename "$f") ;
     echo "mediaWiki.recordWizard.libs.${filename%.*} = ${filename%.*};" >> $f ;
 done
+
+cp -v node_modules/vue/dist/vue.min.js lib/ ;

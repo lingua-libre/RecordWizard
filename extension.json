@@ -81,6 +81,7 @@
                 "mediawiki.util",
                 "ext.recordWizard.base",
                 "ext.recordWizard.styles",
+                "ext.recordWizard.components",
                 "ext.recordWizard.upload",
                 "ext.recordWizard.controller"
             ]
@@ -165,6 +166,11 @@
                 "mwe-recwiz-error-nowiki"
             ]
         },
+        "ext.recordWizard.vuejs":{
+            "scripts": [
+                "lib/vue.min.js"
+            ]
+        },
         "ext.recordWizard.components":{
             "scripts": [
                 "modules/layout/mw.recordWizard.component.ooui-button.js",
@@ -173,6 +179,9 @@
                 "modules/layout/mw.recordWizard.component.ooui-dropdown.js",
                 "modules/layout/mw.recordWizard.component.ooui-progressbar.js",
                 "modules/layout/mw.recordWizard.component.ooui-textinput.js"
+            ],
+            "dependencies": [
+                "ext.recordWizard.vuejs"
             ]
         },
         "ext.recordWizard.layout":{

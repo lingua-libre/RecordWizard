@@ -3,6 +3,7 @@
 node_modules
 vendor
 *.lock
+package-lock.json
 lib/
 .ftpconfig
 .ftpignore
