@@ -12,28 +12,7 @@
 	 * @constructor
 	 * @param  {Object} config Configuration options
 	 */
-	rw.RecordWizard = function ( config ) {
-
-		// Shortcut for local references
-		rw.config = config;
-		this.steps = {};
-		this.api = new mw.Api();
-
-		this.createInterface();
-	};
-
-	/**
-	 * Load the first step.
-	 */
-	rw.RecordWizard.prototype.createInterface = function () {
-		this.initialiseSteps();
-		$( '#mwe-rw-spinner' ).hide();
-	};
-
-	/**
-	 * Initialise each steps of the process.
-	 */
-	rw.RecordWizard.prototype.initialiseSteps = function () {
+	rw.RecordWizard = function () {
 		rw.vue.sidebar.$mount( '#mwe-rw-steps' );
 		rw.vue.navigation.$mount( '#mwe-rw-navigation' );
 
@@ -42,12 +21,14 @@
 		rw.vue.details.$mount( '#mwe-rw-details' );
 		rw.vue.studio.$mount( '#mwe-rw-studio' );
 		rw.vue.publish.$mount( '#mwe-rw-publish' );
+
+		// TODO: reimplement the spinner while the RecordWizard is loading
 	};
 
 	$( function () {
 		// show page.
 		rw.requestQueue = new rw.RequestQueue();
-		rw.recordWizard = new rw.RecordWizard( mw.config.get( 'RecordWizardConfig' ) );
+		rw.recordWizard = new rw.RecordWizard();
 	} );
 
 }( mediaWiki, mediaWiki.recordWizard, jQuery ) );

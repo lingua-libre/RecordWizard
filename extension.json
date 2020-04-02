@@ -83,8 +83,7 @@
                 "ext.recordWizard.styles",
                 "ext.recordWizard.store",
                 "ext.recordWizard.vues",
-                "ext.recordWizard.upload",
-                "ext.recordWizard.controller"
+                "ext.recordWizard.upload"
             ]
         },
         "ext.recordWizard.base": {
