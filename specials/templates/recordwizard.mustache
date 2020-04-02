@@ -1,11 +1,11 @@
 <h2 id="mwe-rw-title">Enregistrer une voix</h2>
 <div id="mwe-rw">
 	<ul id="mwe-rw-steps">
-		<li><span class="mwe-rw-step-marker">1</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-tutorial"}}</li>
-		<li><span class="mwe-rw-step-marker">2</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-locutor"}}</li>
-		<li class="active"><span class="mwe-rw-step-marker">3</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-details"}}</li>
-		<li><span class="mwe-rw-step-marker">4</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-studio"}}</li>
-		<li><span class="mwe-rw-step-marker">5</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-publish"}}</li>
+		<li :class="step === 'tutorial' ? 'active' : null"><span class="mwe-rw-step-marker">1</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-tutorial"}}</li>
+		<li :class="step === 'locutor' ? 'active' : null"><span class="mwe-rw-step-marker">2</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-locutor"}}</li>
+		<li :class="step === 'details' ? 'active' : null"><span class="mwe-rw-step-marker">3</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-details"}}</li>
+		<li :class="step === 'studio' ? 'active' : null"><span class="mwe-rw-step-marker">4</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-studio"}}</li>
+		<li :class="step === 'publish' ? 'active' : null"><span class="mwe-rw-step-marker">5</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-publish"}}</li>
 	</ul>
 
 	<div id="mwe-rw-main">

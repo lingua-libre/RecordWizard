@@ -34,6 +34,9 @@
 	 * Initialise each steps of the process.
 	 */
 	rw.RecordWizard.prototype.initialiseSteps = function () {
+		rw.vue.sidebar.$mount( '#mwe-rw-steps' );
+		rw.vue.navigation.$mount( '#mwe-rw-navigation' );
+
 		rw.vue.tutorial.$mount( '#mwe-rw-tutorial' );
 		rw.vue.locutor.$mount( '#mwe-rw-locutor' );
 		rw.vue.details.$mount( '#mwe-rw-details' );

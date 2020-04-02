@@ -7,6 +7,7 @@
 	 rw.vue.sidebar = new Vue( {
 		 /* Data */
 		 data: {
+			 step: 'tutorial'
 		 },
 
 		 /* Hooks */
@@ -25,7 +26,7 @@
 
 		 /* Methods */
 		 computed: {
-
+			 
 		 },
 		 methods: {
 
