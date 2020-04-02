@@ -11,11 +11,11 @@
 	<div id="mwe-rw-main">
 		<div id="mwe-rw-content">
 			<div id="mwe-rw-spinner" class="mwe-rw-content mwe-rw-spinner"><img src="{{wgExtensionAssetsPath}}/RecordWizard/images/Spinner_font_awesome.svg" width="40" height="40" /></div>
-			<div class="mwe-rw-content" id="mwe-rw-tutorial">{{>tutorial}}</div>
-			<div class="mwe-rw-content" id="mwe-rw-locutor">{{>locutor}}</div>
-			<div class="mwe-rw-content" id="mwe-rw-details">{{>details}}</div>
-			<div class="mwe-rw-content active" id="mwe-rw-studio">{{>studio}}</div>
-			<div class="mwe-rw-content" id="mwe-rw-publish">{{>publish}}</div>
+			<div class="mwe-rw-content" id="mwe-rw-tutorial" v-if="step === 'tutorial'">{{>tutorial}}</div>
+			<div class="mwe-rw-content" id="mwe-rw-locutor" v-if="step === 'locutor'">{{>locutor}}</div>
+			<div class="mwe-rw-content" id="mwe-rw-details" v-if="step === 'details'">{{>details}}</div>
+			<div class="mwe-rw-content" id="mwe-rw-studio" v-if="step === 'studio'">{{>studio}}</div>
+			<div class="mwe-rw-content" id="mwe-rw-publish" v-if="step === 'publish'">{{>publish}}</div>
 		</div>
 		<div id="mwe-rw-navigation">
 			{{&nav.cancelButton}}

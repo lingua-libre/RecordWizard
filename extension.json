@@ -81,7 +81,7 @@
                 "mediawiki.util",
                 "ext.recordWizard.base",
                 "ext.recordWizard.styles",
-                "ext.recordWizard.components",
+                "ext.recordWizard.vues",
                 "ext.recordWizard.upload",
                 "ext.recordWizard.controller"
             ]
@@ -168,7 +168,7 @@
         },
         "ext.recordWizard.vuejs":{
             "scripts": [
-                "lib/vue.min.js"
+                "lib/vue.js"
             ]
         },
         "ext.recordWizard.components":{
@@ -181,7 +181,25 @@
                 "modules/layout/mw.recordWizard.component.ooui-textinput.js"
             ],
             "dependencies": [
+                "oojs-ui",
                 "ext.recordWizard.vuejs"
+            ]
+        },
+        "ext.recordWizard.vues":{
+            "scripts": [
+                "modules/vue/mw.recordWizard.vue.js",
+                "modules/vue/mw.recordWizard.vue.mixins.js",
+                "modules/vue/mw.recordWizard.vue.sidebar.js",
+                "modules/vue/mw.recordWizard.vue.navigation.js",
+                "modules/vue/mw.recordWizard.vue.tutorial.js",
+                "modules/vue/mw.recordWizard.vue.locutor.js",
+                "modules/vue/mw.recordWizard.vue.details.js",
+                "modules/vue/mw.recordWizard.vue.studio.js",
+                "modules/vue/mw.recordWizard.vue.publish.js"
+            ],
+            "dependencies": [
+                "ext.recordWizard.vuejs",
+                "ext.recordWizard.components"
             ]
         },
         "ext.recordWizard.layout":{
@@ -212,7 +230,6 @@
                 "modules/ui/mw.recordWizard.ui.Publish.js"
             ],
             "dependencies": [
-                "oojs-ui",
                 "oojs-ui.styles.icons-media",
                 "oojs-ui.styles.icons-content",
                 "oojs-ui.styles.icons-wikimedia",

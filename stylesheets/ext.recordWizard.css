@@ -101,11 +101,7 @@ body.mw-special-RecordWizard #contentHeading {
     margin-bottom: 16px;
 }
 .mwe-rw-content {
-    display: none;
     position: relative;
-}
-.mwe-rw-content.active {
-    display: block;
 }
 .mwe-rw-content > * {
     padding-left: 35px;
