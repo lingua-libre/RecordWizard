@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sator"
+			"Sator",
+			"Joseba"
 		]
 	},
 	"recordWizard": "Itzulpen morroia",
@@ -22,17 +23,11 @@
 	"mwe-recwiz-restart": "Hitz gehiago grabatu",
 	"mwe-recwiz-tutorial-reopenpopup": "Popupa berriro ireki",
 	"mwe-recwiz-tutorial-activate": "Jarraitzeko, eman baimena mesedez zure mikrofonoa erabiltzeko",
-	"mwe-recwiz-tutorial-configure-top": "Probatu zure mikrofonoa:",
-	"mwe-recwiz-tutorial-configure-bottom": "Zure mikrofonoa konfiguratu behar baduzu, ikus [https://lingualibre.fr/wiki/Special:MyLanguage/Help:Configure_your_microphone this help page].",
+	"mwe-recwiz-tutorial-title": "Probatu zure mikrofonoa:",
 	"mwe-recwiz-tutorial-mictester-start": "Testarekin hasi",
 	"mwe-recwiz-tutorial-mictester-recording": "1. Esan zerbait",
 	"mwe-recwiz-tutorial-mictester-playing": "2. Entzun",
 	"mwe-recwiz-tutorial-mictester-waiting": "kargatzen",
-	"mwe-recwiz-tutorial-mictester-help1": "Prest zaudenean, goiko botoian klik egin probazko grabaketa egiteko.",
-	"mwe-recwiz-tutorial-mictester-help2": "Hitz bat ozenki ahoskatu, adibidez \"eguzkia\"",
-	"mwe-recwiz-tutorial-mictester-help3": "Zure grabazioa entzun ondo dagoela ziurtatzeko",
-	"mwe-recwiz-tutorial-mictester-help4": "Beharrezkoa balitz, egokitu zure mikrofonoaren konfigurazioa",
-	"mwe-recwiz-tutorial-mictester-help5": "Dena ondo badago, pasa zaitez hurrengo urratsera!",
 	"mwe-recwiz-locutor-profile": "Erabiliko den hiztunaren profila",
 	"mwe-recwiz-locutor-profilemain": "Zure hiztun nagusia",
 	"mwe-recwiz-locutor-profileother": "Beste hiztunak",
@@ -65,6 +60,7 @@
 	"mwe-recwiz-generator-wmcategory": "Wikimedia Kategoria",
 	"mwe-recwiz-studio-input-placeholder": "Hitz berri bat gehitu",
 	"mwe-recwiz-studio-uploadcount": "$2tik $1 {{PLURAL:$2|soinu}} igoak",
+	"mwe-recwiz-publish-title": "Argitalpen",
 	"mwe-recwiz-publish-play": "Erreproduzitu",
 	"mwe-recwiz-publish-remove": "Kendu",
 	"mwe-recwiz-publish-areyousure": "Ziur zaude grabaketa kendu nahi duzula?",
