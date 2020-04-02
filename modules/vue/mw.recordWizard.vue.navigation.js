@@ -2,34 +2,18 @@
 
 ( function ( mw, rw ) {
 	/**
-	 * The Navigation vue
-	 */
-	 rw.vue.navigation = new Vue( {
-		 /* Data */
-		 data: {
-		 },
-
-		 /* Hooks */
-		 created: function() {
-
-		 },
-		 mounted: function() {
-
-		 },
-		 beforeUpdate: function() {
-
-		 },
-		 updated: function() {
-
-		 },
 
 		 /* Methods */
-		 computed: {
-
-		 },
 		 methods: {
 
 		 }
 	 } );
+	* The Navigation vue
+	*/
+	rw.vue.navigation = new Vue( {
+		/* Data */
+		data: {
+			state: rw.store.state.data,
+		},
 
 }( mediaWiki, mediaWiki.recordWizard ) );

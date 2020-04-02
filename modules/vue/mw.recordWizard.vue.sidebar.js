@@ -7,30 +7,8 @@
 	 rw.vue.sidebar = new Vue( {
 		 /* Data */
 		 data: {
-			 step: 'tutorial'
+			 state: rw.store.state.data,
 		 },
-
-		 /* Hooks */
-		 created: function() {
-
-		 },
-		 mounted: function() {
-
-		 },
-		 beforeUpdate: function() {
-
-		 },
-		 updated: function() {
-
-		 },
-
-		 /* Methods */
-		 computed: {
-			 
-		 },
-		 methods: {
-
-		 }
 	 } );
 
 }( mediaWiki, mediaWiki.recordWizard ) );
