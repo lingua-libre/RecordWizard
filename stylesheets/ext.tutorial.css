@@ -13,6 +13,12 @@
 	margin-top: 20px;
 	margin-right: 32px;
 }
+#mwe-rw-tutorial img,
+#mwe-rwt-reopenpopup {
+	display: block;
+	margin:auto;
+	text-align: center;
+}
 #mwe-rw-tutorial h4 {
 	margin-bottom: 6px;
 
@@ -56,12 +62,6 @@
 #mwe-rwt-testrecord,
 #mwe-rwt-testplay,
 #mwe-rwt-testwait {
-	display: none;
-}
-#mwe-rwt-testbutton.active,
-#mwe-rwt-testrecord.active,
-#mwe-rwt-testplay.active,
-#mwe-rwt-testwait.active {
 	display: block;
 	text-align: center;
 	margin-top: 30px;

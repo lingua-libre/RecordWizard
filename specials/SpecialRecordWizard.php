@@ -355,9 +355,6 @@ class SpecialRecordWizard extends SpecialPage {
 		    'recordwizard',
 		    [
 		        'wgExtensionAssetsPath' => $wgExtensionAssetsPath,
-				'tutorial' => [
-					'testButton' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwt-testbutton', 'label' => wfMessage( 'mwe-recwiz-tutorial-mictester-start' )->plain(), 'classes' => [ 'active' ] ] )
-				],
 				'locutor' => [
 					//'warning' => new OOUI\MessageWidget( [ 'infusable' => true, 'type' => 'warning', 'label' => wfMessage( 'mwe-recwiz-locutor-warning' )->plain() ] ),
 					'profile' => new OOUI\DropdownInputWidget( [ 'infusable' => true, 'id' => 'mwe-rwl-profile', 'inputId' => 'mwe-rwl-profile-input' ] ),

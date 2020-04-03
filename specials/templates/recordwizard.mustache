@@ -20,7 +20,7 @@
 		<div id="mwe-rw-navigation">
 			<ooui-button id="mwe-rw-cancel" label="{{_ "mwe-recwiz-cancel"}}" :framed="false" @click="cancel()"></ooui-button>
 			<ooui-button id="mwe-rw-prev" label="{{_ "mwe-recwiz-previous"}}" flags="progressive" :framed="false" icon="previous" @click="prev()" v-show="state.step !== 'tutorial'"></ooui-button>
-			<ooui-button id="mwe-rw-next" label="{{_ "mwe-recwiz-next"}}" flags="progressive primary" icon="next" @click="next()"></ooui-button>
+			<ooui-button id="mwe-rw-next" label="{{_ "mwe-recwiz-next"}}" flags="progressive primary" icon="next" @click="next()" v-show="state.isBrowserReady"></ooui-button>
 		</div>
 	</div>
 </div>

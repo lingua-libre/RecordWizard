@@ -8,9 +8,7 @@
 	var StateStore = function () {
 		this.data = {
 			step: 'tutorial',
-			patate: {
-				chou: 13,
-			}
+			isBrowserReady: false,
 		};
 	};
 
