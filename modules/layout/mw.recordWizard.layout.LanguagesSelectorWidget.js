@@ -18,7 +18,6 @@
 		// Dialog box
 		this.windowManager = new OO.ui.WindowManager();
 		this.dialog = new rw.layout.LanguagesSelectorWidget.Dialog();
-		window.languages = this.dialog;
 		$( 'body' ).append( this.windowManager.$element );
 		this.windowManager.addWindows( [ this.dialog ] );
 
@@ -56,6 +55,8 @@
 
 			this.windowManager.openWindow( this.dialog, { label: item.getLabel(), title: item.getLabel(), callback: this.onQualifierSelected.bind( this, lang ) } );
 		}
+
+		this.emit( 'update', this.getValue() );
 	};
 
 	rw.layout.LanguagesSelectorWidget.prototype.onQualifierSelected = function ( lang, qualifiers ) {
@@ -65,6 +66,8 @@
 	rw.layout.LanguagesSelectorWidget.prototype.onRemove = function ( item ) {
 		var lang = item.getData();
 		delete this.languages[ lang ];
+
+		this.emit( 'update', this.getValue() );
 	};
 
 	rw.layout.LanguagesSelectorWidget.Dialog = function ( config ) {
@@ -87,10 +90,10 @@
 	rw.layout.LanguagesSelectorWidget.Dialog.prototype.initialize = function () {
 		// TODO: get from config
 		var options = [
-			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-native' ), data: rw.config.items.langLevelNative },
-			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-good' ), data: rw.config.items.langLevelGood },
-			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-average' ), data: rw.config.items.langLevelAverage },
-			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-beginner' ), data: rw.config.items.langLevelBeginner }
+			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-native' ), data: rw.store.config.items.langLevelNative },
+			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-good' ), data: rw.store.config.items.langLevelGood },
+			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-average' ), data: rw.store.config.items.langLevelAverage },
+			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-beginner' ), data: rw.store.config.items.langLevelBeginner }
 		];
 
 		rw.layout.LanguagesSelectorWidget.Dialog.parent.prototype.initialize.apply( this, arguments );

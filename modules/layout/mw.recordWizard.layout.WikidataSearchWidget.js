@@ -113,6 +113,7 @@
 	rw.layout.WikidataSearchWidget.prototype.onLookupMenuItemChoose = function ( item ) {
 		this.setValue( item.getLabel() );
 		this.setQid( item.getData() );
+		this.emit( 'change', item.getData() )
 		// return OO.ui.mixin.LookupElement.prototype.onLookupMenuItemChoose.call( this, item );
 	};
 

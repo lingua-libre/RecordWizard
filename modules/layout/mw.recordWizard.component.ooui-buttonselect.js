@@ -51,14 +51,6 @@
 			}
 		},
 		watch: {
-			options: {
-				handler: function() {
-					this.opt = JSON.parse( JSON.stringify( this.options ) );
-
-					this.setItems();
-				},
-				deep: true
-			},
 			value: function() {
 				this.$select.selectItemByData( this.value );
 			},
