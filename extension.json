@@ -170,7 +170,8 @@
             "scripts": [
                 "modules/store/mw.recordWizard.store.js",
                 "modules/store/mw.recordWizard.store.config.js",
-                "modules/store/mw.recordWizard.store.state.js"
+                "modules/store/mw.recordWizard.store.state.js",
+                "modules/store/mw.recordWizard.store.record.js"
             ]
         },
         "ext.recordWizard.vuejs":{
@@ -185,7 +186,9 @@
                 "modules/layout/mw.recordWizard.component.ooui-checkbox.js",
                 "modules/layout/mw.recordWizard.component.ooui-dropdown.js",
                 "modules/layout/mw.recordWizard.component.ooui-progressbar.js",
-                "modules/layout/mw.recordWizard.component.ooui-textinput.js"
+                "modules/layout/mw.recordWizard.component.ooui-textinput.js",
+                "modules/layout/mw.recordWizard.component.ll-langselector.js",
+                "modules/layout/mw.recordWizard.component.ll-wdsearch.js"
             ],
             "dependencies": [
                 "oojs-ui",
@@ -213,7 +216,22 @@
                 "mwe-recwiz-error-mediastream-notallowed",
                 "mwe-recwiz-error-mediastream-notfound",
                 "mwe-recwiz-error-mediastream-technical",
-                "mwe-recwiz-error-mediastream-unknow"
+                "mwe-recwiz-error-mediastream-unknow",
+                "mwe-recwiz-locutor-profilemain",
+                "mwe-recwiz-locutor-profileother",
+                "mwe-recwiz-locutor-profilenew",
+                "mwe-recwiz-gender-male",
+                "mwe-recwiz-gender-female",
+                "mwe-recwiz-gender-other",
+                "mwe-recwiz-locutor-licensecontent",
+                "mwe-recwiz-locutor-languages",
+                "mwe-recwiz-locutor-languagedialog",
+                "mwe-recwiz-locutor-languagelevel",
+                "mwe-recwiz-locutor-languagelevel-native",
+                "mwe-recwiz-locutor-languagelevel-good",
+                "mwe-recwiz-locutor-languagelevel-average",
+                "mwe-recwiz-locutor-languagelevel-beginner",
+                "mwe-recwiz-locutor-languagelocation"
             ]
         },
         "ext.recordWizard.layout":{
@@ -293,9 +311,6 @@
                 "mwe-recwiz-locutor-license",
                 "mwe-recwiz-locutor-licensecontent",
                 "mwe-recwiz-locutor-gender",
-                "mwe-recwiz-gender-male",
-                "mwe-recwiz-gender-female",
-                "mwe-recwiz-gender-other",
                 "mwe-recwiz-details-lang",
                 "mwe-recwiz-details-wordlist",
                 "mwe-recwiz-details-randomise",

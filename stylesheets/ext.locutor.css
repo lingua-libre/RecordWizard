@@ -2,3 +2,9 @@
 #mwe-rw-locutor section:last-child {
 	padding-bottom: 35px;
 }
+
+#mwe-rwl-profile .oo-ui-menuOptionWidget:last-child {
+	font-style: italic;
+	font-weight: 600;
+	padding-left: 0.857143em;
+}

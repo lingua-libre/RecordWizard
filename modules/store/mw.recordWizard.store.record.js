@@ -30,20 +30,8 @@
 		this.data.metadata.locutor.name = locutor.name;
 		this.data.metadata.locutor.qid = locutor.qid;
 		this.data.metadata.locutor.main = locutor.main || false;
-		this.data.metadata.locutor.new = locutor.new || false;
+		this.data.metadata.locutor.new = locutor.new || locutor.qid === null;
 	};
-/*
-	RecordStore.prototype.setLocutor = function ( locutor ) {
-		locutor.gender = locutor.gender || '';
-		locutor.languages = locutor.languages || {};
-		locutor.location = locutor.location || '';
-		locutor.name = locutor.name || '';
-		locutor.qid = locutor.qid || '';
-		locutor.main = locutor.main || false;
-		locutor.new = locutor.new || locutor.qid === null;
-
-		Vue.set( this.data.metadata, 'locutor', locutor);
-	};*/
 
 
 	rw.store.record = new RecordStore();
