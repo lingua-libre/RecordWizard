@@ -8,6 +8,7 @@
 	var StateStore = function () {
 		this.data = {
 			step: 'tutorial',
+			isFrozen: false,
 			isBrowserReady: false,
 		};
 	};
@@ -50,6 +51,14 @@
 				this.data.step = 'studio';
 				break;
 		}
+	};
+
+	StateStore.prototype.freeze = function () {
+		this.data.isFrozen = true;
+	};
+
+	StateStore.prototype.unfreeze = function () {
+		this.data.isFrozen = false;
 	};
 
 	rw.store.state = new StateStore();
