@@ -19,6 +19,7 @@
 				placeholder: this.placeholder,
 			} );
       		this.$input.on( 'change', this.$emit.bind( this, 'input' ) );
+      		this.$input.on( 'enter', this.$emit.bind( this, 'enter' ) );
 		},
 		watch: {
 			value: function() {
@@ -30,6 +31,7 @@
 		},
 		beforeDestroy: function() {
 			this.$input.off( 'change' );
+			this.$input.off( 'enter' );
 		}
 	} );
 

@@ -232,7 +232,8 @@
                 "mwe-recwiz-locutor-languagelevel-good",
                 "mwe-recwiz-locutor-languagelevel-average",
                 "mwe-recwiz-locutor-languagelevel-beginner",
-                "mwe-recwiz-locutor-languagelocation"
+                "mwe-recwiz-locutor-languagelocation",
+                "mwe-recwiz-details-placeholder"
             ]
         },
         "ext.recordWizard.layout":{

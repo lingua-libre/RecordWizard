@@ -24,7 +24,7 @@
 				options: this.opt,
 				value: this.value,
 			} );
-      		this.$dropdown.on( 'change', this.$emit.bind( this, 'input' ) );
+      		this.$dropdown.on( 'change', this.onChange.bind( this ) );
 		},
 		watch: {
 			options: {
@@ -40,6 +40,12 @@
 			},
 			disabled: function() {
 				this.$dropdown.setDisabled( this.disabled );
+			},
+		},
+		methods: {
+			onChange: function( newValue ) {
+				this.$emit( 'input', newValue );
+				this.$emit( 'change' );
 			},
 		},
 		beforeDestroy: function() {

@@ -356,11 +356,6 @@ class SpecialRecordWizard extends SpecialPage {
 		    [
 		        'wgExtensionAssetsPath' => $wgExtensionAssetsPath,
 				'details' => [
-					'wordInput' => new OOUI\TextInputWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-word', 'inputId' => 'mwe-rwd-word-input', 'placeholder' => wfMessage( 'mwe-recwiz-details-placeholder' )->plain() ] ),
-					'wordButton' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-add', 'invisibleLabel' => true, 'icon' => 'add', 'flags' => [ 'primary', 'progressive' ] ] ),
-					'clearButton' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-clear', 'label' => wfMessage( 'mwe-recwiz-details-clear' )->plain(), 'flags' => [ 'destructive' ] ] ),
-					'deduplicateButton' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-deduplicate', 'label' => wfMessage( 'mwe-recwiz-details-deduplicate' )->plain() ] ),
-					'lang' => new OOUI\DropdownInputWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-lang', 'inputId' => 'mwe-rwd-lang-input' ] ),
 					'gen1' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-generator-list', 'label' => wfMessage( 'mwe-recwiz-generator-list' )->plain(), 'icon' => 'll-list' ] ),
 					'gen2' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-generator-nearby', 'label' => wfMessage( 'mwe-recwiz-generator-nearby' )->plain(), 'icon' => 'll-nearby' ] ),
 					'gen3' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-generator-wmcategory', 'label' => wfMessage( 'mwe-recwiz-generator-wmcategory' )->plain(), 'icon' => 'll-wmcategory' ] ),

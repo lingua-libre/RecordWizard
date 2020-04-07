@@ -2,66 +2,20 @@
 <div class="mwe-rw-section-group">
 	<section>
 		<div id="mwe-rwd-input">
-			{{& details.wordInput}}
-			{{& details.wordButton}}
+			<ooui-textinput id="mwe-rwd-word" input-id="mwe-rwd-word-input" v-model="wordInputed" @enter="addWordFromInput" placeholder="{{__ "mwe-recwiz-details-placeholder"}}"></ooui-textinput>
+			<ooui-button id="mwe-rwd-add" :invisible-label="true" icon="add" flags="primary progressive" @keyup.enter="addWordFromInput"  @click="addWordFromInput"></ooui-button>
 			<div id="mwe-rwd-input-help">{{__ "mwe-recwiz-details-help"}}</div>
 		</div>
-		<ul id="mwe-rwd-list">
-			<li>
-				<i class="mwe-rwd-handle"></i>
-				<span>Item 1</span>
-				<i class="mwe-rwd-trash"></i>
-			</li>
-			<li>
-				<i class="mwe-rwd-handle"></i>
-				<span>Item 2</span>
-				<i class="mwe-rwd-trash"></i>
-			</li>
-			<li>
-				<i class="mwe-rwd-handle"></i>
-				<span>Item 3 : Lorem Elsass ipsum mamsell morbi mollis habitant et Racing. Verdammi commodo tellus ftomi! ante Oberschaeffolsheim picon bière amet dolor schpeck  Gal ! Huguette leo so sed varius dignissim</span>
-				<i class="mwe-rwd-trash"></i>
-			</li>
-			<li>
-				<i class="mwe-rwd-handle"></i>
-				<span>Item 4</span>
-				<i class="mwe-rwd-trash"></i>
-			</li>
-			<li>
-				<i class="mwe-rwd-handle"></i>
-				<span>Item 5</span>
-				<i class="mwe-rwd-trash"></i>
-			</li>
-			<li>
-				<i class="mwe-rwd-handle"></i>
-				<span>Item 6</span>
-				<i class="mwe-rwd-trash"></i>
-			</li>
-			<li>
-				<i class="mwe-rwd-handle"></i>
-				<span>Item 7</span>
-				<i class="mwe-rwd-trash"></i>
-			</li>
-			<li>
-				<i class="mwe-rwd-handle"></i>
-				<span>Item 8</span>
-				<i class="mwe-rwd-trash"></i>
-			</li>
-			<li>
-				<i class="mwe-rwd-handle"></i>
-				<span>Item 9</span>
-				<i class="mwe-rwd-trash"></i>
-			</li>
-		</ul>
+		<ll-draggablelist v-model="words" id="mwe-rwd-list"></ll-draggablelist>
 		<div id="mwe-rwd-actions">
-			{{& details.deduplicateButton}}
-			{{& details.clearButton}}
+			<ooui-button id="mwe-rwd-deduplicate" label="{{__ "mwe-recwiz-details-deduplicate"}}" @click="deduplicate()"></ooui-button>
+			<ooui-button id="mwe-rwd-clear" label="{{__ "mwe-recwiz-details-clear"}}" flags="destructive" @click="clear()"></ooui-button>
 		</div>
 	</section>
 	<section>
 		<div  id="mwe-rwd-lang-field">
 			<label for="mwe-rwd-lang-input">{{&__ "mwe-recwiz-details-lang"}}</label>
-			{{& details.lang}}
+			<ooui-dropdown id="mwe-rwd-lang" input-id="mwe-rwd-lang-input" :options="availableLanguages" v-model="metadata.language" @change="clear()"></ooui-dropdown>
 		</div>
 		<div id="mwe-rwd-generators-field">
 			<h4>{{&__ "mwe-recwiz-details-inspiration"}}</h4>

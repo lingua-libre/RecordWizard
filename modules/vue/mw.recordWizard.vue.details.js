@@ -9,6 +9,9 @@
 
 		 /* Data */
 		 data: {
+			 metadata: rw.store.record.data.metadata,
+			 words: rw.store.record.data.words,
+			 wordInputed: '',
 		 },
 
 		 /* Hooks */
@@ -27,10 +30,35 @@
 
 		 /* Methods */
 		 computed: {
+			 availableLanguages: function() {
+				 var qid,
+				 	languages = [];
 
+				for ( qid in this.metadata.locutor.languages ) {
+					languages.push( {
+						data: qid,
+						label: this.config.languages[ qid ].localname,
+					} );
+				}
+
+				return languages;
+			 },
 		 },
 		 methods: {
+			 clear: function() {
+				 this.words.splice( 0, this.words.length ); //to preserve the reference
+			 },
 
+			 addWordFromInput: function() {
+				 var i,
+				 	words = this.wordInputed.split( '#' );
+
+				 for ( i = 0; i < words.length; i++ ) {
+					 this.words.push( words[ i ] );
+				 }
+
+				 this.wordInputed = '';
+			 },
 		 }
 	 } );
 

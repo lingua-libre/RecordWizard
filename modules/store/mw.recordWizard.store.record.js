@@ -20,6 +20,7 @@
 					new: false,
 				},
 			},
+			words: [],
 		};
 	};
 
