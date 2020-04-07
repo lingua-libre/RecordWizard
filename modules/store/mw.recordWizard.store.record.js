@@ -8,8 +8,8 @@
 	var RecordStore = function () {
 		this.data = {
 			metadata: {
-				language: rw.store.config.savedLanguage,
-				license: rw.store.config.savedLicense,
+				language: rw.store.config.data.savedLanguage,
+				license: rw.store.config.data.savedLicense,
 				locutor: {
 					gender: '',
 					languages: {},

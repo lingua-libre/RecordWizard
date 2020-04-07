@@ -90,10 +90,10 @@
 	rw.layout.LanguagesSelectorWidget.Dialog.prototype.initialize = function () {
 		// TODO: get from config
 		var options = [
-			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-native' ), data: rw.store.config.items.langLevelNative },
-			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-good' ), data: rw.store.config.items.langLevelGood },
-			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-average' ), data: rw.store.config.items.langLevelAverage },
-			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-beginner' ), data: rw.store.config.items.langLevelBeginner }
+			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-native' ), data: rw.store.config.data.items.langLevelNative },
+			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-good' ), data: rw.store.config.data.items.langLevelGood },
+			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-average' ), data: rw.store.config.data.items.langLevelAverage },
+			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-beginner' ), data: rw.store.config.data.items.langLevelBeginner }
 		];
 
 		rw.layout.LanguagesSelectorWidget.Dialog.parent.prototype.initialize.apply( this, arguments );

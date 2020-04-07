@@ -172,6 +172,9 @@
                 "modules/store/mw.recordWizard.store.config.js",
                 "modules/store/mw.recordWizard.store.state.js",
                 "modules/store/mw.recordWizard.store.record.js"
+            ],
+            "dependencies": [
+                "mediawiki.api"
             ]
         },
         "ext.recordWizard.vuejs":{

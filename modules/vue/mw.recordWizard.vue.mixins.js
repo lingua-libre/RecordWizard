@@ -6,7 +6,7 @@
 	*/
 	rw.vue.step = {
 		data: {
-			config: rw.store.config,
+			config: rw.store.config.data,
 			state: rw.store.state.data,
 		},
 		created: function() {

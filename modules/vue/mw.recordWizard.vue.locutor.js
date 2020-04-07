@@ -12,9 +12,9 @@
 			 profiles: [],
 			 metadata: rw.store.record.data.metadata,
 			 genderOptions: [
-				 { data: rw.store.config.items.genderMale, label: mw.msg( 'mwe-recwiz-gender-male' ) },
-				 { data: rw.store.config.items.genderFemale, label: mw.msg( 'mwe-recwiz-gender-female' ) },
-				 { data: rw.store.config.items.genderOther, label: mw.msg( 'mwe-recwiz-gender-other' ) },
+				 { data: rw.store.config.data.items.genderMale, label: mw.msg( 'mwe-recwiz-gender-male' ) },
+				 { data: rw.store.config.data.items.genderFemale, label: mw.msg( 'mwe-recwiz-gender-female' ) },
+				 { data: rw.store.config.data.items.genderOther, label: mw.msg( 'mwe-recwiz-gender-other' ) },
 			 ],
 			 availableLanguages: [],
 			 availableLicenses: [],
@@ -40,7 +40,7 @@
 			this.profiles.push( { data: '+', label: mw.msg( 'mwe-recwiz-locutor-profilenew' ) } );
 
 			/* Fill all fields with the default locutor datas */
-			rw.store.record.setLocutor( rw.store.config.locutor );
+			rw.store.record.setLocutor( this.config.locutor );
 
 			/* Set available languages */
 			for ( code in this.config.languages ) {
