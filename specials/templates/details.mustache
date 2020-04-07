@@ -15,7 +15,7 @@
 	<section>
 		<div  id="mwe-rwd-lang-field">
 			<label for="mwe-rwd-lang-input">{{&__ "mwe-recwiz-details-lang"}}</label>
-			<ooui-dropdown id="mwe-rwd-lang" input-id="mwe-rwd-lang-input" :options="availableLanguages" v-model="metadata.language" @change="clear()"></ooui-dropdown>
+			<ooui-dropdown id="mwe-rwd-lang" input-id="mwe-rwd-lang-input" :options="availableLanguages" v-model="metadata.language" @change="onLanguageChange()"></ooui-dropdown>
 		</div>
 		<div id="mwe-rwd-generators-field">
 			<h4>{{&__ "mwe-recwiz-details-inspiration"}}</h4>
