@@ -9,7 +9,7 @@
 			placeholder: String,
 			disabled: { type: Boolean, default: false },
 			inputId: String,
-			options: { type: Array, default: [] },
+			options: { type: Array, default: function() { return []; } },
 		},
 		mounted: function() {
 			var i,

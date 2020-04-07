@@ -187,6 +187,7 @@
                 "modules/layout/mw.recordWizard.component.ooui-dropdown.js",
                 "modules/layout/mw.recordWizard.component.ooui-progressbar.js",
                 "modules/layout/mw.recordWizard.component.ooui-textinput.js",
+                "modules/layout/mw.recordWizard.component.ll-draggablelist.js",
                 "modules/layout/mw.recordWizard.component.ll-langselector.js",
                 "modules/layout/mw.recordWizard.component.ll-wdsearch.js"
             ],
@@ -237,6 +238,7 @@
         "ext.recordWizard.layout":{
             "scripts": [
                 "modules/layout/mw.recordWizard.layout.js",
+                "modules/layout/mw.recordWizard.layout.DraggableListWidget.js",
                 "modules/layout/mw.recordWizard.layout.LanguagesSelectorWidget.js",
                 "modules/layout/mw.recordWizard.layout.LicenseSelectorWidget.js",
                 "modules/layout/mw.recordWizard.layout.WordSelectorWidget.js",

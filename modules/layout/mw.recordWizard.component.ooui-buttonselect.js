@@ -5,7 +5,7 @@
 	Vue.component('ooui-buttonselect', {
 		template: '<div></div>',
 		props: {
-			options: { type: Array, default: [] },
+			options: { type: Array, default: function() { return []; } },
 			value: String,
 			disabled: { type: Boolean, default: false },
 			inputId: String,
