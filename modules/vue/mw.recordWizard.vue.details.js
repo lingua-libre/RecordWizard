@@ -76,23 +76,8 @@
 					}
 				}
 			 },
-			 addWords: function( words ) {
-				 var i;
-
-				 // Allow to add a single word
-				 if ( Array.isArray( words ) === false ) {
-					 words = [ words ];
-				 }
-
-				 for ( i = 0; i < words.length; i++ ) {
-				 	 // Avoid duplicate words in the list
-					 if ( this.words.indexOf( words[ i ] ) === -1 ) {
-						 this.words.push( words[ i ] );
-					 }
-				 }
-			 },
 			 addWordFromInput: function() {
-				 this.addWords( this.wordInputed.split( '#' ) );
+				 rw.store.record.addWords( this.wordInputed.split( '#' ) );
 				 this.wordInputed = '';
 			 },
 			 onLanguageChange: function() {
