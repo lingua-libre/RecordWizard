@@ -60,7 +60,7 @@
 
 				/* Remove the item from the widget */
 				this.$list.removeItems( [ this.$itemStore[ label ] ] );
-				this.$itemStore[ label ] = undefined;
+				delete this.$itemStore[ label ];
 
 				/* Remove the item from the v-model value */
 				this.value.splice( this.value.indexOf( label ) , 1 );

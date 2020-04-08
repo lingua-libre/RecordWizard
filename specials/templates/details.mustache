@@ -21,9 +21,7 @@
 			<h4>{{&__ "mwe-recwiz-details-inspiration"}}</h4>
 			{{&__ "mwe-recwiz-details-generators"}}
 			<div id="mwe-rwd-generator-buttons">
-				{{& details.gen1}}
-				{{& details.gen2}}
-				{{& details.gen3}}
+				<ooui-button v-for="generator in generators" :key="generator.name" :id="'mwe-rwd-generator-' + generator.name" :label="generator.title" :icon="generator.icon" @click="$windowManager.openWindow( generator.dialog )"></ooui-button>
 			</div>
 		</div>
 	</section>

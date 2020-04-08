@@ -2,19 +2,19 @@
 
 ( function ( mw, $, rw, OO ) {
 
-	rw.generator.Nearby = function ( config ) {
-		rw.generator.Generator.call( this, config );
+	var NearbyGenerator = function ( config ) {
+		rw.store.generator.generic.call( this, config );
 	};
 
-	OO.inheritClass( rw.generator.Nearby, rw.generator.Generator );
-	rw.generator.Nearby.static.name = 'nearby';
-	rw.generator.Nearby.static.title = mw.message( 'mwe-recwiz-generator-nearby' ).text();
+	OO.inheritClass( NearbyGenerator, rw.store.generator.generic );
+	NearbyGenerator.static.name = 'nearby';
+	NearbyGenerator.static.title = mw.message( 'mwe-recwiz-generator-nearby' ).text();
 
-	rw.generator.Nearby.prototype.initialize = function () {
+	NearbyGenerator.prototype.initialize = function () {
 
-		this.latitude = new OO.ui.TextInputWidget( { placeholder: mw.message( 'mwe-recwiz-nearby-latitude' ).text() } );
-		this.longitude = new OO.ui.TextInputWidget( { placeholder: mw.message( 'mwe-recwiz-nearby-longitude' ).text() } );
-		this.currentPositionButton = new OO.ui.ButtonWidget( { title: mw.message( 'mwe-recwiz-nearby-getcoordinates' ).text(), icon: 'mapPin' } );
+		this.latitude = new OO.ui.TextInputWidget( { placeholder: mw.msg( 'mwe-recwiz-nearby-latitude' ) } );
+		this.longitude = new OO.ui.TextInputWidget( { placeholder: mw.msg( 'mwe-recwiz-nearby-longitude' ) } );
+		this.currentPositionButton = new OO.ui.ButtonWidget( { title: mw.msg( 'mwe-recwiz-nearby-getcoordinates' ), icon: 'mapPin' } );
 		this.limit = new OO.ui.NumberInputWidget( { min: 1, max: 500, step: 10, pageStep: 100, isInteger: true } );
 		this.wikidata = new OO.ui.RadioOptionWidget( { label: 'Wikidata' } );
 		this.source = new OO.ui.RadioSelectWidget( { items: [ this.wikidata ] } );
@@ -33,27 +33,27 @@
 						]
 					} ), {
 						align: 'top',
-						label: mw.message( 'mwe-recwiz-nearby-coordinates' ).text(),
-						help: mw.message( 'mwe-recwiz-nearby-coordinates-help' ).text()
+						label: mw.msg( 'mwe-recwiz-nearby-coordinates' ),
+						help: mw.msg( 'mwe-recwiz-nearby-coordinates-help' )
 					}
 				),
 				new OO.ui.FieldLayout(
 					this.limit, {
 						align: 'top',
-						label: mw.message( 'mwe-recwiz-nearby-limit' ).text(),
-						help: mw.message( 'mwe-recwiz-nearby-limit-help' ).text()
+						label: mw.msg( 'mwe-recwiz-nearby-limit' ),
+						help: mw.msg( 'mwe-recwiz-nearby-limit-help' )
 					}
 				),
 				new OO.ui.FieldLayout(
 					this.source, {
 						align: 'left',
-						label: mw.message( 'mwe-recwiz-nearby-source' ).text()
+						label: mw.msg( 'mwe-recwiz-nearby-source' )
 					}
 				),
 				new OO.ui.FieldLayout(
 					this.deduplicate, {
 						align: 'left',
-						label: mw.message( 'mwe-recwiz-nearby-deduplicate' ).text()
+						label: mw.msg( 'mwe-recwiz-nearby-deduplicate' )
 					}
 				)
 			]
@@ -72,10 +72,10 @@
 		this.latitude.on( 'change', this.unlockUI.bind( this ) );
 		this.longitude.on( 'change', this.unlockUI.bind( this ) );
 
-		rw.generator.Generator.prototype.initialize.call( this );
+		rw.store.generator.generic.prototype.initialize.call( this );
 	};
 
-	rw.generator.Nearby.prototype.getCurrentPosition = function () {
+	NearbyGenerator.prototype.getCurrentPosition = function () {
 		this.lockUI();
 		navigator.geolocation.getCurrentPosition(
 			this.onPositionSuccess.bind( this ),
@@ -87,21 +87,21 @@
 		);
 	};
 
-	rw.generator.Nearby.prototype.onPositionSuccess = function ( pos ) {
+	NearbyGenerator.prototype.onPositionSuccess = function ( pos ) {
 		this.unlockUI();
 		this.latitude.setValue( pos.coords.latitude );
 		this.longitude.setValue( pos.coords.longitude );
 		this.currentPositionButton.setFlags( { destructive: false } );
 	};
 
-	rw.generator.Nearby.prototype.onPositionError = function ( error ) {
-		var errorMessage = mw.message( 'mwe-recwiz-error-cantgetposition', error.message ).text();
+	NearbyGenerator.prototype.onPositionError = function ( error ) {
+		var errorMessage = mw.msg( 'mwe-recwiz-error-cantgetposition', error.message );
 
 		this.unlockUI();
 		this.showErrors( new OO.ui.Error( errorMessage, { recoverable: false } ) );
 	};
 
-	rw.generator.Nearby.prototype.lockUI = function () {
+	NearbyGenerator.prototype.lockUI = function () {
 		this.currentPositionButton.setDisabled( true );
 		this.latitude.setDisabled( true );
 		this.longitude.setDisabled( true );
@@ -109,7 +109,7 @@
 		this.longitude.pushPending();
 	};
 
-	rw.generator.Nearby.prototype.unlockUI = function () {
+	NearbyGenerator.prototype.unlockUI = function () {
 		this.currentPositionButton.setDisabled( false );
 		this.latitude.setDisabled( false );
 		this.longitude.setDisabled( false );
@@ -119,9 +119,8 @@
 		this.getActions().get( { actions: 'save' } )[ 0 ].setDisabled( false );
 	};
 
-	rw.generator.Nearby.prototype.fetch = function () {
-		var generator = this,
-			lat = this.latitude.getValue(),
+	NearbyGenerator.prototype.fetch = function () {
+		var lat = this.latitude.getValue(),
 			lng = this.longitude.getValue(),
 			limit = parseInt( this.limit.getValue() );
 
@@ -154,16 +153,15 @@
 			gslimit: 'max'
 		} ).then( this.getTitlesFromIds.bind( this ) )
 			.fail( function ( error ) {
-				generator.deferred.reject( new OO.ui.Error( error ) );
-			} );
+				this.deferred.reject( new OO.ui.Error( error ) );
+			}.bind( this ) );
 
 		// We're not done yet, make the dialog closing process to wait the promise
 		return this.deferred.promise();
 	};
 
-	rw.generator.Nearby.prototype.getTitlesFromIds = function ( data ) {
+	NearbyGenerator.prototype.getTitlesFromIds = function ( data ) {
 		var i, errorMessage,
-			generator = this,
 			geosearch = data.query.geosearch,
 			pages = [];
 		this.semaphore = 0;
@@ -188,11 +186,11 @@
 				languages: this.language.code,
 				formatversion: '2'
 			} ).then( this.parseLabels.bind( this ) ).fail( function ( error ) {
-				generator.deferred.reject( new OO.ui.Error( error ) );
+				this.deferred.reject( new OO.ui.Error( error ) );
 			} );
 		}
 	};
-	rw.generator.Nearby.prototype.parseLabels = function ( data ) {
+	NearbyGenerator.prototype.parseLabels = function ( data ) {
 		var qid, entity, element,
 			limit = this.params.limit,
 			deduplicate = this.params.deduplicate;
@@ -211,7 +209,7 @@
 			if ( entity.labels[ this.language.code ] !== undefined ) {
 				element = {};
 				element.text = entity.labels[ this.language.code ].value;
-				element[ rw.config.properties.wikidataId ] = qid;
+				element[ rw.store.config.data.properties.wikidataId ] = qid;
 
 				if ( deduplicate === false || this.isAlreadyRecorded( element.text ) === false ) {
 					this.list.push( element );
@@ -222,5 +220,7 @@
 			this.deferred.resolve();
 		}
 	};
+
+	rw.store.generator.register( 'nearby', NearbyGenerator.static.title, 'll-nearby', new NearbyGenerator() );
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

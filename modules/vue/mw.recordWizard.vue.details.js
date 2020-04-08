@@ -11,13 +11,21 @@
 		 data: {
 			 metadata: rw.store.record.data.metadata,
 			 words: rw.store.record.data.words,
+			 generators: rw.store.generator.data,
 			 wordInputed: '',
 			 availableLanguages: [],
 		 },
 
 		 /* Hooks */
 		 created: function() {
+			 var i;
 
+	 		this.$windowManager = new OO.ui.WindowManager();
+			$( 'body' ).append( this.$windowManager.$element );
+
+			for( i = 0; i < this.generators.length; i++ ) {
+	 			this.$windowManager.addWindows( [ this.generators[ i ].dialog ] );
+			}
 		 },
 		 mounted: function() {
 

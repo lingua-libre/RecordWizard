@@ -123,8 +123,7 @@
         },
         "ext.recordWizard.generator":{
             "scripts": [
-                "modules/generator/mw.recordWizard.generator.js",
-                "modules/generator/mw.recordWizard.generator.Generator.js",
+                "modules/generator/mw.recordWizard.generator.Generic.js",
                 "modules/generator/mw.recordWizard.generator.List.js",
                 "modules/generator/mw.recordWizard.generator.Nearby.js",
                 "modules/generator/mw.recordWizard.generator.WMCategories.js"
@@ -171,7 +170,8 @@
                 "modules/store/mw.recordWizard.store.js",
                 "modules/store/mw.recordWizard.store.config.js",
                 "modules/store/mw.recordWizard.store.state.js",
-                "modules/store/mw.recordWizard.store.record.js"
+                "modules/store/mw.recordWizard.store.record.js",
+                "modules/store/mw.recordWizard.store.generator.js"
             ],
             "dependencies": [
                 "mediawiki.api"
@@ -213,8 +213,10 @@
             ],
             "dependencies": [
                 "ext.recordWizard.vuejs",
+                "ext.recordWizard.store",
                 "ext.recordWizard.recorder",
-                "ext.recordWizard.components"
+                "ext.recordWizard.components",
+                "ext.recordWizard.generator"
             ],
             "messages": [
                 "mwe-recwiz-error-mediastream-notallowed",

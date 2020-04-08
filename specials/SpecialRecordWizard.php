@@ -355,11 +355,6 @@ class SpecialRecordWizard extends SpecialPage {
 		    'recordwizard',
 		    [
 		        'wgExtensionAssetsPath' => $wgExtensionAssetsPath,
-				'details' => [
-					'gen1' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-generator-list', 'label' => wfMessage( 'mwe-recwiz-generator-list' )->plain(), 'icon' => 'll-list' ] ),
-					'gen2' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-generator-nearby', 'label' => wfMessage( 'mwe-recwiz-generator-nearby' )->plain(), 'icon' => 'll-nearby' ] ),
-					'gen3' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwd-generator-wmcategory', 'label' => wfMessage( 'mwe-recwiz-generator-wmcategory' )->plain(), 'icon' => 'll-wmcategory' ] ),
-				],
 				'studio' => [
 					'skip' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rws-skip', 'label' => wfMessage( 'mwe-recwiz-studio-skip' )->plain(), 'icon' => 'next', 'framed' => false ] ),
 					'record' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rws-record', 'invisibleLabel' => true, 'icon' => 'll-record', 'flags' => [ 'primary', 'progressive' ] ] ),
