@@ -196,7 +196,11 @@
             ],
             "dependencies": [
                 "oojs-ui",
-                "ext.recordWizard.vuejs"
+                "ext.recordWizard.vuejs",
+                "ext.recordWizard.layout",
+                "oojs-ui.styles.icons-media",
+                "oojs-ui.styles.icons-content",
+                "oojs-ui.styles.icons-wikimedia"
             ]
         },
         "ext.recordWizard.vues":{
@@ -215,6 +219,7 @@
                 "ext.recordWizard.vuejs",
                 "ext.recordWizard.store",
                 "ext.recordWizard.recorder",
+                "ext.recordWizard.wikibase",
                 "ext.recordWizard.components",
                 "ext.recordWizard.generator"
             ],
@@ -375,9 +380,9 @@
             ],
             "dependencies": [
                 "ext.recordWizard.base",
+                "wikibase.api.RepoApi",
                 "wikibase.datamodel",
-                "wikibase.serialization",
-                "wikibase.api.RepoApi"
+                "wikibase.serialization"
             ]
         },
         "ext.recordWizard.controller": {
