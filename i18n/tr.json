@@ -1,13 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hedda",
-			"Sayginer",
 			"BaRaN6161 TURK",
-			"KediÇobanı"
+			"Hedda",
+			"KediÇobanı",
+			"Sayginer"
 		]
 	},
-	"recordWizard": "KayıtSihirbazı",
+	"recordWizard": "RecordWizard",
 	"recordwizard": "Kayıt Sihirbazı",
 	"recordWizard-desc": "Ses telaffuz dosyalarını kaydetmek için kullanıcı dostu ve otomatik bir araç.",
 	"special-recordWizard-title": "Kayıt Sihirbazı",
@@ -89,6 +89,8 @@
 	"mwe-recwiz-videostudio-endofthelist": "Listenin sonuna geldiniz!",
 	"mwe-recwiz-videostudio-currentlyrecording": "Şu anda kayıt yapılıyor:",
 	"mwe-recwiz-videostudio-willstart": "\"$1\" kaydı şu sürede başlayacaktır:",
+	"mwe-recwiz-publish-title": "Yayınlama",
+	"mwe-recwiz-publish-info": "Yayına başlamadan önce kayıtlarınızı kontrol edin.",
 	"mwe-recwiz-publish-play": "Oynat",
 	"mwe-recwiz-publish-remove": "Kaldır",
 	"mwe-recwiz-publish-areyousure": "Bu kaydı silmek istediğinizden emin misiniz?",

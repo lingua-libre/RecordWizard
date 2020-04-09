@@ -1,20 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Antoine Lamielle",
-			"Wladek92",
 			"0x010C",
+			"Antoine Lamielle",
 			"Gomoko",
 			"Pamputt",
 			"Thibaut120094",
-			"Verdy p"
+			"Verdy p",
+			"Vikoula5",
+			"Wladek92"
 		]
 	},
-	"recordWizard": "RecordWizard",
-	"recordwizard": "Record Wizard",
-	"recordWizard-desc": "Un outil simple d’utilisation et entièrement automatisé pour enregistrer des fichiers audio de prononciation.",
-	"special-recordWizard-title": "Record Wizard",
-	"apihelp-query+rwrecords-summary": "Lister toutes les transcriptions d’enregistrements fait par un locuteur et dans une langue donnée.",
+	"recordWizard": "Помощник по записи",
+	"recordwizard": "Помощник по записи",
+	"recordWizard-desc": "Просто инструмент для использования и полностью автоматизирован для записи аудио-файлов",
+	"special-recordWizard-title": "Помощник по записи",
+	"apihelp-query+rwrecords-summary": "Список транскрипций записи, сделанный носителем языка и в определенном языке",
 	"apihelp-query+rwrecords-param-language": "Qid de l’élément de la langue dans la wikibase locale.",
 	"apihelp-query+rwrecords-param-speaker": "Qid de l’élément du locuteur dans la wikibase locale.",
 	"apihelp-query+rwrecords-param-sort": "Propriété sur laquelle trier.",

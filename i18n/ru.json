@@ -2,16 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"ArslanX",
+			"Diralik",
+			"Kareyac",
+			"Movses",
+			"Nk88",
 			"Okras",
 			"Redredsonia",
-			"Movses",
-			"Kareyac",
-			"Vlad5250",
 			"Shaleych",
-			"Nk88",
-			"Diralik"
+			"Vikoula5",
+			"Vlad5250"
 		]
 	},
+	"recordWizard": "Помощник по записи",
 	"recordwizard": "\nМастер записи",
 	"recordWizard-desc": "Удобный в использовании, автоматический инструмент для записи аудио-файлов произношения.",
 	"special-recordWizard-title": "\nМастер записи",

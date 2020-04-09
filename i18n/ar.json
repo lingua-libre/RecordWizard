@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kassem7899",
 			"Sonic N800",
-			"محمد عصام",
 			"ديفيد",
 			"محمد أحمد عبد الفتاح",
-			"Kassem7899"
+			"محمد عصام"
 		]
 	},
 	"recordWizard": "معالج التسجيل",
@@ -76,6 +76,8 @@
 	"mwe-recwiz-videostudio-endofthelist": "لقد وصلت إلى نهاية القائمة!",
 	"mwe-recwiz-videostudio-currentlyrecording": "يتم التسجيل حاليا:",
 	"mwe-recwiz-videostudio-willstart": "سيبدأ تسجيل \"$1\" بـ:",
+	"mwe-recwiz-publish-title": "النشر",
+	"mwe-recwiz-publish-info": "تحقق من سجلاتك قبل البدء في نشرها.",
 	"mwe-recwiz-publish-play": "تشغيل",
 	"mwe-recwiz-publish-remove": "إزالة",
 	"mwe-recwiz-publish-areyousure": "هل أنت متأكد من إزالة هذا التسجيل؟",

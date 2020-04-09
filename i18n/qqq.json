@@ -2,9 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Antoine Lamielle",
-			"Robby",
+			"FF11",
 			"Liuxinyu970226",
-			"MarcoAurelio"
+			"MarcoAurelio",
+			"Robby"
 		]
 	},
 	"recordWizard": "The name of the extension",
@@ -62,7 +63,7 @@
 	"mwe-recwiz-gender-female": "Label of the 'female' option in the gender selector.",
 	"mwe-recwiz-gender-other": "Label of the 'other' option in the gender selector.",
 	"mwe-recwiz-details-title": "Title of the details step",
-	"mwe-recwiz-details-placeholder": "Placeholder of the fieldto add a word in the list in the details tab.",
+	"mwe-recwiz-details-placeholder": "Placeholder of the field to add a word in the list in the details tab.",
 	"mwe-recwiz-details-help": "Help message located under the main field of the details tab. The example should not be literaly translated but adapted with two homographs which are not homophone in the target language.",
 	"mwe-recwiz-details-lang": "Label of a field asking the language of the recording session, on the details tab.",
 	"mwe-recwiz-details-wordlist": "Label of the textarea containing all the words to record, on the details tab.",
