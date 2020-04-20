@@ -25,6 +25,7 @@
 				value: this.value,
 			} );
       		this.$dropdown.on( 'change', this.onChange.bind( this ) );
+			this.$emit( 'input', this.$dropdown.getValue() );
 		},
 		watch: {
 			options: {
