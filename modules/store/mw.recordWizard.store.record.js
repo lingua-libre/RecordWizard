@@ -21,7 +21,9 @@
 				},
 			},
 			words: [],
-			records: {}
+			records: {},
+			states: {},
+			errors: {},
 		};
 	};
 
@@ -47,7 +49,7 @@
 			word = words[ i ];
 			extra = {};
 
-			// Extract extra informations about the word, if any
+			// Separate extra informations about the word, if any
 			if ( typeof word !== 'string' ) {
 				extra = word;
 				word = extra.text;

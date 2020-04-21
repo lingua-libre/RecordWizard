@@ -1,6 +1,16 @@
 'use strict';
 
-// TODO: cleaner state managment
+/**
+ * * "up"           object created
+ * * "ready"        audio record available
+ * * "stashing"     stash request is pending
+ * * "stashed"      record is stashed
+ * * "uploading"    upload 2 commons request is pending
+ * * "uploaded"     record is uploaded on commons
+ * * "finalizing"   WB item creation request is pending
+ * * "done"         all has finished
+ */
+
 ( function ( mw, rw, $ ) {
 
 	/**
@@ -21,15 +31,18 @@
 		OO.EventEmitter.call( this );
 
 		this.file = null;
-		this.filename = null;
 		this.fileExtension = 'wav';
-		this.filekey = null;
+		this.stashkey = null;
 		this.imageInfo = null;
 		this.wbItem = null;
 
+        this.language = null;
+        this.locutor = null;
+        this.license = "";
+
 		this.word = word;
 		this.extra = {};
-		this.date = new Date();
+		this.date = null;
 
 		decomposedWord = this.word.match( /^(.+) \((.+)\)$/m );
 		if ( decomposedWord === null ) {
@@ -39,10 +52,6 @@
 			this.transcription = decomposedWord[ 1 ];
 			this.qualifier = decomposedWord[ 2 ];
 		}
-
-		this.inQueue = false;
-		this.error = false;
-		this.state = 'up';
 	};
 
 	OO.mixinClass( rw.Record, OO.EventEmitter );
@@ -84,18 +93,6 @@
 	};
 
 	/**
-	 * Get the current state of the record.
-	 *
-	 * Can be one of the following: 'up', 'ready', 'stashing', 'stashed',
-	 * 'uploading', 'uploaded', 'finalizing', 'done', 'error'.
-	 *
-	 * @return {string}  State of the record
-	 */
-	rw.Record.prototype.getState = function () {
-		return this.state;
-	};
-
-	/**
 	 * Add extra wikibase statements.
 	 *
 	 * @param  {Object} extra Wikibase statements, in the format
@@ -106,27 +103,6 @@
 	};
 
 	/**
-	 * Set the current state of the record.
-	 *
-	 * It can be one of the following:
-	 * * "up"           object created
-	 * * "ready"        audio record available
-	 * * "stashing"     stash request is pending
-	 * * "stashed"      record is stashed
-	 * * "uploading"    upload 2 commons request is pending
-	 * * "uploaded"     record is uploaded on commons
-	 * * "finalizing"   WB item creation request is pending
-	 * * "done"         all has finished
-	 *
-	 * @private
-	 * @param  {string} newState Name of the state the record should switch to
-	 */
-	rw.Record.prototype.setState = function ( newState ) {
-		this.emit( 'state-change', this.getWord(), newState, this.state );
-		this.state = newState;
-	};
-
-	/**
 	 * Verify if the Record object has data.
 	 *
 	 * It is usefull to check if the current window can be closed safely or not.
@@ -134,10 +110,10 @@
 	 * @return {boolean}  Whether the Record object has some data
 	 */
 	rw.Record.prototype.hasData = function () {
-		if ( this.state === 'up' || this.state === 'done' ) {
-			return false;
+		if ( this.file !== null || this.stashkey !== null ) {
+			return true;
 		}
-		return true;
+		return false;
 	};
 
 	/**
@@ -147,8 +123,8 @@
 	 * @return {string|null}  Url of the stashed file
 	 */
 	rw.Record.prototype.getMediaUrl = function () {
-		if ( this.filekey !== null ) {
-			return mw.util.getUrl( 'Special:UploadStash/file/' + this.filekey );
+		if ( this.stashkey !== null ) {
+			return mw.util.getUrl( 'Special:UploadStash/file/' + this.stashkey );
 		} else if ( this.imageInfo !== null ) {
 			return this.imageInfo.url;
 		}
@@ -165,13 +141,12 @@
 	 * @return {string}  Name to give to this record
 	 */
 	rw.Record.prototype.getFilename = function () {
-		var lang = rw.config.languages[ rw.metadatas.language ],
-			illegalChars = /[#<>[\]|{}:/\\]/g,
+		var illegalChars = /[#<>[\]|{}:/\\]/g,
 			filename = 'LL' +
-				'-' + lang.wikidataId +
-				( lang.iso3 !== null ? ' (' + lang.iso3 + ')' : '' ) +
-				'-' + rw.metadatas.locutor.name +
-				( mw.config.get( 'wgUserName' ) !== rw.metadatas.locutor.name ? ' (' + mw.config.get( 'wgUserName' ) + ')' : '' ) +
+				'-' + this.language.wikidataId +
+				( this.language.iso3 !== null ? ' (' + this.language.iso3 + ')' : '' ) +
+				'-' + this.locutor.name +
+				( mw.config.get( 'wgUserName' ) !== this.locutor.name ? ' (' + mw.config.get( 'wgUserName' ) + ')' : '' ) +
 				'-' + this.word + '.' + this.fileExtension;
 
 		return filename.replace( illegalChars, '-' );
@@ -185,78 +160,87 @@
 	 */
 	rw.Record.prototype.getText = function () {
 		var gender = '';
-		switch ( rw.metadatas.locutor.gender ) {
-			case rw.config.items.genderMale:
+		switch ( this.locutor.gender ) {
+			case rw.store.config.data.items.genderMale:
 				gender = 'male';
 				break;
-			case rw.config.items.genderFemale:
+			case rw.store.config.data.items.genderFemale:
 				gender = 'female';
 				break;
-			case rw.config.items.genderOther:
+			case rw.store.config.data.items.genderOther:
 				gender = 'other';
 				break;
 		}
 		return '== {{int:filedesc}} ==' +
 			'\n{{Lingua Libre record' +
-			'\n | locutor       = ' + rw.metadatas.locutor.name +
-			'\n | locutorId     = ' + rw.metadatas.locutor.qid +
+			'\n | locutor       = ' + this.locutor.name +
+			'\n | locutorId     = ' + this.locutor.qid +
 			'\n | locutorGender = ' + gender +
 			'\n | author        = [[User:' + mw.config.get( 'wgUserName' ) + '|]]' +
-			'\n | languageId    = ' + rw.config.languages[ rw.metadatas.language ].wikidataId +
+			'\n | languageId    = ' + this.language.wikidataId +
 			'\n | transcription = ' + this.transcription +
 			'\n | qualifier     = ' + ( this.qualifier !== null ? this.qualifier : '' ) +
 			'\n | date          = ' + this.date.getFullYear() + '-' + ( ( '0' + ( this.date.getMonth() + 1 ) ).slice( -2 ) ) + '-' + ( '0' + this.date.getDate() ).slice( -2 ) +
 			'\n}}' +
 			'\n\n== {{int:license-header}} ==' +
-			'\n{{' + rw.metadatas.license + '}}';
+			'\n{{' + this.license + '}}';
 	};
 
 	/**
 	 * Get the internal file key of the record file.
 	 *
-	 * This is only set after the 'stashed' state is reached.
+	 * This is only set after a file was stashed.
 	 *
 	 * @return {string|null}  File key of the record
 	 */
-	rw.Record.prototype.getFilekey = function () {
-		return this.filekey;
+	rw.Record.prototype.getStashkey = function () {
+		return this.stashkey;
 	};
 
 	/**
-	 * Set the internal stash filekey of this record.
+	 * Set the locutor object of this record.
+	 *
+	 * @param  {Object} locutor Information about the locutor of this record
+	 */
+	rw.Record.prototype.setLocutor = function ( locutor ) {
+		this.locutor = locutor;
+
+        return this;
+	};
+
+	/**
+	 * Set the language object of this record.
+	 *
+	 * @param  {Object} locutor Information about the language of this record
+	 */
+	rw.Record.prototype.setLanguage = function ( language ) {
+		this.language = language;
+
+        return this;
+	};
+
+	/**
+	 * Set the license of this record.
+	 *
+	 * @param  {String} license Text indicationg the license of the record
+	 */
+	rw.Record.prototype.setLicense = function ( license ) {
+		this.license = license;
+
+        return this;
+	};
+
+	/**
+	 * Set the internal stashkey of this record.
 	 *
 	 * This method is called when the file has been successfully stashed.
 	 *
 	 * @private
-	 * @param  {string} filekey Filekey of this record file
+	 * @param  {string} stashkey Stashkey of this record file
 	 */
-	rw.Record.prototype.setFilekey = function ( filekey ) {
-		this.filekey = filekey;
+	rw.Record.prototype.setStashkey = function ( stashkey ) {
+		this.stashkey = stashkey;
 		this.file = null;
-		this.setState( 'stashed' );
-	};
-
-	/**
-	 * Switch to the "uploaded" state, once the upload is successful.
-	 *
-	 * @private
-	 * @param  {Object} imageinfo Imageinfo object returned by the Api
-	 */
-	rw.Record.prototype.uploaded = function ( imageinfo ) {
-		this.imageInfo = imageinfo;
-		this.filekey = null;
-		this.setState( 'uploaded' );
-	};
-
-	/**
-	 * Switch the record to the error state.
-	 *
-	 * @private
-	 * @param  {type} error Message explaining the error.
-	 */
-	rw.Record.prototype.setError = function ( error ) {
-		this.error = error;
-		this.setState( 'error' );
 	};
 
 	/**
@@ -272,32 +256,6 @@
 	};
 
 	/**
-	 * Check whether the record is in error or not.
-	 *
-	 * @return {boolean}  Whether an error occured
-	 */
-	rw.Record.prototype.hasFailed = function () {
-		if ( this.state === 'error' ) {
-			return true;
-		}
-		return false;
-	};
-
-	/**
-	 * Check if the record is in the request queue, or change it's state.
-	 *
-	 * @param  {boolean|undefined} inQueue if set, change the inQueue value
-	 * @return {type}                      Whether the record is in the request
-	 *                                     queue
-	 */
-	rw.Record.prototype.isInQueue = function ( inQueue ) {
-		if ( inQueue !== undefined ) {
-			this.inQueue = inQueue;
-		}
-		return this.inQueue;
-	};
-
-	/**
 	 * Add an audio file to this record.
 	 *
 	 * @param  {Blob} audioBlob WAVE-encoded Blob containing the audio file
@@ -305,18 +263,13 @@
 	 * @return {boolean}        Whether the audio file has been set correctly
 	 */
 	rw.Record.prototype.setBlob = function ( audioBlob, extension ) {
-		// Only allow re-recording an audio when it's not already uploaded
-		if ( [ 'up', 'ready', 'stashing', 'stashed' ].indexOf( this.state ) > -1 ) {
-			this.setState( 'ready' );
-			this.filekey = null;
-			this.fileExtension = extension;
-			this.error = false;
+		this.reset();
 
-			this.file = audioBlob;
+		this.file = audioBlob;
+		this.fileExtension = extension;
+		this.date = new Date();
 
-			return true;
-		}
-		return false;
+		return true;
 	};
 
 	/**
@@ -328,6 +281,7 @@
 		// Cancel any pending request
 		if ( this.deferred !== undefined ) {
 			this.deferred.reject( 'cancel' );
+			this.deferred = undefined;
 		}
 	};
 
@@ -336,83 +290,74 @@
 	 */
 	rw.Record.prototype.reset = function () {
 		this.file = null;
-		this.filekey = null;
+		this.stashkey = null;
 		this.imageInfo = null;
-		this.error = false;
-		this.setState( 'up' );
 
 		// Cancel any pending request
 		if ( this.deferred !== undefined ) {
 			this.deferred.reject( 'cancel' );
+			this.deferred = undefined;
 		}
 	};
 
 	/**
 	 * Upload the audio file to the upload stash.
 	 *
-	 * This method is made to be used through the request queue.
-	 *
 	 * @param  {mw.Api} api          Api object to use for the request
-	 * @param  {$.Deferred} deferred A promise, to resolv when we're done
 	 */
-	rw.Record.prototype.uploadToStash = function ( api, deferred ) {
-		var record = this;
-		if ( this.state === 'ready' || this.state === 'error' ) {
-			this.setState( 'stashing' );
-
-			this.deferred = deferred;
-
-			api.upload( this.file, {
+	rw.Record.prototype.uploadToStash = function ( api ) {
+		if ( this.file !== null && this.deferred === undefined ) {
+			this.deferred = api.upload( this.file, {
 				stash: true,
 				filename: this.getFilename()
-			} ).then( deferred.resolve.bind( deferred ), deferred.reject.bind( deferred ) );
-
-			this.deferred.then( function ( result ) {
-				record.setFilekey( result.upload.filekey );
-			}, function ( errorCode ) {
-				if ( errorCode !== 'cancel' ) {
-					record.setError( errorCode );
-				}
 			} );
+
+			this.deferred.then(
+                function ( result ) {
+                    console.log( 'uploadstash Result', result )
+    				this.setStashkey( result.upload.filekey );
+                    this.deferred = undefined;
+    			}.bind( this ),
+                function ( error ) {
+                    console.log( 'uploadstash Error', error );
+                    this.deferred = undefined;
+    			}.bind( this )
+             );
+		} else {
+    		this.deferred = $.Deferred();
+			this.deferred.reject( 'can not upload' );
 		}
+
+		return this.deferred;
 	};
 
 	/**
 	 * Push the audio file from the upload stash to Wikimedia Commons.
 	 *
-	 * This method is made to be used through the request queue.
-	 *
 	 * @param  {mw.Api} api          Api object to use for the request
 	 * @param  {$.Deferred} deferred A promise, to resolv when we're done
 	 */
-	rw.Record.prototype.finishUpload = function ( api, deferred ) {
-		var record = this;
+	rw.Record.prototype.finishUpload = function ( api ) {
+		if ( this.stashkey !== null ) {
+			this.deferred = api.postWithToken( 'csrf', {
+				action: 'upload-to-commons',
+				format: 'json',
+				filekey: this.getStashkey(),
+				filename: this.getFilename(),
+				text: this.getText(),
+				ignorewarnings: true // TODO: manage warnings !important
+			} );
 
-		if ( this.state === 'error' && this.imageInfo !== null ) {
-			deferred.resolve();
-			return;
+			this.deferred.then( function ( result ) {
+				this.imageInfo = result[ 'upload-to-commons' ].oauth.upload.imageinfo;
+				this.stashkey = null;
+			}.bind( this ) );
+		} else {
+    		this.deferred = $.Deferred();
+			this.deferred.reject();
 		}
 
-		this.setState( 'uploading' );
-
-		this.deferred = deferred;
-
-		api.postWithToken( 'csrf', {
-			action: 'upload-to-commons',
-			format: 'json',
-			filekey: this.getFilekey(),
-			filename: this.getFilename(),
-			text: this.getText(),
-			ignorewarnings: true // TODO: manage warnings !important
-		} ).then( deferred.resolve.bind( deferred ), deferred.reject.bind( deferred ) );
-
-		this.deferred.then( function ( result ) {
-			record.uploaded( result[ 'upload-to-commons' ].oauth.upload.imageinfo );
-		}, function ( errorCode ) {
-			if ( errorCode !== 'cancel' ) {
-				record.setError( errorCode );
-			}
-		} );
+		return this.deferred;
 	};
 
 	/**
@@ -422,45 +367,36 @@
 	 * @return {$.Deferred}  A promise, resolved when we're done
 	 */
 	rw.Record.prototype.saveWbItem = function ( api ) {
-		var record = this;
-
-		this.setState( 'finalizing' );
-
 		this.wbItem = new rw.wikibase.Item();
 		this.fillWbItem();
 
-		return this.wbItem.createOrUpdate( api, true ).then( function () {
-			record.setState( 'done' );
-		} ).fail( function ( code ) {
-			record.setError( code );
-		} );
+		return this.wbItem.createOrUpdate( api, true );
 	};
 
 	/**
 	 * Fill the record's wikibase item with all known metadatas on it.
 	 */
 	rw.Record.prototype.fillWbItem = function () {
-		var propertyId, lang, date;
+		var propertyId,  date;
 
 		this.date.setUTCHours( 0, 0, 0, 0 );
 		date = this.date.toISOString().slice( 0, -5 ) + 'Z';
 
 		this.wbItem.labels = { en: this.word };
 
-		lang = rw.config.languages[ rw.metadatas.language ];
-		this.wbItem.descriptions = { en: 'audio record - ' + ( lang.iso3 !== null ? lang.iso3 : lang.wikidataId ) + ' - ' + rw.metadatas.locutor.name + ' (' + mw.config.get( 'wgUserName' ) + ')' };
+		this.wbItem.descriptions = { en: 'audio record - ' + ( this.language.iso3 !== null ? this.language.iso3 : this.language.wikidataId ) + ' - ' + this.locutor.name + ' (' + mw.config.get( 'wgUserName' ) + ')' };
 
-		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.instanceOf ).setType( 'wikibase-item' ).setValue( rw.config.items.record ), true ); // InstanceOf
-		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.subclassOf ).setType( 'wikibase-item' ).setValue( rw.config.items.word ), true ); // SubclassOf
+		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.instanceOf ).setType( 'wikibase-item' ).setValue( rw.store.config.data.items.record ), true ); // InstanceOf
+		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.subclassOf ).setType( 'wikibase-item' ).setValue( rw.store.config.data.items.word ), true ); // SubclassOf
 		if ( mw.Debug === undefined ) { // Disable media on the dev environment
-			this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.audioRecord ).setType( 'commonsMedia' ).setValue( this.getFilename() ), true ); // Audio file
+			this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.audioRecord ).setType( 'commonsMedia' ).setValue( this.getFilename() ), true ); // Audio file
 		}
-		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.spokenLanguages ).setType( 'wikibase-item' ).setValue( rw.metadatas.language ), true ); // Language
-		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.locutor ).setType( 'wikibase-item' ).setValue( rw.metadatas.locutor.qid ), true ); // Locutor
-		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.date ).setType( 'time' ).setValue( { time: date } ), true ); // Date
-		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.transcription ).setType( 'string' ).setValue( this.transcription ), true ); // Transcription
+		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.spokenLanguages ).setType( 'wikibase-item' ).setValue( this.language.qid ), true ); // Language
+		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.locutor ).setType( 'wikibase-item' ).setValue( this.locutor.qid ), true ); // Locutor
+		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.date ).setType( 'time' ).setValue( { time: date } ), true ); // Date
+		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.transcription ).setType( 'string' ).setValue( this.transcription ), true ); // Transcription
 		if ( this.qualifier !== null ) {
-			this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.config.properties.qualifier ).setType( 'string' ).setValue( this.qualifier ), true ); // Qualifier
+			this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.qualifier ).setType( 'string' ).setValue( this.qualifier ), true ); // Qualifier
 		}
 
 		for ( propertyId in this.extra ) {
