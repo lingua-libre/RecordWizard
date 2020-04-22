@@ -16,6 +16,7 @@
 			selected: 0,
 			isRecording: false,
 			saturated: false,
+			vumeter: 0,
 		 },
 
 		 /* Hooks */
@@ -50,6 +51,7 @@
 					this.$recorder.on( 'stoped', this.onStop.bind( this ) );
 					this.$recorder.on( 'canceled', this.onCancel.bind( this ) );
 					this.$recorder.on( 'saturated', this.onSaturate.bind( this ) );
+					this.$recorder.on( 'recording', this.onRecord.bind( this ) );
 
 					 // Bind keyboard shortcuts
 					 this.bindShortcuts();
@@ -153,6 +155,7 @@
 				 this.$recorder.cancel();
 				 this.isRecording = false;
 				 this.saturated = false;
+				 this.vuemeter = 0;
 			 },
 			 startRecord: function() {
 		 		if ( this.selected < 0 || this.selected >= this.words.length ) {
@@ -165,6 +168,24 @@
 
 				 return true;
 			 },
+			 onRecord: function ( samples ) {
+		 		var i, amplitude,
+		 			amplitudeMax = 0;
+
+		 		for ( i = 0; i < samples.length; i++ ) {
+		 			amplitude = Math.abs( samples[ i ] );
+		 			if ( amplitude > amplitudeMax ) {
+		 				amplitudeMax = amplitude;
+		 			}
+		 		}
+
+				// Display the amplitude on the vu-meter following a
+				// parabolic transfer function v(x) = -p*x^2 + (p+15)*x
+				// with p=10
+
+				this.vumeter = Math.floor( ( -10 * amplitudeMax * amplitudeMax ) + 25 * amplitudeMax );
+				//this.vumeter = Math.floor( amplitudeMax * 15 ); //if we want a linear vumeter
+			},
 			 onStop: function ( audioRecord ) {
 				 var word = this.words[ this.selected ];
 

@@ -27,21 +27,7 @@
 		<div id="mwe-rws-actions" class="mwe-rw-actions">
 			<ooui-button id="mwe-rws-record" icon="ll-record" flags="primary progressive" @click="toggleRecord"></ooui-button>
 			<ul id="mwe-rws-vumeter" :class="saturated ? 'mwe-rws-saturated' : ''">
-				<li class="mwe-rws-vu-active"></li>
-				<li class="mwe-rws-vu-active"></li>
-				<li class="mwe-rws-vu-active"></li>
-				<li class="mwe-rws-vu-active"></li>
-				<li class="mwe-rws-vu-active"></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
+				<li v-for="n in 15" :class="n <= vumeter ? 'mwe-rws-vu-active' : ''"></li>
 			</ul>
 			<div id="mwe-rws-recording"></div>
 			<div id="mwe-rws-timer">00:00</div>
