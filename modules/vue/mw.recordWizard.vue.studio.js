@@ -54,21 +54,48 @@
 					this.$recorder.on( 'recording', this.onRecord.bind( this ) );
 
 					 // Bind keyboard shortcuts
-					 this.bindShortcuts();
+					 $( document ).on( 'keydown.rw-studio', this.shortcuts.bind( this ) );
 				 } else {
-				 	this.unbindShortcuts();
+				 	$( document ).off( 'keydown.rw-studio' );
 				 }
 			 },
 		 },
-		 computed: {
-
-		 },
 		 methods: {
-			 bindShortcuts: function() {
-				 // TODO keyboard binding
-			 },
-			 unbindShortcuts: function() {
-				 // TODO
+			 shortcuts: function( event ) {
+				 console.log( 'KEY: ', event.which );
+				 switch ( event.which ) {
+					 case 37: // left
+					 case 38: // up
+					 	 this.moveBackward();
+						 break;
+
+					 case 39: // right
+ 					 case 40: // down
+					 	 this.moveForward();
+						 break;
+
+					 case 46: // del
+					 case 8: // backspace
+					 	this.removeRecord( this.words[ this.selected ] );
+						if ( this.isRecording === true ) {
+							this.cancelRecord();
+							this.startRecord();
+						}
+						break;
+
+					 case 32: // space bar
+					 	this.toggleRecord();
+						 break;
+
+ 					 case 13: // Enter
+					 case 80: // P
+					 	 this.playWord( this.words[ this.selected ] );
+						 break;
+
+					 default:
+					 	return;
+				 }
+				 event.preventDefault();
 			 },
 			 itemClass: function( word ) {
 				 var text = 'mwe-rws-' + this.status[ word ];
@@ -131,18 +158,23 @@
 				 return false;
 			 },
 			 playWord: function( word ) {
-				 // this.$audioPlayer.src = ...;
-				 // this.$audioPlayer.play();
+				 if ( this.status[ word ] === 'stashed' ) {
+					 // Make sure the recorder isn't running
+					 if ( this.isRecording === true ) {
+					 	this.cancelRecord();
+					 }
+
+					 // Play the stashed version of the record
+				 	 this.$audioPlayer.pause();
+					 this.$audioPlayer.src = this.$records[ word ].getMediaUrl();
+					 this.$audioPlayer.play();
+				 }
 			 },
 			 removeRecord: function( word ) {
-				 word = word || this.words[ this.selected ];
-
 				 // Reset the selected word
-				 this.records[ word ].reset();
+				 this.$records[ word ].reset();
 				 this.status[ word ] = 'up';
-
-				 // If a record is pending, cancel it
-				 this.cancelRecord();
+				 this.errors[ word ] = false;
 			 },
 			 toggleRecord: function() {
 			 	if ( this.isRecording ) {
@@ -155,7 +187,7 @@
 				 this.$recorder.cancel();
 				 this.isRecording = false;
 				 this.saturated = false;
-				 this.vuemeter = 0;
+				 this.vumeter = 0;
 			 },
 			 startRecord: function() {
 		 		if ( this.selected < 0 || this.selected >= this.words.length ) {
