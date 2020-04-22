@@ -179,6 +179,10 @@
 #mwe-rwd-lang {
 	margin-top: 12px;
 }
+#mwe-rwd-randomise {
+	margin-top: 12px;
+	margin-right: 5px;
+}
 
 /* Rigth column - generator buttons group */
 #mwe-rwd-generators-field {
