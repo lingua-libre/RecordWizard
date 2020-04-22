@@ -26,22 +26,17 @@
 	 * @param  {string} type       Method name to call on the given object
 	 * @return {$.Deferred}        A promise, resolved when we're done
 	 */
-	rw.RequestQueue.prototype.push = function ( record, type ) {
+	rw.RequestQueue.prototype.push = function ( callback ) {
 		var deferred = $.Deferred();
 
-		if ( record.isInQueue() ) {
-			return false;
-		}
-		record.isInQueue( true );
-
-		this.queue.push( { type: type, record: record, deferred: deferred } );
+		this.queue.push( { deferred: deferred, callback: callback } );
 
 		if ( this.currentRequests < this.maxConcurentRequests ) {
 			this.currentRequests++;
 			this.next();
 		}
 
-		return deferred;
+		return deferred.promise();
 	};
 
 	/**
@@ -50,14 +45,24 @@
 	 * @private
 	 */
 	rw.RequestQueue.prototype.next = function () {
-		var param;
+		var param, value;
 
 		if ( this.queue.length > 0 ) {
 			param = this.queue.shift();
-			param.deferred.then( this.next.bind( this ) ).fail( this.next.bind( this ) );
+			value = param.callback();
 
-			param.record[ param.type ]( this.api, param.deferred );
-			param.record.isInQueue( false );
+			value.then(
+				param.deferred.resolve.bind( param.deferred ),
+				param.deferred.reject.bind( param.deferred )
+			);
+			value.then(
+				this.next.bind( this ),
+				this.next.bind( this )
+			);
+			value.then(
+				console.log.bind( console, 'RequestManager Resolve' ),
+				console.log.bind( console, 'RequestManager Reject' )
+			);
 		} else {
 			this.currentRequests--;
 		}
