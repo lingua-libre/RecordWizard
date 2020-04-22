@@ -14,6 +14,7 @@
 			 generators: rw.store.generator.data,
 			 wordInputed: '',
 			 availableLanguages: [],
+			 randomise: false,
 		 },
 
 		 /* Hooks */
@@ -60,10 +61,21 @@
 				/* Async load of past data for current language */
 				rw.store.config.fetchPastRecords( this.metadata.language || this.availableLanguages[ 0 ].data, this.metadata.locutor.qid );
 			 },
+			 'metadata.language': function() {
+				 // Also update the media property when the language property change
+				 if ( this.config.languages[ this.metadata.language ].mediaType === this.config.items.mediaTypeVideo ) {
+					 this.metadata.media = 'video';
+				 } else {
+					 this.metadata.media = 'audio';
+				 }
+			 }
 		 },
 		 methods: {
-			 clear: function() {
-				 this.words.splice( 0, this.words.length ); //to preserve the reference
+			 clearAll: function() {
+				 rw.store.record.clearAllRecords();
+			 },
+			 clear: function( word ) {
+				 rw.store.record.clearRecord( word );
 			 },
 			 deduplicate: function() {
 				var i,
@@ -87,6 +99,22 @@
 				 /* Async load of past data for current language */
 				 rw.store.config.fetchPastRecords( this.metadata.language, this.metadata.locutor.qid );
 			 },
+ 			canMoveNext: function() {
+				if ( this.words.length === 0 ) {
+					OO.ui.alert( mw.msg( 'mwe-recwiz-error-emptylist' ) );
+					return false;
+				}
+
+				if ( this.randomise === true ) {
+					rw.store.record.randomiseList();
+				}
+
+				this.$api.saveOptions( {
+					'recwiz-lang': this.metadata.language,
+				} );
+
+				return true;
+			},
 		 }
 	 } );
 

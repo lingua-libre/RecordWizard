@@ -63,8 +63,7 @@
 				delete this.$itemStore[ label ];
 
 				/* Remove the item from the v-model value */
-				this.value.splice( this.value.indexOf( label ) , 1 );
-				this.$emit( 'input', this.value );
+				this.$emit( 'delete', label );
 			},
 		},
 		beforeDestroy: function() {

@@ -6,7 +6,7 @@
 			<ooui-button id="mwe-rwd-add" :invisible-label="true" icon="add" flags="primary progressive" @keyup.enter="addWordFromInput"  @click="addWordFromInput"></ooui-button>
 			<div id="mwe-rwd-input-help">{{__ "mwe-recwiz-details-help"}}</div>
 		</div>
-		<ll-draggablelist v-model="words" id="mwe-rwd-list"></ll-draggablelist>
+		<ll-draggablelist v-model="words" id="mwe-rwd-list" @delete="clear"></ll-draggablelist>
 		<div id="mwe-rwd-actions">
 			<ooui-button id="mwe-rwd-deduplicate" label="{{__ "mwe-recwiz-details-deduplicate"}}" @click="deduplicate()"></ooui-button>
 			<ooui-button id="mwe-rwd-clear" label="{{__ "mwe-recwiz-details-clear"}}" flags="destructive" @click="clear()"></ooui-button>
@@ -16,6 +16,7 @@
 		<div  id="mwe-rwd-lang-field">
 			<label for="mwe-rwd-lang-input">{{&__ "mwe-recwiz-details-lang"}}</label>
 			<ooui-dropdown id="mwe-rwd-lang" input-id="mwe-rwd-lang-input" :options="availableLanguages" v-model="metadata.language" @change="onLanguageChange()"></ooui-dropdown>
+			<ooui-checkbox v-model="randomise"></ooui-checkbox> {{_ "mwe-recwiz-details-randomise"}}
 		</div>
 		<div id="mwe-rwd-generators-field">
 			<h4>{{&__ "mwe-recwiz-details-inspiration"}}</h4>
