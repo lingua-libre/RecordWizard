@@ -9,7 +9,7 @@
 		<ll-draggablelist v-model="words" id="mwe-rwd-list" @delete="clear"></ll-draggablelist>
 		<div id="mwe-rwd-actions">
 			<ooui-button id="mwe-rwd-deduplicate" label="{{__ "mwe-recwiz-details-deduplicate"}}" @click="deduplicate()"></ooui-button>
-			<ooui-button id="mwe-rwd-clear" label="{{__ "mwe-recwiz-details-clear"}}" flags="destructive" @click="clear()"></ooui-button>
+			<ooui-button id="mwe-rwd-clear" label="{{__ "mwe-recwiz-details-clear"}}" flags="destructive" @click="clearAll()"></ooui-button>
 		</div>
 	</section>
 	<section>

@@ -94,7 +94,7 @@
 			 },
 			 onLanguageChange: function() {
 				 /* Clear all items from list */
-				 this.clear();
+				 this.clearAll();
 
 				 /* Async load of past data for current language */
 				 rw.store.config.fetchPastRecords( this.metadata.language, this.metadata.locutor.qid );

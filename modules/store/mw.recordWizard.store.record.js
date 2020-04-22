@@ -105,6 +105,11 @@
 			// Trim the word
 			word = word.replace( /\t/g, '' ).trim();
 
+			// Check if the string is valid
+			if ( word === '' ) {
+				continue;
+			}
+
 			// Avoid duplicate words in the list
 			if ( this.data.words.indexOf( word ) === -1 ) {
 				// Create a Record instance for this word
