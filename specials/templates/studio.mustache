@@ -1,67 +1,12 @@
 <h3>{{_ "mwe-recwiz-studio-title"}}</h3>
 <i id="mwe-rws-shortcuts"></i>
-<div class="mwe-rw-section-group mwe-rws-audio"><!--  mwe-rws-video mwe-rws-play -->
+<div class="mwe-rw-section-group" :class="( metadata.media === 'audio' ? 'mwe-rws-audio' : 'mwe-rws-video' ) + ' ' + ( isRecording ? 'mwe-rws-recording' : '' )">
 	<section>
 		<ul id="mwe-rws-list" class="mwe-rw-list">
-			<li class="mwe-rws-stashed">
-				<span>Item 1</span>
-				<i class="mwe-rws-play"></i>
-				<i class="mwe-rws-again"></i>
-			</li>
-			<li class="mwe-rws-stashed mwe-rws-selected">
-				<span>Item 2</span>
-				<i class="mwe-rws-play"></i>
-				<i class="mwe-rws-again"></i>
-			</li>
-			<li class="mwe-rws-stashed">
-				<span>Item 3</span>
-				<i class="mwe-rws-play"></i>
-				<i class="mwe-rws-again"></i>
-			</li>
-			<li class="mwe-rws-stashing">
-				<span>Item 4</span>
-				<i class="mwe-rws-play"></i>
-				<i class="mwe-rws-again"></i>
-			</li>
-			<li class="mwe-rws-selected">
-				<span>Item 5</span>
-				<i class="mwe-rws-play"></i>
-				<i class="mwe-rws-again"></i>
-			</li>
-			<li>
-				<span>Item 6 : Lorem Elsass ipsum mamsell morbi mollis habitant et Racing. Verdammi commodo tellus ftomi! ante Oberschaeffolsheim picon bière amet dolor schpeck  Gal ! Huguette leo so sed varius dignissim</span>
-				<i class="mwe-rws-play"></i>
-				<i class="mwe-rws-again"></i>
-			</li>
-			<li>
-				<span>Item 7</span>
-				<i class="mwe-rws-play"></i>
-				<i class="mwe-rws-again"></i>
-			</li>
-			<li>
-				<span>Item 8</span>
-				<i class="mwe-rws-play"></i>
-				<i class="mwe-rws-again"></i>
-			</li>
-			<li>
-				<span>Item 9</span>
-				<i class="mwe-rws-play"></i>
-				<i class="mwe-rws-again"></i>
-			</li>
-			<li>
-				<span>Item 10</span>
-				<i class="mwe-rws-play"></i>
-				<i class="mwe-rws-again"></i>
-			</li>
-			<li>
-				<span>Item 11</span>
-				<i class="mwe-rws-play"></i>
-				<i class="mwe-rws-again"></i>
-			</li>
-			<li>
-				<span>Item 12</span>
-				<i class="mwe-rws-play"></i>
-				<i class="mwe-rws-again"></i>
+			<li v-for="(word, index) in words" :class="itemClass( word )" @click="selectWord( index )">
+				<span v-html="word"></span>
+				<i class="mwe-rws-play" @click.stop.prevent="playWord( word )"></i>
+				<i class="mwe-rws-again" @click.stop.prevent="removeRecord( word )"></i>
 			</li>
 		</ul>
 	</section>
@@ -74,14 +19,14 @@
 		</div>
 		<div id="mwe-rws-core" class="mwe-rw-core">
 			<div id="mwe-rws-itembox" class="mwe-rw-itembox">
-				<div id="mwe-rws-item" class="mwe-rw-item">Item 1</div>
-				{{& studio.skip}}
+				<div id="mwe-rws-item" class="mwe-rw-item" v-html="words[ selected ]"></div>
+				<ooui-button id="mwe-rws-skip" label="{{_ "mwe-recwiz-studio-skip"}}" icon="next" :framed="false" @click="moveForward"></ooui-button>
 			</div>
 			<video src="./tty.webm" controls></video>
 		</div>
 		<div id="mwe-rws-actions" class="mwe-rw-actions">
-			{{& studio.record}}
-			<ul id="mwe-rws-vumeter">
+			<ooui-button id="mwe-rws-record" icon="ll-record" flags="primary progressive" @click="toggleRecord"></ooui-button>
+			<ul id="mwe-rws-vumeter" :class="saturated ? 'mwe-rws-saturated' : ''">
 				<li class="mwe-rws-vu-active"></li>
 				<li class="mwe-rws-vu-active"></li>
 				<li class="mwe-rws-vu-active"></li>
