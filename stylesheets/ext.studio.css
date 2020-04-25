@@ -52,17 +52,17 @@
 	padding: 6px 75px 6px 38px;
 	margin-left: 6px;
 	margin-right: 6px;
+	border-radius: 16px;
 
 	overflow-wrap: break-word;
 	word-wrap: break-word;
 }
+.mwe-rw-list li.mwe-rws-selected {
+	font-weight: bold;
+	background-color: #f8f9fa;
+}
 .mwe-rw-list li:hover {
 	background-color: rgba(216, 222, 228, 0.5);
-	border-radius: 16px;
-
-	font-weight: bold;
-}
-.mwe-rw-list li.mwe-rws-selected {
 	font-weight: bold;
 }
 .mwe-rw-list li.mwe-rws-stashing,
@@ -93,13 +93,14 @@
 	background-image: url('../icons/spinner.svg');
 	animation: spinner 1s infinite steps(8);
 }
-.mwe-rw-list li.mwe-rws-stashing.mwe-rws-selected::before {
-	animation: unset;
-}
 .mwe-rw-list li.mwe-rws-stashed::before {
 	background-image: url('../icons/download-done.svg');
 }
-.mwe-rw-list li.mwe-rws-selected::before {
+.mwe-rw-list li.mwe-rws-error::before {
+	background-image: url('../icons/error.svg');
+	background-size: 16px 16px;
+}
+.mwe-rws-recording .mwe-rw-list li.mwe-rws-selected::before {
 	background-image: url('../icons/play.svg');
 }
 /* action icons */

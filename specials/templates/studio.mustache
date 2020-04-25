@@ -4,7 +4,7 @@
 	<section>
 		<ul id="mwe-rws-list" class="mwe-rw-list">
 			<li v-for="(word, index) in words" :class="itemClass( word )" @click="selectWord( index )">
-				<span v-html="word"></span>
+				<span v-html="word" :title="errors[ word ]"></span>
 				<i class="mwe-rws-play" @click.stop.prevent="playWord( word )"></i>
 				<i class="mwe-rws-again" @click.stop.prevent="removeRecord( word )"></i>
 			</li>

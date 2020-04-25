@@ -76,6 +76,15 @@
 				 	$( document ).off( 'keydown.rw-studio' );
 				 }
 			 },
+			 selected: function() {
+				 var list = $( '#mwe-rws-list' ),
+				 	itemNode = list.children().eq( this.selected ),
+				 	container = list.parent();
+
+				 container.animate( {
+					 scrollTop: itemNode.offset().top - container.offset().top + container.scrollTop() - ( itemNode.innerHeight() - itemNode.height() )
+				 } );
+			 },
 		 },
 		 methods: {
 			 shortcuts: function( event ) {
