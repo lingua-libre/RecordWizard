@@ -36,14 +36,19 @@
 			 this.$records = rw.store.record.data.records;
 			 this.$startTime = 0;
 		 },
-		 mounted: function() {
+		 computed: {
+			 wordsRecorded: function() {
+				 var i,
+				 	recordedCounter = 0;
 
-		 },
-		 beforeUpdate: function() {
+				 for ( i = 0; i < this.words.length; i++ ) {
+					 if ( this.status[ this.words[ i ] ] !== 'up' && this.status[ this.words[ i ] ] !== 'ready' ) {
+						 recordedCounter++;
+					 }
+				 }
 
-		 },
-		 updated: function() {
-
+				 return recordedCounter + ' / ' + this.words.length;
+			 },
 		 },
 
 		 /* Methods */
@@ -311,7 +316,6 @@
 			runCountdown: function() {
 				if ( this.isRecording === true ) {
 					this.countdown--;
-					console.log( this.countdown );
 					if ( this.countdown > 0 ) {
 						setTimeout( this.runCountdown.bind( this ), 1000 );
 					} else {

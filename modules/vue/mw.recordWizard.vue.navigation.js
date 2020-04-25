@@ -8,6 +8,29 @@
 		/* Data */
 		data: {
 			state: rw.store.state.data,
+   		 	status: rw.store.record.data.status,
+		},
+
+		/* Computed */
+		computed: {
+			nextDisabled: function() {
+				var word;
+
+				if ( this.state.step !== 'studio' ) {
+					// set enabled by default
+					return false;
+				} else {
+					for( word in this.status ) {
+						if ( this.status[ word ] !== 'up' && this.status[ word ] !== 'ready' ) {
+							// We've found a record, so allow the user to continue
+							return false;
+						}
+					}
+
+					// no record has been made yet, so disable the next button
+					return true;
+				}
+			},
 		},
 
 		/* Methods */

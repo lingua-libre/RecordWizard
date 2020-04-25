@@ -29,8 +29,11 @@
 			<ul id="mwe-rws-vumeter" :class="saturated ? 'mwe-rws-saturated' : ''">
 				<li v-for="n in 15" :class="n <= vumeter ? 'mwe-rws-vu-active' : ''"></li>
 			</ul>
-			<div id="mwe-rws-recording"></div>
-			<div id="mwe-rws-timer">00:00</div>
+			<div id="mwe-rws-record-indicator">
+				<div v-show="countdown === 0" id="mwe-rws-recording"></div>
+				<div v-show="countdown > 0" v-html="countdown"></div>
+			</div>
+			<div id="mwe-rws-counter" v-html="wordsRecorded"></div>
 		</div>
 	</section>
 </div>

@@ -296,11 +296,17 @@
 	background-color: #dd3333;
 }
 
+#mwe-rws-record-indicator {
+	margin-right: 50px;
+	color: #ff0000;
+	font-size: 23px;
+	font-weight: bold;
+	width: 17px;
+}
 #mwe-rws-recording {
 	position: relative;
 	box-sizing: border-box;
 
-	margin-right: 50px;
 	width: 17px;
 	height: 17px;
 
@@ -327,7 +333,7 @@
 	background-color:#ff0000;
 }
 
-#mwe-rws-timer {
+#mwe-rws-counter {
 	margin-right: auto;
 
 	font-size: 23px;
