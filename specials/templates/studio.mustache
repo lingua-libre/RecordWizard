@@ -22,10 +22,10 @@
 				<div id="mwe-rws-item" class="mwe-rw-item" v-html="words[ selected ]"></div>
 				<ooui-button id="mwe-rws-skip" label="{{_ "mwe-recwiz-studio-skip"}}" icon="next" :framed="false" @click="moveForward"></ooui-button>
 			</div>
-			<video src="./tty.webm" controls></video>
+			<video id="mwe-rws-videoplayer" v-show="videoStream" controls></video>
 		</div>
 		<div id="mwe-rws-actions" class="mwe-rw-actions">
-			<ooui-button id="mwe-rws-record" icon="ll-record" flags="primary progressive" @click="toggleRecord"></ooui-button>
+			<ooui-button id="mwe-rws-record" icon="ll-record" flags="primary progressive" @click="toggleRecord" :disabled="metadata.media === 'video' && videoStream === null"></ooui-button>
 			<ul id="mwe-rws-vumeter" :class="saturated ? 'mwe-rws-saturated' : ''">
 				<li v-for="n in 15" :class="n <= vumeter ? 'mwe-rws-vu-active' : ''"></li>
 			</ul>

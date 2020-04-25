@@ -17,12 +17,24 @@
 			isRecording: false,
 			saturated: false,
 			vumeter: 0,
+			countdown: 0,
+			audioParams: {
+			   autoStart: true,
+			   autoStop: true,
+			   onSaturate: 'discard',
+			},
+			videoParams: {
+				beforeStart: 3,
+				recordDuration: 2,
+			},
+			videoStream: null,
 		 },
 
 		 /* Hooks */
 		 created: function() {
 			 this.$audioPlayer = document.createElement( 'audio' );
 			 this.$records = rw.store.record.data.records;
+			 this.$startTime = 0;
 		 },
 		 mounted: function() {
 
@@ -41,13 +53,13 @@
 					 // Select the first word in the list
 					 this.selected = 0;
 
-	 				 // TODO: switch between audio and video
-					 this.$recorder = new rw.libs.LinguaRecorder( {
-						autoStart: true,
-						autoStop: true,
-						onSaturate: 'discard'
-					} );
+	 				 if ( this.metadata.media === 'audio' ) {
+						 this.$recorder = new rw.libs.LinguaRecorder( this.audioParams );
+					} else {
+						this.$recorder = new rw.VideoRecorder( this.videoParams );
+					}
 
+					this.$recorder.on( 'ready', this.onReady.bind( this ) );
 					this.$recorder.on( 'stoped', this.onStop.bind( this ) );
 					this.$recorder.on( 'canceled', this.onCancel.bind( this ) );
 					this.$recorder.on( 'saturated', this.onSaturate.bind( this ) );
@@ -188,6 +200,7 @@
 				 this.isRecording = false;
 				 this.saturated = false;
 				 this.vumeter = 0;
+				 this.countdown = 0;
 			 },
 			 startRecord: function() {
 		 		if ( this.selected < 0 || this.selected >= this.words.length ) {
@@ -198,7 +211,33 @@
 				 this.saturated = false;
 				 this.$recorder.start();
 
+				 if ( this.metadata.media === 'video' ) {
+				 	this.countdown = this.videoParams.beforeStart + 1;
+					 this.runCountdown();
+				 }
+
 				 return true;
+			 },
+			 onReady: function ( stream ) {
+				 var videoNode;
+
+				 if ( this.metadata.media === 'video' ) {
+					 this.videoStream = stream;
+
+					 videoNode = $( '#mwe-rws-videoplayer' )[ 0 ]; // get the HTMLnode of the video tag
+
+					 // Older browsers may not have srcObject
+					 if ( 'srcObject' in videoNode ) {
+						 videoNode.srcObject = stream;
+					 } else {
+						 // Avoid using this in new browsers, as it is going away.
+						 videoNode.src = window.URL.createObjectURL( stream );
+					 }
+					 videoNode.onloadedmetadata = function () {
+						 videoNode.play();
+						 videoNode.muted = true;
+					 };
+				 }
 			 },
 			 onRecord: function ( samples ) {
 		 		var i, amplitude,
@@ -218,10 +257,17 @@
 				this.vumeter = Math.floor( ( -10 * amplitudeMax * amplitudeMax ) + 25 * amplitudeMax );
 				//this.vumeter = Math.floor( amplitudeMax * 15 ); //if we want a linear vumeter
 			},
-			 onStop: function ( audioRecord ) {
-				 var word = this.words[ this.selected ];
+			 onStop: function ( record ) {
+				 var blob,
+				 	 word = this.words[ this.selected ];
 
-				 this.upload( word, audioRecord.getBlob() );
+				if ( this.metadata.media === 'audio' ) {
+					blob = record.getBlob();
+				} else {
+					blob = record;
+				}
+
+				 this.upload( word, blob );
 
 				// Auto start next record, if any, or stop the recorder
 				if ( this.moveForward() === false ) {
@@ -243,7 +289,7 @@
 		 		if ( blob !== undefined ) {
 		 			this.$records[ word ].setBlob(
 						blob,
-						( this.metadata.media === 'audio' ? 'wav' : 'mpeg' )
+						( this.metadata.media === 'audio' ? 'wav' : 'webm' )
 					);
 		 		}
 
@@ -261,6 +307,30 @@
 				console.log( 'uploadError' );
 				this.status[ word ] = 'ready';
 				this.errors[ word ] = error;
+			},
+			runCountdown: function() {
+				if ( this.isRecording === true ) {
+					this.countdown--;
+					console.log( this.countdown );
+					if ( this.countdown > 0 ) {
+						setTimeout( this.runCountdown.bind( this ), 1000 );
+					} else {
+						this.$startTime = new Date();
+						this.runTimer();
+					}
+				}
+			},
+			runTimer: function() {
+				var elapsedTime;
+
+				if ( this.isRecording === true ) {
+					elapsedTime = ( new Date() - this.$startTime ) / 1000;
+					this.vumeter = Math.floor( elapsedTime * 15 / this.videoParams.recordDuration );
+
+					if ( this.vumeter < 15 ) {
+						setTimeout( this.runTimer.bind( this ), 200 );
+					}
+				}
 			},
 		 }
 	 } );
