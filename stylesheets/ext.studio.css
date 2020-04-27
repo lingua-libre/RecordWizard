@@ -4,18 +4,25 @@
 #mwe-rw-studio .mwe-rw-section-group {
 	height: 460px;
 }
-#mwe-rws-shortcuts {
-	position: absolute;
-	right: 0px;
-    top: 25px;
+.mwe-rw-topicon {
+	display: block;
+	cursor: pointer;
 
 	width: 35px;
 	height: 35px;
+	padding: 0;
 
-	background-image: url('../icons/keyboard.svg');
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: 35px 35px
+}
+#mwe-rws-settings {
+	background-image: url('../icons/settings.svg');
+	background-size: 30px 30px;
+	margin-right: 10px;
+}
+#mwe-rws-shortcuts {
+	background-image: url('../icons/keyboard.svg');
+	background-size: 35px 35px;
 }
 #mwe-rw-studio .mwe-rw-section-group {
 	display: flex;

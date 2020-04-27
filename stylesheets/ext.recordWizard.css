@@ -107,16 +107,23 @@ body.mw-special-RecordWizard #contentHeading {
     padding-left: 35px;
     padding-right: 35px;
 }
-#mwe-rw-content > .mwe-rw-content > h3 {
+.mwe-rw-content-title {
+    display: flex;
+
     box-sizing: border-box;
+    padding-top: 25px;
+
     height: 74px;
     width: 100%;
-    padding-top: 25px;
     border-bottom: 1px solid #dadada;
-
+}
+h3 {
     font-family: Lato;
     font-size: 22px;
     font-weight: 600;
+}
+.mwe-rw-content-title h3 {
+    margin-right: auto;
 }
 #mwe-rw-content > .mwe-rw-content > section {
     padding-top: 22px;

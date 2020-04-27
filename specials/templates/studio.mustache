@@ -1,5 +1,23 @@
-<h3>{{_ "mwe-recwiz-studio-title"}}</h3>
-<i id="mwe-rws-shortcuts"></i>
+<div class="mwe-rw-content-title">
+	<h3>{{_ "mwe-recwiz-studio-title"}}</h3>
+	<ooui-popup>
+		<template v-slot:trigger>
+			<i id="mwe-rws-settings" class="mwe-rw-topicon"></i>
+		</template>
+		<template v-slot:content>
+			<div></div>
+		</template>
+	</ooui-popup>
+	<ooui-popup>
+		<template v-slot:trigger>
+			<i id="mwe-rws-shortcuts" class="mwe-rw-topicon"></i>
+		</template>
+		<template v-slot:content>
+			<div>
+			</div>
+		</template>
+	</ooui-popup>
+</div>
 <div class="mwe-rw-section-group" :class="( metadata.media === 'audio' ? 'mwe-rws-audio' : 'mwe-rws-video' ) + ' ' + ( isRecording ? 'mwe-rws-recording' : '' )">
 	<section>
 		<ul id="mwe-rws-list" class="mwe-rw-list">
@@ -30,7 +48,8 @@
 				<li v-for="n in 15" :class="n <= vumeter ? 'mwe-rws-vu-active' : ''"></li>
 			</ul>
 			<div id="mwe-rws-record-indicator">
-				<div v-show="countdown === 0" id="mwe-rws-recording"></div>
+				<div v-show="countdown === 0 && ! saturated" id="mwe-rws-recording"></div>
+				<div v-show="saturated">SAT</div>
 				<div v-show="countdown > 0" v-html="countdown"></div>
 			</div>
 			<div id="mwe-rws-counter" v-html="wordsRecorded"></div>
