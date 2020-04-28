@@ -189,6 +189,7 @@
                 "modules/layout/mw.recordWizard.component.ooui-buttonselect.js",
                 "modules/layout/mw.recordWizard.component.ooui-checkbox.js",
                 "modules/layout/mw.recordWizard.component.ooui-dropdown.js",
+                "modules/layout/mw.recordWizard.component.ooui-numberinput.js",
                 "modules/layout/mw.recordWizard.component.ooui-popup.js",
                 "modules/layout/mw.recordWizard.component.ooui-progressbar.js",
                 "modules/layout/mw.recordWizard.component.ooui-textinput.js",

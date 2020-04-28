@@ -9,6 +9,7 @@
 			placeholder: String,
 			disabled: { type: Boolean, default: false },
 			inputId: String,
+			label: String,
 		},
 		mounted: function() {
 			this.$input = new OO.ui.TextInputWidget( {
@@ -17,6 +18,7 @@
 				disabled: this.disabled,
 			    value: this.value,
 				placeholder: this.placeholder,
+				label: this.label,
 			} );
       		this.$input.on( 'change', this.$emit.bind( this, 'input' ) );
       		this.$input.on( 'enter', this.$emit.bind( this, 'enter' ) );

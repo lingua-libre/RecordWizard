@@ -22,12 +22,35 @@
 			   autoStart: true,
 			   autoStop: true,
 			   onSaturate: 'discard',
+			   startThreshold: 0.1,
+			   stopThreshold: 0.05,
+			   stopDuration: 0.3,
+			   marginBefore: 0.25,
+			   marginAfter: 0.25,
+			   saturationThreshold: 0.99,
 			},
 			videoParams: {
-				beforeStart: 3,
-				recordDuration: 2,
+				beforeStart: '3',
+				recordDuration: '2',
 			},
 			videoStream: null,
+			options: {
+				beforeStart: [
+					{ data: '0', label: '0' },
+					{ data: '1', label: '1' },
+					{ data: '2', label: '2' },
+					{ data: '3', label: '3' },
+					{ data: '5', label: '5' },
+				],
+				recordDuration: [
+					{ data: '2', label: '2' },
+					{ data: '3', label: '3' },
+					{ data: '5', label: '5' },
+					{ data: '8', label: '8' },
+					{ data: '12', label: '12' },
+					{ data: '20', label: '20' },
+				],
+			}
 		 },
 
 		 /* Hooks */
@@ -58,17 +81,7 @@
 					 // Select the first word in the list
 					 this.selected = 0;
 
-	 				 if ( this.metadata.media === 'audio' ) {
-						 this.$recorder = new rw.libs.LinguaRecorder( this.audioParams );
-					} else {
-						this.$recorder = new rw.VideoRecorder( this.videoParams );
-					}
-
-					this.$recorder.on( 'ready', this.onReady.bind( this ) );
-					this.$recorder.on( 'stoped', this.onStop.bind( this ) );
-					this.$recorder.on( 'canceled', this.onCancel.bind( this ) );
-					this.$recorder.on( 'saturated', this.onSaturate.bind( this ) );
-					this.$recorder.on( 'recording', this.onRecord.bind( this ) );
+					 this.initRecorder();
 
 					 // Bind keyboard shortcuts
 					 $( document ).on( 'keydown.rw-studio', this.shortcuts.bind( this ) );
@@ -85,8 +98,46 @@
 					 scrollTop: itemNode.offset().top - container.offset().top + container.scrollTop() - ( itemNode.innerHeight() - itemNode.height() )
 				 } );
 			 },
+			 audioParams: {
+			 	 deep: true,
+				 handler: function() {
+					 this.cancelRecord();
+					 this.delRecorder();
+					 this.initRecorder();
+				 },
+			 },
+			 videoParams: {
+			 	 deep: true,
+				 handler: function() {
+					 this.cancelRecord();
+					 this.delRecorder();
+					 this.initRecorder();
+				 },
+			 },
 		 },
 		 methods: {
+			 initRecorder: function() {
+				 if ( this.metadata.media === 'audio' ) {
+					 this.$recorder = new rw.libs.LinguaRecorder( this.audioParams );
+				} else {
+					this.$recorder = new rw.VideoRecorder( this.videoParams );
+				}
+
+				this.$recorder.on( 'ready', this.onReady.bind( this ) );
+				this.$recorder.on( 'stoped', this.onStop.bind( this ) );
+				this.$recorder.on( 'canceled', this.onCancel.bind( this ) );
+				this.$recorder.on( 'saturated', this.onSaturate.bind( this ) );
+				this.$recorder.on( 'recording', this.onRecord.bind( this ) );
+			 },
+			 delRecorder: function() {
+				this.$recorder.off( 'ready' );
+				this.$recorder.off( 'stoped' );
+				this.$recorder.off( 'canceled' );
+				this.$recorder.off( 'saturated' );
+				this.$recorder.off( 'recording' );
+
+				this.$recorder = undefined;
+			 },
 			 shortcuts: function( event ) {
 				 console.log( 'KEY: ', event.which );
 				 switch ( event.which ) {
@@ -226,7 +277,7 @@
 				 this.$recorder.start();
 
 				 if ( this.metadata.media === 'video' ) {
-				 	this.countdown = this.videoParams.beforeStart + 1;
+				 	this.countdown = parseInt( this.videoParams.beforeStart ) + 1;
 					 this.runCountdown();
 				 }
 
@@ -338,7 +389,7 @@
 
 				if ( this.isRecording === true ) {
 					elapsedTime = ( new Date() - this.$startTime ) / 1000;
-					this.vumeter = Math.floor( elapsedTime * 15 / this.videoParams.recordDuration );
+					this.vumeter = Math.floor( elapsedTime * 15 / parseInt( this.videoParams.recordDuration ) );
 
 					if ( this.vumeter < 15 ) {
 						setTimeout( this.runTimer.bind( this ), 200 );

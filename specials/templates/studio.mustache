@@ -5,7 +5,28 @@
 			<i id="mwe-rws-settings" class="mwe-rw-topicon"></i>
 		</template>
 		<template v-slot:content>
-			<div></div>
+			<div v-if="metadata.media === 'audio'">
+				<h4>{{_ "mwe-recwiz-settings-audiorecording"}}</h4>
+				<label>{{_ "mwe-recwiz-settings-startthreshold"}}</label>
+				<ooui-numberinput v-model="audioParams.startThreshold" :min="0" :max="100" :label="'%'" :percentage="true"></ooui-numberinput>
+				<label>{{_ "mwe-recwiz-settings-stopthreshold"}}</label>
+				<ooui-numberinput v-model="audioParams.stopThreshold" :min="0" :max="100" :label="'%'" :percentage="true"></ooui-numberinput>
+				<label>{{_ "mwe-recwiz-settings-saturationthreshold"}}</label>
+				<ooui-numberinput v-model="audioParams.saturationThreshold" :min="0" :max="100" :label="'%'" :percentage="true"></ooui-numberinput>
+				<label>{{_ "mwe-recwiz-settings-stopduration"}}</label>
+				<ooui-numberinput v-model="audioParams.stopDuration" :min="0" :max="5" :step="0.05" :label="'{{_ "mwe-recwiz-settings-sec"}}'"></ooui-numberinput>
+				<label>{{_ "mwe-recwiz-settings-marginbefore"}}</label>
+				<ooui-numberinput v-model="audioParams.marginBefore" :min="0" :max="5" :step="0.05" :label="'{{_ "mwe-recwiz-settings-sec"}}'"></ooui-numberinput>
+				<label>{{_ "mwe-recwiz-settings-marginafter"}}</label>
+				<ooui-numberinput v-model="audioParams.marginAfter" :min="0" :max="5" :step="0.05" :label="'{{_ "mwe-recwiz-settings-sec"}}'"></ooui-numberinput>
+			</div>
+			<div v-if="metadata.media === 'video'">
+				<h4>{{_ "mwe-recwiz-settings-videorecording"}}</h4>
+				<label>{{_ "mwe-recwiz-settings-durationtorecord"}}</label>
+				<ooui-buttonselect v-model="videoParams.recordDuration" :options="options.recordDuration"></ooui-buttonselect>
+				<label>{{_ "mwe-recwiz-settings-delaybetweenrecords"}}</label>
+				<ooui-buttonselect v-model="videoParams.beforeStart" :options="options.beforeStart"></ooui-buttonselect>
+			</div>
 		</template>
 	</ooui-popup>
 	<ooui-popup>
