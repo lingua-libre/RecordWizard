@@ -30,6 +30,7 @@
         this.videoBlob = null;
         this.beforeStart = config.beforeStart || 3;
         this.recordDuration = config.recordDuration || 2;
+		this.canceled = false;
 
         // Mixin constructors
     	OO.EventEmitter.call( this );
@@ -50,6 +51,7 @@
     rw.VideoRecorder.prototype.onReady = function ( stream ) {
         this.mediaRecorder = new MediaRecorder( stream );
 		this.mediaRecorder.ondataavailable = this.onDataAvailable.bind( this );
+		this.mediaRecorder.onstop = this.onStop.bind( this );
 
         this.emit( 'ready', stream );
     };
@@ -59,6 +61,7 @@
             return false;
         }
 
+		this.canceled = false;
         this.timeoutID = setTimeout( this.startNow.bind( this ), this.beforeStart * 1000 );
     };
 
@@ -75,24 +78,36 @@
         this.emit( 'started' );
     };
 
-    rw.VideoRecorder.prototype.onDataAvailable = function ( event ) {
-        this.videoBlob = event.data;
-        this.chunks.push( event.data );
-    };
-
     rw.VideoRecorder.prototype.stop = function () {
         clearTimeout( this.timeoutID );
+		this.canceled = false;
         this.mediaRecorder.stop();
-        var videoBlob = new Blob( this.chunks, { type: 'video/webm' } );
-        this.chunks = []; // Empty the chunks directly to save a bit of memory
-        this.emit( 'stoped', this.videoBlob );
     };
 
     rw.VideoRecorder.prototype.cancel = function () {
         clearTimeout( this.timeoutID );
+		this.canceled = true;
         this.mediaRecorder.stop();
         this.emit( 'canceled' );
     };
+
+    rw.VideoRecorder.prototype.onDataAvailable = function ( event ) {
+		console.log('dataavailable')
+        this.videoBlob = event.data;
+        this.chunks.push( event.data );
+    };
+
+	rw.VideoRecorder.prototype.onStop = function( event ) {
+        var videoBlob = new Blob( this.chunks, { type: 'video/webm' } );
+
+		if ( this.canceled === true ) {
+			return;
+		}
+
+        this.chunks = []; // Empty the chunks directly to save a bit of memory
+		console.log(this.videoBlob);
+        this.emit( 'stoped', this.videoBlob );
+	}
 
 
 }( mediaWiki, mediaWiki.recordWizard, jQuery ) );
