@@ -274,6 +274,7 @@
 
 				 this.isRecording = true;
 				 this.saturated = false;
+ 				 this.errors[ this.words[ this.selected ] ] = false;
 				 this.$recorder.start();
 
 				 if ( this.metadata.media === 'video' ) {
@@ -368,8 +369,13 @@
 				console.log( 'uploadSuccess' );
 				this.status[ word ] = 'stashed';
 			},
-			uploadError: function( word, error ) {
-				console.log( 'uploadError' );
+			uploadError: function( word, error, errorData ) {
+				// If the upload has been abort, it means another piece of code
+				// is doing stuff right now, so don't mess-up with it
+				if ( errorData !== undefined && errorData.textStatus === 'abort' ) {
+					return;
+				}
+
 				this.status[ word ] = 'ready';
 				this.errors[ word ] = error;
 			},
@@ -395,6 +401,76 @@
 						setTimeout( this.runTimer.bind( this ), 200 );
 					}
 				}
+			},
+			canMoveNext: function() {
+				var process = new OO.ui.Process();
+
+				// Make sure the recorder is stopped when we move to the next step
+				this.cancelRecord();
+
+				// Do some checks, and eventually alert the user on some strange things
+				// before moving to the next step
+				process.next( this.checkWordsLeft, this );
+				process.next( this.checkStashingRecords, this );
+				process.next( this.checkErrors, this );
+
+				return process.execute();
+			},
+			checkWordsLeft: function () {
+				var deferred = $.Deferred();
+
+				if ( rw.store.record.hasStatus( [ 'up', 'ready' ] ) === true ) {
+					OO.ui.confirm( mw.msg( 'mwe-recwiz-warning-wordsleft' ) ).done( function ( confirmed ) {
+						if ( confirmed ) {
+							deferred.resolve();
+						} else {
+							deferred.reject();
+						}
+					} );
+					return deferred;
+				} else {
+					return true;
+				}
+			},
+			checkStashingRecords: function () {
+				var deferred = $.Deferred();
+
+				if ( rw.store.record.hasStatus( 'stashing' ) === true ) {
+					OO.ui.confirm( mw.msg( 'mwe-recwiz-warning-pendinguploads' ) ).done( function ( confirmed ) {
+						if ( confirmed ) {
+							rw.requestQueue.clearQueue();
+							rw.store.record.resetStashingRecords();
+							deferred.resolve();
+						} else {
+							deferred.reject();
+						}
+					} );
+					return deferred;
+				} else {
+					return true;
+				}
+			},
+			checkErrors: function () {
+				var deferred = $.Deferred();
+
+				if ( rw.store.record.hasErrors() === true ) {
+					OO.ui.confirm( mw.msg( 'mwe-recwiz-warning-faileduploads' ) ).done( function ( confirmed ) {
+						if ( confirmed ) {
+							rw.store.record.resetAllErrors();
+							deferred.resolve();
+						} else {
+							deferred.reject();
+						}
+					} );
+					return deferred;
+				} else {
+					return true;
+				}
+			},
+			canMovePrev: function() {
+				this.cancelRecord();
+
+				return true;
 			},
 		 }
 	 } );

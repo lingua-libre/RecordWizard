@@ -277,12 +277,7 @@
 	 */
 	rw.Record.prototype.remove = function () {
 		this.file = null;
-
-		// Cancel any pending request
-		if ( this.deferred !== undefined ) {
-			this.deferred.reject( 'cancel' );
-			this.deferred = undefined;
-		}
+        this.cancelPendingRequests();
 	};
 
 	/**
@@ -294,10 +289,25 @@
 		this.imageInfo = null;
 
 		// Cancel any pending request
-		if ( this.deferred !== undefined ) {
-			this.deferred.reject( 'cancel' );
-			this.deferred = undefined;
-		}
+		this.cancelPendingRequests();
+	};
+
+	/**
+	 * Cancel any pending request
+	 */
+	rw.Record.prototype.cancelPendingRequests = function () {
+        if ( this.deferred !== undefined ) {
+            // We can have either a promise returned by mw.Api, which implements
+            // an abort method, or a plain deferred on which we can safely use
+            // the reject method.
+            if ( this.deferred.abort !== undefined ) {
+                this.deferred.abort( 'cancel' );
+            } else {
+                this.deferred.reject( 'cancel' );
+            }
+
+            this.deferred = undefined;
+        }
 	};
 
 	/**
@@ -370,6 +380,7 @@
 		this.wbItem = new rw.wikibase.Item();
 		this.fillWbItem();
 
+        // TODO : save the returned deferred in this.deferred
 		return this.wbItem.createOrUpdate( api, true );
 	};
 

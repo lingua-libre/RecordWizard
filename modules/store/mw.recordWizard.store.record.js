@@ -70,6 +70,12 @@
 		this.data.words.splice( 0, this.data.words.length );
 	};
 
+	RecordStore.prototype.resetRecord = function ( word ) {
+		this.data.records[ word ].reset();
+		this.data.errors[ word ] = false;
+		this.data.status[ word ] = 'up';
+	};
+
 	RecordStore.prototype.randomiseList = function() {
 		var i, tmp, randomIndex;
 
@@ -130,6 +136,57 @@
 		}
 	};
 
+	RecordStore.prototype.hasStatus = function( status ) {
+		var i;
+
+		if ( Array.isArray( status ) === false ) {
+			status = [ status ];
+		}
+
+		for ( i = 0; i < this.data.words.length; i++ ) {
+			// Check if the word is not stashed yet
+			if ( status.indexOf( this.data.status[ this.data.words[ i ] ] ) > -1 ) {
+				return true;
+			}
+		}
+
+		return false;
+	};
+
+	RecordStore.prototype.hasErrors = function() {
+		var i;
+
+		for ( i = 0; i < this.data.words.length; i++ ) {
+			// Check if the word has not an error message
+			if ( this.data.errors[ this.data.words[ i ] ] !== false ) {
+				return true;
+			}
+		}
+
+		return false;
+	};
+
+	RecordStore.prototype.resetAllErrors = function() {
+		var i;
+
+		for ( i = 0; i < this.data.words.length; i++ ) {
+			// Check if the word is not stashed yet
+			if ( this.data.errors[ this.data.words[ i ] ] !== false ) {
+				this.resetRecord( this.data.words[ i ] );
+			}
+		}
+	};
+
+	RecordStore.prototype.resetStashingRecords = function() {
+		var i;
+
+		for ( i = 0; i < this.data.words.length; i++ ) {
+			// Check if the word is not stashed yet
+			if ( this.data.status[ this.data.words[ i ] ] === 'stashing' ) {
+				this.resetRecord( this.data.words[ i ] );
+			}
+		}
+	};
 
 	rw.store.record = new RecordStore();
 

@@ -68,4 +68,15 @@
 		}
 	};
 
+	/**
+	 * Remove every pending request from the queue
+	 *
+	 * @private
+	 */
+	rw.RequestQueue.prototype.clearQueue = function () {
+		var param, value;
+
+		this.queue.length = 0;
+	};
+
 }( mediaWiki, mediaWiki.recordWizard, jQuery ) );
