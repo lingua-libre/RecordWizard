@@ -110,7 +110,7 @@
 		 		}
 		 	},
 			canMoveNext: function() {
-				var qid,
+				var qid, deferred,
 					process = new OO.ui.Process();
 
 				/* Validate the datas */
@@ -144,10 +144,13 @@
 				process.next( this.createOrUpdateWbItem, this ); // save the formed item
 				process.next( this.saveOptions, this ); // save options
 
-				return process.execute().fail( function ( code, data ) {
+				deferred = process.execute();
+				deferred.fail( function ( code, data ) {
 					console.error( '[RecordWizard]', code, data );
 					OO.ui.alert( mw.msg( 'mwe-recwiz-error-network' ) );
 				} );
+
+				return deferred;
 			},
 
 			/**

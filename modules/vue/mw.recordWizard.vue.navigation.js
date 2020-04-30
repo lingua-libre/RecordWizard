@@ -13,8 +13,17 @@
 
 		/* Computed */
 		computed: {
+			prevDisabled: function() {
+				if ( this.state.isFrozen === true ) {
+					return true;
+				}
+			},
 			nextDisabled: function() {
 				var word;
+
+				if ( this.state.isFrozen === true ) {
+					return true;
+				}
 
 				if ( this.state.step !== 'studio' ) {
 					// set enabled by default
@@ -66,18 +75,12 @@
 					return;
 				}
 
-				/* If it returns an OO.ui.Process object */
+				/* If it returns a $.Deferred */
 				rw.store.state.freeze();
 				process.then( rw.store.state.moveNext.bind( rw.store.state ) );
 				process.then(
-					function() {
-						console.log( 'succèss' );
-						rw.store.state.unfreeze.bind( rw.store.state )
-					}.bind( this ),
-					function() {
-						console.log( 'error' );
-						rw.store.state.unfreeze.bind( rw.store.state )
-					}.bind( this )
+					rw.store.state.unfreeze.bind( rw.store.state ),
+					rw.store.state.unfreeze.bind( rw.store.state )
 				);
 			},
 		}
