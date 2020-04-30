@@ -27,6 +27,8 @@
 			for( i = 0; i < this.generators.length; i++ ) {
 	 			this.$windowManager.addWindows( [ this.generators[ i ].dialog ] );
 			}
+
+			this.onLanguageChange();
 		 },
 		 mounted: function() {
 
@@ -61,14 +63,6 @@
 				/* Async load of past data for current language */
 				rw.store.config.fetchPastRecords( this.metadata.language || this.availableLanguages[ 0 ].data, this.metadata.locutor.qid );
 			 },
-			 'metadata.language': function() {
-				 // Also update the media property when the language property change
-				 if ( this.config.languages[ this.metadata.language ].mediaType === this.config.items.mediaTypeVideo ) {
-					 this.metadata.media = 'video';
-				 } else {
-					 this.metadata.media = 'audio';
-				 }
-			 }
 		 },
 		 methods: {
 			 clearAll: function() {
@@ -95,6 +89,13 @@
 			 onLanguageChange: function() {
 				 /* Clear all items from list */
 				 this.clearAll();
+
+				 /* Update the media property */
+				 if ( this.config.languages[ this.metadata.language ].mediaType === this.config.items.mediaTypeVideo ) {
+					 this.metadata.media = 'video';
+				 } else {
+					 this.metadata.media = 'audio';
+				 }
 
 				 /* Async load of past data for current language */
 				 rw.store.config.fetchPastRecords( this.metadata.language, this.metadata.locutor.qid );
