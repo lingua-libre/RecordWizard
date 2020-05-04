@@ -101,7 +101,10 @@
 	background-position: center;
 	background-repeat: no-repeat;
 }
-.mwe-rw-list li.mwe-rws-stashing::before {
+.mwe-rw-list li.mwe-rws-stashing::before,
+#mwe-rws-stashingcounter i {
+	width: 14px;
+	height: 14px;
 	background-size: 14px 14px;
 	background-image: url('../icons/spinner.svg');
 	animation: spinner 1s infinite steps(8);
@@ -109,7 +112,10 @@
 .mwe-rw-list li.mwe-rws-stashed::before {
 	background-image: url('../icons/download-done.svg');
 }
-.mwe-rw-list li.mwe-rws-error::before {
+.mwe-rw-list li.mwe-rws-error::before,
+#mwe-rws-errorcounter i {
+	width: 16px;
+	height: 16px;
 	background-image: url('../icons/error.svg');
 	background-size: 16px 16px;
 }
@@ -348,10 +354,22 @@
 }
 
 #mwe-rws-counter {
+	position: relative;
 	margin-right: auto;
 
 	font-size: 23px;
 	font-weight: bolder;
 	letter-spacing: 0.5px;
 	color: #222222;
+}
+#mwe-rws-othercounter {
+	display: inline-block;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	font-size: 17px;
+	width: 120px; /* hack to avoid text going back to a new line in most cases */
+}
+#mwe-rws-othercounter i {
+	display: inline-block;
 }

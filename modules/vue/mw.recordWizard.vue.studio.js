@@ -60,17 +60,41 @@
 			 this.$startTime = 0;
 		 },
 		 computed: {
-			 wordsRecorded: function() {
+			 nbWordsRecorded: function() {
 				 var i,
-				 	recordedCounter = 0;
+				 	counter = 0;
 
 				 for ( i = 0; i < this.words.length; i++ ) {
-					 if ( this.status[ this.words[ i ] ] !== 'up' && this.status[ this.words[ i ] ] !== 'ready' ) {
-						 recordedCounter++;
+					 if ( [ 'up', 'ready', 'stashing' ].indexOf( this.status[ this.words[ i ] ] ) === -1 ) {
+						 counter++;
 					 }
 				 }
 
-				 return recordedCounter + ' / ' + this.words.length;
+				 return counter + ' / ' + this.words.length;
+			 },
+			 nbWordsStashing: function() {
+				 var i,
+				 	counter = 0;
+
+				 for ( i = 0; i < this.words.length; i++ ) {
+					 if ( this.status[ this.words[ i ] ] === 'stashing' ) {
+						 counter++;
+					 }
+				 }
+
+				 return counter;
+			 },
+			 nbErrors: function() {
+				 var i,
+				 	counter = 0;
+
+				 for ( i = 0; i < this.words.length; i++ ) {
+					 if ( this.errors[ this.words[ i ] ] !== false ) {
+						 counter++;
+					 }
+				 }
+
+				 return counter;
 			 },
 		 },
 

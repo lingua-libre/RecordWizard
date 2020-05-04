@@ -73,7 +73,19 @@
 				<div v-show="saturated">SAT</div>
 				<div v-show="countdown > 0" v-html="countdown"></div>
 			</div>
-			<div id="mwe-rws-counter" v-html="wordsRecorded"></div>
+			<div id="mwe-rws-counter">
+				<span v-html="nbWordsRecorded"></span>
+				<span id="mwe-rws-othercounter">
+					<span id="mwe-rws-stashingcounter" v-show="nbWordsStashing > 0">
+						<i></i>
+						<span v-html="nbWordsStashing"></span>
+					</span>
+					<span id="mwe-rws-errorcounter" v-show="nbErrors > 0">
+						<i></i>
+						<span v-html="nbErrors"></span>
+					</span>
+				</span>
+			</div>
 		</div>
 	</section>
 </div>
