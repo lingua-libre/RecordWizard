@@ -46,10 +46,12 @@
 				if ( this.percentage === true ) {
 					value /= 100;
 				}
+				// Remove unnecessary digits (thanks js for being so bad at float number handling)
+				value = parseFloat( value.toPrecision( 7 ) );
 				this.$emit( 'input', value );
 			},
 			safePercent: function() {
-				return parseFloat( ( this.value * 100 ).toPrecision(7) );
+				return parseFloat( ( this.value * 100 ).toPrecision( 7 ) );
 			}
 		},
 	} );

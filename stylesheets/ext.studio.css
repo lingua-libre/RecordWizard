@@ -21,7 +21,10 @@
 	margin-right: 10px;
 }
 #mwe-rw-studio .mwe-rw-content-title .oo-ui-numberInputWidget-buttoned > .oo-ui-labelElement-label {
-	padding-right: 50px;
+	right: 35px;
+}
+#mwe-rw-studio .oo-ui-popupWidget-body {
+	overflow-x: hidden;
 }
 #mwe-rws-shortcuts {
 	background-image: url('../icons/keyboard.svg');

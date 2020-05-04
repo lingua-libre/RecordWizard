@@ -81,6 +81,9 @@
 					 // Select the first word in the list
 					 this.selected = 0;
 
+					 if ( this.$recorder !== undefined ) {
+						 this.delRecorder();
+					 }
 					 this.initRecorder();
 
 					 // Bind keyboard shortcuts
@@ -101,17 +104,19 @@
 			 audioParams: {
 			 	 deep: true,
 				 handler: function() {
-					 this.cancelRecord();
-					 this.delRecorder();
-					 this.initRecorder();
+					 if ( this.metadata.media === 'audio' ) {
+					 	this.cancelRecord();
+						$.extend( this.$recorder, this.audioParams );
+					 }
 				 },
 			 },
 			 videoParams: {
 			 	 deep: true,
 				 handler: function() {
-					 this.cancelRecord();
-					 this.delRecorder();
-					 this.initRecorder();
+					 if ( this.metadata.media === 'video' ) {
+					 	this.cancelRecord();
+						$.extend( this.$recorder, this.videoParams );
+					 }
 				 },
 			 },
 		 },
@@ -140,6 +145,10 @@
 			 },
 			 shortcuts: function( event ) {
 				 console.log( 'KEY: ', event.which );
+				 // Do not trigger those events when the user is focusing
+				 if ( event.target.nodeName === 'INPUT' || event.target.nodeName === 'BUTTON' ) {
+					 return;
+				 }
 				 switch ( event.which ) {
 					 case 37: // left
 					 case 38: // up

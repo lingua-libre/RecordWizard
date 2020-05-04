@@ -28,8 +28,8 @@
 		this.mediaRecorder = null;
         this.timeoutID = null;
         this.videoBlob = null;
-        this.beforeStart = config.beforeStart || 3;
-        this.recordDuration = config.recordDuration || 2;
+        this.beforeStart = config.beforeStart === undefined ? 3 : config.beforeStart;
+        this.recordDuration = config.recordDuration === undefined ? 2 : config.recordDuration;
 		this.canceled = false;
 
         // Mixin constructors
