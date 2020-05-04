@@ -26,6 +26,7 @@
 			status: {},
 			errors: {},
 		};
+		this.$api = new mw.Api();
 	};
 
 	RecordStore.prototype.setLocutor = function ( locutor ) {
@@ -187,6 +188,39 @@
 			}
 		}
 	};
+
+	RecordStore.prototype.doStash = function ( word, blob ) {
+	   this.data.errors[ word ] = false;
+	   this.data.status[ word ] = 'ready';
+
+	   if ( blob !== undefined ) {
+		   this.data.records[ word ].setBlob(
+			   blob,
+			   ( this.data.metadata.media === 'audio' ? 'wav' : 'webm' )
+		   );
+	   }
+
+	   this.data.status[ word ] = 'stashing';
+	   rw.requestQueue.push( this.data.records[ word ].uploadToStash.bind( this.data.records[ word ], this.$api ) ).then(
+		   this.stashSuccess.bind( this, word ),
+		   this.stashError.bind( this, word )
+	   );
+   };
+
+   RecordStore.prototype.stashSuccess = function( word ) {
+	   console.log( 'uploadSuccess' );
+	   this.data.status[ word ] = 'stashed';
+   };
+   RecordStore.prototype.stashError = function( word, error, errorData ) {
+	   // If the upload has been abort, it means another piece of code
+	   // is doing stuff right now, so don't mess-up with it
+	   if ( errorData !== undefined && errorData.textStatus === 'abort' ) {
+		   return;
+	   }
+
+	   this.data.status[ word ] = 'ready';
+	   this.data.errors[ word ] = error;
+   };
 
 	rw.store.record = new RecordStore();
 

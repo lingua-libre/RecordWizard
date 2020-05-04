@@ -203,7 +203,8 @@
                 "ext.recordWizard.layout",
                 "oojs-ui.styles.icons-media",
                 "oojs-ui.styles.icons-content",
-                "oojs-ui.styles.icons-wikimedia"
+                "oojs-ui.styles.icons-wikimedia",
+                "oojs-ui.styles.icons-interactions"
             ]
         },
         "ext.recordWizard.vues":{

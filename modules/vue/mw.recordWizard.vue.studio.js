@@ -258,9 +258,7 @@
 			 },
 			 removeRecord: function( word ) {
 				 // Reset the selected word
-				 this.$records[ word ].reset();
-				 this.status[ word ] = 'up';
-				 this.errors[ word ] = false;
+				 rw.store.record.resetRecord( word );
 			 },
 			 toggleRecord: function() {
 			 	if ( this.isRecording ) {
@@ -342,7 +340,7 @@
 					blob = record;
 				}
 
-				 this.upload( word, blob );
+				 rw.store.record.doStash( word, blob );
 
 				// Auto start next record, if any, or stop the recorder
 				if ( this.moveForward() === false ) {
@@ -358,36 +356,6 @@
 			 onSaturate: function () {
 				 this.saturated = true;
 			 },
-			 upload: function ( word, blob ) {
-			 	this.status[ word ] = 'ready';
-
-		 		if ( blob !== undefined ) {
-		 			this.$records[ word ].setBlob(
-						blob,
-						( this.metadata.media === 'audio' ? 'wav' : 'webm' )
-					);
-		 		}
-
-				this.status[ word ] = 'stashing';
-		 		rw.requestQueue.push( this.$records[ word ].uploadToStash.bind( this.$records[ word ], this.$api ) ).then(
-					this.uploadSuccess.bind( this, word ),
-					this.uploadError.bind( this, word )
-				);
-		 	},
-			uploadSuccess: function( word ) {
-				console.log( 'uploadSuccess' );
-				this.status[ word ] = 'stashed';
-			},
-			uploadError: function( word, error, errorData ) {
-				// If the upload has been abort, it means another piece of code
-				// is doing stuff right now, so don't mess-up with it
-				if ( errorData !== undefined && errorData.textStatus === 'abort' ) {
-					return;
-				}
-
-				this.status[ word ] = 'ready';
-				this.errors[ word ] = error;
-			},
 			runCountdown: function() {
 				if ( this.isRecording === true ) {
 					this.countdown--;

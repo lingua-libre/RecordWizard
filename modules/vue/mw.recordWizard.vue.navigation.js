@@ -9,6 +9,7 @@
 		data: {
 			state: rw.store.state.data,
    		 	status: rw.store.record.data.status,
+   		 	errors: rw.store.record.data.errors,
 		},
 
 		/* Computed */
@@ -30,7 +31,7 @@
 					return false;
 				} else {
 					for( word in this.status ) {
-						if ( this.status[ word ] !== 'up' && this.status[ word ] !== 'ready' ) {
+						if ( this.status[ word ] === 'stashed' ) {
 							// We've found a record, so allow the user to continue
 							return false;
 						}
@@ -39,6 +40,20 @@
 					// no record has been made yet, so disable the next button
 					return true;
 				}
+			},
+			showRetry: function() {
+				var word;
+
+				if ( this.state.step === 'studio' ) {
+					for( word in this.errors ) {
+						if ( this.errors[ word ] !== false ) {
+							// We've found a record in error, so allow to retry
+							return true;
+						}
+					}
+				}
+
+				return false;
 			},
 		},
 
@@ -82,6 +97,18 @@
 					rw.store.state.unfreeze.bind( rw.store.state ),
 					rw.store.state.unfreeze.bind( rw.store.state )
 				);
+			},
+			retry: function() {
+				var word;
+
+				if ( this.state.step === 'studio' ) {
+					for( word in this.errors ) {
+						if ( this.errors[ word ] !== false ) {
+							// Retry to stash the record
+							rw.store.record.doStash( word );
+						}
+					}
+				}
 			},
 		}
 	} );
