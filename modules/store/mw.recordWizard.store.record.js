@@ -25,6 +25,7 @@
 			records: {},
 			status: {},
 			errors: {},
+			checkboxes: {},
 		};
 		this.$api = new mw.Api();
 	};
@@ -54,6 +55,7 @@
 		Vue.delete( this.data.records, this.data.words[ i ] );
 		Vue.delete( this.data.status, this.data.words[ i ] );
 		Vue.delete( this.data.errors, this.data.words[ i ] );
+		Vue.delete( this.data.checkboxes, this.data.words[ i ] );
 		this.data.words.splice( i, 1 );
 
 		return true;
@@ -66,6 +68,7 @@
 			Vue.delete( this.data.records, this.data.words[ i ] );
 			Vue.delete( this.data.status, this.data.words[ i ] );
 			Vue.delete( this.data.errors, this.data.words[ i ] );
+			Vue.delete( this.data.checkboxes, this.data.words[ i ] );
 		}
 
 		this.data.words.splice( 0, this.data.words.length );
@@ -75,6 +78,7 @@
 		this.data.records[ word ].reset();
 		this.data.errors[ word ] = false;
 		this.data.status[ word ] = 'up';
+		this.data.checkboxes[ word ] = true;
 	};
 
 	RecordStore.prototype.randomiseList = function() {
@@ -128,6 +132,7 @@
 
 					Vue.set( this.data.status, word, 'up' );
 					Vue.set( this.data.errors, word, false );
+					Vue.set( this.data.checkboxes, word, true );
 				}
 				this.data.records[ word ].setExtra( extra );
 
@@ -210,6 +215,7 @@
    RecordStore.prototype.stashSuccess = function( word ) {
 	   console.log( 'uploadSuccess' );
 	   this.data.status[ word ] = 'stashed';
+	   this.data.checkboxes[ word ] = true;
    };
    RecordStore.prototype.stashError = function( word, error, errorData ) {
 	   // If the upload has been abort, it means another piece of code

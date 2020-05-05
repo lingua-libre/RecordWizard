@@ -70,7 +70,7 @@
 	overflow-wrap: break-word;
 	word-wrap: break-word;
 }
-.mwe-rw-list li.mwe-rws-selected {
+.mwe-rw-list li.mwe-rw-selected {
 	font-weight: bold;
 	background-color: #f8f9fa;
 }
@@ -84,8 +84,8 @@
 }
 .mwe-rw-list li.mwe-rws-stashing:hover,
 .mwe-rw-list li.mwe-rws-stashed:hover,
-.mwe-rw-list li.mwe-rws-stashing.mwe-rws-selected,
-.mwe-rw-list li.mwe-rws-stashed.mwe-rws-selected {
+.mwe-rw-list li.mwe-rws-stashing.mwe-rw-selected,
+.mwe-rw-list li.mwe-rws-stashed.mwe-rw-selected {
 	color: #174499;
 }
 /* Status icon */
@@ -102,24 +102,28 @@
 	background-repeat: no-repeat;
 }
 .mwe-rw-list li.mwe-rws-stashing::before,
-#mwe-rws-stashingcounter i {
+.mwe-rw-list li.mwe-rwp-uploading::before,
+.mwe-rw-list li.mwe-rwp-finalizing::before,
+.mwe-rw-progresscounter i {
 	width: 14px;
 	height: 14px;
 	background-size: 14px 14px;
 	background-image: url('../icons/spinner.svg');
 	animation: spinner 1s infinite steps(8);
 }
-.mwe-rw-list li.mwe-rws-stashed::before {
+.mwe-rw-list li.mwe-rws-stashed::before,
+.mwe-rw-list li.mwe-rwp-done::before {
 	background-image: url('../icons/download-done.svg');
 }
-.mwe-rw-list li.mwe-rws-error::before,
-#mwe-rws-errorcounter i {
+.mwe-rw-list li.mwe-rw-error::before,
+.mwe-rw-errorcounter i {
 	width: 16px;
 	height: 16px;
 	background-image: url('../icons/error.svg');
 	background-size: 16px 16px;
 }
-.mwe-rws-recording .mwe-rw-list li.mwe-rws-selected::before {
+.mwe-rws-recording .mwe-rw-list li.mwe-rw-selected::before,
+#mwe-rwp-list li.mwe-rw-selected::before {
 	background-image: url('../icons/play.svg');
 }
 /* action icons */
@@ -268,9 +272,11 @@
 	align-items: center;
 	height: 100px;
 	border-top: 1px solid rgba(156, 173, 210, 0.5);
+
+	padding-left: 35px;
+	padding-right: 35px;
 }
 #mwe-rws-record {
-	margin-left: auto;
 	margin-right: 18px;
 }
 #mwe-rws-record > .oo-ui-buttonElement-button {
@@ -317,7 +323,6 @@
 }
 
 #mwe-rws-record-indicator {
-	margin-right: 50px;
 	color: #ff0000;
 	font-size: 23px;
 	font-weight: bold;
@@ -353,16 +358,16 @@
 	background-color:#ff0000;
 }
 
-#mwe-rws-counter {
+.mwe-rw-counter {
 	position: relative;
-	margin-right: auto;
+	margin-left: auto;
 
 	font-size: 23px;
 	font-weight: bolder;
 	letter-spacing: 0.5px;
 	color: #222222;
 }
-#mwe-rws-othercounter {
+.mwe-rw-othercounter {
 	display: inline-block;
 	position: absolute;
 	top: 100%;
@@ -370,6 +375,6 @@
 	font-size: 17px;
 	width: 120px; /* hack to avoid text going back to a new line in most cases */
 }
-#mwe-rws-othercounter i {
+.mwe-rw-othercounter i {
 	display: inline-block;
 }

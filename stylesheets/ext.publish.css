@@ -31,22 +31,9 @@
 
 #mwe-rwp-list .oo-ui-checkboxInputWidget {
 	position: absolute;
-	left: 10px;
+	right: 4px;
 	top: 4px;
 }
 #mwe-rwp-actions .oo-ui-progressBarWidget {
-	margin-left: auto;
 	width: 320px;
-}
-
-#mwe-rwp-counter {
-	min-width: 100px;
-	margin-left: 45px;
-	margin-right: auto;
-
-	text-align: right;
-	font-weight: bolder;
-	font-size: 23px;
-	letter-spacing: 0.5px;
-	color: #222222;
 }

@@ -353,18 +353,7 @@ class SpecialRecordWizard extends SpecialPage {
 		$templateParser = new I18nTemplateParser(  __DIR__ . '/templates', true );
 		return $templateParser->processTemplate(
 		    'recordwizard',
-		    [
-		        'wgExtensionAssetsPath' => $wgExtensionAssetsPath,
-				'publish' => [
-					'progress' => new OOUI\ProgressBarWidget( [ 'id' => 'mwe-rwp-progress', 'progress' => 33 ] ),
-					'prev' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwp-prev', 'invisibleLabel' => true, 'icon' => 'previous', 'framed' => false ] ),
-					'next' => new OOUI\ButtonWidget( [ 'infusable' => true, 'id' => 'mwe-rwp-next', 'invisibleLabel' => true, 'icon' => 'next', 'framed' => false ] ),
-					'cb1' => new OOUI\CheckboxInputWidget( [ 'infusable' => true, 'id' => 'mwe-rwp-cb1', 'inputId' => 'mwe-rwp-cb1-input', 'selected' => true ] ),
-					'cb2' => new OOUI\CheckboxInputWidget( [ 'infusable' => true, 'id' => 'mwe-rwp-cb2', 'inputId' => 'mwe-rwp-cb2-input', 'selected' => true ] ),
-					'cb3' => new OOUI\CheckboxInputWidget( [ 'infusable' => true, 'id' => 'mwe-rwp-cb3', 'inputId' => 'mwe-rwp-cb3-input', 'selected' => true ] ),
-					'cb4' => new OOUI\CheckboxInputWidget( [ 'infusable' => true, 'id' => 'mwe-rwp-cb4', 'inputId' => 'mwe-rwp-cb4-input', 'selected' => true ] ),
-				]
-		    ]
+		    [ 'wgExtensionAssetsPath' => $wgExtensionAssetsPath, ]
 		);
 	}
 }
