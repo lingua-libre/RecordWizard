@@ -61,40 +61,13 @@
 		 },
 		 computed: {
 			 nbWordsRecorded: function() {
-				 var i,
-				 	counter = 0;
-
-				 for ( i = 0; i < this.words.length; i++ ) {
-					 if ( [ 'up', 'ready', 'stashing' ].indexOf( this.status[ this.words[ i ] ] ) === -1 ) {
-						 counter++;
-					 }
-				 }
-
-				 return counter + ' / ' + this.words.length;
+				 return rw.store.record.countStatus( [ 'stashed' ] ) + ' / ' + this.words.length;
 			 },
 			 nbWordsStashing: function() {
-				 var i,
-				 	counter = 0;
-
-				 for ( i = 0; i < this.words.length; i++ ) {
-					 if ( this.status[ this.words[ i ] ] === 'stashing' ) {
-						 counter++;
-					 }
-				 }
-
-				 return counter;
+				 return rw.store.record.countStatus( [ 'stashing' ] );
 			 },
 			 nbErrors: function() {
-				 var i,
-				 	counter = 0;
-
-				 for ( i = 0; i < this.words.length; i++ ) {
-					 if ( this.errors[ this.words[ i ] ] !== false ) {
-						 counter++;
-					 }
-				 }
-
-				 return counter;
+				 return rw.store.record.countErrors();
 			 },
 		 },
 

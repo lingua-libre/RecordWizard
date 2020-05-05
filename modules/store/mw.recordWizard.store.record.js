@@ -159,6 +159,29 @@
 		return false;
 	};
 
+	RecordStore.prototype.countStatus = function( status, checkCheckbox ) {
+		var i,
+			counter = 0;
+
+		if ( Array.isArray( status ) === false ) {
+			status = [ status ];
+		}
+
+		// TODO: replace this loop (called way too often) by a fixed counter for
+		// obvious performance reason, but also to simplify vue properties recomputation
+		// cf vue.publish.js
+		for ( i = 0; i < this.data.words.length; i++ ) {
+			// Check if the word is not stashed yet
+			if ( status.indexOf( this.data.status[ this.data.words[ i ] ] ) > -1 ) {
+				if ( checkCheckbox === false || this.data.checkboxes[ this.data.words[ i ] ] === true ) {
+					counter++;
+				}
+			}
+		}
+
+		return counter;
+	};
+
 	RecordStore.prototype.hasErrors = function() {
 		var i;
 
@@ -170,6 +193,20 @@
 		}
 
 		return false;
+	};
+
+	RecordStore.prototype.countErrors = function() {
+		var i,
+			counter = 0;
+
+		for ( i = 0; i < this.data.words.length; i++ ) {
+			// Check if the word has not an error message
+			if ( this.data.errors[ this.data.words[ i ] ] !== false ) {
+				counter++;
+			}
+		}
+
+		return counter;
 	};
 
 	RecordStore.prototype.resetAllErrors = function() {

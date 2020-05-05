@@ -15,6 +15,7 @@
    		 	errors: rw.store.record.data.errors,
 			checkboxes: rw.store.record.data.checkboxes,
 			selected: 0,
+			forceUpdate: 0,
 		 },
 
 		 /* Hooks */
@@ -28,6 +29,10 @@
 				 var i;
 
 				 if ( this.state.step === 'publish' ) {
+					 // Ugly hack to force Vue.js to recompute some computed properties
+					 // This would not be needed if we used a fixed counter property somewhere
+					 this.forceUpdate++;
+
 					 // Select the first word in the list
 	 				 for ( i = 0; i < this.words.length; i++ ) {
 	 					 if ( this.isPublishable( this.words[ i ] ) === true ) {
@@ -51,54 +56,26 @@
 			 // TODO: Maybe a refactoring is possible here, a single method (in the recordStore?)
 			 // including analoguous methods in the studio view
 			 nbWordsUploaded: function() {
-				 var i,
-				 	counter = 0,
-					total = 0;
+				 var done = rw.store.record.countStatus( [ 'done' ] ),
+				 	total = rw.store.record.countStatus( [ 'stashed', 'uploading', 'uploaded', 'finalizing', 'done' ], true );
 
-				 for ( i = 0; i < this.words.length; i++ ) {
-					 if ( this.status[ this.words[ i ] ] === 'done' ) {
-						 counter++;
-					 }
-				 }
-
-				 for ( i = 0; i < this.words.length; i++ ) {
-					 if ( this.isPublishable( this.words[ i ] ) === true ) {
-						 total++;
-					 }
-				 }
-
-				 return counter + ' / ' + total;
+				 this.forceUpdate;
+				 return done + ' / ' + total;
 			 },
+			 nbWordsUploading: function () {
+				 this.forceUpdate;
+			 	return rw.store.record.countStatus( [ 'uploading', 'finalizing' ] );
+			},
 			 progress: function() {
-				 var i,
-				 	counter = 0,
-					total = 0;
+				 var done = rw.store.record.countStatus( [ 'done' ] ),
+				 	total = rw.store.record.countStatus( [ 'stashed', 'uploading', 'uploaded', 'finalizing', 'done' ], true );
 
-				 for ( i = 0; i < this.words.length; i++ ) {
-					 if ( this.status[ this.words[ i ] ] === 'done' ) {
-						 counter++;
-					 }
-				 }
-
-				 for ( i = 0; i < this.words.length; i++ ) {
-					 if ( this.isPublishable( this.words[ i ] ) === true ) {
-						 total++;
-					 }
-				 }
-
-				 return (100 * counter / total).toString();
+				 this.forceUpdate;
+				 return (100 * done / total).toString();
 			 },
 			 nbErrors: function() {
-				 var i,
-				 	counter = 0;
-
-				 for ( i = 0; i < this.words.length; i++ ) {
-					 if ( this.errors[ this.words[ i ] ] !== false ) {
-						 counter++;
-					 }
-				 }
-
-				 return counter;
+				 this.forceUpdate;
+				 return rw.store.record.countErrors();
 			 },
 		 },
 		 methods: {
@@ -156,6 +133,9 @@
 			 },
 			 canMoveNext: function () {
 				 var i;
+
+				 this.stopPlaying();
+
 				 if ( this.state.isPublishing === false ) {
 					 this.state.isPublishing = true;
 
@@ -164,10 +144,18 @@
 							 rw.store.record.doPublish( this.words[ i ] );
 						 }
 					 }
+
+					 return false;
 				 } else {
-					 // TODO: reset to 3rd step
+					 this.state.isPublishing = false;
+					 rw.store.record.clearAllRecords();
+					 return true;
 				 }
-			 }
+			 },
+			 canMovePrev: function () {
+				 this.stopPlaying();
+				 return true;
+			 },
 		 }
 	 } );
 
