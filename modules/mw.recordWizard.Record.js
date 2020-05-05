@@ -29,6 +29,7 @@
 		var decomposedWord;
 
 		OO.EventEmitter.call( this );
+        this.deferred = null;
 
 		this.file = null;
 		this.fileExtension = 'wav';
@@ -293,10 +294,17 @@
 	};
 
 	/**
+	 * Check if some requests are still ongoing
+	 */
+	rw.Record.prototype.hasPendingRequests = function () {
+		return this.deferred !== null && this.deferred.state() === 'pending';
+	};
+
+	/**
 	 * Cancel any pending request
 	 */
 	rw.Record.prototype.cancelPendingRequests = function () {
-        if ( this.deferred !== undefined ) {
+        if ( this.hasPendingRequests() === true ) {
             // We can have either a promise returned by mw.Api, which implements
             // an abort method, or a plain deferred on which we can safely use
             // the reject method.
@@ -306,7 +314,7 @@
                 this.deferred.reject( 'cancel' );
             }
 
-            this.deferred = undefined;
+            this.deferred = null;
         }
 	};
 
@@ -316,29 +324,26 @@
 	 * @param  {mw.Api} api          Api object to use for the request
 	 */
 	rw.Record.prototype.uploadToStash = function ( api ) {
-		if ( this.file !== null && this.deferred === undefined ) {
-			this.deferred = api.upload( this.file, {
-				stash: true,
-				filename: this.getFilename()
-			} );
+        var deferred;
 
-			this.deferred.then(
-                function ( result ) {
-                    console.log( 'uploadstash Result', result )
-    				this.setStashkey( result.upload.filekey );
-                    this.deferred = undefined;
-    			}.bind( this ),
-                function ( error ) {
-                    console.log( 'uploadstash Error', error );
-                    this.deferred = undefined;
-    			}.bind( this )
-             );
-		} else {
-    		this.deferred = $.Deferred();
-			this.deferred.reject( 'can not upload' );
-		}
+		if ( this.file === null || this.hasPendingRequests() === true ) {
+    		deferred = $.Deferred();
+			deferred.reject( '[Record] can not stash' );
+    		return deferred;
+        };
 
-		return this.deferred;
+		this.deferred = api.upload( this.file, {
+			stash: true,
+			filename: this.getFilename()
+		} );
+
+		this.deferred.then(
+            function ( result ) {
+				this.setStashkey( result.upload.filekey );
+			}.bind( this )
+         );
+
+ 		return this.deferred;
 	};
 
 	/**
@@ -348,24 +353,40 @@
 	 * @param  {$.Deferred} deferred A promise, to resolv when we're done
 	 */
 	rw.Record.prototype.finishUpload = function ( api ) {
-		if ( this.stashkey !== null ) {
-			this.deferred = api.postWithToken( 'csrf', {
-				action: 'upload-to-commons',
-				format: 'json',
-				filekey: this.getStashkey(),
-				filename: this.getFilename(),
-				text: this.getText(),
-				ignorewarnings: true // TODO: manage warnings !important
-			} );
+        var deferred = $.Deferred();
 
-			this.deferred.then( function ( result ) {
-				this.imageInfo = result[ 'upload-to-commons' ].oauth.upload.imageinfo;
+		if ( this.stashkey === null || this.hasPendingRequests() === true ) {
+            deferred.reject( '[Record] can not upload' );
+            return deferred;
+        }
+
+        this.deferred = deferred; // save deferred only once we've checked there is no pending one
+
+		api.postWithToken( 'csrf', {
+			action: 'upload-to-commons',
+			format: 'json',
+			filekey: this.getStashkey(),
+			filename: this.getFilename(),
+			text: this.getText(),
+			ignorewarnings: true // TODO: manage warnings !important
+		} ).then(
+            function ( result ) {
+                var data = result[ 'upload-to-commons' ].oauth;
+
+                if ( data.error !== undefined ) {
+                    this.deferred.reject( data.error.code, data.error );
+                    return;
+                }
+
+				this.imageInfo = data.upload.imageinfo;
 				this.stashkey = null;
-			}.bind( this ) );
-		} else {
-    		this.deferred = $.Deferred();
-			this.deferred.reject();
-		}
+
+                this.deferred.resolve( result );
+			}.bind( this ),
+            function ( code, error ) {
+                this.deferred.reject( code, error );
+			}.bind( this )
+        );
 
 		return this.deferred;
 	};
@@ -377,11 +398,19 @@
 	 * @return {$.Deferred}  A promise, resolved when we're done
 	 */
 	rw.Record.prototype.saveWbItem = function ( api ) {
+        var deferred;
+
+		if ( this.hasPendingRequests() === true ) {
+            deferred = $.Deferred();
+            deferred.reject( '[Record] can not finalize' );
+            return deferred;
+        }
+
 		this.wbItem = new rw.wikibase.Item();
 		this.fillWbItem();
 
-        // TODO : save the returned deferred in this.deferred
-		return this.wbItem.createOrUpdate( api, true );
+		this.deferred = this.wbItem.createOrUpdate( api, true );
+        return this.deferred;
 	};
 
 	/**
@@ -399,9 +428,9 @@
 
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.instanceOf ).setType( 'wikibase-item' ).setValue( rw.store.config.data.items.record ), true ); // InstanceOf
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.subclassOf ).setType( 'wikibase-item' ).setValue( rw.store.config.data.items.word ), true ); // SubclassOf
-		if ( mw.Debug === undefined ) { // Disable media on the dev environment
+		/*if ( mw.Debug === undefined ) { // Disable media on the dev environment
 			this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.audioRecord ).setType( 'commonsMedia' ).setValue( this.getFilename() ), true ); // Audio file
-		}
+		}*/
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.spokenLanguages ).setType( 'wikibase-item' ).setValue( this.language.qid ), true ); // Language
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.locutor ).setType( 'wikibase-item' ).setValue( this.locutor.qid ), true ); // Locutor
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.date ).setType( 'time' ).setValue( { time: date } ), true ); // Date
