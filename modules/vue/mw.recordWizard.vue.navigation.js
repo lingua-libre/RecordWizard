@@ -30,30 +30,20 @@
 					// set enabled by default
 					return false;
 				} else {
-					for( word in this.status ) {
-						if ( this.status[ word ] === 'stashed' ) {
-							// We've found a record, so allow the user to continue
-							return false;
-						}
-					}
-
-					// no record has been made yet, so disable the next button
-					return true;
+					return ! rw.store.record.hasStatus( [ 'stashed' ] );
 				}
 			},
 			showRetry: function() {
 				var word;
 
-				if ( this.state.step === 'studio' ) {
-					for( word in this.errors ) {
-						if ( this.errors[ word ] !== false ) {
-							// We've found a record in error, so allow to retry
-							return true;
-						}
-					}
+				if ( this.state.step === 'studio' || this.state.step === 'publish' ) {
+					return rw.store.record.hasErrors();
 				}
 
 				return false;
+			},
+			fileListUrl: function () {
+				return 'https://commons.wikimedia.org/wiki/Special:ListFiles/' + mw.config.get( 'wgUserName' );
 			},
 		},
 
@@ -84,10 +74,10 @@
 				var process = rw.vue[ this.state.step ].canMoveNext();
 
 				/* If the function returns a boolean */
-				if ( process === true ) {
-					return rw.store.state.moveNext();
-				} else if ( process === false ) {
+				if ( process === undefined || process === null || process === false ) {
 					return;
+				} else if ( process === true ) {
+					return rw.store.state.moveNext();
 				}
 
 				/* If it returns a $.Deferred */
@@ -101,15 +91,28 @@
 			retry: function() {
 				var word;
 
-				if ( this.state.step === 'studio' ) {
-					for( word in this.errors ) {
-						if ( this.errors[ word ] !== false ) {
-							// Retry to stash the record
-							rw.store.record.doStash( word );
+				for( word in this.errors ) {
+					if ( this.errors[ word ] !== false ) {
+						switch( rw.store.record.data.status[ word ] ) {
+							case 'ready':
+								rw.store.record.doStash( word );
+								break;
+							case 'stashed':
+								rw.store.record.doPublish( word );
+								break;
+							case 'uploaded':
+								rw.store.record.doFinalize( word );
+								break;
 						}
 					}
 				}
 			},
+			hasPendingRequests: function() {
+				return rw.store.record.hasStatus( [ 'stashing', 'uploading', 'finalizing' ] );
+			},
+			openFileList: function () {
+				window.open( this.fileListUrl, '_blank' );
+			}
 		}
 	} );
 

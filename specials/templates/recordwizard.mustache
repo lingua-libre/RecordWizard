@@ -19,9 +19,12 @@
 		</div>
 		<div id="mwe-rw-navigation">
 			<ooui-button id="mwe-rw-cancel" label="{{_ "mwe-recwiz-cancel"}}" :framed="false" @click="cancel()"></ooui-button>
-			<ooui-button id="mwe-rw-prev" label="{{_ "mwe-recwiz-previous"}}" flags="progressive" :framed="false" icon="previous" :disabled="prevDisabled" @click="prev()" v-show="state.step !== 'tutorial'"></ooui-button>
+			<ooui-button id="mwe-rw-prev" label="{{_ "mwe-recwiz-previous"}}" flags="progressive" :framed="false" icon="previous" :disabled="prevDisabled" @click="prev()" v-show="state.step !== 'tutorial' && state.isPublishing === false"></ooui-button>
+			<ooui-button id="mwe-rw-commonsfilelist" label="{{_ "mwe-recwiz-publish-commonsfilelist"}}" flags="progressive" :framed="false" icon="logoWikimediaCommons" :href="fileListUrl" target="_blank" @click="openFileList()" v-show="state.isPublishing === true"></ooui-button>
 			<ooui-button id="mwe-rw-retry" label="{{_ "mwe-recwiz-retry"}}" icon="reload" @click="retry()" v-show="showRetry"></ooui-button>
-			<ooui-button id="mwe-rw-next" label="{{_ "mwe-recwiz-next"}}" flags="progressive primary" icon="next" :disabled="nextDisabled" @click="next()" v-show="state.isBrowserReady"></ooui-button>
+			<ooui-button id="mwe-rw-next" label="{{_ "mwe-recwiz-next"}}" flags="progressive primary" icon="next" :disabled="nextDisabled" @click="next()" v-show="state.isBrowserReady && state.step !== 'publish'"></ooui-button>
+			<ooui-button id="mwe-rw-publish" label="{{_ "mwe-recwiz-publish"}}" flags="progressive primary" icon="upload" :disabled="hasPendingRequests()" @click="next()" v-show="state.step === 'publish' && ( state.isPublishing === false || hasPendingRequests() === true )"></ooui-button>
+			<ooui-button id="mwe-rw-restart" label="{{_ "mwe-recwiz-restart"}}" flags="progressive primary" icon="next" @click="next()" v-show="state.isPublishing === true && hasPendingRequests() === false"></ooui-button>
 		</div>
 	</div>
 </div>

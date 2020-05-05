@@ -10,6 +10,8 @@
 			icon: String,
 			framed: { type: Boolean, default: true },
 			disabled: { type: Boolean, default: false },
+			href: String,
+			target: String,
 		},
 		mounted: function() {
 			var invisibleLabel = false;
@@ -25,6 +27,8 @@
 				flags: this.flags.split(' '),
 				icon: this.icon,
 				framed: this.framed,
+				href: this.href,
+				target: this.target,
 				disabled: this.disabled,
 			} );
       		this.$button.on( 'click', this.$emit.bind( this, 'click' ) );
@@ -39,7 +43,7 @@
 		},
 		beforeDestroy: function() {
 			this.$button.off( 'click' );
-		}
+		},
 	} );
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );
