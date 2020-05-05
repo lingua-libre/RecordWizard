@@ -154,6 +154,20 @@
 			 stopPlaying: function() {
 				 $( this.$selector )[ 0 ].pause();
 			 },
+			 canMoveNext: function () {
+				 var i;
+				 if ( this.state.isPublishing === false ) {
+					 this.state.isPublishing = true;
+
+					 for ( i = 0; i < this.words.length; i++ ) {
+						 if ( this.checkboxes[ this.words[ i ] ] === true && this.isPublishable( this.words[ i ] ) === true ) {
+							 rw.store.record.doPublish( this.words[ i ] );
+						 }
+					 }
+				 } else {
+					 // TODO: reset to 3rd step
+				 }
+			 }
 		 }
 	 } );
 

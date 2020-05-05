@@ -208,25 +208,53 @@
 	   this.data.status[ word ] = 'stashing';
 	   rw.requestQueue.push( this.data.records[ word ].uploadToStash.bind( this.data.records[ word ], this.$api ) ).then(
 		   this.stashSuccess.bind( this, word ),
-		   this.stashError.bind( this, word )
+		   this.requestError.bind( this, word, 'ready' )
 	   );
    };
 
-   RecordStore.prototype.stashSuccess = function( word ) {
-	   console.log( 'uploadSuccess' );
-	   this.data.status[ word ] = 'stashed';
-	   this.data.checkboxes[ word ] = true;
-   };
-   RecordStore.prototype.stashError = function( word, error, errorData ) {
-	   // If the upload has been abort, it means another piece of code
-	   // is doing stuff right now, so don't mess-up with it
-	   if ( errorData !== undefined && errorData.textStatus === 'abort' ) {
-		   return;
-	   }
+   RecordStore.prototype.doPublish = function ( word ) {
+	  this.data.errors[ word ] = false;
+	  this.data.status[ word ] = 'uploading';
 
-	   this.data.status[ word ] = 'ready';
-	   this.data.errors[ word ] = error;
-   };
+	  rw.requestQueue.push( this.data.records[ word ].finishUpload.bind( this.data.records[ word ], this.$api ) ).then(
+		  this.doFinalize.bind( this, word ),
+		  this.requestError.bind( this, word, 'stashed' )
+	  );
+  };
+
+  RecordStore.prototype.doFinalize = function ( word ) {
+	 this.data.errors[ word ] = false;
+	 this.data.status[ word ] = 'finalizing';
+
+	 rw.requestQueue.force( this.data.records[ word ].saveWbItem.bind( this.data.records[ word ], this.$api ) ).then(
+		 this.publishSuccess.bind( this, word ),
+		 this.requestError.bind( this, word, 'uploaded' )
+	 );
+ };
+
+ RecordStore.prototype.stashSuccess = function( word ) {
+	 this.data.status[ word ] = 'stashed';
+	 this.data.checkboxes[ word ] = true;
+ };
+
+  RecordStore.prototype.publishSuccess = function( word ) {
+	  this.data.status[ word ] = 'done';
+	  this.data.checkboxes[ word ] = true;
+  };
+
+
+  RecordStore.prototype.requestError = function( word, prevState, error, errorData ) {
+	  // If the upload has been abort, it means another piece of code
+	  // is doing stuff right now, so don't mess-up with it
+	  if ( errorData !== undefined && errorData.textStatus === 'abort' ) {
+		  return;
+	  }
+
+	  console.info( '[Request error]', word, error, errorData );
+
+	  this.data.status[ word ] = prevState;
+	  this.data.errors[ word ] = error;
+  };
 
 	rw.store.record = new RecordStore();
 

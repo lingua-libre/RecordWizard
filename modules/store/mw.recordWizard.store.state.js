@@ -10,6 +10,7 @@
 			step: 'tutorial',
 			isFrozen: false,
 			isBrowserReady: false,
+			isPublishing: false,
 		};
 	};
 

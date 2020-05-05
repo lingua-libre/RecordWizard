@@ -22,14 +22,32 @@
 	 *
 	 * If some slots are available, start directly the request.
 	 *
-	 * @param  {rw.Record} record  Context object to request on
-	 * @param  {string} type       Method name to call on the given object
+	 * @param  {Function} callback Method to execute
 	 * @return {$.Deferred}        A promise, resolved when we're done
 	 */
 	rw.RequestQueue.prototype.push = function ( callback ) {
 		var deferred = $.Deferred();
 
 		this.queue.push( { deferred: deferred, callback: callback } );
+
+		if ( this.currentRequests < this.maxConcurentRequests ) {
+			this.currentRequests++;
+			this.next();
+		}
+
+		return deferred.promise();
+	};
+
+	/**
+	 * Add a request to the queue, but put it on the top of it
+	 *
+	 * @param  {Function} callback Method to execute
+	 * @return {$.Deferred}        A promise, resolved when we're done
+	 */
+	rw.RequestQueue.prototype.force = function ( callback ) {
+		var deferred = $.Deferred();
+
+		this.queue.unshift( { deferred: deferred, callback: callback } );
 
 		if ( this.currentRequests < this.maxConcurentRequests ) {
 			this.currentRequests++;
@@ -60,8 +78,8 @@
 				this.next.bind( this )
 			);
 			value.then(
-				console.log.bind( console, 'RequestManager Resolve' ),
-				console.log.bind( console, 'RequestManager Reject' )
+				console.log.bind( console, '[RequestQueue] Resolve' ),
+				console.log.bind( console, '[RequestQueue] Reject' )
 			);
 		} else {
 			this.currentRequests--;
