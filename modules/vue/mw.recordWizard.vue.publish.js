@@ -13,6 +13,7 @@
 		 	words: rw.store.record.data.words,
    		 	status: rw.store.record.data.status,
    		 	errors: rw.store.record.data.errors,
+   		 	statusCount: rw.store.record.data.statusCount,
 			checkboxes: rw.store.record.data.checkboxes,
 			selected: 0,
 			forceUpdate: 0,
@@ -56,26 +57,18 @@
 			 // TODO: Maybe a refactoring is possible here, a single method (in the recordStore?)
 			 // including analoguous methods in the studio view
 			 nbWordsUploaded: function() {
-				 var done = rw.store.record.countStatus( [ 'done' ] ),
-				 	total = rw.store.record.countStatus( [ 'stashed', 'uploading', 'uploaded', 'finalizing', 'done' ], true );
+				 var done = this.statusCount.done,
+				 	total = this.statusCount.stashed + this.statusCount.uploading + this.statusCount.uploaded + this.statusCount.finalizing + this.statusCount.done;
 
 				 this.forceUpdate;
 				 return done + ' / ' + total;
 			 },
-			 nbWordsUploading: function () {
-				 this.forceUpdate;
-			 	return rw.store.record.countStatus( [ 'uploading', 'finalizing' ] );
-			},
 			 progress: function() {
-				 var done = rw.store.record.countStatus( [ 'done' ] ),
-				 	total = rw.store.record.countStatus( [ 'stashed', 'uploading', 'uploaded', 'finalizing', 'done' ], true );
+				 var done = this.statusCount.done,
+				 	total = this.statusCount.stashed + this.statusCount.uploading + this.statusCount.uploaded + this.statusCount.finalizing + this.statusCount.done;
 
 				 this.forceUpdate;
 				 return (100 * done / total).toString();
-			 },
-			 nbErrors: function() {
-				 this.forceUpdate;
-				 return rw.store.record.countErrors();
 			 },
 		 },
 		 methods: {

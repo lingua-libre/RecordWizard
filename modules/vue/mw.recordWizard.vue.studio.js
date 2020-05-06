@@ -13,6 +13,7 @@
 		 	words: rw.store.record.data.words,
    		 	status: rw.store.record.data.status,
    		 	errors: rw.store.record.data.errors,
+   		 	statusCount: rw.store.record.data.statusCount,
 			selected: 0,
 			isRecording: false,
 			saturated: false,
@@ -58,17 +59,6 @@
 			 this.$audioPlayer = document.createElement( 'audio' );
 			 this.$records = rw.store.record.data.records;
 			 this.$startTime = 0;
-		 },
-		 computed: {
-			 nbWordsRecorded: function() {
-				 return rw.store.record.countStatus( [ 'stashed' ] ) + ' / ' + this.words.length;
-			 },
-			 nbWordsStashing: function() {
-				 return rw.store.record.countStatus( [ 'stashing' ] );
-			 },
-			 nbErrors: function() {
-				 return rw.store.record.countErrors();
-			 },
 		 },
 
 		 /* Methods */

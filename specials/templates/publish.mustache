@@ -26,13 +26,13 @@
 			<div id="mwe-rwp-counter" class="mwe-rw-counter">
 				<span v-html="nbWordsUploaded"></span>
 				<span class="mwe-rw-othercounter">
-					<span class="mwe-rw-errorcounter" v-show="nbErrors > 0">
+					<span class="mwe-rw-errorcounter" v-show="statusCount.error > 0">
 						<i></i>
-						<span v-html="nbErrors"></span>
+						<span v-html="statusCount.error"></span>
 					</span>
-					<span class="mwe-rw-progresscounter" v-show="nbWordsUploading > 0">
+					<span class="mwe-rw-progresscounter" v-show="statusCount.uploading + statusCount.finalizing > 0">
 						<i></i>
-						<span v-html="nbWordsUploading"></span>
+						<span v-html="statusCount.uploading + statusCount.finalizing"></span>
 					</span>
 				</span>
 			</div>

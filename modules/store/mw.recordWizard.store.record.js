@@ -26,9 +26,26 @@
 			status: {},
 			errors: {},
 			checkboxes: {},
+			statusCount: {
+				'up': 0,
+				'ready': 0,
+				'stashing': 0,
+				'stashed': 0,
+				'uploading': 0,
+				'uploaded': 0,
+				'finalizing': 0,
+				'done': 0,
+				'error': 0,
+			},
 		};
 		this.$api = new mw.Api();
 	};
+	// TODO: remove this
+	// this.data.statusCount[ this.data.status[ word ] ]--;
+/*
+	this.setStatus( word, 'up' );
+	this.setError( word, false );
+	*/
 
 	RecordStore.prototype.setLocutor = function ( locutor ) {
 		this.data.metadata.locutor.gender = locutor.gender;
@@ -51,6 +68,12 @@
 			return false;
 		}
 
+		// Update global counters
+		this.data.statusCount[ this.data.status[ word ] ]--;
+		if ( this.data.errors[ word ] !== false ) {
+			this.data.statusCount.error--;
+		}
+
 		// Remove all mentions of this word
 		Vue.delete( this.data.records, this.data.words[ i ] );
 		Vue.delete( this.data.status, this.data.words[ i ] );
@@ -64,6 +87,7 @@
 	RecordStore.prototype.clearAllRecords = function () {
 		var i;
 
+		// Empty global data arrays
 		for ( i = 0; i < this.data.words.length; i++ ) {
 			Vue.delete( this.data.records, this.data.words[ i ] );
 			Vue.delete( this.data.status, this.data.words[ i ] );
@@ -71,13 +95,46 @@
 			Vue.delete( this.data.checkboxes, this.data.words[ i ] );
 		}
 
+		// Reset global counters
+		for ( i in this.data.statusCount ) {
+			this.data.statusCount[ i ] = 0;
+		}
+
+		// Empty the main word list
 		this.data.words.splice( 0, this.data.words.length );
+	};
+
+	RecordStore.prototype.setStatus = function ( word, status ) {
+		// Set the status and update the counter accordingly
+		if ( this.data.status[ word ] === undefined ) {
+			Vue.set( this.data.status, word, status );
+		} else {
+			this.data.statusCount[ this.data.status[ word ] ]--;
+			this.data.status[ word ] = status;
+		}
+		this.data.statusCount[ status ]++;
+	};
+
+	RecordStore.prototype.setError = function ( word, error ) {
+		// Set the error and update the counter accordingly
+		if ( this.data.errors[ word ] === undefined ) {
+			Vue.set( this.data.errors, word, error );
+		} else {
+			if ( this.data.errors[ word ] !== false ) {
+				this.data.statusCount.error--;
+			}
+			this.data.errors[ word ] = error;
+		}
+
+		if ( error !== false ) {
+			this.data.statusCount.error++;
+		}
 	};
 
 	RecordStore.prototype.resetRecord = function ( word ) {
 		this.data.records[ word ].reset();
-		this.data.errors[ word ] = false;
-		this.data.status[ word ] = 'up';
+		this.setStatus( word, 'up' );
+		this.setError( word, false );
 		this.data.checkboxes[ word ] = true;
 	};
 
@@ -130,8 +187,8 @@
 					this.data.records[ word ].setLocutor( this.data.metadata.locutor );
 					this.data.records[ word ].setLicense( this.data.metadata.license );
 
-					Vue.set( this.data.status, word, 'up' );
-					Vue.set( this.data.errors, word, false );
+					this.setStatus( word, 'up' );
+					this.setError( word, false );
 					Vue.set( this.data.checkboxes, word, true );
 				}
 				this.data.records[ word ].setExtra( extra );
@@ -142,71 +199,36 @@
 		}
 	};
 
+	// TODO: still usefull?
 	RecordStore.prototype.hasStatus = function( status ) {
-		var i;
-
-		if ( Array.isArray( status ) === false ) {
-			status = [ status ];
-		}
-
-		for ( i = 0; i < this.data.words.length; i++ ) {
-			// Check if the word is not stashed yet
-			if ( status.indexOf( this.data.status[ this.data.words[ i ] ] ) > -1 ) {
-				return true;
-			}
-		}
-
-		return false;
+		return this.countStatus( status ) > 0;
 	};
 
+	// TODO: check checkboxes (myabe use a new 'unchecked' status?)
 	RecordStore.prototype.countStatus = function( status, checkCheckbox ) {
 		var i,
 			counter = 0;
 
+		// Usefull? What about a direct read?
 		if ( Array.isArray( status ) === false ) {
-			status = [ status ];
+			return this.data.statusCount[ status ];
 		}
 
-		// TODO: replace this loop (called way too often) by a fixed counter for
-		// obvious performance reason, but also to simplify vue properties recomputation
-		// cf vue.publish.js
-		for ( i = 0; i < this.data.words.length; i++ ) {
-			// Check if the word is not stashed yet
-			if ( status.indexOf( this.data.status[ this.data.words[ i ] ] ) > -1 ) {
-				if ( checkCheckbox === false || this.data.checkboxes[ this.data.words[ i ] ] === true ) {
-					counter++;
-				}
-			}
+		for ( i = 0; i < status.length; i++ ) {
+			counter += this.data.statusCount[ status[ i ] ];
 		}
 
 		return counter;
 	};
 
+	// TODO: still usefull?
 	RecordStore.prototype.hasErrors = function() {
-		var i;
-
-		for ( i = 0; i < this.data.words.length; i++ ) {
-			// Check if the word has not an error message
-			if ( this.data.errors[ this.data.words[ i ] ] !== false ) {
-				return true;
-			}
-		}
-
-		return false;
+		return this.data.statusCount.error > 0;
 	};
 
+	// TODO: still usefull?
 	RecordStore.prototype.countErrors = function() {
-		var i,
-			counter = 0;
-
-		for ( i = 0; i < this.data.words.length; i++ ) {
-			// Check if the word has not an error message
-			if ( this.data.errors[ this.data.words[ i ] ] !== false ) {
-				counter++;
-			}
-		}
-
-		return counter;
+		return this.data.statusCount.error;
 	};
 
 	RecordStore.prototype.resetAllErrors = function() {
@@ -232,8 +254,8 @@
 	};
 
 	RecordStore.prototype.doStash = function ( word, blob ) {
-	   this.data.errors[ word ] = false;
-	   this.data.status[ word ] = 'ready';
+		this.setStatus( word, 'ready' );
+		this.setError( word, false );
 
 	   if ( blob !== undefined ) {
 		   this.data.records[ word ].setBlob(
@@ -242,7 +264,7 @@
 		   );
 	   }
 
-	   this.data.status[ word ] = 'stashing';
+	   this.setStatus( word, 'stashing' );
 	   rw.requestQueue.push( this.data.records[ word ].uploadToStash.bind( this.data.records[ word ], this.$api ) ).then(
 		   this.stashSuccess.bind( this, word ),
 		   this.requestError.bind( this, word, 'ready' )
@@ -250,8 +272,8 @@
    };
 
    RecordStore.prototype.doPublish = function ( word ) {
-	  this.data.errors[ word ] = false;
-	  this.data.status[ word ] = 'uploading';
+	  this.setStatus( word, 'uploading' );
+	  this.setError( word, false );
 
 	  rw.requestQueue.push( this.data.records[ word ].finishUpload.bind( this.data.records[ word ], this.$api ) ).then(
 		  this.doFinalize.bind( this, word ),
@@ -260,8 +282,8 @@
   };
 
   RecordStore.prototype.doFinalize = function ( word ) {
-	 this.data.errors[ word ] = false;
-	 this.data.status[ word ] = 'finalizing';
+	  this.setStatus( word, 'finalizing' );
+	  this.setError( word, false );
 
 	 rw.requestQueue.force( this.data.records[ word ].saveWbItem.bind( this.data.records[ word ], this.$api ) ).then(
 		 this.publishSuccess.bind( this, word ),
@@ -270,12 +292,12 @@
  };
 
  RecordStore.prototype.stashSuccess = function( word ) {
-	 this.data.status[ word ] = 'stashed';
+	 this.setStatus( word, 'stashed' );
 	 this.data.checkboxes[ word ] = true;
  };
 
   RecordStore.prototype.publishSuccess = function( word ) {
-	  this.data.status[ word ] = 'done';
+ 	  this.setStatus( word, 'done' );
 	  this.data.checkboxes[ word ] = true;
   };
 
@@ -289,8 +311,8 @@
 
 	  console.info( '[Request error]', word, error, errorData );
 
-	  this.data.status[ word ] = prevState;
-	  this.data.errors[ word ] = error;
+	  this.setStatus( word, prevState );
+	  this.setError( word, error );
   };
 
 	rw.store.record = new RecordStore();
