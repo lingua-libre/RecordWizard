@@ -192,6 +192,7 @@
                 "modules/layout/mw.recordWizard.component.ooui-numberinput.js",
                 "modules/layout/mw.recordWizard.component.ooui-popup.js",
                 "modules/layout/mw.recordWizard.component.ooui-progressbar.js",
+                "modules/layout/mw.recordWizard.component.ooui-simpledialog.js",
                 "modules/layout/mw.recordWizard.component.ooui-textinput.js",
                 "modules/layout/mw.recordWizard.component.ll-draggablelist.js",
                 "modules/layout/mw.recordWizard.component.ll-langselector.js",

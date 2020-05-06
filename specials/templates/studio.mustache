@@ -29,15 +29,38 @@
 			</div>
 		</template>
 	</ooui-popup>
-	<ooui-popup>
+	<ooui-simpledialog name="shortcuts" size="large">
 		<template v-slot:trigger>
 			<i id="mwe-rws-shortcuts" class="mwe-rw-topicon"></i>
 		</template>
 		<template v-slot:content>
-			<div>
+			<div id="mwe-rws-shortcuts-content">
+				<h4>Raccourcis clavier</h4>
+				<section>
+					<div>
+						<div class="mwe-rw-key">←</div>
+						<div>Revenir au mot précédent</div>
+					</div>
+					<div>
+						<div class="mwe-rw-key">→</div>
+						<div>Aller au mot suivant</div>
+					</div>
+					<div>
+						<div class="mwe-rw-key">del</div>
+						<div>Supprimer l'enregistrement selectionné</div>
+					</div>
+					<div>
+						<div class="mwe-rw-key">P</div>
+						<div>Écouter l'enregistrement selectionné</div>
+					</div>
+					<div>
+						<div class="mwe-rw-key mwe-rw-key-long">space</div>
+						<div>Démarrer / Arrêter l'enregistrement</div>
+					</div>
+				</section>
 			</div>
 		</template>
-	</ooui-popup>
+	</ooui-simpledialog>
 </div>
 <div class="mwe-rw-section-group" :class="( metadata.media === 'audio' ? 'mwe-rws-audio' : 'mwe-rws-video' ) + ' ' + ( isRecording ? 'mwe-rws-recording' : '' )">
 	<section>
