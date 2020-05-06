@@ -19,6 +19,7 @@
 				padded: true,
 				width: this.width,
 				$floatableContainer: $( this.$el ).children( '.ooui-popup-trigger' ),
+				$autoCloseIgnore:  $( this.$el ).children( '.ooui-popup-trigger' ),
 				align: this.align,
 				autoClose: this.autoClose,
 				head: this.head || this.label !== '',

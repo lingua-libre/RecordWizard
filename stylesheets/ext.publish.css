@@ -14,6 +14,7 @@
 	height: 100%;
 	align-self: stretch;
 	overflow-y: scroll;
+	border-right: 1px solid rgba(156,173,210,0.5);
 }
 
 #mwe-rw-publish section:last-child {

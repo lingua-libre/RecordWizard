@@ -94,7 +94,7 @@
 				 	itemNode = list.children().eq( this.selected ),
 				 	container = list.parent();
 
-				 container.animate( {
+				 container.stop().animate( {
 					 scrollTop: itemNode.offset().top - container.offset().top + container.scrollTop() - ( itemNode.innerHeight() - itemNode.height() )
 				 } );
 			 },

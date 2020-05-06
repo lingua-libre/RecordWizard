@@ -248,6 +248,9 @@
                 "mwe-recwiz-locutor-languagelevel-beginner",
                 "mwe-recwiz-locutor-languagelocation",
                 "mwe-recwiz-details-placeholder",
+                "mwe-recwiz-warning-wordsleft",
+                "mwe-recwiz-warning-pendinguploads",
+                "mwe-recwiz-warning-faileduploads",
                 "mwe-recwiz-error-emptylist"
             ]
         },

@@ -41,6 +41,7 @@
 	height: 100%;
 	align-self: stretch;
 	overflow-y: scroll;
+	border-right: 1px solid rgba(156,173,210,0.5);
 }
 
 #mwe-rw-studio section:last-child {
@@ -123,7 +124,7 @@
 	background-size: 16px 16px;
 }
 .mwe-rws-recording .mwe-rw-list li.mwe-rw-selected::before,
-#mwe-rwp-list li.mwe-rw-selected::before {
+#mwe-rwp-list li.mwe-rw-selected:not(.mwe-rwp-uploading):not(.mwe-rwp-finalizing)::before {
 	background-image: url('../icons/play.svg');
 }
 /* action icons */
