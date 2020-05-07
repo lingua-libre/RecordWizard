@@ -67,7 +67,6 @@
 	"mwe-recwiz-pendinguplads": "S'està carregant...",
 	"mwe-recwiz-allsucceeded": "Tot s'ha pujat correctament!",
 	"mwe-recwiz-somefailed": "Algunes càrregues han fallat.",
-	"mwe-recwiz-settings-label": "Configuració",
 	"mwe-recwiz-error-mediastream-notfound": "No s'ha detectat cap micròfon. Per poder continuar, n'heu d'aconseguir un i connectar-lo al vostre dispositiu.",
 	"mwe-recwiz-error-nolanguages": "Segur que parleu com a mínim una llengua ;-)",
 	"mwe-recwiz-error-emptylist": "Heu d'escollir alguns mots per poder continuar.",

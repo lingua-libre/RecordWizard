@@ -83,7 +83,6 @@
 	"mwe-recwiz-allsucceeded": "¡Todos los archivos se subieron correctamente!",
 	"mwe-recwiz-somefailed": "Alguna subida falló.",
 	"mwe-recwiz-allfailed": "Ninguna subida tuvo éxito.",
-	"mwe-recwiz-settings-label": "Configuración",
 	"mwe-recwiz-settings-videorecording": "Grabaciones de vídeo",
 	"mwe-recwiz-error-mediastream-notallowed": "No permitiste el acceso al micrófono. Para utilizar el RecordWizard, vete a la configuración del navegador para autorizarlo y haz clic en el botón de abajo.",
 	"mwe-recwiz-error-mediastream-notfound": "No se encontró ningún micrófono. Antes de continuar, consigue uno y conéctalo al dispositivo.",

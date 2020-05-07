@@ -71,7 +71,6 @@
 	"mwe-recwiz-allsucceeded": "Alla uppladdningar genomfördes!",
 	"mwe-recwiz-somefailed": "Någon uppladdning misslyckades.",
 	"mwe-recwiz-allfailed": "Ingen av uppladdningarna genomfördes.",
-	"mwe-recwiz-settings-label": "Inställningar",
 	"mwe-recwiz-error-mediastream-notallowed": "Du tillät inte åtkomst till mikrofonen. För att använda RecordWizard, gå till dina webbläsarinställningar för att tillåta den och klicka på knappen nedan.",
 	"mwe-recwiz-error-mediastream-notfound": "Ingen mikrofon hittades. För att fortsätta måste du skaffa en och ansluta den till din enhet.",
 	"mwe-recwiz-error-mediastream-technical": "Ett tekniskt fel i din webbläsare eller operativsystem förhindrar att mikrofonen kan användas. Försök att uppdatera sidan. Feldetaljer: $1",
