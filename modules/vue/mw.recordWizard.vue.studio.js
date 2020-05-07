@@ -170,17 +170,6 @@
 				 }
 				 event.preventDefault();
 			 },
-			 itemClass: function( word ) {
-				 var text = 'mwe-rws-' + this.status[ word ];
-				 if ( this.errors[ word ] !== false ) {
-					 text += ' mwe-rw-error';
-				 }
-				 if ( word === this.words[ this.selected ] ) {
-					 text += ' mwe-rw-selected';
-				 }
-
-				 return text;
-			 },
 			 selectWord: function( index ) {
 				 var wasRecording = this.isRecording;
 
