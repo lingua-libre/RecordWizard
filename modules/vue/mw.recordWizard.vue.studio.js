@@ -212,7 +212,6 @@
 
 				 this.isRecording = true;
 				 this.saturated = false;
- 				 this.errors[ this.words[ this.selected ] ] = false;
 				 this.$recorder.start();
 
 				 if ( this.metadata.media === 'video' ) {
