@@ -199,27 +199,31 @@
 			 	}
 			 },
 			 cancelRecord: function() {
-				 this.$recorder.cancel();
-				 this.isRecording = false;
-				 this.saturated = false;
-				 this.vumeter = 0;
-				 this.countdown = 0;
+				 if ( this.isRecording === true ) {
+					 this.$recorder.cancel();
+					 this.isRecording = false;
+					 this.saturated = false;
+					 this.vumeter = 0;
+					 this.countdown = 0;
+				 }
 			 },
 			 startRecord: function() {
-		 		if ( this.selected < 0 || this.selected >= this.words.length ) {
-		 			return false;
-		 		}
+				 if ( this.isRecording === false ) {
+			 		if ( this.selected < 0 || this.selected >= this.words.length ) {
+			 			return false;
+			 		}
 
-				 this.isRecording = true;
-				 this.saturated = false;
-				 this.$recorder.start();
+					 this.isRecording = true;
+					 this.saturated = false;
+					 this.$recorder.start();
 
-				 if ( this.metadata.media === 'video' ) {
-				 	this.countdown = parseInt( this.videoParams.beforeStart ) + 1;
-					 this.runCountdown();
-				 }
+					 if ( this.metadata.media === 'video' ) {
+					 	this.countdown = parseInt( this.videoParams.beforeStart ) + 1;
+						 this.runCountdown();
+					 }
 
-				 return true;
+					 return true;
+			 	 }
 			 },
 			 onReady: function ( stream ) {
 				 var videoNode;

@@ -49,7 +49,13 @@
     };
 
     rw.VideoRecorder.prototype.onReady = function ( stream ) {
-        this.mediaRecorder = new MediaRecorder( stream );
+		var mimeType = 'video/webm';
+		if ( MediaRecorder.isTypeSupported( 'video/webm;codecs=vp9' ) ) {
+			mimeType = 'video/webm;codecs=vp9';
+		} else if ( MediaRecorder.isTypeSupported( 'video/webm;codecs=vp8' ) ) {
+			mimeType = 'video/webm;codecs=vp8';
+		}
+        this.mediaRecorder = new MediaRecorder( stream, { mimeType: mimeType } );
 		this.mediaRecorder.ondataavailable = this.onDataAvailable.bind( this );
 		this.mediaRecorder.onstop = this.onStop.bind( this );
 
@@ -81,13 +87,17 @@
     rw.VideoRecorder.prototype.stop = function () {
         clearTimeout( this.timeoutID );
 		this.canceled = false;
-        this.mediaRecorder.stop();
+		if ( this.mediaRecorder.state === 'recording' ) {
+	        this.mediaRecorder.stop();
+		}
     };
 
     rw.VideoRecorder.prototype.cancel = function () {
         clearTimeout( this.timeoutID );
 		this.canceled = true;
-        this.mediaRecorder.stop();
+		if ( this.mediaRecorder.state === 'recording' ) {
+	        this.mediaRecorder.stop();
+		}
         this.emit( 'canceled' );
     };
 
