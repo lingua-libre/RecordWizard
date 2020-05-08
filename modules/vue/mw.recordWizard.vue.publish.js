@@ -24,6 +24,7 @@
 		 created: function() {
 			 this.$records = rw.store.record.data.records;
 			 this.autoScroll = false;
+			 this.$wordsShortlist = [];
 		 },
 
 		 /* Methods */
@@ -33,7 +34,8 @@
 
 				 if ( this.state.step === 'publish' ) {
 					 // Ugly hack to force Vue.js to recompute some computed properties
-					 // This would not be needed if we used a fixed counter property somewhere
+					 // otherwise the total property is not recomputed when
+					 // navigating back and forth between steps
 					 this.forceUpdate++;
 
 					 // Chose the right media player (this has to be done before selecting the first item)
@@ -43,16 +45,16 @@
 						 this.$selector = '#mwe-rwp-core video';
 					 }
 
-					 // Select the first word in the list
-					 this.initSelection();
+					 // Compute the shortlist
+					 this.$wordsShortlist = [];
+					 for ( i = 0; i < this.words.length; i++ ) {
+						 if ( this.isSelectable( this.words[ i ] ) === true ) {
+							 this.$wordsShortlist.push( this.words[ i ] );
+						 }
+					 }
 
 					 // Select the first word in the list
-	 				 for ( i = 0; i < this.words.length; i++ ) {
-	 					 if ( this.isSelectable( this.words[ i ] ) === true ) {
-	 						 this.selected = i;
-							 break;
-	 					 }
-	 				 }
+					 this.initSelection();
 				 }
 			 },
 		 },
@@ -60,21 +62,19 @@
 			 mediaUrl: function() {
 				 return this.$records[ this.words[ this.selected ] ].getMediaUrl();
 			 },
-			 // TODO: Maybe a refactoring is possible here, a single method (in the recordStore?)
-			 // including analoguous methods in the studio view
-			 nbWordsUploaded: function() {
-				 var done = this.statusCount.done,
-				 	total = this.statusCount.stashed + this.statusCount.uploading + this.statusCount.uploaded + this.statusCount.finalizing + this.statusCount.done;
+			 total: function() {
+				 var i,
+				 	total = 0;
 
-				 this.forceUpdate;
-				 return done + ' / ' + total;
-			 },
-			 progress: function() {
-				 var done = this.statusCount.done,
-				 	total = this.statusCount.stashed + this.statusCount.uploading + this.statusCount.uploaded + this.statusCount.finalizing + this.statusCount.done;
+				this.forceUpdate++;
 
-				 this.forceUpdate;
-				 return (100 * done / total).toString();
+				for ( i = 0; i < this.$wordsShortlist.length; i++ ) {
+					if ( this.checkboxes[ this.$wordsShortlist[ i ] ] === true ) {
+						total++;
+					}
+				}
+
+				 return total;
 			 },
 		 },
 		 methods: {
@@ -104,9 +104,9 @@
 				 if ( this.state.isPublishing === false ) {
 					 this.state.isPublishing = true;
 
-					 for ( i = 0; i < this.words.length; i++ ) {
-						 if ( this.checkboxes[ this.words[ i ] ] === true && this.isSelectable( this.words[ i ] ) === true ) {
-							 rw.store.record.doPublish( this.words[ i ] );
+					 for ( i = 0; i < this.$wordsShortlist.length; i++ ) {
+						 if ( this.checkboxes[ this.$wordsShortlist[ i ] ] === true ) {
+							 rw.store.record.doPublish( this.$wordsShortlist[ i ] );
 						 }
 					 }
 
