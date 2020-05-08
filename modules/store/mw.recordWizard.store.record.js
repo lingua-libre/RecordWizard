@@ -303,16 +303,21 @@
 
 
   RecordStore.prototype.requestError = function( word, prevState, error, errorData ) {
+	  var errorText = error;
+
 	  // If the upload has been abort, it means another piece of code
 	  // is doing stuff right now, so don't mess-up with it
-	  if ( errorData !== undefined && errorData.textStatus === 'abort' ) {
-		  return;
+	  if ( errorData !== undefined ) {
+		  if ( errorData.textStatus === 'abort' ) {
+		  	  return;
+	  	  }
+		  if ( errorData.error !== undefined && errorData.error.info !== undefined ) {
+			  errorText = errorData.error.info
+		  }
 	  }
 
-	  console.info( '[Request error]', word, error, errorData );
-
 	  this.setStatus( word, prevState );
-	  this.setError( word, error );
+	  this.setError( word, errorText );
   };
 
 	rw.store.record = new RecordStore();
