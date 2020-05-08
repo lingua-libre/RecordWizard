@@ -65,11 +65,7 @@
 <div class="mwe-rw-section-group" :class="( metadata.media === 'audio' ? 'mwe-rws-audio' : 'mwe-rws-video' ) + ' ' + ( isRecording ? 'mwe-rws-recording' : '' )">
 	<section>
 		<ul id="mwe-rws-list" class="mwe-rw-list">
-			<li v-for="(word, index) in words" :key="index" :class="'mwe-rws-' + status[ word ] + ( errors[ word ] !== false ? ' mwe-rw-error' : '' ) + ( index === selected ? ' mwe-rw-selected' : '' )" @click="selectWord( index )">
-				<span v-html="word" :title="errors[ word ]"></span>
-				<i class="mwe-rws-play" @click.stop.prevent="playWord( word )"></i>
-				<i class="mwe-rws-again" @click.stop.prevent="removeRecord( word )"></i>
-			</li>
+			<ll-listitem v-for="(word, index) in words" :key="index" :word="word" :class="selectedClass[ index ]" @click="selectWord( index )" @play="playWord( word )" @remove="removeRecord( word )"></ll-listitem>
 		</ul>
 	</section>
 	<section>

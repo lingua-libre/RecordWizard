@@ -196,6 +196,7 @@
                 "modules/layout/mw.recordWizard.component.ooui-textinput.js",
                 "modules/layout/mw.recordWizard.component.ll-draggablelist.js",
                 "modules/layout/mw.recordWizard.component.ll-langselector.js",
+                "modules/layout/mw.recordWizard.component.ll-listitem.js",
                 "modules/layout/mw.recordWizard.component.ll-vumeter.js",
                 "modules/layout/mw.recordWizard.component.ll-wdsearch.js"
             ],
