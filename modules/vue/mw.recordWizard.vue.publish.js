@@ -5,23 +5,25 @@
 	 * The Publish step.
 	 */
 	 rw.vue.publish = new Vue( {
-		 mixins: [rw.vue.step],
+		 mixins: [
+			 rw.vue.step,
+			 rw.vue.list,
+		 ],
 
 		 /* Data */
 		 data: {
 			metadata: rw.store.record.data.metadata,
-		 	words: rw.store.record.data.words,
    		 	status: rw.store.record.data.status,
    		 	errors: rw.store.record.data.errors,
    		 	statusCount: rw.store.record.data.statusCount,
 			checkboxes: rw.store.record.data.checkboxes,
-			selected: 0,
 			forceUpdate: 0,
 		 },
 
 		 /* Hooks */
 		 created: function() {
 			 this.$records = rw.store.record.data.records;
+			 this.autoScroll = false;
 		 },
 
 		 /* Methods */
@@ -34,19 +36,23 @@
 					 // This would not be needed if we used a fixed counter property somewhere
 					 this.forceUpdate++;
 
-					 // Select the first word in the list
-	 				 for ( i = 0; i < this.words.length; i++ ) {
-	 					 if ( this.isPublishable( this.words[ i ] ) === true ) {
-	 						 this.selected = i;
-							 break;
-	 					 }
-	 				 }
-
+					 // Chose the right media player (this has to be done before selecting the first item)
 					 if ( this.metadata.media === 'audio' ) {
 						 this.$selector = '#mwe-rwp-core audio';
 					 } else {
 						 this.$selector = '#mwe-rwp-core video';
 					 }
+
+					 // Select the first word in the list
+					 this.initSelection();
+
+					 // Select the first word in the list
+	 				 for ( i = 0; i < this.words.length; i++ ) {
+	 					 if ( this.isSelectable( this.words[ i ] ) === true ) {
+	 						 this.selected = i;
+							 break;
+	 					 }
+	 				 }
 				 }
 			 },
 		 },
@@ -72,46 +78,23 @@
 			 },
 		 },
 		 methods: {
-			 isPublishable: function( word ) {
+			 isSelectable: function( word ) {
 				 if ( [ 'up', 'ready', 'stashing' ].indexOf( this.status[ word ] ) > -1 ) {
 					 return false;
 				 }
 
 				 return true;
 			 },
-			 selectWord: function( index ) {
-				 this.stopPlaying();
-			 	 this.selected = index;
-			 },
-			 moveBackward: function() {
-				 var i;
-
-				 for ( i = this.selected - 1; i >= 0; i-- ) {
-					 if ( this.isPublishable( this.words[ i ] ) === true ) {
-						 this.selectWord( i );
-						 return true;
-					 }
-				 }
-
-				 return false;
-			 },
-			 moveForward: function() {
-				 var i;
-
-				 for ( i = this.selected + 1; i < this.words.length; i++ ) {
-					 if ( this.isPublishable( this.words[ i ] ) === true ) {
-						 this.selectWord( i );
-						 return true;
-					 }
-				 }
-
-				 return false;
-			 },
+ 			 beforeSelectionChange: function() {
+ 				 this.stopPlaying();
+ 			 },
 			 startPlaying: function() {
 				 $( this.$selector )[ 0 ].play();
 			 },
 			 stopPlaying: function() {
-				 $( this.$selector )[ 0 ].pause();
+				 if ( $( this.$selector ).length > 0 ) {
+					 $( this.$selector )[ 0 ].pause();
+				 }
 			 },
 			 canMoveNext: function () {
 				 var i;
@@ -122,7 +105,7 @@
 					 this.state.isPublishing = true;
 
 					 for ( i = 0; i < this.words.length; i++ ) {
-						 if ( this.checkboxes[ this.words[ i ] ] === true && this.isPublishable( this.words[ i ] ) === true ) {
+						 if ( this.checkboxes[ this.words[ i ] ] === true && this.isSelectable( this.words[ i ] ) === true ) {
 							 rw.store.record.doPublish( this.words[ i ] );
 						 }
 					 }

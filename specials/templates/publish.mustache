@@ -2,7 +2,7 @@
 <div class="mwe-rw-section-group"><!--  mwe-rws-video mwe-rws-play -->
 	<section>
 		<ul id="mwe-rwp-list" class="mwe-rw-list">
-			<li v-for="(word, index) in words" :key="index" v-if="isPublishable( word )" :class="'mwe-rwp-' + status[ word ] + ( errors[ word ] !== false ? ' mwe-rw-error' : '' ) + ( index === selected ? ' mwe-rw-selected' : '' )" @click.self="selectWord( index )">
+			<li v-for="(word, index) in words" :key="index" v-if="isSelectable( word )" :class="'mwe-rwp-' + status[ word ] + ( errors[ word ] !== false ? ' mwe-rw-error' : '' ) + ( selectedArray[ index ] ? selectedArray[ index ] : '' )" @click.self="selectWord( index )">
 				<ooui-checkbox v-model="checkboxes[ word ]" :disabled="state.isPublishing"></ooui-checkbox>
 				<label for="mwe-rwp-cb1-input" v-html="word" :title="errors[ word ]" @click="selectWord( index )"></label>
 			</li>

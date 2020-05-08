@@ -5,17 +5,17 @@
 	 * The Studio step.
 	 */
 	 rw.vue.studio = new Vue( {
-		 mixins: [rw.vue.step],
+		 mixins: [
+			 rw.vue.step,
+			 rw.vue.list,
+		 ],
 
 		 /* Data */
 		 data: {
 			metadata: rw.store.record.data.metadata,
-		 	words: rw.store.record.data.words,
    		 	status: rw.store.record.data.status,
    		 	errors: rw.store.record.data.errors,
    		 	statusCount: rw.store.record.data.statusCount,
-			selected: 0,
-			selectedClass: [],
 			isRecording: false,
 			saturated: false,
 			vumeter: 0,
@@ -80,15 +80,6 @@
 				 	$( document ).off( 'keydown.rw-studio' );
 				 }
 			 },
-			 selected: function() {
-				 var list = $( '#mwe-rws-list' ),
-				 	itemNode = list.children().eq( this.selected ),
-				 	container = list.parent();
-
-				 container.stop().animate( {
-					 scrollTop: itemNode.offset().top - container.offset().top + container.scrollTop() - ( itemNode.innerHeight() - itemNode.height() )
-				 } );
-			 },
 			 audioParams: {
 			 	 deep: true,
 				 handler: function() {
@@ -121,19 +112,6 @@
 				this.$recorder.on( 'canceled', this.onCancel.bind( this ) );
 				this.$recorder.on( 'saturated', this.onSaturate.bind( this ) );
 				this.$recorder.on( 'recording', this.onRecord.bind( this ) );
-			 },
-			 initSelection: function () {
-				 var i;
-
-				// We use an array to dynamically store the selected class
-				// for performance reason (it is way quicker to replace a specific
-				// value in an array than re-render the complete list each time
-				this.selectedClass.splice( 0, this.selectedClass.length );
-				for ( i = 0; i < this.words.length; i++ ) {
-					this.selectedClass.push( false );
-				}
-
-			   this.selectWord( 0 );
 			 },
 			 delRecorder: function() {
 				this.$recorder.off( 'ready' );
@@ -184,35 +162,18 @@
 				 }
 				 event.preventDefault();
 			 },
-			 selectWord: function( index ) {
-				 var wasRecording = this.isRecording;
-
-				 if ( this.isRecording === true ) {
-					 this.cancelRecord();
-				 }
-
-				 this.selectedClass[ this.selected ] = false;
-				 this.selected = index;
- 				 this.selectedClass[ index ] = 'mwe-rw-selected';
-
-				 if ( wasRecording === true ) {
-					 this.startRecord();
-				 }
-
-				 return true;
-			 },
-			 moveBackward: function() {
-				 if ( this.selected > 0 ) {
-					 return this.selectWord( this.selected - 1 );
-				 }
-				 return false;
-			 },
-			 moveForward: function() {
-				 if ( this.selected < this.words.length - 1 ) {
-					 return this.selectWord( this.selected + 1 );
-				 }
-				 return false;
-			 },
+ 			beforeSelectionChange: function() {
+ 				if ( this.isRecording === true ) {
+ 					this.cancelRecord();
+					return true;
+ 				}
+				return false;
+			},
+		    afterSelectionChange: function( wasRecording ) {
+ 				if ( wasRecording === true ) {
+ 					this.startRecord();
+ 				}
+ 			},
 			 playWord: function( word ) {
 				 if ( this.status[ word ] === 'stashed' ) {
 					 // Make sure the recorder isn't running
@@ -295,7 +256,7 @@
 
 				// Display the amplitude on the vu-meter following a
 				// parabolic transfer function v(x) = -p*x^2 + (p+15)*x
-				// with p=10
+				// with a factor p=10
 
 				this.vumeter = Math.floor( ( -10 * amplitudeMax * amplitudeMax ) + 25 * amplitudeMax );
 				//this.vumeter = Math.floor( amplitudeMax * 15 ); //if we want a linear vumeter
