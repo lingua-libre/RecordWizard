@@ -50,7 +50,11 @@
 		/* Methods */
 		methods: {
 			cancel: function() {
-				/* TODO */
+				OO.ui.confirm( mw.msg( 'mwe-recwiz-prevent-close' ) ).done( function ( confirmed ) {
+					if ( confirmed ) {
+						window.location.reload(); // or should we go back to the main page?
+					}
+				} );
 			},
 			prev: function() {
 				var process = rw.vue[ this.state.step ].canMovePrev();
@@ -112,7 +116,7 @@
 			},
 			openFileList: function () {
 				window.open( this.fileListUrl, '_blank' );
-			}
+			},
 		}
 	} );
 

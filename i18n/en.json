@@ -22,6 +22,8 @@
 	"mwe-recwiz-step-studio": "Studio",
 	"mwe-recwiz-step-publish": "Publish",
 
+	"mwe-recwiz-prevent-close": "You are about to leave this page. All unpublished audio records will be lost. Do you want to leave anyway?",
+
 	"mwe-recwiz-cancel": "Cancel",
 	"mwe-recwiz-next": "Next",
 	"mwe-recwiz-previous": "Previous",
