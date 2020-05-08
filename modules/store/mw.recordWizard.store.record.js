@@ -105,16 +105,20 @@
 	};
 
 	RecordStore.prototype.clearAllPublishedRecords = function () {
-		var i;
+		var i,
+			oldRecords = [];
 
 		for ( i = 0; i < this.data.words.length; i++ ) {
 			if ( this.data.status[ this.data.words[ i ] ] === 'done' ) {
+				oldRecords.push( this.data.words[ i ] );
 				this.clearRecord( this.data.words[ i ] );
 				i--; // to avoid missing a word, as an item has been removed from the array
 			} else {
 				this.resetRecord( this.data.words[ i ] );
 			}
 		}
+
+		return oldRecords;
 	};
 
 	RecordStore.prototype.setStatus = function ( word, status ) {

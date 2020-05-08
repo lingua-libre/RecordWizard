@@ -25,7 +25,7 @@
 				rwrlimit: 'max',
 				rwroffset: offset
 			} ).then( function ( result ) {
-				pastRecords = result.query.rwrecords.concat( pastRecords );
+				pastRecords.push.apply( pastRecords, result.query.rwrecords );
 
 				if ( result.continue !== undefined ) {
 					this.getPastRecords( langQid, speakerQid, deferred, result.continue.rwroffset, pastRecords );
@@ -40,6 +40,17 @@
 		}
 
 		return deferred.promise();
+	};
+
+	/**
+	 * Add manually some words in the past records list
+	 */
+	ConfigStore.prototype.pushPastRecords = function ( langQid, speakerQid, pastRecords ) {
+		if ( this.data.pastRecords[ langQid ] === undefined ) {
+			this.data.pastRecords[ langQid ] = [];
+		}
+
+		this.data.pastRecords[ langQid ].push.apply( this.data.pastRecords[ langQid ], pastRecords );
 	};
 
 	rw.store.config = new ConfigStore();

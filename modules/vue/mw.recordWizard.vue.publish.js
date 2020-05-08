@@ -97,7 +97,7 @@
 				 }
 			 },
 			 canMoveNext: function () {
-				 var i;
+				 var i, oldRecords;
 
 				 this.stopPlaying();
 
@@ -113,7 +113,8 @@
 					 return false;
 				 } else {
 					 this.state.isPublishing = false;
-					 rw.store.record.clearAllPublishedRecords();
+					 oldRecords = rw.store.record.clearAllPublishedRecords();
+					 rw.store.config.pushPastRecords( this.metadata.language, this.metadata.locutor.qid, oldRecords );
 					 return true;
 				 }
 			 },
