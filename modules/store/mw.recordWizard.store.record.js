@@ -104,6 +104,19 @@
 		this.data.words.splice( 0, this.data.words.length );
 	};
 
+	RecordStore.prototype.clearAllPublishedRecords = function () {
+		var i;
+
+		for ( i = 0; i < this.data.words.length; i++ ) {
+			if ( this.data.status[ this.data.words[ i ] ] === 'done' ) {
+				this.clearRecord( this.data.words[ i ] );
+				i--; // to avoid missing a word, as an item has been removed from the array
+			} else {
+				this.resetRecord( this.data.words[ i ] );
+			}
+		}
+	};
+
 	RecordStore.prototype.setStatus = function ( word, status ) {
 		// Set the status and update the counter accordingly
 		if ( this.data.status[ word ] === undefined ) {

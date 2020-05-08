@@ -285,12 +285,13 @@
 	 * Reset the object
 	 */
 	rw.Record.prototype.reset = function () {
+		// Cancel any pending request
+		this.cancelPendingRequests();
+
+        // Reset all file-related properties
 		this.file = null;
 		this.stashkey = null;
 		this.imageInfo = null;
-
-		// Cancel any pending request
-		this.cancelPendingRequests();
 	};
 
 	/**

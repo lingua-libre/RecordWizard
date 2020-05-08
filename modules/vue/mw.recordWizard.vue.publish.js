@@ -113,7 +113,7 @@
 					 return false;
 				 } else {
 					 this.state.isPublishing = false;
-					 rw.store.record.clearAllRecords();
+					 rw.store.record.clearAllPublishedRecords();
 					 return true;
 				 }
 			 },
