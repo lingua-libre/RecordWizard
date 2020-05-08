@@ -15,7 +15,7 @@
 		<div id="mwe-rwp-core" class="mwe-rw-core">
 			<div id="mwe-rwp-itembox" class="mwe-rw-itembox">
 				<ooui-button id="mwe-rwp-prev" icon="previous" :framed="false" @click="moveBackward"></ooui-button>
-				<div id="mwe-rwp-item" class="mwe-rw-item" v-html="this.words[ this.selected ]"></div>
+				<div id="mwe-rwp-item" class="mwe-rw-item" v-html="words[ selected ]"></div>
 				<ooui-button id="mwe-rwp-next" icon="next" :framed="false" @click="moveForward"></ooui-button>
 			</div>
 			<audio v-if="metadata.media === 'audio'" :src="mediaUrl" controls autoplay></audio>
