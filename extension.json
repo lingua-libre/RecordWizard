@@ -180,7 +180,7 @@
         },
         "ext.recordWizard.vuejs":{
             "scripts": [
-                "lib/vue.js"
+                "lib/vue.min.js"
             ]
         },
         "ext.recordWizard.components":{
@@ -255,7 +255,8 @@
                 "mwe-recwiz-warning-wordsleft",
                 "mwe-recwiz-warning-pendinguploads",
                 "mwe-recwiz-warning-faileduploads",
-                "mwe-recwiz-error-emptylist"
+                "mwe-recwiz-error-emptylist",
+                "mwe-recwiz-error-network"
             ]
         },
         "ext.recordWizard.layout":{
@@ -263,7 +264,6 @@
                 "modules/layout/mw.recordWizard.layout.js",
                 "modules/layout/mw.recordWizard.layout.DraggableListWidget.js",
                 "modules/layout/mw.recordWizard.layout.LanguagesSelectorWidget.js",
-                "modules/layout/mw.recordWizard.layout.LicenseSelectorWidget.js",
                 "modules/layout/mw.recordWizard.layout.WordSelectorWidget.js",
                 "modules/layout/mw.recordWizard.layout.WikidataSearchWidget.js",
                 "modules/layout/mw.recordWizard.layout.SettingsButtonWidget.js"
