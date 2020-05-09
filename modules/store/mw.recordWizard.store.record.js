@@ -40,12 +40,6 @@
 		};
 		this.$api = new mw.Api();
 	};
-	// TODO: remove this
-	// this.data.statusCount[ this.data.status[ word ] ]--;
-/*
-	this.setStatus( word, 'up' );
-	this.setError( word, false );
-	*/
 
 	RecordStore.prototype.setLocutor = function ( locutor ) {
 		this.data.metadata.locutor.gender = locutor.gender;
@@ -221,7 +215,6 @@
 		return this.countStatus( status ) > 0;
 	};
 
-	// TODO: check checkboxes (myabe use a new 'unchecked' status?)
 	RecordStore.prototype.countStatus = function( status, checkCheckbox ) {
 		var i,
 			counter = 0;

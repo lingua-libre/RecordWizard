@@ -9,8 +9,10 @@
 	</ul>
 
 	<div id="mwe-rw-main">
-		<div id="mwe-rw-content">
-			<div id="mwe-rw-spinner" class="mwe-rw-content mwe-rw-spinner"><img src="{{wgExtensionAssetsPath}}/RecordWizard/images/Spinner_font_awesome.svg" width="40" height="40" /></div>
+		<div id="mwe-rw-spinner">
+			<img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/spinner.svg" width="40" height="40" />
+		</div>
+		<div id="mwe-rw-content" style="display: none;">
 			<div class="mwe-rw-content" id="mwe-rw-tutorial" v-if="state.step === 'tutorial'">{{>tutorial}}</div>
 			<div class="mwe-rw-content" id="mwe-rw-locutor" v-if="state.step === 'locutor'">{{>locutor}}</div>
 			<div class="mwe-rw-content" id="mwe-rw-details" v-if="state.step === 'details'">{{>details}}</div>

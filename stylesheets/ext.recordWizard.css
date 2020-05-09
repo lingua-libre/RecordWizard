@@ -26,9 +26,15 @@ body.mw-special-RecordWizard #contentHeading {
 }
 
 #mwe-rw-spinner {
-    display:none; /* TODO: remove */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
 }
-
+#mwe-rw-spinner img {
+    animation: spinner 1s infinite steps(8);
+    padding: 0;
+}
 
 /* Steps */
 #mwe-rw-steps {
@@ -93,7 +99,8 @@ body.mw-special-RecordWizard #contentHeading {
 }
 
 /* Content box */
-#mwe-rw-content {
+#mwe-rw-content,
+#mwe-rw-spinner {
     min-height: 200px;
     background-color: #ffffff;
     border-radius: 12px;
@@ -214,6 +221,6 @@ h3 {
         transform: rotate(0deg);
     }
     100% {
-        transform: rotate(359deg);
+        transform: rotate(360deg);
     }
 }

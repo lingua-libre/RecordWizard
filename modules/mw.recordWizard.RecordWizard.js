@@ -22,7 +22,8 @@
 		rw.vue.studio.$mount( '#mwe-rw-studio' );
 		rw.vue.publish.$mount( '#mwe-rw-publish' );
 
-		// TODO: reimplement the spinner while the RecordWizard is loading
+		$( '#mwe-rw-spinner' ).hide();
+		$( '#mwe-rw-content' ).show();
 	};
 
 	$( function () {
