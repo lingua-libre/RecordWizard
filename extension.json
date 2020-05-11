@@ -73,8 +73,8 @@
     "ResourceModules": {
         "ext.recordWizard": {
             "scripts": [
-                "modules/mw.recordWizard.Record.js",
-                "modules/mw.recordWizard.RecordWizard.js"
+                "modules/rw.Record.js",
+                "modules/rw.RecordWizard.js"
             ],
             "dependencies": [
                 "oojs-ui",
@@ -88,7 +88,7 @@
         },
         "ext.recordWizard.base": {
             "scripts": [
-                "modules/mw.recordWizard.js"
+                "modules/rw.js"
             ]
         },
         "ext.recordWizard.styles": {
@@ -103,7 +103,7 @@
         },
         "ext.recordWizard.upload":{
             "scripts": [
-                "modules/mw.recordWizard.RequestQueue.js"
+                "modules/rw.RequestQueue.js"
             ],
             "dependencies": [
                 "mediawiki.api",
@@ -113,10 +113,10 @@
         },
         "ext.recordWizard.recorder": {
             "scripts": [
-                "modules/mw.recordWizard.libs.js",
+                "modules/rw.libs.js",
                 "lib/lingua-recorder/AudioRecord.js",
                 "lib/lingua-recorder/LinguaRecorder.js",
-                "modules/mw.recordWizard.VideoRecorder.js"
+                "modules/rw.VideoRecorder.js"
             ],
             "dependencies": [
                 "ext.recordWizard.base"
@@ -124,10 +124,10 @@
         },
         "ext.recordWizard.generator":{
             "scripts": [
-                "modules/generator/mw.recordWizard.generator.Generic.js",
-                "modules/generator/mw.recordWizard.generator.List.js",
-                "modules/generator/mw.recordWizard.generator.Nearby.js",
-                "modules/generator/mw.recordWizard.generator.WMCategories.js"
+                "modules/generator/rw.generator.Generic.js",
+                "modules/generator/rw.generator.List.js",
+                "modules/generator/rw.generator.Nearby.js",
+                "modules/generator/rw.generator.WMCategories.js"
             ],
             "dependencies": [
                 "oojs-ui",
@@ -168,11 +168,11 @@
         },
         "ext.recordWizard.store":{
             "scripts": [
-                "modules/store/mw.recordWizard.store.js",
-                "modules/store/mw.recordWizard.store.config.js",
-                "modules/store/mw.recordWizard.store.state.js",
-                "modules/store/mw.recordWizard.store.record.js",
-                "modules/store/mw.recordWizard.store.generator.js"
+                "modules/store/rw.store.js",
+                "modules/store/rw.store.config.js",
+                "modules/store/rw.store.state.js",
+                "modules/store/rw.store.record.js",
+                "modules/store/rw.store.generator.js"
             ],
             "dependencies": [
                 "mediawiki.api"
@@ -185,20 +185,20 @@
         },
         "ext.recordWizard.components":{
             "scripts": [
-                "modules/components/mw.recordWizard.components.ooui-button.js",
-                "modules/components/mw.recordWizard.components.ooui-buttonselect.js",
-                "modules/components/mw.recordWizard.components.ooui-checkbox.js",
-                "modules/components/mw.recordWizard.components.ooui-dropdown.js",
-                "modules/components/mw.recordWizard.components.ooui-numberinput.js",
-                "modules/components/mw.recordWizard.components.ooui-popup.js",
-                "modules/components/mw.recordWizard.components.ooui-progressbar.js",
-                "modules/components/mw.recordWizard.components.ooui-simpledialog.js",
-                "modules/components/mw.recordWizard.components.ooui-textinput.js",
-                "modules/components/mw.recordWizard.components.ll-draggablelist.js",
-                "modules/components/mw.recordWizard.components.ll-langselector.js",
-                "modules/components/mw.recordWizard.components.ll-listitem.js",
-                "modules/components/mw.recordWizard.components.ll-vumeter.js",
-                "modules/components/mw.recordWizard.components.ll-wdsearch.js"
+                "modules/components/rw.components.ooui-button.js",
+                "modules/components/rw.components.ooui-buttonselect.js",
+                "modules/components/rw.components.ooui-checkbox.js",
+                "modules/components/rw.components.ooui-dropdown.js",
+                "modules/components/rw.components.ooui-numberinput.js",
+                "modules/components/rw.components.ooui-popup.js",
+                "modules/components/rw.components.ooui-progressbar.js",
+                "modules/components/rw.components.ooui-simpledialog.js",
+                "modules/components/rw.components.ooui-textinput.js",
+                "modules/components/rw.components.ll-draggablelist.js",
+                "modules/components/rw.components.ll-langselector.js",
+                "modules/components/rw.components.ll-listitem.js",
+                "modules/components/rw.components.ll-vumeter.js",
+                "modules/components/rw.components.ll-wdsearch.js"
             ],
             "dependencies": [
                 "oojs-ui",
@@ -212,15 +212,15 @@
         },
         "ext.recordWizard.vues":{
             "scripts": [
-                "modules/vue/mw.recordWizard.vue.js",
-                "modules/vue/mw.recordWizard.vue.mixins.js",
-                "modules/vue/mw.recordWizard.vue.sidebar.js",
-                "modules/vue/mw.recordWizard.vue.navigation.js",
-                "modules/vue/mw.recordWizard.vue.tutorial.js",
-                "modules/vue/mw.recordWizard.vue.locutor.js",
-                "modules/vue/mw.recordWizard.vue.details.js",
-                "modules/vue/mw.recordWizard.vue.studio.js",
-                "modules/vue/mw.recordWizard.vue.publish.js"
+                "modules/vue/rw.vue.js",
+                "modules/vue/rw.vue.mixins.js",
+                "modules/vue/rw.vue.sidebar.js",
+                "modules/vue/rw.vue.navigation.js",
+                "modules/vue/rw.vue.tutorial.js",
+                "modules/vue/rw.vue.locutor.js",
+                "modules/vue/rw.vue.details.js",
+                "modules/vue/rw.vue.studio.js",
+                "modules/vue/rw.vue.publish.js"
             ],
             "dependencies": [
                 "ext.recordWizard.vuejs",
@@ -261,12 +261,12 @@
         },
         "ext.recordWizard.widgets":{
             "scripts": [
-                "modules/widgets/mw.recordWizard.widgets.js",
-                "modules/widgets/mw.recordWizard.widgets.DraggableListWidget.js",
-                "modules/widgets/mw.recordWizard.widgets.LanguagesSelectorWidget.js",
-                "modules/widgets/mw.recordWizard.widgets.WordSelectorWidget.js",
-                "modules/widgets/mw.recordWizard.widgets.WikidataSearchWidget.js",
-                "modules/widgets/mw.recordWizard.widgets.SettingsButtonWidget.js"
+                "modules/widgets/rw.widgets.js",
+                "modules/widgets/rw.widgets.DraggableListWidget.js",
+                "modules/widgets/rw.widgets.LanguagesSelectorWidget.js",
+                "modules/widgets/rw.widgets.WordSelectorWidget.js",
+                "modules/widgets/rw.widgets.WikidataSearchWidget.js",
+                "modules/widgets/rw.widgets.SettingsButtonWidget.js"
             ],
             "dependencies": [
                 "oojs-ui",
@@ -276,11 +276,11 @@
         },
         "ext.recordWizard.wikibase": {
             "scripts": [
-                "modules/wikibase/mw.recordWizard.wikibase.js",
-                "modules/wikibase/mw.recordWizard.wikibase.Snak.js",
-                "modules/wikibase/mw.recordWizard.wikibase.Reference.js",
-                "modules/wikibase/mw.recordWizard.wikibase.Statement.js",
-                "modules/wikibase/mw.recordWizard.wikibase.Item.js"
+                "modules/wikibase/rw.wikibase.js",
+                "modules/wikibase/rw.wikibase.Snak.js",
+                "modules/wikibase/rw.wikibase.Reference.js",
+                "modules/wikibase/rw.wikibase.Statement.js",
+                "modules/wikibase/rw.wikibase.Item.js"
             ],
             "dependencies": [
                 "ext.recordWizard.base",
