@@ -3,6 +3,7 @@
 		"authors": [
 			"Adjen",
 			"Fitoschido",
+			"Geryescalier",
 			"RisingVoices",
 			"Rodelar"
 		]
@@ -16,6 +17,7 @@
 	"mwe-recwiz-step-details": "Detalles",
 	"mwe-recwiz-step-studio": "Estudio",
 	"mwe-recwiz-step-publish": "Publicar",
+	"mwe-recwiz-prevent-close": "Estás a punto de salir de esta página. Todos los registros de audio no publicados se perderán. ¿Quieres irte de todos modos?",
 	"mwe-recwiz-cancel": "Cancelar",
 	"mwe-recwiz-next": "Siguiente",
 	"mwe-recwiz-previous": "Anterior",
@@ -27,6 +29,7 @@
 	"mwe-recwiz-tutorial-reopenpopup": "Reabre la ventana de diálogo",
 	"mwe-recwiz-tutorial-activate": "Por favor, permite el acceso a tu micrófono para continuar.",
 	"mwe-recwiz-tutorial-title": "Comprueba el micrófono",
+	"mwe-recwiz-tutorial-help": "==== Aquí se explica cómo hacerlo: ====\n# Cuando esté listo, presione el botón de arriba para comenzar una prueba de grabación.\n# Pronuncia una palabra en voz alta, por ejemplo \"el sol\"\n# Escuche su registro para verificar que sea correcto.\n# Adapte la configuración de su micrófono si es necesario.\n# ¡Si todo está correcto, puede pasar al siguiente paso!",
 	"mwe-recwiz-tutorial-mictester-start": "Iniciar la prueba",
 	"mwe-recwiz-tutorial-mictester-recording": "1. Di algo",
 	"mwe-recwiz-tutorial-mictester-playing": "2. Escucha",
@@ -83,7 +86,13 @@
 	"mwe-recwiz-allsucceeded": "¡Todos los archivos se subieron correctamente!",
 	"mwe-recwiz-somefailed": "Alguna subida falló.",
 	"mwe-recwiz-allfailed": "Ninguna subida tuvo éxito.",
-	"mwe-recwiz-settings-videorecording": "Grabaciones de vídeo",
+	"mwe-recwiz-settings-videorecording": "Configuración de vídeo",
+	"mwe-recwiz-settings-audiorecording": "Configuración de audio:",
+	"mwe-recwiz-settings-startthreshold": "Umbral de inicio:",
+	"mwe-recwiz-settings-stopthreshold": "Umbral para detención:",
+	"mwe-recwiz-settings-saturationthreshold": "Umbral de saturación:",
+	"mwe-recwiz-settings-stopduration": "Duración de un silencio:",
+	"mwe-recwiz-settings-sec": "s",
 	"mwe-recwiz-error-mediastream-notallowed": "No permitiste el acceso al micrófono. Para utilizar el RecordWizard, vete a la configuración del navegador para autorizarlo y haz clic en el botón de abajo.",
 	"mwe-recwiz-error-mediastream-notfound": "No se encontró ningún micrófono. Antes de continuar, consigue uno y conéctalo al dispositivo.",
 	"mwe-recwiz-error-mediastream-technical": "Se produjo un error técnico en el navegador o el sistema operativo que impide el uso del micrófono. Prueba a cargar la página de nuevo. Detalles del error: $1",

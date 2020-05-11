@@ -100,7 +100,7 @@
 	"mwe-recwiz-allsucceeded": "Усі завантаження пройшли успішно!",
 	"mwe-recwiz-somefailed": "Якесь завантаження зазнало невдачі.",
 	"mwe-recwiz-allfailed": "Не вдалося завершити жодного завантаження.",
-	"mwe-recwiz-settings-videorecording": "Відеозаписи",
+	"mwe-recwiz-settings-videorecording": "Налаштування відео",
 	"mwe-recwiz-settings-durationtorecord": "Тривалість запису:",
 	"mwe-recwiz-settings-delaybetweenrecords": "Затримка між записами:",
 	"mwe-recwiz-error-mediastream-notallowed": "Ви не надали дозволу на використання мікрофона. Щоб користуватись Майстром звукозапису, перейдіть у налаштування свого браузера, щоб надати доступ до мікрофона, після чого клацніть кнопку нижче.",
