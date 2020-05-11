@@ -13,7 +13,9 @@
 		this.queue = [];
 		this.currentRequests = 0;
 		this.api = new mw.Api( {
-			ajax: { timeout: 18000 }
+			ajax: {
+				timeout: 18000
+			}
 		} );
 	};
 
@@ -28,7 +30,10 @@
 	rw.RequestQueue.prototype.push = function ( callback ) {
 		var deferred = $.Deferred();
 
-		this.queue.push( { deferred: deferred, callback: callback } );
+		this.queue.push( {
+			deferred: deferred,
+			callback: callback
+		} );
 
 		if ( this.currentRequests < this.maxConcurentRequests ) {
 			this.currentRequests++;
@@ -47,7 +52,10 @@
 	rw.RequestQueue.prototype.force = function ( callback ) {
 		var deferred = $.Deferred();
 
-		this.queue.unshift( { deferred: deferred, callback: callback } );
+		this.queue.unshift( {
+			deferred: deferred,
+			callback: callback
+		} );
 
 		if ( this.currentRequests < this.maxConcurentRequests ) {
 			this.currentRequests++;
@@ -92,8 +100,6 @@
 	 * @private
 	 */
 	rw.RequestQueue.prototype.clearQueue = function () {
-		var param, value;
-
 		this.queue.length = 0;
 	};
 

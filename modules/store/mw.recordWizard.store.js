@@ -2,6 +2,6 @@
 
 ( function ( rw ) {
 	// create RecordWizard store namespace
-	rw.store = {
-	};
+	rw.store = {};
+
 }( mediaWiki.recordWizard ) );

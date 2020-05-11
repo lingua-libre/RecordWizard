@@ -4,40 +4,55 @@
 	/**
 	 * The Locutor step.
 	 */
-	 rw.vue.locutor = new Vue( {
-		 mixins: [rw.vue.step],
+	rw.vue.locutor = new Vue( {
+		mixins: [ rw.vue.step ],
 
-		 /* Data */
-		 data: {
-			 profiles: [],
-			 metadata: rw.store.record.data.metadata,
-			 genderOptions: [
-				 { data: rw.store.config.data.items.genderMale, label: mw.msg( 'mwe-recwiz-gender-male' ) },
-				 { data: rw.store.config.data.items.genderFemale, label: mw.msg( 'mwe-recwiz-gender-female' ) },
-				 { data: rw.store.config.data.items.genderOther, label: mw.msg( 'mwe-recwiz-gender-other' ) },
-			 ],
-			 availableLanguages: [],
-			 availableLicenses: [],
-		 },
+		/* Data */
+		data: {
+			profiles: [],
+			metadata: rw.store.record.data.metadata,
+			genderOptions: [ {
+				data: rw.store.config.data.items.genderMale,
+				label: mw.msg( 'mwe-recwiz-gender-male' )
+			},
+			{
+				data: rw.store.config.data.items.genderFemale,
+				label: mw.msg( 'mwe-recwiz-gender-female' )
+			},
+			{
+				data: rw.store.config.data.items.genderOther,
+				label: mw.msg( 'mwe-recwiz-gender-other' )
+			}
+			],
+			availableLanguages: [],
+			availableLicenses: []
+		},
 
-		 /* Hooks */
-		created: function() {
+		/* Hooks */
+		created: function () {
 			var qid, code;
 
 			/* Fill profiles */
-			this.profiles.push( { optgroup: mw.msg( 'mwe-recwiz-locutor-profilemain' ) } );
+			this.profiles.push( {
+				optgroup: mw.msg( 'mwe-recwiz-locutor-profilemain' )
+			} );
 			this.profiles.push( {
 				data: this.config.locutor.qid || '*',
 				label: this.config.locutor.name
 			} );
-			this.profiles.push( { optgroup: mw.msg( 'mwe-recwiz-locutor-profileother' ) } );
+			this.profiles.push( {
+				optgroup: mw.msg( 'mwe-recwiz-locutor-profileother' )
+			} );
 			for ( qid in this.config.otherLocutors ) {
 				this.profiles.push( {
 					data: qid,
 					label: this.config.otherLocutors[ qid ].name
 				} );
 			}
-			this.profiles.push( { data: '+', label: mw.msg( 'mwe-recwiz-locutor-profilenew' ) } );
+			this.profiles.push( {
+				data: '+',
+				label: mw.msg( 'mwe-recwiz-locutor-profilenew' )
+			} );
 
 			/* Fill all fields with the default locutor datas */
 			rw.store.record.setLocutor( this.config.locutor );
@@ -53,63 +68,68 @@
 			/* Set available licenses from data comming from [[Special:Licenses]] */
 			this.buildLicenses( this.config.licenses );
 		},
-		 mounted: function() {
-		 },
-		 beforeUpdate: function() {
+		mounted: function () {},
+		beforeUpdate: function () {
 
-		 },
-		 updated: function() {
+		},
+		updated: function () {
 
-		 },
+		},
 
-		 /* Methods */
- 		watch: {
- 			'metadata.locutor.qid': function() {
- 				if ( this.metadata.locutor.qid === this.config.locutor.qid || this.metadata.locutor.qid === '*' ) {
- 					rw.store.record.setLocutor( this.config.locutor );
- 				} else if ( this.metadata.locutor.qid[ 0 ] === 'Q' ) {
- 					rw.store.record.setLocutor( this.config.otherLocutors[ this.metadata.locutor.qid ] );
- 				} else {
- 					rw.store.record.setLocutor( { qid: '+', 'new': true } );
- 				}
- 			},
-			'metadata.locutor.name': function() {
+		/* Methods */
+		watch: {
+			'metadata.locutor.qid': function () {
+				if ( this.metadata.locutor.qid === this.config.locutor.qid || this.metadata.locutor.qid === '*' ) {
+					rw.store.record.setLocutor( this.config.locutor );
+				} else if ( this.metadata.locutor.qid[ 0 ] === 'Q' ) {
+					rw.store.record.setLocutor( this.config.otherLocutors[ this.metadata.locutor.qid ] );
+				} else {
+					rw.store.record.setLocutor( {
+						qid: '+',
+						new: true
+					} );
+				}
+			},
+			'metadata.locutor.name': function () {
 				var i;
 
 				if ( this.metadata.locutor.new === true ) {
 					return;
 				}
 
-				for( i = 0; i < this.profiles.length; i++ ) {
+				for ( i = 0; i < this.profiles.length; i++ ) {
 					if ( this.profiles[ i ].data === this.metadata.locutor.qid ) {
 						this.profiles[ i ].label = this.metadata.locutor.name;
 					}
 				}
-			},
- 		},
-		 computed: {
-			 licenseText: function() {
-				 return mw.msg( 'mwe-recwiz-locutor-licensecontent', this.metadata.locutor.name );
-			 }
-		 },
-		 methods: {
+			}
+		},
+		computed: {
+			licenseText: function () {
+				return mw.msg( 'mwe-recwiz-locutor-licensecontent', this.metadata.locutor.name );
+			}
+		},
+		methods: {
 			buildLicenses: function ( node ) {
-		 		var i, key;
+				var i, key;
 
-		 		if ( node.template !== undefined ) {
-		 			node = [ node ];
-		 		}
-		 		if ( Array.isArray( node ) ) {
-		 			for ( i = 0; i < node.length; i++ ) {
-		 				this.availableLicenses.push( { label: node[ i ].text, data: node[ i ].template } );
-		 			}
-		 		} else {
-		 			for ( key in node ) {
-		 				this.buildLicenses( node[ key ] );
-		 			}
-		 		}
-		 	},
-			canMoveNext: function() {
+				if ( node.template !== undefined ) {
+					node = [ node ];
+				}
+				if ( Array.isArray( node ) ) {
+					for ( i = 0; i < node.length; i++ ) {
+						this.availableLicenses.push( {
+							label: node[ i ].text,
+							data: node[ i ].template
+						} );
+					}
+				} else {
+					for ( key in node ) {
+						this.buildLicenses( node[ key ] );
+					}
+				}
+			},
+			canMoveNext: function () {
 				var qid, deferred,
 					process = new OO.ui.Process();
 
@@ -177,8 +197,12 @@
 					genderStatement = new mw.recordWizard.wikibase.Statement( this.config.properties.gender ),
 					languageStatements = [];
 
-				this.$wbItem.labels = { en: name };
-				this.$wbItem.descriptions = { en: 'locutor of the user "' + mw.config.get( 'wgUserName' ) + '"' };
+				this.$wbItem.labels = {
+					en: name
+				};
+				this.$wbItem.descriptions = {
+					en: 'locutor of the user "' + mw.config.get( 'wgUserName' ) + '"'
+				};
 
 				locationStatement.setType( location === '' ? 'somevalue' : 'external-id' ).setValue( location );
 				genderStatement.setType( gender === null ? 'somevalue' : 'wikibase-item' ).setValue( gender );
@@ -218,23 +242,29 @@
 
 			/**
 			 * Update the global config with the new informations we got on the locutor.
+			 *
+			 * @param {Object} data Information returned by the wikibase API
 			 */
 			updateConfig: function ( data ) {
 				/* Update the config */
 				if ( this.metadata.locutor.main === true ) {
 					this.metadata.locutor.new = false;
-					this.config.locutor = $.extend( true, {}, this.metadata.locutor, { qid: data.entity.id } );
+					this.config.locutor = $.extend( true, {}, this.metadata.locutor, {
+						qid: data.entity.id
+					} );
 				} else {
 					/* Update available profiles */
 					if ( this.metadata.locutor.new === true ) {
 						this.profiles.splice( this.profiles.length - 1, 0, {
 							data: data.entity.id,
-							label: this.metadata.locutor.name,
+							label: this.metadata.locutor.name
 						} );
 					}
 
 					this.metadata.locutor.new = false;
-					this.config.otherLocutors[ data.entity.id ] = $.extend( true, {}, this.metadata.locutor, { qid: data.entity.id } );
+					this.config.otherLocutors[ data.entity.id ] = $.extend( true, {}, this.metadata.locutor, {
+						qid: data.entity.id
+					} );
 				}
 				this.metadata.locutor.qid = data.entity.id;
 			},
@@ -264,8 +294,8 @@
 				} ).fail( function () {
 					// TODO: manage errors
 				} );
-			},
-		},
-	 } );
+			}
+		}
+	} );
 
 }( mediaWiki, mediaWiki.recordWizard, OO ) );

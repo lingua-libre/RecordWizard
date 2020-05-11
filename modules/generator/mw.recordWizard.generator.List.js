@@ -80,25 +80,25 @@
 			rvprop: 'content',
 			rvlimit: '1'
 		} ).then( function ( data ) {
-				var i, content,
-					page = data.query.pages[ 0 ];
+			var i, content,
+				page = data.query.pages[ 0 ];
 
-				if ( page.missing === true ) {
-					return this.deferred.reject( new OO.ui.Error( mw.message( 'mwe-recwiz-error-pagemissing', title ).text() ) );
+			if ( page.missing === true ) {
+				return this.deferred.reject( new OO.ui.Error( mw.message( 'mwe-recwiz-error-pagemissing', title ).text() ) );
+			}
+			content = page.revisions[ 0 ].content;
+			this.list = content.split( '\n' );
+			for ( i = 0; i < this.list.length; i++ ) {
+				this.list[ i ] = this.list[ i ].replace( /^[*#]/, '' ).trim();
+				if ( deduplicate === true && this.isAlreadyRecorded( this.list[ i ] ) ) {
+					this.list.splice( i, 1 );
+					i--; // Necessary as we've just removed an item of the list we're exploring
 				}
-				content = page.revisions[ 0 ].content;
-				this.list = content.split( '\n' );
-				for ( i = 0; i < this.list.length; i++ ) {
-					this.list[ i ] = this.list[ i ].replace( /^[*#]/, '' ).trim();
-					if ( deduplicate === true && this.isAlreadyRecorded( this.list[ i ] ) ) {
-						this.list.splice( i, 1 );
-						i--; // Necessary as we've just removed an item of the list we're exploring
-					}
-				}
-				this.deferred.resolve();
-			}.bind( this ), function ( error ) {
-				this.deferred.reject( new OO.ui.Error( error ) );
-			}.bind( this ) );
+			}
+			this.deferred.resolve();
+		}.bind( this ), function ( error ) {
+			this.deferred.reject( new OO.ui.Error( error ) );
+		}.bind( this ) );
 
 		// We're not done yet, make the dialog closing process to wait the promise
 		return this.deferred.promise();

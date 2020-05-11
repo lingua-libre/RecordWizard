@@ -53,7 +53,11 @@
 				qid: lang
 			};
 
-			this.windowManager.openWindow( this.dialog, { label: item.getLabel(), title: item.getLabel(), callback: this.onQualifierSelected.bind( this, lang ) } );
+			this.windowManager.openWindow( this.dialog, {
+				label: item.getLabel(),
+				title: item.getLabel(),
+				callback: this.onQualifierSelected.bind( this, lang )
+			} );
 		}
 
 		this.emit( 'update', this.getValue() );
@@ -76,24 +80,45 @@
 		rw.layout.LanguagesSelectorWidget.Dialog.parent.call( this, config );
 
 		this.size = config.size;
-		this.content = new OO.ui.PanelLayout( { padded: true, expanded: false } );
+		this.content = new OO.ui.PanelLayout( {
+			padded: true,
+			expanded: false
+		} );
 	};
 	OO.inheritClass( rw.layout.LanguagesSelectorWidget.Dialog, OO.ui.ProcessDialog );
 
 	rw.layout.LanguagesSelectorWidget.Dialog.static.name = 'languageselector';
 	rw.layout.LanguagesSelectorWidget.Dialog.static.title = 'languageselector';
-	rw.layout.LanguagesSelectorWidget.Dialog.static.actions = [
-		{ action: 'save', label: 'Done', flags: [ 'primary', 'progressive' ] },
-		{ action: 'cancel', label: 'Cancel', flags: [ 'safe', 'back' ] }
+	rw.layout.LanguagesSelectorWidget.Dialog.static.actions = [ {
+		action: 'save',
+		label: 'Done',
+		flags: [ 'primary', 'progressive' ]
+	},
+	{
+		action: 'cancel',
+		label: 'Cancel',
+		flags: [ 'safe', 'back' ]
+	}
 	];
 
 	rw.layout.LanguagesSelectorWidget.Dialog.prototype.initialize = function () {
 		// TODO: get from config
-		var options = [
-			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-native' ), data: rw.store.config.data.items.langLevelNative },
-			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-good' ), data: rw.store.config.data.items.langLevelGood },
-			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-average' ), data: rw.store.config.data.items.langLevelAverage },
-			{ label: mw.msg( 'mwe-recwiz-locutor-languagelevel-beginner' ), data: rw.store.config.data.items.langLevelBeginner }
+		var options = [ {
+			label: mw.msg( 'mwe-recwiz-locutor-languagelevel-native' ),
+			data: rw.store.config.data.items.langLevelNative
+		},
+		{
+			label: mw.msg( 'mwe-recwiz-locutor-languagelevel-good' ),
+			data: rw.store.config.data.items.langLevelGood
+		},
+		{
+			label: mw.msg( 'mwe-recwiz-locutor-languagelevel-average' ),
+			data: rw.store.config.data.items.langLevelAverage
+		},
+		{
+			label: mw.msg( 'mwe-recwiz-locutor-languagelevel-beginner' ),
+			data: rw.store.config.data.items.langLevelBeginner
+		}
 		];
 
 		rw.layout.LanguagesSelectorWidget.Dialog.parent.prototype.initialize.apply( this, arguments );
@@ -135,7 +160,10 @@
 		if ( action === 'save' ) {
 			level = this.levelDropdown.getValue();
 			location = this.locationInput.getData();
-			this.callback( { languageLevel: level, location: location } );
+			this.callback( {
+				languageLevel: level,
+				location: location
+			} );
 
 			this.close();
 		} else if ( action === 'cancel' ) {

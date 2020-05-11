@@ -2,6 +2,6 @@
 
 ( function ( rw ) {
 	// create RecordWizard layout namespace
-	rw.layout = {
-	};
+	rw.layout = {};
+
 }( mediaWiki.recordWizard ) );

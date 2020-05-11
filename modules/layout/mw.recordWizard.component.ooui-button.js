@@ -2,7 +2,7 @@
 
 ( function ( mw, $, rw, OO ) {
 
-	Vue.component('ooui-button', {
+	Vue.component( 'ooui-button', {
 		template: '<div></div>',
 		props: {
 			flags: { type: String, default: '' },
@@ -11,12 +11,12 @@
 			framed: { type: Boolean, default: true },
 			disabled: { type: Boolean, default: false },
 			href: String,
-			target: String,
+			target: String
 		},
-		mounted: function() {
+		mounted: function () {
 			var invisibleLabel = false;
 
-			if ( this.label === undefined || this.label === "" ) {
+			if ( this.label === undefined || this.label === '' ) {
 				invisibleLabel = true;
 			}
 
@@ -24,26 +24,26 @@
 				$element: $( this.$el ),
 				label: this.label,
 				invisibleLabel: invisibleLabel,
-				flags: this.flags.split(' '),
+				flags: this.flags.split( ' ' ),
 				icon: this.icon,
 				framed: this.framed,
 				href: this.href,
 				target: this.target,
-				disabled: this.disabled,
+				disabled: this.disabled
 			} );
-      		this.$button.on( 'click', this.$emit.bind( this, 'click' ) );
+			this.$button.on( 'click', this.$emit.bind( this, 'click' ) );
 		},
 		watch: {
-			label: function() {
+			label: function () {
 				this.$button.setLabel( this.label );
 			},
-			disabled: function() {
+			disabled: function () {
 				this.$button.setDisabled( this.disabled );
-			},
+			}
 		},
-		beforeDestroy: function() {
+		beforeDestroy: function () {
 			this.$button.off( 'click' );
-		},
+		}
 	} );
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

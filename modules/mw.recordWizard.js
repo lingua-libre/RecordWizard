@@ -3,6 +3,6 @@
 ( function ( mw ) {
 
 	// create RecordWizard namespace
-	mw.recordWizard = {
-	};
+	mw.recordWizard = {};
+
 }( mediaWiki ) );

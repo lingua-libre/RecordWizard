@@ -1,25 +1,25 @@
 'use strict';
 
-( function ( mw, rw, OO ) {
+( function ( mw, rw ) {
 	/**
-	* Common data and methods for all steps
-	*/
+	 * Common data and methods for all steps
+	 */
 	rw.vue.step = {
 		data: {
 			config: rw.store.config.data,
-			state: rw.store.state.data,
+			state: rw.store.state.data
 		},
-		created: function() {
+		created: function () {
 			this.$api = new mw.Api();
 		},
 		methods: {
-			canMovePrev: function() {
+			canMovePrev: function () {
 				return true;
 			},
-			canMoveNext: function() {
+			canMoveNext: function () {
 				return true;
-			},
-		},
+			}
+		}
 	};
 
 	rw.vue.list = {
@@ -27,46 +27,45 @@
 			autoScroll: true,
 			selected: 0,
 			selectedArray: [],
-		 	words: rw.store.record.data.words,
+			words: rw.store.record.data.words
 		},
-		created: function() {
-		},
+		created: function () {},
 		watch: {
-			selected: function() {
+			selected: function () {
 				var list, itemNode, container;
 
 				if ( this.autoScroll === true ) {
 					list = $( this.$el ).find( '.mwe-rw-list' );
-				    itemNode = list.children().eq( this.selected );
-				    container = list.parent();
+					itemNode = list.children().eq( this.selected );
+					container = list.parent();
 
 					container.stop().animate( {
 						scrollTop: itemNode.offset().top - container.offset().top + container.scrollTop() - ( itemNode.innerHeight() - itemNode.height() )
 					} );
 				}
-			},
+			}
 		},
 		methods: {
 			initSelection: function () {
 				var i;
 
-			   // We use an array to dynamically store the selected class
-			   // for performance reason (it is way quicker to replace a specific
-			   // value in an array than re-render the complete list each time
-			   this.selectedArray.splice( 0, this.selectedArray.length );
-			   for ( i = 0; i < this.words.length; i++ ) {
-				   this.selectedArray.push( false );
-			   }
+				// We use an array to dynamically store the selected class
+				// for performance reason (it is way quicker to replace a specific
+				// value in an array than re-render the complete list each time
+				this.selectedArray.splice( 0, this.selectedArray.length );
+				for ( i = 0; i < this.words.length; i++ ) {
+					this.selectedArray.push( false );
+				}
 
-			   // Select first selectable word
-			   for ( i = 0; i < this.words.length; i++ ) {
-				   if ( this.isSelectable( this.words[ i ] ) === true ) {
-					   this.selectWord( i );
-					   break;
-				   }
-			   }
+				// Select first selectable word
+				for ( i = 0; i < this.words.length; i++ ) {
+					if ( this.isSelectable( this.words[ i ] ) === true ) {
+						this.selectWord( i );
+						break;
+					}
+				}
 			},
-			selectWord: function( index ) {
+			selectWord: function ( index ) {
 				var data = this.beforeSelectionChange();
 
 				this.selectedArray[ this.selected ] = false;
@@ -77,7 +76,7 @@
 
 				return true;
 			},
-			moveBackward: function() {
+			moveBackward: function () {
 				var i;
 
 				for ( i = this.selected - 1; i >= 0; i-- ) {
@@ -89,7 +88,7 @@
 
 				return false;
 			},
-			moveForward: function() {
+			moveForward: function () {
 				var i;
 
 				for ( i = this.selected + 1; i < this.words.length; i++ ) {
@@ -101,16 +100,16 @@
 
 				return false;
 			},
-			isSelectable: function( word ) {
+			isSelectable: function () {
 				return true;
 			},
-			beforeSelectionChange: function() {
+			beforeSelectionChange: function () {
 				return true;
 			},
-			afterSelectionChange: function( data ) {
+			afterSelectionChange: function () {
 				return true;
-			},
-		},
+			}
+		}
 	};
 
-}( mediaWiki, mediaWiki.recordWizard, OO ) );
+}( mediaWiki, mediaWiki.recordWizard ) );

@@ -1,42 +1,44 @@
 'use strict';
-/* TODO: Get rid of OOUI to increase performances */
-( function ( mw, $, rw, OO ) {
 
-	Vue.component('ll-draggablelist', {
+( function ( mw, $, rw ) {
+
+	Vue.component( 'll-draggablelist', {
 		template: '<ul></ul>',
 		props: {
-			value: { type: Array, default: function() { return []; } },
+			value: { type: Array, default: function () { return []; } }
 		},
-		mounted: function() {
+		mounted: function () {
 			this.$list = new rw.layout.DraggableGroupWidget( {
 				$element: $( this.$el ),
-				items: [],
+				items: []
 			} );
 
 			this.$itemStore = {};
 			this.$shouldRefill = true;
 			this.fillList();
-      		this.$list.on( 'reorder', this.onOrderChange.bind( this ) );
+			this.$list.on( 'reorder', this.onOrderChange.bind( this ) );
 		},
 		watch: {
-			value: function() {
+			value: function () {
 				// Prevent refill when changes came from this component (for better perfs)
 				if ( this.$shouldRefill === true ) {
 					this.fillList();
 				} else {
 					this.$shouldRefill = true;
 				}
-			},
+			}
 		},
 		methods: {
-			fillList: function() {
+			fillList: function () {
 				var i, label,
 					items = [];
 
 				for ( i = 0; i < this.value.length; i++ ) {
 					label = this.value[ i ];
 					if ( this.$itemStore[ label ] === undefined ) {
-						this.$itemStore[ label ] = new rw.layout.DraggableItemWidget( { label: label } );
+						this.$itemStore[ label ] = new rw.layout.DraggableItemWidget( {
+							label: label
+						} );
 						this.$itemStore[ label ].on( 'remove', this.onRemoveItem.bind( this, label ) );
 					}
 					items.push( this.$itemStore[ label ] );
@@ -45,9 +47,8 @@
 				this.$list.clearItems();
 				this.$list.addItems( items );
 			},
-			onOrderChange: function( item, newIndex ) {
-				var i,
-					label = item.getLabel(),
+			onOrderChange: function ( item, newIndex ) {
+				var label = item.getLabel(),
 					oldIndex = this.value.indexOf( label );
 
 				/* Update order in the v-model value */
@@ -55,7 +56,7 @@
 				this.value.splice( newIndex, 0, this.value.splice( oldIndex, 1 )[ 0 ] );
 				this.$emit( 'input', this.value );
 			},
-			onRemoveItem: function( label ) {
+			onRemoveItem: function ( label ) {
 				this.$shouldRefill = false;
 
 				/* Remove the item from the widget */
@@ -64,11 +65,11 @@
 
 				/* Remove the item from the v-model value */
 				this.$emit( 'delete', label );
-			},
+			}
 		},
-		beforeDestroy: function() {
+		beforeDestroy: function () {
 			this.$list.off( 'reorder' );
 		}
 	} );
 
-}( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );
+}( mediaWiki, jQuery, mediaWiki.recordWizard ) );

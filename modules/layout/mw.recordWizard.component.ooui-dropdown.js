@@ -2,54 +2,54 @@
 
 ( function ( mw, $, rw, OO ) {
 
-	Vue.component('ooui-dropdown', {
+	Vue.component( 'ooui-dropdown', {
 		template: '<div></div>',
 		props: {
-			options: { type: Array, default: function() { return []; } },
+			options: { type: Array, default: function () { return []; } },
 			value: String,
 			disabled: { type: Boolean, default: false },
-			inputId: String,
+			inputId: String
 		},
-		data: function() {
+		data: function () {
 			return {
 				opt: JSON.parse( JSON.stringify( this.options ) )
-			}
+			};
 		},
-		mounted: function() {
+		mounted: function () {
 
 			this.$dropdown = new OO.ui.DropdownInputWidget( {
 				$element: $( this.$el ),
 				inputId: this.inputId,
 				disabled: this.disabled,
 				options: this.opt,
-				value: this.value,
+				value: this.value
 			} );
-      		this.$dropdown.on( 'change', this.onChange.bind( this ) );
+			this.$dropdown.on( 'change', this.onChange.bind( this ) );
 			this.$emit( 'input', this.$dropdown.getValue() );
 		},
 		watch: {
 			options: {
-				handler: function() {
+				handler: function () {
 					this.opt = JSON.parse( JSON.stringify( this.options ) );
 
 					this.$dropdown.setOptions( this.opt );
 				},
 				deep: true
 			},
-			value: function() {
+			value: function () {
 				this.$dropdown.setValue( this.value );
 			},
-			disabled: function() {
+			disabled: function () {
 				this.$dropdown.setDisabled( this.disabled );
-			},
+			}
 		},
 		methods: {
-			onChange: function( newValue ) {
+			onChange: function ( newValue ) {
 				this.$emit( 'input', newValue );
 				this.$emit( 'change' );
-			},
+			}
 		},
-		beforeDestroy: function() {
+		beforeDestroy: function () {
 			this.$dropdown.off( 'change' );
 		}
 	} );

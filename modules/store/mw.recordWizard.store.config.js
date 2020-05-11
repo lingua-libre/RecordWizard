@@ -1,12 +1,12 @@
 'use strict';
 
 ( function ( mw, rw ) {
-	var ConfigStore = function() {
+	var ConfigStore = function () {
 		this.data = mw.config.get( 'RecordWizardConfig' );
 		this.data.pastRecords = {};
 
 		this.$api = new mw.Api();
-	}
+	};
 
 	ConfigStore.prototype.fetchPastRecords = function ( langQid, speakerQid, deferred, offset, pastRecords ) {
 		deferred = deferred || $.Deferred();

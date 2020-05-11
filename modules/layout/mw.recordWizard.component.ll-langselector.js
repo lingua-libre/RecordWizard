@@ -2,16 +2,17 @@
 
 ( function ( mw, $, rw, OO ) {
 
-	Vue.component('ll-langselector', {
+	Vue.component( 'll-langselector', {
 		template: '<div></div>',
 		props: {
 			value: Object,
 			placeholder: String,
 			disabled: { type: Boolean, default: false },
 			inputId: String,
-			options: { type: Array, default: function() { return []; } },
+			options: { type: Array, default: function () { return []; }
+			}
 		},
-		mounted: function() {
+		mounted: function () {
 			var i,
 				items = [];
 
@@ -23,21 +24,21 @@
 				$element: $( this.$el ),
 				inputId: this.inputId,
 				disabled: this.disabled,
-			    value: this.value,
+				value: this.value,
 				menu: { items: items },
 				indicator: 'required'
 			} );
-      		this.$input.on( 'update', this.$emit.bind( this, 'input' ) );
+			this.$input.on( 'update', this.$emit.bind( this, 'input' ) );
 		},
 		watch: {
-			value: function() {
+			value: function () {
 				this.$input.setValue( this.value );
 			},
-			disabled: function() {
+			disabled: function () {
 				this.$input.setDisabled( this.disabled );
-			},
+			}
 		},
-		beforeDestroy: function() {
+		beforeDestroy: function () {
 			this.$input.off( 'update' );
 		}
 	} );

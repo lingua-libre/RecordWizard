@@ -1,8 +1,8 @@
 'use strict';
 
-( function ( mw, $, rw, OO ) {
+( function ( mw, $, rw ) {
 
-	Vue.component('ll-listitem', {
+	Vue.component( 'll-listitem', {
 		template: '\
 				<li :class="itemclass" @click="click">\
 					<span v-html="word" :title="errors[ word ]"></span>\
@@ -10,16 +10,16 @@
 					<i class="mwe-rws-again" @click.stop.prevent="remove"></i>\
 				</li>',
 		props: {
-			word: String,
+			word: String
 		},
-		data: function() {
+		data: function () {
 			return {
-			   status: rw.store.record.data.status,
-			   errors: rw.store.record.data.errors,
-			}
+				status: rw.store.record.data.status,
+				errors: rw.store.record.data.errors
+			};
 		},
 		computed: {
-			itemclass: function() {
+			itemclass: function () {
 				var text = 'mwe-rws-' + this.status[ this.word ];
 				if ( this.errors[ this.word ] !== false ) {
 					text += ' mwe-rw-error';
@@ -37,7 +37,7 @@
 			click: function () {
 				this.$emit( 'click' );
 			}
-		},
+		}
 	} );
 
-}( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );
+}( mediaWiki, jQuery, mediaWiki.recordWizard ) );

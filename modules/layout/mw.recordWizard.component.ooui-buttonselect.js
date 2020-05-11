@@ -2,33 +2,33 @@
 
 ( function ( mw, $, rw, OO ) {
 
-	Vue.component('ooui-buttonselect', {
+	Vue.component( 'ooui-buttonselect', {
 		template: '<div></div>',
 		props: {
-			options: { type: Array, default: function() { return []; } },
+			options: { type: Array, default: function () { return []; } },
 			value: String,
 			disabled: { type: Boolean, default: false },
-			inputId: String,
+			inputId: String
 		},
-		data: function() {
+		data: function () {
 			return {
 				opt: JSON.parse( JSON.stringify( this.options ) )
-			}
+			};
 		},
-		mounted: function() {
+		mounted: function () {
 			this.$items = [];
 
 			this.$select = new OO.ui.ButtonSelectWidget( {
 				$element: $( this.$el ),
 				inputId: this.inputId,
 				disabled: this.disabled,
-				items: [],
+				items: []
 			} );
 			this.setItems();
-      		this.$select.on( 'select', this.onChange.bind( this ) );
+			this.$select.on( 'select', this.onChange.bind( this ) );
 		},
 		methods: {
-			setItems: function() {
+			setItems: function () {
 				var i;
 				this.$select.removeItems( this.$items );
 
@@ -40,7 +40,7 @@
 				this.$select.addItems( this.$items );
 				this.$select.selectItemByData( this.value );
 			},
-			onChange: function( item ) {
+			onChange: function ( item ) {
 				var value = null;
 
 				if ( item !== null ) {
@@ -51,14 +51,14 @@
 			}
 		},
 		watch: {
-			value: function() {
+			value: function () {
 				this.$select.selectItemByData( this.value );
 			},
-			disabled: function() {
+			disabled: function () {
 				this.$select.setDisabled( this.disabled );
-			},
+			}
 		},
-		beforeDestroy: function() {
+		beforeDestroy: function () {
 			this.$select.off( 'select' );
 		}
 	} );

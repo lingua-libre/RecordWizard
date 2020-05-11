@@ -13,8 +13,14 @@
 	WMCategoryGenerator.prototype.initialize = function () {
 		rw.store.generator.generic.prototype.initialize.call( this );
 		this.wikiLabels = {
-			wiki: { label: 'Wikipedia', property: rw.store.config.data.properties.wikipediaTitle },
-			wiktionary: { label: 'Wiktionary', property: rw.store.config.data.properties.wiktionaryEntry }
+			wiki: {
+				label: 'Wikipedia',
+				property: rw.store.config.data.properties.wikipediaTitle
+			},
+			wiktionary: {
+				label: 'Wiktionary',
+				property: rw.store.config.data.properties.wiktionaryEntry
+			}
 			// wikibooks: { label: 'Wikibooks', property: '' },
 			// wikinews: { label: 'Wikinews', property: '' },
 			// wikiquote: { label: 'Wikiquote', property: '' },
@@ -25,10 +31,21 @@
 		this.siteMatrix = {};
 		this.metaApi = new mw.ForeignApi( 'https://meta.wikimedia.org/w/api.php', {
 			anonymous: true,
-			parameters: { origin: '*' },
-			ajax: { timeout: 10000 }
+			parameters: {
+				origin: '*'
+			},
+			ajax: {
+				timeout: 10000
+			}
 		} );
-		this.limit = new OO.ui.NumberInputWidget( { min: 1, max: 2000, value: 200, step: 100, pageStep: 500, isInteger: true } );
+		this.limit = new OO.ui.NumberInputWidget( {
+			min: 1,
+			max: 2000,
+			value: 200,
+			step: 100,
+			pageStep: 500,
+			isInteger: true
+		} );
 	};
 
 	WMCategoryGenerator.prototype.getReadyProcess = function ( data ) {
@@ -98,7 +115,11 @@
 
 		this.langDropdown = new OO.ui.DropdownInputWidget( {
 			classes: [ 'mwe-recwiz-generator-wmcategory-langdropdown' ],
-			options: Object.keys( this.siteMatrix ).map( function ( key ) { return { data: key }; } )
+			options: Object.keys( this.siteMatrix ).map( function ( key ) {
+				return {
+					data: key
+				};
+			} )
 		} );
 		this.langDropdown.on( 'change', this.switchProjects.bind( this ) );
 		this.langDropdown.setValue( this.WMLangCode in this.siteMatrix ? this.WMLangCode : 'en' );
@@ -108,7 +129,10 @@
 		var selectedProject;
 
 		this.projectDropdown.setOptions( Object.keys( this.siteMatrix[ selectedLang ] ).map( function ( key ) {
-			return { label: this.wikiLabels[ key ].label, data: key };
+			return {
+				label: this.wikiLabels[ key ].label,
+				data: key
+			};
 		}.bind( this ) ) );
 
 		selectedProject = this.projectDropdown.getValue();
@@ -123,8 +147,12 @@
 
 		this.api = new mw.ForeignApi( apiUrl, {
 			anonymous: true,
-			parameters: { origin: '*' },
-			ajax: { timeout: 10000 }
+			parameters: {
+				origin: '*'
+			},
+			ajax: {
+				timeout: 10000
+			}
 		} );
 		this.project = this.wikiLabels[ selectedProject ].label;
 		this.localProperty = this.wikiLabels[ selectedProject ].property;

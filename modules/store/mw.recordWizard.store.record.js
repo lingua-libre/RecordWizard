@@ -18,8 +18,8 @@
 					name: '',
 					qid: '',
 					main: false,
-					new: false,
-				},
+					new: false
+				}
 			},
 			words: [],
 			records: {},
@@ -27,16 +27,16 @@
 			errors: {},
 			checkboxes: {},
 			statusCount: {
-				'up': 0,
-				'ready': 0,
-				'stashing': 0,
-				'stashed': 0,
-				'uploading': 0,
-				'uploaded': 0,
-				'finalizing': 0,
-				'done': 0,
-				'error': 0,
-			},
+				up: 0,
+				ready: 0,
+				stashing: 0,
+				stashed: 0,
+				uploading: 0,
+				uploaded: 0,
+				finalizing: 0,
+				done: 0,
+				error: 0
+			}
 		};
 		this.$api = new mw.Api();
 	};
@@ -149,7 +149,7 @@
 		this.data.checkboxes[ word ] = true;
 	};
 
-	RecordStore.prototype.randomiseList = function() {
+	RecordStore.prototype.randomiseList = function () {
 		var i, tmp, randomIndex;
 
 		// Fisher-Yates shuffle
@@ -158,11 +158,11 @@
 
 			tmp = this.data.words[ randomIndex ];
 			Vue.set( this.data.words, randomIndex, this.data.words[ i ] );
-			Vue.set( this.data.words,  i, tmp );
+			Vue.set( this.data.words, i, tmp );
 		}
 	};
 
-	RecordStore.prototype.addWords = function( words ) {
+	RecordStore.prototype.addWords = function ( words ) {
 		var i, word, extra;
 
 		// Allow to add a single word
@@ -211,11 +211,11 @@
 	};
 
 	// TODO: still usefull?
-	RecordStore.prototype.hasStatus = function( status ) {
+	RecordStore.prototype.hasStatus = function ( status ) {
 		return this.countStatus( status ) > 0;
 	};
 
-	RecordStore.prototype.countStatus = function( status, checkCheckbox ) {
+	RecordStore.prototype.countStatus = function ( status ) {
 		var i,
 			counter = 0;
 
@@ -232,16 +232,16 @@
 	};
 
 	// TODO: still usefull?
-	RecordStore.prototype.hasErrors = function() {
+	RecordStore.prototype.hasErrors = function () {
 		return this.data.statusCount.error > 0;
 	};
 
 	// TODO: still usefull?
-	RecordStore.prototype.countErrors = function() {
+	RecordStore.prototype.countErrors = function () {
 		return this.data.statusCount.error;
 	};
 
-	RecordStore.prototype.resetAllErrors = function() {
+	RecordStore.prototype.resetAllErrors = function () {
 		var i;
 
 		for ( i = 0; i < this.data.words.length; i++ ) {
@@ -252,7 +252,7 @@
 		}
 	};
 
-	RecordStore.prototype.resetStashingRecords = function() {
+	RecordStore.prototype.resetStashingRecords = function () {
 		var i;
 
 		for ( i = 0; i < this.data.words.length; i++ ) {
@@ -267,68 +267,67 @@
 		this.setStatus( word, 'ready' );
 		this.setError( word, false );
 
-	   if ( blob !== undefined ) {
-		   this.data.records[ word ].setBlob(
-			   blob,
-			   ( this.data.metadata.media === 'audio' ? 'wav' : 'webm' )
-		   );
-	   }
+		if ( blob !== undefined ) {
+			this.data.records[ word ].setBlob(
+				blob,
+				( this.data.metadata.media === 'audio' ? 'wav' : 'webm' )
+			);
+		}
 
-	   this.setStatus( word, 'stashing' );
-	   rw.requestQueue.push( this.data.records[ word ].uploadToStash.bind( this.data.records[ word ], this.$api ) ).then(
-		   this.stashSuccess.bind( this, word ),
-		   this.requestError.bind( this, word, 'ready' )
-	   );
-   };
+		this.setStatus( word, 'stashing' );
+		rw.requestQueue.push( this.data.records[ word ].uploadToStash.bind( this.data.records[ word ], this.$api ) ).then(
+			this.stashSuccess.bind( this, word ),
+			this.requestError.bind( this, word, 'ready' )
+		);
+	};
 
-   RecordStore.prototype.doPublish = function ( word ) {
-	  this.setStatus( word, 'uploading' );
-	  this.setError( word, false );
+	RecordStore.prototype.doPublish = function ( word ) {
+		this.setStatus( word, 'uploading' );
+		this.setError( word, false );
 
-	  rw.requestQueue.push( this.data.records[ word ].finishUpload.bind( this.data.records[ word ], this.$api ) ).then(
-		  this.doFinalize.bind( this, word ),
-		  this.requestError.bind( this, word, 'stashed' )
-	  );
-  };
+		rw.requestQueue.push( this.data.records[ word ].finishUpload.bind( this.data.records[ word ], this.$api ) ).then(
+			this.doFinalize.bind( this, word ),
+			this.requestError.bind( this, word, 'stashed' )
+		);
+	};
 
-  RecordStore.prototype.doFinalize = function ( word ) {
-	  this.setStatus( word, 'finalizing' );
-	  this.setError( word, false );
+	RecordStore.prototype.doFinalize = function ( word ) {
+		this.setStatus( word, 'finalizing' );
+		this.setError( word, false );
 
-	 rw.requestQueue.force( this.data.records[ word ].saveWbItem.bind( this.data.records[ word ], this.$api ) ).then(
-		 this.publishSuccess.bind( this, word ),
-		 this.requestError.bind( this, word, 'uploaded' )
-	 );
- };
+		rw.requestQueue.force( this.data.records[ word ].saveWbItem.bind( this.data.records[ word ], this.$api ) ).then(
+			this.publishSuccess.bind( this, word ),
+			this.requestError.bind( this, word, 'uploaded' )
+		);
+	};
 
- RecordStore.prototype.stashSuccess = function( word ) {
-	 this.setStatus( word, 'stashed' );
-	 this.data.checkboxes[ word ] = true;
- };
+	RecordStore.prototype.stashSuccess = function ( word ) {
+		this.setStatus( word, 'stashed' );
+		this.data.checkboxes[ word ] = true;
+	};
 
-  RecordStore.prototype.publishSuccess = function( word ) {
- 	  this.setStatus( word, 'done' );
-	  this.data.checkboxes[ word ] = true;
-  };
+	RecordStore.prototype.publishSuccess = function ( word ) {
+		this.setStatus( word, 'done' );
+		this.data.checkboxes[ word ] = true;
+	};
 
+	RecordStore.prototype.requestError = function ( word, prevState, error, errorData ) {
+		var errorText = error;
 
-  RecordStore.prototype.requestError = function( word, prevState, error, errorData ) {
-	  var errorText = error;
+		// If the upload has been abort, it means another piece of code
+		// is doing stuff right now, so don't mess-up with it
+		if ( errorData !== undefined ) {
+			if ( errorData.textStatus === 'abort' ) {
+				return;
+			}
+			if ( errorData.error !== undefined && errorData.error.info !== undefined ) {
+				errorText = errorData.error.info;
+			}
+		}
 
-	  // If the upload has been abort, it means another piece of code
-	  // is doing stuff right now, so don't mess-up with it
-	  if ( errorData !== undefined ) {
-		  if ( errorData.textStatus === 'abort' ) {
-		  	  return;
-	  	  }
-		  if ( errorData.error !== undefined && errorData.error.info !== undefined ) {
-			  errorText = errorData.error.info
-		  }
-	  }
-
-	  this.setStatus( word, prevState );
-	  this.setError( word, errorText );
-  };
+		this.setStatus( word, prevState );
+		this.setError( word, errorText );
+	};
 
 	rw.store.record = new RecordStore();
 

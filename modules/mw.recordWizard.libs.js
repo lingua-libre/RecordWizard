@@ -2,6 +2,6 @@
 
 ( function ( rw ) {
 	// create RecordWizard libs namespace
-	rw.libs = {
-	};
+	rw.libs = {};
+
 }( mediaWiki.recordWizard ) );

@@ -4,37 +4,37 @@
 	/**
 	 * The Tutorial step.
 	 */
-	 rw.vue.tutorial = new Vue( {
-		 mixins: [rw.vue.step],
+	rw.vue.tutorial = new Vue( {
+		mixins: [ rw.vue.step ],
 
-		 /* Data */
-		 data: {
-			 mictesterState: 'init', // init -> wait -> record -> wait -> play ⟲
-		 },
+		/* Data */
+		data: {
+			mictesterState: 'init' // init -> wait -> record -> wait -> play ⟲
+		},
 
-		 /* Hooks */
-		 mounted: function() {
-			 this.getAudioStream();
-		 },
+		/* Hooks */
+		mounted: function () {
+			this.getAudioStream();
+		},
 
-		 /* Methods */
-		 methods: {
-			 getAudioStream: function () {
-		 		// Cleanup previous recorder instance when we click on the button
-		 		// to reopen the popup
-		 		this.unloadRecorder();
+		/* Methods */
+		methods: {
+			getAudioStream: function () {
+				// Cleanup previous recorder instance when we click on the button
+				// to reopen the popup
+				this.unloadRecorder();
 
-		 		this.$recorder = new rw.libs.LinguaRecorder( {
-		 			autoStart: true,
-		 			autoStop: true
-		 		} );
+				this.$recorder = new rw.libs.LinguaRecorder( {
+					autoStart: true,
+					autoStop: true
+				} );
 
 				this.$recorder.on( 'readyFail', this.showError.bind( this ) );
-		 		this.$recorder.on( 'ready', function () {
-		 			this.state.isBrowserReady = true;
-		 			this.$recorder.on( 'stoped', this.mictesterPlay.bind( this ) );
-		 		}.bind( this ) );
-		 	},
+				this.$recorder.on( 'ready', function () {
+					this.state.isBrowserReady = true;
+					this.$recorder.on( 'stoped', this.mictesterPlay.bind( this ) );
+				}.bind( this ) );
+			},
 			unloadRecorder: function () {
 				if ( this.recorder === undefined || this.recorder === null ) {
 					return;
@@ -81,7 +81,7 @@
 					);
 				}.bind( this ), 1100 );
 			},
-			mictesterPlay: function( record ) {
+			mictesterPlay: function ( record ) {
 				this.mictesterState = 'wait';
 
 				setTimeout( function () {
@@ -91,12 +91,12 @@
 					clearTimeout( this.$timer );
 					audioNode = record.getAudioElement();
 					audioNode.play();
-					setTimeout( function() {
+					setTimeout( function () {
 						this.mictesterState = 'init';
 					}.bind( this ), record.getDuration() * 1000 + 300 );
 				}.bind( this ), 1100 );
-			},
-		 }
-	 } );
+			}
+		}
+	} );
 
 }( mediaWiki, mediaWiki.recordWizard ) );

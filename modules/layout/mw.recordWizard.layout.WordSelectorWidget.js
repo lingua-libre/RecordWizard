@@ -20,7 +20,7 @@
 
 	OO.inheritClass( rw.layout.WordSelectorWidget, OO.ui.TagMultiselectWidget );
 
-	rw.layout.WordSelectorWidget.prototype.onAdd = function ( item, index ) {
+	rw.layout.WordSelectorWidget.prototype.onAdd = function ( item ) {
 		var i,
 			texts = item.getData().split( '#' ),
 			height = this.$handle[ 0 ].scrollHeight;

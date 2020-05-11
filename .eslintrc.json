@@ -8,11 +8,14 @@
 	"globals": {
 		"mediaWiki": false,
 		"OO": false,
+		"Vue": false,
 		"wikibase": false,
 		"globeCoordinate": false,
 		"dataValues": false
 	},
 	"rules": {
-		"no-underscore-dangle": [ 0 ]
+		"no-underscore-dangle": [ 0 ],
+		"max-len": 0,
+		"no-multi-str": 0
 	}
 }

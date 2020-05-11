@@ -18,8 +18,8 @@
 		this.name = this.constructor.static.name;
 		this.label = this.constructor.static.title;
 		this.size = config.size;
-		this.params = {};//rw.store.generator[ this.name ] || {};
 		this.content = new OO.ui.PanelLayout( { padded: true, expanded: false } );
+		this.params = {}; // rw.store.generator[ this.name ] || {};
 	};
 	OO.inheritClass( GenericGenerator, OO.ui.ProcessDialog );
 
@@ -65,7 +65,7 @@
 	};
 
 	GenericGenerator.prototype.saveParams = function () {
-		//rw.store.generator[ this.name ] = this.params;
+		// rw.store.generator[ this.name ] = this.params;
 	};
 
 	GenericGenerator.prototype.finished = function () {

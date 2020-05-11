@@ -12,12 +12,29 @@
 
 	NearbyGenerator.prototype.initialize = function () {
 
-		this.latitude = new OO.ui.TextInputWidget( { placeholder: mw.msg( 'mwe-recwiz-nearby-latitude' ) } );
-		this.longitude = new OO.ui.TextInputWidget( { placeholder: mw.msg( 'mwe-recwiz-nearby-longitude' ) } );
-		this.currentPositionButton = new OO.ui.ButtonWidget( { title: mw.msg( 'mwe-recwiz-nearby-getcoordinates' ), icon: 'mapPin' } );
-		this.limit = new OO.ui.NumberInputWidget( { min: 1, max: 500, step: 10, pageStep: 100, isInteger: true } );
-		this.wikidata = new OO.ui.RadioOptionWidget( { label: 'Wikidata' } );
-		this.source = new OO.ui.RadioSelectWidget( { items: [ this.wikidata ] } );
+		this.latitude = new OO.ui.TextInputWidget( {
+			placeholder: mw.msg( 'mwe-recwiz-nearby-latitude' )
+		} );
+		this.longitude = new OO.ui.TextInputWidget( {
+			placeholder: mw.msg( 'mwe-recwiz-nearby-longitude' )
+		} );
+		this.currentPositionButton = new OO.ui.ButtonWidget( {
+			title: mw.msg( 'mwe-recwiz-nearby-getcoordinates' ),
+			icon: 'mapPin'
+		} );
+		this.limit = new OO.ui.NumberInputWidget( {
+			min: 1,
+			max: 500,
+			step: 10,
+			pageStep: 100,
+			isInteger: true
+		} );
+		this.wikidata = new OO.ui.RadioOptionWidget( {
+			label: 'Wikidata'
+		} );
+		this.source = new OO.ui.RadioSelectWidget( {
+			items: [ this.wikidata ]
+		} );
 		this.deduplicate = new OO.ui.ToggleSwitchWidget();
 
 		this.layout = new OO.ui.Widget( {
@@ -79,8 +96,7 @@
 		this.lockUI();
 		navigator.geolocation.getCurrentPosition(
 			this.onPositionSuccess.bind( this ),
-			this.onPositionError.bind( this ),
-			{
+			this.onPositionError.bind( this ), {
 				timeout: 10000, // 10 seconds
 				maximumAge: 3600000 // 1 hour
 			}
@@ -91,14 +107,18 @@
 		this.unlockUI();
 		this.latitude.setValue( pos.coords.latitude );
 		this.longitude.setValue( pos.coords.longitude );
-		this.currentPositionButton.setFlags( { destructive: false } );
+		this.currentPositionButton.setFlags( {
+			destructive: false
+		} );
 	};
 
 	NearbyGenerator.prototype.onPositionError = function ( error ) {
 		var errorMessage = mw.msg( 'mwe-recwiz-error-cantgetposition', error.message );
 
 		this.unlockUI();
-		this.showErrors( new OO.ui.Error( errorMessage, { recoverable: false } ) );
+		this.showErrors( new OO.ui.Error( errorMessage, {
+			recoverable: false
+		} ) );
 	};
 
 	NearbyGenerator.prototype.lockUI = function () {
@@ -116,7 +136,9 @@
 		this.latitude.popPending();
 		this.longitude.popPending();
 
-		this.getActions().get( { actions: 'save' } )[ 0 ].setDisabled( false );
+		this.getActions().get( {
+			actions: 'save'
+		} )[ 0 ].setDisabled( false );
 	};
 
 	NearbyGenerator.prototype.fetch = function () {
@@ -138,8 +160,12 @@
 
 		this.wikidataApi = new mw.ForeignApi( 'https://www.wikidata.org/w/api.php', {
 			anonymous: true,
-			parameters: { origin: '*' },
-			ajax: { timeout: 10000 }
+			parameters: {
+				origin: '*'
+			},
+			ajax: {
+				timeout: 10000
+			}
 		} );
 		this.list = [];
 
@@ -168,7 +194,10 @@
 
 		if ( geosearch.length === 0 ) {
 			errorMessage = mw.message( 'mwe-recwiz-warning-noresults' ).text();
-			this.deferred.reject( new OO.ui.Error( errorMessage, { warning: true, recoverable: false } ) );
+			this.deferred.reject( new OO.ui.Error( errorMessage, {
+				warning: true,
+				recoverable: false
+			} ) );
 			return;
 		}
 
@@ -190,6 +219,7 @@
 			} );
 		}
 	};
+
 	NearbyGenerator.prototype.parseLabels = function ( data ) {
 		var qid, entity, element,
 			limit = this.params.limit,

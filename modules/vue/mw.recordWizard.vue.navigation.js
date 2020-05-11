@@ -2,27 +2,25 @@
 
 ( function ( mw, rw, OO ) {
 	/**
-	* The Navigation vue
-	*/
+	 * The Navigation vue
+	 */
 	rw.vue.navigation = new Vue( {
 		/* Data */
 		data: {
 			state: rw.store.state.data,
-   		 	words: rw.store.record.data.words,
-   		 	status: rw.store.record.data.status,
-   		 	errors: rw.store.record.data.errors,
+			words: rw.store.record.data.words,
+			status: rw.store.record.data.status,
+			errors: rw.store.record.data.errors
 		},
 
 		/* Computed */
 		computed: {
-			prevDisabled: function() {
+			prevDisabled: function () {
 				if ( this.state.isFrozen === true ) {
 					return true;
 				}
 			},
-			nextDisabled: function() {
-				var word;
-
+			nextDisabled: function () {
 				if ( this.state.isFrozen === true ) {
 					return true;
 				}
@@ -30,15 +28,13 @@
 				if ( this.state.step === 'details' ) {
 					return this.words.length === 0;
 				} else if ( this.state.step === 'studio' ) {
-					return ! rw.store.record.hasStatus( [ 'stashed' ] );
+					return !rw.store.record.hasStatus( [ 'stashed' ] );
 				}
 
 				// By default, enable the button
 				return false;
 			},
-			showRetry: function() {
-				var word;
-
+			showRetry: function () {
 				if ( this.state.step === 'studio' || this.state.step === 'publish' ) {
 					return rw.store.record.hasErrors();
 				}
@@ -47,19 +43,19 @@
 			},
 			fileListUrl: function () {
 				return 'https://commons.wikimedia.org/wiki/Special:ListFiles/' + mw.config.get( 'wgUserName' );
-			},
+			}
 		},
 
 		/* Methods */
 		methods: {
-			cancel: function() {
+			cancel: function () {
 				OO.ui.confirm( mw.msg( 'mwe-recwiz-prevent-close' ) ).done( function ( confirmed ) {
 					if ( confirmed ) {
 						window.location.reload(); // or should we go back to the main page?
 					}
 				} );
 			},
-			prev: function() {
+			prev: function () {
 				var process = rw.vue[ this.state.step ].canMovePrev();
 
 				/* If the function returns a boolean */
@@ -77,7 +73,7 @@
 					rw.store.state.unfreeze.bind( rw.store.state )
 				);
 			},
-			next: function() {
+			next: function () {
 				var process = rw.vue[ this.state.step ].canMoveNext();
 
 				/* If the function returns a boolean */
@@ -95,12 +91,12 @@
 					rw.store.state.unfreeze.bind( rw.store.state )
 				);
 			},
-			retry: function() {
+			retry: function () {
 				var word;
 
-				for( word in this.errors ) {
+				for ( word in this.errors ) {
 					if ( this.errors[ word ] !== false ) {
-						switch( rw.store.record.data.status[ word ] ) {
+						switch ( rw.store.record.data.status[ word ] ) {
 							case 'ready':
 								rw.store.record.doStash( word );
 								break;
@@ -114,12 +110,12 @@
 					}
 				}
 			},
-			hasPendingRequests: function() {
+			hasPendingRequests: function () {
 				return rw.store.record.hasStatus( [ 'stashing', 'uploading', 'finalizing' ] );
 			},
 			openFileList: function () {
 				window.open( this.fileListUrl, '_blank' );
-			},
+			}
 		}
 	} );
 

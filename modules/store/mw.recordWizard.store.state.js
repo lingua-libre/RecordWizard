@@ -10,12 +10,12 @@
 			step: 'tutorial',
 			isFrozen: false,
 			isBrowserReady: false,
-			isPublishing: false,
+			isPublishing: false
 		};
 	};
 
 	StateStore.prototype.moveNext = function () {
-		switch( this.data.step ) {
+		switch ( this.data.step ) {
 			case 'tutorial':
 				this.data.step = 'locutor';
 				break;
@@ -35,7 +35,7 @@
 	};
 
 	StateStore.prototype.movePrev = function () {
-		switch( this.data.step ) {
+		switch ( this.data.step ) {
 			case 'tutorial':
 				this.data.step = 'tutorial';
 				break;

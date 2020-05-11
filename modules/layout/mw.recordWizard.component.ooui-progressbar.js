@@ -2,29 +2,28 @@
 
 ( function ( mw, $, rw, OO ) {
 
-	Vue.component('ooui-progressbar', {
+	Vue.component( 'ooui-progressbar', {
 		template: '<div></div>',
 		props: {
 			value: String,
-			disabled: { type: Boolean, default: false },
+			disabled: { type: Boolean, default: false }
 		},
-		mounted: function() {
+		mounted: function () {
 			this.$progressbar = new OO.ui.ProgressBarWidget( {
 				$element: $( this.$el ),
 				progress: this.value,
-				disabled: this.disabled,
+				disabled: this.disabled
 			} );
 		},
 		watch: {
-			value: function() {
+			value: function () {
 				this.$progressbar.setProgress( this.value );
 			},
-			disabled: function() {
+			disabled: function () {
 				this.$progressbar.setDisabled( this.disabled );
-			},
+			}
 		},
-		beforeDestroy: function() {
-		}
+		beforeDestroy: function () {}
 	} );
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

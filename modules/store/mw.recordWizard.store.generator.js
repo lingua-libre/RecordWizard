@@ -15,7 +15,7 @@
 			name: name,
 			title: title,
 			icon: icon || 'add',
-			dialog: dialog,
+			dialog: dialog
 		} );
 	};
 

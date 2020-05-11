@@ -13,7 +13,9 @@
 	 * @param {Object} config Configuration options
 	 */
 	rw.layout.WikidataSearchWidget = function ( config ) {
-		this.wikidataApi = new mw.ForeignApi( 'https://www.wikidata.org/w/api.php', { anonymous: true } );
+		this.wikidataApi = new mw.ForeignApi( 'https://www.wikidata.org/w/api.php', {
+			anonymous: true
+		} );
 		this.lang = mw.config.get( 'wgUserLanguage' );
 		this.qid = null;
 
@@ -92,7 +94,9 @@
 			deferred.resolve( results );
 		} );
 
-		return deferred.promise( { abort: function () {} } );
+		return deferred.promise( {
+			abort: function () {}
+		} );
 	};
 
 	rw.layout.WikidataSearchWidget.prototype.getLookupCacheDataFromResponse = function ( response ) {
@@ -113,7 +117,7 @@
 	rw.layout.WikidataSearchWidget.prototype.onLookupMenuItemChoose = function ( item ) {
 		this.setValue( item.getLabel() );
 		this.setQid( item.getData() );
-		this.emit( 'change', item.getData() )
+		this.emit( 'change', item.getData() );
 		// return OO.ui.mixin.LookupElement.prototype.onLookupMenuItemChoose.call( this, item );
 	};
 

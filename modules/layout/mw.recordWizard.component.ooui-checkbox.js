@@ -2,31 +2,31 @@
 
 ( function ( mw, $, rw, OO ) {
 
-	Vue.component('ooui-checkbox', {
+	Vue.component( 'ooui-checkbox', {
 		template: '<span></span>',
 		props: {
 			value: { type: Boolean, default: false },
 			disabled: { type: Boolean, default: false },
-			inputId: String,
+			inputId: String
 		},
-		mounted: function() {
+		mounted: function () {
 			this.$input = new OO.ui.CheckboxInputWidget( {
 				$element: $( this.$el ),
 				inputId: this.inputId,
 				disabled: this.disabled,
-				selected: this.value,
+				selected: this.value
 			} );
-      		this.$input.on( 'change', this.$emit.bind( this, 'input' ) );
+			this.$input.on( 'change', this.$emit.bind( this, 'input' ) );
 		},
 		watch: {
-			value: function() {
+			value: function () {
 				this.$input.setSelected( this.value );
 			},
-			disabled: function() {
+			disabled: function () {
 				this.$input.setDisabled( this.disabled );
-			},
+			}
 		},
-		beforeDestroy: function() {
+		beforeDestroy: function () {
 			this.$input.off( 'change' );
 		}
 	} );

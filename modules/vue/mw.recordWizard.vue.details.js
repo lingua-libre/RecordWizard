@@ -4,74 +4,72 @@
 	/**
 	 * The Details step.
 	 */
-	 rw.vue.details = new Vue( {
-		 mixins: [rw.vue.step],
+	rw.vue.details = new Vue( {
+		mixins: [ rw.vue.step ],
 
-		 /* Data */
-		 data: {
-			 metadata: rw.store.record.data.metadata,
-			 words: rw.store.record.data.words,
-			 generators: rw.store.generator.data,
-			 wordInputed: '',
-			 availableLanguages: [],
-			 randomise: false,
-		 },
+		/* Data */
+		data: {
+			metadata: rw.store.record.data.metadata,
+			words: rw.store.record.data.words,
+			generators: rw.store.generator.data,
+			wordInputed: '',
+			availableLanguages: [],
+			randomise: false
+		},
 
-		 /* Hooks */
-		 created: function() {
-			 var i;
+		/* Hooks */
+		created: function () {
+			var i;
 
-	 		this.$windowManager = new OO.ui.WindowManager();
+			this.$windowManager = new OO.ui.WindowManager();
 			$( 'body' ).append( this.$windowManager.$element );
 
-			for( i = 0; i < this.generators.length; i++ ) {
-	 			this.$windowManager.addWindows( [ this.generators[ i ].dialog ] );
+			for ( i = 0; i < this.generators.length; i++ ) {
+				this.$windowManager.addWindows( [ this.generators[ i ].dialog ] );
 			}
 
 			this.onLanguageChange();
-		 },
-		 mounted: function() {
+		},
+		mounted: function () {
 
-		 },
-		 beforeUpdate: function() {
+		},
+		beforeUpdate: function () {
 
-		 },
-		 updated: function() {
+		},
+		updated: function () {
 
-		 },
+		},
 
-		 /* Methods */
-		 watch: {
-			 'state.step': function() {
-				 if ( this.state.step !== 'details' ) {
-					 return;
-				 }
+		/* Methods */
+		watch: {
+			'state.step': function () {
+				var qid,
+					languages = [];
 
-				 /* Update available languages on step load */
-				 var qid,
-				 	languages = [];
+				if ( this.state.step === 'details' ) {
+					/* Update available languages on step load */
+					for ( qid in this.metadata.locutor.languages ) {
+						languages.push( {
+							data: qid,
+							label: this.config.languages[ qid ].localname
+						} );
+					}
 
-				for ( qid in this.metadata.locutor.languages ) {
-					languages.push( {
-						data: qid,
-						label: this.config.languages[ qid ].localname,
-					} );
+					this.availableLanguages = languages;
+
+					/* Async load of past data for current language */
+					rw.store.config.fetchPastRecords( this.metadata.language || this.availableLanguages[ 0 ].data, this.metadata.locutor.qid );
 				}
-
-				this.availableLanguages = languages;
-
-				/* Async load of past data for current language */
-				rw.store.config.fetchPastRecords( this.metadata.language || this.availableLanguages[ 0 ].data, this.metadata.locutor.qid );
-			 },
-		 },
-		 methods: {
-			 clearAll: function() {
-				 rw.store.record.clearAllRecords();
-			 },
-			 clear: function( word ) {
-				 rw.store.record.clearRecord( word );
-			 },
-			 deduplicate: function() {
+			}
+		},
+		methods: {
+			clearAll: function () {
+				rw.store.record.clearAllRecords();
+			},
+			clear: function ( word ) {
+				rw.store.record.clearRecord( word );
+			},
+			deduplicate: function () {
 				var i,
 					pastRecords = this.config.pastRecords[ this.metadata.language ] || [];
 
@@ -81,26 +79,26 @@
 						i--; // to compensate the removal of an item
 					}
 				}
-			 },
-			 addWordFromInput: function() {
-				 rw.store.record.addWords( this.wordInputed.split( '#' ) );
-				 this.wordInputed = '';
-			 },
-			 onLanguageChange: function() {
-				 /* Clear all items from list */
-				 this.clearAll();
+			},
+			addWordFromInput: function () {
+				rw.store.record.addWords( this.wordInputed.split( '#' ) );
+				this.wordInputed = '';
+			},
+			onLanguageChange: function () {
+				/* Clear all items from list */
+				this.clearAll();
 
-				 /* Update the media property */
-				 if ( this.config.languages[ this.metadata.language ].mediaType === this.config.items.mediaTypeVideo ) {
-					 this.metadata.media = 'video';
-				 } else {
-					 this.metadata.media = 'audio';
-				 }
+				/* Update the media property */
+				if ( this.config.languages[ this.metadata.language ].mediaType === this.config.items.mediaTypeVideo ) {
+					this.metadata.media = 'video';
+				} else {
+					this.metadata.media = 'audio';
+				}
 
-				 /* Async load of past data for current language */
-				 rw.store.config.fetchPastRecords( this.metadata.language, this.metadata.locutor.qid );
-			 },
- 			canMoveNext: function() {
+				/* Async load of past data for current language */
+				rw.store.config.fetchPastRecords( this.metadata.language, this.metadata.locutor.qid );
+			},
+			canMoveNext: function () {
 				if ( this.words.length === 0 ) {
 					OO.ui.alert( mw.msg( 'mwe-recwiz-error-emptylist' ) );
 					return false;
@@ -111,12 +109,12 @@
 				}
 
 				this.$api.saveOptions( {
-					'recwiz-lang': this.metadata.language,
+					'recwiz-lang': this.metadata.language
 				} );
 
 				return true;
-			},
-		 }
-	 } );
+			}
+		}
+	} );
 
 }( mediaWiki, mediaWiki.recordWizard ) );

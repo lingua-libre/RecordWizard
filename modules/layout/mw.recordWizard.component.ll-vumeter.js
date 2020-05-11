@@ -1,8 +1,8 @@
 'use strict';
 
-( function ( mw, $, rw, OO ) {
+( function () {
 
-	Vue.component('ll-vumeter', {
+	Vue.component( 'll-vumeter', {
 		template: '<ul>\
 						<li :class="getClass(0)"></li>\
 						<li :class="getClass(1)"></li>\
@@ -21,16 +21,22 @@
 						<li :class="getClass(14)"></li>\
 					</ul>',
 		props: {
-			value: { type: Number, default: 0 },
-			saturated: { type: Boolean, default: false },
+			value: {
+				type: Number,
+				default: 0
+			},
+			saturated: {
+				type: Boolean,
+				default: false
+			}
 		},
 		methods: {
 			getClass: function ( index ) {
 				if ( this.value > index ) {
 					return 'mwe-rws-vu-active';
 				}
-			},
-		},
+			}
+		}
 	} );
 
-}( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );
+}() );

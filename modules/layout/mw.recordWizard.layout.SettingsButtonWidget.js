@@ -40,7 +40,9 @@
 			group = this.groups[ i ];
 			// TODO: create groups
 			groupContainer = $( '<div>' ).addClass( 'mwe-recwiz-settingsButtonWidget-group' );
-			groupContainer.append( new OO.ui.LabelWidget( { label: group.label } ).$element );
+			groupContainer.append( new OO.ui.LabelWidget( {
+				label: group.label
+			} ).$element );
 			for ( j = 0; j < group.widgets.length; j++ ) {
 				widget = group.widgets[ j ];
 				switch ( widget.type ) {
@@ -78,7 +80,9 @@
 								label: String( widget.options[ k ] )
 							} ) );
 						}
-						this.settingsWidgets[ widget.name ] = new OO.ui.ButtonSelectWidget( { items: options } );
+						this.settingsWidgets[ widget.name ] = new OO.ui.ButtonSelectWidget( {
+							items: options
+						} );
 						this.settingsWidgets[ widget.name ].selectItemByData( widget.value );
 						layout = new OO.ui.FieldLayout(
 							this.settingsWidgets[ widget.name ], {
@@ -124,7 +128,7 @@
 		if ( value === false || value === null ) {
 			return false;
 		}
-		value = JSON.parse( value )
+		value = JSON.parse( value );
 
 		if ( this.settingsWidgets[ key ] instanceof OO.ui.CheckboxInputWidget ) {
 			return this.settingsWidgets[ key ].setSelected( value.v );
@@ -162,7 +166,9 @@
 			value = value.getData();
 		}
 
-		mw.storage.set( 'mwe-recwiz-settings-' + key, JSON.stringify( { v: value } ) );
+		mw.storage.set( 'mwe-recwiz-settings-' + key, JSON.stringify( {
+			v: value
+		} ) );
 
 		return null;
 	};
