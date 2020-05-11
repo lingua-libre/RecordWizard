@@ -20,7 +20,7 @@
 				items.push( new OO.ui.MenuOptionWidget( this.options[ i ] ) );
 			}
 
-			this.$input = new rw.layout.LanguagesSelectorWidget( {
+			this.$input = new rw.widgets.LanguagesSelectorWidget( {
 				$element: $( this.$el ),
 				inputId: this.inputId,
 				disabled: this.disabled,

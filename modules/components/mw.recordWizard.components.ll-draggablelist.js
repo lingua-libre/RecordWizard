@@ -8,7 +8,7 @@
 			value: { type: Array, default: function () { return []; } }
 		},
 		mounted: function () {
-			this.$list = new rw.layout.DraggableGroupWidget( {
+			this.$list = new rw.widgets.DraggableGroupWidget( {
 				$element: $( this.$el ),
 				items: []
 			} );
@@ -36,7 +36,7 @@
 				for ( i = 0; i < this.value.length; i++ ) {
 					label = this.value[ i ];
 					if ( this.$itemStore[ label ] === undefined ) {
-						this.$itemStore[ label ] = new rw.layout.DraggableItemWidget( {
+						this.$itemStore[ label ] = new rw.widgets.DraggableItemWidget( {
 							label: label
 						} );
 						this.$itemStore[ label ].on( 'remove', this.onRemoveItem.bind( this, label ) );

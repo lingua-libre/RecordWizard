@@ -2,14 +2,14 @@
 
 ( function ( mw, $, rw, OO ) {
 
-	rw.layout.SettingsButtonWidget = function ( config ) {
+	rw.widgets.SettingsButtonWidget = function ( config ) {
 		var widgetName;
 
 		config = config || {};
 		config.classes = config.classes || [];
 		config.classes.push( 'mwe-recwiz-settingsButtonWidget' );
 
-		rw.layout.SettingsButtonWidget.parent.call( this, config );
+		rw.widgets.SettingsButtonWidget.parent.call( this, config );
 
 		this.label = config.label;
 		this.groups = config.groups;
@@ -30,9 +30,9 @@
 		}
 	};
 
-	OO.inheritClass( rw.layout.SettingsButtonWidget, OO.ui.Widget );
+	OO.inheritClass( rw.widgets.SettingsButtonWidget, OO.ui.Widget );
 
-	rw.layout.SettingsButtonWidget.prototype.generateUI = function () {
+	rw.widgets.SettingsButtonWidget.prototype.generateUI = function () {
 		var i, j, k, container, group, widget, groupContainer, layout, options;
 
 		container = $( '<div>' );
@@ -117,7 +117,7 @@
 		this.$element.append( this.button.$element );
 	};
 
-	rw.layout.SettingsButtonWidget.prototype.loadSavedValue = function ( key ) {
+	rw.widgets.SettingsButtonWidget.prototype.loadSavedValue = function ( key ) {
 		var value;
 
 		if ( this.settingsWidgets[ key ] === undefined ) {
@@ -141,7 +141,7 @@
 		return null;
 	};
 
-	rw.layout.SettingsButtonWidget.prototype.getValue = function ( key ) {
+	rw.widgets.SettingsButtonWidget.prototype.getValue = function ( key ) {
 		if ( this.settingsWidgets[ key ] === undefined ) {
 			return undefined;
 		}
@@ -157,7 +157,7 @@
 		return null;
 	};
 
-	rw.layout.SettingsButtonWidget.prototype.onChange = function ( key, value ) {
+	rw.widgets.SettingsButtonWidget.prototype.onChange = function ( key, value ) {
 		if ( this.settingsWidgets[ key ] === undefined ) {
 			return undefined;
 		}

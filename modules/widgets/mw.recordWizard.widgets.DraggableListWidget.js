@@ -2,25 +2,25 @@
 
 ( function ( mw, $, rw, OO ) {
 
-	rw.layout.DraggableGroupWidget = function DemoDraggableGroupWidget( config ) {
+	rw.widgets.DraggableGroupWidget = function DemoDraggableGroupWidget( config ) {
 		// Configuration initialization
 		config = config || {};
 		// Parent constructor
-		rw.layout.DraggableGroupWidget.parent.call( this, config );
+		rw.widgets.DraggableGroupWidget.parent.call( this, config );
 		// Mixin constructors
 		OO.ui.mixin.DraggableGroupElement.call( this, $.extend( {
 			$group: this.$element
 		}, config ) );
 	};
 	/* Setup */
-	OO.inheritClass( rw.layout.DraggableGroupWidget, OO.ui.Widget );
-	OO.mixinClass( rw.layout.DraggableGroupWidget, OO.ui.mixin.DraggableGroupElement );
+	OO.inheritClass( rw.widgets.DraggableGroupWidget, OO.ui.Widget );
+	OO.mixinClass( rw.widgets.DraggableGroupWidget, OO.ui.mixin.DraggableGroupElement );
 
-	rw.layout.DraggableItemWidget = function DemoDraggableHandledItemWidget( config ) {
+	rw.widgets.DraggableItemWidget = function DemoDraggableHandledItemWidget( config ) {
 		// Configuration initialization
 		config = config || {};
 		// Parent constructor
-		rw.layout.DraggableItemWidget.parent.call( this, config );
+		rw.widgets.DraggableItemWidget.parent.call( this, config );
 		// LabelElement Mixin constructors
 		OO.ui.mixin.LabelElement.call( this, config );
 		// Initialise elements
@@ -38,11 +38,11 @@
 		this.$action.one( 'click', this.emit.bind( this, 'remove' ) );
 	};
 	/* Setup */
-	OO.inheritClass( rw.layout.DraggableItemWidget, OO.ui.Widget );
-	OO.mixinClass( rw.layout.DraggableItemWidget, OO.ui.mixin.IconElement );
-	OO.mixinClass( rw.layout.DraggableItemWidget, OO.ui.mixin.LabelElement );
-	OO.mixinClass( rw.layout.DraggableItemWidget, OO.ui.mixin.DraggableElement );
+	OO.inheritClass( rw.widgets.DraggableItemWidget, OO.ui.Widget );
+	OO.mixinClass( rw.widgets.DraggableItemWidget, OO.ui.mixin.IconElement );
+	OO.mixinClass( rw.widgets.DraggableItemWidget, OO.ui.mixin.LabelElement );
+	OO.mixinClass( rw.widgets.DraggableItemWidget, OO.ui.mixin.DraggableElement );
 	/* Static */
-	rw.layout.DraggableItemWidget.static.tagName = 'li';
+	rw.widgets.DraggableItemWidget.static.tagName = 'li';
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );

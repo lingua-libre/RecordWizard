@@ -185,25 +185,25 @@
         },
         "ext.recordWizard.components":{
             "scripts": [
-                "modules/layout/mw.recordWizard.component.ooui-button.js",
-                "modules/layout/mw.recordWizard.component.ooui-buttonselect.js",
-                "modules/layout/mw.recordWizard.component.ooui-checkbox.js",
-                "modules/layout/mw.recordWizard.component.ooui-dropdown.js",
-                "modules/layout/mw.recordWizard.component.ooui-numberinput.js",
-                "modules/layout/mw.recordWizard.component.ooui-popup.js",
-                "modules/layout/mw.recordWizard.component.ooui-progressbar.js",
-                "modules/layout/mw.recordWizard.component.ooui-simpledialog.js",
-                "modules/layout/mw.recordWizard.component.ooui-textinput.js",
-                "modules/layout/mw.recordWizard.component.ll-draggablelist.js",
-                "modules/layout/mw.recordWizard.component.ll-langselector.js",
-                "modules/layout/mw.recordWizard.component.ll-listitem.js",
-                "modules/layout/mw.recordWizard.component.ll-vumeter.js",
-                "modules/layout/mw.recordWizard.component.ll-wdsearch.js"
+                "modules/components/mw.recordWizard.components.ooui-button.js",
+                "modules/components/mw.recordWizard.components.ooui-buttonselect.js",
+                "modules/components/mw.recordWizard.components.ooui-checkbox.js",
+                "modules/components/mw.recordWizard.components.ooui-dropdown.js",
+                "modules/components/mw.recordWizard.components.ooui-numberinput.js",
+                "modules/components/mw.recordWizard.components.ooui-popup.js",
+                "modules/components/mw.recordWizard.components.ooui-progressbar.js",
+                "modules/components/mw.recordWizard.components.ooui-simpledialog.js",
+                "modules/components/mw.recordWizard.components.ooui-textinput.js",
+                "modules/components/mw.recordWizard.components.ll-draggablelist.js",
+                "modules/components/mw.recordWizard.components.ll-langselector.js",
+                "modules/components/mw.recordWizard.components.ll-listitem.js",
+                "modules/components/mw.recordWizard.components.ll-vumeter.js",
+                "modules/components/mw.recordWizard.components.ll-wdsearch.js"
             ],
             "dependencies": [
                 "oojs-ui",
                 "ext.recordWizard.vuejs",
-                "ext.recordWizard.layout",
+                "ext.recordWizard.widgets",
                 "oojs-ui.styles.icons-media",
                 "oojs-ui.styles.icons-content",
                 "oojs-ui.styles.icons-wikimedia",
@@ -259,14 +259,14 @@
                 "mwe-recwiz-error-network"
             ]
         },
-        "ext.recordWizard.layout":{
+        "ext.recordWizard.widgets":{
             "scripts": [
-                "modules/layout/mw.recordWizard.layout.js",
-                "modules/layout/mw.recordWizard.layout.DraggableListWidget.js",
-                "modules/layout/mw.recordWizard.layout.LanguagesSelectorWidget.js",
-                "modules/layout/mw.recordWizard.layout.WordSelectorWidget.js",
-                "modules/layout/mw.recordWizard.layout.WikidataSearchWidget.js",
-                "modules/layout/mw.recordWizard.layout.SettingsButtonWidget.js"
+                "modules/widgets/mw.recordWizard.widgets.js",
+                "modules/widgets/mw.recordWizard.widgets.DraggableListWidget.js",
+                "modules/widgets/mw.recordWizard.widgets.LanguagesSelectorWidget.js",
+                "modules/widgets/mw.recordWizard.widgets.WordSelectorWidget.js",
+                "modules/widgets/mw.recordWizard.widgets.WikidataSearchWidget.js",
+                "modules/widgets/mw.recordWizard.widgets.SettingsButtonWidget.js"
             ],
             "dependencies": [
                 "oojs-ui",

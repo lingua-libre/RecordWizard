@@ -2,7 +2,7 @@
 
 ( function ( mw, $, rw, OO ) {
 
-	rw.layout.LanguagesSelectorWidget = function ( config ) {
+	rw.widgets.LanguagesSelectorWidget = function ( config ) {
 		config = config || {};
 		config.classes = config.classes || [];
 		config.classes.push( 'mwe-recwiz-languagesSelectorWidget' );
@@ -17,7 +17,7 @@
 
 		// Dialog box
 		this.windowManager = new OO.ui.WindowManager();
-		this.dialog = new rw.layout.LanguagesSelectorWidget.Dialog();
+		this.dialog = new rw.widgets.LanguagesSelectorWidget.Dialog();
 		$( 'body' ).append( this.windowManager.$element );
 		this.windowManager.addWindows( [ this.dialog ] );
 
@@ -26,9 +26,9 @@
 		this.on( 'remove', this.onRemove.bind( this ) );
 	};
 
-	OO.inheritClass( rw.layout.LanguagesSelectorWidget, OO.ui.CapsuleMultiselectWidget );
+	OO.inheritClass( rw.widgets.LanguagesSelectorWidget, OO.ui.CapsuleMultiselectWidget );
 
-	rw.layout.LanguagesSelectorWidget.prototype.setValue = function ( languages ) {
+	rw.widgets.LanguagesSelectorWidget.prototype.setValue = function ( languages ) {
 		var lang,
 			selectedDatas = [];
 		this.languages = languages || {};
@@ -40,11 +40,11 @@
 		this.setItemsFromData( selectedDatas );
 	};
 
-	rw.layout.LanguagesSelectorWidget.prototype.getValue = function () {
+	rw.widgets.LanguagesSelectorWidget.prototype.getValue = function () {
 		return this.languages;
 	};
 
-	rw.layout.LanguagesSelectorWidget.prototype.onAdd = function ( item ) {
+	rw.widgets.LanguagesSelectorWidget.prototype.onAdd = function ( item ) {
 		var lang = item.getData();
 
 		// To avoid data overwriting after a setValue call
@@ -63,21 +63,21 @@
 		this.emit( 'update', this.getValue() );
 	};
 
-	rw.layout.LanguagesSelectorWidget.prototype.onQualifierSelected = function ( lang, qualifiers ) {
+	rw.widgets.LanguagesSelectorWidget.prototype.onQualifierSelected = function ( lang, qualifiers ) {
 		$.extend( this.languages[ lang ], qualifiers );
 	};
 
-	rw.layout.LanguagesSelectorWidget.prototype.onRemove = function ( item ) {
+	rw.widgets.LanguagesSelectorWidget.prototype.onRemove = function ( item ) {
 		var lang = item.getData();
 		delete this.languages[ lang ];
 
 		this.emit( 'update', this.getValue() );
 	};
 
-	rw.layout.LanguagesSelectorWidget.Dialog = function ( config ) {
+	rw.widgets.LanguagesSelectorWidget.Dialog = function ( config ) {
 		config = config || {};
 		config.size = config.size || 'medium';
-		rw.layout.LanguagesSelectorWidget.Dialog.parent.call( this, config );
+		rw.widgets.LanguagesSelectorWidget.Dialog.parent.call( this, config );
 
 		this.size = config.size;
 		this.content = new OO.ui.PanelLayout( {
@@ -85,11 +85,11 @@
 			expanded: false
 		} );
 	};
-	OO.inheritClass( rw.layout.LanguagesSelectorWidget.Dialog, OO.ui.ProcessDialog );
+	OO.inheritClass( rw.widgets.LanguagesSelectorWidget.Dialog, OO.ui.ProcessDialog );
 
-	rw.layout.LanguagesSelectorWidget.Dialog.static.name = 'languageselector';
-	rw.layout.LanguagesSelectorWidget.Dialog.static.title = 'languageselector';
-	rw.layout.LanguagesSelectorWidget.Dialog.static.actions = [ {
+	rw.widgets.LanguagesSelectorWidget.Dialog.static.name = 'languageselector';
+	rw.widgets.LanguagesSelectorWidget.Dialog.static.title = 'languageselector';
+	rw.widgets.LanguagesSelectorWidget.Dialog.static.actions = [ {
 		action: 'save',
 		label: 'Done',
 		flags: [ 'primary', 'progressive' ]
@@ -101,7 +101,7 @@
 	}
 	];
 
-	rw.layout.LanguagesSelectorWidget.Dialog.prototype.initialize = function () {
+	rw.widgets.LanguagesSelectorWidget.Dialog.prototype.initialize = function () {
 		// TODO: get from config
 		var options = [ {
 			label: mw.msg( 'mwe-recwiz-locutor-languagelevel-native' ),
@@ -121,7 +121,7 @@
 		}
 		];
 
-		rw.layout.LanguagesSelectorWidget.Dialog.parent.prototype.initialize.apply( this, arguments );
+		rw.widgets.LanguagesSelectorWidget.Dialog.parent.prototype.initialize.apply( this, arguments );
 
 		this.levelDropdown = new OO.ui.DropdownInputWidget( {
 			options: options,
@@ -134,7 +134,7 @@
 			label: mw.msg( 'mwe-recwiz-locutor-languagelevel' )
 		} );
 
-		this.locationInput = new rw.layout.WikidataSearchWidget( {
+		this.locationInput = new rw.widgets.WikidataSearchWidget( {
 			$overlay: $( 'body' )
 		} );
 		this.locationFieldset = new OO.ui.FieldLayout( this.locationInput, {
@@ -149,12 +149,12 @@
 		this.setSize( this.size );
 		this.updateSize();
 	};
-	rw.layout.LanguagesSelectorWidget.Dialog.prototype.getSetupProcess = function ( data ) {
+	rw.widgets.LanguagesSelectorWidget.Dialog.prototype.getSetupProcess = function ( data ) {
 		this.callback = data.callback;
 
-		return rw.layout.LanguagesSelectorWidget.Dialog.parent.prototype.getSetupProcess.call( this, data );
+		return rw.widgets.LanguagesSelectorWidget.Dialog.parent.prototype.getSetupProcess.call( this, data );
 	};
-	rw.layout.LanguagesSelectorWidget.Dialog.prototype.getActionProcess = function ( action ) {
+	rw.widgets.LanguagesSelectorWidget.Dialog.prototype.getActionProcess = function ( action ) {
 		var level, location;
 
 		if ( action === 'save' ) {
@@ -169,9 +169,9 @@
 		} else if ( action === 'cancel' ) {
 			this.close();
 		}
-		return rw.layout.LanguagesSelectorWidget.Dialog.parent.prototype.getActionProcess.call( this, action );
+		return rw.widgets.LanguagesSelectorWidget.Dialog.parent.prototype.getActionProcess.call( this, action );
 	};
-	rw.layout.LanguagesSelectorWidget.Dialog.prototype.getBodyHeight = function () {
+	rw.widgets.LanguagesSelectorWidget.Dialog.prototype.getBodyHeight = function () {
 		return this.content.$element.outerHeight( true );
 	};
 

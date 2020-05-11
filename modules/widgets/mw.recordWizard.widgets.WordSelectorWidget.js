@@ -2,7 +2,7 @@
 
 ( function ( mw, $, rw, OO ) {
 
-	rw.layout.WordSelectorWidget = function ( config ) {
+	rw.widgets.WordSelectorWidget = function ( config ) {
 		config = config || {};
 		config.classes = config.classes || [];
 		config.classes.push( 'mwe-recwiz-wordSelectorWidget' );
@@ -18,9 +18,9 @@
 		this.on( 'add', this.onAdd.bind( this ) );
 	};
 
-	OO.inheritClass( rw.layout.WordSelectorWidget, OO.ui.TagMultiselectWidget );
+	OO.inheritClass( rw.widgets.WordSelectorWidget, OO.ui.TagMultiselectWidget );
 
-	rw.layout.WordSelectorWidget.prototype.onAdd = function ( item ) {
+	rw.widgets.WordSelectorWidget.prototype.onAdd = function ( item ) {
 		var i,
 			texts = item.getData().split( '#' ),
 			height = this.$handle[ 0 ].scrollHeight;
@@ -39,7 +39,7 @@
 		this.$handle.scrollTop( height );
 	};
 
-	rw.layout.WordSelectorWidget.prototype.getValue = function () {
+	rw.widgets.WordSelectorWidget.prototype.getValue = function () {
 		var i,
 			value = OO.ui.TagMultiselectWidget.prototype.getValue.call( this );
 

@@ -11,7 +11,7 @@
 			inputId: String
 		},
 		mounted: function () {
-			this.$input = new rw.layout.WikidataSearchWidget( {
+			this.$input = new rw.widgets.WikidataSearchWidget( {
 				$element: $( this.$el ),
 				inputId: this.inputId,
 				disabled: this.disabled

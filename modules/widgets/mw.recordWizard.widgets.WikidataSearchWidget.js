@@ -12,7 +12,7 @@
 	 * @constructor
 	 * @param {Object} config Configuration options
 	 */
-	rw.layout.WikidataSearchWidget = function ( config ) {
+	rw.widgets.WikidataSearchWidget = function ( config ) {
 		this.wikidataApi = new mw.ForeignApi( 'https://www.wikidata.org/w/api.php', {
 			anonymous: true
 		} );
@@ -25,10 +25,10 @@
 		OO.ui.mixin.LookupElement.call( this, config );
 	};
 
-	OO.inheritClass( rw.layout.WikidataSearchWidget, OO.ui.TextInputWidget );
-	OO.mixinClass( rw.layout.WikidataSearchWidget, OO.ui.mixin.LookupElement );
+	OO.inheritClass( rw.widgets.WikidataSearchWidget, OO.ui.TextInputWidget );
+	OO.mixinClass( rw.widgets.WikidataSearchWidget, OO.ui.mixin.LookupElement );
 
-	rw.layout.WikidataSearchWidget.prototype.setValue = function ( value, isQid ) {
+	rw.widgets.WikidataSearchWidget.prototype.setValue = function ( value, isQid ) {
 		if ( [ '', undefined, null ].indexOf( value ) === -1 ) {
 			if ( isQid === true || this.qid === null ) {
 				this.setQid( value, true );
@@ -39,7 +39,7 @@
 		OO.ui.TextInputWidget.prototype.setValue.call( this, value );
 	};
 
-	rw.layout.WikidataSearchWidget.prototype.setQid = function ( qid, lookupLabel ) {
+	rw.widgets.WikidataSearchWidget.prototype.setQid = function ( qid, lookupLabel ) {
 		var widget = this;
 
 		this.qid = qid;
@@ -63,11 +63,11 @@
 		}
 	};
 
-	rw.layout.WikidataSearchWidget.prototype.getData = function () {
+	rw.widgets.WikidataSearchWidget.prototype.getData = function () {
 		return this.qid;
 	};
 
-	rw.layout.WikidataSearchWidget.prototype.getLookupRequest = function () {
+	rw.widgets.WikidataSearchWidget.prototype.getLookupRequest = function () {
 		var i, result,
 			value = this.getValue(),
 			deferred = $.Deferred();
@@ -99,22 +99,22 @@
 		} );
 	};
 
-	rw.layout.WikidataSearchWidget.prototype.getLookupCacheDataFromResponse = function ( response ) {
+	rw.widgets.WikidataSearchWidget.prototype.getLookupCacheDataFromResponse = function ( response ) {
 		return response || [];
 	};
 
-	rw.layout.WikidataSearchWidget.prototype.getLookupMenuOptionsFromData = function ( data ) {
+	rw.widgets.WikidataSearchWidget.prototype.getLookupMenuOptionsFromData = function ( data ) {
 		var i,
 			items = [];
 
 		for ( i = 0; i < data.length; i++ ) {
-			items.push( new rw.layout.WikidataOptionWidget( data[ i ] ) );
+			items.push( new rw.widgets.WikidataOptionWidget( data[ i ] ) );
 		}
 
 		return items;
 	};
 
-	rw.layout.WikidataSearchWidget.prototype.onLookupMenuItemChoose = function ( item ) {
+	rw.widgets.WikidataSearchWidget.prototype.onLookupMenuItemChoose = function ( item ) {
 		this.setValue( item.getLabel() );
 		this.setQid( item.getData() );
 		this.emit( 'change', item.getData() );
@@ -134,7 +134,7 @@
 	 * @cfg {string} url URL of item's page
 	 * @cfg {string} [description] Item description
 	 */
-	rw.layout.WikidataOptionWidget = function ( config ) {
+	rw.widgets.WikidataOptionWidget = function ( config ) {
 		// Config initialization
 		config = $.extend( {
 			label: config.data,
@@ -170,6 +170,6 @@
 	};
 
 	/* Setup */
-	OO.inheritClass( rw.layout.WikidataOptionWidget, OO.ui.MenuOptionWidget );
+	OO.inheritClass( rw.widgets.WikidataOptionWidget, OO.ui.MenuOptionWidget );
 
 }( mediaWiki, jQuery, mediaWiki.recordWizard, OO ) );
