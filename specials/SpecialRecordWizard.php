@@ -243,6 +243,10 @@ class SpecialRecordWizard extends SpecialPage {
 						if ( isset( $language[ 'qualifiers' ][ $languageLevelProperty ] ) ) {
 							$locutor[ 'languages' ][ $langId ][ 'languageLevel' ] = $language[ 'qualifiers' ][ $languageLevelProperty ];
 						}
+						$languageLocationProperty = $wgRecordWizardConfig[ 'properties' ][ 'learningPlace' ];
+						if ( isset( $language[ 'qualifiers' ][ $languageLocationProperty ] ) ) {
+							$locutor[ 'languages' ][ $langId ][ 'location' ] = $language[ 'qualifiers' ][ $languageLocationProperty ];
+						}
 					}
 
 					$locutor['qid'] = (string) $itemId;
