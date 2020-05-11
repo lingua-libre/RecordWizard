@@ -264,9 +264,7 @@
                 "modules/widgets/rw.widgets.js",
                 "modules/widgets/rw.widgets.DraggableListWidget.js",
                 "modules/widgets/rw.widgets.LanguagesSelectorWidget.js",
-                "modules/widgets/rw.widgets.WordSelectorWidget.js",
-                "modules/widgets/rw.widgets.WikidataSearchWidget.js",
-                "modules/widgets/rw.widgets.SettingsButtonWidget.js"
+                "modules/widgets/rw.widgets.WikidataSearchWidget.js"
             ],
             "dependencies": [
                 "oojs-ui",
