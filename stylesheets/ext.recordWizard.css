@@ -224,3 +224,9 @@ h3 {
         transform: rotate(360deg);
     }
 }
+
+/* Preload all icons */
+#mwe-rw:after {
+    position: absolute; overflow: hidden; width:0; height:0; z-index: -10;
+    content: url( '../icons/alert.svg' ) url( '../icons/delete.svg' ) url( '../icons/done.svg' ) url( '../icons/download-done.svg' ) url( '../icons/error.svg' ) url( '../icons/explore.svg' ) url( '../icons/fullscreen.svg' ) url( '../icons/hands-blue.svg' ) url( '../icons/hands-white.svg' ) url( '../icons/help.svg' ) url( '../icons/keyboard.svg' ) url( '../icons/ll-mini.svg' ) url( '../icons/mic-blue.svg' ) url( '../icons/mic-white.svg' ) url( '../icons/move.svg' ) url( '../icons/no-mic.svg' ) url( '../icons/play.svg' ) url( '../icons/settings.svg' ) url( '../icons/spinner.svg' ) url( '../icons/status-replay.svg' ) url( '../icons/stop.svg' ) url( '../icons/warning.svg' ) url( '../icons/wikidata.svg' ) url( '../icons/wikipedia.svg' );
+}
