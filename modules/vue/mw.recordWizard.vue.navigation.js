@@ -8,6 +8,7 @@
 		/* Data */
 		data: {
 			state: rw.store.state.data,
+   		 	words: rw.store.record.data.words,
    		 	status: rw.store.record.data.status,
    		 	errors: rw.store.record.data.errors,
 		},
@@ -26,12 +27,14 @@
 					return true;
 				}
 
-				if ( this.state.step !== 'studio' ) {
-					// set enabled by default
-					return false;
-				} else {
+				if ( this.state.step === 'details' ) {
+					return this.words.length === 0;
+				} else if ( this.state.step === 'studio' ) {
 					return ! rw.store.record.hasStatus( [ 'stashed' ] );
 				}
+
+				// By default, enable the button
+				return false;
 			},
 			showRetry: function() {
 				var word;
