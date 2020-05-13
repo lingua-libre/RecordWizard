@@ -113,7 +113,6 @@
         },
         "ext.recordWizard.recorder": {
             "scripts": [
-                "modules/rw.libs.js",
                 "lib/lingua-recorder/AudioRecord.js",
                 "lib/lingua-recorder/LinguaRecorder.js",
                 "modules/rw.VideoRecorder.js"
@@ -168,7 +167,6 @@
         },
         "ext.recordWizard.store":{
             "scripts": [
-                "modules/store/rw.store.js",
                 "modules/store/rw.store.config.js",
                 "modules/store/rw.store.state.js",
                 "modules/store/rw.store.record.js",
@@ -212,7 +210,6 @@
         },
         "ext.recordWizard.vues":{
             "scripts": [
-                "modules/vue/rw.vue.js",
                 "modules/vue/rw.vue.mixins.js",
                 "modules/vue/rw.vue.sidebar.js",
                 "modules/vue/rw.vue.navigation.js",
@@ -261,7 +258,6 @@
         },
         "ext.recordWizard.widgets":{
             "scripts": [
-                "modules/widgets/rw.widgets.js",
                 "modules/widgets/rw.widgets.DraggableListWidget.js",
                 "modules/widgets/rw.widgets.LanguagesSelectorWidget.js",
                 "modules/widgets/rw.widgets.WikidataSearchWidget.js"
@@ -274,7 +270,6 @@
         },
         "ext.recordWizard.wikibase": {
             "scripts": [
-                "modules/wikibase/rw.wikibase.js",
                 "modules/wikibase/rw.wikibase.Snak.js",
                 "modules/wikibase/rw.wikibase.Reference.js",
                 "modules/wikibase/rw.wikibase.Statement.js",
