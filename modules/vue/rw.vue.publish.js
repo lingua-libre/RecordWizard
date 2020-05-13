@@ -96,6 +96,10 @@
 					$( this.$selector )[ 0 ].pause();
 				}
 			},
+			canMovePrev: function () {
+				this.stopPlaying();
+				return true;
+			},
 			canMoveNext: function () {
 				var i, oldRecords;
 
@@ -117,10 +121,6 @@
 					rw.store.config.pushPastRecords( this.metadata.language, this.metadata.locutor.qid, oldRecords );
 					return true;
 				}
-			},
-			canMovePrev: function () {
-				this.stopPlaying();
-				return true;
 			}
 		}
 	} );

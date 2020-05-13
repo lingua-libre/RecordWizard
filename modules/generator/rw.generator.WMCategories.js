@@ -259,7 +259,7 @@
 			var i, pages, element;
 
 			if ( data.query === undefined ) {
-				return this.deferred.reject( new OO.ui.Error( mw.message( 'mwe-recwiz-error-pagemissing' ).text() ) );
+				return this.deferred.reject( new OO.ui.Error( mw.msg( 'mwe-recwiz-error-pagemissing' ) ) );
 			}
 
 			pages = data.query.pages;

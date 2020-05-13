@@ -14,6 +14,15 @@
 
 		/* Hooks */
 		mounted: function () {
+			this.$errorMessageAssociation = {
+				AbortError: 'mwe-recwiz-error-mediastream-technical',
+				NotAllowedError: 'mwe-recwiz-error-mediastream-notallowed',
+				NotFoundError: 'mwe-recwiz-error-mediastream-notfound',
+				NotReadableError: 'mwe-recwiz-error-mediastream-technical',
+				OverconstrainedError: 'mwe-recwiz-error-mediastream-notfound',
+				SecurityError: 'mwe-recwiz-error-mediastream-technical'
+			};
+
 			this.getAudioStream();
 		},
 
@@ -47,19 +56,11 @@
 				this.$recorder = null;
 			},
 			showError: function ( mediaStreamError ) {
-				var message = mw.msg( 'mwe-recwiz-error-mediastream-unknow' ),
-					errorMessageAssociation = {
-						AbortError: 'mwe-recwiz-error-mediastream-technical',
-						NotAllowedError: 'mwe-recwiz-error-mediastream-notallowed',
-						NotFoundError: 'mwe-recwiz-error-mediastream-notfound',
-						NotReadableError: 'mwe-recwiz-error-mediastream-technical',
-						OverconstrainedError: 'mwe-recwiz-error-mediastream-notfound',
-						SecurityError: 'mwe-recwiz-error-mediastream-technical'
-					};
+				var message = mw.msg( 'mwe-recwiz-error-mediastream-unknow' );
 
 				if ( typeof mediaStreamError.name === 'string' ) {
-					if ( errorMessageAssociation[ mediaStreamError.name ] !== undefined ) {
-						message = mw.msg( errorMessageAssociation[ mediaStreamError.name ] );
+					if ( this.$errorMessageAssociation[ mediaStreamError.name ] !== undefined ) {
+						message = mw.msg( this.$errorMessageAssociation[ mediaStreamError.name ] );
 					}
 				}
 

@@ -22,7 +22,7 @@
 			var i;
 
 			this.$windowManager = new OO.ui.WindowManager();
-			$( 'body' ).append( this.$windowManager.$element );
+			$( document.body ).append( this.$windowManager.$element );
 
 			for ( i = 0; i < this.generators.length; i++ ) {
 				this.$windowManager.addWindows( [ this.generators[ i ].dialog ] );
@@ -30,32 +30,21 @@
 
 			this.onLanguageChange();
 		},
-		mounted: function () {
-
-		},
-		beforeUpdate: function () {
-
-		},
-		updated: function () {
-
-		},
 
 		/* Methods */
 		watch: {
 			'state.step': function () {
-				var qid,
-					languages = [];
+				var qid;
 
 				if ( this.state.step === 'details' ) {
 					/* Update available languages on step load */
+					this.availableLanguages = [];
 					for ( qid in this.metadata.locutor.languages ) {
-						languages.push( {
+						this.availableLanguages.push( {
 							data: qid,
 							label: this.config.languages[ qid ].localname
 						} );
 					}
-
-					this.availableLanguages = languages;
 
 					/* Async load of past data for current language */
 					rw.store.config.fetchPastRecords( this.metadata.language || this.availableLanguages[ 0 ].data, this.metadata.locutor.qid );

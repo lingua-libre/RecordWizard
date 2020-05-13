@@ -54,6 +54,49 @@
 		this.clearAllRecords();
 	};
 
+	RecordStore.prototype.setStatus = function ( word, status ) {
+		// Set the status and update the counter accordingly
+		if ( this.data.status[ word ] === undefined ) {
+			Vue.set( this.data.status, word, status );
+		} else {
+			this.data.statusCount[ this.data.status[ word ] ]--;
+			this.data.status[ word ] = status;
+		}
+		this.data.statusCount[ status ]++;
+	};
+
+	RecordStore.prototype.setError = function ( word, error ) {
+		// Set the error and update the counter accordingly
+		if ( this.data.errors[ word ] === undefined ) {
+			Vue.set( this.data.errors, word, error );
+		} else {
+			if ( this.data.errors[ word ] !== false ) {
+				this.data.statusCount.error--;
+			}
+			this.data.errors[ word ] = error;
+		}
+
+		if ( error !== false ) {
+			this.data.statusCount.error++;
+		}
+	};
+
+	RecordStore.prototype.countStatus = function ( status ) {
+		var i,
+			counter = 0;
+
+		// Usefull? What about a direct read?
+		if ( Array.isArray( status ) === false ) {
+			return this.data.statusCount[ status ];
+		}
+
+		for ( i = 0; i < status.length; i++ ) {
+			counter += this.data.statusCount[ status[ i ] ];
+		}
+
+		return counter;
+	};
+
 	RecordStore.prototype.clearRecord = function ( word ) {
 		var i = this.data.words.indexOf( word );
 
@@ -115,33 +158,6 @@
 		return oldRecords;
 	};
 
-	RecordStore.prototype.setStatus = function ( word, status ) {
-		// Set the status and update the counter accordingly
-		if ( this.data.status[ word ] === undefined ) {
-			Vue.set( this.data.status, word, status );
-		} else {
-			this.data.statusCount[ this.data.status[ word ] ]--;
-			this.data.status[ word ] = status;
-		}
-		this.data.statusCount[ status ]++;
-	};
-
-	RecordStore.prototype.setError = function ( word, error ) {
-		// Set the error and update the counter accordingly
-		if ( this.data.errors[ word ] === undefined ) {
-			Vue.set( this.data.errors, word, error );
-		} else {
-			if ( this.data.errors[ word ] !== false ) {
-				this.data.statusCount.error--;
-			}
-			this.data.errors[ word ] = error;
-		}
-
-		if ( error !== false ) {
-			this.data.statusCount.error++;
-		}
-	};
-
 	RecordStore.prototype.resetRecord = function ( word ) {
 		this.data.records[ word ].reset();
 		this.setStatus( word, 'up' );
@@ -149,16 +165,25 @@
 		this.data.checkboxes[ word ] = true;
 	};
 
-	RecordStore.prototype.randomiseList = function () {
-		var i, tmp, randomIndex;
+	RecordStore.prototype.resetFaultyRecords = function () {
+		var i;
 
-		// Fisher-Yates shuffle
-		for ( i = this.data.words.length - 1; i >= 0; i-- ) {
-			randomIndex = Math.floor( Math.random() * ( i + 1 ) );
+		for ( i = 0; i < this.data.words.length; i++ ) {
+			// Check if the word is not stashed yet
+			if ( this.data.errors[ this.data.words[ i ] ] !== false ) {
+				this.resetRecord( this.data.words[ i ] );
+			}
+		}
+	};
 
-			tmp = this.data.words[ randomIndex ];
-			Vue.set( this.data.words, randomIndex, this.data.words[ i ] );
-			Vue.set( this.data.words, i, tmp );
+	RecordStore.prototype.resetStashingRecords = function () {
+		var i;
+
+		for ( i = 0; i < this.data.words.length; i++ ) {
+			// Check if the word is not stashed yet
+			if ( this.data.status[ this.data.words[ i ] ] === 'stashing' ) {
+				this.resetRecord( this.data.words[ i ] );
+			}
 		}
 	};
 
@@ -210,56 +235,16 @@
 		}
 	};
 
-	// TODO: still usefull?
-	RecordStore.prototype.hasStatus = function ( status ) {
-		return this.countStatus( status ) > 0;
-	};
+	RecordStore.prototype.randomiseList = function () {
+		var i, tmp, randomIndex;
 
-	RecordStore.prototype.countStatus = function ( status ) {
-		var i,
-			counter = 0;
+		// Fisher-Yates shuffle
+		for ( i = this.data.words.length - 1; i >= 0; i-- ) {
+			randomIndex = Math.floor( Math.random() * ( i + 1 ) );
 
-		// Usefull? What about a direct read?
-		if ( Array.isArray( status ) === false ) {
-			return this.data.statusCount[ status ];
-		}
-
-		for ( i = 0; i < status.length; i++ ) {
-			counter += this.data.statusCount[ status[ i ] ];
-		}
-
-		return counter;
-	};
-
-	// TODO: still usefull?
-	RecordStore.prototype.hasErrors = function () {
-		return this.data.statusCount.error > 0;
-	};
-
-	// TODO: still usefull?
-	RecordStore.prototype.countErrors = function () {
-		return this.data.statusCount.error;
-	};
-
-	RecordStore.prototype.resetAllErrors = function () {
-		var i;
-
-		for ( i = 0; i < this.data.words.length; i++ ) {
-			// Check if the word is not stashed yet
-			if ( this.data.errors[ this.data.words[ i ] ] !== false ) {
-				this.resetRecord( this.data.words[ i ] );
-			}
-		}
-	};
-
-	RecordStore.prototype.resetStashingRecords = function () {
-		var i;
-
-		for ( i = 0; i < this.data.words.length; i++ ) {
-			// Check if the word is not stashed yet
-			if ( this.data.status[ this.data.words[ i ] ] === 'stashing' ) {
-				this.resetRecord( this.data.words[ i ] );
-			}
+			tmp = this.data.words[ randomIndex ];
+			Vue.set( this.data.words, randomIndex, this.data.words[ i ] );
+			Vue.set( this.data.words, i, tmp );
 		}
 	};
 
@@ -314,9 +299,9 @@
 	RecordStore.prototype.requestError = function ( word, prevState, error, errorData ) {
 		var errorText = error;
 
-		// If the upload has been abort, it means another piece of code
-		// is doing stuff right now, so don't mess-up with it
 		if ( errorData !== undefined ) {
+			// If the upload has been abort, it means another piece of code
+			// is doing stuff right now, so don't mess-up with it
 			if ( errorData.textStatus === 'abort' ) {
 				return;
 			}

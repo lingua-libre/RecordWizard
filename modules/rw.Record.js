@@ -58,42 +58,6 @@
 	OO.mixinClass( rw.Record, OO.EventEmitter );
 
 	/**
-	 * Get the full textual identifier of the record.
-	 *
-	 * @return {string}  Textual identifier of the record
-	 */
-	rw.Record.prototype.getWord = function () {
-		return this.word;
-	};
-
-	/**
-	 * Get the textual transcription of the record.
-	 *
-	 * @return {string}  Textual transcription of the record
-	 */
-	rw.Record.prototype.getTranscription = function () {
-		return this.transcription;
-	};
-
-	/**
-	 * Get the qualifier of the recorded word (if any).
-	 *
-	 * @return {string|null}  Qualifier of the record
-	 */
-	rw.Record.prototype.getQualifier = function () {
-		return this.qualifier;
-	};
-
-	/**
-	 * Get a WAVE-encoded blob containing the audio record.
-	 *
-	 * @return {Blob|null}  WAVE-encoded audio record.
-	 */
-	rw.Record.prototype.getBlob = function () {
-		return this.file;
-	};
-
-	/**
 	 * Add extra wikibase statements.
 	 *
 	 * @param  {Object} extra Wikibase statements, in the format
@@ -101,20 +65,6 @@
 	 */
 	rw.Record.prototype.setExtra = function ( extra ) {
 		this.extra = extra;
-	};
-
-	/**
-	 * Verify if the Record object has data.
-	 *
-	 * It is usefull to check if the current window can be closed safely or not.
-	 *
-	 * @return {boolean}  Whether the Record object has some data
-	 */
-	rw.Record.prototype.hasData = function () {
-		if ( this.file !== null || this.stashkey !== null ) {
-			return true;
-		}
-		return false;
 	};
 
 	/**
@@ -188,17 +138,6 @@
 	};
 
 	/**
-	 * Get the internal file key of the record file.
-	 *
-	 * This is only set after a file was stashed.
-	 *
-	 * @return {string|null}  File key of the record
-	 */
-	rw.Record.prototype.getStashkey = function () {
-		return this.stashkey;
-	};
-
-	/**
 	 * Set the locutor object of this record.
 	 *
 	 * @param {Object} locutor Information about the locutor of this record
@@ -246,18 +185,6 @@
 	rw.Record.prototype.setStashkey = function ( stashkey ) {
 		this.stashkey = stashkey;
 		this.file = null;
-	};
-
-	/**
-	 * Check whether the record is a video or not.
-	 *
-	 * @return {boolean}  true means the media is a video
-	 */
-	rw.Record.prototype.isVideo = function () {
-		if ( this.fileExtension === 'webm' ) {
-			return true;
-		}
-		return false;
 	};
 
 	/**
@@ -374,7 +301,7 @@
 		api.postWithToken( 'csrf', {
 			action: 'upload-to-commons',
 			format: 'json',
-			filekey: this.getStashkey(),
+			filekey: this.stashkey,
 			filename: this.getFilename(),
 			text: this.getText(),
 			ignorewarnings: true // TODO: manage warnings !important

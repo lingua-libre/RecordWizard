@@ -10,7 +10,8 @@
 			state: rw.store.state.data,
 			words: rw.store.record.data.words,
 			status: rw.store.record.data.status,
-			errors: rw.store.record.data.errors
+			errors: rw.store.record.data.errors,
+			statusCount: rw.store.record.data.statusCount
 		},
 
 		/* Computed */
@@ -28,7 +29,7 @@
 				if ( this.state.step === 'details' ) {
 					return this.words.length === 0;
 				} else if ( this.state.step === 'studio' ) {
-					return !rw.store.record.hasStatus( [ 'stashed' ] );
+					return this.statusCount.stashed === 0;
 				}
 
 				// By default, enable the button
@@ -36,7 +37,7 @@
 			},
 			showRetry: function () {
 				if ( this.state.step === 'studio' || this.state.step === 'publish' ) {
-					return rw.store.record.hasErrors();
+					return this.statusCount.error > 0;
 				}
 
 				return false;
@@ -111,7 +112,7 @@
 				}
 			},
 			hasPendingRequests: function () {
-				return rw.store.record.hasStatus( [ 'stashing', 'uploading', 'finalizing' ] );
+				return rw.store.record.countStatus( [ 'stashing', 'uploading', 'finalizing' ] ) > 0;
 			},
 			openFileList: function () {
 				window.open( this.fileListUrl, '_blank' );

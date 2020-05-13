@@ -11,18 +11,19 @@
 		data: {
 			profiles: [],
 			metadata: rw.store.record.data.metadata,
-			genderOptions: [ {
-				data: rw.store.config.data.items.genderMale,
-				label: mw.msg( 'mwe-recwiz-gender-male' )
-			},
-			{
-				data: rw.store.config.data.items.genderFemale,
-				label: mw.msg( 'mwe-recwiz-gender-female' )
-			},
-			{
-				data: rw.store.config.data.items.genderOther,
-				label: mw.msg( 'mwe-recwiz-gender-other' )
-			}
+			genderOptions: [
+				{
+					data: rw.store.config.data.items.genderMale,
+					label: mw.msg( 'mwe-recwiz-gender-male' )
+				},
+				{
+					data: rw.store.config.data.items.genderFemale,
+					label: mw.msg( 'mwe-recwiz-gender-female' )
+				},
+				{
+					data: rw.store.config.data.items.genderOther,
+					label: mw.msg( 'mwe-recwiz-gender-other' )
+				}
 			],
 			availableLanguages: [],
 			availableLicenses: []
@@ -67,13 +68,6 @@
 
 			/* Set available licenses from data comming from [[Special:Licenses]] */
 			this.buildLicenses( this.config.licenses );
-		},
-		mounted: function () {},
-		beforeUpdate: function () {
-
-		},
-		updated: function () {
-
 		},
 
 		/* Methods */

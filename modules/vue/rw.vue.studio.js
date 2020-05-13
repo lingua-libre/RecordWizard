@@ -69,14 +69,13 @@
 					// Select the first word in the list
 					this.initSelection();
 
-					if ( this.$recorder !== undefined ) {
-						this.delRecorder();
-					}
+					// Instantiate the recorder with all it's events
 					this.initRecorder();
 
 					// Bind keyboard shortcuts
-					$( document ).on( 'keydown.rw-studio', this.shortcuts.bind( this ) );
-				} else {
+					$( document ).on( 'keydown.rw-studio', this.shortcutsHandler.bind( this ) );
+				} else if ( this.$recorder !== undefined ) {
+					this.delRecorder();
 					$( document ).off( 'keydown.rw-studio' );
 				}
 			},
@@ -111,7 +110,7 @@
 				this.$recorder.on( 'stoped', this.onStop.bind( this ) );
 				this.$recorder.on( 'canceled', this.onCancel.bind( this ) );
 				this.$recorder.on( 'saturated', this.onSaturate.bind( this ) );
-				this.$recorder.on( 'recording', this.onRecord.bind( this ) );
+				this.$recorder.on( 'recording', this.onDataAvailable.bind( this ) );
 			},
 			delRecorder: function () {
 				this.$recorder.off( 'ready' );
@@ -122,12 +121,12 @@
 
 				this.$recorder = undefined;
 			},
-			shortcuts: function ( event ) {
-				console.log( 'KEY: ', event.which );
-				// Do not trigger those events when the user is focusing
+			shortcutsHandler: function ( event ) {
+				// Do not trigger those events when the user is focusing an input
 				if ( event.target.nodeName === 'INPUT' || event.target.nodeName === 'BUTTON' ) {
 					return;
 				}
+
 				switch ( event.which ) {
 					case 37: // left
 					case 38: // up
@@ -154,7 +153,7 @@
 
 					case 13: // Enter
 					case 80: // P
-						this.playWord( this.words[ this.selected ] );
+						this.playRecord( this.words[ this.selected ] );
 						break;
 
 					default:
@@ -174,39 +173,6 @@
 					this.startRecord();
 				}
 			},
-			playWord: function ( word ) {
-				if ( this.status[ word ] === 'stashed' ) {
-					// Make sure the recorder isn't running
-					if ( this.isRecording === true ) {
-						this.cancelRecord();
-					}
-
-					// Play the stashed version of the record
-					this.$audioPlayer.pause();
-					this.$audioPlayer.src = this.$records[ word ].getMediaUrl();
-					this.$audioPlayer.play();
-				}
-			},
-			removeRecord: function ( word ) {
-				// Reset the selected word
-				rw.store.record.resetRecord( word );
-			},
-			toggleRecord: function () {
-				if ( this.isRecording ) {
-					this.cancelRecord();
-				} else {
-					this.startRecord();
-				}
-			},
-			cancelRecord: function () {
-				if ( this.isRecording === true ) {
-					this.$recorder.cancel();
-					this.isRecording = false;
-					this.saturated = false;
-					this.vumeter = 0;
-					this.countdown = 0;
-				}
-			},
 			startRecord: function () {
 				if ( this.isRecording === false ) {
 					if ( this.selected < 0 || this.selected >= this.words.length ) {
@@ -224,6 +190,39 @@
 
 					return true;
 				}
+			},
+			cancelRecord: function () {
+				if ( this.isRecording === true ) {
+					this.$recorder.cancel();
+					this.isRecording = false;
+					this.saturated = false;
+					this.vumeter = 0;
+					this.countdown = 0;
+				}
+			},
+			toggleRecord: function () {
+				if ( this.isRecording ) {
+					this.cancelRecord();
+				} else {
+					this.startRecord();
+				}
+			},
+			playRecord: function ( word ) {
+				if ( this.status[ word ] === 'stashed' ) {
+					// Make sure the recorder isn't running
+					if ( this.isRecording === true ) {
+						this.cancelRecord();
+					}
+
+					// Play the stashed version of the record
+					this.$audioPlayer.pause();
+					this.$audioPlayer.src = this.$records[ word ].getMediaUrl();
+					this.$audioPlayer.play();
+				}
+			},
+			removeRecord: function ( word ) {
+				// Reset the selected word
+				rw.store.record.resetRecord( word );
 			},
 			onReady: function ( stream ) {
 				var videoNode;
@@ -246,7 +245,7 @@
 					};
 				}
 			},
-			onRecord: function ( samples ) {
+			onDataAvailable: function ( samples ) {
 				var i, amplitude,
 					amplitudeMax = 0;
 
@@ -263,6 +262,9 @@
 
 				this.vumeter = Math.floor( ( -10 * amplitudeMax * amplitudeMax ) + 25 * amplitudeMax );
 				// this.vumeter = Math.floor( amplitudeMax * 15 ); //if we want a linear vumeter
+			},
+			onSaturate: function () {
+				this.saturated = true;
 			},
 			onStop: function ( record ) {
 				var blob,
@@ -287,9 +289,6 @@
 					this.startRecord();
 				}
 			},
-			onSaturate: function () {
-				this.saturated = true;
-			},
 			runCountdown: function () {
 				if ( this.isRecording === true ) {
 					this.countdown--;
@@ -313,6 +312,11 @@
 					}
 				}
 			},
+			canMovePrev: function () {
+				this.cancelRecord();
+
+				return true;
+			},
 			canMoveNext: function () {
 				var process = new OO.ui.Process();
 
@@ -330,7 +334,7 @@
 			checkWordsLeft: function () {
 				var deferred = $.Deferred();
 
-				if ( rw.store.record.hasStatus( [ 'up', 'ready' ] ) === true ) {
+				if ( rw.store.record.countStatus( [ 'up', 'ready' ] ) > 0 ) {
 					OO.ui.confirm( mw.msg( 'mwe-recwiz-warning-wordsleft' ) ).done( function ( confirmed ) {
 						if ( confirmed ) {
 							deferred.resolve();
@@ -346,7 +350,7 @@
 			checkStashingRecords: function () {
 				var deferred = $.Deferred();
 
-				if ( rw.store.record.hasStatus( 'stashing' ) === true ) {
+				if ( this.statusCount.stashing > 0 ) {
 					OO.ui.confirm( mw.msg( 'mwe-recwiz-warning-pendinguploads' ) ).done( function ( confirmed ) {
 						if ( confirmed ) {
 							rw.requestQueue.clearQueue();
@@ -364,10 +368,10 @@
 			checkErrors: function () {
 				var deferred = $.Deferred();
 
-				if ( rw.store.record.hasErrors() === true ) {
+				if ( this.statusCount.error > 0 ) {
 					OO.ui.confirm( mw.msg( 'mwe-recwiz-warning-faileduploads' ) ).done( function ( confirmed ) {
 						if ( confirmed ) {
-							rw.store.record.resetAllErrors();
+							rw.store.record.resetFaultyRecords();
 							deferred.resolve();
 						} else {
 							deferred.reject();
@@ -377,11 +381,6 @@
 				} else {
 					return true;
 				}
-			},
-			canMovePrev: function () {
-				this.cancelRecord();
-
-				return true;
 			}
 		}
 	} );

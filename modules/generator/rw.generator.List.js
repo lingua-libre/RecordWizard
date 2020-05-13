@@ -36,7 +36,7 @@
 				new OO.ui.FieldLayout(
 					this.deduplicate, {
 						align: 'left',
-						label: mw.message( 'mwe-recwiz-list-deduplicate' ).text()
+						label: mw.msg( 'mwe-recwiz-list-deduplicate' )
 					}
 				)
 			]
@@ -84,7 +84,7 @@
 				page = data.query.pages[ 0 ];
 
 			if ( page.missing === true ) {
-				return this.deferred.reject( new OO.ui.Error( mw.message( 'mwe-recwiz-error-pagemissing', title ).text() ) );
+				return this.deferred.reject( new OO.ui.Error( mw.msg( 'mwe-recwiz-error-pagemissing', title ) ) );
 			}
 			content = page.revisions[ 0 ].content;
 			this.list = content.split( '\n' );

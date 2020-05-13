@@ -8,7 +8,7 @@
 
 	OO.inheritClass( NearbyGenerator, rw.store.generator.generic );
 	NearbyGenerator.static.name = 'nearby';
-	NearbyGenerator.static.title = mw.message( 'mwe-recwiz-generator-nearby' ).text();
+	NearbyGenerator.static.title = mw.msg( 'mwe-recwiz-generator-nearby' );
 
 	NearbyGenerator.prototype.initialize = function () {
 
@@ -193,7 +193,7 @@
 		this.semaphore = 0;
 
 		if ( geosearch.length === 0 ) {
-			errorMessage = mw.message( 'mwe-recwiz-warning-noresults' ).text();
+			errorMessage = mw.msg( 'mwe-recwiz-warning-noresults' );
 			this.deferred.reject( new OO.ui.Error( errorMessage, {
 				warning: true,
 				recoverable: false

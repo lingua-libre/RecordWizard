@@ -12,46 +12,29 @@
 			isBrowserReady: false,
 			isPublishing: false
 		};
-	};
 
-	StateStore.prototype.moveNext = function () {
-		switch ( this.data.step ) {
-			case 'tutorial':
-				this.data.step = 'locutor';
-				break;
-			case 'locutor':
-				this.data.step = 'details';
-				break;
-			case 'details':
-				this.data.step = 'studio';
-				break;
-			case 'studio':
-				this.data.step = 'publish';
-				break;
-			case 'publish':
-				this.data.step = 'details';
-				break;
-		}
+		this.prevStep = {
+			tutorial: 'tutorial',
+			locutor: 'tutorial',
+			details: 'locutor',
+			studio: 'details',
+			publish: 'studio'
+		};
+		this.nextStep = {
+			tutorial: 'locutor',
+			locutor: 'details',
+			details: 'studio',
+			studio: 'publish',
+			publish: 'details'
+		};
 	};
 
 	StateStore.prototype.movePrev = function () {
-		switch ( this.data.step ) {
-			case 'tutorial':
-				this.data.step = 'tutorial';
-				break;
-			case 'locutor':
-				this.data.step = 'tutorial';
-				break;
-			case 'details':
-				this.data.step = 'locutor';
-				break;
-			case 'studio':
-				this.data.step = 'details';
-				break;
-			case 'publish':
-				this.data.step = 'studio';
-				break;
-		}
+		this.data.step = this.prevStep[ this.data.step ];
+	};
+
+	StateStore.prototype.moveNext = function () {
+		this.data.step = this.nextStep[ this.data.step ];
 	};
 
 	StateStore.prototype.freeze = function () {

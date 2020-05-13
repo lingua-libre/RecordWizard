@@ -5,14 +5,11 @@
  */
 ( function ( mw, rw, $ ) {
 
-	/**
-	 * Represent the entire RecordWizard multi-step process.
-	 *
-	 * @class rw.RecordWizard
-	 * @constructor
-	 * @param  {Object} config Configuration options
-	 */
-	rw.RecordWizard = function () {
+	$( function () {
+		// create the main needed classes
+		rw.requestQueue = new rw.RequestQueue();
+
+		// setup all the vue components
 		rw.vue.sidebar.$mount( '#mwe-rw-steps' );
 		rw.vue.navigation.$mount( '#mwe-rw-navigation' );
 
@@ -22,14 +19,9 @@
 		rw.vue.studio.$mount( '#mwe-rw-studio' );
 		rw.vue.publish.$mount( '#mwe-rw-publish' );
 
+		// Once everything is loaded, hide the spinner and show the main content
 		$( '#mwe-rw-spinner' ).hide();
 		$( '#mwe-rw-content' ).show();
-	};
-
-	$( function () {
-		// show page.
-		rw.requestQueue = new rw.RequestQueue();
-		rw.recordWizard = new rw.RecordWizard();
 	} );
 
 }( mediaWiki, mediaWiki.recordWizard, jQuery ) );
