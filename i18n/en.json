@@ -61,6 +61,7 @@
 	"mwe-recwiz-locutor-location": "Place of residence",
 	"mwe-recwiz-locutor-license": "License",
 	"mwe-recwiz-locutor-licensecontent": "I, $1, irrevocably grant anyone the right to use my audio records created with this tool under the following license:",
+	"mwe-recwiz-locutor-agreement": "You agree that they may be automatically used on several Wikimedia projects, including Wikipedia, Wiktionary and Wikidata.",
 	"mwe-recwiz-locutor-gender": "Gender",
 	"mwe-recwiz-gender-male": "Male",
 	"mwe-recwiz-gender-female": "Female",

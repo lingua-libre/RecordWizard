@@ -59,6 +59,7 @@
 	"mwe-recwiz-locutor-location": "Label of a field asking for the place where the locutor lives, on the locutor tab.",
 	"mwe-recwiz-locutor-license": "Label of a field asking the locutor to choose a license, on the locutor tab.\n{{Identical|License}}",
 	"mwe-recwiz-locutor-licensecontent": "Generic license agreement which is folowed by a license selector, on the locutor tab.",
+	"mwe-recwiz-locutor-agreement": "Additional agreement under the license selector, on the locutor tab.",
 	"mwe-recwiz-locutor-gender": "Label of a field asking the gender of the locutor, on the locutor tab.",
 	"mwe-recwiz-gender-male": "Label of the 'male' option in the gender selector.\n{{Identical|Male}}",
 	"mwe-recwiz-gender-female": "Label of the 'female' option in the gender selector.",
