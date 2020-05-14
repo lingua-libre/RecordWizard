@@ -118,7 +118,7 @@
 				} else {
 					this.state.isPublishing = false;
 					oldRecords = rw.store.record.clearAllPublishedRecords();
-					rw.store.config.pushPastRecords( this.metadata.language, this.metadata.locutor.qid, oldRecords );
+					rw.store.config.pushPastRecords( this.metadata.language, this.metadata.speaker.qid, oldRecords );
 					return true;
 				}
 			}

@@ -19,16 +19,16 @@ class MigrateUserPreferences extends Maintenance {
 			// get the config from the preferences
 			$user = User::newFromId( $user_data->user_id );
 
-			$locutor = $user->getOption( 'recwiz-locutor' );
-			$otherLocutors = $user->getOption( 'recwiz-otherLocutors' );
-			$otherLocutors = $otherLocutors == "" ? [] : explode( ',', $otherLocutors );
+			$speaker = $user->getOption( 'recwiz-speaker' );
+			$otherSpeakers = $user->getOption( 'recwiz-otherSpeakers' );
+			$otherSpeakers = $otherSpeakers == "" ? [] : explode( ',', $otherSpeakers );
 			$license = $user->getOption( 'recwiz-license' );
 
 			// format the config into a valid json
 			$jsonConfig = json_encode(
 				[
-					"locutor" => $locutor,
-					"otherLocutors" => $otherLocutors,
+					"speaker" => $speaker,
+					"otherSpeakers" => $otherSpeakers,
 					"license" => $license
 				]
 			);

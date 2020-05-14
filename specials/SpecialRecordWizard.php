@@ -132,8 +132,8 @@ class SpecialRecordWizard extends SpecialPage {
 		}
 
 		// Get speakers
-		$locutorId = null;
-		$otherLocutorIds = [];
+		$speakerId = null;
+		$otherSpeakerIds = [];
 		$userConfigWikiPage = WikiPage::factory( Title::makeTitleSafe( NS_USER, $user->getName() . '/RecordWizard.json' ) );
 		if ( $userConfigWikiPage->exists() ) {
 			$revision = $userConfigWikiPage->getRevision();
@@ -141,26 +141,34 @@ class SpecialRecordWizard extends SpecialPage {
 			$text = JsonContentHandler::getContentText( $content );
 			$userConfig = json_decode($text, true);
 			if ( $userConfig != null ) {
-				if ( array_key_exists( 'locutor', $userConfig ) ) {
-					$locutorId = $userConfig[ 'locutor' ];
+				if ( array_key_exists( 'speaker', $userConfig ) ) {
+					$speakerId = $userConfig[ 'speaker' ];
+				} elseif ( array_key_exists( 'locutor', $userConfig ) ) {
+					// Support old syntax for backward compatibility
+					$speakerId = $userConfig[ 'locutor' ];
 				}
-				if ( array_key_exists( 'otherLocutors', $userConfig ) ) {
-					$otherLocutorIds = $userConfig[ 'otherLocutors' ];
+
+				if ( array_key_exists( 'otherSpeakers', $userConfig ) ) {
+					$otherSpeakerIds = $userConfig[ 'otherSpeakers' ];
+				} elseif ( array_key_exists( 'otherLocutors', $userConfig ) ) {
+					// Support old syntax for backward compatibility
+					$otherSpeakerIds = $userConfig[ 'otherLocutors' ];
 				}
+
 				if ( array_key_exists( 'license', $userConfig ) ) {
 					$config[ 'savedLicense' ] = $userConfig[ 'license' ];
 				}
 			}
 		}
 
-		$config[ 'locutor' ] = $this->getLocutor( $locutorId, $entityIdLookup, $entityRevisionLookup );
-		$config[ 'locutor' ][ 'main' ] = true;
-		if ( $config[ 'locutor' ][ 'name' ] == null ) {
-			$config[ 'locutor' ][ 'name' ] = $user->getName();
+		$config[ 'speaker' ] = $this->getSpeaker( $speakerId, $entityIdLookup, $entityRevisionLookup );
+		$config[ 'speaker' ][ 'main' ] = true;
+		if ( $config[ 'speaker' ][ 'name' ] == null ) {
+			$config[ 'speaker' ][ 'name' ] = $user->getName();
 		}
-		$config[ 'otherLocutors' ] = [];
-		foreach( $otherLocutorIds as $qid ) {
-			$config[ 'otherLocutors' ][ $qid ] = $this->getLocutor( $qid, $entityIdLookup, $entityRevisionLookup );
+		$config[ 'otherSpeakers' ] = [];
+		foreach( $otherSpeakerIds as $qid ) {
+			$config[ 'otherSpeakers' ][ $qid ] = $this->getSpeaker( $qid, $entityIdLookup, $entityRevisionLookup );
 		}
 
 		$licensesMessage = $this->msg( 'licenses' );
@@ -195,9 +203,9 @@ class SpecialRecordWizard extends SpecialPage {
 		return 'media';
 	}
 
-	private function getLocutor( $locutorId, $entityIdLookup, $entityRevisionLookup ) {
+	private function getSpeaker( $speakerId, $entityIdLookup, $entityRevisionLookup ) {
 		global $wgRecordWizardConfig, $wgWBRepoSettings;
-		$locutor = array(
+		$speaker = array(
 			'name' => null,
 			'gender' => null,
 			'location' => null,
@@ -205,56 +213,56 @@ class SpecialRecordWizard extends SpecialPage {
 			'qid' => null,
 		);
 
-		if ( $locutorId != null ) {
-			$itemId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['item'], $locutorId ) );
+		if ( $speakerId != null ) {
+			$itemId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['item'], $speakerId ) );
 			$revision = $entityRevisionLookup->getEntityRevision( $itemId );
 			if ( $revision !== null ) {
 				$item = $revision->getEntity();
 
 				$instanceOfPropertyId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['instanceOf'] ) );
 				$instanceOf = $this->getPropertyValues( $item, $instanceOfPropertyId );
-				if ( count( $instanceOf ) > 0 && $instanceOf[ 0 ][ 'value' ] == $wgRecordWizardConfig['items']['locutor'] ) {
+				if ( count( $instanceOf ) > 0 && $instanceOf[ 0 ][ 'value' ] == $wgRecordWizardConfig['items']['speaker'] ) {
 					$labels = $item->getLabels()->getIterator();
 					if ( $labels->valid() ) {
-						$locutor['name'] = $labels->current()->getText();
+						$speaker['name'] = $labels->current()->getText();
 					}
 
 					$genderPropertyId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['gender'] ) );
 					$gender = $this->getPropertyValues( $item, $genderPropertyId );
 					if ( count( $gender ) > 0 ) {
-						$locutor['gender'] = $gender[ 0 ][ 'value' ];
+						$speaker['gender'] = $gender[ 0 ][ 'value' ];
 					}
 
 					$locationPropertyId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['residencePlace'] ) );
 					$location = $this->getPropertyValues( $item, $locationPropertyId );
 					if ( count( $location ) > 0 ) {
-						$locutor['location'] = $location[ 0 ][ 'value' ];
+						$speaker['location'] = $location[ 0 ][ 'value' ];
 					}
 
 					$spokenLanguagesPropertyId = $entityIdLookup->getEntityIdForTitle( \Title::makeTitle( $wgWBRepoSettings['entityNamespaces']['property'], $wgRecordWizardConfig['properties']['spokenLanguages'] ) );
 					$languages = $this->getPropertyValues( $item, $spokenLanguagesPropertyId );
-					$locutor['languages'] = array();
+					$speaker['languages'] = array();
 					foreach ( $languages as $language ) {
 						$langId = $language[ 'value' ];
-						$locutor['languages'][ $langId ] = array(
+						$speaker['languages'][ $langId ] = array(
 							'qid' => $langId
 						);
 						$languageLevelProperty = $wgRecordWizardConfig[ 'properties' ][ 'languageLevel' ];
 						if ( isset( $language[ 'qualifiers' ][ $languageLevelProperty ] ) ) {
-							$locutor[ 'languages' ][ $langId ][ 'languageLevel' ] = $language[ 'qualifiers' ][ $languageLevelProperty ];
+							$speaker[ 'languages' ][ $langId ][ 'languageLevel' ] = $language[ 'qualifiers' ][ $languageLevelProperty ];
 						}
 						$languageLocationProperty = $wgRecordWizardConfig[ 'properties' ][ 'learningPlace' ];
 						if ( isset( $language[ 'qualifiers' ][ $languageLocationProperty ] ) ) {
-							$locutor[ 'languages' ][ $langId ][ 'location' ] = $language[ 'qualifiers' ][ $languageLocationProperty ];
+							$speaker[ 'languages' ][ $langId ][ 'location' ] = $language[ 'qualifiers' ][ $languageLocationProperty ];
 						}
 					}
 
-					$locutor['qid'] = (string) $itemId;
+					$speaker['qid'] = (string) $itemId;
 				}
 			}
 		}
 
-		return $locutor;
+		return $speaker;
 	}
 
 	private function getPropertyValues( $item, $propertyId ) {

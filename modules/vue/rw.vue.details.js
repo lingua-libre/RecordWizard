@@ -39,7 +39,7 @@
 				if ( this.state.step === 'details' ) {
 					/* Update available languages on step load */
 					this.availableLanguages = [];
-					for ( qid in this.metadata.locutor.languages ) {
+					for ( qid in this.metadata.speaker.languages ) {
 						this.availableLanguages.push( {
 							data: qid,
 							label: this.config.languages[ qid ].localname
@@ -47,7 +47,7 @@
 					}
 
 					/* Async load of past data for current language */
-					rw.store.config.fetchPastRecords( this.metadata.language || this.availableLanguages[ 0 ].data, this.metadata.locutor.qid );
+					rw.store.config.fetchPastRecords( this.metadata.language || this.availableLanguages[ 0 ].data, this.metadata.speaker.qid );
 				}
 			}
 		},
@@ -85,7 +85,7 @@
 				}
 
 				/* Async load of past data for current language */
-				rw.store.config.fetchPastRecords( this.metadata.language, this.metadata.locutor.qid );
+				rw.store.config.fetchPastRecords( this.metadata.language, this.metadata.speaker.qid );
 			},
 			canMoveNext: function () {
 				if ( this.words.length === 0 ) {

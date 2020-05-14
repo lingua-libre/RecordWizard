@@ -38,7 +38,7 @@
 		this.wbItem = null;
 
 		this.language = null;
-		this.locutor = null;
+		this.speaker = null;
 		this.license = '';
 
 		this.word = word;
@@ -85,7 +85,7 @@
 	/**
 	 * Generate a filename for this record based on the curent metadatas.
 	 *
-	 * The format looks like 'LL-Username (locutor)-lang-transcription.wav'.
+	 * The format looks like 'LL-Username (speaker)-lang-transcription.wav'.
 	 * All illegal characters are replaced by a dash, see for reference:
 	 * https://www.mediawiki.org/wiki/Manual:$wgIllegalFileChars
 	 *
@@ -96,8 +96,8 @@
 			filename = 'LL' +
 			'-' + this.language.wikidataId +
 			( this.language.iso3 !== null ? ' (' + this.language.iso3 + ')' : '' ) +
-			'-' + this.locutor.name +
-			( mw.config.get( 'wgUserName' ) !== this.locutor.name ? ' (' + mw.config.get( 'wgUserName' ) + ')' : '' ) +
+			'-' + this.speaker.name +
+			( mw.config.get( 'wgUserName' ) !== this.speaker.name ? ' (' + mw.config.get( 'wgUserName' ) + ')' : '' ) +
 			'-' + this.word + '.' + this.fileExtension;
 
 		return filename.replace( illegalChars, '-' );
@@ -111,7 +111,7 @@
 	 */
 	rw.Record.prototype.getText = function () {
 		var gender = '';
-		switch ( this.locutor.gender ) {
+		switch ( this.speaker.gender ) {
 			case rw.store.config.data.items.genderMale:
 				gender = 'male';
 				break;
@@ -124,9 +124,9 @@
 		}
 		return '== {{int:filedesc}} ==' +
 			'\n{{Lingua Libre record' +
-			'\n | locutor       = ' + this.locutor.name +
-			'\n | locutorId     = ' + this.locutor.qid +
-			'\n | locutorGender = ' + gender +
+			'\n | speaker       = ' + this.speaker.name +
+			'\n | speakerId     = ' + this.speaker.qid +
+			'\n | speakerGender = ' + gender +
 			'\n | author        = [[User:' + mw.config.get( 'wgUserName' ) + '|]]' +
 			'\n | languageId    = ' + this.language.wikidataId +
 			'\n | transcription = ' + this.transcription +
@@ -138,13 +138,13 @@
 	};
 
 	/**
-	 * Set the locutor object of this record.
+	 * Set the speaker object of this record.
 	 *
-	 * @param {Object} locutor Information about the locutor of this record
+	 * @param {Object} speaker Information about the speaker of this record
      * @return {rw.Record} Self
 	 */
-	rw.Record.prototype.setLocutor = function ( locutor ) {
-		this.locutor = locutor;
+	rw.Record.prototype.setSpeaker = function ( speaker ) {
+		this.speaker = speaker;
 
 		return this;
 	};
@@ -363,7 +363,7 @@
 		};
 
 		this.wbItem.descriptions = {
-			en: 'audio record - ' + ( this.language.iso3 !== null ? this.language.iso3 : this.language.wikidataId ) + ' - ' + this.locutor.name + ' (' + mw.config.get( 'wgUserName' ) + ')'
+			en: 'audio record - ' + ( this.language.iso3 !== null ? this.language.iso3 : this.language.wikidataId ) + ' - ' + this.speaker.name + ' (' + mw.config.get( 'wgUserName' ) + ')'
 		};
 
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.instanceOf ).setType( 'wikibase-item' ).setValue( rw.store.config.data.items.record ), true ); // InstanceOf
@@ -372,7 +372,7 @@
 			this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.audioRecord ).setType( 'commonsMedia' ).setValue( this.getFilename() ), true ); // Audio file
 		}*/
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.spokenLanguages ).setType( 'wikibase-item' ).setValue( this.language.qid ), true ); // Language
-		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.locutor ).setType( 'wikibase-item' ).setValue( this.locutor.qid ), true ); // Locutor
+		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.speaker ).setType( 'wikibase-item' ).setValue( this.speaker.qid ), true ); // Speaker
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.date ).setType( 'time' ).setValue( {
 			time: date
 		} ), true ); // Date

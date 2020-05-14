@@ -2,9 +2,9 @@
 
 ( function ( mw, rw, OO ) {
 	/**
-	 * The Locutor step.
+	 * The Speaker step.
 	 */
-	rw.vue.locutor = new Vue( {
+	rw.vue.speaker = new Vue( {
 		mixins: [ rw.vue.step ],
 
 		/* Data */
@@ -35,28 +35,28 @@
 
 			/* Fill profiles */
 			this.profiles.push( {
-				optgroup: mw.msg( 'mwe-recwiz-locutor-profilemain' )
+				optgroup: mw.msg( 'mwe-recwiz-speaker-profilemain' )
 			} );
 			this.profiles.push( {
-				data: this.config.locutor.qid || '*',
-				label: this.config.locutor.name
+				data: this.config.speaker.qid || '*',
+				label: this.config.speaker.name
 			} );
 			this.profiles.push( {
-				optgroup: mw.msg( 'mwe-recwiz-locutor-profileother' )
+				optgroup: mw.msg( 'mwe-recwiz-speaker-profileother' )
 			} );
-			for ( qid in this.config.otherLocutors ) {
+			for ( qid in this.config.otherSpeakers ) {
 				this.profiles.push( {
 					data: qid,
-					label: this.config.otherLocutors[ qid ].name
+					label: this.config.otherSpeakers[ qid ].name
 				} );
 			}
 			this.profiles.push( {
 				data: '+',
-				label: mw.msg( 'mwe-recwiz-locutor-profilenew' )
+				label: mw.msg( 'mwe-recwiz-speaker-profilenew' )
 			} );
 
-			/* Fill all fields with the default locutor datas */
-			rw.store.record.setLocutor( this.config.locutor );
+			/* Fill all fields with the default speaker datas */
+			rw.store.record.setSpeaker( this.config.speaker );
 
 			/* Set available languages */
 			for ( code in this.config.languages ) {
@@ -72,35 +72,35 @@
 
 		/* Methods */
 		watch: {
-			'metadata.locutor.qid': function () {
-				if ( this.metadata.locutor.qid === this.config.locutor.qid || this.metadata.locutor.qid === '*' ) {
-					rw.store.record.setLocutor( this.config.locutor );
-				} else if ( this.metadata.locutor.qid[ 0 ] === 'Q' ) {
-					rw.store.record.setLocutor( this.config.otherLocutors[ this.metadata.locutor.qid ] );
+			'metadata.speaker.qid': function () {
+				if ( this.metadata.speaker.qid === this.config.speaker.qid || this.metadata.speaker.qid === '*' ) {
+					rw.store.record.setSpeaker( this.config.speaker );
+				} else if ( this.metadata.speaker.qid[ 0 ] === 'Q' ) {
+					rw.store.record.setSpeaker( this.config.otherSpeakers[ this.metadata.speaker.qid ] );
 				} else {
-					rw.store.record.setLocutor( {
+					rw.store.record.setSpeaker( {
 						qid: '+',
 						new: true
 					} );
 				}
 			},
-			'metadata.locutor.name': function () {
+			'metadata.speaker.name': function () {
 				var i;
 
-				if ( this.metadata.locutor.new === true ) {
+				if ( this.metadata.speaker.new === true ) {
 					return;
 				}
 
 				for ( i = 0; i < this.profiles.length; i++ ) {
-					if ( this.profiles[ i ].data === this.metadata.locutor.qid ) {
-						this.profiles[ i ].label = this.metadata.locutor.name;
+					if ( this.profiles[ i ].data === this.metadata.speaker.qid ) {
+						this.profiles[ i ].label = this.metadata.speaker.name;
 					}
 				}
 			}
 		},
 		computed: {
 			licenseText: function () {
-				return mw.msg( 'mwe-recwiz-locutor-licensecontent', this.metadata.locutor.name );
+				return mw.msg( 'mwe-recwiz-speaker-licensecontent', this.metadata.speaker.name );
 			}
 		},
 		methods: {
@@ -128,29 +128,29 @@
 					process = new OO.ui.Process();
 
 				/* Validate the datas */
-				if ( this.metadata.locutor.name === '' ) {
+				if ( this.metadata.speaker.name === '' ) {
 					OO.ui.alert( mw.msg( 'mwe-recwiz-error-noname' ) );
 					return false;
 				}
-				if ( this.metadata.locutor.name === this.config.locutor.name && this.metadata.locutor.main !== true ) {
-					OO.ui.alert( mw.msg( 'mwe-recwiz-error-duplicatename', this.metadata.locutor.name ) );
+				if ( this.metadata.speaker.name === this.config.speaker.name && this.metadata.speaker.main !== true ) {
+					OO.ui.alert( mw.msg( 'mwe-recwiz-error-duplicatename', this.metadata.speaker.name ) );
 					return false;
 				}
-				for ( qid in this.config.otherLocutors ) {
-					if ( this.metadata.locutor.name === this.config.otherLocutors[ qid ].name && this.metadata.locutor.qid !== qid ) {
-						OO.ui.alert( mw.msg( 'mwe-recwiz-error-duplicatename', this.metadata.locutor.name ) );
+				for ( qid in this.config.otherSpeakers ) {
+					if ( this.metadata.speaker.name === this.config.otherSpeakers[ qid ].name && this.metadata.speaker.qid !== qid ) {
+						OO.ui.alert( mw.msg( 'mwe-recwiz-error-duplicatename', this.metadata.speaker.name ) );
 						return false;
 					}
 				}
-				if ( Object.keys( this.metadata.locutor.languages ).length === 0 ) {
+				if ( Object.keys( this.metadata.speaker.languages ).length === 0 ) {
 					OO.ui.alert( mw.msg( 'mwe-recwiz-error-nolanguages' ) );
 					return false;
 				}
 
-				/* Create or update the locutor item in the wikibase */
+				/* Create or update the speaker item in the wikibase */
 				this.$wbItem = new mw.recordWizard.wikibase.Item();
 
-				if ( this.metadata.locutor.new === false ) {
+				if ( this.metadata.speaker.new === false ) {
 					process.next( this.getExistingWbItem, this ); // get the existing item
 				}
 
@@ -168,24 +168,24 @@
 			},
 
 			/**
-			 * Get the Wikibase Item of the selected locutor through the API.
+			 * Get the Wikibase Item of the selected speaker through the API.
 			 *
 			 * @return {$.Deferred}  A promise, resolved when we're done
 			 */
 			getExistingWbItem: function () {
-				return this.$wbItem.setId( this.metadata.locutor.qid ).getFromApi( this.$api );
+				return this.$wbItem.setId( this.metadata.speaker.qid ).getFromApi( this.$api );
 			},
 
 			/**
-			 * Fill the Wikibase item of the locutor with the values given by the UI.
+			 * Fill the Wikibase item of the speaker with the values given by the UI.
 			 */
 			fillWbItem: function () {
 				var qid,
-					name = this.metadata.locutor.name,
-					gender = this.metadata.locutor.gender,
-					location = this.metadata.locutor.location,
-					languages = this.metadata.locutor.languages,
-					instanceOfStatement = new mw.recordWizard.wikibase.Statement( this.config.properties.instanceOf ).setType( 'wikibase-item' ).setValue( this.config.items.locutor ),
+					name = this.metadata.speaker.name,
+					gender = this.metadata.speaker.gender,
+					location = this.metadata.speaker.location,
+					languages = this.metadata.speaker.languages,
+					instanceOfStatement = new mw.recordWizard.wikibase.Statement( this.config.properties.instanceOf ).setType( 'wikibase-item' ).setValue( this.config.items.speaker ),
 					userStatement = new mw.recordWizard.wikibase.Statement( this.config.properties.linkedUser ).setType( 'external-id' ).setValue( mw.config.get( 'wgUserName' ) ).setRank( 2 ),
 					locationStatement = new mw.recordWizard.wikibase.Statement( this.config.properties.residencePlace ),
 					genderStatement = new mw.recordWizard.wikibase.Statement( this.config.properties.gender ),
@@ -195,7 +195,7 @@
 					en: name
 				};
 				this.$wbItem.descriptions = {
-					en: 'locutor of the user "' + mw.config.get( 'wgUserName' ) + '"'
+					en: 'speaker of the user "' + mw.config.get( 'wgUserName' ) + '"'
 				};
 
 				locationStatement.setType( location === '' ? 'somevalue' : 'external-id' ).setValue( location );
@@ -235,38 +235,38 @@
 			},
 
 			/**
-			 * Update the global config with the new informations we got on the locutor.
+			 * Update the global config with the new informations we got on the speaker.
 			 *
 			 * @param {Object} data Information returned by the wikibase API
 			 */
 			updateConfig: function ( data ) {
 				/* Update the config */
-				if ( this.metadata.locutor.main === true ) {
-					this.metadata.locutor.new = false;
-					this.config.locutor = $.extend( true, {}, this.metadata.locutor, {
+				if ( this.metadata.speaker.main === true ) {
+					this.metadata.speaker.new = false;
+					this.config.speaker = $.extend( true, {}, this.metadata.speaker, {
 						qid: data.entity.id
 					} );
 				} else {
 					/* Update available profiles */
-					if ( this.metadata.locutor.new === true ) {
+					if ( this.metadata.speaker.new === true ) {
 						this.profiles.splice( this.profiles.length - 1, 0, {
 							data: data.entity.id,
-							label: this.metadata.locutor.name
+							label: this.metadata.speaker.name
 						} );
 					}
 
-					this.metadata.locutor.new = false;
-					this.config.otherLocutors[ data.entity.id ] = $.extend( true, {}, this.metadata.locutor, {
+					this.metadata.speaker.new = false;
+					this.config.otherSpeakers[ data.entity.id ] = $.extend( true, {}, this.metadata.speaker, {
 						qid: data.entity.id
 					} );
 				}
-				this.metadata.locutor.qid = data.entity.id;
+				this.metadata.speaker.qid = data.entity.id;
 			},
 
 			/**
 			 * Save some options in a personal subpage.
 			 *
-			 * This includes the main locutor Qid, all the secondary locutors Qid, and
+			 * This includes the main speaker Qid, all the secondary speakers Qid, and
 			 * the preferred license. This will allow to preload those data at the next
 			 * use of the RecordWizard.
 			 *
@@ -274,8 +274,8 @@
 			 */
 			saveOptions: function () {
 				var userConfig = {
-					locutor: this.config.locutor.qid,
-					otherLocutors: Object.keys( this.config.otherLocutors ),
+					speaker: this.config.speaker.qid,
+					otherSpeakers: Object.keys( this.config.otherSpeakers ),
 					license: this.metadata.license
 				};
 				return this.$api.postWithToken( 'csrf', {

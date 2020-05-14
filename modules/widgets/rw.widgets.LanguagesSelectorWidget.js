@@ -104,19 +104,19 @@
 	rw.widgets.LanguagesSelectorWidget.Dialog.prototype.initialize = function () {
 		// TODO: get from config
 		var options = [ {
-			label: mw.msg( 'mwe-recwiz-locutor-languagelevel-native' ),
+			label: mw.msg( 'mwe-recwiz-speaker-languagelevel-native' ),
 			data: rw.store.config.data.items.langLevelNative
 		},
 		{
-			label: mw.msg( 'mwe-recwiz-locutor-languagelevel-good' ),
+			label: mw.msg( 'mwe-recwiz-speaker-languagelevel-good' ),
 			data: rw.store.config.data.items.langLevelGood
 		},
 		{
-			label: mw.msg( 'mwe-recwiz-locutor-languagelevel-average' ),
+			label: mw.msg( 'mwe-recwiz-speaker-languagelevel-average' ),
 			data: rw.store.config.data.items.langLevelAverage
 		},
 		{
-			label: mw.msg( 'mwe-recwiz-locutor-languagelevel-beginner' ),
+			label: mw.msg( 'mwe-recwiz-speaker-languagelevel-beginner' ),
 			data: rw.store.config.data.items.langLevelBeginner
 		}
 		];
@@ -131,7 +131,7 @@
 		} );
 		this.levelFieldset = new OO.ui.FieldLayout( this.levelDropdown, {
 			align: 'left',
-			label: mw.msg( 'mwe-recwiz-locutor-languagelevel' )
+			label: mw.msg( 'mwe-recwiz-speaker-languagelevel' )
 		} );
 
 		this.locationInput = new rw.widgets.WikidataSearchWidget( {
@@ -139,7 +139,7 @@
 		} );
 		this.locationFieldset = new OO.ui.FieldLayout( this.locationInput, {
 			align: 'left',
-			label: mw.msg( 'mwe-recwiz-locutor-languagelocation' )
+			label: mw.msg( 'mwe-recwiz-speaker-languagelocation' )
 		} );
 
 		this.content.$element.append( this.levelFieldset.$element ).append( this.locationFieldset.$element );

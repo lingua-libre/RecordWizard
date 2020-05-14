@@ -11,7 +11,7 @@
 				language: rw.store.config.data.savedLanguage,
 				license: rw.store.config.data.savedLicense,
 				media: 'audio',
-				locutor: {
+				speaker: {
 					gender: '',
 					languages: {},
 					location: '',
@@ -41,16 +41,16 @@
 		this.$api = new mw.Api();
 	};
 
-	RecordStore.prototype.setLocutor = function ( locutor ) {
-		this.data.metadata.locutor.gender = locutor.gender;
-		Vue.set( this.data.metadata.locutor, 'languages', locutor.languages );
-		this.data.metadata.locutor.location = locutor.location;
-		this.data.metadata.locutor.name = locutor.name;
-		this.data.metadata.locutor.qid = locutor.qid;
-		this.data.metadata.locutor.main = locutor.main || false;
-		this.data.metadata.locutor.new = locutor.new || locutor.qid === null;
+	RecordStore.prototype.setSpeaker = function ( speaker ) {
+		this.data.metadata.speaker.gender = speaker.gender;
+		Vue.set( this.data.metadata.speaker, 'languages', speaker.languages );
+		this.data.metadata.speaker.location = speaker.location;
+		this.data.metadata.speaker.name = speaker.name;
+		this.data.metadata.speaker.qid = speaker.qid;
+		this.data.metadata.speaker.main = speaker.main || false;
+		this.data.metadata.speaker.new = speaker.new || speaker.qid === null;
 
-		// if there are already some records done, remove them when changing locutor
+		// if there are already some records done, remove them when changing speaker
 		this.clearAllRecords();
 	};
 
@@ -220,7 +220,7 @@
 				if ( this.data.records[ word ] === undefined ) {
 					this.data.records[ word ] = new rw.Record( word );
 					this.data.records[ word ].setLanguage( rw.store.config.data.languages[ this.data.metadata.language ] );
-					this.data.records[ word ].setLocutor( this.data.metadata.locutor );
+					this.data.records[ word ].setSpeaker( this.data.metadata.speaker );
 					this.data.records[ word ].setLicense( this.data.metadata.license );
 
 					this.setStatus( word, 'up' );

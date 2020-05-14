@@ -14,7 +14,7 @@
 		rw.vue.navigation.$mount( '#mwe-rw-navigation' );
 
 		rw.vue.tutorial.$mount( '#mwe-rw-tutorial' );
-		rw.vue.locutor.$mount( '#mwe-rw-locutor' );
+		rw.vue.speaker.$mount( '#mwe-rw-speaker' );
 		rw.vue.details.$mount( '#mwe-rw-details' );
 		rw.vue.studio.$mount( '#mwe-rw-studio' );
 		rw.vue.publish.$mount( '#mwe-rw-publish' );

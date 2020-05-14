@@ -15,14 +15,14 @@
 
 		this.prevStep = {
 			tutorial: 'tutorial',
-			locutor: 'tutorial',
-			details: 'locutor',
+			speaker: 'tutorial',
+			details: 'speaker',
 			studio: 'details',
 			publish: 'studio'
 		};
 		this.nextStep = {
-			tutorial: 'locutor',
-			locutor: 'details',
+			tutorial: 'speaker',
+			speaker: 'details',
 			details: 'studio',
 			studio: 'publish',
 			publish: 'details'

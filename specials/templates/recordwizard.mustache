@@ -2,7 +2,7 @@
 <div id="mwe-rw">
 	<ul id="mwe-rw-steps">
 		<li :class="state.step === 'tutorial' ? 'active' : null"><span class="mwe-rw-step-marker">1</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-tutorial"}}</li>
-		<li :class="state.step === 'locutor' ? 'active' : null"><span class="mwe-rw-step-marker">2</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-locutor"}}</li>
+		<li :class="state.step === 'speaker' ? 'active' : null"><span class="mwe-rw-step-marker">2</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-speaker"}}</li>
 		<li :class="state.step === 'details' ? 'active' : null"><span class="mwe-rw-step-marker">3</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-details"}}</li>
 		<li :class="state.step === 'studio' ? 'active' : null"><span class="mwe-rw-step-marker">4</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-studio"}}</li>
 		<li :class="state.step === 'publish' ? 'active' : null"><span class="mwe-rw-step-marker">5</span><span class="mwe-rw-step-check"><img src="{{wgExtensionAssetsPath}}/RecordWizard/icons/done.svg" /></span>{{_ "mwe-recwiz-step-publish"}}</li>
@@ -14,7 +14,7 @@
 		</div>
 		<div id="mwe-rw-content" style="display: none;">
 			<div class="mwe-rw-content" id="mwe-rw-tutorial" v-if="state.step === 'tutorial'">{{>tutorial}}</div>
-			<div class="mwe-rw-content" id="mwe-rw-locutor" v-if="state.step === 'locutor'">{{>locutor}}</div>
+			<div class="mwe-rw-content" id="mwe-rw-speaker" v-if="state.step === 'speaker'">{{>speaker}}</div>
 			<div class="mwe-rw-content" id="mwe-rw-details" v-if="state.step === 'details'">{{>details}}</div>
 			<div class="mwe-rw-content" id="mwe-rw-studio" v-if="state.step === 'studio'">{{>studio}}</div>
 			<div class="mwe-rw-content" id="mwe-rw-publish" v-if="state.step === 'publish'">{{>publish}}</div>
