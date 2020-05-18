@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Chrumps",
 			"Rail",
 			"Railfail536"
@@ -20,13 +21,12 @@
 	"mwe-recwiz-tutorial-title": "Sprawdź swój mikrofon:",
 	"mwe-recwiz-tutorial-mictester-start": "Rozpocznij test",
 	"mwe-recwiz-tutorial-mictester-recording": "1. Powiedz coś",
-	"mwe-recwiz-locutor-name": "Nazwa do wyświetlenia",
-	"mwe-recwiz-locutor-languagelevel": "Poziom języka",
-	"mwe-recwiz-locutor-languagelevel-good": "dobry poziom",
-	"mwe-recwiz-locutor-languagelevel-average": "średni poziom",
-	"mwe-recwiz-locutor-languagelevel-beginner": "początkujący",
-	"mwe-recwiz-locutor-license": "Licencja",
-	"mwe-recwiz-locutor-gender": "Płeć",
+	"mwe-recwiz-speaker-languagelevel": "Poziom języka",
+	"mwe-recwiz-speaker-languagelevel-good": "dobry poziom",
+	"mwe-recwiz-speaker-languagelevel-average": "średni poziom",
+	"mwe-recwiz-speaker-languagelevel-beginner": "początkujący",
+	"mwe-recwiz-speaker-license": "Licencja",
+	"mwe-recwiz-speaker-gender": "Płeć",
 	"mwe-recwiz-gender-male": "Mężczyzna",
 	"mwe-recwiz-gender-female": "Kobieta",
 	"mwe-recwiz-gender-other": "Inna",

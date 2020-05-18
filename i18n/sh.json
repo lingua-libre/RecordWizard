@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Vlad5250"
 		]
 	},
@@ -15,7 +16,7 @@
 	"mwe-recwiz-retry": "pokušaj ponovno neuspješ. postavljanje",
 	"mwe-recwiz-publish": "Objavi na Wikimedijinoj ostavi",
 	"mwe-recwiz-tutorial-mictester-waiting": "učitavam - учитавам",
-	"mwe-recwiz-locutor-gender": "Spol",
+	"mwe-recwiz-speaker-gender": "Spol",
 	"mwe-recwiz-gender-male": "muž",
 	"mwe-recwiz-gender-female": "ženka",
 	"mwe-recwiz-gender-other": "ostali",
