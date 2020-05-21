@@ -25,16 +25,14 @@
 			$( document.body ).append( this.$windowManager.$element );
 
 			for ( i = 0; i < this.generators.length; i++ ) {
-				this.$windowManager.addWindows( [ this.generators[ i ].dialog ] );
+				this.$windowManager.addWindows( [ rw.store.generator.dialogs[ i ] ] );
 			}
-
-			this.onLanguageChange();
 		},
 
 		/* Methods */
 		watch: {
 			'state.step': function () {
-				var qid;
+				var qid, defaultLanguage;
 
 				if ( this.state.step === 'details' ) {
 					/* Update available languages on step load */
@@ -47,7 +45,11 @@
 					}
 
 					/* Async load of past data for current language */
-					rw.store.config.fetchPastRecords( this.metadata.language || this.availableLanguages[ 0 ].data, this.metadata.speaker.qid );
+					defaultLanguage = this.metadata.language;
+					if ( defaultLanguage === undefined || defaultLanguage === '' || this.metadata.speaker.languages[ defaultLanguage ] === undefined ) {
+						defaultLanguage = this.availableLanguages[ 0 ].data;
+					}
+					rw.store.config.fetchPastRecords( defaultLanguage, this.metadata.speaker.qid );
 				}
 			}
 		},

@@ -7,6 +7,7 @@
 	 */
 	var GeneratorStore = function () {
 		this.data = [];
+		this.dialogs = [];
 		this.generic = null;
 	};
 
@@ -14,9 +15,9 @@
 		this.data.push( {
 			name: name,
 			title: title,
-			icon: icon || 'add',
-			dialog: dialog
+			icon: icon || 'add'
 		} );
+		this.dialogs.push( dialog );
 	};
 
 	rw.store.generator = new GeneratorStore();

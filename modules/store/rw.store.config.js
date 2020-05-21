@@ -8,12 +8,11 @@
 		this.$api = new mw.Api();
 	};
 
-	ConfigStore.prototype.fetchPastRecords = function ( langQid, speakerQid, deferred, offset, pastRecords ) {
+	ConfigStore.prototype.fetchPastRecords = function ( langQid, speakerQid, deferred, offset ) {
 		deferred = deferred || $.Deferred();
 		offset = offset || 0;
-		pastRecords = pastRecords || [];
 
-		if ( this.data.pastRecords[ langQid ] !== undefined ) {
+		if ( this.data.pastRecords[ langQid ] !== undefined && offset === undefined ) {
 			deferred.resolve( this.data.pastRecords[ langQid ] );
 		} else {
 			this.$api.get( {
@@ -25,13 +24,15 @@
 				rwrlimit: 'max',
 				rwroffset: offset
 			} ).then( function ( result ) {
-				pastRecords.push.apply( pastRecords, result.query.rwrecords );
+				if ( this.data.pastRecords[ langQid ] === undefined ) {
+					this.data.pastRecords[ langQid ] = [];
+				}
+				this.data.pastRecords[ langQid ].push.apply( this.data.pastRecords[ langQid ], result.query.rwrecords );
 
 				if ( result.continue !== undefined ) {
-					this.getPastRecords( langQid, speakerQid, deferred, result.continue.rwroffset, pastRecords );
+					this.fetchPastRecords( langQid, speakerQid, deferred, result.continue.rwroffset );
 				} else {
-					this.data.pastRecords[ langQid ] = pastRecords;
-					deferred.resolve( pastRecords );
+					deferred.resolve( this.data.pastRecords[ langQid ] );
 				}
 			}.bind( this ), function () {
 				this.data.pastRecords[ langQid ] = [];

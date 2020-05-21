@@ -216,7 +216,7 @@
 				formatversion: '2'
 			} ).then( this.parseLabels.bind( this ) ).fail( function ( error ) {
 				this.deferred.reject( new OO.ui.Error( error ) );
-			} );
+			}.bind( this ) );
 		}
 	};
 
