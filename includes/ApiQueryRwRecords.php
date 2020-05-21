@@ -30,6 +30,8 @@ class ApiQueryRwRecords extends ApiQueryBase {
 	}
 
 	public function execute() {
+		global $wgRecordWizardConfig;
+
 		// Parameter handling
 		$params = $this->extractRequestParams();
 		$speakerQid = $params['speaker'];
@@ -37,6 +39,8 @@ class ApiQueryRwRecords extends ApiQueryBase {
 		$limit = $params['limit'];
 		$offset = $params['offset'];
 		$sort = $params['sort'] === 'pageid' ? 'page_id' : 'term_text';
+		$dir = $params['dir'] === 'ascending' ? 'ASC' : 'DESC';
+		$format = $params['format'];
 
         // Check whether the user has the appropriate local permissions
         $this->user = $this->getUser();
@@ -46,18 +50,26 @@ class ApiQueryRwRecords extends ApiQueryBase {
 
 		// Do the search ; for more details about this sql request, see T212580
 		$dbr = wfGetDB( DB_REPLICA );
+
+		$where = array(
+			'term_type' => 'label',
+			'pl_from_namespace' => 0,
+			'pl_namespace' => 0,
+			'pl_title' => $wgRecordWizardConfig['items']['record'],
+		);
+		if ( $speakerQid !== NULL ) {
+			$where[] = 'pl_from IN (select pl_from from pagelinks WHERE pl_from_namespace = 0 AND pl_namespace = 0 AND pl_title = ' . $dbr->addQuotes($speakerQid) . ')';
+		}
+		if ( $langQid !== NULL ) {
+			$where[] = 'pl_from IN (select pl_from from pagelinks WHERE pl_from_namespace = 0 AND pl_namespace = 0 AND pl_title = ' . $dbr->addQuotes($langQid) . ')';
+		}
+
 		$res = $dbr->select(
 			array( 'pagelinks', 'page', 'wb_terms' ),
-			array( 'term_text' ),
-			array(
-				'term_type' => 'label',
-				'pl_from_namespace' => 0,
-				'pl_namespace' => 0,
-				'pl_title' => $speakerQid,
-				'pl_from IN (select pl_from from pagelinks WHERE pl_from_namespace = 0 AND pl_namespace = 0 AND pl_title = ' . $dbr->addQuotes($langQid) . ')',
-			),
+			array( 'term_text', 'term_full_entity_id' ),
+			$where,
 			__METHOD__,
-			array( 'OFFSET' => $offset, 'LIMIT' => $limit + 1, 'ORDER BY' => $sort ),
+			array( 'OFFSET' => $offset, 'LIMIT' => $limit + 1, 'ORDER BY' => $sort . ' ' . $dir ),
 			array(
 				'page' => array( 'INNER JOIN', array( 'page_id = pl_from' ) ),
 				'wb_terms' => array( 'INNER JOIN', array( 'page_title = term_full_entity_id' ) ),
@@ -68,7 +80,11 @@ class ApiQueryRwRecords extends ApiQueryBase {
 		$index = 0;
 		$result->addValue( [ 'query' ], $this->getModuleName(), [] );
 		foreach( $res as $row ) {
-			$result->addValue( [ 'query', $this->getModuleName() ], null, $row->term_text );
+			if ( $format === 'transcription' ) {
+				$result->addValue( [ 'query', $this->getModuleName() ], null, $row->term_text );
+			} else {
+				$result->addValue( [ 'query', $this->getModuleName() ], null, $row->term_full_entity_id );
+			}
 
 			$index++;
 			if( $index >= $limit ) {
@@ -97,11 +113,9 @@ class ApiQueryRwRecords extends ApiQueryBase {
         return [
             'speaker' => [
                 ApiBase::PARAM_TYPE => 'string',
-                ApiBase::PARAM_REQUIRED => true,
             ],
             'language' => [
                 ApiBase::PARAM_TYPE => 'string',
-                ApiBase::PARAM_REQUIRED => true,
             ],
 			'sort' => array(
 				ApiBase::PARAM_DFLT => 'transcription',
@@ -110,11 +124,25 @@ class ApiQueryRwRecords extends ApiQueryBase {
 					'pageid'
 				)
 			),
+			'dir' => array(
+				ApiBase::PARAM_DFLT => 'ascending',
+				ApiBase::PARAM_TYPE => array(
+					'ascending',
+					'descending'
+				)
+			),
+			'format' => array(
+				ApiBase::PARAM_DFLT => 'transcription',
+				ApiBase::PARAM_TYPE => array(
+					'transcription',
+					'qid'
+				)
+			),
             'limit' => [
                 ApiBase::PARAM_DFLT => 10,
                 ApiBase::PARAM_TYPE => 'limit',
                 ApiBase::PARAM_MIN => 1,
-                ApiBase::PARAM_MAX => 100000,
+                ApiBase::PARAM_MAX =>  10000,
                 ApiBase::PARAM_MAX2 => 100000,
             ],
 			'offset' => [

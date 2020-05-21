@@ -14,6 +14,8 @@
 	"apihelp-query+rwrecords-param-language": "Qid of the language's local wikibase item.",
 	"apihelp-query+rwrecords-param-speaker": "Qid of the speaker's local wikibase item.",
 	"apihelp-query+rwrecords-param-sort": "Property to sort by.",
+	"apihelp-query+rwrecords-param-dir": "Direction of the sort.",
+	"apihelp-query+rwrecords-param-format": "Element to get as output.",
 	"apihelp-query+rwrecords-param-limit": "How many transcriptions in total to return.",
 
 	"mwe-recwiz-step-tutorial": "Tutorial",
