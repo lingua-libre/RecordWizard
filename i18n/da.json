@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Saederup92"
 		]
 	},
@@ -15,14 +16,14 @@
 	"mwe-recwiz-tutorial-mictester-recording": "1. Sig noget",
 	"mwe-recwiz-tutorial-mictester-playing": "2. Lyt",
 	"mwe-recwiz-tutorial-mictester-waiting": "indlæser",
-	"mwe-recwiz-locutor-languages": "Talte sprog",
-	"mwe-recwiz-locutor-languagelevel": "Sprogniveau",
-	"mwe-recwiz-locutor-languagelevel-native": "modersmål",
-	"mwe-recwiz-locutor-languagelevel-good": "godt niveau",
-	"mwe-recwiz-locutor-languagelevel-average": "gennemsnitligt niveau",
-	"mwe-recwiz-locutor-languagelevel-beginner": "nybegynner",
-	"mwe-recwiz-locutor-license": "Licens",
-	"mwe-recwiz-locutor-gender": "Køn",
+	"mwe-recwiz-speaker-languages": "Talte sprog",
+	"mwe-recwiz-speaker-languagelevel": "Sprogniveau",
+	"mwe-recwiz-speaker-languagelevel-native": "modersmål",
+	"mwe-recwiz-speaker-languagelevel-good": "godt niveau",
+	"mwe-recwiz-speaker-languagelevel-average": "gennemsnitligt niveau",
+	"mwe-recwiz-speaker-languagelevel-beginner": "nybegynner",
+	"mwe-recwiz-speaker-license": "Licens",
+	"mwe-recwiz-speaker-gender": "Køn",
 	"mwe-recwiz-gender-male": "Mand",
 	"mwe-recwiz-gender-female": "Kvinde",
 	"mwe-recwiz-gender-other": "Andet",

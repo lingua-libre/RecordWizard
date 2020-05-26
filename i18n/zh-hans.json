@@ -4,7 +4,8 @@
 			"Abijeet Patro",
 			"Deathkon",
 			"Liuxinyu970226",
-			"Nadine Siak"
+			"Nadine Siak",
+			"列维劳德"
 		]
 	},
 	"recordWizard": "记录向导",
@@ -34,6 +35,7 @@
 	"mwe-recwiz-speaker-profilemain": "您的主要播音器",
 	"mwe-recwiz-speaker-profileother": "其他播音器",
 	"mwe-recwiz-speaker-profilenew": "创建新的播音器",
+	"mwe-recwiz-speaker-name": "要显示的名称",
 	"mwe-recwiz-speaker-languages": "讲述的语言",
 	"mwe-recwiz-speaker-languagelevel": "语言等级",
 	"mwe-recwiz-speaker-languagelevel-native": "母语",

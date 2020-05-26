@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Abijeet Patro",
+			"Codenstory",
 			"Jay94ks",
 			"Ykhwong",
 			"그냥기여자"
@@ -11,11 +12,14 @@
 	"recordwizard": "녹음마법사",
 	"recordWizard-desc": "음성 발음 파일을 녹음하기 위한 사용자 친화적인 자동화 도구입니다.",
 	"special-recordWizard-title": "녹음 바법사",
+	"apihelp-query+rwrecords-param-dir": "정렬 방향입니다.",
+	"apihelp-query+rwrecords-param-format": "출력물로 가져올 요소입니다.",
 	"mwe-recwiz-step-tutorial": "강좌",
 	"mwe-recwiz-step-speaker": "화자",
 	"mwe-recwiz-step-details": "자세한 사항",
 	"mwe-recwiz-step-studio": "스튜디오",
 	"mwe-recwiz-step-publish": "게시",
+	"mwe-recwiz-prevent-close": "이 문서를 떠나려고 합니다. 게시되지 않은 모든 오디오 레코드는 소실됩니다. 그래도 떠나시겠습니까?",
 	"mwe-recwiz-cancel": "취소",
 	"mwe-recwiz-next": "다음",
 	"mwe-recwiz-previous": "이전",
@@ -36,6 +40,7 @@
 	"mwe-recwiz-speaker-profilemain": "주 화자",
 	"mwe-recwiz-speaker-profileother": "기타 화자",
 	"mwe-recwiz-speaker-profilenew": "새 화자 만들기",
+	"mwe-recwiz-speaker-name": "표시할 이름",
 	"mwe-recwiz-speaker-languages": "구어",
 	"mwe-recwiz-speaker-languagelevel": "언어 수준",
 	"mwe-recwiz-speaker-languagelevel-native": "현지인",
@@ -45,6 +50,7 @@
 	"mwe-recwiz-speaker-languagelocation": "학습 장소",
 	"mwe-recwiz-speaker-location": "거주 장소",
 	"mwe-recwiz-speaker-license": "라이선스",
+	"mwe-recwiz-speaker-agreement": "위키백과, 위키낱말사전, 위키데이터 등 여러 위키미디어 프로젝트에 자동으로 사용될 것임을 동의합니다.",
 	"mwe-recwiz-speaker-gender": "성별",
 	"mwe-recwiz-gender-male": "남성",
 	"mwe-recwiz-gender-female": "여성",

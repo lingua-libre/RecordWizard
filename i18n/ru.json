@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Abijeet Patro",
+			"Ailbeve",
 			"ArslanX",
 			"Diralik",
 			"Iniquity",
@@ -20,6 +21,7 @@
 	"recordwizard": "\nМастер записи",
 	"recordWizard-desc": "Удобный в использовании, автоматический инструмент для записи аудио-файлов произношения.",
 	"special-recordWizard-title": "\nМастер записи",
+	"apihelp-query+rwrecords-param-dir": "Направление сортировки.",
 	"mwe-recwiz-step-tutorial": "Руководство",
 	"mwe-recwiz-step-details": "Подробности",
 	"mwe-recwiz-step-studio": "Студия",
@@ -34,6 +36,7 @@
 	"mwe-recwiz-tutorial-mictester-start": "Начать тестирование",
 	"mwe-recwiz-tutorial-mictester-playing": "\n2. Слушай",
 	"mwe-recwiz-tutorial-mictester-waiting": "загрузка",
+	"mwe-recwiz-speaker-name": "Имя для отображения",
 	"mwe-recwiz-speaker-languagelevel": "Уровень владения языком",
 	"mwe-recwiz-speaker-languagelevel-native": "носитель",
 	"mwe-recwiz-speaker-languagelevel-good": "хороший уровень",
