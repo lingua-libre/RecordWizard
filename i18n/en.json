@@ -18,6 +18,8 @@
 	"apihelp-query+rwrecords-param-format": "Element to get as output.",
 	"apihelp-query+rwrecords-param-limit": "How many transcriptions in total to return.",
 
+	"mwe-recwiz-title": "Record a voice",
+
 	"mwe-recwiz-step-tutorial": "Tutorial",
 	"mwe-recwiz-step-speaker": "Speaker",
 	"mwe-recwiz-step-details": "Details",

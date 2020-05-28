@@ -21,6 +21,7 @@
 	"apihelp-query+rwrecords-param-dir": "{{doc-apihelp-param|query+rwrecords|dir}}",
 	"apihelp-query+rwrecords-param-format": "{{doc-apihelp-param|query+rwrecords|format}}",
 	"apihelp-query+rwrecords-param-limit": "{{doc-apihelp-param|query+rwrecords|limit}}",
+	"mwe-recwiz-title": "Main title of the special page.",
 	"mwe-recwiz-step-tutorial": "Name of a step displayed in the arrow line.",
 	"mwe-recwiz-step-speaker": "Name of a step displayed in the arrow line.",
 	"mwe-recwiz-step-details": "Name of a step displayed in the arrow line.",

@@ -23,6 +23,7 @@
 	"apihelp-query+rwrecords-param-dir": "Direction du tri.",
 	"apihelp-query+rwrecords-param-format": "Elément à obtenir pour la sortie.",
 	"apihelp-query+rwrecords-param-limit": "Combien de transcriptions au total à retourner.",
+	"mwe-recwiz-title": "Enregistrer une voix",
 	"mwe-recwiz-step-tutorial": "Tutoriel",
 	"mwe-recwiz-step-speaker": "Locuteur",
 	"mwe-recwiz-step-details": "Détails",

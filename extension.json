@@ -49,9 +49,6 @@
         }
     },
     "DefaultUserOptions": {
-        "recwiz-speaker": "",
-        "recwiz-otherSpeakers": "",
-        "recwiz-license": "",
         "recwiz-lang": ""
     },
     "MessagesDirs": {
