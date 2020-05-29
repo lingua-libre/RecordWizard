@@ -38,3 +38,20 @@
 #mwe-rwp-actions .oo-ui-progressBarWidget {
 	width: 320px;
 }
+
+@media screen and (max-width: 799px) {
+	#mwe-rw-publish .mwe-rw-section-group {
+		flex-direction: column;
+		height: 640px;
+	}
+	#mwe-rw-publish section:first-child {
+		width: 100%;
+		max-height: 33%;
+		border-right: 0px;
+		border-bottom: 1px solid rgba(156,173,210,0.5);
+	}
+	#mwe-rw-publish section:last-child {
+		max-width: 100%;
+		width: 100%;
+	}
+}

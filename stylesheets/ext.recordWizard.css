@@ -16,10 +16,6 @@ body.mw-special-RecordWizard #contentHeading {
     margin-top: 55px !important;
 }
 
-#mwe-rw-steps {
-    width: 265px;
-}
-
 #mwe-rw-main {
     max-width: 935px;
     flex-grow: 1;
@@ -40,6 +36,7 @@ body.mw-special-RecordWizard #contentHeading {
 #mwe-rw-steps {
     display: flex;
     flex-direction: column;
+    width: 265px;
 }
 
 #mwe-rw-steps li {
@@ -96,6 +93,35 @@ body.mw-special-RecordWizard #contentHeading {
 #mwe-rw-steps li.active .mwe-rw-step-check,
 #mwe-rw-steps li.active ~ li .mwe-rw-step-check  {
     display: none;
+}
+
+@media screen and (max-width: 1199px) {
+    #mwe-rw {
+        flex-direction: column;
+    }
+    #mwe-rw-steps {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: auto;
+        width: unset;
+        width: 935px;
+        margin-top: 20px;
+    }
+    #mwe-rw-main {
+        margin: auto;
+        width: 935px;
+    }
+}
+@media screen and (max-width: 959px) {
+    #mwe-rw-steps {
+        width: 92%;
+    }
+    #mwe-rw-main {
+        box-sizing: border-box;
+        width: 92%;
+        margin: auto;
+    }
 }
 
 /* Content box */
@@ -176,9 +202,21 @@ h3 {
 	width: 60%;
 }
 
+@media screen and (max-width: 749px) {
+	.mwe-rw-field {
+		flex-direction: column;
+	}
+	.mwe-rw-field > div,
+    .mwe-rw-field > label {
+		width: 100%;
+	}
+}
+
 /* Navigation */
 #mwe-rw-navigation {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     flex-direction: row;
     margin-right: 24px;
     margin-left: 16px;

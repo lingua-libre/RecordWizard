@@ -1,6 +1,7 @@
 /* TUTORIAL */
 #mwe-rw-tutorial .mwe-rw-section-group {
 	display: flex;
+	flex-wrap: wrap;
 	box-sizing: border-box;
 	flex-direction: row;
 	padding-top: 27px;
@@ -9,7 +10,8 @@
 
 /* Left column */
 #mwe-rw-tutorial section:first-child {
-	flex-basis: 475px;
+	flex: 475;
+	min-width: 320px;
 	margin-top: 20px;
 	margin-right: 32px;
 }
@@ -51,8 +53,8 @@
 
 /* Right column */
 #mwe-rw-tutorial section:last-child {
-	flex-basis: 345px;
-	max-width: 340px;
+	flex: 345;
+	min-width: 280px;
     border-radius: 12px;
     background-color: #f8f9fa;
 	padding: 34px 28px;
@@ -72,4 +74,10 @@
 }
 #mwe-rwt-testbutton .oo-ui-buttonElement-button:active {
 	background-color: #c8ccd1;
+}
+@media screen and (max-width: 399px) {
+	#mwe-rw-tutorial section:first-child,
+	#mwe-rw-tutorial section:last-child {
+		min-width: 200px;
+	}
 }
