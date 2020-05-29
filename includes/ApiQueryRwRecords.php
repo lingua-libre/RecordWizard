@@ -42,10 +42,6 @@ class ApiQueryRwRecords extends ApiQueryBase {
 		$dir = $params['dir'] === 'ascending' ? 'ASC' : 'DESC';
 		$format = $params['format'];
 
-        // Check whether the user has the appropriate local permissions
-        $this->user = $this->getUser();
-        $this->checkPermissions();
-
 		$result = $this->getResult($limit);
 
 		// Do the search ; for more details about this sql request, see T212580
@@ -96,18 +92,6 @@ class ApiQueryRwRecords extends ApiQueryBase {
 			$this->setContinueEnumParameter( 'offset', $offset + $limit );
 		}
 	}
-
-    protected function checkPermissions() {
-		if ( !$this->user->isLoggedIn() ) {
-		    $this->dieWithError( [ 'apierror-mustbeloggedin', $this->msg( 'action-upload' ) ] );
-		}
-        if ( $this->user->isBlocked() ) {
-            $this->dieBlocked( $this->user->getBlock() );
-        }
-        if ( $this->user->isBlockedGlobally() ) {
-            $this->dieBlocked( $this->user->getGlobalBlock() );
-        }
-    }
 
 	protected function getAllowedParams() {
         return [
