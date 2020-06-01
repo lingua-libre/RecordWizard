@@ -19,6 +19,7 @@
 	"apihelp-query+rwrecords-param-dir": "Sıralamanın yönü.",
 	"apihelp-query+rwrecords-param-format": "Çıkış olarak alınacak öğe.",
 	"apihelp-query+rwrecords-param-limit": "Toplamda kaç tane transkripsiyon döndürülecek.",
+	"mwe-recwiz-title": "Bir ses kaydet",
 	"mwe-recwiz-step-tutorial": "Eğitim",
 	"mwe-recwiz-step-speaker": "Hoparlör",
 	"mwe-recwiz-step-details": "Ayrıntılar",

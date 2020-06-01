@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Abijeet Patro",
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Iohanen"
 		]
 	},
 	"recordWizard": "Assistente de gravação",
@@ -16,6 +17,7 @@
 	"apihelp-query+rwrecords-param-dir": "Direção do tipo.",
 	"apihelp-query+rwrecords-param-format": "Elemento para obter como saída.",
 	"apihelp-query+rwrecords-param-limit": "Quantas transcrições no total para retornar.",
+	"mwe-recwiz-title": "Gravar uma voz",
 	"mwe-recwiz-step-tutorial": "Tutorial",
 	"mwe-recwiz-step-speaker": "Orador",
 	"mwe-recwiz-step-details": "Detalhes",

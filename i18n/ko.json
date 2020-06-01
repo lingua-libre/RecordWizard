@@ -14,6 +14,7 @@
 	"special-recordWizard-title": "녹음 바법사",
 	"apihelp-query+rwrecords-param-dir": "정렬 방향입니다.",
 	"apihelp-query+rwrecords-param-format": "출력물로 가져올 요소입니다.",
+	"mwe-recwiz-title": "목소리 녹음",
 	"mwe-recwiz-step-tutorial": "강좌",
 	"mwe-recwiz-step-speaker": "화자",
 	"mwe-recwiz-step-details": "자세한 사항",
