@@ -1,6 +1,6 @@
 'use strict';
 
-( function ( mw, rw ) {
+( function ( mw, rw, OO ) {
 
 	/**
 	 *
@@ -110,4 +110,4 @@
 		this.emit( 'stoped', this.videoBlob );
 	};
 
-}( mediaWiki, mediaWiki.recordWizard ) );
+}( mediaWiki, mediaWiki.recordWizard, OO ) );

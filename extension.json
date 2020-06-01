@@ -115,6 +115,7 @@
                 "modules/rw.VideoRecorder.js"
             ],
             "dependencies": [
+                "oojs-ui",
                 "ext.recordWizard.base"
             ]
         },
