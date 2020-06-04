@@ -5,6 +5,7 @@
 			"Deathkon",
 			"Liuxinyu970226",
 			"Nadine Siak",
+			"SomeyaMako",
 			"列维劳德"
 		]
 	},
@@ -12,6 +13,7 @@
 	"recordwizard": "记录向导",
 	"recordWizard-desc": "一个容易使用的记录音频发音文件的自动化工具。",
 	"special-recordWizard-title": "记录向导",
+	"mwe-recwiz-title": "录制音频",
 	"mwe-recwiz-step-tutorial": "教程",
 	"mwe-recwiz-step-speaker": "播音器",
 	"mwe-recwiz-step-details": "详情",
@@ -74,6 +76,7 @@
 	"mwe-recwiz-allfailed": "没有上传成功。",
 	"mwe-recwiz-settings-videorecording": "视频设置",
 	"mwe-recwiz-settings-audiorecording": "音频设置",
+	"mwe-recwiz-settings-sec": "秒",
 	"mwe-recwiz-error-mediastream-notallowed": "您没有允许访问麦克风。要使用记录向导，请前往您的浏览器设置允许它，并点击下面的按钮。",
 	"mwe-recwiz-error-mediastream-notfound": "找不到麦克风。要继续，您需要拥有一个麦克风，并连接到您的设备。",
 	"mwe-recwiz-error-mediastream-technical": "您的浏览器，或您的操作系统中的技术错误阻止了对您的麦克风的使用。请尝试重新载入页面。错误详情：$1",
