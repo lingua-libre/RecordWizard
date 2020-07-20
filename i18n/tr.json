@@ -5,6 +5,7 @@
 			"BaRaN6161 TURK",
 			"Hedda",
 			"KediÇobanı",
+			"Rapsar",
 			"Sayginer"
 		]
 	},
@@ -24,7 +25,7 @@
 	"mwe-recwiz-step-speaker": "Hoparlör",
 	"mwe-recwiz-step-details": "Ayrıntılar",
 	"mwe-recwiz-step-studio": "Stüdyo",
-	"mwe-recwiz-step-publish": "Yayınla",
+	"mwe-recwiz-step-publish": "Yayımla",
 	"mwe-recwiz-prevent-close": "Bu sayfadan ayrılmak üzeresiniz. Yayınlanmayan tüm ses kayıtları kaybolacaktır. Yine de ayrılmak istiyor musun?",
 	"mwe-recwiz-cancel": "İptal",
 	"mwe-recwiz-next": "Sonraki",
@@ -32,7 +33,7 @@
 	"mwe-recwiz-continue": "Devam et",
 	"mwe-recwiz-continueanyway": "Yine de devam et",
 	"mwe-recwiz-retry": "yeniden yükleme başarısız oldu",
-	"mwe-recwiz-publish": "Wikimedia Commons'ta yayınla",
+	"mwe-recwiz-publish": "Wikimedia Commons'ta yayımla",
 	"mwe-recwiz-restart": "Daha fazla kelime kaydet",
 	"mwe-recwiz-tutorial-reopenpopup": "Pop-up'ı tekrar aç",
 	"mwe-recwiz-tutorial-activate": "Lütfen mikrofonunuza erişimin devam etmesine izin verin.",
