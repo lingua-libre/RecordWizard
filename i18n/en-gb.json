@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bjh21",
 			"NuqneH"
 		]
 	},
-	"mwe-recwiz-publish-title": "Publikation"
+	"mwe-recwiz-speaker-license": "Licence",
+	"mwe-recwiz-speaker-licensecontent": "I, $1, irrevocably grant anyone the right to use my audio records created with this tool under the following licence:"
 }
