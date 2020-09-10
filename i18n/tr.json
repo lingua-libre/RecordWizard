@@ -6,7 +6,8 @@
 			"Hedda",
 			"KediÇobanı",
 			"Rapsar",
-			"Sayginer"
+			"Sayginer",
+			"ToprakM"
 		]
 	},
 	"recordWizard": "RecordWizard",
@@ -80,7 +81,7 @@
 	"mwe-recwiz-details-generators": "Bir kelime üreteci deneyin",
 	"mwe-recwiz-details-noword": "Hiçbir kelime seçilmedi",
 	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|kelime|kelime}}",
-	"mwe-recwiz-generator-nearby": "Yakınındakiler",
+	"mwe-recwiz-generator-nearby": "Yakınımdakiler",
 	"mwe-recwiz-generator-list": "Yerel liste",
 	"mwe-recwiz-generator-wmcategory": "Wikimedia Kategorisi",
 	"mwe-recwiz-studio-title": "Stüdyo",
