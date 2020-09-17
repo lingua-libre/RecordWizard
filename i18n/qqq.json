@@ -6,6 +6,7 @@
 			"FF11",
 			"Liuxinyu970226",
 			"MarcoAurelio",
+			"MuratTheTurkish",
 			"Robby"
 		]
 	},
@@ -13,7 +14,7 @@
 	"recordwizard": "The name of the extension display on Special:SpecialPages",
 	"recordWizard-desc": "{{desc|name=RecordWizard|url=https://www.mediawiki.org/wiki/Extension:RecorderWizard}}",
 	"special-recordWizard-title": "Title of the special page Special:RecordWizard",
-	"special-recordWizard-intro": "Description appearing on top of <tvar|1>Special:{{ll|RecordWizard}}</>.",
+	"special-recordWizard-intro": "Description appearing on top of RecordWizard.",
 	"apihelp-query+rwrecords-summary": "{{doc-apihelp-summary|query+rwrecords}}",
 	"apihelp-query+rwrecords-param-language": "{{doc-apihelp-param|query+rwrecords|language}}",
 	"apihelp-query+rwrecords-param-speaker": "{{doc-apihelp-param|query+rwrecords|speaker}}",
