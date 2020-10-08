@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Abijeet Patro",
-			"Guilhelma"
+			"Guilhelma",
+			"Lyokoï"
 		]
 	},
 	"recordWizard": "RecordWizard",
 	"recordwizard": "Assistent d'enregistrament",
-	"recordWizard-desc": "Una aisina automatica, simpla d'utilizar per registrar unes fichièrs audio de prononciacion",
+	"recordWizard-desc": "Una aisina automatica, simpla d'utilizar per registrar unes fichièrs audio de prononciacion.",
 	"special-recordWizard-title": "Assistent d'enregistrament",
 	"mwe-recwiz-title": "Enregistrar una votz",
 	"mwe-recwiz-step-tutorial": "Tutorial",
