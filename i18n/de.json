@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Abijeet Patro",
+			"Ameisenigel",
 			"FF11",
 			"Metalhead64",
 			"Sebastian Wallroth"
@@ -27,7 +28,7 @@
 	"mwe-recwiz-tutorial-reopenpopup": "Das Popup erneut öffnen",
 	"mwe-recwiz-tutorial-activate": "Erlaube bitte den Zugriff auf dein Mikrofon, um fortzufahren.",
 	"mwe-recwiz-tutorial-title": "Überprüfe dein Mikrofon",
-	"mwe-recwiz-tutorial-help": "==== So geht's: ====\n# Wenn du bereiet bist, klicke die Taste oben, um einen Aufnahmeversuch zu starten.\n# Sprich ein Wort laut aus, zum Beispiel „die Sonne“\n# Höre deine Aufnahme an, um zu überprüfen, dass sie richtig ist\n# Passe deien Mikrofoneinstellugen wenn nötig an\n# Wenn alles passt, kannst du mit dem nächsten Schritt fortfahen!",
+	"mwe-recwiz-tutorial-help": "==== So geht's: ====\n# Wenn du bereit bist, klicke die Taste oben an, um einen Aufnahmeversuch zu starten.\n# Sprich ein Wort laut aus, zum Beispiel „die Sonne“\n# Höre deine Aufnahme an, um zu überprüfen, ob sie richtig ist.\n# Passe deine Mikrofoneinstellungen wenn nötig an.\n# Wenn alles passt, kannst du mit dem nächsten Schritt fortfahren!",
 	"mwe-recwiz-tutorial-info": "Um zu erfahren, wie du dein Mikrofon konfigurierst, besuche [[Special:MyLanguage/Help:Configure_your_microphone|diese Hilfeseite]].",
 	"mwe-recwiz-tutorial-mictester-info": "Wenn du bereit bist, klicke die Taste unten an, um die Testaufnahme zu starten.",
 	"mwe-recwiz-tutorial-mictester-start": "Test starten",
@@ -54,7 +55,7 @@
 	"mwe-recwiz-gender-other": "Anderes",
 	"mwe-recwiz-details-title": "Liste der aufzunehmenden Wörter",
 	"mwe-recwiz-details-placeholder": "Gib hier das aufzunehmende Wort an",
-	"mwe-recwiz-details-lang": "Sprache aufnehmen",
+	"mwe-recwiz-details-lang": "Du nimmst Wörter auf in:",
 	"mwe-recwiz-details-wordlist": "Liste der aufzunehmenden Worte",
 	"mwe-recwiz-details-randomise": "Liste zufällig mischen",
 	"mwe-recwiz-details-addwords": "Gib ein Wort ein und drücke <Eingabe> (oder mehrere Wörter, getrennt mit #)",
