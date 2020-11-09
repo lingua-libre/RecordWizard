@@ -3,13 +3,14 @@
 		"authors": [
 			"Abijeet Patro",
 			"Joseba",
-			"Sator"
+			"Sator",
+			"Theklan"
 		]
 	},
 	"recordWizard": "Itzulpen morroia",
 	"recordwizard": "Itzulpen morroia",
 	"recordWizard-desc": "Ahoskera audio fitxategiak grabatzeko tresna erabilerraza eta automatikoa.",
-	"special-recordWizard-title": "Itzulpen morroia",
+	"special-recordWizard-title": "Grabazioen morroia",
 	"mwe-recwiz-step-tutorial": "Tutoriala",
 	"mwe-recwiz-step-speaker": "Hiztuna",
 	"mwe-recwiz-step-details": "Xehetasunak",
