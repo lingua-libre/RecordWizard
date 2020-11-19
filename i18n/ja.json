@@ -39,7 +39,7 @@
 	"mwe-recwiz-tutorial-reopenpopup": "ポップアップを再オープン",
 	"mwe-recwiz-tutorial-activate": "続けるにはあなたのマイクへのアクセスを許可してください。",
 	"mwe-recwiz-tutorial-title": "あなたのマイクを確認してください",
-	"mwe-recwiz-tutorial-help": "==== こちらがその手順です: ====\n# 準備ができたら、ボタンを押してお試し録音を始めます。\n# 声に出して単語を読み上げます。例 \"太陽\"\n# 自分の録音が正しいかどうかよく聴いてチェックします。\n# 必要ならマイクの設定を調整します。\n# 全て正しければ、次のステップに進んでください！",
+	"mwe-recwiz-tutorial-help": "==== こちらがその手順です: ====\n# 準備ができたら、ボタンを押してお試し録音を始めます。\n# 声に出して単語を読み上げます。例 「太陽」\n# 自分の録音が正しいかどうかよく聴いてチェックします。\n# 必要ならマイクの設定を調整します。\n# 全て正しければ、次のステップに進んでください！",
 	"mwe-recwiz-tutorial-info": "マイクの設定方法は[[Special:MyLanguage/Help:Configure_your_microphone|こちらのヘルプページ]]を参照。",
 	"mwe-recwiz-tutorial-mictester-info": "準備ができたら、下記のボタンを押してお試し録音を始めます。",
 	"mwe-recwiz-tutorial-mictester-start": "テストを始める",
