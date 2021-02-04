@@ -1,7 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Nirajan pant"
+			"Abijeet Patro",
+			"Nirajan pant",
+			"पर्वत सुबेदी",
+			"हिमाल सुबेदी"
 		]
 	},
 	"mwe-recwiz-step-publish": "प्रकाशन गर्नुहोस्",
@@ -9,11 +12,10 @@
 	"mwe-recwiz-previous": "पछिल्लो",
 	"mwe-recwiz-continueanyway": "जसरी पनि चालू राख्नुहोस्",
 	"mwe-recwiz-retry": "असफल उर्ध्वभरण फेरि प्रयास गर्नुहोस्",
-	"mwe-recwiz-locutor-name": "देखाउनका निमित्त नाम",
-	"mwe-recwiz-locutor-languagelevel": "भाषा तह",
-	"mwe-recwiz-locutor-languagelevel-beginner": "सिकारू",
-	"mwe-recwiz-locutor-license": "इजाजतपत्र",
-	"mwe-recwiz-locutor-gender": "लिङ्ग",
+	"mwe-recwiz-speaker-languagelevel": "भाषा तह",
+	"mwe-recwiz-speaker-languagelevel-beginner": "सिकारू",
+	"mwe-recwiz-speaker-license": "इजाजतपत्र",
+	"mwe-recwiz-speaker-gender": "लिङ्ग",
 	"mwe-recwiz-gender-male": "पुरुष",
 	"mwe-recwiz-gender-female": "महिला",
 	"mwe-recwiz-gender-other": "अन्य",
@@ -25,5 +27,7 @@
 	"mwe-recwiz-pendinguplads": "...उर्ध्वभरण गरिँदै...",
 	"mwe-recwiz-nearby-coordinates": "निर्देशाङ्कहरू",
 	"mwe-recwiz-nearby-limit-help": "यो १ र ५०० को बीचको पूर्णाङ्क हुनुपर्दछ।",
-	"mwe-recwiz-list-title": "शीर्षक"
+	"mwe-recwiz-list-title": "शीर्षक",
+	"mwe-recwiz-wmcategory-wikipedia": "विकिपिडिया",
+	"mwe-recwiz-wmcategory-wiktionary": "विक्सनरी"
 }
