@@ -172,12 +172,11 @@ class SpecialRecordWizard extends SpecialPage {
 		}
 
 		$licensesMessage = $this->msg( 'licenses' );
-		// Some languages have recursive fallbacks (oc↔ca, nb↔nn, pt↔pt_BR for instance)
-		$seenLanguages = [];
-		while( $licensesMessage->plain() == '-' && !in_array( $licensesMessage->getLanguage()->getCode(), $seenLanguages ) && $licensesMessage->getLanguage()->getCode() != 'en' ) {
-			$fallbackLanguage = $licensesMessage->getLanguage()->getFallbackLanguages()[ 0 ];
+		$fallbackLanguages = $licensesMessage->getLanguage()->getFallbackLanguages();
+		$i = 0;
+		while( $licensesMessage->plain() == '-' && $i < count( $fallbackLanguages ) ) {
+			$fallbackLanguage = $fallbackLanguages[$i++];
 			$licensesMessage->inLanguage( $fallbackLanguage );
-			$seenLanguages[] = $licensesMessage->getLanguage()->getCode();
 		}
 		if ( $licensesMessage->plain() != '-' ) {
 			$licenses = new Licenses( [ 'fieldname' => 'licenses', 'licenses' => $licensesMessage->plain() ] );
