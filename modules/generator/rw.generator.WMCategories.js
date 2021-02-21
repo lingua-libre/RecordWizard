@@ -20,13 +20,16 @@
 			wiktionary: {
 				label: 'Wiktionary',
 				property: rw.store.config.data.properties.wiktionaryEntry
-			}
+			},
 			// wikibooks: { label: 'Wikibooks', property: '' },
 			// wikinews: { label: 'Wikinews', property: '' },
 			// wikiquote: { label: 'Wikiquote', property: '' },
 			// wikisource: { label: 'Wikisource', property: '' },
 			// wikiversity: { label: 'Wikiversity', property: '' },
-			// wikivoyage: { label: 'Wikivoyage', property: '' }
+			wikivoyage: {
+				label: 'Wikivoyage',
+				property: rw.store.config.data.properties.wikivoyageTitle
+			}
 		};
 		this.siteMatrix = {};
 		this.metaApi = new mw.ForeignApi( 'https://meta.wikimedia.org/w/api.php', {
