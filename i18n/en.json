@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Antoine Lamielle"
+			"Antoine Lamielle",
+			"Poslovitch"
 		]
 	},
 	"recordWizard": "RecordWizard",
@@ -129,6 +130,13 @@
 	"mwe-recwiz-settings-marginbefore": "Margin to keep before:",
 	"mwe-recwiz-settings-marginafter": "Margin to keep after:",
 	"mwe-recwiz-settings-sec": "sec.",
+
+	"mwe-recwiz-shortcuts-title": "Shortcuts",
+	"mwe-recwiz-shortcuts-previous-word": "Go to the previous word",
+	"mwe-recwiz-shortcuts-next-word": "Go to the next word",
+	"mwe-recwiz-shortcuts-delete-recording": "Delete the selected recording",
+	"mwe-recwiz-shortcuts-listen-recording": "Listen to the selected recording",
+	"mwe-recwiz-shortcuts-toggle-recording": "Toggle recording",
 
 	"mwe-recwiz-error-mediastream-notallowed": "You didn’t allow access to the microphone. To use the RecordWizard, go in your browser settings to allow it, and click the button below.",
 	"mwe-recwiz-error-mediastream-notfound": "No microphone has been found. To continue, you have to get one and connect it to your device.",

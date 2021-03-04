@@ -7,7 +7,8 @@
 			"Liuxinyu970226",
 			"MarcoAurelio",
 			"MuratTheTurkish",
-			"Robby"
+			"Robby",
+			"Poslovitch"
 		]
 	},
 	"recordWizard": "The name of the extension",
@@ -119,7 +120,13 @@
 	"mwe-recwiz-settings-stopduration": "Label displayed in the user settings menu.",
 	"mwe-recwiz-settings-marginbefore": "Label displayed in the user settings menu.",
 	"mwe-recwiz-settings-marginafter": "Label displayed in the user settings menu.",
-	"mwe-recwiz-settings-sec": "Unit displayed at the end  of some fields, abbreviation of 'a second' (time unit).",
+	"mwe-recwiz-settings-sec": "Unit displayed at the end of some fields, abbreviation of 'a second' (time unit).",
+	"mwe-recwiz-shortcuts-title": "Text inside a popup, which explains to the user the keyboard shortcuts that are available to them",
+	"mwe-recwiz-shortcuts-previous-word": "Text explaining that this shortcut lets the user go backward through the list of words to record.",
+	"mwe-recwiz-shortcuts-next-word": "Text explaining that this shortcut lets the user go forward through the list of words to record.",
+	"mwe-recwiz-shortcuts-delete-recording": "Text explaining that this shortcut deletes the currently selected (highlighted) recording.",
+	"mwe-recwiz-shortcuts-listen-recording": "Text explaining that this shortcut lets the user listen to the currently selected (highlighted) recording.",
+	"mwe-recwiz-shortcuts-toggle-recording": "Text explaining that this shortcut toggles (either enable or disable) the recorder.",
 	"mwe-recwiz-error-mediastream-notallowed": "Error message occuring when the user disalow to share access to its microphone.",
 	"mwe-recwiz-error-mediastream-notfound": "Error message occuring when no microphone has been found.",
 	"mwe-recwiz-error-mediastream-technical": "Error message occuring when access to the microphone is blocked by a technical problem on the user's side.",
