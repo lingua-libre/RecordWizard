@@ -5,6 +5,7 @@
 			"Hedda",
 			"KediÇobanı",
 			"Rapsar",
+			"SaldırganSincap",
 			"Sayginer",
 			"ToprakM"
 		]
@@ -119,6 +120,8 @@
 	"mwe-recwiz-settings-marginbefore": "Daha önce saklanacak marj:",
 	"mwe-recwiz-settings-marginafter": "Daha sonra saklanacak marj:",
 	"mwe-recwiz-settings-sec": "saniye",
+	"mwe-recwiz-shortcuts-title": "Kısayollar",
+	"mwe-recwiz-shortcuts-delete-recording": "Seçili kaydı sil",
 	"mwe-recwiz-error-mediastream-notallowed": "Mikrofona erişime izin vermediniz. RecordWizard'ı kullanmak için izin vermek üzere tarayıcı ayarlarınıza gidin ve aşağıdaki düğmeyi tıklayın.",
 	"mwe-recwiz-error-mediastream-notfound": "Mikrofon bulunamadı. Devam etmek için bir tane almanız ve cihazınıza bağlamanız gerekiyor.",
 	"mwe-recwiz-error-mediastream-technical": "Tarayıcınızda veya işletim sisteminizde teknik bir hata, mikrofonunuzun kullanımını engellemektedir. Sayfayı yeniden yüklemeyi deneyin. Hata detayları: $1",
