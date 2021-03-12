@@ -83,6 +83,8 @@
 	"mwe-recwiz-settings-videorecording": "동영상 설정",
 	"mwe-recwiz-settings-audiorecording": "오디오 설정:",
 	"mwe-recwiz-settings-sec": "초",
+	"mwe-recwiz-shortcuts-title": "단축키",
+	"mwe-recwiz-shortcuts-next-word": "다음 단어로 가기",
 	"mwe-recwiz-error-mediastream-notallowed": "마이크에 대한 접근 권한을 허용하지 않았습니다. 녹음마법사를 사용하려면 브라우저 설정에서 이를 허용한 다음 아래의 버튼을 클릭하십시오.",
 	"mwe-recwiz-error-mediastream-notfound": "마이크가 발견되지 않았습니다. 계속하려면 마이크를 장치에 연결해야 합니다.",
 	"mwe-recwiz-error-mediastream-technical": "운영 체제(OS) 혹은 브라우저에 기술적인 오류로 인하여 마이크를 사용할 수 없습니다. 문서를 다시 로드해 보십시오. 오류 세부내용: $1",

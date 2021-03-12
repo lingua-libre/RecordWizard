@@ -3,7 +3,8 @@
 		"authors": [
 			"Guycn2",
 			"Rotemliss",
-			"Steeve815"
+			"Steeve815",
+			"YaronSh"
 		]
 	},
 	"recordWizard": "אשף ההקלטה",
@@ -70,6 +71,12 @@
 	"mwe-recwiz-allsucceeded": "כל ההעלאות הושלמו בהצלחה!",
 	"mwe-recwiz-somefailed": "העלאה או העלאות מסוימות נכשלו.",
 	"mwe-recwiz-allfailed": "אף אחת מההעלאות לא הושלמה בהצלחה.",
+	"mwe-recwiz-shortcuts-title": "קיצורי דרך",
+	"mwe-recwiz-shortcuts-previous-word": "מעבר למילה הקודמת",
+	"mwe-recwiz-shortcuts-next-word": "מעבר למילה הבאה",
+	"mwe-recwiz-shortcuts-delete-recording": "מחיקת ההקלטה הנוכחית",
+	"mwe-recwiz-shortcuts-listen-recording": "האזנה להקלטה הנבחרת",
+	"mwe-recwiz-shortcuts-toggle-recording": "החלפת מצב הקלטה",
 	"mwe-recwiz-error-mediastream-notallowed": "לא הענקת גישה לשימוש במיקרופון. כדי להשתמש באשף ההקלטה, יש להיכנס להגדרות הדפדפן על־מנת לאפשר את הגישה, ולאחר מכן ללחוץ על הכפתור שלמטה.",
 	"mwe-recwiz-error-mediastream-notfound": "לא נמצא מיקרופון. יש לחבר מיקרופון למכשיר כדי להמשיך.",
 	"mwe-recwiz-error-mediastream-technical": "שגיאה טכנית בדפדפן או במערכת ההפעלה שלך מנעה את השימוש במיקרופון. אפשר לנסות לטעון את הדף מחדש. פרטי השגיאה: $1",
