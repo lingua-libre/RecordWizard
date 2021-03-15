@@ -3,7 +3,8 @@
 		"authors": [
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
-			"Iohanen"
+			"Iohanen",
+			"Mariagarbin"
 		]
 	},
 	"recordWizard": "Assistente de gravação",
@@ -117,6 +118,7 @@
 	"mwe-recwiz-settings-marginafter": "Margem a manter após:",
 	"mwe-recwiz-settings-sec": "seg.",
 	"mwe-recwiz-shortcuts-title": "Atalhos",
+	"mwe-recwiz-shortcuts-previous-word": "Ir para a palavra anterior",
 	"mwe-recwiz-shortcuts-delete-recording": "Excluir a gravação selecionada",
 	"mwe-recwiz-shortcuts-listen-recording": "Ouça a gravação selecionada",
 	"mwe-recwiz-error-mediastream-notallowed": "Não permitiu acesso ao microfone. Para usar o Assistente de gravação, permita o acesso nas configurações do navegador e clique o botão abaixo.",
