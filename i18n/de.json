@@ -3,6 +3,7 @@
 		"authors": [
 			"Ameisenigel",
 			"Anna7321",
+			"FF-11",
 			"FF11",
 			"Metalhead64",
 			"Sebastian Wallroth"
@@ -82,7 +83,12 @@
 	"mwe-recwiz-allsucceeded": "Alle Uploads waren erfolgreich!",
 	"mwe-recwiz-somefailed": "Einige Uploads sind fehlgeschlagen.",
 	"mwe-recwiz-allfailed": "Keiner der Uploads war erfolgreich.",
+	"mwe-recwiz-shortcuts-title": "Abkürzungen",
 	"mwe-recwiz-shortcuts-previous-word": "Gehen Sie zum vorherigen Wort",
+	"mwe-recwiz-shortcuts-next-word": "Gehen zum nächsten Wort",
+	"mwe-recwiz-shortcuts-delete-recording": "Lösche die ausgewählte Aufzeichnung",
+	"mwe-recwiz-shortcuts-listen-recording": "Höre dir die ausgewählte Aufnahme an",
+	"mwe-recwiz-shortcuts-toggle-recording": "Aufnahme ein-/ausschalten",
 	"mwe-recwiz-error-mediastream-notallowed": "Du hast den Zugriff auf das Mikrofon nicht erlaubt. Um den Aufnahmeassistenten zu verwenden, rufe deine Browsereinstellungen auf, um den Zugriff zu erlauben und klicke unten auf die Schaltfläche.",
 	"mwe-recwiz-error-mediastream-notfound": "Es wurde kein Mikrofon gefunden. Um fortzufahren, verbinde eines mit deinem Gerät.",
 	"mwe-recwiz-error-mediastream-technical": "Ein technischer Fehler in deinem Browser oder Betriebssystem verhindert die Verwendung deines Mikrofons. Versuche, die Seite neu zu laden. Einzelheiten zum Fehler: $1",
