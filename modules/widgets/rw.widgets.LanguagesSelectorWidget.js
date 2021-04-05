@@ -7,7 +7,7 @@
 		config.classes = config.classes || [];
 		config.classes.push( 'mwe-recwiz-languagesSelectorWidget' );
 
-		OO.ui.CapsuleMultiselectWidget.call( this, config );
+		OO.ui.MenuTagMultiselectWidget.call( this, config );
 
 		this.languages = {};
 
@@ -26,7 +26,7 @@
 		this.on( 'remove', this.onRemove.bind( this ) );
 	};
 
-	OO.inheritClass( rw.widgets.LanguagesSelectorWidget, OO.ui.CapsuleMultiselectWidget );
+	OO.inheritClass( rw.widgets.LanguagesSelectorWidget, OO.ui.MenuTagMultiselectWidget );
 
 	rw.widgets.LanguagesSelectorWidget.prototype.setValue = function ( languages ) {
 		var lang,
@@ -37,7 +37,7 @@
 			selectedDatas.push( lang );
 		}
 
-		this.setItemsFromData( selectedDatas );
+		OO.ui.MenuTagMultiselectWidget.prototype.setValue.call( this, selectedDatas );
 	};
 
 	rw.widgets.LanguagesSelectorWidget.prototype.getValue = function () {

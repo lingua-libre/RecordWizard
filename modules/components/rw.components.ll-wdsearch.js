@@ -24,9 +24,9 @@
 		watch: {
 			value: function () {
 				this.$input.setQid( this.value, true );
-				if ( this.value === undefined ) {
-					this.$input.setValue( '' );
-				}
+				//if ( this.value === undefined ) {
+				//	this.$input.setValue( '' );
+				//}
 			},
 			disabled: function () {
 				this.$input.setDisabled( this.disabled );

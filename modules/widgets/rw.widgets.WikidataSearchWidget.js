@@ -30,7 +30,7 @@
 
 	rw.widgets.WikidataSearchWidget.prototype.setValue = function ( value, isQid ) {
 		if ( [ '', undefined, null ].indexOf( value ) === -1 ) {
-			if ( isQid === true || this.qid === null ) {
+			if ( /^Q\d+$/.test( value ) ) {
 				this.setQid( value, true );
 			}
 		} else {

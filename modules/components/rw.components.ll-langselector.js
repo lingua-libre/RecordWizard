@@ -13,19 +13,12 @@
 			}
 		},
 		mounted: function () {
-			var i,
-				items = [];
-
-			for ( i = 0; i < this.options.length; i++ ) {
-				items.push( new OO.ui.MenuOptionWidget( this.options[ i ] ) );
-			}
-
 			this.$input = new rw.widgets.LanguagesSelectorWidget( {
 				$element: $( this.$el ),
 				inputId: this.inputId,
 				disabled: this.disabled,
 				value: this.value,
-				menu: { items: items },
+				options: this.options,
 				indicator: 'required'
 			} );
 			this.$input.on( 'update', this.$emit.bind( this, 'input' ) );
