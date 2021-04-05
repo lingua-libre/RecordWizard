@@ -104,7 +104,6 @@
             ],
             "dependencies": [
                 "mediawiki.api",
-                "mediawiki.api.upload",
                 "ext.recordWizard.base"
             ]
         },
