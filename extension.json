@@ -201,6 +201,7 @@
                 "ext.recordWizard.widgets",
                 "oojs-ui.styles.icons-media",
                 "oojs-ui.styles.icons-content",
+                "oojs-ui.styles.icons-movement",
                 "oojs-ui.styles.icons-wikimedia",
                 "oojs-ui.styles.icons-interactions"
             ]
