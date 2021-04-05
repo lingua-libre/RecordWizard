@@ -3,32 +3,101 @@
 class I18nTemplateParser extends TemplateParser {
 
 	/**
-	 * Compile the Mustache code into PHP code using LightnCandy
+	 * Compile the Mustache template into PHP code using LightnCandy.
+	 *
 	 * This is a derivate from the original compile method of TemplateParser
-	 * @param string $code Mustache code
-	 * @return string PHP code (with '<?php')
-	 * @throws RuntimeException
+	 *
+	 * The compilation step generates both PHP code and metadata, which is also returned in the
+	 * result. An example result looks as follows:
+	 *
+	 *  ```php
+	 *  [
+	 *    'phpCode' => '...',
+	 *    'files' => [
+	 *      '/path/to/template.mustache',
+	 *      '/path/to/partial1.mustache',
+	 *      '/path/to/partial2.mustache',
+	 *    'filesHash' => '...'
+	 *  ]
+	 *  ```
+	 *
+	 * The `files` entry is a list of the files read during the compilation of the template. Each
+	 * entry is the fully-qualified filename, i.e. it includes path information.
+	 *
+	 * The `filesHash` entry can be used to determine whether the template has changed since it was
+	 * last compiled without compiling the template again. Currently, the `filesHash` entry is
+	 * generated with FileContentsHasher::getFileContentsHash.
+	 *
+	 * @param string $templateName The name of the template
+	 * @return array An associative array containing the PHP code and metadata about its compilation
+	 * @throws Exception Thrown by LightnCandy if it could not compile the Mustache code
+	 * @throws RuntimeException If LightnCandy could not compile the Mustache code but did not throw
+	 *  an exception. This exception is indicative of a bug in LightnCandy
+	 * @suppress PhanTypeMismatchArgument
 	 */
-	protected function compile( $code ) {
-		if ( !class_exists( 'LightnCandy' ) ) {
-			throw new RuntimeException( 'LightnCandy class not defined' );
+	protected function compile( $templateName ) {
+		$filename = $this->getTemplateFilename( $templateName );
+
+		if ( !file_exists( $filename ) ) {
+			throw new RuntimeException( "Could not find template `{$templateName}` at {$filename}" );
 		}
-		return LightnCandy::compile(
-			$code,
+
+		$files = [ $filename ];
+		$contents = file_get_contents( $filename );
+		$compiled = LightnCandy\LightnCandy::compile(
+			$contents,
 			[
 				'flags' => $this->compileFlags,
 				'basedir' => $this->templateDir,
 				'fileext' => '.mustache',
 				'helpers' => array(
 					'_' => function( $msg ) {
-						return wfMessage( ...$msg )->plain();
+						return wfMessage( $msg )->plain();
 					},
 					'__' => function( $msg ) {
-						return wfMessage( ...$msg )->parse();
+						return wfMessage( $msg )->parse();
 					},
 				),
+				'partialresolver' => function ( $cx, $partialName ) use ( $templateName, &$files ) {
+					$filename = "{$this->templateDir}/{$partialName}.mustache";
+					if ( !file_exists( $filename ) ) {
+						throw new RuntimeException( sprintf(
+							'Could not compile template `%s`: Could not find partial `%s` at %s',
+							$templateName,
+							$partialName,
+							$filename
+						) );
+					}
+
+					$fileContents = file_get_contents( $filename );
+
+					if ( $fileContents === false ) {
+						throw new RuntimeException( sprintf(
+							'Could not compile template `%s`: Could not find partial `%s` at %s',
+							$templateName,
+							$partialName,
+							$filename
+						) );
+					}
+
+					$files[] = $filename;
+
+					return $fileContents;
+				}
 			]
 		);
+		if ( !$compiled ) {
+			// This shouldn't happen because LightnCandy::FLAG_ERROR_EXCEPTION is set
+			// Errors should throw exceptions instead of returning false
+			// Check anyway for paranoia
+			throw new RuntimeException( "Could not compile template `{$filename}`" );
+		}
+
+		return [
+			'phpCode' => $compiled,
+			'files' => $files,
+			'filesHash' => FileContentsHasher::getFileContentsHash( $files ),
+		];
 	}
 }
 
