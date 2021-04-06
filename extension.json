@@ -144,6 +144,7 @@
                 "mwe-recwiz-nearby-getcoordinates",
                 "mwe-recwiz-nearby-source",
                 "mwe-recwiz-nearby-deduplicate",
+                "mwe-recwiz-error-nolanguages",
                 "mwe-recwiz-error-unsupportedlanguage",
                 "mwe-recwiz-error-cantgetposition",
                 "mwe-recwiz-warning-noresults",
