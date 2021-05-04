@@ -142,7 +142,7 @@
 						return false;
 					}
 				}
-				if ( Object.keys( this.metadata.speaker.languages ).length === 0 ) {
+				if ( Object.keys( this.metadata.speaker.languages || {} ).length === 0 ) {
 					OO.ui.alert( mw.msg( 'mwe-recwiz-error-nolanguages' ) );
 					return false;
 				}
