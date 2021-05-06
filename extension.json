@@ -123,7 +123,8 @@
                 "modules/generator/rw.generator.Generic.js",
                 "modules/generator/rw.generator.List.js",
                 "modules/generator/rw.generator.Nearby.js",
-                "modules/generator/rw.generator.WMCategories.js"
+                "modules/generator/rw.generator.WMCategories.js",
+                "modules/generator/rw.generator.ExternalTools.js"
             ],
             "dependencies": [
                 "oojs-ui",
