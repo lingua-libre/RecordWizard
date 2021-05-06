@@ -368,9 +368,9 @@
 
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.instanceOf ).setType( 'wikibase-item' ).setValue( rw.store.config.data.items.record ), true ); // InstanceOf
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.subclassOf ).setType( 'wikibase-item' ).setValue( rw.store.config.data.items.word ), true ); // SubclassOf
-		/* if ( mw.Debug === undefined ) { // Disable media on the dev environment
+		if ( mw.Debug === undefined ) { // Disable media on the dev environment
 			this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.audioRecord ).setType( 'commonsMedia' ).setValue( this.getFilename() ), true ); // Audio file
-		}*/
+		}
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.spokenLanguages ).setType( 'wikibase-item' ).setValue( this.language.qid ), true ); // Language
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.speaker ).setType( 'wikibase-item' ).setValue( this.speaker.qid ), true ); // Speaker
 		this.wbItem.addOrReplaceStatements( new rw.wikibase.Statement( rw.store.config.data.properties.date ).setType( 'time' ).setValue( {
