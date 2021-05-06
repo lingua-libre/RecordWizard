@@ -1,0 +1,3 @@
+[submodule "modules/wikibase-serialization"]
+	path = modules/wikibase-serialization
+	url = https://github.com/lingua-libre/WikibaseSerializationJavaScript

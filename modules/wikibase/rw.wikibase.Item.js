@@ -2,6 +2,7 @@
 
 ( function ( mw, $, rw, wb ) {
 
+	var serialization = require( 'ext.recordWizard.wikibase.serialization' );
 	var datamodel = require( 'wikibase.datamodel' );
 
 	rw.wikibase.Item = function ( itemId ) {
@@ -264,7 +265,7 @@
 	};
 
 	rw.wikibase.Item.prototype.serialize = function () {
-		var data = new wb.serialization.ItemSerializer().serialize( this._build() );
+		var data = new serialization.ItemSerializer().serialize( this._build() );
 		if ( this.itemId === '' ) {
 			delete data.id;
 		}
@@ -272,7 +273,7 @@
 	};
 
 	rw.wikibase.Item.prototype.serializeStatements = function () {
-		return new wb.serialization.StatementGroupSerializer().serialize( this._buildStatements() );
+		return new serialization.StatementGroupSerializer().serialize( this._buildStatements() );
 	};
 
 	rw.wikibase.Item.prototype.deserialize = function ( data ) {
