@@ -65,12 +65,14 @@
 	padding: 0;
 	width: 20px;
 	height: 20px;
+	min-height: 0;
 }
 #mwe-rwd-add > a > .oo-ui-iconElement-icon {
 	left: 0;
 	width: 18px;
 	min-width: 18px;
 	top: -1px;
+	margin-left: 0;
 }
 
 #mwe-rwd-input-help {

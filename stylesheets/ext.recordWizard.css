@@ -155,8 +155,9 @@ h3 {
     font-size: 22px;
     font-weight: 600;
 }
-.mwe-rw-content-title h3 {
+#mw-content-text .mwe-rw-content-title h3 {
     margin-right: auto;
+    margin-top: 0 !important;
 }
 #mwe-rw-content > .mwe-rw-content > section {
     padding-top: 22px;

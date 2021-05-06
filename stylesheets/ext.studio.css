@@ -364,6 +364,7 @@
 #mwe-rws-record .oo-ui-iconElement-icon {
 	width: 35px;
 	left: 17px;
+	margin-left: 0;
 }
 .mwe-rws-audio .oo-ui-icon-ll-record {
 	background-image: url('../icons/mic-white.svg')
