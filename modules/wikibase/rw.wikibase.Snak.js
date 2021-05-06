@@ -1,6 +1,8 @@
 'use strict';
 
-( function ( mw, $, rw, wb ) {
+( function ( mw, $, rw ) {
+
+	var datamodel = require( 'wikibase.datamodel' );
 
 	/*
 	existing type and data structure it takes as value:
@@ -64,17 +66,17 @@
 		var value, coordinates;
 
 		if ( this.value === null ) {
-			return new wb.datamodel.PropertyNoValueSnak( this.propertyId );
+			return new datamodel.PropertyNoValueSnak( this.propertyId );
 		}
 		if ( this.value === undefined ) {
-			return new wb.datamodel.PropertySomeValueSnak( this.propertyId );
+			return new datamodel.PropertySomeValueSnak( this.propertyId );
 		}
 
 		switch ( this.type ) {
 			case 'novalue':
-				return new wb.datamodel.PropertyNoValueSnak( this.propertyId );
+				return new datamodel.PropertyNoValueSnak( this.propertyId );
 			case 'somevalue':
-				return new wb.datamodel.PropertySomeValueSnak( this.propertyId );
+				return new datamodel.PropertySomeValueSnak( this.propertyId );
 			case 'globe-coordinate':
 				// TODO: calculate precision if not given
 				this.value.precision = 0.0001;
@@ -98,10 +100,10 @@
 				value = new dataValues.TimeValue( this.value.time, this.value );
 				break;
 			case 'wikibase-item':
-				value = new wb.datamodel.EntityId( this.value );
+				value = new datamodel.EntityId( this.value );
 				break;
 			case 'wikibase-property':
-				value = new wb.datamodel.EntityId( this.value );
+				value = new datamodel.EntityId( this.value );
 				break;
 
 			// covers commonsMedia, geo-shape, tabular-data, url, external-id and math
@@ -109,7 +111,7 @@
 				value = new dataValues.StringValue( this.value );
 				break;
 		}
-		return new wb.datamodel.PropertyValueSnak( this.propertyId, value );
+		return new datamodel.PropertyValueSnak( this.propertyId, value );
 	};
 
 	rw.wikibase.Snak.deserialize = function ( data ) {
@@ -135,4 +137,4 @@
 		return new rw.wikibase.Snak( propertyId, type, value );
 	};
 
-}( mediaWiki, jQuery, mediaWiki.recordWizard, wikibase ) );
+}( mediaWiki, jQuery, mediaWiki.recordWizard ) );

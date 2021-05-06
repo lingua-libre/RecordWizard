@@ -2,6 +2,8 @@
 
 ( function ( mw, $, rw, wb ) {
 
+	var datamodel = require( 'wikibase.datamodel' );
+
 	rw.wikibase.Item = function ( itemId ) {
 		this.itemId = itemId || '';
 		this.statementGroups = {};
@@ -220,12 +222,12 @@
 		var statementGroupSet = this._buildStatements(),
 			fingerprint = this._buildFingerprint();
 
-		return new wb.datamodel.Item( this.itemId, fingerprint, statementGroupSet );
+		return new datamodel.Item( this.itemId, fingerprint, statementGroupSet );
 	};
 
 	rw.wikibase.Item.prototype._buildStatements = function () {
 		var i, propertyId, statements, statementList, statementGroup,
-			statementGroupSet = new wb.datamodel.StatementGroupSet();
+			statementGroupSet = new datamodel.StatementGroupSet();
 
 		for ( propertyId in this.statementGroups ) {
 			if ( this.statementGroups[ propertyId ].length > 0 ) {
@@ -233,8 +235,8 @@
 				for ( i = 0; i < this.statementGroups[ propertyId ].length; i++ ) {
 					statements.push( this.statementGroups[ propertyId ][ i ]._build() );
 				}
-				statementList = new wb.datamodel.StatementList( statements );
-				statementGroup = new wb.datamodel.StatementGroup( propertyId, statementList );
+				statementList = new datamodel.StatementList( statements );
+				statementGroup = new datamodel.StatementGroup( propertyId, statementList );
 				statementGroupSet.addItem( statementGroup );
 			}
 		}
@@ -248,17 +250,17 @@
 			descriptionsMap = {};
 
 		for ( langCode in this.labels ) {
-			labelsMap[ langCode ] = new wb.datamodel.Term( langCode, this.labels[ langCode ] );
+			labelsMap[ langCode ] = new datamodel.Term( langCode, this.labels[ langCode ] );
 		}
 
 		for ( langCode in this.descriptions ) {
-			descriptionsMap[ langCode ] = new wb.datamodel.Term( langCode, this.descriptions[ langCode ] );
+			descriptionsMap[ langCode ] = new datamodel.Term( langCode, this.descriptions[ langCode ] );
 		}
 
-		labelsTermMap = new wb.datamodel.TermMap( labelsMap );
-		descriptionsTermMap = new wb.datamodel.TermMap( descriptionsMap );
+		labelsTermMap = new datamodel.TermMap( labelsMap );
+		descriptionsTermMap = new datamodel.TermMap( descriptionsMap );
 
-		return new wb.datamodel.Fingerprint( labelsTermMap, descriptionsTermMap );
+		return new datamodel.Fingerprint( labelsTermMap, descriptionsTermMap );
 	};
 
 	rw.wikibase.Item.prototype.serialize = function () {

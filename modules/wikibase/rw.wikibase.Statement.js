@@ -1,6 +1,8 @@
 'use strict';
 
-( function ( mw, $, rw, wb ) {
+( function ( mw, $, rw ) {
+
+	var datamodel = require( 'wikibase.datamodel' );
 
 	rw.wikibase.Statement = function ( propertyId, GUID ) {
 		this.GUID = GUID || null;
@@ -126,20 +128,20 @@
 	rw.wikibase.Statement.prototype._build = function () {
 		var i, claim, referenceList,
 			mainSnak = this.mainSnak._build(),
-			snakList = new wb.datamodel.SnakList();
+			snakList = new datamodel.SnakList();
 
 		for ( i = 0; i < this.qualifiers.length; i++ ) {
 			snakList.addItem( this.qualifiers[ i ]._build() );
 		}
 
-		claim = new wb.datamodel.Claim( mainSnak, snakList, this.GUID );
+		claim = new datamodel.Claim( mainSnak, snakList, this.GUID );
 
-		referenceList = new wb.datamodel.ReferenceList();
+		referenceList = new datamodel.ReferenceList();
 		for ( i = 0; i < this.references.length; i++ ) {
 			referenceList.addItem( this.references[ i ]._build() );
 		}
 
-		return new wb.datamodel.Statement( claim, referenceList, this.rank );
+		return new datamodel.Statement( claim, referenceList, this.rank );
 	};
 
 	rw.wikibase.Statement.deserialize = function ( data ) {
@@ -171,4 +173,4 @@
 		return statement;
 	};
 
-}( mediaWiki, jQuery, mediaWiki.recordWizard, wikibase ) );
+}( mediaWiki, jQuery, mediaWiki.recordWizard ) );

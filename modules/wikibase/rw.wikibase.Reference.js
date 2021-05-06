@@ -1,6 +1,8 @@
 'use strict';
 
-( function ( mw, $, rw, wb ) {
+( function ( mw, $, rw ) {
+
+	var datamodel = require( 'wikibase.datamodel' );
 
 	rw.wikibase.Reference = function ( hash ) {
 		this.hash = hash || null;
@@ -74,11 +76,11 @@
 
 	rw.wikibase.Reference.prototype._build = function () {
 		var i,
-			referenceSnakList = new wb.datamodel.SnakList();
+			referenceSnakList = new datamodel.SnakList();
 		for ( i = 0; i < this.snaks.length; i++ ) {
 			referenceSnakList.addItem( this.snaks[ i ]._build() );
 		}
-		return new wb.datamodel.Reference( referenceSnakList, this.hash ); // TODO: manage snaksOrder
+		return new datamodel.Reference( referenceSnakList, this.hash ); // TODO: manage snaksOrder
 	};
 
 	rw.wikibase.Reference.deserialize = function ( data ) {
@@ -97,4 +99,4 @@
 		return reference;
 	};
 
-}( mediaWiki, jQuery, mediaWiki.recordWizard, wikibase ) );
+}( mediaWiki, jQuery, mediaWiki.recordWizard ) );
