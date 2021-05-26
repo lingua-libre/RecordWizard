@@ -162,6 +162,7 @@
 	"mwe-recwiz-wmcategory-deduplicate": "Label of the switch controling the exclusion of words already recorded, in the 'Wikimedia Category' generator dialog box.",
 	"mwe-recwiz-wmcategory-limit": "Label of the limit field, in the 'Wikimedia Category' generator dialog box.",
 	"mwe-recwiz-wmcategory-limit-help": "Help message displayed in a popup nextto the limit field, in the 'Wikimedia Category' generator dialog box.",
+	"mwe-recwiz-list-error-nopage": "Error message indicating that no page was entered.",
 	"mwe-recwiz-error-pagemissing": "Error message indicating that the given page cannot be found.",
 	"mwe-recwiz-error-nowiki": "Error message indicating that the generator cannot find a Wikipedia or a Wiktionary in the selected language."
 }

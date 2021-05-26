@@ -161,6 +161,7 @@
 	"mwe-recwiz-wmcategory-deduplicate": "Exclure les mots que vous avez déjà enregistrés",
 	"mwe-recwiz-wmcategory-limit": "Nombre de mots à obtenir",
 	"mwe-recwiz-wmcategory-limit-help": "Ce doit être un entier entre 1 et 2 000.",
+	"mwe-recwiz-list-error-nopage": "Entrez le nom de la page contenant la liste.",
 	"mwe-recwiz-error-pagemissing": "Il n’y a actuellement aucune page nommée « $1 ».",
 	"mwe-recwiz-error-nowiki": "Il n’y a aucune édition de Wikipédia ou du Wiktionnaire dans votre langue."
 }

@@ -62,6 +62,10 @@
 			namespace = mw.config.get( 'wgFormattedNamespaces' )[ rw.store.config.data.listNamespace ] + ':',
 			deduplicate = this.deduplicate.getValue();
 
+		if ( !title ) {
+			return new OO.ui.Error( mw.msg( 'mwe-recwiz-list-error-nopage' ) );
+		}
+
 		if ( title.lastIndexOf( namespace, 0 ) !== 0 ) {
 			title = namespace + title;
 		}

@@ -160,6 +160,7 @@
                 "mwe-recwiz-wmcategory-deduplicate",
                 "mwe-recwiz-wmcategory-limit",
                 "mwe-recwiz-wmcategory-limit-help",
+                "mwe-recwiz-list-error-nopage",
                 "mwe-recwiz-error-pagemissing",
                 "mwe-recwiz-error-nowiki"
             ]
