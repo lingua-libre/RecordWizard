@@ -53,7 +53,8 @@
     },
     "MessagesDirs": {
         "RecordWizard": [
-            "i18n"
+            "i18n",
+            "i18n/api"
         ]
     },
     "AutoloadNamespaces": {
