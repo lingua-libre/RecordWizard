@@ -157,6 +157,7 @@
 	"mwe-recwiz-wmcategory-deduplicate": "Excluir palavras que você já gravou",
 	"mwe-recwiz-wmcategory-limit": "Número de palavras para obter",
 	"mwe-recwiz-wmcategory-limit-help": "Deve ser um inteiro entre 1 e 2000.",
+	"mwe-recwiz-list-error-nopage": "Por favor, insira o nome da página que contém a lista.",
 	"mwe-recwiz-error-pagemissing": "Neste momento não existe nenhuma página com o nome \"$1\".",
 	"mwe-recwiz-error-nowiki": "Neste momento a Wikipédia e o Wikcionário não estão disponíveis no seu idioma."
 }

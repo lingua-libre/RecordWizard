@@ -162,6 +162,7 @@
 	"mwe-recwiz-wmcategory-deduplicate": "Önceden kaydettiğiniz kelimeleri hariç tutun",
 	"mwe-recwiz-wmcategory-limit": "Alınacak kelime sayısı",
 	"mwe-recwiz-wmcategory-limit-help": "1 ile 2000 arasında bir tam sayı olmalıdır.",
+	"mwe-recwiz-list-error-nopage": "Lütfen listeyi içeren sayfa adını girin.",
 	"mwe-recwiz-error-pagemissing": "Şu anda \"$1\" adında bir sayfa yok.",
 	"mwe-recwiz-error-nowiki": "Kendi dilinizde Vikipedi veya Vikisözlük yok."
 }

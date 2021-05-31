@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Guycn2",
 			"Rotemliss",
 			"Steeve815",
@@ -11,6 +12,7 @@
 	"recordwizard": "אשף ההקלטה",
 	"recordWizard-desc": "כלי אוטומטי וידידותי למשתמש להקלטת קובצי שמע.",
 	"special-recordWizard-title": "אשף ההקלטה",
+	"mwe-recwiz-title": "הקלטת קול",
 	"mwe-recwiz-step-tutorial": "מדריך",
 	"mwe-recwiz-step-speaker": "דובר",
 	"mwe-recwiz-step-details": "פרטים",
@@ -25,7 +27,7 @@
 	"mwe-recwiz-restart": "הקלטת מילים נוספות",
 	"mwe-recwiz-tutorial-reopenpopup": "פתיחת חלונית האישור מחדש",
 	"mwe-recwiz-tutorial-activate": "נא לאפשר את הגישה למיקרופון שלך כדי להמשיך.",
-	"mwe-recwiz-tutorial-title": "המיקרופון שלך:",
+	"mwe-recwiz-tutorial-title": "בדיקת המיקרופון שלך",
 	"mwe-recwiz-tutorial-mictester-start": "התחלת הבדיקה",
 	"mwe-recwiz-tutorial-mictester-recording": "1. יש לומר משהו",
 	"mwe-recwiz-tutorial-mictester-playing": "2. הקשבה",
@@ -34,6 +36,7 @@
 	"mwe-recwiz-speaker-profilemain": "הדובר הראשי שלך",
 	"mwe-recwiz-speaker-profileother": "דוברים אחרים",
 	"mwe-recwiz-speaker-profilenew": "יצירת דובר חדש",
+	"mwe-recwiz-speaker-name": "השם לתצוגה",
 	"mwe-recwiz-speaker-languages": "שפות מדוברות",
 	"mwe-recwiz-speaker-languagelevel": "רמת השליטה בשפה",
 	"mwe-recwiz-speaker-languagelevel-native": "שפת אם",
@@ -56,7 +59,7 @@
 	"mwe-recwiz-details-generators": "אין לך רעיון? אפשר לנסות מחולל מילים",
 	"mwe-recwiz-details-noword": "לא נבחרו מילים",
 	"mwe-recwiz-details-wordcount": "{{PLURAL:$1|מילה אחת|$1 מילים}}",
-	"mwe-recwiz-generator-nearby": "פריטים בסביבה",
+	"mwe-recwiz-generator-nearby": "בסביבה",
 	"mwe-recwiz-generator-list": "רשימה מקומית",
 	"mwe-recwiz-generator-wmcategory": "קטגוריה של ויקימדיה",
 	"mwe-recwiz-studio-input-placeholder": "הוספת מילה חדשה",
