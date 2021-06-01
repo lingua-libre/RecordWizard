@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Abijeet Patro",
+			"Antoine Lamielle",
+			"FF-11",
+			"FF11",
+			"Liuxinyu970226",
+			"MarcoAurelio",
+			"MuratTheTurkish",
+			"Poslovitch",
+			"Robby",
+			"Amire80"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "{{doc-apihelp-summary|query+rwrecords}}",
+	"apihelp-query+rwrecords-param-language": "{{doc-apihelp-param|query+rwrecords|language}}",
+	"apihelp-query+rwrecords-param-speaker": "{{doc-apihelp-param|query+rwrecords|speaker}}",
+	"apihelp-query+rwrecords-param-sort": "{{doc-apihelp-param|query+rwrecords|sort}}",
+	"apihelp-query+rwrecords-param-dir": "{{doc-apihelp-param|query+rwrecords|dir}}",
+	"apihelp-query+rwrecords-param-format": "{{doc-apihelp-param|query+rwrecords|format}}",
+	"apihelp-query+rwrecords-param-limit": "{{doc-apihelp-param|query+rwrecords|limit}}"
+}
