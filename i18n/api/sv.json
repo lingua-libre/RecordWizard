@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ainali",
+			"Sabelöga",
+			"WikiPhoenix"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Lista alla transkriberingar av inspelningar från en talare av ett angivet språk.",
+	"apihelp-query+rwrecords-param-language": "Språkets lokala wikibase-objekts Qid.",
+	"apihelp-query+rwrecords-param-speaker": "Talarens lokala wikibase-objekts Qid.",
+	"apihelp-query+rwrecords-param-sort": "Egenskap att sortera efter.",
+	"apihelp-query+rwrecords-param-dir": "Sorteringsriktning.",
+	"apihelp-query+rwrecords-param-limit": "Hur många transkriberingar att returnera totalt."
+}

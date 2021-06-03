@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jmontane",
+			"Vriullop"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Llista totes les transcripcions d'enregistraments fetes per un locutor en una llengua determinada.",
+	"apihelp-query+rwrecords-param-language": "Qid de l'element de la llengua en el wikibase local.",
+	"apihelp-query+rwrecords-param-speaker": "Qid de l'element del locutor en el wikibase local.",
+	"apihelp-query+rwrecords-param-sort": "Propietat usada per ordenar.",
+	"apihelp-query+rwrecords-param-dir": "Direcció de l'ordenació",
+	"apihelp-query+rwrecords-param-format": "Element a obtenir com a resultat.",
+	"apihelp-query+rwrecords-param-limit": "Quantes transcripcions en total a retornar."
+}

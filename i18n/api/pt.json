@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"GoEThe",
+			"Hamilton Abreu"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Listar todas as transcrições de gravações feitas por um locutor numa determinada língua.",
+	"apihelp-query+rwrecords-param-language": "Qid do elemento wikibase local da língua.",
+	"apihelp-query+rwrecords-param-speaker": "Qid do elemento wikibase local do locutor.",
+	"apihelp-query+rwrecords-param-sort": "Propriedade pela qual fazer a ordenação.",
+	"apihelp-query+rwrecords-param-dir": "Sentido da ordenação.",
+	"apihelp-query+rwrecords-param-format": "Elemento a obter como resultado (output).",
+	"apihelp-query+rwrecords-param-limit": "Quantas transcrições no total a devolver."
+}

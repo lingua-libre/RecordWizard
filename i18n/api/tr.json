@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"BaRaN6161 TURK"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Belirli bir dilde bir konuşmacı tarafından yapılan kayıtların tüm kopyalarını listeleyin.",
+	"apihelp-query+rwrecords-param-language": "Dilin yerel wikibase öğesi.",
+	"apihelp-query+rwrecords-param-speaker": "Dilin yerel wikibase öğesi.",
+	"apihelp-query+rwrecords-param-sort": "Sıralama özelliği.",
+	"apihelp-query+rwrecords-param-dir": "Sıralamanın yönü.",
+	"apihelp-query+rwrecords-param-format": "Çıkış olarak alınacak öğe.",
+	"apihelp-query+rwrecords-param-limit": "Toplamda kaç tane transkripsiyon döndürülecek."
+}

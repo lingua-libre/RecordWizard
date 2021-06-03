@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Theklan"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Hiztun baten nahi den hizkuntzan egindako grabazio guztien zerrenda eman.",
+	"apihelp-query+rwrecords-param-language": "Hizkuntzaren wikibase itemaren Qid kodea.",
+	"apihelp-query+rwrecords-param-speaker": "Hiztunzaren wikibase lokaleko itemaren Qid kodea.",
+	"apihelp-query+rwrecords-param-sort": "Propietate honen arabera sailkatu.",
+	"apihelp-query+rwrecords-param-dir": "Saikatze ordena.",
+	"apihelp-query+rwrecords-param-format": "Irteera gisa lortu nahi den elementua.",
+	"apihelp-query+rwrecords-param-limit": "Zenbat transkripzio nahi dituzu lortu."
+}

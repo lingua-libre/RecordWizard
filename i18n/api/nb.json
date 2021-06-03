@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "List opp alle transkripsjoner av innspillinger gjort av en taler på et gitt språk.",
+	"apihelp-query+rwrecords-param-language": "Q-ID-en til språkets lokale Wikibase-element.",
+	"apihelp-query+rwrecords-param-speaker": "Q-ID-en til talerens lokale Wikibase-element.",
+	"apihelp-query+rwrecords-param-sort": "Egenskap det skal sorteres etter.",
+	"apihelp-query+rwrecords-param-dir": "Sorteringsretning.",
+	"apihelp-query+rwrecords-param-format": "Element som skal gis som resultat.",
+	"apihelp-query+rwrecords-param-limit": "Hvor mange transkripsjoner som skal returneres totalt."
+}

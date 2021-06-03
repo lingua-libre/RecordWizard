@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"ديفيد"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "أدرج جميع نسخ السجلات التي أدلى بها متحدث بلغة معينة.",
+	"apihelp-query+rwrecords-param-language": "معرف Q لعنصر قاعدة الويكي المحلي للغة.",
+	"apihelp-query+rwrecords-param-speaker": "معرف Q لعنصر قاعدة الويكي المحلي للمتحدث.",
+	"apihelp-query+rwrecords-param-sort": "خاصية للفرز وفقا لها.",
+	"apihelp-query+rwrecords-param-limit": "كم عدد إجمالي النسخ للعودة."
+}

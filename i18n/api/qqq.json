@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Abijeet Patro",
+			"Amire80",
 			"Antoine Lamielle",
 			"FF-11",
 			"FF11",
@@ -9,8 +10,7 @@
 			"MarcoAurelio",
 			"MuratTheTurkish",
 			"Poslovitch",
-			"Robby",
-			"Amire80"
+			"Robby"
 		]
 	},
 	"apihelp-query+rwrecords-summary": "{{doc-apihelp-summary|query+rwrecords}}",

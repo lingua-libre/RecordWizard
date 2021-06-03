@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Higa4"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "指定された言語の話者が作成した録音の全転写（トランスクリプション）をリスト化します。",
+	"apihelp-query+rwrecords-param-language": "言語のローカルwikibase項目のQ番号。",
+	"apihelp-query+rwrecords-param-speaker": "話者のローカルwikibase項目のQ番号。",
+	"apihelp-query+rwrecords-param-sort": "並べ替えに使用するプロパティ。",
+	"apihelp-query+rwrecords-param-dir": "ソートの方向",
+	"apihelp-query+rwrecords-param-format": "出力として取得するエレメント。",
+	"apihelp-query+rwrecords-param-limit": "返す転写（トランスクリプション）の合計数。"
+}

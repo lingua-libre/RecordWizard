@@ -11,8 +11,6 @@
 	"recordwizard": "녹음마법사",
 	"recordWizard-desc": "음성 발음 파일을 녹음하기 위한 사용자 친화적인 자동화 도구입니다.",
 	"special-recordWizard-title": "녹음 바법사",
-	"apihelp-query+rwrecords-param-dir": "정렬 방향입니다.",
-	"apihelp-query+rwrecords-param-format": "출력물로 가져올 요소입니다.",
 	"mwe-recwiz-title": "목소리 녹음",
 	"mwe-recwiz-step-tutorial": "강좌",
 	"mwe-recwiz-step-speaker": "화자",

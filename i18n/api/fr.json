@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"0x010C",
+			"Verdy p",
+			"Wladek92"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Lister toutes les transcriptions d’enregistrements fait par un locuteur et dans une langue donnée.",
+	"apihelp-query+rwrecords-param-language": "Qid de l’élément de la langue dans la wikibase locale.",
+	"apihelp-query+rwrecords-param-speaker": "Qid de l’élément du locuteur dans la wikibase locale.",
+	"apihelp-query+rwrecords-param-sort": "Propriété sur laquelle trier.",
+	"apihelp-query+rwrecords-param-dir": "Direction du tri.",
+	"apihelp-query+rwrecords-param-format": "Elément à obtenir pour la sortie.",
+	"apihelp-query+rwrecords-param-limit": "Combien de transcriptions au total à retourner."
+}

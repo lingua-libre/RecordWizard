@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Piramidion"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Список усіх транскрипцій записів, виконаних мовцем указаною мовою.",
+	"apihelp-query+rwrecords-param-language": "Qid локального елемента мови у Вікібазі.",
+	"apihelp-query+rwrecords-param-speaker": "Qid локального елемента мовця у Вікібазі.",
+	"apihelp-query+rwrecords-param-sort": "Властивість, за якою сортувати.",
+	"apihelp-query+rwrecords-param-limit": "Скільки транскрипцій повернути загалом."
+}

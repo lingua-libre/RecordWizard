@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Patsagorn Y."
+		]
+	},
+	"apihelp-query+rwrecords-summary": "รายการทั้งหมดของคำสำหรับบันทึกที่สร้างโดยผู้ใช้ภาษาที่คุณเลือก",
+	"apihelp-query+rwrecords-param-language": "รหัส Q ของไอเทมของภาษาในวิกิเบสท้องถิ่น",
+	"apihelp-query+rwrecords-param-speaker": "รหัส Q ของไอเทมของผู้ใช้ภาษาใมวิกิเบสท้องถิ่น",
+	"apihelp-query+rwrecords-param-sort": "คุณลักษณะที่จะเรียง",
+	"apihelp-query+rwrecords-param-dir": "ทิศทางของการจัดเรียง"
+}

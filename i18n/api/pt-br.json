@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardoaddad"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Listar todas as transcrições de registros feitas por um falante em um determinado idioma.",
+	"apihelp-query+rwrecords-param-language": "Qid do item local do wikibase do idioma.",
+	"apihelp-query+rwrecords-param-speaker": "Qid do item local do wikibase do locutor.",
+	"apihelp-query+rwrecords-param-sort": "Propriedade pela qual ordenar.",
+	"apihelp-query+rwrecords-param-dir": "Direção do tipo.",
+	"apihelp-query+rwrecords-param-format": "Elemento para obter como saída.",
+	"apihelp-query+rwrecords-param-limit": "Quantas transcrições no total para retornar."
+}

@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eavqwiki",
+			"Noé",
+			"WikiLucas00"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Enumerar todas las transcripciones de grabaciones realizadas por un locutor en una lengua determinada.",
+	"apihelp-query+rwrecords-param-language": "Qid del elemento wikibase local del idioma",
+	"apihelp-query+rwrecords-param-speaker": "Qid del elemento wikibase local del locutor",
+	"apihelp-query+rwrecords-param-sort": "Propiedad por la que realizar la ordenación.",
+	"apihelp-query+rwrecords-param-dir": "Dirección de la ordenación",
+	"apihelp-query+rwrecords-param-format": "Elemento a obtener como output.",
+	"apihelp-query+rwrecords-param-limit": "Cuántas transcripciones en total a devolver."
+}

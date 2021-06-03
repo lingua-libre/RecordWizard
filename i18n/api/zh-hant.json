@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "列出指定語言說話者做出的所有錄製。",
+	"apihelp-query+rwrecords-param-language": "語言的本地 wikibase 項目 Qid。",
+	"apihelp-query+rwrecords-param-speaker": "說話者的本地 wikibase 項目 Qid。",
+	"apihelp-query+rwrecords-param-sort": "作為排序順序的屬性。",
+	"apihelp-query+rwrecords-param-dir": "排序方向。",
+	"apihelp-query+rwrecords-param-format": "要取得的輸出元素。",
+	"apihelp-query+rwrecords-param-limit": "要回傳多少總錄製。"
+}

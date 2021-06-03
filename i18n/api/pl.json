@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Olaf",
+			"Poemat"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Wylistuj wszystkie transkrypcje nagrań dokonane przez posługującego się danym językiem.",
+	"apihelp-query+rwrecords-param-language": "Qid języka w lokalnej bazie",
+	"apihelp-query+rwrecords-param-speaker": "Qid spikera w lokalnej bazie",
+	"apihelp-query+rwrecords-param-sort": "Właściwość użyta do sortowania.",
+	"apihelp-query+rwrecords-param-dir": "Kierunek sortowania.",
+	"apihelp-query+rwrecords-param-format": "Element do pobrania jako wynik.",
+	"apihelp-query+rwrecords-param-limit": "Jak wiele transkrypcji zwrócić w sumie."
+}

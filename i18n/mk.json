@@ -8,13 +8,6 @@
 	"recordwizard": "Снимач на изговор",
 	"recordWizard-desc": "Алатка за лесно и автоматизирано снимање на изговори.",
 	"special-recordWizard-title": "Снимач на изговор",
-	"apihelp-query+rwrecords-summary": "Список на сите преписи од снимките направени од говорник на даден јазик.",
-	"apihelp-query+rwrecords-param-language": "назнака (Qid) на месниот предмет на Викибазата за јазикот.",
-	"apihelp-query+rwrecords-param-speaker": "назнака (Qid) на месниот предмет на Викибазата за говорникот.",
-	"apihelp-query+rwrecords-param-sort": "По кое својдство да се подредува.",
-	"apihelp-query+rwrecords-param-dir": "Насока на подредувањето.",
-	"apihelp-query+rwrecords-param-format": "Елемент што се дава како извод.",
-	"apihelp-query+rwrecords-param-limit": "Колку вкупно преписи да се дадат.",
 	"mwe-recwiz-title": "Снимете глас",
 	"mwe-recwiz-step-tutorial": "Упатство",
 	"mwe-recwiz-step-speaker": "Говорник",
@@ -154,6 +147,7 @@
 	"mwe-recwiz-wmcategory-deduplicate": "Изземи веќе снимени зборови",
 	"mwe-recwiz-wmcategory-limit": "Колку зборови да се дадат",
 	"mwe-recwiz-wmcategory-limit-help": "Мора да биде цел број помеѓу 1 и 2000.",
+	"mwe-recwiz-list-error-nopage": "Внесете го името на страницата која го содржи списокот.",
 	"mwe-recwiz-error-pagemissing": "Засега нема страница наречена „$1“.",
 	"mwe-recwiz-error-nowiki": "Нема Википедија или Викиречник на вашиот јазик."
 }

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Список на сите преписи од снимките направени од говорник на даден јазик.",
+	"apihelp-query+rwrecords-param-language": "назнака (Qid) на месниот предмет на Викибазата за јазикот.",
+	"apihelp-query+rwrecords-param-speaker": "назнака (Qid) на месниот предмет на Викибазата за говорникот.",
+	"apihelp-query+rwrecords-param-sort": "По кое својдство да се подредува.",
+	"apihelp-query+rwrecords-param-dir": "Насока на подредувањето.",
+	"apihelp-query+rwrecords-param-format": "Елемент што се дава како извод.",
+	"apihelp-query+rwrecords-param-limit": "Колку вкупно преписи да се дадат."
+}
