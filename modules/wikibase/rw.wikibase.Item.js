@@ -246,9 +246,10 @@
 	};
 
 	rw.wikibase.Item.prototype._buildFingerprint = function () {
-		var langCode, labelsTermMap, descriptionsTermMap,
+		var langCode, labelsTermMap, descriptionsTermMap, aliasesMultiTermMap,
 			labelsMap = {},
-			descriptionsMap = {};
+			descriptionsMap = {},
+			aliasesMap = {};
 
 		for ( langCode in this.labels ) {
 			labelsMap[ langCode ] = new datamodel.Term( langCode, this.labels[ langCode ] );
@@ -258,10 +259,15 @@
 			descriptionsMap[ langCode ] = new datamodel.Term( langCode, this.descriptions[ langCode ] );
 		}
 
+		for ( langCode in this.aliases ) {
+			aliasesMap[ langCode ] = new datamodel.MultiTerm( langCode, this.aliases[ langCode ] );
+		}
+
 		labelsTermMap = new datamodel.TermMap( labelsMap );
 		descriptionsTermMap = new datamodel.TermMap( descriptionsMap );
+		aliasesMultiTermMap = new datamodel.MultiTermMap( aliasesMap );
 
-		return new datamodel.Fingerprint( labelsTermMap, descriptionsTermMap );
+		return new datamodel.Fingerprint( labelsTermMap, descriptionsTermMap, aliasesMultiTermMap );
 	};
 
 	rw.wikibase.Item.prototype.serialize = function () {
