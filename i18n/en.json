@@ -135,7 +135,7 @@
 	"mwe-recwiz-error-mediastream-technical": "A technical error in your browser or in your operating system prevent the use of your microphone. Try to reload the page. Error details: $1",
 	"mwe-recwiz-error-mediastream-unknow": "An unknow error prevent the use of your microphone. Try to reload the page.",
 	"mwe-recwiz-error-noname": "You must choose a name for your speaker.",
-	"mwe-recwiz-error-duplicatename": "You already have a speaker called $1. Each of your speakerss must have a different name.",
+	"mwe-recwiz-error-duplicatename": "You already have a speaker called $1. Each of your speakers must have a different name.",
 	"mwe-recwiz-error-nolanguages": "I'm sure you're speaking at least one language ;)",
 	"mwe-recwiz-error-emptylist": "You have to choose some words to continue.",
 	"mwe-recwiz-error-network": "Unable to contact the server. Please check your internet connection and try again.",
