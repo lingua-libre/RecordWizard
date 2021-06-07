@@ -114,6 +114,7 @@
 	"mwe-recwiz-wmcategory-wiktionary": "위키낱말사전",
 	"mwe-recwiz-wmcategory-limit": "가져올 단어 수",
 	"mwe-recwiz-wmcategory-limit-help": "1과 2000 사이의 정수여야 합니다.",
+	"mwe-recwiz-list-error-nopage": "목록을 포함하는 문서 이름을 입력해 주십시오.",
 	"mwe-recwiz-error-pagemissing": "현재 \"$1\" 이름의 문서가 없습니다.",
 	"mwe-recwiz-error-nowiki": "당신의 언어로 된 위키백과나 위키낱말사전이 없습니다."
 }
