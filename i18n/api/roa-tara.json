@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Elenghe de tutte le trascriziune de le record fatte da 'nu aprlatore jndr'à 'na certa lènghe.",
+	"apihelp-query+rwrecords-param-language": "Qid de l'elemende uicchibase locale d'a lènghe.",
+	"apihelp-query+rwrecords-param-speaker": "Qid de l'elemende uicchibase locale d'u parlatore.",
+	"apihelp-query+rwrecords-param-sort": "Probbietà pe l'ordenamende.",
+	"apihelp-query+rwrecords-param-dir": "Direzione de l'ordenamende.",
+	"apihelp-query+rwrecords-param-format": "Elemende da pigghià cumme resultate.",
+	"apihelp-query+rwrecords-param-limit": "Quanda trascriziune da turnà."
+}

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "לרשום את כל התעתיקים של הקלטות שנעשו על־ידי דובר שפה נתונה.",
+	"apihelp-query+rwrecords-param-language": "מזהה Q של פריט הוויקיבייס המקומי של השפה.",
+	"apihelp-query+rwrecords-param-speaker": "מזהה Q של פריט הוויקיבייס המקומי של הדובר.",
+	"apihelp-query+rwrecords-param-sort": "לפי איזה מאפיין למיין.",
+	"apihelp-query+rwrecords-param-dir": "כיוון המיון.",
+	"apihelp-query+rwrecords-param-format": "איזה רכיב לקבל בתור פלט.",
+	"apihelp-query+rwrecords-param-limit": "כמה תעתיקים להחזיר בסך־הכול."
+}
