@@ -146,7 +146,7 @@
 	"mwe-recwiz-error-cantgetposition": "Error message indicating that the automatic coordinates fetching has failed.",
 	"mwe-recwiz-warning-noresults": "Warning message indicating that the request gives no results.",
 	"mwe-recwiz-list-title": "Label of the page title field, in the list generator dialog box.",
-	"mwe-recwiz-list-title-help": "Help message displayed in a popup nextto the page title field, in the list generator dialog box.",
+	"mwe-recwiz-list-title-help": "Help message displayed in a popup next to the page title field, in the list generator dialog box.",
 	"mwe-recwiz-list-deduplicate": "Label of the switch controling the exclusion of words already recorded, in the list generator dialog box.",
 	"mwe-recwiz-wmcategory-title": "Label of the page title field, in the 'Wikimedia Category' generator dialog box.",
 	"mwe-recwiz-wmcategory-title-help": "Help message displayed in a popup nextto the page title field, in the 'Wikimedia Category' generator dialog box.",
