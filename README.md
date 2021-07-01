@@ -87,6 +87,9 @@ See also the list of [contributors](https://github.com/lingua-libre/RecordWizard
 
 This project is licensed under the GPL v2.0 License - see the [LICENSE](LICENSE) file for details
 
+## See also
+- "Create a new generator" help page: https://lingualibre.org/wiki/Help:Create_a_new_generator
+
 ## Acknowledgments
 - Development of this extension was originally funded by a grant of the Wikimedia Foundation (January -> July 2018)
 - Development was in a second time sponsored by Wikimédia France (Mars -> May 2020)
