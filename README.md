@@ -78,6 +78,10 @@ First, please read MediaWiki's [code of conduct](https://www.mediawiki.org/wiki/
 To find out your way through the code, here is a diagram showing the structure of the extension and the main interactions between it's components.
 <img src="doc/diagram.svg"/>
 
+### Tips & tricks
+
+Add [`$wgResourceLoaderDebug = true;`](https://www.mediawiki.org/wiki/Manual:$wgResourceLoaderDebug) in your `LocalSettings.php` to disable various minifying features built into the ResourceLoader, in order to ease your debugging work. Do not add that on a live production server.
+
 ## Authors
 - **Antoine Lamielle** - *architect and main developper of Lingua Libre* - [0x010C](https://github.com/0x010C)
 
