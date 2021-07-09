@@ -283,7 +283,7 @@
 					format: 'json',
 					title: 'User:' + mw.config.get( 'wgUserName' ) + '/RecordWizard.json',
 					text: JSON.stringify( userConfig ),
-					summary: 'personal config update',
+					summary: mw.msg( 'mwe-personal-config-update' ),
 					recreate: 1
 				} ).fail( function () {
 					// TODO: manage errors
