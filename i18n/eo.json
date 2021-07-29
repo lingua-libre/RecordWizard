@@ -2,18 +2,31 @@
 	"@metadata": {
 		"authors": [
 			"Lepticed",
-			"Robin van der Vliet"
+			"Robin van der Vliet",
+			"Vami"
 		]
 	},
+	"recordWizard": "Registradasistanto",
+	"recordwizard": "Registrada asistanto",
+	"recordWizard-desc": "Amikema kaj aŭtomatigita ilo registri sondosierojn de prononco.",
+	"special-recordWizard-title": "Registrada asistanto",
 	"mwe-recwiz-title": "Registri voĉon",
 	"mwe-recwiz-step-tutorial": "Lernilo",
 	"mwe-recwiz-step-speaker": "Parolanto",
 	"mwe-recwiz-step-details": "Detaloj",
+	"mwe-recwiz-step-studio": "Studio",
 	"mwe-recwiz-step-publish": "Publikigi",
+	"mwe-recwiz-prevent-close": "Vi forlasas ĉi paĝon. Ĉiuj konservita sonregistraĵoj perdiĝos. Ĉu vi volas foriri sekondiĉe?",
+	"mwe-recwiz-cancel": "Nuligi",
 	"mwe-recwiz-next": "Sekva",
 	"mwe-recwiz-previous": "Antaŭa",
 	"mwe-recwiz-continue": "Daŭrigi",
 	"mwe-recwiz-continueanyway": "Tamen daŭrigi",
+	"mwe-recwiz-retry": "reprovi malsukcesan alŝuton",
+	"mwe-recwiz-publish": "Publikigi ĉe al Vikimedia komunejo",
+	"mwe-recwiz-restart": "Registri pli da vortoj",
+	"mwe-recwiz-tutorial-reopenpopup": "Remalfermu la ŝprucfenestron",
+	"mwe-recwiz-tutorial-activate": "Bonvolu permesi uzi vian mikrofonon por daŭrigi.",
 	"mwe-recwiz-speaker-profilemain": "Via ĉefa parolanto",
 	"mwe-recwiz-speaker-profileother": "Aliaj parolantoj",
 	"mwe-recwiz-speaker-profilenew": "Krei novan parolanton",
