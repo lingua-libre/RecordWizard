@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"DDPAT",
 			"Movses",
 			"Piramidion",
 			"Vlad5250"
@@ -70,7 +71,7 @@
 	"mwe-recwiz-generator-list": "Локальний список",
 	"mwe-recwiz-generator-wmcategory": "Категорія Вікімедіа",
 	"mwe-recwiz-studio-title": "Студія",
-	"mwe-recwiz-studio-info-audio": "Клацніть $1 нижче і прочитайте слово вголос.",
+	"mwe-recwiz-studio-info-audio": "Клацніть $1 нижче і прочитайте слово вголос",
 	"mwe-recwiz-studio-info-video": "Клацніть $1 нижче і промовте слово мовою жестів",
 	"mwe-recwiz-studio-skip": "Пропустити",
 	"mwe-recwiz-studio-input-placeholder": "Додати нове слово",
