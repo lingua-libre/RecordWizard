@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"DDPAT",
 			"Piramidion"
 		]
 	},
@@ -8,5 +9,7 @@
 	"apihelp-query+rwrecords-param-language": "Qid локального елемента мови у Вікібазі.",
 	"apihelp-query+rwrecords-param-speaker": "Qid локального елемента мовця у Вікібазі.",
 	"apihelp-query+rwrecords-param-sort": "Властивість, за якою сортувати.",
+	"apihelp-query+rwrecords-param-dir": "Напрямок сорту.",
+	"apihelp-query+rwrecords-param-format": "Елемент для отримання як вихід.",
 	"apihelp-query+rwrecords-param-limit": "Скільки транскрипцій повернути загалом."
 }
