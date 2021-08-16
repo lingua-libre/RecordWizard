@@ -6,7 +6,8 @@
 			"FF-11",
 			"FF11",
 			"Metalhead64",
-			"Sebastian Wallroth"
+			"Sebastian Wallroth",
+			"Zabe"
 		]
 	},
 	"recordWizard": "Aufnahmeassistent",
@@ -83,6 +84,7 @@
 	"mwe-recwiz-allsucceeded": "Alle Uploads waren erfolgreich!",
 	"mwe-recwiz-somefailed": "Einige Uploads sind fehlgeschlagen.",
 	"mwe-recwiz-allfailed": "Keiner der Uploads war erfolgreich.",
+	"mwe-recwiz-settings-videorecording": "Video-Einstellungen",
 	"mwe-recwiz-shortcuts-title": "Abkürzungen",
 	"mwe-recwiz-shortcuts-previous-word": "Gehen Sie zum vorherigen Wort",
 	"mwe-recwiz-shortcuts-next-word": "Gehen zum nächsten Wort",
