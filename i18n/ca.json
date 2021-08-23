@@ -3,6 +3,7 @@
 		"authors": [
 			"Fitoschido",
 			"Jmontane",
+			"Toniher",
 			"Vriullop"
 		]
 	},
@@ -28,7 +29,7 @@
 	"mwe-recwiz-tutorial-reopenpopup": "Torna a obrir la finestra de diàleg",
 	"mwe-recwiz-tutorial-activate": "Autoritzeu l’accés al vostre micròfon per a continuar.",
 	"mwe-recwiz-tutorial-title": "Comproveu el micròfon",
-	"mwe-recwiz-tutorial-help": "==== Com fer-ho: ====\n# Quan estigueu llest, pitgeu el botó superior per a començar a enregistrar una prova.\n# Pronuncieu una paraula en veu alta, per exemple «el sol»\n# Escolteu el vostre enregistrament i comproveu que és correcte.\n# Si tot és correcte, podeu avançar al pas següent!",
+	"mwe-recwiz-tutorial-help": "==== Com fer-ho: ====\n# Quan estigueu llest, premeu el botó superior per a començar a enregistrar una prova.\n# Pronuncieu una paraula en veu alta, per exemple «el sol».\n# Escolteu el vostre enregistrament i comproveu que és correcte.\n# Si tot és correcte, podeu avançar al pas següent!",
 	"mwe-recwiz-tutorial-info": "Per a aprende a configurar el micròfon, visiteu [[Special:MyLanguage/Help:Configure_your_microphone|aquesta pàgina]].",
 	"mwe-recwiz-tutorial-mictester-info": "Quan estigueu preparat, premeu el botó de sota per a començar l'enregistrament de prova.",
 	"mwe-recwiz-tutorial-mictester-start": "Inicia la prova",
@@ -74,7 +75,7 @@
 	"mwe-recwiz-generator-list": "Llista local",
 	"mwe-recwiz-generator-wmcategory": "Categoria de Wikimedia",
 	"mwe-recwiz-studio-title": "Estudi",
-	"mwe-recwiz-studio-info-audio": "Feu clic sobre $1, i després llegiu el mot en veu alta.",
+	"mwe-recwiz-studio-info-audio": "Feu clic sobre $1, i després llegiu el mot en veu alta",
 	"mwe-recwiz-studio-info-video": "Feu clic sobre $1, i després feu el mot en la llengüa de signes",
 	"mwe-recwiz-studio-skip": "Omet",
 	"mwe-recwiz-studio-input-placeholder": "Afegiu un nou mot",
