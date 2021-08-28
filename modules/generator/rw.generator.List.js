@@ -94,21 +94,7 @@
 			this.list = content.split( '\n' );
 			for ( i = 0; i < this.list.length; i++ ) {
 				this.list[ i ] = this.list[ i ].replace( /^[*#]/, '' ).trim();
-			    
-				//Remove comment from the list
-				var isComment = false;
-  				if ( list[i].indexOf("-->") != -1) {
-    				    isComment = false;
-				    list.splice( i, 1 );
-				    i--; // Necessary as we've just removed an item of the list we're exploring
-				}
-			    	if ( list[i].indexOf("<!--") != -1 || isComment) {
-    				    isComment = true;
-				    list.splice( i, 1 );
-				    i--; // Necessary as we've just removed an item of the list we're exploring
-				}
-
-			        if ( deduplicate === true && this.isAlreadyRecorded( this.list[ i ] ) ) {
+				if ( deduplicate === true && this.isAlreadyRecorded( this.list[ i ] ) ) {
 					this.list.splice( i, 1 );
 					i--; // Necessary as we've just removed an item of the list we're exploring
 				}
