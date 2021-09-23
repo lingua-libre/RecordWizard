@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Abijeet Patro",
+			"Ajeje Brazorf",
 			"Amire80",
 			"Antoine Lamielle",
 			"FF-11",
@@ -21,7 +22,7 @@
 	"mwe-recwiz-title": "Main title of the special page.",
 	"mwe-recwiz-step-tutorial": "Name of a step displayed in the arrow line.",
 	"mwe-recwiz-step-speaker": "Name of a step displayed in the arrow line.",
-	"mwe-recwiz-step-details": "Name of a step displayed in the arrow line.",
+	"mwe-recwiz-step-details": "Name of a step displayed in the arrow line.\n\n{{Identical|Detail}}",
 	"mwe-recwiz-step-studio": "Name of a step displayed in the arrow line.",
 	"mwe-recwiz-step-publish": "Name of a step displayed in the arrow line.\n{{Identical|Publish}}",
 	"mwe-recwiz-prevent-close": "Message displayed in a popup box if the user clicks on the cancel button.",
