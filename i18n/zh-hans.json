@@ -6,6 +6,7 @@
 			"Liuxinyu970226",
 			"Nadine Siak",
 			"SomeyaMako",
+			"Xiplus",
 			"Zhang8569",
 			"列维劳德"
 		]
@@ -103,9 +104,9 @@
 	"mwe-recwiz-error-cantgetposition": "找不到您的位置，您需要手动设置坐标（$1）。",
 	"mwe-recwiz-warning-noresults": "这些坐标附近没有项目。",
 	"mwe-recwiz-list-title": "标题",
-	"mwe-recwiz-list-title-help": "列举的名字空间内页面的标题。",
+	"mwe-recwiz-list-title-help": "列举的命名空间内页面的标题。",
 	"mwe-recwiz-wmcategory-title": "分类名称",
-	"mwe-recwiz-wmcategory-title-help": "分类名称，包含Category名字空间。",
+	"mwe-recwiz-wmcategory-title-help": "分类名称，包含Category命名空间。",
 	"mwe-recwiz-wmcategory-source": "来源",
 	"mwe-recwiz-wmcategory-wikipedia": "维基百科",
 	"mwe-recwiz-wmcategory-wiktionary": "维基词典",
