@@ -76,7 +76,7 @@
 	"mwe-recwiz-generator-list": "Lista lokalna",
 	"mwe-recwiz-generator-wmcategory": "Kategoria Wikimedia",
 	"mwe-recwiz-studio-title": "Studio",
-	"mwe-recwiz-studio-info-audio": "Kliknij $1 poniżej, następnie odczytaj słowo na głos.",
+	"mwe-recwiz-studio-info-audio": "Kliknij $1 poniżej, następnie odczytaj słowo na głos",
 	"mwe-recwiz-studio-info-video": "Kliknij $1 poniżej, następnie powiedz słowo w jęzku migowym",
 	"mwe-recwiz-studio-skip": "Pomiń",
 	"mwe-recwiz-studio-input-placeholder": "Dodaj nowe słowo",
@@ -151,6 +151,7 @@
 	"mwe-recwiz-wmcategory-deduplicate": "Odrzuć słowa, które już nagrałeś",
 	"mwe-recwiz-wmcategory-limit": "Liczba słów do pobrania",
 	"mwe-recwiz-wmcategory-limit-help": "Musisz podać liczbę całkowitą między 1 a 2000.",
+	"mwe-recwiz-list-error-nopage": "Wprowadź nazwę strony zawierającej listę.",
 	"mwe-recwiz-error-pagemissing": "Obecnie nie ma strony o nazwie „$1”.",
 	"mwe-recwiz-error-nowiki": "W twoim języku nie ma Wikipedii ani Wikisłownika."
 }
