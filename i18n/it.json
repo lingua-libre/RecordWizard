@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Beta16",
 			"CloeRiva",
 			"Neamitika",
@@ -17,6 +18,7 @@
 	"mwe-recwiz-step-studio": "Studio",
 	"mwe-recwiz-step-publish": "Pubblica",
 	"mwe-recwiz-prevent-close": "Stai per lasciare questa pagina. Tutti le registrazioni audio non pubblicate verranno perse. Vuoi lasciare comunque?",
+	"mwe-recwiz-cancel": "Annulla",
 	"mwe-recwiz-next": "Successivo",
 	"mwe-recwiz-previous": "Precedente",
 	"mwe-recwiz-continue": "Continua",
