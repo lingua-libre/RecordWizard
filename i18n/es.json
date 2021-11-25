@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Adjen",
+			"Alvaro7863",
 			"Eavqwiki",
 			"Fitoschido",
 			"Geryescalier",
@@ -115,6 +116,12 @@
 	"mwe-recwiz-settings-marginbefore": "Margen a mantener antes:",
 	"mwe-recwiz-settings-marginafter": "Margen a mantener después:",
 	"mwe-recwiz-settings-sec": "s",
+	"mwe-recwiz-shortcuts-title": "Atajos",
+	"mwe-recwiz-shortcuts-previous-word": "Anda a la palabra anterior",
+	"mwe-recwiz-shortcuts-next-word": "Anda a la palabra siguiente",
+	"mwe-recwiz-shortcuts-delete-recording": "Elimina la grabación seleccionada",
+	"mwe-recwiz-shortcuts-listen-recording": "Escucha la grabación seleccionada",
+	"mwe-recwiz-shortcuts-toggle-recording": "Activa/desactiva la grabación",
 	"mwe-recwiz-error-mediastream-notallowed": "No permitió el acceso al micrófono. Para utilizar el RecordWizard, vaya a la configuración del navegador para autorizarlo y haga clic en el botón de abajo.",
 	"mwe-recwiz-error-mediastream-notfound": "No se encontró ningún micrófono. Antes de continuar, consiga uno y conéctelo al dispositivo.",
 	"mwe-recwiz-error-mediastream-technical": "Se produjo un error técnico en el navegador o el sistema operativo que impide el uso del micrófono. Pruebe cargar la página de nuevo. Detalles del error: $1",
@@ -149,6 +156,7 @@
 	"mwe-recwiz-wmcategory-deduplicate": "Excluir las palabras ya grabadas",
 	"mwe-recwiz-wmcategory-limit": "Número de palabras a obtener",
 	"mwe-recwiz-wmcategory-limit-help": "Debe ser un número entre 1 y 2000",
+	"mwe-recwiz-list-error-nopage": "Favor introduce el nombre de página que contiene la lista.",
 	"mwe-recwiz-error-pagemissing": "Actualmente no existe ninguna página denominada «$1».",
 	"mwe-recwiz-error-nowiki": "No hay ninguna edición de Wikipedia o de Wikcionario en su idioma."
 }
