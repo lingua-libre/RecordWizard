@@ -3,6 +3,7 @@
 		"authors": [
 			"Adjen",
 			"Alvaro7863",
+			"Danniel07",
 			"Eavqwiki",
 			"Fitoschido",
 			"Geryescalier",
@@ -117,8 +118,8 @@
 	"mwe-recwiz-settings-marginafter": "Margen a mantener después:",
 	"mwe-recwiz-settings-sec": "s",
 	"mwe-recwiz-shortcuts-title": "Atajos",
-	"mwe-recwiz-shortcuts-previous-word": "Anda a la palabra anterior",
-	"mwe-recwiz-shortcuts-next-word": "Anda a la palabra siguiente",
+	"mwe-recwiz-shortcuts-previous-word": "Ir a la palabra anterior",
+	"mwe-recwiz-shortcuts-next-word": "Ir a la siguiente palabra",
 	"mwe-recwiz-shortcuts-delete-recording": "Elimina la grabación seleccionada",
 	"mwe-recwiz-shortcuts-listen-recording": "Escucha la grabación seleccionada",
 	"mwe-recwiz-shortcuts-toggle-recording": "Activa/desactiva la grabación",
@@ -156,7 +157,7 @@
 	"mwe-recwiz-wmcategory-deduplicate": "Excluir las palabras ya grabadas",
 	"mwe-recwiz-wmcategory-limit": "Número de palabras a obtener",
 	"mwe-recwiz-wmcategory-limit-help": "Debe ser un número entre 1 y 2000",
-	"mwe-recwiz-list-error-nopage": "Favor introduce el nombre de página que contiene la lista.",
+	"mwe-recwiz-list-error-nopage": "Por favor introduce el nombre de página que contiene la lista.",
 	"mwe-recwiz-error-pagemissing": "Actualmente no existe ninguna página denominada «$1».",
 	"mwe-recwiz-error-nowiki": "No hay ninguna edición de Wikipedia o de Wikcionario en su idioma."
 }
