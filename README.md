@@ -5,22 +5,22 @@ It was created to run [Lingua Libre](https://lingualibre.org) and their developm
 
 ## Getting Started
 ### Prerequisites
-For the RecordWizard to work, a running installation of MediaWiki 1.30+ is required, with the following extensions installed:
+For the RecordWizard to work, a running installation of MediaWiki 1.35+ is required, with the following extensions installed:
 - [Wikibase Repository](https://www.mediawiki.org/wiki/Extension:Wikibase_Repository)
 - [OAuthAuthentication](https://www.mediawiki.org/wiki/Extension:OAuthAuthentication) (in case of issues with recent versions of MediaWiki, try installing [this patched version](https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/extensions/OAuthAuthentication/+/refs/changes/30/251930/25) of this extension)
 - [Upload2Commons](https://github.com/lingua-libre/Upload2Commons)
 
-**(optional)** This extension integrates best with the [BlueLL](https://github.com/lingua-libre/BlueLL) skin.
+The RecordWizard also requires [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
-You will also have to use [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm), be sure to have it up and running.
+**(optional)** This extension integrates best with the [BlueLL](https://github.com/lingua-libre/BlueLL) skin.
 
 ### Installing
 - Download and place the file(s) in a directory called RecordWizard in your `extensions/` folder.
 - Install additional libraries by running `npm install` in the `extensions/RecordWizard` folder.
 - Add the following code in your LocalSettings.php: `wfLoadExtension( 'RecordWizard' );`
 
-#### Configuration parameters
-The RecordWizard requires the creation of some properties and items in you local Wikibase repository installation. Once done, add the following code (completed with propery and item ids) at the bottom of your LocalSettings.php. Property types are indicated in comments.
+#### Configuration
+The RecordWizard requires the creation of some properties and items in you local Wikibase repository installation. Once done, add the following code (completed with propery and item ids) in your LocalSettings.php. Property types are indicated in comments.
 
 ```
 $wgRecordWizardConfig['properties'] = array(
@@ -67,14 +67,14 @@ You also have to define a namespace that can be used for list-managment (it can 
 $wgRecordWizardConfig['listNamespace'] = 142; // replace 142 with the actual id of your list-namespace
 ```
 
-## FAQ
-- **How can I translate this extension to my language?**
-  - Translations are managed on [TranslateWiki](https://translatewiki.net/w/i.php?title=Special:Translate&group=mwgithub-recordwizard).
+## Translating
+Translations are managed on [TranslateWiki](https://translatewiki.net/w/i.php?title=Special:Translate&group=mwgithub-recordwizard).
 
 ## Contributing
 First, please read MediaWiki's [code of conduct](https://www.mediawiki.org/wiki/Code_of_Conduct), which also applies here.
 
-To find out your way through the code, here is a diagram showing the structure of the extension and the main interactions between it's components.
+To find out your way through the code, here is a diagram showing the structure of the extension and the main interactions between its components.
+
 <img src="doc/diagram.svg"/>
 
 ### Tips & tricks
