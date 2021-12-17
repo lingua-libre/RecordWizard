@@ -1,5 +1,5 @@
 # Record Wizard
-The RecordWizard is a [MediaWiki](https://mediawiki.org) extension allowing mass recording of clean, well cut, well named pronunciation files.
+The RecordWizard is a [MediaWiki](https://mediawiki.org) recording studio extension allowing rapid and mass recording of clean, well cut, well named pronunciation files.
 
 It was created to run [Lingua Libre](https://lingualibre.org) and their development is therefore strongly correlated, but the extension was made to be usable on another MediaWiki instance.
 
@@ -15,10 +15,11 @@ For the RecordWizard to work, a running installation of MediaWiki 1.30+ is requi
 You will also have to use [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm), be sure to have it up and running.
 
 ### Installing
-- Download and place the file(s) in a directory called RecordWizard in your `extensions/` folder.
-- Install additional libraries by running `npm install` in this folder
-- Add the following code at the bottom of your LocalSettings.php:
-`wfLoadExtension( 'RecordWizard' );`
+```bash
+git clone git@github.com:lingua-libre/RecordWizard.git ./extensions/ # Download in your /extensions folder
+echo 'wfLoadExtension( 'RecordWizard' );' >> LocalSettings.php       # Append extension loader to LocalSettings.php
+cd ./extensions/RecordWizard/ ; npm install                          # Install npm dependencies
+```
 
 #### Configuration parameters
 The RecordWizard requires the creation of some properties and items in you local Wikibase repository installation. Once done, add the following code (completed with propery and item ids) at the bottom of your LocalSettings.php. Property types are indicated in comments.
