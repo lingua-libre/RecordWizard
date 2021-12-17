@@ -1,5 +1,5 @@
 # Record Wizard
-The RecordWizard is a [MediaWiki](https://mediawiki.org) extension allowing providing a recording studio that allows mass recording of clean, well cut, well named pronunciation files.
+The RecordWizard is a [MediaWiki](https://mediawiki.org) extension providing a recording studio that allows mass recording of clean, well cut, well named pronunciation files.
 
 It was created to run [Lingua Libre](https://lingualibre.org) and their development is therefore strongly correlated, but the extension was designed to be usable on another MediaWiki instance.
 
