@@ -6,6 +6,7 @@
 			"Omotecho",
 			"Otokoume",
 			"Suyama",
+			"Yamagata Yusuke",
 			"朝彦"
 		]
 	},
@@ -77,7 +78,7 @@
 	"mwe-recwiz-generator-list": "ローカルリスト",
 	"mwe-recwiz-generator-wmcategory": "ウィキメディアのカテゴリ",
 	"mwe-recwiz-studio-title": "スタジオ",
-	"mwe-recwiz-studio-info-audio": "下記の $1 をクリックして、単語を声を出して読んでください。",
+	"mwe-recwiz-studio-info-audio": "下記の $1 をクリックして、単語を声を出して読んでください",
 	"mwe-recwiz-studio-info-video": "下記の $1 をクリックして、サインインした言語で単語をしゃべってください",
 	"mwe-recwiz-studio-skip": "スキップ",
 	"mwe-recwiz-studio-input-placeholder": "新しい単語を追加",
