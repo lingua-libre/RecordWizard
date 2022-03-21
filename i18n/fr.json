@@ -144,7 +144,7 @@
 	"mwe-recwiz-error-cantgetposition": "Impossible de déterminer votre position, vous devez en saisir les coordonnées manuellement ($1).",
 	"mwe-recwiz-warning-noresults": "Il n'y a aucun élément à proximité de ces coordonnées.",
 	"mwe-recwiz-list-title": "Titre",
-	"mwe-recwiz-list-title-help": "Titre d’une page dans l’espace de noms « List ».",
+	"mwe-recwiz-list-title-help": "Titre d’une page dans l’espace de noms « List: ».",
 	"mwe-recwiz-list-deduplicate": "Exclure les mots que vous avez déjà enregistrés",
 	"mwe-recwiz-wmcategory-title": "Nom de la catégorie",
 	"mwe-recwiz-wmcategory-title-help": "Nom d’une catégorie, incluant l’espace de noms « Category: ».",
