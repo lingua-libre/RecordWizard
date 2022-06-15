@@ -236,18 +236,19 @@
 		} else if ( limit < 1 ) {
 			limit = 1;
 		}
-
+		// For query details, see https://www.mediawiki.org/wiki/API:Categorymembers
+		// Practice on your wiki's [[Special:ApiSandbox]], with settings as the pairs below:
 		this.recursiveFetch( {
 			action: 'query',
 			format: 'json',
 			formatversion: '2',
 			prop: 'pageterms',
 			wbptterms: 'label',
-			generator: 'categorymembers',
-			gcmnamespace: '0',
-			gcmtitle: title,
-			gcmtype: 'page',
-			gcmlimit: 'max'
+			generator: 'categorymembers', // or list:'categorymembers'
+			gcmnamespace: '0', // or cmnamespace:'0|14'
+			gcmtitle: title, // or cmtitle: title
+			gcmtype: 'page', // or cmtypes: 'page|subcat'
+			gcmlimit: 'max' // or cmlimit: 'max'
 		}, limit );
 
 		// We're not done yet, make the dialog closing process to wait the promise
