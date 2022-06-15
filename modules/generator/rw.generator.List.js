@@ -73,7 +73,8 @@
 		this.params.title = title;
 		this.params.deduplicate = deduplicate;
 		this.deferred = $.Deferred();
-
+		
+		// Query target list's content
 		this.api.get( {
 			action: 'query',
 			format: 'json',
@@ -90,10 +91,15 @@
 			if ( page.missing === true ) {
 				return this.deferred.reject( new OO.ui.Error( mw.msg( 'mwe-recwiz-error-pagemissing', title ) ) );
 			}
+			// Has list's content, process-clean it
 			content = page.revisions[ 0 ].content;
 			this.list = content.split( '\n' );
 			for ( i = 0; i < this.list.length; i++ ) {
 				this.list[ i ] = this.list[ i ].replace( /^[*#]/, '' ).trim();
+				// HERE, could add processing to support…
+				// - dictionary input, ex: 'red → rouge' into 'rouge' to the RW
+				// - metadata input, ex: 'rouge [pos:adjective,ipa:/ɹuːʒ/]' into 'rouge' to the RW,
+				// to proper recording and passing the metadata into the audio's Qid page's data.
 				if ( deduplicate === true && this.isAlreadyRecorded( this.list[ i ] ) ) {
 					this.list.splice( i, 1 );
 					i--; // Necessary as we've just removed an item of the list we're exploring
