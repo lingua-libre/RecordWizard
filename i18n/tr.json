@@ -9,7 +9,8 @@
 			"Rapsar",
 			"SaldırganSincap",
 			"Sayginer",
-			"ToprakM"
+			"ToprakM",
+			"WikiLucas00"
 		]
 	},
 	"recordWizard": "RecordWizard",
@@ -17,6 +18,9 @@
 	"recordWizard-desc": "Ses telaffuz dosyalarını kaydetmek için kullanıcı dostu ve otomatik bir araç.",
 	"special-recordWizard-title": "Kayıt Sihirbazı",
 	"mwe-recwiz-title": "Bir ses kaydet",
+	"mwe-recwiz-menu-statistics": "İstatistikler",
+	"mwe-recwiz-menu-library": "Ses kütüphanesi",
+	"mwe-recwiz-menutitle": "Menü",
 	"mwe-recwiz-step-tutorial": "Eğitim",
 	"mwe-recwiz-step-speaker": "Hoparlör",
 	"mwe-recwiz-step-details": "Ayrıntılar",

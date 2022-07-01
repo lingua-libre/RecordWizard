@@ -1,19 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
+			"0x010C",
 			"Ameisenigel",
 			"Anna7321",
 			"FF-11",
 			"FF11",
+			"Lorem Ipsum",
 			"Metalhead64",
 			"Sebastian Wallroth",
+			"WikiLucas00",
 			"Zabe"
+
 		]
 	},
 	"recordWizard": "Aufnahmeassistent",
 	"recordwizard": "Aufnahmeassistent",
 	"recordWizard-desc": "Ein benutzerfreundliches und automatisiertes Werkzeug zur Aufnahme von Aussprache-Audiodateien.",
 	"special-recordWizard-title": "Aufnahmeassistent",
+	"mwe-recwiz-menu-statistics": "Statistiken",
+	"mwe-recwiz-menu-datasets": "Datensätze",
+	"mwe-recwiz-menutitle": "Menü",
 	"mwe-recwiz-step-tutorial": "Anleitung",
 	"mwe-recwiz-step-speaker": "Sprachprofil",
 	"mwe-recwiz-step-details": "Einzelheiten",
