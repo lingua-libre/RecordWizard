@@ -4,8 +4,8 @@
 * `vue` - UI made of components
 * `widgets` - reusable js code for components
 * `wikibase`
-* `rw.js` - master
+* `rw.js` - declaration
+* `rw.RecordWizard.js` - master
   * `rw.Record.js`
-  * `rw.RecordWizard.js`
   * `rw.RequestQueue.js`
   * `rw.VideoRecorder.js`
