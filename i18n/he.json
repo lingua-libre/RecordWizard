@@ -77,7 +77,7 @@
 	"mwe-recwiz-generator-wmcategory": "קטגוריה של ויקימדיה",
 	"mwe-recwiz-studio-title": "אולפן",
 	"mwe-recwiz-studio-info-audio": "{{GENDER:|לחץ|לחצי}} על $1 למטה, ואז {{GENDER:|קרא|קראי}} את המילה בקול רם",
-	"mwe-recwiz-studio-info-video": "{{GENDER:|לחץ|לחצי}} על $1 למטה, ואז {{GENDER:|סמן|סמני}} את המילה (בשפת סימנים)",
+	"mwe-recwiz-studio-info-video": "{{GENDER:|לחץ|לחצי}} על $1 למטה, ואז {{GENDER:|קרא וסמן|קראי וסמני}} את המילה",
 	"mwe-recwiz-studio-skip": "לדלג",
 	"mwe-recwiz-studio-input-placeholder": "הוספת מילה חדשה",
 	"mwe-recwiz-studio-uploadcount": "{{PLURAL:$1|צליל אחד הועלה|$1 צלילים הועלו}} מתוך {{PLURAL:$2|צליל אחד|$2 צלילים}}",
