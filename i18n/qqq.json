@@ -39,7 +39,7 @@
 	"mwe-recwiz-tutorial-title": "Title of the tutorial step.",
 	"mwe-recwiz-tutorial-help": "The main part of the help message next to the microphone tester in the tutorial step.",
 	"mwe-recwiz-tutorial-info": "Message at the bottom of the configuration page in the tutorial step.",
-	"mwe-recwiz-tutorial-mictester-info": "Short message displayed above the microphone tester in the tutorial step.",
+	"mwe-recwiz-tutorial-mictester-info": "Short message displayed above the microphone tester in the tutorial step.\nThe \"Start the trial\" text should be identical to {{msg-mw|Mwe-recwiz-tutorial-mictester-start}}.",
 	"mwe-recwiz-tutorial-mictester-start": "Label of a buton used to start the microphone tester in the tutorial step.",
 	"mwe-recwiz-tutorial-mictester-recording": "Message indicating a state of the microphone tester in the tutorial step.",
 	"mwe-recwiz-tutorial-mictester-playing": "Message indicating a state of the microphone tester in the tutorial step.",
