@@ -37,7 +37,7 @@
 	"mwe-recwiz-tutorial-reopenpopup": "Buton in the tutorial step to force the browser's popup asking for microphone sharing to reopen.",
 	"mwe-recwiz-tutorial-activate": "Message displayed at the very beginning of the tutorial step, asking the user to allow the tool to access their microphone.",
 	"mwe-recwiz-tutorial-title": "Title of the tutorial step.",
-	"mwe-recwiz-tutorial-help": "The main part of the help message next to the microphone tester in the tutorial step.\nThe \"Start the trial\" text should be identical to {{msg-mw|Mwe-recwiz-tutorial-mictester-start}}.",
+	"mwe-recwiz-tutorial-help": "The main part of the help message next to the microphone tester in the tutorial step.\nThe \"Start the test\" text should be identical to {{msg-mw|Mwe-recwiz-tutorial-mictester-start}}.",
 	"mwe-recwiz-tutorial-info": "Message at the bottom of the configuration page in the tutorial step.",
 	"mwe-recwiz-tutorial-mictester-info": "Short message displayed above the microphone tester in the tutorial step.",
 	"mwe-recwiz-tutorial-mictester-start": "Label of a buton used to start the microphone tester in the tutorial step.",
