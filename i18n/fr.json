@@ -65,7 +65,7 @@
 	"mwe-recwiz-gender-other": "autre",
 	"mwe-recwiz-details-title": "Liste des mots à enregistrer",
 	"mwe-recwiz-details-placeholder": "Entrez ici le mot à enregistrer",
-	"mwe-recwiz-details-help": "Pour différencier deux homographes, spécifiez le sens entre parenthèses ex: fils (enfant) vs fils (fil).",
+	"mwe-recwiz-details-help": "Pour différencier deux homographes, spécifiez le sens entre parenthèses ex: fils (enfant) vs fils (pluriel de fil).",
 	"mwe-recwiz-details-lang": "Vous enregistrez des mots en :",
 	"mwe-recwiz-details-wordlist": "Liste des mots à enregistrer",
 	"mwe-recwiz-details-randomise": "Mélanger la liste",
