@@ -41,7 +41,7 @@
 	"mwe-recwiz-tutorial-reopenpopup": "Reopen the popup",
 	"mwe-recwiz-tutorial-activate": "Please allow access to your microphone to continue.",
 	"mwe-recwiz-tutorial-title": "Check your microphone",
-	"mwe-recwiz-tutorial-help": "==== Here's how to do it: ====\n# When you're ready, press the button above to start a record trial.\n# Pronounce a word aloud, for example \"the sun\".\n# Listen to your record to check that it's correct.\n# Adapt your microphone's configuration if needed.\n# If everything is correct, you can move on to the next step!",
+	"mwe-recwiz-tutorial-help": "==== Here's how to do it: ====\n# When you're ready, click on the \"Start the test\" button to start a record trial.\n# Pronounce a word aloud, for example \"the sun\".\n# Listen to your record to check that it's correct.\n# Adapt your microphone's configuration if needed.\n# If everything is correct, you can move on to the next step!",
 	"mwe-recwiz-tutorial-info": "To learn how to configure your microphone, visit [[Special:MyLanguage/Help:Configure_your_microphone|this help page]].",
 	"mwe-recwiz-tutorial-mictester-info": "When you are ready, press the button below to start the test record.",
 	"mwe-recwiz-tutorial-mictester-start": "Start the test",
@@ -93,7 +93,7 @@
 	"mwe-recwiz-studio-title": "Studio",
 	"mwe-recwiz-studio-info-audio": "Click on $1 below, then read the word aloud",
 	"mwe-recwiz-studio-info-video": "Click on $1 below, then read and sign the word",
-	"mwe-recwiz-studio-skip": "Skip",
+	"mwe-recwiz-studio-skip": "Skip to the next word",
 	"mwe-recwiz-studio-input-placeholder": "Add a new word",
 	"mwe-recwiz-studio-uploadcount": "$1 of $2 {{PLURAL:$2|sound|sounds}} uploaded",
 

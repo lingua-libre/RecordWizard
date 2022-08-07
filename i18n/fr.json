@@ -10,7 +10,8 @@
 			"Verdy p",
 			"Vikoula5",
 			"WikiLucas00",
-			"Wladek92"
+			"Wladek92",
+			"Poslovitch"
 		]
 	},
 	"recordWizard": "RecordWizard",
@@ -69,7 +70,7 @@
 	"mwe-recwiz-gender-other": "autre",
 	"mwe-recwiz-details-title": "Liste des mots à enregistrer",
 	"mwe-recwiz-details-placeholder": "Entrez ici le mot à enregistrer",
-	"mwe-recwiz-details-help": "Pour différencier deux homographes, spécifiez le sens entre parenthèses ex: fils (enfant) vs fils (fil).",
+	"mwe-recwiz-details-help": "Pour différencier deux homographes, spécifiez le sens entre parenthèses ex: fils (enfant) vs fils (pluriel de fil).",
 	"mwe-recwiz-details-lang": "Vous enregistrez des mots en :",
 	"mwe-recwiz-details-wordlist": "Liste des mots à enregistrer",
 	"mwe-recwiz-details-randomise": "Mélanger la liste",
@@ -86,7 +87,7 @@
 	"mwe-recwiz-studio-title": "Studio",
 	"mwe-recwiz-studio-info-audio": "Cliquez sur $1 ci-dessous, puis lisez le mot à haute voix",
 	"mwe-recwiz-studio-info-video": "Cliquez sur $1 ci-dessous, puis lisez et signez le mot.",
-	"mwe-recwiz-studio-skip": "Passer",
+	"mwe-recwiz-studio-skip": "Passer au mot suivant",
 	"mwe-recwiz-studio-input-placeholder": "Ajouter un nouveau mot",
 	"mwe-recwiz-studio-uploadcount": "$1 enregistrement{{PLURAL:$1||s}} sonore{{PLURAL:$1||s}} téléversé{{PLURAL:$1||s}} sur $2",
 	"mwe-recwiz-videostudio-webcamaccess": "Veuillez autoriser Lingua Libre à accéder à votre webcam.",

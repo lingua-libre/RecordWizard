@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Duke of Wikipädia",
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
 			"Iohanen",
@@ -76,7 +77,7 @@
 	"mwe-recwiz-generator-wmcategory": "Categoria da Wikimedia",
 	"mwe-recwiz-studio-title": "Estúdio",
 	"mwe-recwiz-studio-info-audio": "Clique em $1 abaixo e leia a palavra em voz alta.",
-	"mwe-recwiz-studio-info-video": "Clique em $1 abaixo e diga a palavra em linguagem gestual",
+	"mwe-recwiz-studio-info-video": "Clique em $1 abaixo, depois leia e assine a palavra",
 	"mwe-recwiz-studio-skip": "Pular",
 	"mwe-recwiz-studio-input-placeholder": "Adicionar uma nova palavra",
 	"mwe-recwiz-studio-uploadcount": "$1 de $2 {{PLURAL:$2|som|sons {{PLURAL:$1|enviado|enviados}}}}",
