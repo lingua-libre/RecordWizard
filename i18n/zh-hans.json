@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Deathkon",
+			"GuoPC",
 			"Lakejason0",
 			"Liuxinyu970226",
 			"Nadine Siak",
@@ -32,7 +33,7 @@
 	"mwe-recwiz-tutorial-reopenpopup": "重新打开弹窗",
 	"mwe-recwiz-tutorial-activate": "请允许访问您的麦克风以继续。",
 	"mwe-recwiz-tutorial-title": "检查您的麦克风",
-	"mwe-recwiz-tutorial-help": "==== 如何使用: ====\n# 在你准备好后, 按下上面的按钮来开始一次测试录制。\n# 大声念出一个词, 比如 \"太阳\"。\n# 听你的录制，检查是否正确。\n# 如果必要，调整你的麦克风参数。\n# 如果一切正确，你可以开始下一步了！",
+	"mwe-recwiz-tutorial-help": "==== 如何使用： ====\n# 在您准备好后, 单击“开始测试”按钮来开始一次测试录制。\n# 大声念出一个词, 比如“太阳”。\n# 听您的录制，检查是否正确。\n# 如果必要，调整您的麦克风配置。\n# 如果一切正确，您就可以开始下一步了！",
 	"mwe-recwiz-tutorial-mictester-start": "开始测试",
 	"mwe-recwiz-tutorial-mictester-recording": "一、说点什么",
 	"mwe-recwiz-tutorial-mictester-playing": "二、收听",
