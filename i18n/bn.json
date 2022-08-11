@@ -4,6 +4,7 @@
 			"Aftabuzzaman",
 			"Tahmid",
 			"Tahmid02016",
+			"আজিজ",
 			"আফতাবুজ্জামান"
 		]
 	},
@@ -60,6 +61,7 @@
 	"mwe-recwiz-generator-list": "স্থানীয় তালিকা",
 	"mwe-recwiz-generator-wmcategory": "উইকিমিডিয়া বিষয়শ্রেণী",
 	"mwe-recwiz-studio-title": "স্টুডিও",
+	"mwe-recwiz-studio-skip": "এটি এড়িয়ে পরবর্তী শব্দে যান",
 	"mwe-recwiz-studio-input-placeholder": "একটি নতুন শব্দ যোগ করুন",
 	"mwe-recwiz-studio-uploadcount": "$2টির মধ্যে $1টি {{PLURAL:$2|শব্দ}} আপলোড হয়েছে",
 	"mwe-recwiz-publish-title": "প্রকাশনা",

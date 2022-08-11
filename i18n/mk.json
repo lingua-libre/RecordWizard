@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bjankuloski06"
+			"Bjankuloski06",
+			"Vlad5250"
 		]
 	},
 	"recordWizard": "Снимач на изговор",
@@ -74,7 +75,7 @@
 	"mwe-recwiz-studio-title": "Студио",
 	"mwe-recwiz-studio-info-audio": "Стиснете на $1 подолу, па прочитајте го зборот на глас",
 	"mwe-recwiz-studio-info-video": "Стиснете на $1 подолу, па покажете го зборот во знаковен јазик.",
-	"mwe-recwiz-studio-skip": "Прескокни",
+	"mwe-recwiz-studio-skip": "Прескокни на следниот збор",
 	"mwe-recwiz-studio-input-placeholder": "Додајте нов збор",
 	"mwe-recwiz-studio-uploadcount": "{{PLURAL:$2|Подигнат е $1 од $2 звук|Подигнати се $1 од $2 звуци}}",
 	"mwe-recwiz-videostudio-webcamaccess": "Дозволете му на Lingua Libre пристап до вашата мрежна камера.",
