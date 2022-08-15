@@ -88,7 +88,7 @@
 	"mwe-recwiz-studio-title": "Студия записи",
 	"mwe-recwiz-studio-info-audio": "Нажмите на кнопку $1 ниже и прочитайте слово вслух",
 	"mwe-recwiz-studio-info-video": "Нажмите на $1 ниже, затем прочитайте и прожестикулируйте слово",
-	"mwe-recwiz-studio-skip": "Пропустить",
+	"mwe-recwiz-studio-skip": "Перейти к следующему слову",
 	"mwe-recwiz-studio-input-placeholder": "Добавить новое слово",
 	"mwe-recwiz-studio-uploadcount": "$1 из $2 {{PLURAL:$2|звука|звуков}} загружены",
 	"mwe-recwiz-videostudio-webcamaccess": "Дайте, пожалуйста, Lingua Libre доступ к вашей веб-камере.",
