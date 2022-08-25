@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kly",
-			"LNDDYL"
+			"LNDDYL",
+			"Winston Sung"
 		]
 	},
 	"recordWizard": "錄音精靈",
@@ -27,7 +28,7 @@
 	"mwe-recwiz-tutorial-reopenpopup": "重新開啟彈跳視窗",
 	"mwe-recwiz-tutorial-activate": "請允許使用您的麥克風以繼續。",
 	"mwe-recwiz-tutorial-title": "檢查您的麥克風",
-	"mwe-recwiz-tutorial-help": "==== 以下為方法： ====\n# 當您準備好時，按下上方按鈕來開始錄音教學。\n# 大聲唸出單字，例如「the sun」。\n# 聆聽您的錄音來確認是否正確。\n# 如果有需要的話，調整您的麥克風設定。\n# 若一切都沒問題，您可以前往下一個步驟！",
+	"mwe-recwiz-tutorial-help": "==== 以下為方法： ====\n# 當您準備好時，點擊「開始測試」按鈕以開始錄音教學。\n# 大聲唸出單字，例如「the sun」。\n# 聆聽您的錄音來確認是否正確。\n# 如果有需要的話，調整您的麥克風設定。\n# 若一切都沒問題，您可以前往下一個步驟！",
 	"mwe-recwiz-tutorial-info": "要了解更多如何設置您的麥克風，請參訪[[Special:MyLanguage/Help:Configure_your_microphone|此說明頁面]]。",
 	"mwe-recwiz-tutorial-mictester-info": "當您準備好時，壓下下方按鈕來開始測試錄音。",
 	"mwe-recwiz-tutorial-mictester-start": "開始測試",
@@ -74,8 +75,8 @@
 	"mwe-recwiz-generator-wmcategory": "維基媒體分類",
 	"mwe-recwiz-studio-title": "錄音室",
 	"mwe-recwiz-studio-info-audio": "點擊下方的$1，然後大聲唸出",
-	"mwe-recwiz-studio-info-video": "點擊下方的$1，然後說出這個在手語裡的字詞",
-	"mwe-recwiz-studio-skip": "跳過",
+	"mwe-recwiz-studio-info-video": "點擊下方的$1，然後閱讀內容並做出該字詞的手語",
+	"mwe-recwiz-studio-skip": "跳至下一個字詞",
 	"mwe-recwiz-studio-input-placeholder": "添加新的字詞",
 	"mwe-recwiz-studio-uploadcount": "已上傳 $2 個中的 $1 個{{PLURAL:$2|音訊|音訊}}",
 	"mwe-recwiz-videostudio-webcamaccess": "請允許 Lingua Libre 來存取您的網路攝影機。",
