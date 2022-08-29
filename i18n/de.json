@@ -3,6 +3,7 @@
 		"authors": [
 			"Ameisenigel",
 			"Anna7321",
+			"Brettchenweber",
 			"FF-11",
 			"FF11",
 			"Metalhead64",
@@ -71,7 +72,7 @@
 	"mwe-recwiz-generator-wmcategory": "Wikimedia-Kategorie",
 	"mwe-recwiz-studio-title": "Studio",
 	"mwe-recwiz-studio-info-audio": "Klicke unten auf $1, lies dann das Wort laut.",
-	"mwe-recwiz-studio-skip": "Überspringen",
+	"mwe-recwiz-studio-skip": "Wort überspringen",
 	"mwe-recwiz-studio-input-placeholder": "Ein neues Wort hinzufügen",
 	"mwe-recwiz-studio-uploadcount": "$1 von $2 {{PLURAL:$2|Sounddatei|Sounddateien}} hochgeladen",
 	"mwe-recwiz-videostudio-clicktostart": "Klicke die Taste unten um zu starten.",
