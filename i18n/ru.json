@@ -86,7 +86,7 @@
 	"mwe-recwiz-generator-list": "Локальный список",
 	"mwe-recwiz-generator-wmcategory": "Категория в проекте Викимедиа",
 	"mwe-recwiz-studio-title": "Студия записи",
-	"mwe-recwiz-studio-info-audio": "Нажмите на кнопку с микрофоном ниже и прочитайте слово вслух",
+	"mwe-recwiz-studio-info-audio": "Нажмите на $1 ниже и прочитайте слово вслух",
 	"mwe-recwiz-studio-info-video": "Нажмите на $1 ниже, затем прочитайте и прожестикулируйте слово",
 	"mwe-recwiz-studio-skip": "Перейти к следующему слову",
 	"mwe-recwiz-studio-input-placeholder": "Добавить новое слово",
