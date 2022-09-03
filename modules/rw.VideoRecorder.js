@@ -41,10 +41,12 @@
 
 	rw.VideoRecorder.prototype.onReady = function ( stream ) {
 		var mimeType = 'video/webm';
-		if ( MediaRecorder.isTypeSupported( 'video/webm;codecs=vp9' ) ) {
-			mimeType = 'video/webm;codecs=vp9';
-		} else if ( MediaRecorder.isTypeSupported( 'video/webm;codecs=vp8' ) ) {
-			mimeType = 'video/webm;codecs=vp8';
+		if ( MediaRecorder.isTypeSupported( 'video/webm;codecs="vp9"' ) ) {
+			// A WebM video with VP9 video in it.
+			mimeType = 'video/webm;codecs="vp9"';
+		} else if ( MediaRecorder.isTypeSupported( 'video/webm;codecs="vp8"' ) ) {
+			// ! no audio is specified.
+			mimeType = 'video/webm;codecs="vp8"';
 		}
 		this.mediaRecorder = new MediaRecorder( stream, {
 			mimeType: mimeType
