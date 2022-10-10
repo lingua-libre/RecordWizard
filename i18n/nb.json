@@ -3,6 +3,7 @@
 		"authors": [
 			"Alphabet Qi",
 			"Citadell",
+			"EdoAug",
 			"Jon Harald Søby",
 			"Orf3us"
 		]
@@ -77,7 +78,7 @@
 	"mwe-recwiz-studio-title": "Studio",
 	"mwe-recwiz-studio-info-audio": "Trykk på $1 nedenfor og les ordet høyt.",
 	"mwe-recwiz-studio-info-video": "Trykk på $1 og si ordet på tegnspråk",
-	"mwe-recwiz-studio-skip": "Hopp over",
+	"mwe-recwiz-studio-skip": "Hopp over til neste ord",
 	"mwe-recwiz-studio-input-placeholder": "Legg til et nytt ord",
 	"mwe-recwiz-studio-uploadcount": "$1 av $2 {{PLURAL:$2|lyd|lyder}} lastet opp",
 	"mwe-recwiz-videostudio-webcamaccess": "La Lingua Libre få tilgang til webkameraet ditt.",
