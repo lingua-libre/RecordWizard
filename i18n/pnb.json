@@ -5,6 +5,7 @@
 			"Bgo eiu"
 		]
 	},
+	"recordWizard": "ریکارڈ والا",
 	"recordwizard": "ریکارڈ والا",
 	"special-recordWizard-title": "ریکارڈ والا",
 	"mwe-recwiz-step-speaker": "وکتا",
@@ -48,5 +49,6 @@
 	"mwe-recwiz-wmcategory-title": "گٹھ دا ناں",
 	"mwe-recwiz-wmcategory-source": "سروت",
 	"mwe-recwiz-wmcategory-wikipedia": "وِکیپیڈیا",
-	"mwe-recwiz-wmcategory-wiktionary": "وکشنری"
+	"mwe-recwiz-wmcategory-wiktionary": "وکشنری",
+	"mwe-recwiz-error-nowiki": "تہاڈے بولی لئی کوئی وِکیپیڈیا یا وِکشنیری نہیں اے۔"
 }
