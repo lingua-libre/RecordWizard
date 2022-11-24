@@ -11,7 +11,8 @@
 			"MarcoAurelio",
 			"MuratTheTurkish",
 			"Poslovitch",
-			"Robby"
+			"Robby",
+			"Verdy p"
 		]
 	},
 	"recordWizard": "The name of the extension",
@@ -54,7 +55,7 @@
 	"mwe-recwiz-speaker-languages": "Label of a field asking for the languages the speaker knows, on the speaker tab.",
 	"mwe-recwiz-speaker-languagelevel": "Label of a field asking for the speaker's level in a language, inside the language dialog box.",
 	"mwe-recwiz-speaker-languagelevel-native": "Label of the option 'native' language level, displayed in the language dialog box.",
-	"mwe-recwiz-speaker-languagelevel-good": "Label of the option 'good' language level, displayed in the language dialog box.",
+	"mwe-recwiz-speaker-languagelevel-good": "Label of the option 'good' language level, displayed in the language dialog box.\n{{Identical|Good}}",
 	"mwe-recwiz-speaker-languagelevel-average": "Label of the option 'average' language level, displayed in the language dialog box.",
 	"mwe-recwiz-speaker-languagelevel-beginner": "Label of the option 'beginner' language level, displayed in the language dialog box.",
 	"mwe-recwiz-speaker-languagelocation": "Label of a field asking the place where the speaker has learned a language, inside the language dialog box.",
