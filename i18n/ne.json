@@ -3,6 +3,7 @@
 		"authors": [
 			"Nirajan pant",
 			"पर्वत सुबेदी",
+			"बडा काजी",
 			"हिमाल सुबेदी"
 		]
 	},
@@ -24,6 +25,7 @@
 	"mwe-recwiz-generator-list": "सूची",
 	"mwe-recwiz-studio-input-placeholder": "नयाँ शब्द थप्नुहोस्",
 	"mwe-recwiz-pendinguplads": "...उर्ध्वभरण गरिँदै...",
+	"mwe-recwiz-error-network": "सर्भरलाई सम्पर्क गर्न सकिएन। कृपया आफ्नो इन्टरनेट जडान जाँच गर्नुहोस् र पुन: प्रयास गर्नुहोस्।",
 	"mwe-recwiz-nearby-coordinates": "निर्देशाङ्कहरू",
 	"mwe-recwiz-nearby-limit-help": "यो १ र ५०० को बीचको पूर्णाङ्क हुनुपर्दछ।",
 	"mwe-recwiz-list-title": "शीर्षक",
