@@ -82,7 +82,7 @@
 	"mwe-recwiz-studio-input-placeholder": "הוספת מילה חדשה",
 	"mwe-recwiz-studio-uploadcount": "{{PLURAL:$1|צליל אחד הועלה|$1 צלילים הועלו}} מתוך {{PLURAL:$2|צליל אחד|$2 צלילים}}",
 	"mwe-recwiz-videostudio-webcamaccess": "נא לתת ללינגווה ליברה גישה למצלמת הרשת שלך.",
-	"mwe-recwiz-videostudio-ready": "מקליד הווידאו מוכן!",
+	"mwe-recwiz-videostudio-ready": "מקליט הווידאו מוכן!",
 	"mwe-recwiz-videostudio-clicktostart": "{{GENDER:|לחץ|לחצי}} על הכפתור למטה כדי להתחיל.",
 	"mwe-recwiz-videostudio-stopped": "מקליט הווידאו נעצר.",
 	"mwe-recwiz-videostudio-endofthelist": "הגעת לסוף הרשימה!",
