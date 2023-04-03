@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
+			"Dee",
 			"Guycn2",
 			"Rotemliss",
 			"Steeve815",
@@ -30,9 +31,9 @@
 	"mwe-recwiz-tutorial-reopenpopup": "פתיחת החלון הקופץ מחדש",
 	"mwe-recwiz-tutorial-activate": "נא לאפשר את הגישה למיקרופון שלך כדי להמשיך.",
 	"mwe-recwiz-tutorial-title": "בדיקת המיקרופון שלך",
-	"mwe-recwiz-tutorial-help": "==== ככה עושים את זה: ====\n# {{GENDER:|כשהאתה מוכן, לחץ|כשהאת מוכנה, לחצי}} על הכפתור \"התחלת הבדיקה\" כדי להתחיל הקלטת ניסיון.\n# {{GENDER:|בטא|בטאי}} מילה בקול רם, למשל \"שֶׁמֶשׁ\".\n# {{GENDER:|האזן|האזיני}} להקלטה שלך כדי לוודא שהיא נכונה.\n# {{GENDER:|כוונן|כוונני}} את ההגדרות של המיקרופון שלך אם זה נחוץ.\n# אם הכול נכון, {{GENDER:|אתה יכול|את יכולה}} להתקדם לצעד הבא!",
+	"mwe-recwiz-tutorial-help": "==== ככה יש לעשות זאת: ====\n# {{GENDER:|כשאתה מוכן, לחץ|כשאת מוכנה, לחצי}} על הכפתור \"התחלת הבדיקה\" כדי להתחיל הקלטת ניסיון.\n# {{GENDER:|בטא|בטאי|לבטא}} מילה בקול רם, למשל \"שֶׁמֶשׁ\".\n# {{GENDER:|האזן|האזיני|להאזין}} להקלטה שלך כדי לוודא שהיא נכונה.\n# {{GENDER:|כוונן|כוונני|לכוונן}} את הגדרות המיקרופון שלך אם יש צורך.\n# אם הכול נכון, {{GENDER:|אתה יכול|את יכולה|ביכולתך}} להתקדם לצעד הבא!",
 	"mwe-recwiz-tutorial-info": "כדי ללמוד איך לכוונן את המיקרופון שלך, {{GENDER:|בקר|בקרי}} ב[[Special:MyLanguage/Help:Configure_your_microphone|דף העזרה הזה]].",
-	"mwe-recwiz-tutorial-mictester-info": "{{GENDER:|כשהאתה מוכן, לחץ|כשהאת מוכנה, לחצי}} על הכפתור למעלה כדי להתחיל הקלטת ניסיון.",
+	"mwe-recwiz-tutorial-mictester-info": "{{GENDER:|כשאתה מוכן, לחץ|כשאת מוכנה, לחצי}} על הכפתור למעלה כדי להתחיל הקלטת ניסיון.",
 	"mwe-recwiz-tutorial-mictester-start": "התחלת הבדיקה",
 	"mwe-recwiz-tutorial-mictester-recording": "1. {{GENDER:|אמור|אמרי}} משהו",
 	"mwe-recwiz-tutorial-mictester-playing": "2. {{GENDER:|הקשב|הקשיבי}}",
