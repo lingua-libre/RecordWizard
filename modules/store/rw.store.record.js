@@ -10,7 +10,7 @@
 			metadata: {
 				language: rw.store.config.data.savedLanguage,
 				license: rw.store.config.data.savedLicense,
-				media: 'audio',
+				media: rw.store.config.data.languages[ rw.store.config.data.savedLanguage ].mediaType === rw.store.config.data.items.mediaTypeVideo ? 'video' : 'audio',
 				speaker: {
 					gender: '',
 					languages: {},
