@@ -41,12 +41,15 @@
 
 	rw.VideoRecorder.prototype.onReady = function ( stream ) {
 		var mimeType = 'video/webm';
-		if ( MediaRecorder.isTypeSupported( 'video/webm;codecs="vp9"' ) ) {
-			// A WebM video with VP9 video in it.
-			mimeType = 'video/webm;codecs="vp9"';
-		} else if ( MediaRecorder.isTypeSupported( 'video/webm;codecs="vp8"' ) ) {
-			// ! no audio is specified.
-			mimeType = 'video/webm;codecs="vp8"';
+		if ( MediaRecorder.isTypeSupported( 'video/webm;codecs="vp9,opus"' ) ) {
+			// Use better VP9 codec when available (Chrome)
+			// As our stream also contains audio (see getUserMedia), the mime-type has to
+			// include a supported audio codec for compatibility issue on some browsers
+			mimeType = 'video/webm;codecs="vp9,opus"';
+		} else if ( MediaRecorder.isTypeSupported( 'video/webm;codecs="vp8,opus"' ) ) {
+			// Or the not-so-bad VP8 codec (Firefox)
+			// (same as above about audio codec)
+			mimeType = 'video/webm;codecs="vp8,opus"';
 		}
 		this.mediaRecorder = new MediaRecorder( stream, {
 			mimeType: mimeType
