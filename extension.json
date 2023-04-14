@@ -353,6 +353,9 @@
         ],
         "GetPreferences": [
             "RecordWizardHooks::onGetPreferences"
+        ],
+        "UploadStashFile": [
+            "RecordWizardHooks::onUploadStashFile"
         ]
     }
 }
