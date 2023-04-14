@@ -22,6 +22,12 @@
 		// Once everything is loaded, hide the spinner and show the main content
 		$( '#mwe-rw-spinner' ).hide();
 		$( '#mwe-rw-content' ).show();
+
+		// Prevent the window from being closed as long as we have data
+		mw.confirmCloseWindow( {
+			message: mw.message( 'mwe-recwiz-prevent-close' ).text(),
+			test: rw.store.record.hasData.bind( rw.store.record )
+		} );
 	} );
 
 }( mediaWiki, mediaWiki.recordWizard, jQuery ) );

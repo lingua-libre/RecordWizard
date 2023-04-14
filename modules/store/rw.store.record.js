@@ -97,6 +97,10 @@
 		return counter;
 	};
 
+	RecordStore.prototype.hasData = function () {
+		return this.countStatus( [ 'ready', 'stashing', 'stashed', 'uploading', 'uploaded', 'finalizing' ] ) > 0;
+	};
+
 	RecordStore.prototype.clearRecord = function ( word ) {
 		var i = this.data.words.indexOf( word );
 
