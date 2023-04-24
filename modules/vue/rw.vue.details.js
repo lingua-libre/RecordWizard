@@ -44,12 +44,13 @@
 						} );
 					}
 
-					/* Async load of past data for current language */
-					defaultLanguage = this.metadata.language;
-					if ( defaultLanguage === undefined || defaultLanguage === '' || this.metadata.speaker.languages[ defaultLanguage ] === undefined ) {
-						defaultLanguage = this.availableLanguages[ 0 ].data;
+					/* Ensure Language is correctly set */
+					if ( this.metadata.language === undefined || this.metadata.language === '' || this.metadata.speaker.languages[ this.metadata.language ] === undefined ) {
+						this.metadata.language = this.availableLanguages[ 0 ].data;
 					}
-					rw.store.config.fetchPastRecords( defaultLanguage, this.metadata.speaker.qid );
+
+					/* Setup everything language-related with the default language */
+					this.setupCurrentLanguage();
 				}
 			}
 		},
@@ -76,15 +77,12 @@
 				this.wordInputed = '';
 			},
 			onLanguageChange: function () {
-				/* Clear all items from list */
 				this.clearAll();
-
+				this.setupCurrentLanguage();
+			},
+			setupCurrentLanguage: function () {
 				/* Update the media property */
-				if ( this.config.languages[ this.metadata.language ].mediaType === this.config.items.mediaTypeVideo ) {
-					this.metadata.media = 'video';
-				} else {
-					this.metadata.media = 'audio';
-				}
+				rw.store.record.updateMediaType();
 
 				/* Async load of past data for current language */
 				rw.store.config.fetchPastRecords( this.metadata.language, this.metadata.speaker.qid );
