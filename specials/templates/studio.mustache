@@ -20,7 +20,7 @@
 				<label>{{_ "mwe-recwiz-settings-marginafter"}}</label>
 				<ooui-numberinput v-model="audioParams.marginAfter" :min="0" :max="5" :step="0.05" :label="'{{_ "mwe-recwiz-settings-sec"}}'"></ooui-numberinput>
 			</div>
-			<div id="mwe-rws-video" v-if="metadata.media === 'video'">
+			<div id="mwe-rws-settings-video" v-if="metadata.media === 'video'">
 				<h4>{{_ "mwe-recwiz-settings-videorecording"}}</h4>
 				<label>{{_ "mwe-recwiz-settings-durationtorecord"}}</label>
 				<ooui-buttonselect v-model="videoParams.recordDuration" :options="options.recordDuration"></ooui-buttonselect>
