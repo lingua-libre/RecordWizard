@@ -66,7 +66,7 @@
 	"mwe-recwiz-details-inspiration": "E ke kumi hina kupu ke puke?",
 	"mwe-recwiz-details-generators": "Faka'aoga he fili kupu",
 	"mwe-recwiz-details-noword": "Mole he kupu ne'e fili",
-	"mwe-recwiz-details-wordcount": "$1 ({{PLURAL:$2|1 kupu|$2 kupu}})",
+	"mwe-recwiz-details-wordcount": "$1 {{PLURAL:$1|kupu|kupu}}",
 	"mwe-recwiz-generator-nearby": "E 'ovi mai",
 	"mwe-recwiz-generator-list": "Kupu o te masini",
 	"mwe-recwiz-generator-wmcategory": "Fa'ahiga Vikimetia",
