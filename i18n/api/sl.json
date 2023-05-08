@@ -10,5 +10,5 @@
 	"apihelp-query+rwrecords-param-sort": "Lastnost za razvrščanje.",
 	"apihelp-query+rwrecords-param-dir": "Smer razvrščanja.",
 	"apihelp-query+rwrecords-param-format": "Element, ki ga želite pridobiti kot izhod.",
-	"apihelp-query+rwrecords-param-limit": "Koliko transkripcij naj se skupno vrne."
+	"apihelp-query+rwrecords-param-limit": "Koliko transkripcij naj bo skupno vrnjenih."
 }
