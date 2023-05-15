@@ -10,6 +10,7 @@
 			"Metalhead64",
 			"Sebastian Wallroth",
 			"TMg",
+			"ThisCarthing",
 			"Zabe"
 		]
 	},
@@ -17,6 +18,7 @@
 	"recordwizard": "Aufnahmeassistent",
 	"recordWizard-desc": "Ein benutzerfreundliches und automatisiertes Werkzeug zur Aufnahme von Aussprache-Audiodateien.",
 	"special-recordWizard-title": "Aufnahmeassistent",
+	"mwe-recwiz-title": "Eine Stimme aufnehmen",
 	"mwe-recwiz-step-tutorial": "Anleitung",
 	"mwe-recwiz-step-speaker": "Sprachprofil",
 	"mwe-recwiz-step-details": "Einzelheiten",
