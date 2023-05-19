@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"0x010C",
+			"Amire80",
 			"Antoine Lamielle",
-			"Poslovitch"
+			"Poslovitch",
+			"Trizek",
+			"WikiLucas00"
 		]
 	},
 	"recordWizard": "RecordWizard",
@@ -12,6 +16,10 @@
 	"special-recordWizard-intro": "",
 
 	"mwe-recwiz-title": "Record a voice",
+
+	"mwe-recwiz-menu-statistics": "Statistics",
+	"mwe-recwiz-menu-library": "Sound library",
+	"mwe-recwiz-menu-datasets": "Datasets",
 
 	"mwe-recwiz-step-tutorial": "Tutorial",
 	"mwe-recwiz-step-speaker": "Speaker",

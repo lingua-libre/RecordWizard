@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Bjankuloski06",
+			"Pamputt",
 			"Vlad5250"
 		]
 	},
@@ -10,6 +11,9 @@
 	"recordWizard-desc": "Алатка за лесно и автоматизирано снимање на изговори.",
 	"special-recordWizard-title": "Снимач на изговор",
 	"mwe-recwiz-title": "Снимете глас",
+	"mwe-recwiz-menu-statistics": "Статистика",
+	"mwe-recwiz-menu-library": "Звукотека",
+	"mwe-recwiz-menutitle": "Мени",
 	"mwe-recwiz-step-tutorial": "Упатство",
 	"mwe-recwiz-step-speaker": "Говорник",
 	"mwe-recwiz-step-details": "Поединости",

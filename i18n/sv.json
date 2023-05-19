@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ainali",
+			"Pamputt",
 			"Sabelöga",
 			"WikiPhoenix"
 		]
@@ -11,6 +12,9 @@
 	"recordWizard-desc": "Ett användarvänligt och automatiserat verktyg för att spela in ljudfiler för uttalanden.",
 	"special-recordWizard-title": "Inspelningsguide",
 	"mwe-recwiz-title": "Spela in en röst",
+	"mwe-recwiz-menu-statistics": "Statistik",
+	"mwe-recwiz-menu-library": "Ljudbiblioteket",
+	"mwe-recwiz-menu-datasets": "Datauppsättningar",
 	"mwe-recwiz-step-tutorial": "Guide",
 	"mwe-recwiz-step-speaker": "Talare",
 	"mwe-recwiz-step-details": "Detaljer",

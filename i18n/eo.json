@@ -3,6 +3,7 @@
 		"authors": [
 			"Deleted user",
 			"Lepticed",
+			"Pamputt",
 			"Robin van der Vliet",
 			"Sagnamadr",
 			"Vami"
@@ -13,6 +14,8 @@
 	"recordWizard-desc": "Amikema kaj aŭtomatigita ilo registri sondosierojn de prononco.",
 	"special-recordWizard-title": "Registrada asistanto",
 	"mwe-recwiz-title": "Registri voĉon",
+	"mwe-recwiz-menu-statistics": "Statistiko",
+	"mwe-recwiz-menu-datasets": "Datumaro",
 	"mwe-recwiz-step-tutorial": "Lernilo",
 	"mwe-recwiz-step-speaker": "Parolanto",
 	"mwe-recwiz-step-details": "Detaloj",

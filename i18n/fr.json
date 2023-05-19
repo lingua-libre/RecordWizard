@@ -7,9 +7,12 @@
 			"Pamputt",
 			"Poslovitch",
 			"Thibaut120094",
+			"Trizek",
 			"Verdy p",
 			"Vikoula5",
-			"Wladek92"
+			"WikiLucas00",
+			"Wladek92",
+			"Poslovitch"
 		]
 	},
 	"recordWizard": "Assistant d’enregistrement",
@@ -17,6 +20,9 @@
 	"recordWizard-desc": "Un outil simple d’utilisation et entièrement automatisé pour enregistrer des fichiers audio de prononciation.",
 	"special-recordWizard-title": "Assistant d’enregistrement",
 	"mwe-recwiz-title": "Enregistrer une voix",
+	"mwe-recwiz-menu-statistics": "Statistiques",
+	"mwe-recwiz-menu-library": "Sonothèque",
+	"mwe-recwiz-menu-datasets": "Jeux de données",
 	"mwe-recwiz-step-tutorial": "Tutoriel",
 	"mwe-recwiz-step-speaker": "Locuteur",
 	"mwe-recwiz-step-details": "Détails",

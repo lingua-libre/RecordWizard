@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Guilhelma",
-			"Lyokoï"
+			"Lyokoï",
+			"WikiLucas00"
 		]
 	},
 	"recordWizard": "RecordWizard",
@@ -10,6 +11,9 @@
 	"recordWizard-desc": "Una aisina automatica, simpla d'utilizar per registrar unes fichièrs audio de prononciacion.",
 	"special-recordWizard-title": "Assistent d'enregistrament",
 	"mwe-recwiz-title": "Enregistrar una votz",
+	"mwe-recwiz-menu-statistics": "Estatisticas",
+	"mwe-recwiz-menu-library": "Librariá sonòra",
+	"mwe-recwiz-menu-datasets": "Jòc de donadas",
 	"mwe-recwiz-step-tutorial": "Tutorial",
 	"mwe-recwiz-step-speaker": "Locutor",
 	"mwe-recwiz-step-details": "Detalhs",

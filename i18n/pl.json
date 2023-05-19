@@ -4,6 +4,7 @@
 			"Chrumps",
 			"Msz2001",
 			"Olaf",
+			"Pamputt",
 			"Poemat",
 			"Rail",
 			"Railfail536"
@@ -14,6 +15,9 @@
 	"recordWizard-desc": "Przyjazne i zautomatyzowane narzędzie do nagrywania przykładów wymowy.",
 	"special-recordWizard-title": "Asystent Nagrań",
 	"mwe-recwiz-title": "Nagraj głos",
+	"mwe-recwiz-desc": "Czysty design początkowo opracowany przez Lingua Libre",
+	"mwe-recwiz-menu-statistics": "Statystyki",
+	"mwe-recwiz-menu-datasets": "Zbiory danych",
 	"mwe-recwiz-step-tutorial": "Samouczek",
 	"mwe-recwiz-step-speaker": "Spiker",
 	"mwe-recwiz-step-details": "Szczegóły",

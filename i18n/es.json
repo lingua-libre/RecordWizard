@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"0x010C",
 			"Adjen",
+			"Agent",
 			"Alvaro7863",
 			"Danniel07",
 			"Eavqwiki",
@@ -9,6 +11,7 @@
 			"Geryescalier",
 			"Jackiezelaya",
 			"Noé",
+			"Pamputt",
 			"RisingVoices",
 			"Rodelar",
 			"WikiLucas00"
@@ -19,6 +22,9 @@
 	"recordWizard-desc": "Herramienta automatizada fácil de usar para grabar archivos de pronunciación.",
 	"special-recordWizard-title": "Record Wizard",
 	"mwe-recwiz-title": "Grabar una voz",
+	"mwe-recwiz-menu-statistics": "Estadísticas",
+	"mwe-recwiz-menu-library": "Archivos de datos",
+	"mwe-recwiz-menutitle": "Menú",
 	"mwe-recwiz-step-tutorial": "Tutorial",
 	"mwe-recwiz-step-speaker": "Locutor",
 	"mwe-recwiz-step-details": "Detalles",
