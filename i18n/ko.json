@@ -65,7 +65,7 @@
 	"mwe-recwiz-generator-list": "로컬 목록",
 	"mwe-recwiz-generator-wmcategory": "위키미디어 분류",
 	"mwe-recwiz-studio-title": "스튜디오",
-	"mwe-recwiz-studio-skip": "건너뛰기",
+	"mwe-recwiz-studio-skip": "다음 단어로 건너뛰기",
 	"mwe-recwiz-studio-input-placeholder": "새 단어 추가",
 	"mwe-recwiz-studio-uploadcount": "{{PLURAL:$2|소리}} $2개 중 $1개를 올렸습니다",
 	"mwe-recwiz-publish-play": "재생",

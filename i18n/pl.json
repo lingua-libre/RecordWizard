@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Chrumps",
+			"Msz2001",
 			"Olaf",
 			"Pamputt",
 			"Poemat",
@@ -34,7 +35,7 @@
 	"mwe-recwiz-tutorial-reopenpopup": "Ponownie otwórz okienko",
 	"mwe-recwiz-tutorial-activate": "Aby kontynuować, zezwól na dostęp do mikrofonu.",
 	"mwe-recwiz-tutorial-title": "Sprawdź swój mikrofon",
-	"mwe-recwiz-tutorial-help": "==== Oto, jak to zrobić: ====\n# Kiedy będziesz gotowy, naciśnij przycisk powyżej, aby zacząć próbę mikrofonu.\n# Wymów głośno jakieś słowo, np. \"słońce\".\n# Posłuchaj swojego nagrania, sprawdzając czy jest poprawne.\n# Dostosuj konfigurację mikrofonu jeśli zachodzi taka potrzeba.\n# Jeśli wszystko jest w porządku, przejdź do następnego kroku!",
+	"mwe-recwiz-tutorial-help": "==== Oto, jak to zrobić: ====\n# Kiedy będziesz gotowy, naciśnij przycisk „Rozpocznij test”, aby zacząć próbę mikrofonu.\n# Wymów głośno jakieś słowo, np. \"słońce\".\n# Posłuchaj swojego nagrania, sprawdzając czy jest poprawne.\n# Dostosuj konfigurację mikrofonu jeśli zachodzi taka potrzeba.\n# Jeśli wszystko jest w porządku, przejdź do następnego kroku!",
 	"mwe-recwiz-tutorial-info": "Aby nauczyć się konfiguracji mikrofonu, odwiedź [[Special:MyLanguage/Help:Configure_your_microphone|tę stronę pomocy]].",
 	"mwe-recwiz-tutorial-mictester-info": "Kiedy będziesz gotowy, naciśnij przycisk poniżej, żeby zacząć testowe nagrywanie.",
 	"mwe-recwiz-tutorial-mictester-start": "Rozpocznij test",
@@ -82,7 +83,7 @@
 	"mwe-recwiz-studio-title": "Studio",
 	"mwe-recwiz-studio-info-audio": "Kliknij $1 poniżej, następnie odczytaj słowo na głos",
 	"mwe-recwiz-studio-info-video": "Kliknij $1 poniżej, następnie powiedz słowo w jęzku migowym",
-	"mwe-recwiz-studio-skip": "Pomiń",
+	"mwe-recwiz-studio-skip": "Pomiń i przejdź do następnego słowa",
 	"mwe-recwiz-studio-input-placeholder": "Dodaj nowe słowo",
 	"mwe-recwiz-studio-uploadcount": "Przesłano $1 z $2 {{PLURAL:$2|nagranie|nagrań}}",
 	"mwe-recwiz-videostudio-webcamaccess": "Proszę, daj Lingua Libre dostęp do swojej kamery.",

@@ -10,7 +10,7 @@
 			metadata: {
 				language: rw.store.config.data.savedLanguage,
 				license: rw.store.config.data.savedLicense,
-				media: 'audio',
+				media: '',
 				speaker: {
 					gender: '',
 					languages: {},
@@ -39,6 +39,18 @@
 			}
 		};
 		this.$api = new mw.Api();
+	};
+
+	RecordStore.prototype.updateMediaType = function () {
+		if ( this.data.metadata.language == '' ) {
+			return;
+		}
+
+		if ( rw.store.config.data.languages[ this.data.metadata.language ].mediaType === rw.store.config.data.items.mediaTypeVideo ) {
+			this.data.metadata.media = 'video';
+		} else {
+			this.data.metadata.media = 'audio';
+		}
 	};
 
 	RecordStore.prototype.setSpeaker = function ( speaker ) {
@@ -95,6 +107,10 @@
 		}
 
 		return counter;
+	};
+
+	RecordStore.prototype.hasData = function () {
+		return this.countStatus( [ 'ready', 'stashing', 'stashed', 'uploading', 'uploaded', 'finalizing' ] ) > 0;
 	};
 
 	RecordStore.prototype.clearRecord = function ( word ) {

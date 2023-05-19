@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lea.fakauvea"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Tohi fuli te 'u kupusiga o te 'u puke le'o ne'e fai e he tahi i he lea e ke fili.",
+	"apihelp-query+rwrecords-param-language": "Qid o te kupu o te lea i te pāsina viki aeni.",
+	"apihelp-query+rwrecords-param-speaker": "Qid o ia e palalau i te pāsina viki aeni.",
+	"apihelp-query+rwrecords-param-sort": "Koga e faka'aoga'i ki te filifili.",
+	"apihelp-query+rwrecords-param-dir": "Faka'alu'alu o te filifili.",
+	"apihelp-query+rwrecords-param-format": "Koga e kumi i te faka'osi.",
+	"apihelp-query+rwrecords-param-limit": "Ko kupusiga e fia e fakaliliu i te faka'osi."
+}

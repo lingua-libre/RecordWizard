@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Meno25",
 			"ديفيد"
 		]
 	},
@@ -8,5 +9,7 @@
 	"apihelp-query+rwrecords-param-language": "معرف Q لعنصر قاعدة الويكي المحلي للغة.",
 	"apihelp-query+rwrecords-param-speaker": "معرف Q لعنصر قاعدة الويكي المحلي للمتحدث.",
 	"apihelp-query+rwrecords-param-sort": "خاصية للفرز وفقا لها.",
+	"apihelp-query+rwrecords-param-dir": "اتجاه النوع.",
+	"apihelp-query+rwrecords-param-format": "عنصر للحصول على الناتج.",
 	"apihelp-query+rwrecords-param-limit": "كم عدد إجمالي النسخ للعودة."
 }

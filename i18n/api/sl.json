@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Navedba vseh transkripcij posnetkov, ki jih je ustvaril govorec izbranega jezika.",
+	"apihelp-query+rwrecords-param-language": "Qid predmeta jezika v lokalni vikizbirki.",
+	"apihelp-query+rwrecords-param-speaker": "Qid predmeta govorca v lokalni vikizbirki.",
+	"apihelp-query+rwrecords-param-sort": "Lastnost za razvrščanje.",
+	"apihelp-query+rwrecords-param-dir": "Smer razvrščanja.",
+	"apihelp-query+rwrecords-param-format": "Element, ki ga želite pridobiti kot izhod.",
+	"apihelp-query+rwrecords-param-limit": "Koliko transkripcij naj bo skupno vrnjenih."
+}

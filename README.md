@@ -10,7 +10,7 @@ For the RecordWizard to work, a running installation of MediaWiki 1.35+ is requi
 - [OAuthAuthentication](https://www.mediawiki.org/wiki/Extension:OAuthAuthentication) (in case of issues with recent versions of MediaWiki, try installing [this patched version](https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/extensions/OAuthAuthentication/+/refs/changes/30/251930/25) of this extension)
 - [Upload2Commons](https://github.com/lingua-libre/Upload2Commons)
 
-The RecordWizard also requires [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+The RecordWizard also requires [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and [ffmpeg](https://ffmpeg.org/).
 
 **(optional)** This extension integrates best with the [BlueLL](https://github.com/lingua-libre/BlueLL) skin.
 
@@ -66,6 +66,7 @@ You also have to define a namespace that can be used for list-managment (it can 
 ```
 $wgRecordWizardConfig['listNamespace'] = 142; // replace 142 with the actual id of your list-namespace
 ```
+Finally, check that [$wgFFmpegLocation](https://www.mediawiki.org/wiki/Manual:$wgFFmpegLocation) is properly set.
 
 ## Translating
 Translations are managed on [TranslateWiki](https://translatewiki.net/w/i.php?title=Special:Translate&group=mwgithub-recordwizard).

@@ -51,11 +51,11 @@ class I18nTemplateParser extends TemplateParser {
 				'basedir' => $this->templateDir,
 				'fileext' => '.mustache',
 				'helpers' => array(
-					'_' => function( $msg ) {
-						return wfMessage( $msg )->plain();
+					'_' => function( $msg, ...$params ) {
+						return wfMessage( $msg )->params( $params )->plain();
 					},
-					'__' => function( $msg ) {
-						return wfMessage( $msg )->parse();
+					'__' => function( $msg, ...$params ) {
+						return wfMessage( $msg )->params( $params )->parse();
 					},
 				),
 				'partialresolver' => function ( $cx, $partialName ) use ( $templateName, &$files ) {

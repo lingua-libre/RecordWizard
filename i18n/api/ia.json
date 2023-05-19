@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Listar tote le transcriptiones de registrationes facite per un locutor in un determinate lingua.",
+	"apihelp-query+rwrecords-param-language": "Qid del elemento wikibase local del lingua.",
+	"apihelp-query+rwrecords-param-speaker": "Qid del elemento wikibase local del locutor.",
+	"apihelp-query+rwrecords-param-sort": "Proprietate per le qual ordinar.",
+	"apihelp-query+rwrecords-param-dir": "Direction del ordinamento.",
+	"apihelp-query+rwrecords-param-format": "Elemento a obtener como sortita.",
+	"apihelp-query+rwrecords-param-limit": "Quante transcriptiones in total restituer."
+}

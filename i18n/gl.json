@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Banjo",
-			"Elisardojm"
+			"Elisardojm",
+			"Toliño"
 		]
 	},
 	"recordWizard": "RecordWizard",
 	"recordwizard": "Asistente de gravacións",
 	"special-recordWizard-title": "Asistente de gravacións",
-	"mwe-recwiz-step-tutorial": "Tutorial",
+	"mwe-recwiz-step-tutorial": "Titorial",
 	"mwe-recwiz-step-speaker": "Locutor",
 	"mwe-recwiz-step-details": "Detalles",
 	"mwe-recwiz-step-studio": "Estudio",

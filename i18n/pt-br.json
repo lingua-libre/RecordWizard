@@ -4,6 +4,7 @@
 			"Duke of Wikipädia",
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
+			"Fúlvio",
 			"Iohanen",
 			"Mariagarbin"
 		]
@@ -30,7 +31,7 @@
 	"mwe-recwiz-tutorial-reopenpopup": "Reabrir o pop-up",
 	"mwe-recwiz-tutorial-activate": "Para continuar, permita acesso ao seu microfone, por favor.",
 	"mwe-recwiz-tutorial-title": "Verificar o seu microfone",
-	"mwe-recwiz-tutorial-help": "==== Veja como fazê-lo: ====\n# Quando estiver pronto, pressione o botão acima para iniciar um teste de gravação.\n# Pronuncie uma palavra em voz alta, por exemplo \"o sol\"\n# Ouça seu registro para verificar se está correto.\n# Adapte a configuração do seu microfone, se necessário.\n# Se tudo estiver correto, você pode passar para o próximo passo!",
+	"mwe-recwiz-tutorial-help": "==== Veja como fazê-lo: ====\n# Quando estiver pronto, clique no botão \"Começar o teste\" para iniciar um teste de gravação.\n# Pronuncie uma palavra em voz alta, por exemplo \"o sol\".\n# Ouça seu registro para verificar se está correto.\n# Adapte a configuração do seu microfone, se necessário.\n# Se tudo estiver correto, você pode passar para o próximo passo!",
 	"mwe-recwiz-tutorial-info": "Para saber como configurar seu microfone, visite [[Special:MyLanguage/Help:Configure_your_microphone|esta página de ajuda]].",
 	"mwe-recwiz-tutorial-mictester-info": "Quando estiver pronto, pressione o botão abaixo para iniciar o registro de teste.",
 	"mwe-recwiz-tutorial-mictester-start": "Começar o teste",
@@ -76,9 +77,9 @@
 	"mwe-recwiz-generator-list": "Lista local",
 	"mwe-recwiz-generator-wmcategory": "Categoria da Wikimedia",
 	"mwe-recwiz-studio-title": "Estúdio",
-	"mwe-recwiz-studio-info-audio": "Clique em $1 abaixo e leia a palavra em voz alta.",
+	"mwe-recwiz-studio-info-audio": "Clique em $1 abaixo e leia a palavra em voz alta",
 	"mwe-recwiz-studio-info-video": "Clique em $1 abaixo, depois leia e assine a palavra",
-	"mwe-recwiz-studio-skip": "Pular",
+	"mwe-recwiz-studio-skip": "Pular para a próxima palavra",
 	"mwe-recwiz-studio-input-placeholder": "Adicionar uma nova palavra",
 	"mwe-recwiz-studio-uploadcount": "$1 de $2 {{PLURAL:$2|som|sons {{PLURAL:$1|enviado|enviados}}}}",
 	"mwe-recwiz-videostudio-webcamaccess": "Por favor, permita que o Lingua Libre acesse sua webcam.",
