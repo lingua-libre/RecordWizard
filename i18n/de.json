@@ -11,21 +11,19 @@
 			"Lorem Ipsum",
 			"Metalhead64",
 			"Sebastian Wallroth",
-			"WikiLucas00",
 			"TMg",
 			"ThisCarthing",
+			"WikiLucas00",
 			"Zabe"
-
 		]
 	},
 	"recordWizard": "Aufnahmeassistent",
 	"recordwizard": "Aufnahmeassistent",
 	"recordWizard-desc": "Ein benutzerfreundliches und automatisiertes Werkzeug zur Aufnahme von Aussprache-Audiodateien.",
 	"special-recordWizard-title": "Aufnahmeassistent",
+	"mwe-recwiz-title": "Eine Stimme aufnehmen",
 	"mwe-recwiz-menu-statistics": "Statistiken",
 	"mwe-recwiz-menu-datasets": "Datensätze",
-	"mwe-recwiz-menutitle": "Menü",
-	"mwe-recwiz-title": "Eine Stimme aufnehmen",
 	"mwe-recwiz-step-tutorial": "Anleitung",
 	"mwe-recwiz-step-speaker": "Sprachprofil",
 	"mwe-recwiz-step-details": "Einzelheiten",

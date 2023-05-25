@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Alshamiri1",
 			"Kassem7899",
 			"Meno25",
 			"Sonic N800",
@@ -14,6 +15,8 @@
 	"recordwizard": "معالج التسجيل",
 	"recordWizard-desc": "أداة سهلة الاستخدام ومؤتمتة لتسجيل ملفات صوت النطق.",
 	"special-recordWizard-title": "معالج التسجيل",
+	"mwe-recwiz-menu-statistics": "إحصاءات",
+	"mwe-recwiz-menu-library": "مكتبة الصوت",
 	"mwe-recwiz-step-tutorial": "مقدمة تعليمية",
 	"mwe-recwiz-step-speaker": "المتحدث",
 	"mwe-recwiz-step-details": "التفاصيل",

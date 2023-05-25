@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Higa4",
+			"MathXplore",
 			"Object＊tofu",
 			"Omotecho",
 			"Otokoume",
@@ -14,9 +15,11 @@
 	},
 	"recordWizard": "録音ウィザード",
 	"recordwizard": "録音ウィザード",
-	"recordWizard-desc": "ユーザーの使い勝手に配慮した音声発音ファイル録音用の自動化ツール。",
+	"recordWizard-desc": "利用者の使い勝手に配慮した音声発音ファイル録音用の自動化ツール。",
 	"special-recordWizard-title": "録音ウィザード",
 	"mwe-recwiz-title": "音声を録音しよう",
+	"mwe-recwiz-menu-statistics": "統計",
+	"mwe-recwiz-menu-datasets": "データセット",
 	"mwe-recwiz-step-tutorial": "チュートリアル",
 	"mwe-recwiz-step-speaker": "話者",
 	"mwe-recwiz-step-details": "詳細",
