@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"recordWizard": "Assistent fir Opzehuelen",
 	"recordwizard": "Assistent fir Opzehuelen",
 	"mwe-recwiz-title": "Eng Stëmm ophuelen",
+	"mwe-recwiz-menu-statistics": "Statistiken",
 	"mwe-recwiz-step-tutorial": "Uleedung",
 	"mwe-recwiz-step-speaker": "Riedner",
 	"mwe-recwiz-step-details": "Detailer",
