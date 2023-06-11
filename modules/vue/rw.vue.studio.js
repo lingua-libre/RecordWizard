@@ -32,8 +32,8 @@
 				saturationThreshold: 0.99
 			},
 			videoParams: {
-				beforeStart: '3',
-				recordDuration: '2'
+				beforeStart: '5',
+				recordDuration: '3'
 			},
 			videoStream: null,
 			options: {
@@ -42,7 +42,9 @@
 					{ data: '1', label: '1' },
 					{ data: '2', label: '2' },
 					{ data: '3', label: '3' },
-					{ data: '5', label: '5' }
+					{ data: '5', label: '5' },
+					{ data: '8', label: '8' },
+					{ data: '10', label: '10' }
 				],
 				recordDuration: [
 					{ data: '2', label: '2' },
