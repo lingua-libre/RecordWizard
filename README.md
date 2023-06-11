@@ -71,10 +71,12 @@ Finally, check that [$wgFFmpegLocation](https://www.mediawiki.org/wiki/Manual:$w
 ## Translating
 Translations are managed on [TranslateWiki](https://translatewiki.net/w/i.php?title=Special:Translate&group=mwgithub-recordwizard).
 
-## Contributing
-First, please read MediaWiki's [code of conduct](https://www.mediawiki.org/wiki/Code_of_Conduct), which also applies here.
+## Contribute
+Please read MediaWiki's [code of conduct](https://www.mediawiki.org/wiki/Code_of_Conduct).
 
-To find out your way through the code, here is a diagram showing the structure of the extension and the main interactions between its components.
+**Report an issue** on [Wikimedia's Phabricator's Lingualibre dashboard](https://phabricator.wikimedia.org/tag/lingua_libre/) 
+
+### Structure, components and interaction
 
 <img src="doc/diagram.svg"/>
 
@@ -84,8 +86,7 @@ Add [`$wgResourceLoaderDebug = true;`](https://www.mediawiki.org/wiki/Manual:$wg
 
 ## Authors
 - **Antoine Lamielle** - *architect and main developper of Lingua Libre* - [0x010C](https://github.com/0x010C)
-
-See also the list of [contributors](https://github.com/lingua-libre/RecordWizard/contributors) who participated in this project.
+- [A dozen of other contributors](https://github.com/lingua-libre/RecordWizard/contributors)
 
 ## License
 
@@ -95,5 +96,7 @@ This project is licensed under the GPL v2.0 License - see the [LICENSE](LICENSE)
 - "Create a new generator" help page: https://lingualibre.org/wiki/Help:Create_a_new_generator
 
 ## Acknowledgments
-- Development of this extension was originally funded by a grant of the Wikimedia Foundation (January -> July 2018)
-- Development was in a second time sponsored by Wikimédia France (Mars -> May 2020)
+- Development originally funded by a grant of the Wikimedia Foundation (January -> July 2018)
+- Developement for the video recording track sponsored by Wikimédia France (2019)
+- Development for an UI revamp sponsored by Wikimédia France (Mars -> May 2020)
+- Fix for the video recording track sponsored by University of Toulouse (April 2023)
