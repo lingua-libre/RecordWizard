@@ -113,7 +113,7 @@
 	"mwe-recwiz-settings-audiorecording": "録音設定：",
 	"mwe-recwiz-settings-startthreshold": "開始の閾値：",
 	"mwe-recwiz-settings-stopthreshold": "終了の閾値：",
-	"mwe-recwiz-settings-saturationthreshold": "げんかいの閾値：",
+	"mwe-recwiz-settings-saturationthreshold": "飽和しきい値：",
 	"mwe-recwiz-settings-stopduration": "無音の時間：",
 	"mwe-recwiz-settings-marginbefore": "前に空ける余白：",
 	"mwe-recwiz-settings-marginafter": "後に空ける余白：",
