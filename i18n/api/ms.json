@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hakimi97"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Senaraikan semua transkripsi rekod yang dibuat oleh penutur dalam bahasa tertentu.",
+	"apihelp-query+rwrecords-param-language": "Qid item pangkalan wiki tempatan bahasa itu.",
+	"apihelp-query+rwrecords-param-speaker": "Qid item pangkalan wiki tempatan tukang suara.",
+	"apihelp-query+rwrecords-param-sort": "Kepemilikan diasingkan mengikut.",
+	"apihelp-query+rwrecords-param-dir": "Arah pengasingan.",
+	"apihelp-query+rwrecords-param-format": "Unsur untuk didapatkan sebagai output.",
+	"apihelp-query+rwrecords-param-limit": "Berapakah jumlah transkripsi yang perlu dikembalikan."
+}
