@@ -271,6 +271,7 @@
 .mwe-rw-core {
 	display: flex;
 	flex-wrap: wrap-reverse;
+	flex-direction: column;
 	align-items: center;
 
 	margin-left: 35px;
@@ -302,6 +303,8 @@
 
 	min-height: 235px;
 	min-width: 200px;
+
+	width: 100%;
 }
 .mwe-rw-item {
 	width: 100%;
