@@ -15,7 +15,7 @@
 			"Verdy p"
 		]
 	},
-	"recordWizard": "The name of the extension",
+	"recordWizard": "{{name}}\n\nThe name of the extension",
 	"recordwizard": "The name of the extension display on Special:SpecialPages",
 	"recordWizard-desc": "{{desc|name=RecordWizard|url=https://www.mediawiki.org/wiki/Extension:RecorderWizard}}",
 	"special-recordWizard-title": "Title of the special page Special:RecordWizard",
