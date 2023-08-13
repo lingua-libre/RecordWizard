@@ -111,6 +111,7 @@
         },
         "ext.recordWizard.recorder": {
             "scripts": [
+                "lib/lingua-recorder/RecordingProcessor.js",
                 "lib/lingua-recorder/AudioRecord.js",
                 "lib/lingua-recorder/LinguaRecorder.js",
                 "modules/rw.VideoRecorder.js"
