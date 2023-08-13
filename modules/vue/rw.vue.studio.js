@@ -121,6 +121,10 @@
 				this.$recorder.off( 'saturated' );
 				this.$recorder.off( 'recording' );
 
+				if ( this.metadata.media === 'audio' ) {
+					this.$recorder.close();
+				}
+
 				this.$recorder = undefined;
 			},
 			shortcutsHandler: function ( event ) {

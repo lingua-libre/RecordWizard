@@ -22,11 +22,19 @@
 				OverconstrainedError: 'mwe-recwiz-error-mediastream-notfound',
 				SecurityError: 'mwe-recwiz-error-mediastream-technical'
 			};
-
 			this.getAudioStream();
 		},
 
 		/* Methods */
+		watch: {
+			'state.step': function () {
+				if ( this.state.step === 'tutorial' ) {
+					this.getAudioStream();
+				} else if ( this.$recorder !== undefined && this.$recorder !== null ) {
+					this.unloadRecorder();
+				}
+			}
+		},
 		methods: {
 			getAudioStream: function () {
 				// Cleanup previous recorder instance when we click on the button
@@ -45,7 +53,7 @@
 				}.bind( this ) );
 			},
 			unloadRecorder: function () {
-				if ( this.recorder === undefined || this.recorder === null ) {
+				if ( this.$recorder === undefined || this.$recorder === null ) {
 					return;
 				}
 
@@ -53,6 +61,7 @@
 				this.$recorder.off( 'readyFail' );
 				this.$recorder.off( 'ready' );
 				this.$recorder.off( 'stoped' );
+				this.$recorder.close();
 				this.$recorder = null;
 			},
 			showError: function ( mediaStreamError ) {
