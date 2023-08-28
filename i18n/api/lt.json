@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nokeoo"
+		]
+	},
+	"apihelp-query+rwrecords-param-sort": "Pagal ką rūšiuoti.",
+	"apihelp-query+rwrecords-param-dir": "Rūšiavimo kryptis.",
+	"apihelp-query+rwrecords-param-format": "Išvesties elementas.",
+	"apihelp-query+rwrecords-param-limit": "Kiek iš viso grąžinti transkripcijų."
+}
