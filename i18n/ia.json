@@ -114,7 +114,7 @@
 	"mwe-recwiz-shortcuts-next-word": "Ir al parola sequente",
 	"mwe-recwiz-shortcuts-delete-recording": "Deler le registration seligite",
 	"mwe-recwiz-shortcuts-listen-recording": "Ascoltar le registration seligite",
-	"mwe-recwiz-shortcuts-toggle-recording": "Alternar registration",
+	"mwe-recwiz-shortcuts-toggle-recording": "Commutar registration",
 	"mwe-recwiz-error-mediastream-notallowed": "Tu non ha permittite le accesso al microphono. Pro usar le assistente de registration, va in le parametros de tu navigator pro permitter lo, pois clicca sur le button hic infra.",
 	"mwe-recwiz-error-mediastream-notfound": "Necun microphono ha essite trovate. Pro continuar, tu debe obtener un e connecter lo a tu apparato.",
 	"mwe-recwiz-error-mediastream-technical": "Un error technic in tu navigator o in tu systema de operation ha impedite le uso de tu microphono. Prova a recargar le pagina. Detalios del error: $1",
