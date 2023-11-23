@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Blahma",
 			"Deleted user",
 			"Lepticed",
 			"Pamputt",
@@ -21,7 +22,7 @@
 	"mwe-recwiz-step-details": "Detaloj",
 	"mwe-recwiz-step-studio": "Studio",
 	"mwe-recwiz-step-publish": "Publikigi",
-	"mwe-recwiz-prevent-close": "Vi forlasas ĉi paĝon. Ĉiuj konservita sonregistraĵoj perdiĝos. Ĉu vi volas foriri sekondiĉe?",
+	"mwe-recwiz-prevent-close": "Vi forlasas ĉi paĝon. Ĉiuj konservitaj sonregistraĵoj perdiĝos. Ĉu vi volas foriri senkondiĉe?",
 	"mwe-recwiz-cancel": "Nuligi",
 	"mwe-recwiz-next": "Sekva",
 	"mwe-recwiz-previous": "Antaŭa",
