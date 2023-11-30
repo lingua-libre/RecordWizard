@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Adriendelucca"
+		]
+	},
+	"apihelp-query+rwrecords-param-language": "Qid elfenn wikibase lec'hel ar yezh.",
+	"apihelp-query+rwrecords-param-speaker": "Qid elfenn wikibase lec'hel ar c'homzer."
+}
