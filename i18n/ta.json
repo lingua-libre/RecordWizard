@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Fahimrazick",
 			"Sriveenkat"
 		]
 	},
@@ -9,11 +10,11 @@
 	"mwe-recwiz-step-speaker": "பேச்சாளர்",
 	"mwe-recwiz-step-details": "விவரங்கள்",
 	"mwe-recwiz-step-publish": "வெளியிடு",
-	"mwe-recwiz-cancel": "ரத்து செய்",
+	"mwe-recwiz-cancel": "கைவிடு",
 	"mwe-recwiz-next": "அடுத்து",
-	"mwe-recwiz-previous": "முந்தைய",
+	"mwe-recwiz-previous": "முந்திய",
 	"mwe-recwiz-continue": "தொடர்க",
-	"mwe-recwiz-retry": "தோல்வியடைந்த பதிவேற்றங்களை மீண்டும் முயற்சிக்கவும்",
+	"mwe-recwiz-retry": "தோற்ற பதிவேற்றங்களை மீண்டும் முயல்க",
 	"mwe-recwiz-publish": "பொதுவகத்தில் பதிவேற்றுக",
 	"mwe-recwiz-restart": "மேலும் சொற்களை ஒலிப்பதிவு செய்ய",
 	"mwe-recwiz-tutorial-title": "உங்கள் ஒலிவாங்கியை சரி பார்க்கவும்",

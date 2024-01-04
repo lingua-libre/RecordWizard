@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Aftabuzzaman",
+			"Aishik Rehman",
 			"Tahmid",
 			"Tahmid02016",
 			"আজিজ",
@@ -22,10 +23,10 @@
 	"mwe-recwiz-next": "পরবর্তী",
 	"mwe-recwiz-previous": "পূর্ববর্তী",
 	"mwe-recwiz-continue": "অগ্রসর হোন",
-	"mwe-recwiz-continueanyway": "যেকোন ভাবে অব্যাহত রাখুন",
+	"mwe-recwiz-continueanyway": "যেকোনো ভাবে অব্যাহত রাখুন",
 	"mwe-recwiz-retry": "ব্যর্থ আপলোড পুনরায় চেষ্টা করুন",
 	"mwe-recwiz-publish": "উইকিমিডিয়া কমন্সে প্রকাশ করুন",
-	"mwe-recwiz-restart": "আরো শব্দ রেকর্ড করুন",
+	"mwe-recwiz-restart": "আরও শব্দ রেকর্ড করুন",
 	"mwe-recwiz-tutorial-reopenpopup": "পপআপ পুনঃচালু করুন",
 	"mwe-recwiz-tutorial-activate": "চালিয়ে যেতে আপনার মাইক্রোফোনে প্রবেশাধিকারের অনুমতি দিন।",
 	"mwe-recwiz-tutorial-title": "আপনার মাইক্রোফোন পরীক্ষা করুন",
@@ -56,7 +57,7 @@
 	"mwe-recwiz-details-addwords": "একটি শব্দ লিখুন ও <Enter> ছাপ দিন (বা বিভাজক হিসেবে # ব্যবহার করে একাধিক শব্দ লিখুন)",
 	"mwe-recwiz-details-clear": "পরিষ্কার করুন",
 	"mwe-recwiz-details-generators": "শব্দ উৎপন্নকারী ব্যবহার করে চেষ্টা করুন",
-	"mwe-recwiz-details-noword": "কোন শব্দ নির্বাচন করা হয়নি",
+	"mwe-recwiz-details-noword": "কোনো শব্দ নির্বাচন করা হয়নি",
 	"mwe-recwiz-details-wordcount": "$1টি {{PLURAL:$1|শব্দ}}",
 	"mwe-recwiz-generator-nearby": "কাছাকাছি",
 	"mwe-recwiz-generator-list": "স্থানীয় তালিকা",
@@ -74,7 +75,7 @@
 	"mwe-recwiz-pendinguplads": "আপলোড করা হচ্ছে...",
 	"mwe-recwiz-allsucceeded": "সকল আপলোড সফলভাবে সম্পন্ন হয়েছে!",
 	"mwe-recwiz-somefailed": "কিছু আপলোড ব্যর্থ হয়েছে।",
-	"mwe-recwiz-allfailed": "কোন আপলোডই সফল হয়নি।",
+	"mwe-recwiz-allfailed": "কোনো আপলোডই সফল হয়নি।",
 	"mwe-recwiz-settings-sec": "সেকেন্ড",
 	"mwe-recwiz-nearby-coordinates": "স্থানাঙ্কসমূহ",
 	"mwe-recwiz-nearby-limit": "পাওয়ার জন্য শব্দ সংখ্যা",
@@ -88,6 +89,6 @@
 	"mwe-recwiz-wmcategory-source": "উৎস",
 	"mwe-recwiz-wmcategory-wikipedia": "উইকিপিডিয়া",
 	"mwe-recwiz-wmcategory-wiktionary": "উইকিঅভিধান",
-	"mwe-recwiz-error-pagemissing": "বর্তমানে \"$1\" নামে কোন পাতা নেই।",
-	"mwe-recwiz-error-nowiki": "আপনার ভাষায় কোন উইকিপিডিয়া বা উইকিঅভিধান নেই।"
+	"mwe-recwiz-error-pagemissing": "বর্তমানে \"$1\" নামে কোনো পাতা নেই।",
+	"mwe-recwiz-error-nowiki": "আপনার ভাষায় কোনো উইকিপিডিয়া বা উইকিঅভিধান নেই।"
 }
