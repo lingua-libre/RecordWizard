@@ -271,7 +271,7 @@
 .mwe-rw-core {
 	display: flex;
 	flex-wrap: wrap-reverse;
-	flex-direction: column;
+	/* flex-direction: column; */
 	align-items: center;
 
 	margin-left: 35px;
