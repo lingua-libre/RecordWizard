@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Cookai1205",
 			"Kly",
 			"LNDDYL",
 			"Winston Sung",
@@ -47,7 +48,7 @@
 	"mwe-recwiz-speaker-profilenew": "建立新的說話者",
 	"mwe-recwiz-speaker-name": "顯示的名稱",
 	"mwe-recwiz-speaker-languages": "所講的語言",
-	"mwe-recwiz-speaker-languagelevel": "語言水準",
+	"mwe-recwiz-speaker-languagelevel": "語言程度",
 	"mwe-recwiz-speaker-languagelevel-native": "母語",
 	"mwe-recwiz-speaker-languagelevel-good": "高級",
 	"mwe-recwiz-speaker-languagelevel-average": "中級",
@@ -98,7 +99,7 @@
 	"mwe-recwiz-publish-removelabel": "移除",
 	"mwe-recwiz-publish-commonsfilelist": "檢查您在維基共享資源的上傳",
 	"mwe-recwiz-publish-nomedia": "目前沒有選用的多媒體。",
-	"mwe-recwiz-pendinguplads": "...上傳中...",
+	"mwe-recwiz-pendinguplads": "…上傳中…",
 	"mwe-recwiz-allsucceeded": "全部成功上傳！",
 	"mwe-recwiz-somefailed": "部份上傳失敗。",
 	"mwe-recwiz-allfailed": "沒有上傳是成功的。",

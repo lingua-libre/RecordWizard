@@ -3,6 +3,7 @@
 		"authors": [
 			"Ailbeve",
 			"ArslanX",
+			"Butko",
 			"DDPAT",
 			"Diralik",
 			"Ice bulldog",
@@ -44,7 +45,7 @@
 	"mwe-recwiz-tutorial-activate": "Чтобы продолжить, пожалуйста, разрешите доступ к вашему микрофону.",
 	"mwe-recwiz-tutorial-title": "Проверьте свой микрофон",
 	"mwe-recwiz-tutorial-help": "==== Вот как это сделать: ====\n# Когда будете готовы, нажмите на кнопку «Начать тест», чтобы сделать тестовую запись.\n# Произнесите слово. Например, «солнце».\n# Прослушайте вашу запись и проверьте её корректность.\n# Если необходимо, донастройте свой микрофон.\n# Если всё хорошо, перейдите к следующему шагу!",
-	"mwe-recwiz-tutorial-info": "Чтобы узнать, как настроить свой микрофоне, посетите [[Special:MyLanguage/Help:Configure_your_microphone|следующую страницу помощи]].",
+	"mwe-recwiz-tutorial-info": "Чтобы узнать, как настроить свой микрофон, посетите [[Special:MyLanguage/Help:Configure_your_microphone|следующую страницу помощи]].",
 	"mwe-recwiz-tutorial-mictester-info": "Когда будете готовы, нажмите на кнопку ниже для запуска тестовой записи.",
 	"mwe-recwiz-tutorial-mictester-start": "Начать тест",
 	"mwe-recwiz-tutorial-mictester-recording": "1. Скажите что-нибудь",
