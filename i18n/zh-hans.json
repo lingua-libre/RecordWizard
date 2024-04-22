@@ -10,7 +10,8 @@
 			"Stang",
 			"Xiplus",
 			"Zhang8569",
-			"列维劳德"
+			"列维劳德",
+			"沈澄心"
 		]
 	},
 	"recordWizard": "记录向导",
@@ -18,11 +19,15 @@
 	"recordWizard-desc": "一个容易使用的记录音频发音文件的自动化工具。",
 	"special-recordWizard-title": "记录向导",
 	"mwe-recwiz-title": "录制音频",
+	"mwe-recwiz-menu-statistics": "统计",
+	"mwe-recwiz-menu-library": "声音库",
+	"mwe-recwiz-menu-datasets": "数据集",
 	"mwe-recwiz-step-tutorial": "教程",
 	"mwe-recwiz-step-speaker": "播音器",
 	"mwe-recwiz-step-details": "详情",
 	"mwe-recwiz-step-studio": "工作室",
 	"mwe-recwiz-step-publish": "发布",
+	"mwe-recwiz-cancel": "取消",
 	"mwe-recwiz-next": "下一步",
 	"mwe-recwiz-previous": "上一步",
 	"mwe-recwiz-continue": "继续",
@@ -38,6 +43,7 @@
 	"mwe-recwiz-tutorial-mictester-recording": "一、说点什么",
 	"mwe-recwiz-tutorial-mictester-playing": "二、收听",
 	"mwe-recwiz-tutorial-mictester-waiting": "正在加载",
+	"mwe-recwiz-speaker-title": "发音人个人资料",
 	"mwe-recwiz-speaker-profile": "要使用的播音器详情",
 	"mwe-recwiz-speaker-profilemain": "您的主要播音器",
 	"mwe-recwiz-speaker-profileother": "其他播音器",
