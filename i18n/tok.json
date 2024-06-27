@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Faian36",
 			"Juwan"
 		]
 	},
@@ -146,7 +147,7 @@
 	"mwe-recwiz-wmcategory-wiktionary": "lipu Wiktionary",
 	"mwe-recwiz-wmcategory-deduplicate": "o weka e nimi pi kalama lon",
 	"mwe-recwiz-wmcategory-limit": "mute nimi",
-	"mwe-recwiz-wmcategory-limit-help": "nanpa 1 en nanpa 200 la nanpa o lon insa ni",
+	"mwe-recwiz-wmcategory-limit-help": "nanpa 1 en nanpa 2000 la nanpa o lon insa ni",
 	"mwe-recwiz-list-error-nopage": "o pana e nimi pi lipu kulupu",
 	"mwe-recwiz-error-pagemissing": "lipu \"$1\" li lon ala.",
 	"mwe-recwiz-error-nowiki": "toki sina la kulupu Wikipesija en kulupu Wiktionary li lon ala."
