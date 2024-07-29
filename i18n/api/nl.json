@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Een lijst maken van alle transcripties van opnamen die door een spreker in een bepaalde taal zijn gemaakt.",
+	"apihelp-query+rwrecords-param-language": "QID van het lokale Wikibase-item van de taal.",
+	"apihelp-query+rwrecords-param-speaker": "QID van het lokale Wikibase-item van de spreker.",
+	"apihelp-query+rwrecords-param-sort": "Eigenschap om op te sorteren.",
+	"apihelp-query+rwrecords-param-dir": "Sorteerrichting.",
+	"apihelp-query+rwrecords-param-format": "Element om als uitvoer op te halen.",
+	"apihelp-query+rwrecords-param-limit": "Hoeveel transcripties er in totaal moeten worden geretourneerd."
+}

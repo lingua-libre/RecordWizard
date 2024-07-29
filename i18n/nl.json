@@ -4,7 +4,8 @@
 			"McDutchie",
 			"PonkoSasuke",
 			"Romaine",
-			"SPQRobin"
+			"SPQRobin",
+			"Siebrand"
 		]
 	},
 	"recordwizard": "Opnamewizard",
@@ -138,10 +139,21 @@
 	"mwe-recwiz-nearby-longitude": "lengtegraad",
 	"mwe-recwiz-nearby-getcoordinates": "Mijn positie ophalen",
 	"mwe-recwiz-nearby-source": "Bron",
+	"mwe-recwiz-nearby-deduplicate": "Woorden die u al hebt opgenomen uitsluiten",
+	"mwe-recwiz-error-cantgetposition": "Uw positie kan niet gevonden worden. U moet de coördinaten met de hand instellen ($1).",
+	"mwe-recwiz-warning-noresults": "Er zijn geen items bij deze coördinaten.",
 	"mwe-recwiz-list-title": "Titel",
+	"mwe-recwiz-list-title-help": "Titel van een pagina binnen de naamruimte lijst.",
+	"mwe-recwiz-list-deduplicate": "Woorden die u al hebt opgenomen uitsluiten",
 	"mwe-recwiz-wmcategory-title": "Categorienaam",
 	"mwe-recwiz-wmcategory-title-help": "Naam van een categorie, inclusief de categorienaamruimte.",
 	"mwe-recwiz-wmcategory-source": "Bron",
 	"mwe-recwiz-wmcategory-wikipedia": "Wikipedia",
-	"mwe-recwiz-wmcategory-wiktionary": "WikiWoordenboek"
+	"mwe-recwiz-wmcategory-wiktionary": "WikiWoordenboek",
+	"mwe-recwiz-wmcategory-deduplicate": "Woorden die u al hebt opgenomen uitsluiten",
+	"mwe-recwiz-wmcategory-limit": "Aantal op te halen woorden",
+	"mwe-recwiz-wmcategory-limit-help": "Het moet een geheel getal tussen 1 en 2000 zijn.",
+	"mwe-recwiz-list-error-nopage": "Voer de paginanaam in die de lijst bevat.",
+	"mwe-recwiz-error-pagemissing": "Er is op het moment geen pagina met de naam \"$1\".",
+	"mwe-recwiz-error-nowiki": "Er is geen Wikipedia of Wikitionary in uw taal."
 }
