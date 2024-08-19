@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"DDPAT",
 			"Ice bulldog",
 			"Ignatgg",
@@ -13,9 +14,6 @@
 	"recordWizard-desc": "Легкий у користуванні та автоматизований інструмент для запису аудіофайлів вимови слів та словосполучень.",
 	"special-recordWizard-title": "Майстер звукозапису",
 	"mwe-recwiz-title": "Записати голос",
-	"mwe-recwiz-menu-statistics": "Статистика",
-	"mwe-recwiz-menu-library": "Звукова бібліотека",
-	"mwe-recwiz-menu-datasets": "Набір даних",
 	"mwe-recwiz-step-tutorial": "Посібник",
 	"mwe-recwiz-step-speaker": "Мовець",
 	"mwe-recwiz-step-details": "Подробиці",
