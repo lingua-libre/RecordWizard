@@ -3,6 +3,7 @@
 		"authors": [
 			"Fitoschido",
 			"Jmontane",
+			"Lluis Cat",
 			"Toniher",
 			"Vriullop"
 		]
@@ -76,8 +77,8 @@
 	"mwe-recwiz-generator-wmcategory": "Categoria de Wikimedia",
 	"mwe-recwiz-studio-title": "Estudi",
 	"mwe-recwiz-studio-info-audio": "Feu clic sobre $1, i després llegiu el mot en veu alta",
-	"mwe-recwiz-studio-info-video": "Feu clic sobre $1, i després feu el mot en la llengüa de signes",
-	"mwe-recwiz-studio-skip": "Omet",
+	"mwe-recwiz-studio-info-video": "Feu clic a $1, després llegiu i feu el mot en la llengua de signes",
+	"mwe-recwiz-studio-skip": "Ves a la paraula següent",
 	"mwe-recwiz-studio-input-placeholder": "Afegiu un nou mot",
 	"mwe-recwiz-studio-uploadcount": "{{PLURAL:$1|S'ha pujat $1|S'han pujat $1}} enregistraments de $2",
 	"mwe-recwiz-videostudio-webcamaccess": "Autoritzeu Lingua Libre a accedir a la càmera web.",
