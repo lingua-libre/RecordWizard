@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ffff23",
 			"Higa4",
 			"MathXplore",
 			"Object＊tofu",
@@ -96,7 +97,7 @@
 	"mwe-recwiz-videostudio-currentlyrecording": "正しく録音中:",
 	"mwe-recwiz-videostudio-willstart": "\"$1\" の録音は次の秒数後に開始:",
 	"mwe-recwiz-publish-title": "公開",
-	"mwe-recwiz-publish-info": "公開する前に録音をチェクしてください。",
+	"mwe-recwiz-publish-info": "公開する前に録音を確認してください。",
 	"mwe-recwiz-publish-play": "再生",
 	"mwe-recwiz-publish-remove": "除去",
 	"mwe-recwiz-publish-areyousure": "この録音を本当に除去しますか？",

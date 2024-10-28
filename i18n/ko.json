@@ -56,7 +56,7 @@
 	"mwe-recwiz-gender-male": "남성",
 	"mwe-recwiz-gender-female": "여성",
 	"mwe-recwiz-gender-other": "기타",
-	"mwe-recwiz-details-lang": "녹음 언어",
+	"mwe-recwiz-details-lang": "녹음 언어:",
 	"mwe-recwiz-details-wordlist": "녹음을 단어 목록",
 	"mwe-recwiz-details-randomise": "목록 섞기",
 	"mwe-recwiz-details-addwords": "단어를 입력하고 <Enter>를 누르십시오 (여러 단어의 경우 #를 구분자로 사용하십시오)",
