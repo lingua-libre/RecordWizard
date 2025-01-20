@@ -5,7 +5,8 @@
 			"Kly",
 			"LNDDYL",
 			"Winston Sung",
-			"捍粵者"
+			"捍粵者",
+			"沈澄心"
 		]
 	},
 	"recordWizard": "錄音精靈",
@@ -107,9 +108,9 @@
 	"mwe-recwiz-settings-durationtorecord": "持續錄製：",
 	"mwe-recwiz-settings-delaybetweenrecords": "錄製之間的延遲：",
 	"mwe-recwiz-settings-audiorecording": "音訊設定：",
-	"mwe-recwiz-settings-startthreshold": "起始閥值：",
-	"mwe-recwiz-settings-stopthreshold": "結束閥值：",
-	"mwe-recwiz-settings-saturationthreshold": "飽和閥值：",
+	"mwe-recwiz-settings-startthreshold": "起始閾值：",
+	"mwe-recwiz-settings-stopthreshold": "結束閾值：",
+	"mwe-recwiz-settings-saturationthreshold": "飽和閾值：",
 	"mwe-recwiz-settings-stopduration": "無聲持續時間：",
 	"mwe-recwiz-settings-marginbefore": "保存在前的餘量：",
 	"mwe-recwiz-settings-marginafter": "保存在後的餘量：",
