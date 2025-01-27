@@ -6,7 +6,8 @@
 			"Eduardoaddad",
 			"Fúlvio",
 			"Iohanen",
-			"Mariagarbin"
+			"Mariagarbin",
+			"Trooper57"
 		]
 	},
 	"recordWizard": "Assistente de gravação",
@@ -14,6 +15,8 @@
 	"recordWizard-desc": "Uma ferramenta amigável e automatizada para gravar arquivos de pronúncia de áudio.",
 	"special-recordWizard-title": "Assistente de gravação",
 	"mwe-recwiz-title": "Gravar uma voz",
+	"mwe-recwiz-menu-statistics": "Estatísticas",
+	"mwe-recwiz-menu-library": "Audioteca",
 	"mwe-recwiz-step-tutorial": "Tutorial",
 	"mwe-recwiz-step-speaker": "Orador",
 	"mwe-recwiz-step-details": "Detalhes",
