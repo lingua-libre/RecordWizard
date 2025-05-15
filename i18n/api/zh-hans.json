@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Administrator66",
+			"沈澄心"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "列出由特定语言的发言者所作的所有记录的抄本。",
+	"apihelp-query+rwrecords-param-sort": "要作为排序方式的属性。",
+	"apihelp-query+rwrecords-param-dir": "排序方向。",
+	"apihelp-query+rwrecords-param-format": "要取得的输出元素。",
+	"apihelp-query+rwrecords-param-limit": "总共返回多少份转录本。"
+}
