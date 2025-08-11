@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"JeffreyKim"
+			"JeffreyKim",
+			"Ktchankt"
 		]
 	},
 	"apihelp-query+rwrecords-summary": "列出講者用特定語言所做嘅所有記錄轉錄。",
 	"apihelp-query+rwrecords-param-language": "語言嘅本地維基庫項目嘅Qid。",
 	"apihelp-query+rwrecords-param-speaker": "講者嘅本地維基庫項目嘅Qid。",
-	"apihelp-query+rwrecords-param-sort": "要排序嘅物業。",
+	"apihelp-query+rwrecords-param-sort": "要排序嘅屬性。",
 	"apihelp-query+rwrecords-param-dir": "排序嘅方向。",
 	"apihelp-query+rwrecords-param-format": "要攞到嘅元素作為輸出。",
 	"apihelp-query+rwrecords-param-limit": "總共要返幾多個轉錄文件。"
