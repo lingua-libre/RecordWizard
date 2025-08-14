@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "ХӀокху маттахь къамел дечо йинчу дӀайаздарийн йерриге а транскрипцеш гайта.",
+	"apihelp-query+rwrecords-param-language": "Qid Викибазан меттан локалан элемент.",
+	"apihelp-query+rwrecords-param-speaker": "Qid къамелдечуна викибазан тӀехь локалан дӀайаздар.",
+	"apihelp-query+rwrecords-param-sort": "ДӀасакъасторан башхалла.",
+	"apihelp-query+rwrecords-param-dir": "ДӀасакъасторан некъ.",
+	"apihelp-query+rwrecords-param-format": "Ара гӀош схьаэца йеза элемент.",
+	"apihelp-query+rwrecords-param-limit": "Йерриг а масса транскрипци йухайерзо йеза."
+}
