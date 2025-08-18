@@ -5,7 +5,8 @@
 			"GoEThe",
 			"Hamilton Abreu",
 			"Ldacosta",
-			"Mansil alfalb"
+			"Mansil alfalb",
+			"Trooper57"
 		]
 	},
 	"recordWizard": "Assistente de gravações",
@@ -13,6 +14,7 @@
 	"recordWizard-desc": "Uma ferramenta de utilização fácil e automatizada para gravar ficheiros de áudio da pronunciação.",
 	"special-recordWizard-title": "Assistente de gravações",
 	"mwe-recwiz-title": "Gravar uma voz",
+	"mwe-recwiz-menu-statistics": "Estatísticas",
 	"mwe-recwiz-step-tutorial": "Explicação",
 	"mwe-recwiz-step-speaker": "Locutor",
 	"mwe-recwiz-step-details": "Detalhes",
