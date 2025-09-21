@@ -1,6 +1,6 @@
 'use strict';
 
-		var PETSCAN_URL = 'petscan.wmflabs.org/',
+		var PETSCAN_URL = 'petscan.wmcloud.org/',
 			WDQS_URL = 'query.wikidata.org/',
 			rw = mw.recordWizard;
 
