@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Enumera todas as transcricións de rexistros feitas por un falante nunha lingua determinada.",
+	"apihelp-query+rwrecords-param-language": "Qid do elemento da lingua no Wikibase local.",
+	"apihelp-query+rwrecords-param-speaker": "Qid do elemento do falante no Wikibase local.",
+	"apihelp-query+rwrecords-param-sort": "Propiedade pola que ordenar.",
+	"apihelp-query+rwrecords-param-dir": "Dirección da ordenación.",
+	"apihelp-query+rwrecords-param-format": "Elemento a obter como saída.",
+	"apihelp-query+rwrecords-param-limit": "Cantas transcricións en total se deben devolver."
+}
