@@ -4,6 +4,7 @@
 			"Ainali",
 			"Pamputt",
 			"Sabelöga",
+			"Stefan2255",
 			"WikiPhoenix"
 		]
 	},
@@ -32,7 +33,7 @@
 	"mwe-recwiz-tutorial-reopenpopup": "Öppna poppuppmeny igen",
 	"mwe-recwiz-tutorial-activate": "Ge åtkomst till din mikrofon för att fortsätta.",
 	"mwe-recwiz-tutorial-title": "Kontrollera din mikrofon",
-	"mwe-recwiz-tutorial-help": "==== Så här gör man: ====\n# När du är redo trycker du på knappen ovan för att starta en provinspelning.\n# Uttala ett ord högt, exempelvis \"solen\".\n# Lyssna på din inspelning och kontrollera att den stämmer.\n# Anpassa dina mikrofoninställningar om det behövs.\n# Om allt stämmer kan du gå vidare till nästa steg!",
+	"mwe-recwiz-tutorial-help": "==== Så här gör man: ====\n# När du är redo klickar du på knappen \"Starta testet\" för att starta ett inspelningstest.\n# Uttala ett ord högt, exempelvis \"solen\".\n# Lyssna på din inspelning och kontrollera att den stämmer.\n# Anpassa dina mikrofoninställningar om det behövs.\n# Om allt stämmer kan du gå vidare till nästa steg!",
 	"mwe-recwiz-tutorial-info": "För att lära dig hur du konfigurerar din mikrofon, besök [[Special:MyLanguage/Help:Configure_your_microphone|den här hjälpsidan]].",
 	"mwe-recwiz-tutorial-mictester-info": "Tryck på knappen nedan när du är redo för att börja provinspelningen.",
 	"mwe-recwiz-tutorial-mictester-start": "Börja testet",
@@ -79,8 +80,8 @@
 	"mwe-recwiz-generator-wmcategory": "Wikimedia-kategori",
 	"mwe-recwiz-studio-title": "Studio",
 	"mwe-recwiz-studio-info-audio": "Klicka på $1 nedan, och läs orden högt",
-	"mwe-recwiz-studio-info-video": "Klicka på $1 nedan, och teckna orden",
-	"mwe-recwiz-studio-skip": "Hoppa över",
+	"mwe-recwiz-studio-info-video": "Klicka på $1 nedan, läs sedan och teckna ordet",
+	"mwe-recwiz-studio-skip": "Hoppa till nästa ord",
 	"mwe-recwiz-studio-input-placeholder": "Lägg till ett nytt ord",
 	"mwe-recwiz-studio-uploadcount": "$1 av $2 {{PLURAL:$2|ljud}} laddades upp",
 	"mwe-recwiz-videostudio-webcamaccess": "Låt Lingua Libre få tillgång till din webbkamera.",
