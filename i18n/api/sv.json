@@ -3,6 +3,7 @@
 		"authors": [
 			"Ainali",
 			"Sabelöga",
+			"Stefan2255",
 			"WikiPhoenix"
 		]
 	},
@@ -11,5 +12,6 @@
 	"apihelp-query+rwrecords-param-speaker": "Talarens lokala wikibase-objekts Qid.",
 	"apihelp-query+rwrecords-param-sort": "Egenskap att sortera efter.",
 	"apihelp-query+rwrecords-param-dir": "Sorteringsriktning.",
+	"apihelp-query+rwrecords-param-format": "Element att hämta som utdata.",
 	"apihelp-query+rwrecords-param-limit": "Hur många transkriberingar att returnera totalt."
 }
