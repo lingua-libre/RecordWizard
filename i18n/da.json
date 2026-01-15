@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Peterleth",
 			"Saederup92"
 		]
 	},
@@ -9,7 +10,7 @@
 	"mwe-recwiz-previous": "Forrige",
 	"mwe-recwiz-continue": "Fortsæt",
 	"mwe-recwiz-continueanyway": "Fortsæt alligevel",
-	"mwe-recwiz-tutorial-title": "Tjek din mikrofon:",
+	"mwe-recwiz-tutorial-title": "Tjek din mikrofon",
 	"mwe-recwiz-tutorial-mictester-start": "Start testen",
 	"mwe-recwiz-tutorial-mictester-recording": "1. Sig noget",
 	"mwe-recwiz-tutorial-mictester-playing": "2. Lyt",
@@ -25,7 +26,7 @@
 	"mwe-recwiz-gender-male": "Mand",
 	"mwe-recwiz-gender-female": "Kvinde",
 	"mwe-recwiz-gender-other": "Andet",
-	"mwe-recwiz-details-lang": "Optag sprog",
+	"mwe-recwiz-details-lang": "Du optager ord i:",
 	"mwe-recwiz-details-clear": "Ryd",
 	"mwe-recwiz-details-noword": "Ingen valgte ord",
 	"mwe-recwiz-generator-list": "Lokal liste",
