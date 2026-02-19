@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Atzerritik",
 			"Joseba",
 			"Sator",
 			"Theklan"
@@ -53,10 +54,10 @@
 	"mwe-recwiz-speaker-license": "Lizentzia",
 	"mwe-recwiz-speaker-licensecontent": "Ni, $1, baimen atzeraezina ematen dut erabiltzeko tresna onen bidez sortutako audio grabaketak ondorengo lizentziapean:",
 	"mwe-recwiz-speaker-agreement": "Hainbat Wikimedia proiektutan erabili daitekeela onartzen duzu, hala nola Wikipedia, Wikhiztegia edo Wikidata.",
-	"mwe-recwiz-speaker-gender": "Sexua",
+	"mwe-recwiz-speaker-gender": "Generoa:",
 	"mwe-recwiz-gender-male": "Gizonezkoa",
 	"mwe-recwiz-gender-female": "Emakumezkoa",
-	"mwe-recwiz-gender-other": "Beste",
+	"mwe-recwiz-gender-other": "Beste bat",
 	"mwe-recwiz-details-title": "Grabatu beharreko hitzen zerrenda",
 	"mwe-recwiz-details-placeholder": "Hitza grabatzeko idatzi hemen",
 	"mwe-recwiz-details-help": "Bi homograforen artean bereizteko, esanahia parentesi artean jar dezakezu, adb aditu (aditza, entzun) vs aditu (adj, zerbaiten inguruan asko dakiena)",
