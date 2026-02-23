@@ -6,6 +6,7 @@
 			"Beta16",
 			"Ciampix",
 			"CloeRiva",
+			"Dream Indigo",
 			"Neamitika",
 			"Yiyi"
 		]
@@ -59,7 +60,7 @@
 	"mwe-recwiz-speaker-license": "Licenza",
 	"mwe-recwiz-speaker-licensecontent": "Io, $1, conferisco in maniera irrevocabile a chiunque il diritto di utilizzare la mia registrazione audio creata con questo strumento con la seguente licenza:",
 	"mwe-recwiz-speaker-agreement": "Si accetta che questi possano essere utilizzati automaticamente su diversi progetti Wikimedia, tra cui Wikipedia, Wiktionary e Wikidata.",
-	"mwe-recwiz-speaker-gender": "Sesso",
+	"mwe-recwiz-speaker-gender": "Genere",
 	"mwe-recwiz-gender-male": "Uomo",
 	"mwe-recwiz-gender-female": "Donna",
 	"mwe-recwiz-gender-other": "Altro",
