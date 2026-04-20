@@ -42,7 +42,8 @@ $wgRecordWizardConfig['properties'] = array(
 	'qualifier'         => 'P...', //string
 	'wikipediaTitle'    => 'P...', //external-id
 	'wiktionaryEntry'   => 'P...', //external-id
-	'mediaType'         => 'P...'  //wikibase-item
+	'mediaType'         => 'P...', //wikibase-item
+	'wikivoyageTitle'   => 'P...'  //external-id
 );
 
 $wgRecordWizardConfig['items'] = array(
