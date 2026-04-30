@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Tensama0415",
 			"Ykhwong"
 		]
 	},
+	"apihelp-query+rwrecords-param-sort": "정렬할 속성입니다.",
 	"apihelp-query+rwrecords-param-dir": "정렬 방향입니다.",
 	"apihelp-query+rwrecords-param-format": "출력물로 가져올 요소입니다."
 }
