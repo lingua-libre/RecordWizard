@@ -5,7 +5,11 @@
 			"Ykhwong"
 		]
 	},
+	"apihelp-query+rwrecords-summary": "특정 언어로 화자가 녹음한 모든 기록의 설명을 나열합니다.",
+	"apihelp-query+rwrecords-param-language": "해당 언어의 로컬 위키베이스 항목의 Qid입니다.",
+	"apihelp-query+rwrecords-param-speaker": "화자의 로컬 위키베이스 항목의 Qid입니다.",
 	"apihelp-query+rwrecords-param-sort": "정렬할 속성입니다.",
 	"apihelp-query+rwrecords-param-dir": "정렬 방향입니다.",
-	"apihelp-query+rwrecords-param-format": "출력물로 가져올 요소입니다."
+	"apihelp-query+rwrecords-param-format": "출력물로 가져올 요소입니다.",
+	"apihelp-query+rwrecords-param-limit": "반환할 총 설명 수 입니다."
 }
