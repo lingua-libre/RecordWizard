@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
+			"HakanIST",
 			"Hedda",
 			"Joseph",
 			"KediÇobanı",
@@ -14,6 +15,7 @@
 			"WikiLucas00"
 		]
 	},
+	"recordWizard": "Kayıt Sihirbazı",
 	"recordwizard": "Kayıt Sihirbazı",
 	"recordWizard-desc": "Ses telaffuz dosyalarını kaydetmek için kullanıcı dostu ve otomatik bir araç.",
 	"special-recordWizard-title": "Kayıt Sihirbazı",

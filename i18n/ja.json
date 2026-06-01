@@ -10,6 +10,7 @@
 			"Shirayuki",
 			"Sou0012",
 			"Suyama",
+			"Tensama0415",
 			"Yamagata Yusuke",
 			"朝彦"
 		]
@@ -85,7 +86,7 @@
 	"mwe-recwiz-generator-wmcategory": "ウィキメディアのカテゴリ",
 	"mwe-recwiz-studio-title": "スタジオ",
 	"mwe-recwiz-studio-info-audio": "下記の $1 をクリックして、単語を声を出して読んでください",
-	"mwe-recwiz-studio-info-video": "下記の $1 をクリックして、サインインした言語で単語をしゃべってください",
+	"mwe-recwiz-studio-info-video": "下記の $1 をクリックして、言語で単語をしゃべった後に手話で表現してください",
 	"mwe-recwiz-studio-skip": "次の単語へスキップ",
 	"mwe-recwiz-studio-input-placeholder": "新しい単語を追加",
 	"mwe-recwiz-studio-uploadcount": "$1 / $2 {{PLURAL:$2|音声|音声}}アップロード済",
