@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Duke of Wikipädia",
+			"EGobi",
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
 			"Fúlvio",
@@ -145,7 +146,7 @@
 	"mwe-recwiz-error-cantgetposition": "Sua posição não pode ser encontrada, você terá que definir as coordenadas manualmente ($1).",
 	"mwe-recwiz-warning-noresults": "Não há itens perto dessas coordenadas.",
 	"mwe-recwiz-list-title": "Título",
-	"mwe-recwiz-list-title-help": "Título de uma página dentro do namespace da lista.",
+	"mwe-recwiz-list-title-help": "Título de uma página dentro do espaço nominal da lista.",
 	"mwe-recwiz-list-deduplicate": "Excluir palavras que você já gravou",
 	"mwe-recwiz-wmcategory-title": "Nome da categoria",
 	"mwe-recwiz-wmcategory-title-help": "Nome de uma categoria, incluindo o espaço nominal \"Categoria\".",
