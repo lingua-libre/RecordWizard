@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"apihelp-query+rwrecords-param-sort": "اوډلو لپاره ځانتيا.",
+	"apihelp-query+rwrecords-param-dir": "د اوډلو تگلوری.",
+	"apihelp-query+rwrecords-param-format": "عنصر چې د زېږندې په توگه ترلاسه کېږي."
+}
