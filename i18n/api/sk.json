@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"apihelp-query+rwrecords-summary": "Vypísať všetky prepisy nahrávok vytvorených daným hovoriacim v danom jazyku.",
+	"apihelp-query+rwrecords-param-language": "Qid lokálnej položky Wikibase pre daný jazyk.",
+	"apihelp-query+rwrecords-param-speaker": "Qid lokálnej položky Wikibase pre daného hovoriaceho.",
+	"apihelp-query+rwrecords-param-sort": "Vlastnosť, podľa ktorej sa má zoraďovať.",
+	"apihelp-query+rwrecords-param-dir": "Smer zoradenia.",
+	"apihelp-query+rwrecords-param-format": "Prvok, ktorý sa má získať ako výstup.",
+	"apihelp-query+rwrecords-param-limit": "Koľko prepisov sa má celkovo vrátiť."
+}
